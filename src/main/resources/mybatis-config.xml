@@ -15,7 +15,7 @@
 	</typeAliases>
 	
   <mappers>
-    <mapper resource="mappings/**mapper.xml"/>
+   <!--  <mapper resource="mappings/*.xml"/> -->
   </mappers>
   
 </configuration>

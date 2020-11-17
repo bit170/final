@@ -6,5 +6,6 @@ public interface AddressService {
 	public void insertAddress(AddressVO vo);
 	public void updateAddress(AddressVO vo);
 	public void deleteAddress(AddressVO vo);
+	public AddressVO getAddress(AddressVO vo);
 	public List<AddressVO> AddressList(AddressVO vo);
 }

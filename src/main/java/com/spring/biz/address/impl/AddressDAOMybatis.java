@@ -3,10 +3,14 @@ package com.spring.biz.address.impl;
 import java.util.List;
 
 import org.mybatis.spring.SqlSessionTemplate;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Repository;
 
 import com.spring.biz.address.AddressVO;
 
+@Repository
 public class AddressDAOMybatis {
+	@Autowired
 	private SqlSessionTemplate mybatis;
 	
 	public AddressDAOMybatis() {
