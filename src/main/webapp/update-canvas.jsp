@@ -59,7 +59,8 @@
 						</select></li>
 						<li><a href="#"><img src="resources/img/flags/FR.png"
 								alt="Français">Français</a></li>
-						<li><a href="#"><img src="resources/img/flags/DE.png" alt="Deutsch">Deutsch</a></li>
+						<li><a href="#"><img src="resources/img/flags/DE.png"
+								alt="Deutsch">Deutsch</a></li>
 						<li><a href="#"><img src="resources/img/flags/IT.png"
 								alt="Italiano">Italiano</a></li>
 					</ul>
@@ -82,7 +83,8 @@
 									Grid</span></a>
 							<ul class="sub-menu w-400 p-0">
 								<li><a class="p-0" href="home-featured-categories.jsp"><img
-										src="resources/img/banners/home02.jpg" alt="Categories Grid Home"></a></li>
+										src="resources/img/banners/home02.jpg"
+										alt="Categories Grid Home"></a></li>
 							</ul></li>
 					</ul></li>
 				<li class="active"><a href="shop-boxed-ls.jsp"><span>Shop</span></a>
@@ -95,8 +97,7 @@
 								<li><a href="shop-boxed-rs.jsp">Boxed Right Sidebar</a></li>
 								<li><a href="shop-boxed-ft.jsp">Boxed Filters Top</a></li>
 								<li><a href="shop-full-ls.jsp">Full Width Left Sidebar</a></li>
-								<li><a href="shop-full-rs.jsp">Full Width Right
-										Sidebar</a></li>
+								<li><a href="shop-full-rs.jsp">Full Width Right Sidebar</a></li>
 								<li><a href="shop-full-ft.jsp">Full Width Filters Top</a></li>
 							</ul></li>
 						<li><a href="shop-single.jsp">Single Product</a></li>
@@ -220,8 +221,7 @@
 							<ul>
 								<li><a href="components/tabs.jsp">Tabs</a></li>
 								<li><a href="components/team.jsp">Team</a></li>
-								<li><a href="components/toasts.jsp">Toast
-										Notifications</a></li>
+								<li><a href="components/toasts.jsp">Toast Notifications</a></li>
 								<li><a href="components/tooltips-popovers.jsp">Tooltips
 										&amp; Popovers</a></li>
 								<li><a href="components/typography.jsp">Typography</a></li>
@@ -444,8 +444,7 @@
 									<li><a href="components/tooltips-popovers.jsp">Tooltips
 											&amp; Popovers</a></li>
 									<li><a href="components/typography.jsp">Typography</a></li>
-									<li><a href="components/video-player.jsp">Video
-											Player</a></li>
+									<li><a href="components/video-player.jsp">Video Player</a></li>
 									<li><a href="components/widgets.jsp">Widgets</a></li>
 								</ul></li>
 						</ul>
@@ -463,8 +462,8 @@
 						<!-- Entry-->
 						<div class="entry">
 							<div class="entry-thumb">
-								<a href="shop-single.jsp"><img src="resources/img/shop/widget/01.png"
-									alt="Product"></a>
+								<a href="shop-single.jsp"><img
+									src="resources/img/shop/widget/01.png" alt="Product"></a>
 							</div>
 							<div class="entry-content">
 								<h4 class="entry-title">
@@ -477,8 +476,8 @@
 						<!-- Entry-->
 						<div class="entry">
 							<div class="entry-thumb">
-								<a href="shop-single.jsp"><img src="resources/img/shop/widget/02.png"
-									alt="Product"></a>
+								<a href="shop-single.jsp"><img
+									src="resources/img/shop/widget/02.png" alt="Product"></a>
 							</div>
 							<div class="entry-content">
 								<h4 class="entry-title">
@@ -491,8 +490,8 @@
 						<!-- Entry-->
 						<div class="entry">
 							<div class="entry-thumb">
-								<a href="shop-single.jsp"><img src="resources/img/shop/widget/03.png"
-									alt="Product"></a>
+								<a href="shop-single.jsp"><img
+									src="resources/img/shop/widget/03.png" alt="Product"></a>
 							</div>
 							<div class="entry-content">
 								<h4 class="entry-title">
@@ -510,8 +509,8 @@
 						<!-- Entry-->
 						<div class="entry">
 							<div class="entry-thumb">
-								<a href="blog-single.jsp"><img src="resources/img/blog/widget/01.jpg"
-									alt="Post"></a>
+								<a href="blog-single.jsp"><img
+									src="resources/img/blog/widget/01.jpg" alt="Post"></a>
 							</div>
 							<div class="entry-content">
 								<h4 class="entry-title">
@@ -524,8 +523,8 @@
 						<!-- Entry-->
 						<div class="entry">
 							<div class="entry-thumb">
-								<a href="blog-single.jsp"><img src="resources/img/blog/widget/02.jpg"
-									alt="Post"></a>
+								<a href="blog-single.jsp"><img
+									src="resources/img/blog/widget/02.jpg" alt="Post"></a>
 							</div>
 							<div class="entry-content">
 								<h4 class="entry-title">
@@ -699,88 +698,105 @@
 	<div class="container padding-bottom-3x mb-2">
 		<div class="row">
 			<!-- 작품 수정하기 ( 연희 ) -->
-        <div class="col-xl-9 col-lg-8">
-          <h4>내 작품 수정하기</h4>
-          <hr class="padding-bottom-1x">
-          <div class="row">
-            <div class="col-sm-6">
-              <div class="form-group">
-                <label for="checkout-fn">* 작품명</label>
-                <input class="form-control" type="text" id="checkout-fn">
-              </div>
-            </div>
-            <div class="col-sm-6">
-              <div class="form-group">
-                <label for="checkout-ln">* 작품 가격</label>
-                <input class="form-control" type="text" id="checkout-ln" data-type="currency" placeholder="$100,000">
-              </div>
-            </div>
-          </div>
-          <div class="row">
-            <div class="col-sm-6">
-              <div class="form-group">
-                <label for="checkout-fn">* 작품 사이즈</label>
-                <input class="form-control" type="text" id="checkout-fn">
-              </div>
-            </div>
-            <div class="col-sm-6">
-              <div class="form-group">
-                <label for="checkout-ln">* 사진 1</label>
-                <div class="custom-file">
-                <input class="custom-file-input" type="file" id="file-input">
-                <label class="custom-file-label" for="file-input">파일 추가...</label>
-              </div>
-              </div>
-            </div>
-          </div>
-          <div class="row">
-            <div class="col-sm-6">
-              <div class="form-group">
-                <label for="checkout-fn"> 사진 2</label>
-                <div class="custom-file">
-                  <input class="custom-file-input" type="file" id="file-input">
-                  <label class="custom-file-label" for="file-input">파일 추가...</label>
-                </div>
-              </div>
-            </div>
-            <div class="col-sm-6">
-              <div class="form-group">
-                <label for="checkout-ln"> 사진 3</label>
-                <div class="custom-file">
-                  <input class="custom-file-input" type="file" id="file-input">
-                  <label class="custom-file-label" for="file-input">파일 추가...</label>
-                </div>
-              </div>
-            </div>
-            <div class="col-sm-6">
-              <div class="form-group">
-                <label for="checkout-fn"> 태그 입력 ( 띄어쓰기, 콤마, 슬래시로 구분 )</label>
-                <input class="form-control" type="text" id="checkout-fn">
-              </div>
-            </div>
-              <div class="col-sm-6">
-                <div class="form-group">
-                  <label for="checkout-ln"> 카테고리 </label>
-                  <!-- <label class="col-2 col-form-label text-muted" for="select-input">Select</label> -->
-                  <select class="form-control" id="select-input">
-                    <option>카테고리를 선택해주세요 ! </option>
-                    <option>수묵화</option>
-                    <option>수채화</option>
-                    <option>유화</option>
-                    <option>크로키</option>
-                    <option>펜화</option>
-                    <option>기타</option>
-                  </select>
-                </div>
-              </div>
-              <div class="col-sm-6">
-                <div class="form-group">
-                  <label for="checkout-ln"> 작품 설명</label>
-                  <textarea class="form-control text-muted" id="textarea-input" rows="5">작품을 간략하게 설명해주세요 !</textarea>
-                </div>
-              </div>
-            </div>
+			<div class="col-xl-9 col-lg-8">
+				<h4>내 작품 수정하기</h4>
+				<hr class="padding-bottom-1x">
+				<div class="row">
+					<div class="col-sm-6">
+						<div class="form-group">
+							<label for="checkout-fn">* 작품명</label> <input
+								class="form-control" type="text" id="checkout-fn">
+						</div>
+					</div>
+					<div class="col-sm-6">
+						<div class="form-group">
+							<label for="checkout-ln">* 작품 가격</label> <input
+								class="form-control" type="text" id="checkout-ln"
+								data-type="currency" placeholder="$100,000">
+						</div>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-sm-6">
+						<div class="form-group">
+							<label for="checkout-fn">* 작품 사이즈</label> <input
+								class="form-control" type="text" id="checkout-fn">
+						</div>
+					</div>
+					<div class="col-sm-6">
+						<div class="form-group">
+							<label for="checkout-ln">* 사진 1</label>
+							<div class="custom-file">
+								<input class="custom-file-input" type="file" id="file-input">
+								<label class="custom-file-label" for="file-input">파일
+									추가...</label>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-sm-6">
+						<div class="form-group">
+							<label for="checkout-fn"> 사진 2</label>
+							<div class="custom-file">
+								<input class="custom-file-input" type="file" id="file-input">
+								<label class="custom-file-label" for="file-input">파일
+									추가...</label>
+							</div>
+						</div>
+					</div>
+					<div class="col-sm-6">
+						<div class="form-group">
+							<label for="checkout-ln"> 사진 3</label>
+							<div class="custom-file">
+								<input class="custom-file-input" type="file" id="file-input">
+								<label class="custom-file-label" for="file-input">파일
+									추가...</label>
+							</div>
+						</div>
+					</div>
+					<div class="col-sm-6">
+						<div class="form-group">
+							<label for="checkout-fn"> 태그 입력 ( 띄어쓰기, 콤마, 슬래시로 구분 )</label> <input
+								class="form-control" type="text" id="checkout-fn">
+						</div>
+					</div>
+					<div class="col-sm-6">
+						<div class="form-group">
+							<label for="checkout-ln"> 카테고리 </label>
+							<!-- <label class="col-2 col-form-label text-muted" for="select-input">Select</label> -->
+							<select class="form-control" id="select-input">
+								<option>카테고리를 선택해주세요 !</option>
+								<option>수묵화</option>
+								<option>수채화</option>
+								<option>유화</option>
+								<option>크로키</option>
+								<option>펜화</option>
+								<option>기타</option>
+							</select>
+						</div>
+					</div>
+					<div class="col-sm-6">
+						<div class="form-group">
+							<label for="checkout-ln"> 작품 설명</label>
+							<textarea class="form-control text-muted" id="textarea-input"
+								rows="5">작품을 간략하게 설명해주세요 !</textarea>
+						</div>
+					</div>
+				</div>
 
+				<hr class="padding-bottom-1x">
+
+				<div class="d-flex justify-content-center">
+					<a class="btn btn-outline-secondary" href="account-myCanvas.jsp">마이페이지로</a>
+					<div class="text-center">
+						<a class="btn btn-primary" href="account-myCanvas.jsp">수정하기</a> <a
+							class="btn btn-danger" href="account-myCanvas.jsp">삭제하기</a>
+					</div>
+				</div>
+			</div>
+		</div>
+		
 		<!-- Site Footer-->
 		<footer class="site-footer">
 			<div class="column text-center">
