@@ -1,3 +1,5 @@
+-- 테이블 순서는 관계를 고려하여 한 번에 실행해도 에러가 발생하지 않게 정렬되었습니다.
+
 -- MEMBER Table Create SQL
 CREATE TABLE MEMBER
 (
@@ -6,7 +8,6 @@ CREATE TABLE MEMBER
     NAME        VARCHAR2(20)     NOT NULL, 
     PHONE       VARCHAR2(20)     NOT NULL, 
     EMAIL       VARCHAR2(30)     NOT NULL, 
-    ADDRESS     VARCHAR2(256)    NOT NULL, 
     NICKNAME    VARCHAR2(30)     NOT NULL, 
     CONSTRAINT MEMBER_PK PRIMARY KEY (ID)
 );
@@ -215,14 +216,5 @@ ALTER TABLE S_CATEGORY
         REFERENCES PRODUCT (P_CODE)
 ;
 
-
-
-
-
-
-
-
-
-
-
-
+ALTER TABLE PRODUCT
+ADD P_DATE DATE DEFAULT SYSDATE;
