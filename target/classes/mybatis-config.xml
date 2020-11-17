@@ -8,11 +8,16 @@
 	</settings>
 	
 	<typeAliases>
+		<typeAlias alias="address" type="com.spring.biz.address.AddressVO"></typeAlias>
+		<typeAlias alias="follow" type="com.spring.biz.follow.FollowVO"></typeAlias>
+		<typeAlias alias="step" type="com.spring.biz.step.StepVO"></typeAlias>
+		<typeAlias alias="wishlist" type="com.spring.biz.wishlist.WishlistVO"></typeAlias>
 	</typeAliases>
 	
-  <!-- <mappers>
-    <mapper resource="mappings/board-mapper.xml"/>
-  </mappers> -->
+  <mappers>
+    <mapper resource="mappings/**mapper.xml"/>
+  </mappers>
+  
 </configuration>
 
 
