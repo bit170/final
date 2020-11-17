@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -175,23 +175,44 @@
               <div class="tab-pane fade" id="signup" role="tabpanel">
                 <form autocomplete="off" id="signup-form">
                   <div class="form-group">
-                    <input class="form-control" type="text" placeholder="Name" required>
+                    <input class="form-control" type="text" placeholder="Name" name="name" required>
                   </div>
                   <div class="form-group">
-                    <input class="form-control" type="email" placeholder="Email" required>
+                    <input class="form-control" type="email" placeholder="Email" name="email" required>
                   </div>
                   <div class="form-group">
-                    <input class="form-control" type="text" placeholder="Id" required>
-                    중복확인하고 싶은데에..
+                    <input class="form-control" type="text" placeholder="Phone" name="phone" required>
+                  </div>
+				  <div class="form-group">
+                    <div style="display:flex">
+                      <input class="form-control" type="text" placeholder="Id" name="id" required style="max-width:80%">
+                      <%-- <a class="btn btn-primary" style="margin:0;margin-left:2%" href="idCheck.jsp?id=<%= %>">중복확인</a> --%>
+                      <input type="button" class="btn btn-primary" style="margin:0;margin-left:2%" onclick="idCheck()" value="중복확인">
+                      <script type="text/javascript">
+                      	var id = document.getElementByName("id");
+                      	function idCheck() {
+							location.href = 'idCheck.jsp?id='+id;
+						}
+                      </script>
+                    </div>
+                    <!-- <script type="text/javascript">
+                    	function idCheck() {
+	                    	var id = document.getbyName("id").value;
+	                    	var href = "idCheck.jsp?id="+id;
+							document.location.href = href;
+						}
+                    </script> -->
                   </div>
                   <div class="form-group">
                     <input class="form-control" type="password" placeholder="Password" required>
                   </div>
                   <div class="form-group">
-                    <input class="form-control" type="password" placeholder="Confirm Password" required>
+                    <input class="form-control" type="password" placeholder="Confirm Password" name="pwd" required>
+                  </div>
+                  <div class="form-group">
+                    <input class="form-control" type="text" placeholder="NickName" name="nickname" required>
                   </div>
                   <button class="btn btn-primary btn-block" type="submit">Sign Up</button>
-                  <p class="text-muted text-sm mt-4">OR sign up with your social account</p><a class="media-btn media-facebook" href="#"><i class="socicon-facebook"></i><span>Signup with Facebook</span></a><a class="media-btn media-google" href="#"><i class="socicon-googleplus"></i><span>Signup with Google+</span></a><a class="media-btn media-twitter" href="#"><i class="socicon-twitter"></i><span>Signup with Twitter</span></a>
                 </form>
               </div>
             </div>
