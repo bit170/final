@@ -264,10 +264,10 @@
       <div class="isotope-grid cols-2">
         <div class="gutter-sizer"></div>
         <div class="grid-sizer"></div>
-        <div class="grid-item gallery-item"><a href="resources/img/shop/ARTIST1.jpg"><img src="resources/img/shop/ARTIST1.jpg" alt="Image"></a><span class="caption">Van Gogh</span></div>
-        <div class="grid-item gallery-item"><a href="resources/img/shop/ARTIST2.jpg"><img src="resources/img/shop/ARTIST2.jpg" alt="Image"></a><span class="caption">Frida Kahlo</span></div>
-        <div class="grid-item gallery-item"><a href="resources/img/shop/ARTIST3.jpg"><img src="resources/img/shop/ARTIST3.jpg" alt="Image"></a><span class="caption">Rembrandt</span></div>
-        <div class="grid-item gallery-item"><a href="resources/img/shop/ARTIST4.jpg"><img src="resources/img/shop/ARTIST4.jpg" alt="Image"></a><span class="caption">Michelangelo</span></div>
+        <div class="grid-item gallery-item"><a href="shop-single.jsp"><img src="resources/img/shop/ARTIST1.jpg" alt="Image"></a><span class="caption">Van Gogh</span></div>
+        <div class="grid-item gallery-item"><a href="shop-single.jsp"><img src="resources/img/shop/ARTIST2.jpg" alt="Image"></a><span class="caption">Frida Kahlo</span></div>
+        <div class="grid-item gallery-item"><a href="shop-single.jsp"><img src="resources/img/shop/ARTIST3.jpg" alt="Image"></a><span class="caption">Rembrandt</span></div>
+        <div class="grid-item gallery-item"><a href="shop-single.jsp"><img src="resources/img/shop/ARTIST4.jpg" alt="Image"></a><span class="caption">Michelangelo</span></div>
       </div>
     </div>
     <!-- Site Footer-->

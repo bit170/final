@@ -24,7 +24,7 @@
     <!-- Main Template Styles-->
     <link href="resources/css/styles.min.css" id="mainStyles" rel="stylesheet" media="screen">
     <!-- Modernizr-->
-    <script src="js/modernizr.min.js"></script>
+    <script src="resources/js/modernizr.min.js"></script>
 </head>
 
 <body>
@@ -282,7 +282,45 @@
             </div>
           </div>
         </div>
-
+		<!-- Item-->
+        <div class="col-xl-3 col-lg-4 col-sm-6">
+          <div class="product-card mb-30">
+            <div class="product-card-thumb"><a class="product-card-link" href="artist-single.jsp"></a><img src="resources/img/shop/ARTIST2.jpg" alt="Product">
+              <div class="product-card-buttons">
+                <button class="btn btn-white btn-sm btn-wishlist" data-toggle="tooltip" title="Follow"><i class="material-icons favorite_border"></i></button>
+              </div>
+            </div>
+            <div class="product-card-details">
+              <h3 class="product-card-title"><a href="shop-single.jsp">YeonHee Gwak</a></h3>
+            </div>
+          </div>
+        </div>
+        <!-- Item-->
+        <div class="col-xl-3 col-lg-4 col-sm-6">
+          <div class="product-card mb-30">
+            <div class="product-card-thumb"><a class="product-card-link" href="artist-single.jsp"></a><img src="resources/img/shop/ARTIST3.jpg" alt="Product">
+              <div class="product-card-buttons">
+                <button class="btn btn-white btn-sm btn-wishlist" data-toggle="tooltip" title="Follow"><i class="material-icons favorite_border"></i></button>
+              </div>
+            </div>
+            <div class="product-card-details">
+              <h3 class="product-card-title"><a href="shop-single.jsp">DongHee Lee</a></h3>
+            </div>
+          </div>
+        </div>
+        <!-- Item-->
+        <div class="col-xl-3 col-lg-4 col-sm-6">
+          <div class="product-card mb-30">
+            <div class="product-card-thumb"><a class="product-card-link" href="artist-single.jsp"></a><img src="resources/img/shop/ARTIST4.jpg" alt="Product">
+              <div class="product-card-buttons">
+                <button class="btn btn-white btn-sm btn-wishlist" data-toggle="tooltip" title="Follow"><i class="material-icons favorite_border"></i></button>
+              </div>
+            </div>
+            <div class="product-card-details">
+              <h3 class="product-card-title"><a href="shop-single.jsp">Hee Song</a></h3>
+            </div>
+          </div>
+        </div>
       <!-- Pagination-->
       <nav class="pagination">
         <div class="column">
@@ -327,7 +365,7 @@
     <!-- Backdrop-->
     <div class="site-backdrop"></div>
     <!-- JavaScript (jQuery) libraries, plugins and custom scripts-->
-    <script src="js/vendor.min.js"></script>
-    <script src="js/scripts.min.js"></script>
+    <script src="resources/js/vendor.min.js"></script>
+    <script src="resources/js/scripts.min.js"></script>
 </body>
 </html>

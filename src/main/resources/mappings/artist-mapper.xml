@@ -4,7 +4,7 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="artistDAO">
 
-	<!-- <insert id="insertArtist" parameterType="artist">
+<!-- 	<insert id="insertArtist" parameterType="artist">
 		INSERT INTO ARTIST (ID, NICKNAME, A_DETAIL)
 		VALUES #{id}, #{nickname}, #{a_detail}
 	</insert>
@@ -25,7 +25,13 @@
 	
 	<select id="getArtistList" parameterType="artist" resultType="artist">
 		SELECT * FROM ARTIST
+	</select>
+	
+	작가 프로필사진 가져오기
+	<select id="getArtistImage" parameterType="string" resultType="">
+		SELECT A_FILENAME FROM A_IMAGE WHERE ID = #{id}
 	</select> -->
+	
 	
 </mapper>
 
