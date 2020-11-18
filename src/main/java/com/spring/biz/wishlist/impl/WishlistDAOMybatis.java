@@ -33,6 +33,12 @@ public class WishlistDAOMybatis {
 		mybatis.delete("wishlistDAO.deleteWishlist", vo);
 	}
 	
+//	해당 아이디의 전체 
+	public void removeWishlist(WishlistVO vo) {
+		System.out.println(">>> removeWishlist() 실행");
+		mybatis.delete("wishlistDAO.removeWishlist", vo);
+	}
+	
 	public WishlistVO getWishlist(WishlistVO vo) {
 		System.out.println(">>> getWishlist() 실행");
 		return mybatis.selectOne("wishlistDAO.getWishlist", vo);
