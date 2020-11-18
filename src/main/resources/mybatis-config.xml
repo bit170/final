@@ -8,21 +8,12 @@
 	</settings>
 	
 	<typeAliases>
-    
-    // 마이페이지 관련 alias 추가 (동희)
 		<typeAlias alias="product" type="com.spring.biz.product.ProductVO" />
-        
-    // 마이페이지 관련 alias 추가 (연희)
-		<typeAlias alias="address" type="com.spring.biz.address.AddressVO"></typeAlias>
-		<typeAlias alias="follow" type="com.spring.biz.follow.FollowVO"></typeAlias>
-		<typeAlias alias="step" type="com.spring.biz.step.StepVO"></typeAlias>
-		<typeAlias alias="wishlist" type="com.spring.biz.wishlist.WishlistVO"></typeAlias>
 	</typeAliases>
 	
-  <mappers>
-   <!--  <mapper resource="mappings/*.xml"/> -->
-  </mappers>
-  
+  <!-- <mappers>
+    <mapper resource="mappings/board-mapper.xml"/>
+  </mappers> -->
 </configuration>
 
 
