@@ -2,6 +2,7 @@ package com.spring.biz.step.impl;
 
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.spring.biz.step.StepService;
@@ -10,6 +11,7 @@ import com.spring.biz.step.StepVO;
 @Service("stepService")
 public class StepServiceImpl implements StepService{
 	
+	@Autowired
 	private StepDAOMybatis stepDAO;
 	
 	public StepServiceImpl() {

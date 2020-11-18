@@ -276,7 +276,7 @@
 				<nav class="list-group">
 					<a class="list-group-item" href="account-wishlist.jsp"><i
 						class="icon-heart"></i>위시리스트<span
-						class="badge badge-default badge-pill">6</span></a> <a
+						class="badge badge-default badge-pill">1</span></a> <a
 						class="list-group-item" href="account-follows.jsp"><i
 						class="icon-heart"></i>팔로우<span
 						class="badge badge-default badge-pill">3</span></a> <a

@@ -53,7 +53,7 @@
                 <li><a href="shop-boxed-ls.jsp">기타</a></li>
             </ul>
           </li>
-          <li><a href="#"><span>Pages</span></a>
+          <li><a href="getWishlist.do"><span>Pages</span></a>
             <ul class="sub-menu">
                 <li><a href="about.jsp">About Us</a></li>
                 <li><a href="contacts.jsp">Contacts</a></li>
