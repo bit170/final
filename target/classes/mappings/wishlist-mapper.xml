@@ -4,7 +4,7 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="wishlistDAO">
 	
-	<insert id="insertWishlist" parameterType="wishlist">
+	<!-- <insert id="insertWishlist" parameterType="wishlist">
 		INSERT INTO WISHLIST (P_CODE, ID)
 		VALUES #{p_code}, #{id}
 	</insert>
@@ -29,6 +29,6 @@
 	
 	<select id="getWishlistList" parameterType="wishlist">
 		SELECT * FROM WISHLIST
-	</select>
+	</select> -->
 	
 </mapper>
