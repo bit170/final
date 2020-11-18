@@ -8,6 +8,7 @@
 	</settings>
 	
 	<typeAliases>
+		<typeAlias alias="product" type="com.spring.biz.product.ProductVO" />
 	</typeAliases>
 	
   <!-- <mappers>
