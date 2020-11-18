@@ -15,7 +15,7 @@ public class WishlistDAOMybatis {
 	private SqlSessionTemplate mybatis;
 	
 	public WishlistDAOMybatis() {
-		System.out.println(">>> WishlistDAOMybatis() 객체 생성");
+		System.out.println(">>> WishlistDAOMybatis() 객체 생성 ");
 	}
 	
 	public void insertWishlist(WishlistVO vo) {
