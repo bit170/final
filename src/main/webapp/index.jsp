@@ -183,17 +183,18 @@
                   <div class="form-group">
                     <input class="form-control" type="text" placeholder="Phone" name="phone" required>
                   </div>
-              <div class="form-group">
+              	<div class="form-group">
                     <div style="display:flex">
                       <input class="form-control" type="text" placeholder="Id" name="id" required style="max-width:80%">
+                      <input type="submit" class="btn btn-primary" style="margin:0;margin-left:2%" onclick="javascript: form.action='/idCheck.do';" value="중복확인"> 
                       <%-- <a class="btn btn-primary" style="margin:0;margin-left:2%" href="idCheck.jsp?id=<%= %>">중복확인</a> --%>
-                      <input type="button" class="btn btn-primary" style="margin:0;margin-left:2%" onclick="idCheck()" value="중복확인">
-                      <script type="text/javascript">
-                         var id = document.getElementByName("id");
+                      <!-- <script type="text/javascript">
+                         var id = $(document).getElementByName("id").value();
                          function idCheck() {
-                     location.href = 'idCheck.jsp?id='+id;
-                  }
-                      </script>
+                        	alert(id); 
+                     		location.href = 'idCheck.jsp?id='+id;
+                  		 }
+                      </script> -->
                     </div>
                     <!-- <script type="text/javascript">
                        function idCheck() {
