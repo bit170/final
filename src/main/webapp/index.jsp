@@ -173,7 +173,7 @@
                 </form>
               </div>
               <div class="tab-pane fade" id="signup" role="tabpanel">
-                <form autocomplete="off" id="signup-form">
+                <form method="post" autocomplete="off" id="signup-form">
                   <div class="form-group">
                     <input class="form-control" type="text" placeholder="Name" name="name" required>
                   </div>
@@ -186,7 +186,8 @@
               	<div class="form-group">
                     <div style="display:flex">
                       <input class="form-control" type="text" placeholder="Id" name="id" required style="max-width:80%">
-                      <input type="submit" class="btn btn-primary" style="margin:0;margin-left:2%" onclick="javascript: form.action='/idCheck.do';" value="중복확인"> 
+                      <a class="btn btn-primary" style="margin:0;margin-left:2%" href="/idCheck.do" >중복확인</a>
+                      
                       <%-- <a class="btn btn-primary" style="margin:0;margin-left:2%" href="idCheck.jsp?id=<%= %>">중복확인</a> --%>
                       <!-- <script type="text/javascript">
                          var id = $(document).getElementByName("id").value();
