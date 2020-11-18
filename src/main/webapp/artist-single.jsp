@@ -2,7 +2,7 @@
     pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
 <meta charset="UTF-8">
 <title>ARTIST-SINGLE</title>
@@ -13,105 +13,52 @@
     <!-- Mobile Specific Meta Tag-->
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <!-- Favicon and Apple Icons-->
-    <link href="resources/image/favicon.ico" rel="icon" type="image/x-icon">
-    <link href="resources/image/favicon.png" rel="icon" type="image/png" >
-    <link href="resources/image/touch-icon-iphone.png" rel="apple-touch-icon" >
-    <link href="resources/image/touch-icon-ipad.png" rel="apple-touch-icon" sizes="152x152" >
-    <link href="resources/image/touch-icon-iphone-retina.png" rel="apple-touch-icon" sizes="180x180" >
-    <link href="resources/image/touch-icon-ipad-retina.png" rel="apple-touch-icon" sizes="167x167" >
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
+    <link rel="icon" type="image/png" href="favicon.png">
+    <link rel="apple-touch-icon" href="touch-icon-iphone.png">
+    <link rel="apple-touch-icon" sizes="152x152" href="touch-icon-ipad.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="touch-icon-iphone-retina.png">
+    <link rel="apple-touch-icon" sizes="167x167" href="touch-icon-ipad-retina.png">
     <!-- Vendor Styles including: Bootstrap, Font Icons, Plugins, etc.-->
     <link href="resources/css/vendor.min.css" rel="stylesheet" media="screen">
     <!-- Main Template Styles-->
     <link href="resources/css/styles.min.css" id="mainStyles" rel="stylesheet" media="screen">
     <!-- Modernizr-->
-    <script src="js/modernizr.min.js"></script>
+    <script src="resources/js/modernizr.min.js"></script>
 </head>
+
 <body>
-<!-- Leave a Review-->
-    <form class="modal fade" method="post" id="leaveReview" tabindex="-1">
-      <div class="modal-dialog modal-lg">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h4 class="modal-title">Leave a Review</h4>
-            <button class="close" type="button" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-          </div>
-          <div class="modal-body">
-            <div class="row">
-              <div class="col-sm-6">
-                <div class="form-group">
-                  <label for="review-name">Your Name</label>
-                  <input class="form-control" type="text" id="review-name" required>
-                </div>
-              </div>
-              <div class="col-sm-6">
-                <div class="form-group">
-                  <label for="review-email">Your Email</label>
-                  <input class="form-control" type="email" id="review-email" required>
-                </div>
-              </div>
-            </div>
-            <div class="row">
-              <div class="col-sm-6">
-                <div class="form-group">
-                  <label for="review-subject">Subject</label>
-                  <input class="form-control" type="text" id="review-subject" required>
-                </div>
-              </div>
-              <div class="col-sm-6">
-                <div class="form-group">
-                  <label for="review-rating">Rating</label>
-                  <select class="form-control" id="review-rating">
-                    <option>5 Stars</option>
-                    <option>4 Stars</option>
-                    <option>3 Stars</option>
-                    <option>2 Stars</option>
-                    <option>1 Star</option>
-                  </select>
-                </div>
-              </div>
-            </div>
-            <div class="form-group">
-              <label for="review-message">Review</label>
-              <textarea class="form-control" id="review-message" rows="8" required></textarea>
-            </div>
-          </div>
-          <div class="modal-footer">
-            <button class="btn btn-primary" type="submit">Submit Review</button>
-          </div>
-        </div>
-      </div>
-    </form>
-    <!-- Navbar-->
+<!-- Navbar-->
     <!-- Remove "navbar-sticky" class to make navigation bar scrollable with the page.-->
     <header class="navbar navbar-sticky">
       <!-- Site Branding-->
       <!-- 브랜드 로고 -->
-      <div class="site-branding"><a class="site-logo hidden-xs-down" href="index.html"><img src="img/logo/logo.png" alt="Unishop"></a><a class="site-logo logo-sm hidden-sm-up" href="index.html"><img src="img/logo/logo-sm.png" alt="Unishop"></a>
+      <div class="site-branding"><a class="site-logo hidden-xs-down" href="index.jsp"><img src="resources/img/logo/logo.png" alt="Unishop"></a><a class="site-logo logo-sm hidden-sm-up" href="index.jsp"><img src="resources/img/logo/logo-sm.png" alt="Unishop"></a>
       </div>
       <!-- Main Navigation-->
       <!-- 상단 메뉴 -->
       <nav class="site-menu">
         <ul>
           <!-- 해당 페이지에 class="active" 추가해줘야함-->
-          <li ><a href="index.html"><span>Home</span></a>
+          <li class="active"><a href="index.jsp"><span>Home</span></a>
           </li>
-          <li class="active"><a href="artist-boxed-ft.html"><span>Artist</span></a></li>
-          <li><a href="shop-boxed-ls.html"><span>Shop</span></a>
+          <li><a href="artist-boxed-ft.jsp"><span>Artist</span></a></li>
+          <li><a href="shop-boxed-ls.jsp"><span>Shop</span></a>
             <ul class="sub-menu">
-                <li><a href="shop-boxed-ls.html">수채화</a></li>
-                <li><a href="shop-boxed-ls.html">유화</a></li>
-                <li><a href="shop-boxed-ls.html">수묵화</a></li>
-                <li><a href="shop-boxed-ls.html">크로키</a></li>
-                <li><a href="shop-boxed-ls.html">기타</a></li>
+                <li><a href="shop-boxed-ls.jsp">수채화</a></li>
+                <li><a href="shop-boxed-ls.jsp">유화</a></li>
+                <li><a href="shop-boxed-ls.jsp">수묵화</a></li>
+                <li><a href="shop-boxed-ls.jsp">크로키</a></li>
+                <li><a href="shop-boxed-ls.jsp">기타</a></li>
             </ul>
           </li>
           <li><a href="#"><span>Pages</span></a>
             <ul class="sub-menu">
-                <li><a href="about.html">About Us</a></li>
-                <li><a href="contacts.html">Contacts</a></li>
-                <li><a href="faq.html">Help / FAQ</a></li>
-                <li><a href="404.html">404 Not Found</a></li>
-              <li><a class="text-danger" href="docs/dev-setup.html">Documentation</a></li>
+                <li><a href="about.jsp">About Us</a></li>
+                <li><a href="contacts.jsp">Contacts</a></li>
+                <li><a href="faq.jsp">Help / FAQ</a></li>
+                <li><a href="404.jsp">404 Not Found</a></li>
+              <li><a class="text-danger" href="docs/dev-setup.jsp">Documentation</a></li>
             </ul>
           </li>
         </ul>
@@ -136,25 +83,25 @@
             <nav class="slideable-menu mt-4">
               <ul class="menu">
                 <!-- 페이지에 active 클래스 추가해줘야함 -->
-                <li class="has-children"><span><a href="index.html"><span>Home</span></a></span>
+                <li class="has-children"><span><a href="index.jsp"><span>Home</span></a></span>
                 </li>
-                <li class="active"><span><a href="artist-boxed-ft.html "><span>Artist</span></a></span></li>
-                <li class="has-children"><span><a href="shop-boxed-ls.html"><span>Shop</span></a><span class="sub-menu-toggle"></span></span>
+                <li class="active"><span><a href="artist-boxed-ft.jsp "><span>Artist</span></a></span></li>
+                <li class="has-children"><span><a href="shop-boxed-ls.jsp"><span>Shop</span></a><span class="sub-menu-toggle"></span></span>
                   <ul class="slideable-submenu">
-                      <li><a href="shop-categories.html">수채화</a></li>
-                      <li><a href="shop-categories.html">유화</a></li>
-                      <li><a href="shop-categories.html">수묵화</a></li>
-                      <li><a href="shop-categories.html">크로키</a></li>
-                      <li><a href="shop-categories.html">기타</a></li>
+                      <li><a href="shop-categories.jsp">수채화</a></li>
+                      <li><a href="shop-categories.jsp">유화</a></li>
+                      <li><a href="shop-categories.jsp">수묵화</a></li>
+                      <li><a href="shop-categories.jsp">크로키</a></li>
+                      <li><a href="shop-categories.jsp">기타</a></li>
                   </ul>
                 </li>
                 <li class="has-children"><span><a href="#">Pages</a><span class="sub-menu-toggle"></span></span>
                   <ul class="slideable-submenu">
-                      <li><a href="about.html">About Us</a></li>
-                      <li><a href="contacts.html">Contacts</a></li>
-                      <li><a href="faq.html">Help / FAQ</a></li>
-                      <li><a href="404.html">404 Not Found</a></li>
-                    <li><a class="text-danger" href="docs/dev-setup.html">Documentation</a></li>
+                      <li><a href="about.jsp">About Us</a></li>
+                      <li><a href="contacts.jsp">Contacts</a></li>
+                      <li><a href="faq.jsp">Help / FAQ</a></li>
+                      <li><a href="404.jsp">404 Not Found</a></li>
+                    <li><a class="text-danger" href="docs/dev-setup.jsp">Documentation</a></li>
                   </ul>
                 </li>
               </ul>
@@ -172,9 +119,9 @@
               <!-- Entry-->
               <!-- 검색결과 주르륵 -->
               <div class="entry">
-                <div class="entry-thumb"><a href="shop-single.html"><img src="img/shop/widget/01.png" alt="Product"></a></div>
+                <div class="entry-thumb"><a href="shop-single.jsp"><img src="img/shop/widget/01.png" alt="Product"></a></div>
                 <div class="entry-content">
-                  <h4 class="entry-title"><a href="shop-single.html">ㅇㅇ <span class='text-highlighted'>검색어와 일치하는 부분</span></a></h4><span class="entry-meta">가격</span>
+                  <h4 class="entry-title"><a href="shop-single.jsp">ㅇㅇ <span class='text-highlighted'>검색어와 일치하는 부분</span></a></h4><span class="entry-meta">가격</span>
                 </div>
               </div>
             </div>
@@ -255,16 +202,16 @@
                 <thead>
                   <tr>
                     <th colspan="2">
-                      <div class="d-flex justify-content-between align-items-center">Products<a class="navi-link text-uppercase" href="cart.html"><span class="text-xxs">Expand Cart</span><i class="material-icons keyboard_arrow_right"></i></a></div>
+                      <div class="d-flex justify-content-between align-items-center">Products<a class="navi-link text-uppercase" href="cart.jsp"><span class="text-xxs">Expand Cart</span><i class="material-icons keyboard_arrow_right"></i></a></div>
                     </th>
                   </tr>
                 </thead>
                 <tbody>
                   <tr>
                     <td>
-                      <div class="product-item"><a class="product-thumb" href="shop-single.html"><img src="img/shop/cart/01.jpg" alt="Product"></a>
+                      <div class="product-item"><a class="product-thumb" href="shop-single.jsp"><img src="img/shop/cart/01.jpg" alt="Product"></a>
                         <div class="product-info">
-                          <h4 class="product-title"><a href="shop-single.html">작품이름</a></h4><span><em>Price:</em> 가격</span>
+                          <h4 class="product-title"><a href="shop-single.jsp">작품이름</a></h4><span><em>Price:</em> 가격</span>
                         </div>
                       </div>
                     </td>
@@ -277,7 +224,7 @@
             <!-- 장바구니 합계 -->
             <hr class="mb-3">
             <div class="d-flex flex-wrap justify-content-between align-items-center">
-              <div class="pr-2 py-1 text-sm">Subtotal: <span class='text-dark text-medium'>장바구니 합계 값</span></div><a class="btn btn-sm btn-success mb-0 mr-0" href="checkout-address.html">Checkout</a>
+              <div class="pr-2 py-1 text-sm">Subtotal: <span class='text-dark text-medium'>장바구니 합계 값</span></div><a class="btn btn-sm btn-success mb-0 mr-0" href="checkout-address.jsp">Checkout</a>
             </div>
           </div>
         </div>
@@ -314,7 +261,7 @@
       <!-- Related Products Carousel-->
       <h3 class="text-center mt-2 padding-bottom-1x">All Printing</h3>
       <!-- Carousel-->
-      <div class="gallery-wrapper isotope-grid cols-2">
+      <div class="isotope-grid cols-2">
         <div class="gutter-sizer"></div>
         <div class="grid-sizer"></div>
         <div class="grid-item gallery-item"><a href="resources/img/shop/ARTIST1.jpg"><img src="resources/img/shop/ARTIST1.jpg" alt="Image"></a><span class="caption">Van Gogh</span></div>
@@ -385,7 +332,7 @@
     <!-- Backdrop-->
     <div class="site-backdrop"></div>
     <!-- JavaScript (jQuery) libraries, plugins and custom scripts-->
-    <script src="js/vendor.min.js"></script>
-    <script src="js/scripts.min.js"></script>
+    <script src="resources/js/vendor.min.js"></script>
+    <script src="resources/js/scripts.min.js"></script>
 </body>
 </html>
