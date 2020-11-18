@@ -4,7 +4,7 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="followDAO">
 	
-	<insert id="insertFollow" parameterType="follow">
+	<!-- <insert id="insertFollow" parameterType="follow">
 		INSERT INTO FOLLOW (ID, NICKNAME)
 		VALUES #{id}, #{nickname}
 	</insert>
@@ -26,6 +26,6 @@
 	<select id="getFollowList" parameterType="follow">
 		SELECT * FROM FOLLOW
 		WHERE NICKNAME = #{nickname}
-	</select>
+	</select> -->
 	
 </mapper>
