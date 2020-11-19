@@ -156,12 +156,12 @@
             <div class="tab-content">
               <div class="tab-pane fade show active" id="login" role="tabpanel">
                 <!-- 로그인 폼 -->
-                <form autocomplete="off" id="login-form">
+                <form action="login.do" method="post" autocomplete="off" id="login-form">
                   <div class="form-group input-group">
-                    <input class="form-control" type="text" placeholder="Id" required><span class="input-group-addon"><i class="material-icons mail"></i></span>
+                    <input class="form-control" type="text" placeholder="Id" name="id" required><span class="input-group-addon"><i class="material-icons mail"></i></span>
                   </div>
                   <div class="form-group input-group">
-                    <input class="form-control" type="password" placeholder="Password" required><span class="input-group-addon"><i class="material-icons lock"></i></span>
+                    <input class="form-control" type="password" placeholder="Password" name="pwd" required><span class="input-group-addon"><i class="material-icons lock"></i></span>
                   </div>
                   <!-- 로그인 유지 -> 어떻게? -->
                   <div class="custom-control custom-checkbox form-group">
