@@ -150,7 +150,7 @@
 	            <button class="btn btn-primary" type="submit">Log Out</button> 
 	            <!-- <a class="btn btn-primary mx-0 scale-up delay-1" href="shop-boxed-ls.jsp">Log Out</a> -->
 	            <!-- <button class="btn btn-primary btn-block" type="submit"><a href="account-wishlist.jsp">My page</button> -->
-	            <a class="btn btn-primary mx-0 scale-up delay-1" href="account-wishlist.jsp">My page</a>
+	            <a class="btn btn-primary mx-0 scale-up delay-1" href="/account.do">My page</a>
 	          </form>  
 	         </div>
           </c:if>

@@ -36,6 +36,12 @@ public class MemberController {
 //		return "index.jsp";
 //	}
 	
+	@RequestMapping(value = "/account.do", method = RequestMethod.GET)
+	public String account(Model model) {
+		System.out.println("account() 실행");
+		
+		return "account-wishlist.jsp";
+	}
 	
 	@RequestMapping(value="/login.do", method = RequestMethod.POST)
 	public String login(S_MemberVO svo, Model model,HttpSession session) {

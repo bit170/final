@@ -274,7 +274,7 @@
 								src="resources/img/account/user-ava.jpg" alt="User">
 						</div>
 						<div class="user-data">
-							<h5>회원이름</h5>
+							<h5>${loginMember.id }</h5>
 							<span>Joined November 06, 2020</span>
 						</div>
 					</div>
