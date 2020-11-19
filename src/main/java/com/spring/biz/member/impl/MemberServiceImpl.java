@@ -5,6 +5,7 @@ import org.springframework.stereotype.Service;
 
 import com.spring.biz.member.MemberService;
 import com.spring.biz.member.MemberVO;
+import com.spring.biz.member.S_MemberVO;
 
 @Service("MemberService") //이름 지정안하면 MemberServiceImpl
 public class MemberServiceImpl implements MemberService {
@@ -15,10 +16,10 @@ public class MemberServiceImpl implements MemberService {
 //		System.out.println(">> MemberServiceImpl() 실행(객체생성)");
 //	}
 	
-	@Override
-	public MemberVO getMember(MemberVO vo) {
-		return memberDAO.getMember(vo);
-	}
+	/*
+	 * @Override public MemberVO getMember(MemberVO vo) { return
+	 * memberDAO.getMember(vo); }
+	 */
 
 	@Override
 	public int insertMember(MemberVO vo) {
@@ -35,6 +36,11 @@ public class MemberServiceImpl implements MemberService {
 	@Override
 	public int checkId(String id) {
 		return memberDAO.getId(id);
+	}
+
+	@Override
+	public S_MemberVO getMember(S_MemberVO svo) {
+		return memberDAO.getMember(svo);
 	}
 
 }
