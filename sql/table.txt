@@ -12,6 +12,17 @@ CREATE TABLE MEMBER
     CONSTRAINT MEMBER_PK PRIMARY KEY (ID)
 );
 
+--S_MEMBER Table
+CREATE TABLE S_MEMBER
+(
+    ID     VARCHAR2(20)    NOT NULL, 
+    PWD VARCHAR2(30) NOT NULL,
+    CONSTRAINT FK_MEMBER_ID FOREIGN KEY (ID)
+        REFERENCES MEMBER (ID)
+);
+
+--S_MEMBER 값 넣는 쿼리
+insert into s_member select id, pwd from member where id='test';
 
 -- MEMBER Table Create SQL
 CREATE TABLE ORD
