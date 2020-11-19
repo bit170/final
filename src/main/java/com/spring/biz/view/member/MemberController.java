@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.SessionAttributes;
+import org.springframework.web.bind.support.SessionStatus;
 
 import com.spring.biz.member.MemberService;
 import com.spring.biz.member.MemberVO;
@@ -37,7 +38,7 @@ public class MemberController {
 	
 	
 	@RequestMapping(value="/login.do", method = RequestMethod.POST)
-	public String login(S_MemberVO svo, Model model) {
+	public String login(S_MemberVO svo, Model model,HttpSession session) {
 		System.out.println(">> 로그인 메소드 실행 - POST");
 		System.out.println("vo : " + svo);
 		System.out.println("id : " + svo.getId()+"pwd: "+svo.getPwd());
@@ -68,11 +69,11 @@ public class MemberController {
 //		return "login.jsp";
 //	}
 	
-	@RequestMapping("/logout.do")
-	public String logout(HttpSession session) {
-		//1. 세션 초기화
-		session.invalidate();
+	@RequestMapping(value = "/logout.do",method = RequestMethod.POST)
+	public String logout(HttpSession session, SessionStatus status,Model model) {
 		
-		return "login.jsp";
+		status.setComplete();
+		//redirect 후 session 초기화
+		return "redirect:index.jsp";
 	}	
 }
