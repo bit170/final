@@ -5,13 +5,13 @@
 <mapper namespace="followDAO">
 	
 	<!-- <insert id="insertFollow" parameterType="follow">
-		INSERT INTO FOLLOW (ID, NICKNAME)
-		VALUES #{id}, #{nickname}
+		INSERT INTO FOLLOW (ID, A_ID)
+		VALUES #{id}, #{A_ID}
 	</insert>
 	
 	<update id="updateFollow" parameterType="follow">
 		UPDATE FOLLOW
-		SET ID = #{id}, NICKNAME = #{nickname}
+		SET ID = #{id}, A_ID = #{A_ID}
 		WHERE ID = #{id}
 	</update>
 	
@@ -25,7 +25,7 @@
 	
 	<select id="getFollowList" parameterType="follow">
 		SELECT * FROM FOLLOW
-		WHERE NICKNAME = #{nickname}
+		WHERE A_ID = #{A_ID}
 	</select> -->
 	
 </mapper>

@@ -8,10 +8,10 @@ import org.springframework.stereotype.Service;
 import com.spring.biz.step.StepService;
 import com.spring.biz.step.StepVO;
 
-@Service("stepService")
+//@Service("stepService")
 public class StepServiceImpl implements StepService{
 	
-	@Autowired
+//	@Autowired
 	private StepDAOMybatis stepDAO;
 	
 	public StepServiceImpl() {

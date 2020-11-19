@@ -8,10 +8,10 @@ import org.springframework.stereotype.Repository;
 
 import com.spring.biz.step.StepVO;
 
-@Repository
+//@Repository
 public class StepDAOMybatis {
 	
-	@Autowired
+//	@Autowired
 	private SqlSessionTemplate mybatis;
 
 	public StepDAOMybatis() {

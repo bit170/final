@@ -7,7 +7,7 @@ import org.springframework.stereotype.Service;
 import com.spring.biz.follow.FollowService;
 import com.spring.biz.follow.FollowVO;
 
-@Service("followService")
+//@Service("followService")
 public class FollowServiceImpl implements FollowService{
 
 	

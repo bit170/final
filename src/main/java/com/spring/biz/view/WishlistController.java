@@ -28,12 +28,12 @@ public class WishlistController {
 		return "account-wishlist.jsp";
 	}
 	
-	@RequestMapping("/getWishlists.do")
-	public String getWishlists(WishlistVO vo, Model model) {
-		WishlistVO wishlist = wishlistService.getWishlist(vo);
-		model.addAttribute("wishlist", wishlist);
-		System.out.println("wishlist : " + wishlist);
-		
-		return "account-wishlist.jsp";
-	}
+//	@RequestMapping("/getWishlists.do")
+//	public String getWishlists(WishlistVO vo, Model model) {
+//		WishlistVO wishlist = wishlistService.getWishlist(vo);
+//		model.addAttribute("wishlist", wishlist);
+//		System.out.println("wishlist : " + wishlist);
+//		
+//		return "account-wishlist";
+//	}
 }

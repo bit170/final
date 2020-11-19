@@ -1,12 +1,12 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+	pageEncoding="UTF-8" isELIgnored="false"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
 <!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="utf-8">
-<title>나의 프로필</title>
+<title>마이페이지 - 나의 프로필</title>
 
 <!-- SEO Meta Tags-->
 <meta name="description"
@@ -326,14 +326,15 @@
 						style="background-image: url(img/account/user-cover-img.jpg);">
 					</div>
 					<div class="user-info">
-						<div class="user-avatar">
+					<!-- 사용자 사진 -->
+						<!-- <div class="user-avatar">
 							<a class="edit-avatar" href="#"><i
 								class="material-icons edit"></i>수정하기</a><img
 								src="resources/img/account/user-ava.jpg" alt="User">
-						</div>
+						</div> -->
 						<div class="user-data">
-							<h5>회원이름</h5>
-							<span>Joined November 06, 2020</span>
+							<h5>${member.name}</h5>
+							<span>${member.joindate}</span>
 						</div>
 					</div>
 				</aside>
@@ -341,7 +342,7 @@
 				<nav class="list-group">
 					<a class="list-group-item" href="account-wishlist.jsp"><i
 						class="icon-heart"></i>위시리스트<span
-						class="badge badge-default badge-pill">6</span></a> <a
+						class="badge badge-default badge-pill">1</span></a> <a
 						class="list-group-item" href="account-follows.jsp"><i
 						class="icon-heart"></i>팔로우<span
 						class="badge badge-default badge-pill">3</span></a> <a
@@ -357,31 +358,32 @@
 			</div>
 			<div class="col-lg-8">
 				<div class="padding-top-2x mt-2 hidden-lg-up"></div>
-				<form class="row">
+				<!-- 수정 값 전송 -->
+				<form class="row" action="updateMember.do" method="post" enctype="multipart/form-data">
 					<div class="col-md-6">
 						<div class="form-group">
 							<label for="account-fn">이름</label> <input class="form-control"
-								type="text" id="account-name" value="Daniel" required>
+								type="text" id="account-name" name="name" value="${member.name}" required>
 						</div>
 					</div>
 					<div class="col-md-6">
 						<div class="form-group">
 							<label for="account-ln">닉네임</label> <input class="form-control"
-								type="text" id="account-nickname" value="Adams" required>
+								type="text" id="account-nickname" name="nickname" value="${member.nickname}" required>
 						</div>
 					</div>
 					<div class="col-md-6">
 						<div class="form-group">
 							<label for="account-email">이메일</label> <input
-								class="form-control" type="email" id="account-email"
-								value="daniel.adams@mail.com" disabled>
+								class="form-control" type="email" id="account-email"  name="email" 
+								value="${member.email}" required>
 						</div>
 					</div>
 					<div class="col-md-6">
 						<div class="form-group">
 							<label for="account-phone">전화번호</label> <input
-								class="form-control" type="text" id="account-phone"
-								value="010 1234 5678" required>
+								class="form-control" type="text" id="account-phone" name="phone" 
+								value="${member.phone}" required>
 						</div>
 					</div>
 					<div class="col-md-6">
@@ -393,7 +395,8 @@
 					<div class="col-md-6">
 						<div class="form-group">
 							<label for="account-confirm-pass">새 비밀번호 확인</label> <input
-								class="form-control" type="password" id="account-confirm-pass">
+								class="form-control" type="password" id="account-confirm-pass" 
+								value="${member.pwd}" name="pwd">
 						</div>
 					</div>
 					<div class="col-12">
@@ -401,17 +404,17 @@
 						<div
 							class="d-flex flex-wrap justify-content-between align-items-center">
 							<div class="custom-control custom-checkbox d-block">
-								<input class="custom-control-input" type="checkbox"
+								<!-- 체크 박스 삭제 -->
+								<!-- <input class="custom-control-input" type="checkbox"
 									id="subscribe_me" checked> <label
 									class="custom-control-label" for="subscribe_me">Subscribe
-									me to Newsletter</label>
+									me to Newsletter</label> -->
 							</div>
-							<button class="btn btn-primary margin-right-none" type="button"
+							<button class="btn btn-primary margin-right-none" type="submit"
 								data-toast data-toast-position="topRight"
 								data-toast-type="success" data-toast-icon="icon-circle-check"
-								data-toast-title="Success!"
-								data-toast-message="Your profile updated successfuly.">Update
-								Profile</button>
+								data-toast-title="성공!"
+								data-toast-message="회원정보 수정완료!">Update Profile</button>
 						</div>
 					</div>
 				</form>

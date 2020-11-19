@@ -8,9 +8,9 @@ import org.springframework.stereotype.Repository;
 
 import com.spring.biz.address.AddressVO;
 
-@Repository
+//@Repository
 public class AddressDAOMybatis {
-	@Autowired
+//	@Autowired
 	private SqlSessionTemplate mybatis;
 	
 	public AddressDAOMybatis() {

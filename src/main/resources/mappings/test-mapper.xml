@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="memberDAO">
+	
+	
+	<!-- update / select 문 프로필 수정 시 사용 ( 연희 ) -->
+	<!-- <update id="updateMember" parameterType="member">
+		UPDATE TEST
+		SET PWD = #{pwd}, NAME = #{name}, PHONE = #{phone}, 
+		EMAIL = #{email}, NICKNAME = #{nickname}
+		WHERE ID = #{id}
+	</update>
+	
+	<select id="getMember" parameterType="member" resultType="member">
+		SELECT * FROM TEST WHERE ID=#{id}
+	</select> -->
+	
+</mapper>

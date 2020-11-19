@@ -5,7 +5,7 @@
 <html lang="en">
 <head>
 <meta charset="utf-8">
-<title>마이 팔로잉</title>
+<title>마이페이지 - 팔로잉</title>
 <!-- SEO Meta Tags-->
 <meta name="description"
 	content="Unishop - Universal E-Commerce Template">
@@ -261,9 +261,10 @@
 					</div>
 					<div class="user-info">
 						<div class="user-avatar">
-							<a class="edit-avatar" href="#"><i
+						<!-- 사용자 사진 -->
+							<!-- <a class="edit-avatar" href="#"><i
 								class="material-icons edit"></i>수정하기</a><img
-								src="resources/img/account/user-ava.jpg" alt="User">
+								src="resources/img/account/user-ava.jpg" alt="User"> -->
 						</div>
 						<div class="user-data">
 							<h5>회원이름</h5>

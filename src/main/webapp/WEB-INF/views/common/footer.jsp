@@ -30,5 +30,10 @@
         </div>
       </div> -->
     </footer>
+    <!-- Back To Top Button-->
+	<a class="scroll-to-top-btn" href="#"><i
+		class="material-icons trending_flat"></i></a>
+	<!-- Backdrop-->
+	<div class="site-backdrop"></div>
 </body>
 </html>

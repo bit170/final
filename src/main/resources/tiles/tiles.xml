@@ -7,14 +7,15 @@
 	<definition name="base-layout"
 		template="/WEB-INF/views/common/layout.jsp">
 		<put-attribute name="title" value="untitle" />
+		<put-attribute name="resource" value="/WEB_INF/views/common/resource.jsp" />
 		<put-attribute name="header" value="/WEB-INF/views/common/header.jsp" />
 		<put-attribute name="body" value="" />
 		<put-attribute name="footer" value="/WEB-INF/views/common/footer.jsp" />
 	</definition>
 	
-	<definition name="account-wishlist" extends="base-layout">
-		<put-attribute name="title" value="내 위시리스트" />
-		<put-attribute name="body" value="/WEB-INF/views/common/account-wishlist.jsp" />
+	<definition name="wishlist" extends="base-layout">
+		<put-attribute name="title" value="마이페이지 - 위시리스트" />
+		<put-attribute name="body" value="account-wishlist.jsp" />
 	</definition>
 	
 </tiles-definitions>

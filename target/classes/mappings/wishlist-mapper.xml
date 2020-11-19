@@ -21,13 +21,13 @@
 	
 	<delete id="removeWishlist" parameterType="wishlist">
 		DELETE WISHLIST WHERE ID = #{id}
-	</delete>
+	</delete> -->
 	
-	<select id="getWishlist" parameterType="wishlist">
+	<!-- <select id="getWishlist" parameterType="wishlist">
 		SELECT * FROM WISHLIST WHERE O_CODE = #{O_CODE}
-	</select>
+	</select> -->
 	
-	<select id="getWishlistList" parameterType="wishlist">
+	<!-- <select id="getWishlistList" parameterType="wishlist">
 		SELECT * FROM WISHLIST
 	</select> -->
 	

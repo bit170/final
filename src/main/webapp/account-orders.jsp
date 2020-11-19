@@ -6,7 +6,7 @@
 <html lang="en">
 <head>
 <meta charset="utf-8">
-<title>주문목록</title>
+<title>마이페이지 - 주문목록</title>
 <!-- SEO Meta Tags-->
 <meta name="description"
 	content="Unishop - Universal E-Commerce Template">
@@ -37,6 +37,69 @@
 </head>
 <!-- Body-->
 <body>
+	<!-- Open Ticket Modal-->
+    <div class="modal fade" id="orderDetails" tabindex="-1">
+      <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h4 class="modal-title"> 주문 번호 - 34VB5540K83</h4>
+            <button class="close" type="button" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+          </div>
+          <div class="modal-body">
+            <div class="table-responsive shopping-cart mb-0">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th>작품 이름</th>
+                    <th class="text-center">총 금액</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>
+                      <div class="product-item"><a class="product-thumb" href="order-tracking.jsp"><img src="resources/img/shop/cart/01.jpg" alt="Product"></a>
+                        <div class="product-info">
+                          <h4 class="product-title"><a href="order-tracking.jsp">그림 이름<small>x 1</small></a></h4><span><em>Color:</em> Aqua</span><span><em>Accent Color:</em> White</span>
+                        </div>
+                      </div>
+                    </td>
+                    <td class="text-center text-lg text-medium">$그림가격</td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <div class="product-item"><a class="product-thumb" href="order-tracking.jsp"><img src="resources/img/shop/cart/02.jpg" alt="Product"></a>
+                        <div class="product-info">
+                          <h4 class="product-title"><a href="order-tracking.jsp">그림 이름<small>x 2</small></a></h4><span><em>Size:</em> Medium</span><span><em>Color:</em> White</span>
+                        </div>
+                      </div>
+                    </td>
+                    <td class="text-center text-lg text-medium">$그림가격</td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <div class="product-item"><a class="product-thumb" href="order-tracking.jsp"><img src="resources/img/shop/cart/03.jpg" alt="Product"></a>
+                        <div class="product-info">
+                          <h4 class="product-title"><a href="order-tracking.jsp">그림 이름<small>x 1</small></a></h4><span><em>Color:</em> Walnut</span><span><em>Accent Color:</em> Turquoise</span>
+                        </div>
+                      </div>
+                    </td>
+                    <td class="text-center text-lg text-medium">$그림가격</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <hr class="mb-3">
+            <div class="d-flex flex-wrap justify-content-between align-items-center pb-2">
+              <div class="px-2 py-1">Subtotal: <span class='text-medium'>$622.40</span></div>
+              <div class="px-2 py-1">Shipping: <span class='text-medium'>$35.50</span></div>
+              <div class="px-2 py-1">Tax: <span class='text-medium'>$7.42</span></div>
+              <div class="text-lg px-2 py-1">Total: <span class='text-medium'>$665.32</span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    
 	<!-- Navbar-->
 	<!-- Remove "navbar-sticky" class to make navigation bar scrollable with the page.-->
 	<header class="navbar navbar-sticky">
@@ -261,11 +324,12 @@
 						style="background-image: url(resources/img/account/user-cover-img.jpg);">
 					</div>
 					<div class="user-info">
-						<div class="user-avatar">
+					<!-- 사용자 사진 -->
+						<!-- <div class="user-avatar">
 							<a class="edit-avatar" href="#"><i
 								class="material-icons edit"></i>수정하기</a><img
 								src="resources/img/account/user-ava.jpg" alt="User">
-						</div>
+						</div> -->
 						<div class="user-data">
 							<h5>회원이름</h5>
 							<span>Joined November 06, 2020</span>
@@ -274,7 +338,7 @@
 				</aside>
 				<!-- 마이페이지 목록 수정 (연희) -->
 				<nav class="list-group">
-					<a class="list-group-item" href="account-wishlist.jsp"><i
+					<a class="list-group-item" href="/getWishlist.do"><i
 						class="icon-heart"></i>위시리스트<span
 						class="badge badge-default badge-pill">1</span></a> <a
 						class="list-group-item" href="account-follows.jsp"><i
@@ -418,7 +482,7 @@
 	<!-- Backdrop-->
 	<div class="site-backdrop"></div>
 	<!-- JavaScript (jQuery) libraries, plugins and custom scripts-->
-	<script src="<c:url value="resources/js/vendor.min.js" />"></script>
-	<script src="<c:url value="resources/js/scripts.min.js" />"></script>
+	<script src="resources/js/vendor.min.js"></script>
+	<script src="resources/js/scripts.min.js"></script>
 </body>
 </html>

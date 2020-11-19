@@ -6,7 +6,7 @@
 <html lang="en">
 <head>
 <meta charset="utf-8">
-<title>마이 캔버스</title>
+<title>마이페이지 - 마이 캔버스</title>
 <!-- SEO Meta Tags-->
 <meta name="description"
 	content="Unishop - Universal E-Commerce Template">
@@ -325,11 +325,12 @@
 						style="background-image: url(img/account/user-cover-img.jpg);">
 					</div>
 					<div class="user-info">
-						<div class="user-avatar">
+					<!-- 사용자 사진 -->
+						<!-- <div class="user-avatar">
 							<a class="edit-avatar" href="#"><i
 								class="material-icons edit"></i>Edit</a><img
 								src="resources/img/account/user-ava.jpg" alt="User">
-						</div>
+						</div> -->
 						<div class="user-data">
 							<h5>회원이름</h5>
 							<span>Joined November 06, 2020</span>

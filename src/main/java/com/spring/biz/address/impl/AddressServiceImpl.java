@@ -8,9 +8,9 @@ import org.springframework.stereotype.Service;
 import com.spring.biz.address.AddressService;
 import com.spring.biz.address.AddressVO;
 
-@Service("addressService")
+//@Service("addressService")
 public class AddressServiceImpl implements AddressService{
-	@Autowired
+//	@Autowired
 	private AddressDAOMybatis addressDAO;
 
 	public AddressServiceImpl() {

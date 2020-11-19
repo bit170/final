@@ -8,9 +8,9 @@ import org.springframework.stereotype.Repository;
 
 import com.spring.biz.product.ProductVO;
 
-@Repository
+//@Repository
 public class ProductDAOMybatis {
-	@Autowired
+//	@Autowired
 	private SqlSessionTemplate mybatis;
 	
 	public ProductDAOMybatis() {

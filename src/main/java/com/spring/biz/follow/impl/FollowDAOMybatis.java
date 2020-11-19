@@ -6,10 +6,10 @@ import org.springframework.stereotype.Repository;
 
 import com.spring.biz.follow.FollowVO;
 
-@Repository
+//@Repository
 public class FollowDAOMybatis {
 	
-	@Autowired
+//	@Autowired
 	private SqlSessionTemplate mybatis;
 	
 	public FollowDAOMybatis() {
