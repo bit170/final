@@ -260,7 +260,7 @@
         <!-- Search Box-->
         <form class="filters-pane pb-3" id="search-box">
           <div class="form-group">
-            <input class="form-control" type="text" placeholder="Type and hit enter">
+            <input class="form-control" type="text" placeholder="작가명을 입력한 후, 엔터를 누르세요">
           </div>
         </form>
       </div>

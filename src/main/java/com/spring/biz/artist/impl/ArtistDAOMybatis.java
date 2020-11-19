@@ -3,12 +3,20 @@ package com.spring.biz.artist.impl;
 import java.util.List;
 
 import org.mybatis.spring.SqlSessionTemplate;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Repository;
 
 import com.spring.biz.artist.ArtistVO;
 
-public class ArtistDAO {
+@Repository
+public class ArtistDAOMybatis {
 
+	@Autowired
 	private SqlSessionTemplate mybatis;
+	
+	public ArtistDAOMybatis() {
+		System.out.println("~~~ ArtistDAOMybatis() 객체 생성 ~~~");
+	}
 	
 	//작가등록
 	public void insertArtist(ArtistVO vo) {

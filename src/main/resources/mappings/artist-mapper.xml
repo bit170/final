@@ -5,13 +5,13 @@
 <mapper namespace="artistDAO">
 
 <!-- 	<insert id="insertArtist" parameterType="artist">
-		INSERT INTO ARTIST (ID, NICKNAME, A_DETAIL)
-		VALUES #{id}, #{nickname}, #{a_detail}
+		INSERT INTO ARTIST (ID, NICKNAME, A_DETAIL, A_IMG)
+		VALUES #{id}, #{nickname}, #{a_detail}, #{a_img}
 	</insert>
 	
 	<update id="updateArtist" parameterType="artist">
 		UPDATE ARTIST
-		SET A_DETAIL = #{a_detail}
+		SET A_DETAIL = #{a_detail}, A_IMG = #{a_img}
 		WHERE ID = #{id}
 	</update>
 	
@@ -27,12 +27,10 @@
 		SELECT * FROM ARTIST
 	</select>
 	
-	작가 프로필사진 가져오기
-	<select id="getArtistImage" parameterType="string" resultType="">
-		SELECT A_FILENAME FROM A_IMAGE WHERE ID = #{id}
-	</select> -->
-	
-	
+	<select id="getAllPrinting" parameterType="product" resultType="product">
+		SELECT P_CODE, P_NAME, P_IMG FROM PRODUCT WHERE A_ID = #{id}
+	</select>-->
+
 </mapper>
 
 

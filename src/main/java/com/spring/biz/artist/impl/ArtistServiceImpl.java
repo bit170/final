@@ -7,7 +7,7 @@ import com.spring.biz.artist.ArtistVO;
 
 public class ArtistServiceImpl implements ArtistService{
 
-	private ArtistDAO artistDAO;
+	private ArtistDAOMybatis artistDAO;
 	@Override
 	public void insertArtist(ArtistVO vo) {
 		artistDAO.insertArtist(vo);

@@ -245,7 +245,6 @@
               <div class="card-body">
                 <h2 class="mb-3">SeoHyun Oh</h2>
                 <p class="text-sm text-muted">¡Hola! Me llamo SeoHyun Oh. Básicamente, pinto el paisaje.</p>
-
                 <div class="d-flex flex-wrap justify-content-between align-items-center">
                   <a class="btn btn-outline-secondary btn-sm text-danger" href="#">
                     <i class="material-icons favorite_border"></i>&nbsp;Follow</a>
@@ -264,7 +263,7 @@
       <div class="isotope-grid cols-2">
         <div class="gutter-sizer"></div>
         <div class="grid-sizer"></div>
-        <div class="grid-item gallery-item"><a href="shop-single.jsp"><img src="resources/img/shop/ARTIST1.jpg" alt="Image"></a><span class="caption">Van Gogh</span></div>
+        <div class="grid-item"><a href="shop-single.jsp"><img src="resources/img/shop/ARTIST1.jpg" alt="Image"></a></div>
         <div class="grid-item gallery-item"><a href="shop-single.jsp"><img src="resources/img/shop/ARTIST2.jpg" alt="Image"></a><span class="caption">Frida Kahlo</span></div>
         <div class="grid-item gallery-item"><a href="shop-single.jsp"><img src="resources/img/shop/ARTIST3.jpg" alt="Image"></a><span class="caption">Rembrandt</span></div>
         <div class="grid-item gallery-item"><a href="shop-single.jsp"><img src="resources/img/shop/ARTIST4.jpg" alt="Image"></a><span class="caption">Michelangelo</span></div>
