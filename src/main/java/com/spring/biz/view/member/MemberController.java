@@ -8,11 +8,13 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.SessionAttributes;
 
 import com.spring.biz.member.MemberService;
 import com.spring.biz.member.MemberVO;
 
 @Controller
+@SessionAttributes("loginMember")
 public class MemberController {
 	@Autowired
 	private MemberService memberService;
@@ -21,16 +23,16 @@ public class MemberController {
 		System.out.println(">>> MemberController() 객체 생성");
 	}
 	
-	@RequestMapping(value = "/idCheck.do", method = RequestMethod.POST)
-	public String idCheck(String id, Model model) {
-		System.out.println("idCheck()메소드 실행");
-		int result = -1;
-		result = memberService.checkId(id);
-		if(result>0) {
-			model.addAttribute("idChecked", "ok");
-		}
-		return "index.jsp";
-	}
+//	@RequestMapping(value = "/idCheck.do", method = RequestMethod.POST)
+//	public String idCheck(String id, Model model) {
+//		System.out.println("idCheck()메소드 실행");
+//		int result = -1;
+//		result = memberService.checkId(id);
+//		if(result>0) {
+//			model.addAttribute("idChecked", "ok");
+//		}
+//		return "index.jsp";
+//	}
 	
 	
 	@RequestMapping(value="/login.do", method = RequestMethod.POST)
