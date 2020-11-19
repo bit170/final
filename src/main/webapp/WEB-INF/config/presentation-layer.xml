@@ -25,7 +25,7 @@
 	
 	<!-- 타일즈 실습 설정 (연희)-->
 	
-	<bean id="tilesConfigurer" class="org.springframework.web.servlet.view.tiles2.TilesConfigurer">
+	<!-- <bean id="tilesConfigurer" class="org.springframework.web.servlet.view.tiles2.TilesConfigurer">
 		<property name="definitions">
 			<list>
 				<value>classpath:tiles/*.xml</value>
@@ -33,12 +33,12 @@
 		</property>
 		<property name="preparerFactoryClass"
 			          value="org.springframework.web.servlet.view.tiles2.SpringBeanPreparerFactory" />
-	</bean>
+	</bean> -->
 	
-	<bean id="viewResolver"
+	<!-- <bean id="viewResolver"
 		class="org.springframework.web.servlet.view.UrlBasedViewResolver">
 		<property name="viewClass" value="org.springframework.web.servlet.view.tiles2.TilesView" />
-	</bean>
+	</bean> -->
 	
 </beans>
 

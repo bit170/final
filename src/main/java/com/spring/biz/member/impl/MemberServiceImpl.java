@@ -7,7 +7,7 @@ import com.spring.biz.member.MemberService;
 import com.spring.biz.member.MemberVO;
 import com.spring.biz.member.S_MemberVO;
 
-@Service("MemberService") //이름 지정안하면 MemberServiceImpl
+@Service("memberService") //이름 지정안하면 MemberServiceImpl
 public class MemberServiceImpl implements MemberService {
 	@Autowired
 	private MemberDAO memberDAO;
@@ -35,12 +35,14 @@ public class MemberServiceImpl implements MemberService {
 
 	@Override
 	public int checkId(String id) {
-		return memberDAO.getId(id);
+//		memberDAO.getId(id)
+		return 0;
 	}
 
 	@Override
-	public S_MemberVO getMember(S_MemberVO svo) {
-		return memberDAO.getMember(svo);
+	public S_MemberVO getSMember(S_MemberVO svo) {
+		System.out.println("memberService.getSMember() 실행");
+		return memberDAO.getSMember(svo);
 	}
 
 }

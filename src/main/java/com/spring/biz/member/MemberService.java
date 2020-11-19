@@ -6,5 +6,5 @@ public interface MemberService {
 	public int insertMember(MemberVO vo);
 	public MemberVO checkIdPwd(String id, String pwd);
 	public int checkId(String id);
-	public S_MemberVO getMember(S_MemberVO svo);
+	public S_MemberVO getSMember(S_MemberVO svo);
 }

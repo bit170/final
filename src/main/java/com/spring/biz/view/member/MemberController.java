@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.SessionAttributes;
 
 import com.spring.biz.member.MemberService;
 import com.spring.biz.member.MemberVO;
+import com.spring.biz.member.S_MemberVO;
 
 @Controller
 @SessionAttributes("loginMember")
@@ -36,18 +37,20 @@ public class MemberController {
 	
 	
 	@RequestMapping(value="/login.do", method = RequestMethod.POST)
-	public String login(MemberVO vo) {
-		System.out.println(">> 로그인 처리 - POST");
-		System.out.println("vo : " + vo);
+	public String login(S_MemberVO svo, Model model) {
+		System.out.println(">> 로그인 메소드 실행 - POST");
+		System.out.println("vo : " + svo);
+		System.out.println("id : " + svo.getId()+"pwd: "+svo.getPwd());
 		System.out.println("MemberDAO : " + memberService);
 		
-		MemberVO Member = memberService.getMember(vo);
-		if (Member != null) {
+		S_MemberVO sMember = memberService.getSMember(svo);
+		if (sMember != null) {
 			System.out.println("> 로그인 성공!!");
-			return "redirect:getBoardList.do";
+			model.addAttribute("loginMember", sMember);
+			return "index.jsp";
 		} else {
 			System.out.println("> 로그인 실패~~~");
-			return "login.jsp";
+			return "index.jsp";
 		}
 	}
 	

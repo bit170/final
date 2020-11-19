@@ -9,7 +9,7 @@
 	
 	<typeAliases>
 		<!-- 이메일 인증받은 회원(로그인 가능한 회원) 정보 처리용 -->
-    	<typeAlias type="com.spring.biz.member.S_MemberVO" alias="sMember"/>
+    	<typeAlias type="com.spring.biz.member.S_MemberVO" alias="svo"/>
     <!-- 마이페이지 관련 alias 추가 (동희) -->
 		<!-- <typeAlias alias="product" type="com.spring.biz.product.ProductVO" /> -->
         <!-- <typeAlias alias="member" type="com.spring.biz.member.MemberVO"/> -->
@@ -21,10 +21,6 @@
 		
 	</typeAliases>
 	
-  <mappers>
-   <!--  <mapper resource="mappings/*.xml"/> -->
-  </mappers>
-  
 </configuration>
 
 

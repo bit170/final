@@ -142,12 +142,18 @@
           <!-- 사람아이콘 -->
 
           <!-- 로그인 후 로그아웃, 마이페이지버튼 -->
-          <!-- <div class="toolbar-section" id="account">
-            <p class="text-muted text-sm mt-4"><h4>뫄뫄뫄<h4></p>
-            <p class="text-muted text-sm mt-4">환영합니다</p>
-            <button class="btn btn-primary btn-block" type="submit">Log Out</button>
-            <button class="btn btn-primary btn-block" type="submit"><a href="account-wishlist.jsp">My page</button>
-          </div> -->
+          <c:if test="${!empty loginMember}">
+	         <div class="toolbar-section" id="account">
+	            <p class="text-muted text-sm mt-4"><h4>${loginMember.id } <span>님</span> <h4></p>
+	            <p class="text-muted text-sm mt-4">환영합니다</p>
+	            <!-- <button class="btn btn-primary btn-block" type="submit">Log Out</button> -->
+	            <a class="btn btn-primary mx-0 scale-up delay-1" href="shop-boxed-ls.jsp">Log Out</a>
+	            <!-- <button class="btn btn-primary btn-block" type="submit"><a href="account-wishlist.jsp">My page</button> -->
+	            <a class="btn btn-primary mx-0 scale-up delay-1" href="account-wishlist.jsp">My page</a>
+	         </div>
+          </c:if>
+          <c:if test="${empty loginMember}">
+          
           <div class="toolbar-section" id="account">
             <ul class="nav nav-tabs nav-justified" role="tablist">
               <li class="nav-item"><a class="nav-link active" href="#login" data-toggle="tab" role="tab">Log In</a></li>
@@ -219,6 +225,7 @@
               </div>
             </div>
           </div>
+          </c:if>
           <!-- Shopping Cart Section-->
           <div class="toolbar-section" id="cart">
             <div class="table-responsive shopping-cart mb-0">
