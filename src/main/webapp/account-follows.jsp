@@ -267,23 +267,23 @@
 								src="resources/img/account/user-ava.jpg" alt="User">
 						</div> -->
 						<div class="user-data">
-							<h5>회원이름</h5>
-							<span>Joined November 06, 2020</span>
+							<h5>${member.name}</h5>
+							<span>${member.joindate}</span>
 						</div>
 					</div>
 				</aside>
 				<!-- 마이페이지 목록 수정 (연희) -->
 				<nav class="list-group">
-					<a class="list-group-item" href="/getWishlist.do">
-						<i class="icon-heart"></i>
-						위시리스트<span class="badge badge-default badge-pill">6</span></a> 
+					<a class="list-group-item" href="account-wishlist.jsp">
+						<i class="icon-heart"></i>위시리스트
+						<span class="badge badge-default badge-pill">1</span></a> 
 					<a class="list-group-item with-badge active" href="account-follows.jsp">
-						<i class="icon-heart"></i>
-						팔로우<span class="badge badge-default badge-pill">3</span></a> 
+						<i class="icon-heart"></i>팔로우
+						<span class="badge badge-default badge-pill">3</span></a> 
 					<a class="list-group-item" href="account-orders.jsp">
-						<i class="icon-heart"></i>
-						주문목록<span class="badge badge-default badge-pill">3</span></a> 
-					<a class="list-group-item" href="/getMember.do">
+						<i class="icon-heart"></i>주문목록
+						<span class="badge badge-default badge-pill">3</span></a> 
+					<a class="list-group-item" href="getMember.do?id=${member.id}">
 						<i class="icon-head"></i>프로필 수정</a> 
 					<a class="list-group-item" href="account-address.jsp">
 						<i class="icon-map"></i>주소록</a> 
