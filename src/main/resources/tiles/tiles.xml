@@ -15,7 +15,7 @@
 	
 	<definition name="wishlist" extends="base-layout">
 		<put-attribute name="title" value="마이페이지 - 위시리스트" />
-		<put-attribute name="body" value="account-wishlist.jsp" />
+		<put-attribute name="body" value="/account-wishlist.jsp" />
 	</definition>
 	
 </tiles-definitions>

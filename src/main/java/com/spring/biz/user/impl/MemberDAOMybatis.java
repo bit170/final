@@ -6,10 +6,10 @@ import org.springframework.stereotype.Repository;
 
 import com.spring.biz.user.MemberVO;
 
-//@Repository
+@Repository
 public class MemberDAOMybatis {
 	
-//	@Autowired
+	@Autowired
 	private SqlSessionTemplate mybatis;
 	
 	public MemberDAOMybatis() {

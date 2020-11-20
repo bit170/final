@@ -359,7 +359,7 @@
 			<div class="col-lg-8">
 				<div class="padding-top-2x mt-2 hidden-lg-up"></div>
 				<!-- 수정 값 전송 -->
-				<form class="row" action="updateMember.do" method="post" enctype="multipart/form-data">
+				<form class="row" action="/updateMember.do" method="post" enctype="multipart/form-data">
 					<div class="col-md-6">
 						<div class="form-group">
 							<label for="account-fn">이름</label> <input class="form-control"
@@ -396,7 +396,7 @@
 						<div class="form-group">
 							<label for="account-confirm-pass">새 비밀번호 확인</label> <input
 								class="form-control" type="password" id="account-confirm-pass" 
-								value="${member.pwd}" name="pwd">
+								 name="pwd">
 						</div>
 					</div>
 					<div class="col-12">
@@ -414,7 +414,7 @@
 								data-toast data-toast-position="topRight"
 								data-toast-type="success" data-toast-icon="icon-circle-check"
 								data-toast-title="성공!"
-								data-toast-message="회원정보 수정완료!">Update Profile</button>
+								data-toast-message="회원정보 수정완료!">회원정보 업데이트</button>
 						</div>
 					</div>
 				</form>

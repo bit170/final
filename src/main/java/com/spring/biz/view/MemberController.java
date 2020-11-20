@@ -10,35 +10,37 @@ import org.springframework.web.bind.annotation.SessionAttributes;
 import com.spring.biz.user.MemberService;
 import com.spring.biz.user.MemberVO;
 
-//@Controller
-//@SessionAttributes("member")
+@Controller
+@SessionAttributes("member")
 public class MemberController {
 	
-//	@Autowired
+	@Autowired
 	private MemberService memberService;
 	
-//	@RequestMapping("/getMember.do")
+	@RequestMapping("/getMember.do")
 	public String getMember(MemberVO vo, Model model) {
-		MemberVO member = memberService.getMember(vo);
+//		MemberVO member = memberService.getMember(vo);
 		vo.setId("test");
 		vo.setName("test");
 		vo.setPhone("010-222-3234");
 		vo.setNickname("테스트");
 		vo.setEmail("test@test.com");
 
-		model.addAttribute("member", member);
-		System.out.println("member : " + member);
+		model.addAttribute("member", vo);
+		System.out.println("member : " + vo);
 		
 		return "account-profile.jsp";
 	}
 	
 	@RequestMapping("/updateMember.do")
 	public String updateMember(@ModelAttribute("member") MemberVO vo) {
+		String name = vo.getId();
+		System.out.println("name : " + name);
 		System.out.println(">>> 프로필 수정 처리");
 		System.out.println("member : " + vo);
 		memberService.updateMember(vo);
 		
-		return "redirect:account-profile.do";
+		return "redirect:account-profile.jsp";
 	}
 	
 }

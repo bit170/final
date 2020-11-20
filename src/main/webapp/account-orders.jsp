@@ -347,7 +347,7 @@
 						class="list-group-item with-badge active"
 						href="account-orders.jsp"><i class="icon-heart"></i>주문목록<span
 						class="badge badge-default badge-pill">3</span></a> <a
-						class="list-group-item" href="account-profile.jsp"><i
+						class="list-group-item" href="/getMember.do"><i
 						class="icon-head"></i>프로필 수정</a> <a class="list-group-item"
 						href="account-address.jsp"><i class="icon-map"></i>주소록</a> <a
 						class="list-group-item" href="account-myCanvas.jsp"><i

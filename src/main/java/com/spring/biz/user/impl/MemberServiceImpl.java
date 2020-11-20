@@ -6,10 +6,10 @@ import org.springframework.stereotype.Service;
 import com.spring.biz.user.MemberService;
 import com.spring.biz.user.MemberVO;
 
-//@Service("memberService")
+@Service("memberService")
 public class MemberServiceImpl implements MemberService{
 	
-//	@Autowired
+	@Autowired
 	private MemberDAOMybatis memberDAO;
 
 	@Override
