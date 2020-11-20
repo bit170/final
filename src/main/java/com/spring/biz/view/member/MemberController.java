@@ -16,7 +16,7 @@ import com.spring.biz.member.MemberVO;
 import com.spring.biz.member.S_MemberVO;
 
 @Controller
-@SessionAttributes("loginMember")
+@SessionAttributes("member")
 public class MemberController {
 	@Autowired
 	private MemberService memberService;
@@ -53,7 +53,7 @@ public class MemberController {
 		S_MemberVO sMember = memberService.getSMember(svo);
 		if (sMember != null) {
 			System.out.println("> 로그인 성공!!");
-			model.addAttribute("loginMember", sMember);
+			model.addAttribute("member", sMember);
 			return "index.jsp";
 		} else {
 			System.out.println("> 로그인 실패~~~");

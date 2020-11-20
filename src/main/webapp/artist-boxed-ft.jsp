@@ -1,13 +1,12 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <title>Unishop | Universal E-Commerce Template</title>
-    <!-- SEO Meta Tags-->
+<head>
+<meta charset="UTF-8">
+<title>Artist Boxed Filters Top</title>
+<!-- SEO Meta Tags-->
     <meta name="description" content="Unishop - Universal E-Commerce Template">
     <meta name="keywords" content="shop, e-commerce, modern, flat style, responsive, online store, business, mobile, blog, bootstrap 4, html5, css3, jquery, js, gallery, slider, touch, creative, clean">
     <meta name="author" content="Rokaux">
@@ -21,15 +20,15 @@
     <link rel="apple-touch-icon" sizes="180x180" href="touch-icon-iphone-retina.png">
     <link rel="apple-touch-icon" sizes="167x167" href="touch-icon-ipad-retina.png">
     <!-- Vendor Styles including: Bootstrap, Font Icons, Plugins, etc.-->
-    <link rel="stylesheet" media="screen" href="resources/css/vendor.min.css">
-    Main Template Styles
-    <link id="mainStyles" rel="stylesheet" media="screen" href="resources/css/styles.min.css">
+    <link href="resources/css/vendor.min.css" rel="stylesheet" media="screen">
+    <!-- Main Template Styles-->
+    <link href="resources/css/styles.min.css" id="mainStyles" rel="stylesheet" media="screen">
     <!-- Modernizr-->
     <script src="resources/js/modernizr.min.js"></script>
-  </head>
-  <!-- Body-->
-  <body>
-    <!-- Navbar-->
+</head>
+
+<body>
+<!-- Navbar-->
     <!-- Remove "navbar-sticky" class to make navigation bar scrollable with the page.-->
     <header class="navbar navbar-sticky">
       <!-- Site Branding-->
@@ -44,7 +43,7 @@
           <li class="active"><a href="index.jsp"><span>Home</span></a>
           </li>
           <li><a href="artist-boxed-ft.jsp"><span>Artist</span></a></li>
-          <li><a href="getProductList.do"><span>Shop</span></a>
+          <li><a href="shop-boxed-ls.jsp"><span>Shop</span></a>
             <ul class="sub-menu">
                 <li><a href="shop-boxed-ls.jsp">수채화</a></li>
                 <li><a href="shop-boxed-ls.jsp">유화</a></li>
@@ -84,9 +83,9 @@
             <nav class="slideable-menu mt-4">
               <ul class="menu">
                 <!-- 페이지에 active 클래스 추가해줘야함 -->
-                <li class="has-children active"><span><a href="index.jsp"><span>Home</span></a></span>
+                <li class="has-children"><span><a href="index.jsp"><span>Home</span></a></span>
                 </li>
-                <li ><span><a href="artist-boxed-ft.jsp "><span>Artist</span></a></span></li>
+                <li class="active"><span><a href="artist-boxed-ft.jsp "><span>Artist</span></a></span></li>
                 <li class="has-children"><span><a href="shop-boxed-ls.jsp"><span>Shop</span></a><span class="sub-menu-toggle"></span></span>
                   <ul class="slideable-submenu">
                       <li><a href="shop-categories.jsp">수채화</a></li>
@@ -120,7 +119,7 @@
               <!-- Entry-->
               <!-- 검색결과 주르륵 -->
               <div class="entry">
-                <div class="entry-thumb"><a href="shop-single.jsp"><img src="resources/img/shop/widget/01.png" alt="Product"></a></div>
+                <div class="entry-thumb"><a href="shop-single.jsp"><img src="img/shop/widget/01.png" alt="Product"></a></div>
                 <div class="entry-content">
                   <h4 class="entry-title"><a href="shop-single.jsp">ㅇㅇ <span class='text-highlighted'>검색어와 일치하는 부분</span></a></h4><span class="entry-meta">가격</span>
                 </div>
@@ -131,7 +130,7 @@
               <h3 class="widget-title">Found in Artist</h3>
               <!-- Entry-->
               <div class="entry">
-                <div class="entry-thumb"><a href="작가상세"><img src="resources/img/blog/widget/01.jpg" alt="Post"></a></div>
+                <div class="entry-thumb"><a href="작가상세"><img src="img/blog/widget/01.jpg" alt="Post"></a></div>
                 <div class="entry-content">
                   <h4 class="entry-title"><a href="작가상세"><span class='text-highlighted'>검색어 일치부분</span> 블라블라</a></h4><span class="entry-meta">아이디?</span>
                 </div>
@@ -142,20 +141,12 @@
           <!-- 사람아이콘 -->
 
           <!-- 로그인 후 로그아웃, 마이페이지버튼 -->
-          <c:if test="${!empty member}">
-	         <div class="toolbar-section" id="account">
-	         <form action="logout.do" method="post">
-	            <p class="text-muted text-sm mt-4"><h4>${member.id }<span>님</span><h4></p>
-	            <p class="text-muted text-sm mt-4">환영합니다</p>
-	            <button class="btn btn-primary" type="submit">Log Out</button> 
-	            <!-- <a class="btn btn-primary mx-0 scale-up delay-1" href="shop-boxed-ls.jsp">Log Out</a> -->
-	            <!-- <button class="btn btn-primary btn-block" type="submit"><a href="account-wishlist.jsp">My page</button> -->
-	            <a class="btn btn-primary mx-0 scale-up delay-1" href="/account.do">My page</a>
-	          </form>  
-	         </div>
-          </c:if>
-          <c:if test="${empty member}">
-          
+          <!-- <div class="toolbar-section" id="account">
+            <p class="text-muted text-sm mt-4"><h4>뫄뫄뫄<h4></p>
+            <p class="text-muted text-sm mt-4">환영합니다</p>
+            <button class="btn btn-primary btn-block" type="submit">Log Out</button>
+            <button class="btn btn-primary btn-block" type="submit">My page</button>
+          </div> -->
           <div class="toolbar-section" id="account">
             <ul class="nav nav-tabs nav-justified" role="tablist">
               <li class="nav-item"><a class="nav-link active" href="#login" data-toggle="tab" role="tab">Log In</a></li>
@@ -164,12 +155,12 @@
             <div class="tab-content">
               <div class="tab-pane fade show active" id="login" role="tabpanel">
                 <!-- 로그인 폼 -->
-                <form action="login.do" method="post" autocomplete="off" id="login-form">
+                <form autocomplete="off" id="login-form">
                   <div class="form-group input-group">
-                    <input class="form-control" type="text" placeholder="Id" name="id" required><span class="input-group-addon"><i class="material-icons mail"></i></span>
+                    <input class="form-control" type="text" placeholder="Id" required><span class="input-group-addon"><i class="material-icons mail"></i></span>
                   </div>
                   <div class="form-group input-group">
-                    <input class="form-control" type="password" placeholder="Password" name="pwd" required><span class="input-group-addon"><i class="material-icons lock"></i></span>
+                    <input class="form-control" type="password" placeholder="Password" required><span class="input-group-addon"><i class="material-icons lock"></i></span>
                   </div>
                   <!-- 로그인 유지 -> 어떻게? -->
                   <div class="custom-control custom-checkbox form-group">
@@ -181,53 +172,29 @@
                 </form>
               </div>
               <div class="tab-pane fade" id="signup" role="tabpanel">
-                <form method="post" autocomplete="off" id="signup-form">
+                <form autocomplete="off" id="signup-form">
                   <div class="form-group">
-                    <input class="form-control" type="text" placeholder="Name" name="name" required>
+                    <input class="form-control" type="text" placeholder="Name" required>
                   </div>
                   <div class="form-group">
-                    <input class="form-control" type="email" placeholder="Email" name="email" required>
+                    <input class="form-control" type="email" placeholder="Email" required>
                   </div>
                   <div class="form-group">
-                    <input class="form-control" type="text" placeholder="Phone" name="phone" required>
-                  </div>
-              	<div class="form-group">
-                    <div style="display:flex">
-                      <input class="form-control" type="text" placeholder="Id" name="id" required style="max-width:80%">
-                      <a class="btn btn-primary" style="margin:0;margin-left:2%" href="/idCheck.do" >중복확인</a>
-                      
-                      <%-- <a class="btn btn-primary" style="margin:0;margin-left:2%" href="idCheck.jsp?id=<%= %>">중복확인</a> --%>
-                      <!-- <script type="text/javascript">
-                         var id = $(document).getElementByName("id").value();
-                         function idCheck() {
-                        	alert(id); 
-                     		location.href = 'idCheck.jsp?id='+id;
-                  		 }
-                      </script> -->
-                    </div>
-                    <!-- <script type="text/javascript">
-                       function idCheck() {
-                          var id = document.getbyName("id").value;
-                          var href = "idCheck.jsp?id="+id;
-                     document.location.href = href;
-                  }
-                    </script> -->
+                    <input class="form-control" type="text" placeholder="Id" required>
+                    중복확인하고 싶은데에..
                   </div>
                   <div class="form-group">
                     <input class="form-control" type="password" placeholder="Password" required>
                   </div>
                   <div class="form-group">
-                    <input class="form-control" type="password" placeholder="Confirm Password" name="pwd" required>
-                  </div>
-                  <div class="form-group">
-                    <input class="form-control" type="text" placeholder="NickName" name="nickname" required>
+                    <input class="form-control" type="password" placeholder="Confirm Password" required>
                   </div>
                   <button class="btn btn-primary btn-block" type="submit">Sign Up</button>
+                  <p class="text-muted text-sm mt-4">OR sign up with your social account</p><a class="media-btn media-facebook" href="#"><i class="socicon-facebook"></i><span>Signup with Facebook</span></a><a class="media-btn media-google" href="#"><i class="socicon-googleplus"></i><span>Signup with Google+</span></a><a class="media-btn media-twitter" href="#"><i class="socicon-twitter"></i><span>Signup with Twitter</span></a>
                 </form>
               </div>
             </div>
           </div>
-          </c:if>
           <!-- Shopping Cart Section-->
           <div class="toolbar-section" id="cart">
             <div class="table-responsive shopping-cart mb-0">
@@ -242,7 +209,7 @@
                 <tbody>
                   <tr>
                     <td>
-                      <div class="product-item"><a class="product-thumb" href="shop-single.jsp"><img src="resources/img/shop/cart/01.jpg" alt="Product"></a>
+                      <div class="product-item"><a class="product-thumb" href="shop-single.jsp"><img src="img/shop/cart/01.jpg" alt="Product"></a>
                         <div class="product-info">
                           <h4 class="product-title"><a href="shop-single.jsp">작품이름</a></h4><span><em>Price:</em> 가격</span>
                         </div>
@@ -263,148 +230,114 @@
         </div>
       </div>
     </header>
-    <!-- Page Content-->
-    <!-- Hero Slider-->
-    <section class="hero-slider">
-      <div class="owl-carousel large-controls dots-inside pb-4" data-owl-carousel="{ &quot;nav&quot;: true, &quot;dots&quot;: true, &quot;loop&quot;: true, &quot;autoplay&quot;: true, &quot;autoplayTimeout&quot;: 8000 }">
-        <div class="container-fluid">
-          <div class="row align-items-center">
-            <div class="col-md-6">
-              <div class="pr-3 pt-5 pb-0 py-md-5"><img class="d-block" src="resources/img/hero-slider/01.png" alt="Product"></div>
-            </div>
-            <div class="col-xl-4 col-md-6">
-              <div class="padding-top-3x padding-bottom-3x px-3 px-lg-5 text-center text-md-left from-bottom">
-                <h2>그림 사러 오세요~</h2>
-                <p class="text-sm text-muted">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris.</p><a class="btn btn-primary mx-0 scale-up delay-1" href="shop-boxed-ls.jsp">View Collection</a>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="container-fluid">
-          <div class="row align-items-center">
-            <div class="col-md-6">
-              <div class="pr-3 pt-5 pb-0 py-md-5"><img class="d-block" src="resources/img/hero-slider/02.png" alt="Product"></div>
-            </div>
-            <div class="col-xl-4 col-md-6">
-              <div class="padding-top-3x padding-bottom-3x px-3 px-lg-5 text-center text-md-left from-bottom">
-                <h2> &amp; 세상에 알려지지 않은 작가들~ </h2>
-                <p class="text-sm text-muted">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris.</p><a class="btn btn-primary mx-0 scale-up delay-1" href="artist-boxed-ft.jsp">더 많은 작가들</a>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-    <!-- Top Categories-->
-    <!-- 작가  -->
-    <!-- 설정이 네개로 픽스돼있음. 네명만 추천하는 걸로.. -->
-    <section class="container padding-top-3x padding-bottom-3x">
-      <h3 class="text-center mb-30">인기 작가</h3>
-      <div class="row">
-        <div class="col-md-3 col-sm-6 mb-30"><a class="category-card flex-wrap text-center pt-0" href="artist-single.jsp">
-            <div class="category-card-thumb w-100"><img src="resources/img/shop/categories/03.jpg" alt="Category"></div>
-            <div class="category-card-info w-100">
-              <h3 class="category-card-title">작가이름?</h3>
-              <h4 class="category-card-subtitle">뭘 넣을까</h4>
-            </div></a></div>
-        <!-- <div class="col-md-3 col-sm-6 mb-30"><a class="category-card flex-wrap text-center pt-0" href="shop-boxed-ls.jsp">
-            <div class="category-card-thumb w-100"><img src="resources/img/shop/categories/04.jpg" alt="Category"></div>
-            <div class="category-card-info w-100">
-              <h3 class="category-card-title">작가2</h3>
-              <h4 class="category-card-subtitle">Starting from $220.00</h4>
-            </div></a></div>
-        <div class="col-md-3 col-sm-6 mb-30"><a class="category-card flex-wrap text-center pt-0" href="shop-boxed-ls.jsp">
-            <div class="category-card-thumb w-100"><img src="resources/img/shop/categories/05.jpg" alt="Category"></div>
-            <div class="category-card-info w-100">
-              <h3 class="category-card-title">작가3</h3>
-              <h4 class="category-card-subtitle">Starting from $198.00</h4>
-            </div></a></div>
-        <div class="col-md-3 col-sm-6 mb-30"><a class="category-card flex-wrap text-center pt-0" href="shop-boxed-ls.jsp">
-            <div class="category-card-thumb w-100"><img src="resources/img/shop/categories/02.jpg" alt="Category"></div>
-            <div class="category-card-info w-100">
-              <h3 class="category-card-title">작가4</h3>
-              <h4 class="category-card-subtitle">Starting from $95.99</h4>
-            </div></a></div> -->
-      </div>
-      <div class="text-center"><a class="btn btn-outline-secondary mb-0" href="artist-boxed-ft.jsp">모든 작가</a></div>
-    </section>
-    <!-- 작품 추천 -->
-    <section class="container-fluid padding-top-3x pb-5">
-      <h3 class="text-center mb-30">인기 작품? 작품들</h3>
-      <div class="row" >
-        <!-- Special Offer-->
-
-        <!-- Fetured Products-->
-        <div class="col-xl-9 col-md-8">
-          <div class="row">
-            <!-- Item-->
-            <div class="col-xl-3 col-lg-4 col-sm-6">
-              <div class="product-card mb-30">
-                <div class="product-card-thumb"> <span class="product-badge text-danger">Sale</span><a class="product-card-link" href="shop-single.jsp"></a><img src="resources/img/shop/th01.jpg" alt="Product">
-                  <div class="product-card-buttons">
-                    <!-- 버튼 클릭시 위시리스트 디비작업 -->
-                    <button class="btn btn-white btn-sm btn-wishlist" data-toggle="tooltip" title="Wishlist"><i class="material-icons favorite_border"></i></button>
-                    <!-- 버튼 클릭시 해당 제품 데이터 어딘가에 저장 후 장바구니에 넣을것 -->
-                    <button class="btn btn-primary btn-sm" data-toast data-toast-type="success" data-toast-position="topRight" data-toast-icon="material-icons check" data-toast-title="Product" data-toast-message="successfuly added to cart!">Add to Cart</button>
-                  </div>
-                </div>
-                <div class="product-card-details">
-                  <h3 class="product-card-title"><a href="shop-single.jsp">Storage Box</a></h3>
-                  <h4 class="product-card-price">
-                    <del>$49.00</del>$38.00
-                  </h4>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <!-- <div class="col-xl-3 col-md-4" style="display:flex" >
-            <div class="text-center" style="margin-top:65%"><a class="btn btn-outline-secondary mb-0" href="shop-boxed-ls.jsp">모든 작품</a></div>
-        </div> -->
-        <div class="col-xl-3 col-md-4" style="display:flex">
-          <div class="card pt-3 pb-2 mb-30">
-            <div class="card-body text-center">
-              <div class="text-center" style="margin-top:65%">
-                <h2>  더 많은 작품이 궁금하세요?</h2>
-                <a class="btn btn-outline-secondary mb-0" href="shop-boxed-ls.jsp">모든 작품</a>
-              </div>
-              <!-- <h2>Special Offer <span class='text-danger'>-30%</span></h2><a class="d-inline-block" href="shop-single.jsp"><img src="resources/img/shop/special-offer02.jpg" alt="Special Offer"></a>
-              <h3 class="h5 text-normal pt-3"><a class="navi-link" href="shop-single.jsp">FLOS Indoor Lighting</a></h3>
-              <del class="lead text-muted mr-2">$800.00</del><span class="h4 text-danger">$560.00</span> -->
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-    <!-- Video Popup-->
-    <!-- <section class="fw-section padding-top-9x padding-bottom-9x" style="background-image: url(img/backgrounds/video_popup.jpg);">
+    <!-- Page Title-->
+    <div class="page-title">
       <div class="container">
-        <div class="gallery-wrapper text-center">
-          <div class="gallery-item video-btn text-center"><a href="#" data-type="video" data-video="&lt;div class=&quot;wrapper&quot;&gt;&lt;div class=&quot;video-wrapper&quot;&gt;&lt;iframe class=&quot;pswp__video&quot; width=&quot;960&quot; height=&quot;640&quot; src=&quot;https://player.vimeo.com/video/67001156?color=dc9814&amp;title=0&amp;byline=0&amp;portrait=0&quot; frameborder=&quot;0&quot; allowfullscreen&gt;&lt;/iframe&gt;&lt;/div&gt;&lt;/div&gt;"></a><span class="caption text-center">Unishop - your reliable partner</span></div>
-        </div>
+        <h1>ARTIST</h1>
       </div>
-    </section> -->
-    <!-- Features-->
-    <!-- <section class="container padding-top-3x padding-bottom-3x">
-      <div class="row pt-2">
-        <div class="col-md-3 col-sm-6 text-center mb-30"><span class="d-block display-4 text-gray-light mb-4"><i class="material-icons flight"></i></span>
-          <h4 class="h6 mb-2">Free World Wide Shipping</h4>
-          <p class="text-sm text-muted mb-0">Free shipping on all orders over $999</p>
-        </div>
-        <div class="col-md-3 col-sm-6 text-center mb-30"><span class="d-block display-4 text-gray-light mb-4"><i class="material-icons autorenew"></i></span>
-          <h4 class="h6 mb-2">Money Back Guarantee</h4>
-          <p class="text-sm text-muted mb-0">We return money within 30 days</p>
-        </div>
-        <div class="col-md-3 col-sm-6 text-center mb-30"><span class="d-block display-4 text-gray-light mb-4"><i class="material-icons headset_mic"></i></span>
-          <h4 class="h6 mb-2">24/7 Online Support</h4>
-          <p class="text-sm text-muted mb-0">Friendly 24/7 customer support</p>
-        </div>
-        <div class="col-md-3 col-sm-6 text-center mb-30"><span class="d-block display-4 text-gray-light mb-4"><i class="material-icons credit_card"></i></span>
-          <h4 class="h6 mb-2">Secure Online Payments</h4>
-          <p class="text-sm text-muted mb-0">We posess SSL / Secure Certificate</p>
-        </div>
+    </div>
+    <!-- Page Content-->
+    <!-- Filters-->
+    <div class="container">
+      <div class="d-flex flex-wrap flex-md-nowrap justify-content-center justify-content-md-between pb-3">
+        <!-- Nav filters-->
+        <ul class="nav-filters text-center text-md-left pb-3">
+          <li class="active"><a href="#">All</a></li>
+          <li><a href="#">ㄱ~ㄷ</a></li>
+          <li><a href="#">ㄹ~ㅂ</a></li>
+          <li><a href="#">ㅅ~ㅈ</a></li>
+          <li><a href="#">ㅊ~ㅌ</a></li>
+          <li><a href="#">ㅍ~ㅎ</a></li>
+        </ul>
+        <!-- Filter Toggles-->
+        <div class="pb-3"><a class="filters-toggle-search" href="#search-box" data-toggle="filters"><i class="material-icons search"></i></a></div>
       </div>
-    </section> -->
+      <!-- Filter Panes-->
+      <div class="filters-wrap">
+        <!-- Widgets-->
+        <div class="filters-pane pb-3" id="filters">
+        </div>
+        <!-- Search Box-->
+        <form class="filters-pane pb-3" id="search-box">
+          <div class="form-group">
+            <input class="form-control" type="text" placeholder="작가명을 입력한 후, 엔터를 누르세요">
+          </div>
+        </form>
+      </div>
+    </div>
+    <!-- Products Grid-->
+    <div class="container padding-bottom-3x mb-1">
+      <div class="row mb-2">
+        <!-- Item-->
+        <!-- 디비 주르륵 -->
+        <div class="col-xl-3 col-lg-4 col-sm-6">
+          <div class="product-card mb-30">
+            <div class="product-card-thumb"><a class="product-card-link" href="artist-single.jsp"></a><img src="resources/img/shop/ARTIST1.jpg" alt="Product">
+              <div class="product-card-buttons">
+                <button class="btn btn-white btn-sm btn-wishlist" data-toggle="tooltip" title="Follow"><i class="material-icons favorite_border"></i></button>
+              </div>
+            </div>
+            <div class="product-card-details">
+              <h3 class="product-card-title"><a href="artist-single.jsp">SeoHyun Oh</a></h3>
+            </div>
+          </div>
+        </div>
+		<!-- Item-->
+        <div class="col-xl-3 col-lg-4 col-sm-6">
+          <div class="product-card mb-30">
+            <div class="product-card-thumb"><a class="product-card-link" href="artist-single.jsp"></a><img src="resources/img/shop/ARTIST2.jpg" alt="Product">
+              <div class="product-card-buttons">
+                <button class="btn btn-white btn-sm btn-wishlist" data-toggle="tooltip" title="Follow"><i class="material-icons favorite_border"></i></button>
+              </div>
+            </div>
+            <div class="product-card-details">
+              <h3 class="product-card-title"><a href="shop-single.jsp">YeonHee Gwak</a></h3>
+            </div>
+          </div>
+        </div>
+        <!-- Item-->
+        <div class="col-xl-3 col-lg-4 col-sm-6">
+          <div class="product-card mb-30">
+            <div class="product-card-thumb"><a class="product-card-link" href="artist-single.jsp"></a><img src="resources/img/shop/ARTIST3.jpg" alt="Product">
+              <div class="product-card-buttons">
+                <button class="btn btn-white btn-sm btn-wishlist" data-toggle="tooltip" title="Follow"><i class="material-icons favorite_border"></i></button>
+              </div>
+            </div>
+            <div class="product-card-details">
+              <h3 class="product-card-title"><a href="shop-single.jsp">DongHee Lee</a></h3>
+            </div>
+          </div>
+        </div>
+        <!-- Item-->
+        <div class="col-xl-3 col-lg-4 col-sm-6">
+          <div class="product-card mb-30">
+            <div class="product-card-thumb"><a class="product-card-link" href="artist-single.jsp"></a><img src="resources/img/shop/ARTIST4.jpg" alt="Product">
+              <div class="product-card-buttons">
+                <button class="btn btn-white btn-sm btn-wishlist" data-toggle="tooltip" title="Follow"><i class="material-icons favorite_border"></i></button>
+              </div>
+            </div>
+            <div class="product-card-details">
+              <h3 class="product-card-title"><a href="shop-single.jsp">Hee Song</a></h3>
+            </div>
+          </div>
+        </div>
+      <!-- Pagination-->
+      <nav class="pagination">
+        <div class="column">
+          <ul class="pages">
+            <!-- 데이터에 따라 생성되도록 -->
+            <li class="active"><a href="#">1</a></li>
+            <!-- <li><a href="#">2</a></li>
+            <li><a href="#">3</a></li>
+            <li><a href="#">4</a></li>
+            <li>...</li>
+            <li><a href="#">12</a></li> -->
+          </ul>
+        </div>
+        <!-- 다음 페이지 넘어가도록 -->
+        <div class="column text-right hidden-xs-down"><a class="btn btn-outline-secondary btn-sm" href="#">Next&nbsp;<i class="material-icons keyboard_arrow_right"></i></a></div>
+      </nav>
+    </div>
     <!-- Site Footer-->
     <footer class="site-footer">
       <div class="column text-center">
@@ -424,7 +357,7 @@
       </div>
       <div class="column">
         <h3 class="widget-title text-center">Payment Methods<small>We support one of the following payment methods.</small></h3>
-        <div class="footer-cards"><img src="resources/img/cards.png" alt="Payment Methods">
+        <div class="footer-cards"><img src="img/cards.png" alt="Payment Methods">
         </div>
       </div>
     </footer>
@@ -434,20 +367,5 @@
     <!-- JavaScript (jQuery) libraries, plugins and custom scripts-->
     <script src="resources/js/vendor.min.js"></script>
     <script src="resources/js/scripts.min.js"></script>
-  </body>
+</body>
 </html>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    

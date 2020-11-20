@@ -8,10 +8,10 @@ import org.springframework.stereotype.Repository;
 
 import com.spring.biz.artist.ArtistVO;
 
-@Repository
+//@Repository
 public class ArtistDAOMybatis {
 
-	@Autowired
+//	@Autowired
 	private SqlSessionTemplate mybatis;
 	
 	public ArtistDAOMybatis() {

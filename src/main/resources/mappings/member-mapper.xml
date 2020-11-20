@@ -4,17 +4,20 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="memberDAO">
 	
+	<select id="getSMember" parameterType="svo" resultType="svo" >
+		select * from s_member where id=#{id} and pwd=#{pwd}
+	</select>
 	
 	<!-- update / select 문 프로필 수정 시 사용 ( 연희 ) -->
 	<update id="updateMember" parameterType="member">
-		UPDATE MEMBER
+		UPDATE TEST
 		SET PWD = #{pwd}, NAME = #{name}, PHONE = #{phone}, 
 		EMAIL = #{email}, NICKNAME = #{nickname}
 		WHERE ID = #{id}
 	</update>
 	
 	<select id="getMember" parameterType="member" resultType="member">
-		SELECT * FROM MEMBER WHERE ID=#{id}
+		SELECT * FROM TEST WHERE ID=#{id}
 	</select>
 	
 </mapper>
