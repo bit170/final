@@ -26,6 +26,9 @@
     <link id="mainStyles" rel="stylesheet" media="screen" href="resources/css/styles.min.css">
     <!-- Modernizr-->
     <script src="resources/js/modernizr.min.js"></script>
+    <script type="text/javascript">
+    	
+    </script>
   </head>
   <!-- Body-->
   <body>

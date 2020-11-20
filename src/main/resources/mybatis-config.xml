@@ -10,8 +10,6 @@
 	<typeAliases>
 		
     	<typeAlias type="com.spring.biz.member.S_MemberVO" alias="svo"/>
-		<typeAlias alias="artist" type="com.spring.biz.artist.ArtistVO"/>
-		<!-- <typeAlias alias="wishlist" type="com.spring.biz.wishlist.WishlistVO"></typeAlias>  -->
 		
 	</typeAliases>
 	
