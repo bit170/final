@@ -44,7 +44,7 @@
           <li class="active"><a href="index.jsp"><span>Home</span></a>
           </li>
           <li><a href="artist-boxed-ft.jsp"><span>Artist</span></a></li>
-          <li><a href="shop-boxed-ls.jsp"><span>Shop</span></a>
+          <li><a href="getProductList.do"><span>Shop</span></a>
             <ul class="sub-menu">
                 <li><a href="shop-boxed-ls.jsp">수채화</a></li>
                 <li><a href="shop-boxed-ls.jsp">유화</a></li>
