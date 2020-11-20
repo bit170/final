@@ -1,12 +1,12 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+	pageEncoding="UTF-8" isELIgnored="false"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
 <!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="utf-8">
-<title>나의 프로필</title>
+<title>마이페이지 - 나의 프로필</title>
 
 <!-- SEO Meta Tags-->
 <meta name="description"
@@ -326,74 +326,78 @@
 						style="background-image: url(img/account/user-cover-img.jpg);">
 					</div>
 					<div class="user-info">
-						<div class="user-avatar">
+					<!-- 사용자 사진 -->
+						<!-- <div class="user-avatar">
 							<a class="edit-avatar" href="#"><i
 								class="material-icons edit"></i>수정하기</a><img
 								src="resources/img/account/user-ava.jpg" alt="User">
-						</div>
+						</div> -->
 						<div class="user-data">
-							<h5>회원이름</h5>
-							<span>Joined November 06, 2020</span>
+							<h5>${member.name}</h5>
+							<span>${member.joindate}</span>
 						</div>
 					</div>
 				</aside>
 				<!-- 마이페이지 목록 수정 (연희) -->
 				<nav class="list-group">
-					<a class="list-group-item" href="account-wishlist.jsp"><i
-						class="icon-heart"></i>위시리스트<span
-						class="badge badge-default badge-pill">6</span></a> <a
-						class="list-group-item" href="account-follows.jsp"><i
-						class="icon-heart"></i>팔로우<span
-						class="badge badge-default badge-pill">3</span></a> <a
-						class="list-group-item" href="account-orders.jsp"><i
-						class="icon-heart"></i>주문목록<span
-						class="badge badge-default badge-pill">3</span></a> <a
-						class="list-group-item with-badge active"
-						href="account-profile.jsp"><i class="icon-head"></i>프로필 수정</a> <a
-						class="list-group-item" href="account-address.jsp"><i
-						class="icon-map"></i>주소록</a> <a class="list-group-item"
-						href="account-myCanvas.jsp"><i class="icon-head"></i>마이 캔버스</a>
+					<a class="list-group-item" href="account-wishlist.jsp">
+						<i class="icon-heart"></i>위시리스트
+						<span class="badge badge-default badge-pill">1</span></a> 
+					<a class="list-group-item" href="account-follows.jsp">
+						<i class="icon-heart"></i>팔로우
+						<span class="badge badge-default badge-pill">3</span></a> 
+					<a class="list-group-item with-badge active" href="account-orders.jsp">
+						<i class="icon-heart"></i>주문목록
+						<span class="badge badge-default badge-pill">3</span></a> 
+					<a class="list-group-item" href="getMember.do?id=${member.id}">
+						<i class="icon-head"></i>프로필 수정</a> 
+					<a class="list-group-item" href="account-address.jsp">
+						<i class="icon-map"></i>주소록</a> 
+					<a class="list-group-item" href="account-myCanvas.jsp">
+						<i class="icon-head"></i>마이 캔버스</a>
 				</nav>
 			</div>
 			<div class="col-lg-8">
 				<div class="padding-top-2x mt-2 hidden-lg-up"></div>
-				<form class="row">
+				<!-- 수정 값 전송 -->
+				<form class="row" action="updateMember.do" method="post" enctype="multipart/form-data">
 					<div class="col-md-6">
 						<div class="form-group">
-							<label for="account-fn">이름</label> <input class="form-control"
-								type="text" id="account-name" value="Daniel" required>
+							<label for="account-fn">이름</label> <input class="form-control" placeholder="이름"
+								type="text" id="account-name" name="name" value="${member.name}" required>
 						</div>
 					</div>
 					<div class="col-md-6">
 						<div class="form-group">
-							<label for="account-ln">닉네임</label> <input class="form-control"
-								type="text" id="account-nickname" value="Adams" required>
+							<label for="account-ln">닉네임</label> <input class="form-control" placeholder="닉네임"
+								type="text" id="account-nickname" name="nickname" value="${member.nickname}" required>
 						</div>
 					</div>
 					<div class="col-md-6">
 						<div class="form-group">
 							<label for="account-email">이메일</label> <input
-								class="form-control" type="email" id="account-email"
-								value="daniel.adams@mail.com" disabled>
+								class="form-control" type="email" placeholder="이메일 형식으로 입력하세요" 
+								id="account-email"  name="email" value="${member.email}" required>
 						</div>
 					</div>
 					<div class="col-md-6">
 						<div class="form-group">
 							<label for="account-phone">전화번호</label> <input
-								class="form-control" type="text" id="account-phone"
-								value="010 1234 5678" required>
+								class="form-control" type="text" placeholder="전화번호" id="account-phone" name="phone" 
+								value="${member.phone}" required>
 						</div>
 					</div>
 					<div class="col-md-6">
 						<div class="form-group">
 							<label for="account-pass">새 비밀번호</label> <input
-								class="form-control" type="password" id="account-pass">
+								class="form-control" type="password" id="account-pass" placeholder="******">
 						</div>
 					</div>
 					<div class="col-md-6">
 						<div class="form-group">
 							<label for="account-confirm-pass">새 비밀번호 확인</label> <input
-								class="form-control" type="password" id="account-confirm-pass">
+								class="form-control" type="password" id="account-confirm-pass" placeholder="******"
+								 name="pwd">
 						</div>
 					</div>
 					<div class="col-12">
@@ -401,17 +405,17 @@
 						<div
 							class="d-flex flex-wrap justify-content-between align-items-center">
 							<div class="custom-control custom-checkbox d-block">
-								<input class="custom-control-input" type="checkbox"
+								<!-- 체크 박스 삭제 -->
+								<!-- <input class="custom-control-input" type="checkbox"
 									id="subscribe_me" checked> <label
 									class="custom-control-label" for="subscribe_me">Subscribe
-									me to Newsletter</label>
+									me to Newsletter</label> -->
 							</div>
-							<button class="btn btn-primary margin-right-none" type="button"
+							<button class="btn btn-primary margin-right-none" type="submit"
 								data-toast data-toast-position="topRight"
 								data-toast-type="success" data-toast-icon="icon-circle-check"
-								data-toast-title="Success!"
-								data-toast-message="Your profile updated successfuly.">Update
-								Profile</button>
+								data-toast-title="성공!"
+								data-toast-message="회원정보 수정완료!">회원정보 업데이트</button>
 						</div>
 					</div>
 				</form>
@@ -420,58 +424,27 @@
 	</div>
 	<!-- Site Footer-->
 	<footer class="site-footer">
-		<div class="column text-center">
-			<p class="text-sm mb-4">
-				Need Support? Call<span class="text-primary">&nbsp;001 (917)
-					555-4836</span>
-			</p>
-			<a class="social-button sb-skype" href="#" data-toggle="tooltip"
-				data-placement="top" title="Skype"><i class="socicon-skype"></i></a><a
-				class="social-button sb-facebook" href="#" data-toggle="tooltip"
-				data-placement="top" title="Facebook"><i
-				class="socicon-facebook"></i></a><a class="social-button sb-google-plus"
-				href="#" data-toggle="tooltip" data-placement="top" title="Google +"><i
-				class="socicon-googleplus"></i></a><a class="social-button sb-twitter"
-				href="#" data-toggle="tooltip" data-placement="top" title="Twitter"><i
-				class="socicon-twitter"></i></a><a class="social-button sb-instagram"
-				href="#" data-toggle="tooltip" data-placement="top"
-				title="Instagram"><i class="socicon-instagram"></i></a>
-			<p class="text-xxs text-muted mb-0 mt-3">
-				© All rights reserved. Made with <i
-					class='material-icons favorite text-danger'></i> by rokaux
-			</p>
-		</div>
-		<div class="column">
-			<h3 class="widget-title text-center">
-				Subscription<small>To receive latest offers and discounts
-					from the shop.</small>
-			</h3>
-			<form class="subscribe-form input-group"
-				action="//rokaux.us12.list-manage.com/subscribe/post?u=c7103e2c981361a6639545bd5&amp;id=1194bb7544"
-				method="post" target="_blank" novalidate>
-				<span class="input-group-btn">
-					<button type="submit">
-						<i class="material-icons send"></i>
-					</button>
-				</span> <input class="form-control" type="email" name="EMAIL"
-					placeholder="Your e-mail">
-				<!-- real people should not fill this in and expect good things - do not remove this or risk form bot signups-->
-				<div style="position: absolute; left: -5000px;" aria-hidden="true">
-					<input type="text" name="b_c7103e2c981361a6639545bd5_1194bb7544"
-						tabindex="-1" value>
-				</div>
-			</form>
-		</div>
-		<div class="column">
-			<h3 class="widget-title text-center">
-				Payment Methods<small>We support one of the following
-					payment methods.</small>
-			</h3>
-			<div class="footer-cards">
-				<img src="resources/img/cards.png" alt="Payment Methods">
-			</div>
-		</div>
-	</footer>
+      <div class="column text-center">
+        <p class="text-sm mb-4">Need Support? Call<span class="text-primary">&nbsp;010 - 4355 - 2504</span></p>
+        <p class="text-xxs text-muted mb-0 mt-3">© All rights reserved. Made with <i class='material-icons favorite text-danger'></i> by 곽연희, 송희, 오서현, 이동희</p>
+      </div>
+      <!-- <div class="column">
+        <h3 class="widget-title text-center">Subscription<small>To receive latest offers and discounts from the shop.</small></h3>
+        <form class="subscribe-form input-group" action="//rokaux.us12.list-manage.com/subscribe/post?u=c7103e2c981361a6639545bd5&amp;id=1194bb7544" method="post" target="_blank" novalidate><span class="input-group-btn">
+            <button type="submit"><i class="material-icons send"></i></button></span>
+          <input class="form-control" type="email" name="EMAIL" placeholder="Your e-mail"> -->
+          <!-- real people should not fill this in and expect good things - do not remove this or risk form bot signups-->
+          <div style="position: absolute; left: -5000px;" aria-hidden="true">
+            <input type="text" name="b_c7103e2c981361a6639545bd5_1194bb7544" tabindex="-1" value>
+          </div>
+        </form>
+      </div>
+      <!-- <div class="column">
+        <h3 class="widget-title text-center">Payment Methods<small>We support one of the following payment methods.</small></h3>
+        <div class="footer-cards"><img src="resources/img/cards.png" alt="Payment Methods">
+        </div>
+      </div> -->
+    </footer>
 	<!-- Back To Top Button-->
 	<a class="scroll-to-top-btn" href="#"><i
 		class="material-icons trending_flat"></i></a>
