@@ -7,10 +7,13 @@ public class MemberVO {
 	private String phone;
 	private String address;
 	private String nickname;
+	private String joindate;
 	
 	public MemberVO() {}
 	
-	public MemberVO(String id, String pwd, String name, String phone, String address, String nickname) {
+	
+	public MemberVO(String id, String pwd, String name, String phone, String address, String nickname,
+			String joindate) {
 		super();
 		this.id = id;
 		this.pwd = pwd;
@@ -18,7 +21,10 @@ public class MemberVO {
 		this.phone = phone;
 		this.address = address;
 		this.nickname = nickname;
+		this.joindate = joindate;
 	}
+
+
 	public String getId() {
 		return id;
 	}
@@ -55,12 +61,19 @@ public class MemberVO {
 	public void setNickname(String nickname) {
 		this.nickname = nickname;
 	}
+	
+	public String getJoindate() {
+		return joindate;
+	}
+
+	public void setJoindate(String joindate) {
+		this.joindate = joindate;
+	}
 
 	@Override
 	public String toString() {
 		return "MemberVO [id=" + id + ", pwd=" + pwd + ", name=" + name + ", phone=" + phone + ", address=" + address
-				+ ", nickname=" + nickname + "]";
+				+ ", nickname=" + nickname + ", joindate=" + joindate + "]";
 	}
-	
 	
 }

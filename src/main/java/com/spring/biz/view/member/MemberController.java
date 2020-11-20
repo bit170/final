@@ -16,7 +16,7 @@ import com.spring.biz.member.MemberVO;
 import com.spring.biz.member.S_MemberVO;
 
 @Controller
-@SessionAttributes("loginMember")
+@SessionAttributes("member")
 public class MemberController {
 	@Autowired
 	private MemberService memberService;
@@ -40,7 +40,7 @@ public class MemberController {
 	public String account(Model model) {
 		System.out.println("account() 실행");
 		
-		return "account-wishlist.jsp";
+		return "redirect:account-wishlist.jsp";
 	}
 	
 	@RequestMapping(value="/login.do", method = RequestMethod.POST)
@@ -53,7 +53,7 @@ public class MemberController {
 		S_MemberVO sMember = memberService.getSMember(svo);
 		if (sMember != null) {
 			System.out.println("> 로그인 성공!!");
-			model.addAttribute("loginMember", sMember);
+			model.addAttribute("member", sMember);
 			return "index.jsp";
 		} else {
 			System.out.println("> 로그인 실패~~~");
@@ -82,4 +82,26 @@ public class MemberController {
 		//redirect 후 session 초기화
 		return "redirect:index.jsp";
 	}	
+	
+	@RequestMapping("/getMember.do")
+	public String getMember(MemberVO vo, Model model) {
+		MemberVO member = memberService.getMember(vo);
+
+		model.addAttribute("member", member);
+		System.out.println("member : " + member);
+		
+		return "account-profile.jsp";
+	}
+	
+	@RequestMapping("/updateMember.do")
+	public String updateMember(@ModelAttribute("member") MemberVO vo) {
+		String name = vo.getId();
+		System.out.println("name : " + name);
+		System.out.println(">>> 프로필 수정 처리");
+		System.out.println("member : " + vo);
+		memberService.updateMember(vo);
+		
+		return "redirect:account-profile.jsp";
+	}
+	
 }
