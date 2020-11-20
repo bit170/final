@@ -150,7 +150,7 @@
 	            <button class="btn btn-primary" type="submit">Log Out</button> 
 	            <!-- <a class="btn btn-primary mx-0 scale-up delay-1" href="shop-boxed-ls.jsp">Log Out</a> -->
 	            <!-- <button class="btn btn-primary btn-block" type="submit"><a href="account-wishlist.jsp">My page</button> -->
-	            <a class="btn btn-primary mx-0 scale-up delay-1" href="/account.do">My page</a>
+	            <a class="btn btn-primary mx-0 scale-up delay-1" href="account-wishlist.jsp">My page</a>
 	          </form>  
 	         </div>
           </c:if>
@@ -235,21 +235,33 @@
                 <thead>
                   <tr>
                     <th colspan="2">
-                      <div class="d-flex justify-content-between align-items-center">Products<a class="navi-link text-uppercase" href="cart.jsp"><span class="text-xxs">Expand Cart</span><i class="material-icons keyboard_arrow_right"></i></a></div>
+                      <div class="d-flex justify-content-between align-items-center">Products
+                      <c:if test="${!empty cartList }">
+                      <a class="navi-link text-uppercase" href="cart.jsp"><span class="text-xxs">Expand Cart</span><i class="material-icons keyboard_arrow_right"></i></a>
+                      </c:if>
+                      <c:if test="${empty cartList }">
+                      <a class="navi-link text-uppercase" href="shop-boxed-ls.jsp"><span class="text-xxs">작품 보러가기</span><i class="material-icons keyboard_arrow_right"></i></a>
+                      </c:if>
+                      </div>
                     </th>
                   </tr>
                 </thead>
                 <tbody>
                   <tr>
                     <td>
+                    <c:if test="${empty cartList }">
+                   	 장바구니가 비었습니다.
+                    </c:if>
+                    <c:if test="${!empty cartList }">
                       <div class="product-item"><a class="product-thumb" href="shop-single.jsp"><img src="resources/img/shop/cart/01.jpg" alt="Product"></a>
                         <div class="product-info">
                           <h4 class="product-title"><a href="shop-single.jsp">작품이름</a></h4><span><em>Price:</em> 가격</span>
                         </div>
                       </div>
-                    </td>
                     <!-- 삭제처리는 어떻게? 장바구니 품목을 디비에 저장하지 않으면 리스트형태로 세션이나 어딘가에 보관? 그럼 삭제버튼 클릭시 리스트에서 remove하면 될까? -->
                     <td class="text-center"><a class="remove-from-cart" href="삭제처리"><i class="material-icons icon_close"></i></a></td>
+                    </c:if>  
+                    </td>
                   </tr>
                 </tbody>
               </table>
@@ -257,7 +269,10 @@
             <!-- 장바구니 합계 -->
             <hr class="mb-3">
             <div class="d-flex flex-wrap justify-content-between align-items-center">
-              <div class="pr-2 py-1 text-sm">Subtotal: <span class='text-dark text-medium'>장바구니 합계 값</span></div><a class="btn btn-sm btn-success mb-0 mr-0" href="checkout-address.jsp">Checkout</a>
+              <div class="pr-2 py-1 text-sm">Subtotal: <span class='text-dark text-medium'>장바구니 합계 값</span></div>
+              <c:if test="${!empty cartList }">
+              <a class="btn btn-sm btn-success mb-0 mr-0" href="checkout-address.jsp">Checkout</a>
+              </c:if>
             </div>
           </div>
         </div>
