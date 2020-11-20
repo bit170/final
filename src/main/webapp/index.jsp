@@ -142,12 +142,20 @@
           <!-- 사람아이콘 -->
 
           <!-- 로그인 후 로그아웃, 마이페이지버튼 -->
-          <!-- <div class="toolbar-section" id="account">
-            <p class="text-muted text-sm mt-4"><h4>뫄뫄뫄<h4></p>
-            <p class="text-muted text-sm mt-4">환영합니다</p>
-            <button class="btn btn-primary btn-block" type="submit">Log Out</button>
-            <button class="btn btn-primary btn-block" type="submit"><a href="account-wishlist.jsp">My page</button>
-          </div> -->
+          <c:if test="${!empty loginMember}">
+	         <div class="toolbar-section" id="account">
+	         <form action="logout.do" method="post">
+	            <p class="text-muted text-sm mt-4"><h4>${loginMember.id }<span>님</span><h4></p>
+	            <p class="text-muted text-sm mt-4">환영합니다</p>
+	            <button class="btn btn-primary" type="submit">Log Out</button> 
+	            <!-- <a class="btn btn-primary mx-0 scale-up delay-1" href="shop-boxed-ls.jsp">Log Out</a> -->
+	            <!-- <button class="btn btn-primary btn-block" type="submit"><a href="account-wishlist.jsp">My page</button> -->
+	            <a class="btn btn-primary mx-0 scale-up delay-1" href="/account.do">My page</a>
+	          </form>  
+	         </div>
+          </c:if>
+          <c:if test="${empty loginMember}">
+          
           <div class="toolbar-section" id="account">
             <ul class="nav nav-tabs nav-justified" role="tablist">
               <li class="nav-item"><a class="nav-link active" href="#login" data-toggle="tab" role="tab">Log In</a></li>
@@ -156,12 +164,12 @@
             <div class="tab-content">
               <div class="tab-pane fade show active" id="login" role="tabpanel">
                 <!-- 로그인 폼 -->
-                <form autocomplete="off" id="login-form">
+                <form action="login.do" method="post" autocomplete="off" id="login-form">
                   <div class="form-group input-group">
-                    <input class="form-control" type="text" placeholder="Id" required><span class="input-group-addon"><i class="material-icons mail"></i></span>
+                    <input class="form-control" type="text" placeholder="Id" name="id" required><span class="input-group-addon"><i class="material-icons mail"></i></span>
                   </div>
                   <div class="form-group input-group">
-                    <input class="form-control" type="password" placeholder="Password" required><span class="input-group-addon"><i class="material-icons lock"></i></span>
+                    <input class="form-control" type="password" placeholder="Password" name="pwd" required><span class="input-group-addon"><i class="material-icons lock"></i></span>
                   </div>
                   <!-- 로그인 유지 -> 어떻게? -->
                   <div class="custom-control custom-checkbox form-group">
@@ -173,7 +181,7 @@
                 </form>
               </div>
               <div class="tab-pane fade" id="signup" role="tabpanel">
-                <form autocomplete="off" id="signup-form">
+                <form method="post" autocomplete="off" id="signup-form">
                   <div class="form-group">
                     <input class="form-control" type="text" placeholder="Name" name="name" required>
                   </div>
@@ -183,17 +191,19 @@
                   <div class="form-group">
                     <input class="form-control" type="text" placeholder="Phone" name="phone" required>
                   </div>
-              <div class="form-group">
+              	<div class="form-group">
                     <div style="display:flex">
                       <input class="form-control" type="text" placeholder="Id" name="id" required style="max-width:80%">
+                      <a class="btn btn-primary" style="margin:0;margin-left:2%" href="/idCheck.do" >중복확인</a>
+                      
                       <%-- <a class="btn btn-primary" style="margin:0;margin-left:2%" href="idCheck.jsp?id=<%= %>">중복확인</a> --%>
-                      <input type="button" class="btn btn-primary" style="margin:0;margin-left:2%" onclick="idCheck()" value="중복확인">
-                      <script type="text/javascript">
-                         var id = document.getElementByName("id");
+                      <!-- <script type="text/javascript">
+                         var id = $(document).getElementByName("id").value();
                          function idCheck() {
-                     location.href = 'idCheck.jsp?id='+id;
-                  }
-                      </script>
+                        	alert(id); 
+                     		location.href = 'idCheck.jsp?id='+id;
+                  		 }
+                      </script> -->
                     </div>
                     <!-- <script type="text/javascript">
                        function idCheck() {
@@ -217,6 +227,7 @@
               </div>
             </div>
           </div>
+          </c:if>
           <!-- Shopping Cart Section-->
           <div class="toolbar-section" id="cart">
             <div class="table-responsive shopping-cart mb-0">
