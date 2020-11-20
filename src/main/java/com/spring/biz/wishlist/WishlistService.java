@@ -6,6 +6,6 @@ public interface WishlistService {
 //	void insertWishlist(WishlistVO vo);
 //	void updateWishlist(WishlistVO vo);
 //	void deleteWishlist(WishlistVO vo);
-	WishlistVO getWishlist(WishlistVO vo);
+//	WishlistVO getWishlist(WishlistVO vo);
 //	List<WishlistVO> getWishlists(WishlistVO vo);
 }

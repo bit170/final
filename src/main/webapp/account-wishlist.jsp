@@ -38,7 +38,7 @@
 								src="resources/img/account/user-ava.jpg" alt="User">
 						</div> -->
 						<div class="user-data">
-							<h5>회원이름</h5>
+							<h5>${wishlist.id}</h5>
 							<span>Joined November 06, 2020</span>
 						</div>
 					</div>
@@ -70,7 +70,7 @@
 							<tr>
 								<th>내 위시 작품목록</th>
 								<th class="text-center"><a
-									class="btn btn-sm btn-outline-danger" href="#">위시리스트 비우기</a></th>
+									class="btn btn-sm btn-outline-danger" href="#<!-- /deleteWishlist.do -->">위시리스트 비우기</a></th>
 							</tr>
 						</thead>
 						<tbody>

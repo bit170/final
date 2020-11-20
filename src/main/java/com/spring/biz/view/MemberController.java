@@ -19,15 +19,16 @@ public class MemberController {
 	
 	@RequestMapping("/getMember.do")
 	public String getMember(MemberVO vo, Model model) {
-//		MemberVO member = memberService.getMember(vo);
-		vo.setId("test");
-		vo.setName("test");
-		vo.setPhone("010-222-3234");
-		vo.setNickname("테스트");
-		vo.setEmail("test@test.com");
+		MemberVO member = memberService.getMember(vo);
+//		vo.setId("test");
+//		vo.setName("test");
+//		vo.setPhone("010-222-3234");
+//		vo.setNickname("테스트");
+//		vo.setEmail("test@test.com");
+//		vo.setJoindate("2020-11-12");
 
-		model.addAttribute("member", vo);
-		System.out.println("member : " + vo);
+		model.addAttribute("member", member);
+		System.out.println("member : " + member);
 		
 		return "account-profile.jsp";
 	}

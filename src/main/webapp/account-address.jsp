@@ -436,8 +436,8 @@
 							<button class="btn btn-primary margin-bottom-none" type="button"
 								data-toast data-toast-position="topRight"
 								data-toast-type="success" data-toast-icon="icon-circle-check"
-								data-toast-title="Success!"
-								data-toast-message="Your address updated successfuly.">업데이트</button>
+								data-toast-title="완료!"
+								data-toast-message="주소가 성공적으로 변경되었습니다.">업데이트</button>
 						</div>
 					</div>
 				</form>

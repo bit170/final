@@ -39,10 +39,10 @@ public class WishlistDAOMybatis {
 //		mybatis.delete("wishlistDAO.removeWishlist", vo);
 //	}
 	
-	public WishlistVO getWishlist(WishlistVO vo) {
-		System.out.println(">>> getWishlist() 실행");
-		return mybatis.selectOne("wishlistDAO.getWishlist", vo);
-	}
+//	public WishlistVO getWishlist(WishlistVO vo) {
+//		System.out.println(">>> getWishlist() 실행");
+//		return mybatis.selectOne("wishlistDAO.getWishlist", vo);
+//	}
 	
 //	public List<WishlistVO> getWishlists(WishlistVO vo){
 //		System.out.println(">>> detWishlists() 실행");

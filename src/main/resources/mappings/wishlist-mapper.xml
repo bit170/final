@@ -24,7 +24,7 @@
 	</delete> -->
 	
 	<!-- <select id="getWishlist" parameterType="wishlist">
-		SELECT * FROM WISHLIST WHERE O_CODE = #{O_CODE}
+		SELECT * FROM TEST_WISH WHERE O_CODE = #{O_CODE}
 	</select> -->
 	
 	<!-- <select id="getWishlistList" parameterType="wishlist">

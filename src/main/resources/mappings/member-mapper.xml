@@ -6,15 +6,15 @@
 	
 	
 	<!-- update / select 문 프로필 수정 시 사용 ( 연희 ) -->
-	<!-- <update id="updateMember" parameterType="member">
-		UPDATE TEST
+	<update id="updateMember" parameterType="member">
+		UPDATE MEMBER
 		SET PWD = #{pwd}, NAME = #{name}, PHONE = #{phone}, 
 		EMAIL = #{email}, NICKNAME = #{nickname}
 		WHERE ID = #{id}
 	</update>
 	
 	<select id="getMember" parameterType="member" resultType="member">
-		SELECT * FROM TEST WHERE ID=#{id}
-	</select> -->
+		SELECT * FROM MEMBER WHERE ID=#{id}
+	</select>
 	
 </mapper>

@@ -69,6 +69,14 @@ public class MemberVO {
 	public void setEmail(String email) {
 		this.email = email;
 	}
+	
+	public String getJoindate() {
+		return joindate;
+	}
+
+	public void setJoindate(String joindate) {
+		this.joindate = joindate;
+	}
 
 	@Override
 	public String toString() {

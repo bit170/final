@@ -12,10 +12,10 @@ public class WishlistServiceImpl implements WishlistService{
 	@Autowired
 	WishlistDAOMybatis wishlistDAO;
 	
-	@Override
-	public WishlistVO getWishlist(WishlistVO vo) {
-		return wishlistDAO.getWishlist(vo);
-	}
+//	@Override
+//	public WishlistVO getWishlist(WishlistVO vo) {
+//		return wishlistDAO.getWishlist(vo);
+//	}
 
 
 }

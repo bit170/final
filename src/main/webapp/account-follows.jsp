@@ -260,12 +260,12 @@
 						style="background-image: url(img/account/user-cover-img.jpg);">
 					</div>
 					<div class="user-info">
-						<div class="user-avatar">
 						<!-- 사용자 사진 -->
-							<!-- <a class="edit-avatar" href="#"><i
+						<!-- <div class="user-avatar">
+							<a class="edit-avatar" href="#"><i
 								class="material-icons edit"></i>수정하기</a><img
-								src="resources/img/account/user-ava.jpg" alt="User"> -->
-						</div>
+								src="resources/img/account/user-ava.jpg" alt="User">
+						</div> -->
 						<div class="user-data">
 							<h5>회원이름</h5>
 							<span>Joined November 06, 2020</span>
@@ -274,20 +274,21 @@
 				</aside>
 				<!-- 마이페이지 목록 수정 (연희) -->
 				<nav class="list-group">
-					<a class="list-group-item" href="account-wishlist.jsp"><i
-						class="icon-heart"></i>위시리스트<span
-						class="badge badge-default badge-pill">6</span></a> <a
-						class="list-group-item with-badge active"
-						href="account-follows.jsp"><i class="icon-heart"></i>팔로우<span
-						class="badge badge-default badge-pill">3</span></a> <a
-						class="list-group-item" href="account-orders.jsp"><i
-						class="icon-heart"></i>주문목록<span
-						class="badge badge-default badge-pill">3</span></a> <a
-						class="list-group-item" href="account-profile.jsp"><i
-						class="icon-head"></i>프로필 수정</a> <a class="list-group-item"
-						href="account-address.jsp"><i class="icon-map"></i>주소록</a> <a
-						class="list-group-item" href="account-myCanvas.jsp"><i
-						class="icon-head"></i>마이 캔버스</a>
+					<a class="list-group-item" href="/getWishlist.do">
+						<i class="icon-heart"></i>
+						위시리스트<span class="badge badge-default badge-pill">6</span></a> 
+					<a class="list-group-item with-badge active" href="account-follows.jsp">
+						<i class="icon-heart"></i>
+						팔로우<span class="badge badge-default badge-pill">3</span></a> 
+					<a class="list-group-item" href="account-orders.jsp">
+						<i class="icon-heart"></i>
+						주문목록<span class="badge badge-default badge-pill">3</span></a> 
+					<a class="list-group-item" href="/getMember.do">
+						<i class="icon-head"></i>프로필 수정</a> 
+					<a class="list-group-item" href="account-address.jsp">
+						<i class="icon-map"></i>주소록</a> 
+					<a class="list-group-item" href="account-myCanvas.jsp">
+						<i class="icon-head"></i>마이 캔버스</a>
 				</nav>
 
 			</div>

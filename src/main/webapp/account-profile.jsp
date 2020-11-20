@@ -359,43 +359,43 @@
 			<div class="col-lg-8">
 				<div class="padding-top-2x mt-2 hidden-lg-up"></div>
 				<!-- 수정 값 전송 -->
-				<form class="row" action="/updateMember.do" method="post" enctype="multipart/form-data">
+				<form class="row" action="updateMember.do" method="post" enctype="multipart/form-data">
 					<div class="col-md-6">
 						<div class="form-group">
-							<label for="account-fn">이름</label> <input class="form-control"
+							<label for="account-fn">이름</label> <input class="form-control" placeholder="이름"
 								type="text" id="account-name" name="name" value="${member.name}" required>
 						</div>
 					</div>
 					<div class="col-md-6">
 						<div class="form-group">
-							<label for="account-ln">닉네임</label> <input class="form-control"
+							<label for="account-ln">닉네임</label> <input class="form-control" placeholder="닉네임"
 								type="text" id="account-nickname" name="nickname" value="${member.nickname}" required>
 						</div>
 					</div>
 					<div class="col-md-6">
 						<div class="form-group">
 							<label for="account-email">이메일</label> <input
-								class="form-control" type="email" id="account-email"  name="email" 
-								value="${member.email}" required>
+								class="form-control" type="email" placeholder="이메일 형식으로 입력하세요" 
+								id="account-email"  name="email" value="${member.email}" required>
 						</div>
 					</div>
 					<div class="col-md-6">
 						<div class="form-group">
 							<label for="account-phone">전화번호</label> <input
-								class="form-control" type="text" id="account-phone" name="phone" 
+								class="form-control" type="text" placeholder="전화번호" id="account-phone" name="phone" 
 								value="${member.phone}" required>
 						</div>
 					</div>
 					<div class="col-md-6">
 						<div class="form-group">
 							<label for="account-pass">새 비밀번호</label> <input
-								class="form-control" type="password" id="account-pass">
+								class="form-control" type="password" id="account-pass" placeholder="******">
 						</div>
 					</div>
 					<div class="col-md-6">
 						<div class="form-group">
 							<label for="account-confirm-pass">새 비밀번호 확인</label> <input
-								class="form-control" type="password" id="account-confirm-pass" 
+								class="form-control" type="password" id="account-confirm-pass" placeholder="******"
 								 name="pwd">
 						</div>
 					</div>

@@ -338,7 +338,7 @@
 				</aside>
 				<!-- 마이페이지 목록 수정 (연희) -->
 				<nav class="list-group">
-					<a class="list-group-item" href="/getWishlist.do"><i
+					<a class="list-group-item" href="getWishlist.do"><i
 						class="icon-heart"></i>위시리스트<span
 						class="badge badge-default badge-pill">1</span></a> <a
 						class="list-group-item" href="account-follows.jsp"><i
@@ -347,7 +347,7 @@
 						class="list-group-item with-badge active"
 						href="account-orders.jsp"><i class="icon-heart"></i>주문목록<span
 						class="badge badge-default badge-pill">3</span></a> <a
-						class="list-group-item" href="/getMember.do"><i
+						class="list-group-item" href="getMember.do?id=test"><i
 						class="icon-head"></i>프로필 수정</a> <a class="list-group-item"
 						href="account-address.jsp"><i class="icon-map"></i>주소록</a> <a
 						class="list-group-item" href="account-myCanvas.jsp"><i

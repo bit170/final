@@ -26,7 +26,7 @@
 	
 	<!-- 타일즈 실습 설정 (연희)-->
 	
-	<beans:bean id="tilesConfigurer" class="org.springframework.web.servlet.view.tiles2.TilesConfigurer">
+	<!-- <beans:bean id="tilesConfigurer" class="org.springframework.web.servlet.view.tiles2.TilesConfigurer">
 		<beans:property name="definitions">
 			<beans:list>
 				<beans:value>classpath:tiles/*.xml</beans:value>
@@ -39,6 +39,6 @@
 		class="org.springframework.web.servlet.view.UrlBasedViewResolver">
 		<beans:property name="viewClass" value="org.springframework.web.servlet.view.tiles2.TilesView" />
 		<beans:property name="order" value="1" />
-	</beans:bean>
+	</beans:bean> -->
 	
 </beans:beans>
