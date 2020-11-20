@@ -9,14 +9,17 @@
 	
 	<typeAliases>
     
-    // 마이페이지 관련 alias 추가 (동희)
-		<typeAlias alias="product" type="com.spring.biz.product.ProductVO" />
+    <!-- 작품 페이지 관련 alias 추가 (송희) -->
+		<!-- <typeAlias alias="product" type="com.spring.biz.product.ProductVO" /> -->
         
-    // 마이페이지 관련 alias 추가 (연희)
-		<typeAlias alias="address" type="com.spring.biz.address.AddressVO"></typeAlias>
+    <!-- 마이페이지 관련 alias 추가 (연희) -->
+		<!-- <typeAlias alias="address" type="com.spring.biz.address.AddressVO"></typeAlias>
 		<typeAlias alias="follow" type="com.spring.biz.follow.FollowVO"></typeAlias>
 		<typeAlias alias="step" type="com.spring.biz.step.StepVO"></typeAlias>
-		<typeAlias alias="wishlist" type="com.spring.biz.wishlist.WishlistVO"></typeAlias>
+		<typeAlias alias="wishlist" type="com.spring.biz.wishlist.WishlistVO"></typeAlias> -->
+		<!-- 마이페이지 정보 수정 alias -->
+		<typeAlias alias="member" type="com.spring.biz.user.MemberVO"></typeAlias>
+		
 	</typeAliases>
 	
   <mappers>

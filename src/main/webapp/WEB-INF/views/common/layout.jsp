@@ -7,7 +7,8 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title> <tiles:insertAttribute name="title" /> </title>
+<title> <tiles:getAsString name="title" /> </title>
+	<tiles:insertAttribute name="resource" />
 </head>
 <body>
 	<tiles:insertAttribute name="header" />

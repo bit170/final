@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE tiles-definitions PUBLIC
+"-//Apache Software Foundation//DTD Tiles Configuration 2.0//EN"
+"http://tiles.apache.org/dtds/tiles-config_2_0.dtd">
+<tiles-definitions>
+	<definition name="base-layout"
+		template="/WEB-INF/views/common/layout.jsp">
+		<put-attribute name="title" value="untitle" />
+		<put-attribute name="resource" value="/WEB_INF/views/common/resource.jsp" />
+		<put-attribute name="header" value="/WEB-INF/views/common/header.jsp" />
+		<put-attribute name="body" value="" />
+		<put-attribute name="footer" value="/WEB-INF/views/common/footer.jsp" />
+	</definition>
+	
+	<definition name="wishlist" extends="base-layout">
+		<put-attribute name="title" value="마이페이지 - 위시리스트" />
+		<put-attribute name="body" value="/account-wishlist.jsp" />
+	</definition>
+	
+</tiles-definitions>
