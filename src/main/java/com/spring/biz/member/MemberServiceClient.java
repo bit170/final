@@ -1,4 +1,4 @@
-package com.spring.biz.user;
+package com.spring.biz.member;
 
 import org.springframework.context.support.AbstractApplicationContext;
 

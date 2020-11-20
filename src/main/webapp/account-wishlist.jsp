@@ -6,7 +6,7 @@
 <head>
 
 <meta charset="UTF-8">
-<title>리소스</title>
+<title>마이페이지 - 위시리스트</title>
 <meta charset="UTF-8">
 <meta name="description"
 	content="Unishop - Universal E-Commerce Template">
