@@ -391,7 +391,7 @@
 						<div class="form-group">
 							<label for="account-company">주소지명</label> <input
 								class="form-control" type="text" id="account-company"
-								value="우리집" required>
+								placeholder="우리집" required>
 						</div>
 					</div>
 					<div class="col-md-6">
@@ -422,14 +422,14 @@
 					<div class="col-md-6">
 						<div class="form-group">
 							<label for="account-zip">우편번호</label> <input class="form-control"
-								type="text" id="account-zip" value="16074" required>
+								type="text" id="account-zip" placehoder="(예)16074" required>
 						</div>
 					</div>
 					<div class="col-md-6">
 						<div class="form-group">
 							<label for="account-city">상세주소 입력</label> <input
 								class="form-control" type="text" id="account-address"
-								value="서초구 백암빌딩" required>
+								placeholder="(예)서초구 백암빌딩 비트캠프" required>
 						</div>
 						<div class="text-right">
 							<button class="btn btn-primary margin-bottom-none" type="button"
