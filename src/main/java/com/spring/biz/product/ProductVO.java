@@ -4,17 +4,6 @@ import java.sql.Date;
 
 import org.springframework.web.multipart.MultipartFile;
 
-/*
-	CREATE TABLE PRODUCT
-	(
-	    P_CODE    VARCHAR2(32)    NOT NULL, 
-	    P_NAME    VARCHAR2(64)    NOT NULL, 
-	    PRICE     NUMBER          NOT NULL, 
-	    A_ID      VARCHAR2(20)    NOT NULL, 
-	    P_SIZE    VARCHAR2(20)    NOT NULL, 
-	    CONSTRAINT PRODUCT_PK PRIMARY KEY (P_CODE)
-	);
-	*/
 public class ProductVO {
 	private String p_code;
 	private String p_name;
@@ -22,15 +11,22 @@ public class ProductVO {
 	private String a_id;
 	private String p_size;
 	private Date p_date;
+	private String p_img;
 	
-	//검색조건용 필드 추가
-	private String searchCondition;
-	private String searchKeyword;
 	
-	public ProductVO() {
-		System.out.println(">> ProductVO() 객체 생성");
-	}
+	public ProductVO() {}
 
+	public ProductVO(String p_code, String p_name, int price, String a_id, String p_size, Date p_date, String p_img) {
+		super();
+		this.p_code = p_code;
+		this.p_name = p_name;
+		this.price = price;
+		this.a_id = a_id;
+		this.p_size = p_size;
+		this.p_date = p_date;
+		this.p_img = p_img;
+	}
+	
 	public String getP_code() {
 		return p_code;
 	}
@@ -79,28 +75,21 @@ public class ProductVO {
 		this.p_date = p_date;
 	}
 
-	public String getSearchCondition() {
-		return searchCondition;
+	public String getP_img() {
+		return p_img;
 	}
 
-	public void setSearchCondition(String searchCondition) {
-		this.searchCondition = searchCondition;
-	}
-
-	public String getSearchKeyword() {
-		return searchKeyword;
-	}
-
-	public void setSearchKeyword(String searchKeyword) {
-		this.searchKeyword = searchKeyword;
+	public void setP_img(String p_img) {
+		this.p_img = p_img;
 	}
 
 	@Override
 	public String toString() {
 		return "ProductVO [p_code=" + p_code + ", p_name=" + p_name + ", price=" + price + ", a_id=" + a_id
-				+ ", p_size=" + p_size + ", p_date=" + p_date + ", searchCondition=" + searchCondition
-				+ ", searchKeyword=" + searchKeyword + "]";
+				+ ", p_size=" + p_size + ", p_date=" + p_date + ", p_img=" + p_img + "]";
 	}
+
+	
 	
 	
 }

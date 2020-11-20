@@ -9,8 +9,8 @@
 	
 	<typeAliases>
     
-    <!-- 마이페이지 관련 alias 추가 (동희) -->
-		<typeAlias alias="product" type="com.spring.biz.product.ProductVO" />
+    <!-- 마이페이지, 상품페이지 관련 alias 추가 (동희) -->
+		<typeAlias alias="pvo" type="com.spring.biz.product.ProductVO" />
         
     <!-- 마이페이지 관련 alias 추가 (연희) -->
 		<typeAlias alias="address" type="com.spring.biz.address.AddressVO"></typeAlias>
