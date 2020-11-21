@@ -11,15 +11,16 @@ import com.spring.biz.member.S_MemberVO;
 public class MemberServiceImpl implements MemberService {
 	@Autowired
 	private MemberDAO memberDAO;
-	
-//	public MemberServiceImpl() {
-//		System.out.println(">> MemberServiceImpl() 실행(객체생성)");
-//	}
-	
-	/*
-	 * @Override public MemberVO getMember(MemberVO vo) { return
-	 * memberDAO.getMember(vo); }
-	 */
+
+	@Override
+	public MemberVO getMember(MemberVO vo) {
+		return memberDAO.getMember(vo);
+	}
+
+	@Override
+	public void updateMember(MemberVO vo) {
+		memberDAO.updateMember(vo);
+	}
 
 	@Override
 	public int insertMember(MemberVO vo) {

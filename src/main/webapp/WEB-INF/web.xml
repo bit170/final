@@ -43,6 +43,15 @@
 		<url-pattern>*.do</url-pattern>
 	</servlet-mapping>
 
+	<!-- <servlet>
+		<servlet-name>jsp</servlet-name>
+		<jsp-file>/*.jsp</jsp-file>
+	</servlet>
+	
+	<servlet-mapping>
+		<servlet-name>jsp</servlet-name>
+		<url-pattern>/WEB_INF/views/*/*.jsp</url-pattern>
+	</servlet-mapping> -->
 </web-app>
 
 

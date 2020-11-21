@@ -11,6 +11,18 @@
 	<select id="getSMember" parameterType="svo" resultType="svo" >
 		select * from s_member where id=#{id} and pwd=#{pwd}
 	</select>
+	
+	<!-- update / select 문 프로필 수정 시 사용 ( 연희 ) -->
+	<update id="updateMember" parameterType="member">
+		UPDATE member
+		SET PWD = #{pwd}, NAME = #{name}, PHONE = #{phone}, 
+		EMAIL = #{email}, NICKNAME = #{nickname}
+		WHERE ID = #{id}
+	</update>
+	
+	<select id="getMember" parameterType="member" resultType="member">
+		SELECT * FROM member WHERE ID=#{id}
+	</select>
 	<!-- <insert id="insertBoard" parameterType="board">
 		INSERT INTO BOARD (SEQ, TITLE, WRITER, CONTENT)
 		VALUES ((SELECT NVL(MAX(SEQ),0)+1 FROM BOARD), #{title}, #{writer}, #{content})

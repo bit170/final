@@ -12,6 +12,10 @@ public class MemberDAO {
 	@Autowired
 	private SqlSessionTemplate mybatis;
 	
+	public MemberDAO() {
+		System.out.println(">>> MemberDAO() 객체 생성");
+	}
+	
 	public S_MemberVO getSMember(S_MemberVO svo) {
 		System.out.println("memberDAO.getSMember()");
 		return mybatis.selectOne("memberDAO.getSMember", svo);
@@ -23,8 +27,13 @@ public class MemberDAO {
 	}
 
 	public MemberVO getMember(MemberVO vo) {
-		// TODO Auto-generated method stub
-		return null;
+		System.out.println(">>> getMember() 실행");
+		return mybatis.selectOne("memberDAO.getMember", vo);
+	}
+	
+	public void updateMember(MemberVO vo) {
+		System.out.println(">>> updateMember() 실행");
+		mybatis.update("memberDAO.updateMember", vo);
 	}
 	
 }
