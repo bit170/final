@@ -257,7 +257,7 @@
             <!-- 장바구니 합계 -->
             <hr class="mb-3">
             <div class="d-flex flex-wrap justify-content-between align-items-center">
-              <div class="pr-2 py-1 text-sm">Subtotal: <span class='text-dark text-medium'>장바구니 합계 값</span></div><a class="btn btn-sm btn-success mb-0 mr-0" href="checkout-address.jsp">Checkout</a>
+              <div class="pr-2 py-1 text-sm">Subtotal: <span class='text-dark text-medium'>장바구니 합계 값</span></div><a class="btn btn-sm btn-success mb-0 mr-0" href="checkout-address.jsp?id=${member.id}">Checkout</a>
             </div>
           </div>
         </div>

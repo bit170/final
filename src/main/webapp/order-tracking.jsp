@@ -1,47 +1,100 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
-<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-
+    pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="en">
-<head>
-<meta charset="utf-8">
-<title>내 작품 수정하기</title>
-<!-- SEO Meta Tags-->
-<meta name="description"
-	content="Unishop - Universal E-Commerce Template">
-<meta name="keywords"
-	content="shop, e-commerce, modern, flat style, responsive, online store, business, mobile, blog, bootstrap 4, html5, css3, jquery, js, gallery, slider, touch, creative, clean">
-<meta name="author" content="Rokaux">
-<!-- Mobile Specific Meta Tag-->
-<meta name="viewport"
-	content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-<!-- Favicon and Apple Icons-->
-<link rel="icon" type="image/x-icon" href="favicon.ico">
-<link rel="icon" type="image/png" href="favicon.png">
-<link rel="apple-touch-icon" href="touch-icon-iphone.png">
-<link rel="apple-touch-icon" sizes="152x152" href="touch-icon-ipad.png">
-<link rel="apple-touch-icon" sizes="180x180"
-	href="touch-icon-iphone-retina.png">
-<link rel="apple-touch-icon" sizes="167x167"
-	href="touch-icon-ipad-retina.png">
-<!-- Vendor Styles including: Bootstrap, Font Icons, Plugins, etc.-->
-<link rel="stylesheet" media="screen"
-	href="<c:url value="resources/css/vendor.min.css" />">
-<!-- Main Template Styles-->
-<link id="mainStyles" rel="stylesheet" media="screen"
-	href="<c:url value="resources/css/styles.min.css" />">
-<!-- Modernizr-->
-<script src="resources/js/modernizr.min.js" /></script>
-
-</head>
-<!-- Body-->
-<body>
-	<!-- Navbar-->
-	<!-- Remove "navbar-sticky" class to make navigation bar scrollable with the page.-->
-	<header class="navbar navbar-sticky">
-		<!-- Site Branding-->
-		<!-- 브랜드 로고 -->
+  <head>
+    <meta charset="utf-8">
+    <title>주문 현황 
+    </title>
+    <!-- SEO Meta Tags-->
+    <meta name="description" content="Unishop - Universal E-Commerce Template">
+    <meta name="keywords" content="shop, e-commerce, modern, flat style, responsive, online store, business, mobile, blog, bootstrap 4, html5, css3, jquery, js, gallery, slider, touch, creative, clean">
+    <meta name="author" content="Rokaux">
+    <!-- Mobile Specific Meta Tag-->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <!-- Favicon and Apple Icons-->
+    <link rel="icon" type="image/x-icon" href="resources/favicon.ico">
+    <link rel="icon" type="image/png" href="resources/favicon.png">
+    <link rel="apple-touch-icon" href="resources/touch-icon-iphone.png">
+    <link rel="apple-touch-icon" sizes="152x152" href="resources/touch-icon-ipad.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="resources/touch-icon-iphone-retina.png">
+    <link rel="apple-touch-icon" sizes="167x167" href="resources/touch-icon-ipad-retina.png">
+    <!-- Vendor Styles including: Bootstrap, Font Icons, Plugins, etc.-->
+    <link rel="stylesheet" media="screen" href="resources/css/vendor.min.css">
+    <!-- Main Template Styles-->
+    <link id="mainStyles" rel="stylesheet" media="screen" href="resources/css/styles.min.css">
+    <!-- Modernizr-->
+    <script src="resources/js/modernizr.min.js"></script>
+  </head>
+  <!-- Body-->
+  <body>
+    <!-- Open Ticket Modal-->
+    <div class="modal fade" id="orderDetails" tabindex="-1">
+      <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h4 class="modal-title">Order No  - 34VB5540K83</h4>
+            <button class="close" type="button" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+          </div>
+          <div class="modal-body">
+            <div class="table-responsive shopping-cart mb-0">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th>Product Name</th>
+                    <th class="text-center">Subtotal</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>
+                      <div class="product-item"><a class="product-thumb" href="shop-single.html"><img src="resources/img/shop/cart/01.jpg" alt="Product"></a>
+                        <div class="product-info">
+                          <h4 class="product-title"><a href="shop-single.html">3-Drawer File Cabinet<small>x 1</small></a></h4><span><em>Color:</em> Aqua</span><span><em>Accent Color:</em> White</span>
+                        </div>
+                      </div>
+                    </td>
+                    <td class="text-center text-lg text-medium">$257.00</td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <div class="product-item"><a class="product-thumb" href="shop-single.html"><img src="resources/img/shop/cart/02.jpg" alt="Product"></a>
+                        <div class="product-info">
+                          <h4 class="product-title"><a href="shop-single.html">Plastic Tissue Holder<small>x 2</small></a></h4><span><em>Size:</em> Medium</span><span><em>Color:</em> White</span>
+                        </div>
+                      </div>
+                    </td>
+                    <td class="text-center text-lg text-medium">$152.80</td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <div class="product-item"><a class="product-thumb" href="shop-single.html"><img src="resources/img/shop/cart/03.jpg" alt="Product"></a>
+                        <div class="product-info">
+                          <h4 class="product-title"><a href="shop-single.html">Campfire Paper Table<small>x 1</small></a></h4><span><em>Color:</em> Walnut</span><span><em>Accent Color:</em> Turquoise</span>
+                        </div>
+                      </div>
+                    </td>
+                    <td class="text-center text-lg text-medium">$289.00</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <hr class="mb-3">
+            <div class="d-flex flex-wrap justify-content-between align-items-center pb-2">
+              <div class="px-2 py-1">Subtotal: <span class='text-medium'>$622.40</span></div>
+              <div class="px-2 py-1">Shipping: <span class='text-medium'>$35.50</span></div>
+              <div class="px-2 py-1">Tax: <span class='text-medium'>$7.42</span></div>
+              <div class="text-lg px-2 py-1">Total: <span class='text-medium'>$665.32</span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Navbar-->
+    <!-- Remove "navbar-sticky" class to make navigation bar scrollable with the page.-->
+    <header class="navbar navbar-sticky">
+    <!-- Site Branding-->
+    <!-- 브랜드 로고 -->
       <div class="site-branding"><a class="site-logo hidden-xs-down" href="index.jsp"><img src="resources/img/logo/logo.png" alt="Unishop"></a><a class="site-logo logo-sm hidden-sm-up" href="index.jsp"><img src="resources/img/logo/logo-sm.png" alt="Unishop"></a>
       </div>
       <!-- Main Navigation-->
@@ -239,122 +292,57 @@
         </div>
       </div>
     </header>
-	<!-- Page Title-->
-	<div class="page-title">
-		<div class="container">
-			<h1>캔버스 수정</h1>
-			<ul class="breadcrumbs">
-				<li><a href="account-myCanvas.jsp">My Canvas</a></li>
-				<li class="separator">&nbsp;/&nbsp;</li>
-				<li>edit</li>
-			</ul>
-		</div>
-	</div>
-	<!-- Page Content-->
-	<div class="container padding-bottom-3x mb-2">
-		<div class="row">
-			<!-- 작품 수정하기 ( 연희 ) -->
-			<div class="col-xl-9 col-lg-8">
-				<h4>내 작품 수정하기</h4>
-				<hr class="padding-bottom-1x">
-				<div class="row">
-					<div class="col-sm-6">
-						<div class="form-group">
-							<label for="checkout-fn">* 작품명</label> <input
-								class="form-control" type="text" id="checkout-fn">
-						</div>
-					</div>
-					<div class="col-sm-6">
-						<div class="form-group">
-							<label for="checkout-ln">* 작품 가격</label> <input
-								class="form-control" type="text" id="checkout-ln"
-								data-type="currency" placeholder="$100,000">
-						</div>
-					</div>
-				</div>
-				<div class="row">
-					<div class="col-sm-6">
-						<div class="form-group">
-							<label for="checkout-fn">* 작품 사이즈</label> <input
-								class="form-control" type="text" id="checkout-fn">
-						</div>
-					</div>
-					<div class="col-sm-6">
-						<div class="form-group">
-							<label for="checkout-ln">* 사진 1</label>
-							<div class="custom-file">
-								<input class="custom-file-input" type="file" id="file-input">
-								<label class="custom-file-label" for="file-input">파일
-									추가...</label>
-							</div>
-						</div>
-					</div>
-				</div>
-				<div class="row">
-					<div class="col-sm-6">
-						<div class="form-group">
-							<label for="checkout-fn"> 사진 2</label>
-							<div class="custom-file">
-								<input class="custom-file-input" type="file" id="file-input">
-								<label class="custom-file-label" for="file-input">파일
-									추가...</label>
-							</div>
-						</div>
-					</div>
-					<div class="col-sm-6">
-						<div class="form-group">
-							<label for="checkout-ln"> 사진 3</label>
-							<div class="custom-file">
-								<input class="custom-file-input" type="file" id="file-input">
-								<label class="custom-file-label" for="file-input">파일
-									추가...</label>
-							</div>
-						</div>
-					</div>
-					<div class="col-sm-6">
-						<div class="form-group">
-							<label for="checkout-fn"> 태그 입력 ( 띄어쓰기, 콤마, 슬래시로 구분 )</label> <input
-								class="form-control" type="text" id="checkout-fn">
-						</div>
-					</div>
-					<div class="col-sm-6">
-						<div class="form-group">
-							<label for="checkout-ln"> 카테고리 </label>
-							<!-- <label class="col-2 col-form-label text-muted" for="select-input">Select</label> -->
-							<select class="form-control" id="select-input">
-								<option>카테고리를 선택해주세요 !</option>
-								<option>수묵화</option>
-								<option>수채화</option>
-								<option>유화</option>
-								<option>크로키</option>
-								<option>펜화</option>
-								<option>기타</option>
-							</select>
-						</div>
-					</div>
-					<div class="col-sm-6">
-						<div class="form-group">
-							<label for="checkout-ln"> 작품 설명</label>
-							<textarea class="form-control text-muted" id="textarea-input"
-								rows="5">작품을 간략하게 설명해주세요 !</textarea>
-						</div>
-					</div>
-				</div>
-
-				<hr class="padding-bottom-1x">
-
-				 <div class="d-flex justify-content-between">
-					<a class="btn btn-outline-secondary" href="account-myCanvas.jsp">마이페이지로</a>
-					<div class="text-center">
-						<a class="btn btn-primary" href="account-myCanvas.jsp">수정하기</a> <a
-							class="btn btn-danger" href="account-myCanvas.jsp">삭제하기</a>
-					</div>
-				</div>
-			</div>
-		</div>
-		
-		<!-- Site Footer-->
-		<footer class="site-footer">
+    <!-- Page Title-->
+    <div class="page-title">
+      <div class="container">
+        <h1>배송 현황</h1>
+        <ul class="breadcrumbs">
+          <li><a href="index.html">Home</a>
+          </li>
+          <li class="separator">&nbsp;/&nbsp;</li>
+          <li>Order Tracking</li>
+        </ul>
+      </div>
+    </div>
+    <!-- Page Content-->
+    <div class="container padding-bottom-3x mb-1">
+      <div class="card mb-3">
+        <div class="p-4 text-center text-white text-lg bg-dark"><span class="text-uppercase">주문 번호 - </span><span class="text-medium">34VB5540K83</span></div>
+        <div class="d-flex flex-wrap flex-sm-nowrap justify-content-between py-3 px-2">
+          <div class="w-100 text-center py-1 px-2"><span class='text-medium'>배송사:</span> UPS Ground</div>
+          <div class="w-100 text-center py-1 px-2"><span class='text-medium'>배송상태:</span> 배송 준비중</div>
+          <div class="w-100 text-center py-1 px-2"><span class='text-medium'>도착 예정일:</span> JAN 19, 2021</div>
+        </div>
+        <div class="card-body">
+          <div class="steps flex-sm-nowrap padding-top-1x padding-bottom-1x">
+            <div class="step active"><i class="material-icons shopping_basket"></i>
+              <h4 class="step-title">주문 확인</h4>
+            </div>
+            <div class="step active"><i class="material-icons settings"></i>
+              <h4 class="step-title">배송 준비</h4>
+            </div>
+            <div class="step"><i class="material-icons star"></i>
+              <h4 class="step-title">최종 상품 체크</h4>
+            </div>
+            <div class="step"><i class="material-icons flight_takeoff"></i>
+              <h4 class="step-title">배송 출발</h4>
+            </div>
+            <div class="step"><i class="material-icons home"></i>
+              <h4 class="step-title">배송 완료</h4>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="d-flex flex-wrap flex-md-nowrap justify-content-center justify-content-sm-between align-items-center">
+        <div class="custom-control custom-checkbox mr-3">
+          <input class="custom-control-input" type="checkbox" id="notify_me" checked>
+          <label class="custom-control-label" for="notify_me">배송 현황 변경 시 알려주세요 ! </label>
+        </div>
+        <div class="text-left text-sm-right"><a class="btn btn-primary btn-sm" href="orderDetails" data-toggle="modal" data-target="#orderDetails">배송 상세 페이지</a></div>
+      </div>
+    </div>
+    <!-- Site Footer-->
+    <footer class="site-footer">
       <div class="column text-center">
         <p class="text-sm mb-4">Need Support? Call<span class="text-primary">&nbsp;010 - 4355 - 2504</span></p>
         <p class="text-xxs text-muted mb-0 mt-3">© All rights reserved. Made with <i class='material-icons favorite text-danger'></i> by 곽연희, 송희, 오서현, 이동희</p>
@@ -376,13 +364,16 @@
         </div>
       </div> -->
     </footer>
-		<!-- Back To Top Button-->
-		<a class="scroll-to-top-btn" href="#"><i
-			class="material-icons trending_flat"></i></a>
-		<!-- Backdrop-->
-		<div class="site-backdrop"></div>
-		<!-- JavaScript (jQuery) libraries, plugins and custom scripts-->
-		<script src="<c:url value="resources/js/vendor.min.js" />"></script>
-		<script src="<c:url value="resources/js/scripts.min.js" />"></script>
-</body>
+    <!-- Back To Top Button-->
+	<a class="scroll-to-top-btn" href="#"><i
+		class="material-icons trending_flat"></i></a>
+	<!-- Backdrop-->
+	<div class="site-backdrop"></div>
+    <!-- Back To Top Button--><a class="scroll-to-top-btn" href="#"><i class="material-icons trending_flat"></i></a>
+    <!-- Backdrop-->
+    <div class="site-backdrop"></div>
+    <!-- JavaScript (jQuery) libraries, plugins and custom scripts-->
+    <script src="resources/js/vendor.min.js"></script>
+    <script src="resources/js/scripts.min.js"></script>
+  </body>
 </html>

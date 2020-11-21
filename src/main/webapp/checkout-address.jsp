@@ -1,13 +1,13 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8" isELIgnored="false"%>
+	pageEncoding="UTF-8" isELIgnored="false" %>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
 <!DOCTYPE html>
 <html lang="en">
-<head>
-<meta charset="utf-8">
-<title>마이페이지 - 나의 프로필</title>
-
+  <head>
+    <meta charset="utf-8">
+    <title>체크아웃 - 주소입력
+    </title>
 <!-- SEO Meta Tags-->
 <meta name="description"
 	content="Unishop - Universal E-Commerce Template">
@@ -34,6 +34,10 @@
 	href="<c:url value="resources/css/styles.min.css" />">
 <!-- Modernizr-->
 <script src="resources/js/modernizr.min.js" /></script>
+<!-- JavaScript (jQuery) libraries, plugins and custom scripts-->
+<script src="<c:url value="resources/js/vendor.min.js" />"></script>
+<script src="<c:url value="resources/js/scripts.min.js" />"></script>
+<script src="resources/js/card.min.js"></script>
 
 </head>
 <!-- Body-->
@@ -304,128 +308,216 @@
 			</div>
 		</div>
 	</header>
-	<!-- Page Title-->
-	<div class="page-title">
-		<div class="container">
-			<h1>나의 프로필</h1>
-			<ul class="breadcrumbs">
-				<li><a href="index.jsp">홈</a></li>
-				<li class="separator">&nbsp;/&nbsp;</li>
-				<li><a href="account-orders.jsp">나의 계정</a></li>
-				<li class="separator">&nbsp;/&nbsp;</li>
-				<li>My Profile</li>
-			</ul>
-		</div>
-	</div>
-	<!-- Page Content-->
-	<div class="container padding-bottom-3x mb-1">
-		<div class="row">
-			<div class="col-lg-4">
-				<aside class="user-info-wrapper">
-					<div class="user-cover"
-						style="background-image: url(img/account/user-cover-img.jpg);">
-					</div>
-					<div class="user-info">
-					<!-- 사용자 사진 -->
-						<!-- <div class="user-avatar">
-							<a class="edit-avatar" href="#"><i
-								class="material-icons edit"></i>수정하기</a><img
-								src="resources/img/account/user-ava.jpg" alt="User">
-						</div> -->
-						<div class="user-data">
-							<h5>${member.name}</h5>
-							<span>${member.joindate}</span>
-						</div>
-					</div>
-				</aside>
-				<!-- 마이페이지 목록 수정 (연희) -->
-				<nav class="list-group">
-					<a class="list-group-item" href="account-wishlist.jsp">
-						<i class="icon-heart"></i>위시리스트
-						<span class="badge badge-default badge-pill">1</span></a> 
-					<a class="list-group-item" href="account-follows.jsp">
-						<i class="icon-heart"></i>팔로우
-						<span class="badge badge-default badge-pill">3</span></a> 
-					<a class="list-group-item with-badge active" href="account-orders.jsp">
-						<i class="icon-heart"></i>주문목록
-						<span class="badge badge-default badge-pill">3</span></a> 
-					<a class="list-group-item" href="getMember.do?id=${member.id}">
-						<i class="icon-head"></i>프로필 수정</a> 
-					<a class="list-group-item" href="account-address.jsp">
-						<i class="icon-map"></i>주소록</a> 
-					<a class="list-group-item" href="account-myCanvas.jsp">
-						<i class="icon-head"></i>마이 캔버스</a>
-				</nav>
-			</div>
-			<div class="col-lg-8">
-				<div class="padding-top-2x mt-2 hidden-lg-up"></div>
-				<!-- 수정 값 전송 -->
-				<form class="row" action="updateMember.do" method="post" enctype="multipart/form-data">
-					<div class="col-md-6">
-						<div class="form-group">
-							<label for="account-fn">이름</label> <input class="form-control" placeholder="이름"
-								type="text" id="account-name" name="name" value="${member.name}" required>
-						</div>
-					</div>
-					<div class="col-md-6">
-						<div class="form-group">
-							<label for="account-ln">닉네임</label> <input class="form-control" placeholder="닉네임"
-								type="text" id="account-nickname" name="nickname" value="${member.nickname}" required>
-						</div>
-					</div>
-					<div class="col-md-6">
-						<div class="form-group">
-							<label for="account-email">이메일</label> <input
-								class="form-control" type="email" placeholder="이메일 형식으로 입력하세요" 
-								id="account-email"  name="email" value="${member.email}" required>
-						</div>
-					</div>
-					<div class="col-md-6">
-						<div class="form-group">
-							<label for="account-phone">전화번호</label> <input
-								class="form-control" type="text" placeholder="전화번호" id="account-phone" name="phone" 
-								value="${member.phone}" required>
-						</div>
+    <!-- Page Title-->
+    <div class="page-title">
+      <div class="container">
+        <h1>체크아웃</h1>
+        <ul class="breadcrumbs">
+          <li><a href="index.jsp">Home</a>
+          </li>
+          <li class="separator">&nbsp;/&nbsp;</li>
+          <li>Checkout - Address</li>
+        </ul>
+      </div>
+    </div>
+    <!-- Page Content-->
+    <div class="container padding-bottom-3x mb-2">
+      <!-- <div class="row"> -->
+      <form class="row" action="insertAddress.do" method="post" enctype="multipart/form-data">
+        <!-- Checkout Address-->
+        <div class="col-xl-9 col-lg-8">
+          <div class="steps flex-sm-nowrap mb-5"><a class="step active" href="checkout-address.jsp">
+              <h4 class="step-title">1. 배송지 입력</h4></a><a class="step" href="checkout-shipping.jsp">
+              <h4 class="step-title">2. 결제</h4></a><a class="step" href="checkout-review.jsp">
+              <h4 class="step-title">3. 리뷰</h4></a></div>
+          <h4>배송지 입력</h4>
+          <hr class="padding-bottom-1x">
+          <div class="row">
+            <div class="col-sm-6">
+              <div class="form-group">
+                <label for="checkout-fn">이름</label>
+                <input class="form-control" type="text" id="name"
+                placeholder="이름을 입력해주세요" value="${member.name}" required>
+              </div>
+            </div>
+           <!--  <div class="col-sm-6">
+              <div class="form-group">
+                <label for="checkout-ln">수령인 이름 (주문자명과 다를 경우 입력)</label>
+                <input class="form-control" type="text" id="checkout-ln"
+                placeholder="받으시는 분이 주문자와 다를 경우 입력해주세요">
+              </div>
+            </div>
+          </div> -->
+          <!-- <div class="row">
+            <div class="col-sm-6">
+              <div class="form-group">
+                <label for="checkout-email">이메일</label>
+                <input class="form-control" type="email" id="checkout-email"
+                placeholder="(예)artplace@art.com">
+              </div>
+            </div> -->
+            <div class="col-sm-6">
+              <div class="form-group">
+                <label for="checkout-phone">전화번호</label>
+                <input class="form-control" type="text" id="checkout-phone"
+                 value="${member.phone}" placeholder="(예)010-1111-1234" value="${member.phone}">
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-sm-6">
+              <div class="form-group">
+                <label for="checkout-company">배송지명</label>
+                <input class="form-control" type="text" name="a_name"
+                 value="${address.a_name}" placeholder="(예)우리집" required>
+              </div>
+            </div>
+            <div class="col-sm-6">
+              <div class="form-group">
+                <label for="checkout-country">지역</label>
+                <select class="form-control" name="city">
+	                <option>지역 선택</option>
+	                <option>서울특별시</option>
+					<option>부산광역시</option>
+					<option>인천광역시</option>
+					<option>대구광역시</option>
+					<option>광주광역시</option>
+					<option>대전광역시</option>
+					<option>울산광역시</option>
+					<option>세종특별자치시</option>
+					<option>경기도</option>
+					<option>강원도</option>
+					<option>충청북도</option>
+					<option>충청남도</option>
+					<option>경상북도</option>
+					<option>경상남도</option>
+					<option>전라북도</option>
+					<option>전라남도</option>
+					<option>제주도</option>
+                </select>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-sm-6">
+              <div class="form-group">
+                <label for="checkout-zip">우편번호</label>
+                <input class="form-control" type="text" name="post"
+                 value="${address.post}" placeholder="(예)16074" required>
+              </div>
+            </div>
+            <div class="col-sm-6">
+              <div class="form-group">
+                <label for="checkout-address1">상세주소 입력</label>
+                <input class="form-control" type="text" name="street" 
+                value="${address.street}" placeholder="(예)서초구 백암빌딩 비트캠프" required>
+              </div>
+            </div>
+            	<!-- 아이디 전달을 위한 hidden tag -->
+            	<input type="hidden" value="test" name="id">
+          </div>
+          <h4>내 주소록 불러오기</h4>
+          <hr class="padding-bottom-1x">
+          <div class="form-group">
+            <!--  <h4>내 주소록</h4> -->
+            
+					<div class="custom-control custom-radio custom-control-inline">
+						<input class="custom-control-input" type="radio" id="addr1" 
+							name="radio2" value=addr1 checked> 
+							<c:if test="${!empty address}">
+							<label class="custom-control-label" for="addr1"> ${address.a_name} </label>
+							</c:if>
+							<c:if test="${empty address}">
+							<label class="custom-control-label" for="addr1"> 주소 1 </label>
+							</c:if>
+							
 					</div>
 					
-					<!-- 새 비밀번호 입력 시 바말번호 확인과 값이 같은지 확인 후 변경하기 ??? -->
-					<div class="col-md-6">
-						<div class="form-group">
-							<label for="account-pass">새 비밀번호</label> <input
-								class="form-control" type="password" id="account-pass" placeholder="******">
-						</div>
+					<div class="custom-control custom-radio custom-control-inline">
+						<input class="custom-control-input" type="radio" id="addr2" 
+							name="radio2" value=addr2> 
+							<c:if test="${!empty address}">
+							<label class="custom-control-label" for="addr1"> ${address.a_name} </label>
+							</c:if>
+							<c:if test="${empty address}">
+							<label class="custom-control-label" for="addr1"> 주소 2 </label>
+							</c:if>
 					</div>
-					<div class="col-md-6">
-						<div class="form-group">
-							<label for="account-confirm-pass">새 비밀번호 확인</label> <input
-								class="form-control" type="password" id="account-confirm-pass" placeholder="******"
-								 name="pwd">
-						</div>
+					<div class="custom-control custom-radio custom-control-inline">
+						<input class="custom-control-input" type="radio" id="addr3"
+							name="radio2" value=addr3> 
+							<c:if test="${!empty address}">
+							<label class="custom-control-label" for="addr1"> ${address.a_name} </label>
+							</c:if>
+							<c:if test="${empty address}">
+							<label class="custom-control-label" for="addr1"> 주소 3 </label>
+							</c:if>
 					</div>
-					<div class="col-12">
-						<hr class="mt-2 mb-3">
-						<div
-							class="d-flex flex-wrap justify-content-between align-items-center">
-							<div class="custom-control custom-checkbox d-block">
-								<!-- 체크 박스 삭제 -->
-								<!-- <input class="custom-control-input" type="checkbox"
-									id="subscribe_me" checked> <label
-									class="custom-control-label" for="subscribe_me">Subscribe
-									me to Newsletter</label> -->
-							</div>
-							<button class="btn btn-primary margin-right-none" type="submit"
-								data-toast data-toast-position="topRight"
-								data-toast-type="success" data-toast-icon="icon-circle-check"
-								data-toast-title="성공!"
-								data-toast-message="회원정보 수정완료!">회원정보 업데이트</button>
-						</div>
-					</div>
-				</form>
-			</div>
-		</div>
-	</div>
-	<!-- Site Footer-->
-	<footer class="site-footer">
+          </div>
+          <hr class="padding-bottom-1x">
+          <div class="d-flex justify-content-between">
+          <button class="btn btn-outline-secondary m-0" href="cart.jsp">카트로 돌아가기</button>
+          <button class="btn btn-primary m-0" type="submit" href="insertAddress.do?id=test">Continue</button>
+          </div>
+        </div>
+        <!-- Sidebar          -->
+        <div class="col-xl-3 col-lg-4">
+          <aside class="sidebar">
+            <div class="padding-top-2x hidden-lg-up"></div>
+            <!-- Order Summary Widget-->
+            <section class="widget widget-order-summary bg-secondary border-0 p-4">
+              <h3 class="widget-title">주문 요약</h3>
+              <table class="table text-sm mb-0">
+                <tr>
+                  <td>총 금액 : </td>
+                  <td class="text-medium">$622.40</td>
+                </tr>
+                <tr>
+                  <td>배송비 :</td>
+                  <td class="text-medium">$35.50</td>
+                </tr>
+                <tr>
+                  <td></td>
+                  <td class="text-lg text-medium">$657.90</td>
+                </tr>
+              </table>
+            </section>
+            </form>
+            <!-- Featured Products Widget-->
+           <!--  <section class="widget widget-featured-products border-0">
+              <h3 class="widget-title">Recently Viewed</h3>
+              Entry
+              <div class="entry">
+                <div class="entry-thumb"><a href="shop-single.jsp"><img src="resources/img/shop/widget/01.png" alt="Product"></a></div>
+                <div class="entry-content">
+                  <h4 class="entry-title"><a href="shop-single.jsp">Max Task Chair</a></h4><span class="entry-meta">$299.00</span>
+                </div>
+              </div>
+              Entry
+              <div class="entry">
+                <div class="entry-thumb"><a href="shop-single.jsp"><img src="resources/img/shop/widget/02.png" alt="Product"></a></div>
+                <div class="entry-content">
+                  <h4 class="entry-title"><a href="shop-single.jsp">Drawer File Cabinet</a></h4><span class="entry-meta">$265.00</span>
+                </div>
+              </div>
+              Entry
+              <div class="entry">
+                <div class="entry-thumb"><a href="shop-single.jsp"><img src="resources/img/shop/widget/03.png" alt="Product"></a></div>
+                <div class="entry-content">
+                  <h4 class="entry-title"><a href="shop-single.jsp">Campfire Paper Table</a></h4><span class="entry-meta">$570.00</span>
+                </div>
+              </div>
+            </section> -->
+       <!--      Promo Banner
+            <div class="fw-section mt-1 px-4 py-5 text-center" style="background-image: url(resources/img/banners/alert-bg.jpg);">
+              <h3 class="text-white">Check our <br><span class='text-bold'>Latest Offers.</span><br> Save up to <span class='text-bold'>50%</span></h3><a class="btn btn-primary btn-sm" href="#">View Offers</a>
+            </div> -->
+          </aside>
+        </div>
+      </div>
+    </div>
+    <!-- Site Footer-->
+   <footer class="site-footer">
       <div class="column text-center">
         <p class="text-sm mb-4">Need Support? Call<span class="text-primary">&nbsp;010 - 4355 - 2504</span></p>
         <p class="text-xxs text-muted mb-0 mt-3">© All rights reserved. Made with <i class='material-icons favorite text-danger'></i> by 곽연희, 송희, 오서현, 이동희</p>
@@ -447,13 +539,10 @@
         </div>
       </div> -->
     </footer>
-	<!-- Back To Top Button-->
-	<a class="scroll-to-top-btn" href="#"><i
-		class="material-icons trending_flat"></i></a>
-	<!-- Backdrop-->
-	<div class="site-backdrop"></div>
-	<!-- JavaScript (jQuery) libraries, plugins and custom scripts-->
-	<script src="<c:url value="resources/js/vendor.min.js" />"></script>
-	<script src="<c:url value="resources/js/scripts.min.js" />"></script>
-</body>
+    <!-- Back To Top Button--><a class="scroll-to-top-btn" href="#"><i class="material-icons trending_flat"></i></a>
+    <!-- Backdrop-->
+    <div class="site-backdrop"></div>
+    <!-- JavaScript (jQuery) libraries, plugins and custom scripts-->
+
+  </body>
 </html>

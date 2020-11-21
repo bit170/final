@@ -365,20 +365,35 @@
 					<!--  <h4>내 주소록</h4> -->
 					<hr class="padding-bottom-1x">
 					<div class="custom-control custom-radio custom-control-inline">
-						<input class="custom-control-input" type="radio" id="ex-radio-4"
-							name="radio2"> <label class="custom-control-label"
-							for="ex-radio-4"> 주소 1 / 주소지명 </label>
+						<input class="custom-control-input" type="radio" id="addr1" 
+							name="radio2" value=addr1 checked> 
+							<c:if test="${!empty address}">
+							<label class="custom-control-label" for="addr1"> ${address.a_name} </label>
+							</c:if>
+							<c:if test="${empty address}">
+							<label class="custom-control-label" for="addr1"> 주소 1 </label>
+							</c:if>
+							
 					</div>
 					<div class="custom-control custom-radio custom-control-inline">
-						<input class="custom-control-input" type="radio" id="ex-radio-5"
-							name="radio2" checked> <label
-							class="custom-control-label" for="ex-radio-5"> 주소 2 /
-							주소지명 </label>
+						<input class="custom-control-input" type="radio" id="addr2" 
+							name="radio2" value=addr2> 
+							<c:if test="${!empty address}">
+							<label class="custom-control-label" for="addr1"> ${address.a_name} </label>
+							</c:if>
+							<c:if test="${empty address}">
+							<label class="custom-control-label" for="addr1"> 주소 2 </label>
+							</c:if>
 					</div>
 					<div class="custom-control custom-radio custom-control-inline">
-						<input class="custom-control-input" type="radio" id="ex-radio-6"
-							name="radio2"> <label class="custom-control-label"
-							for="ex-radio-6"> 주소 3 / 주소지명 </label>
+						<input class="custom-control-input" type="radio" id="addr3"
+							name="radio2" value=addr3> 
+							<c:if test="${!empty address}">
+							<label class="custom-control-label" for="addr1"> ${address.a_name} </label>
+							</c:if>
+							<c:if test="${empty address}">
+							<label class="custom-control-label" for="addr1"> 주소 3 </label>
+							</c:if>
 					</div>
 					<hr class="margin-top-1x margin-bottom-1x">
 
@@ -386,18 +401,18 @@
 				<div class="padding-top-2x mt-2 hidden-lg-up"></div>
 				<h4>주소지 수정</h4>
 				<hr class="padding-bottom-1x">
-				<form class="row">
+				<form class="row" action="updateAddress.do" method="post" enctype="multipart/form-data">
 					<div class="col-md-6">
 						<div class="form-group">
-							<label for="account-company">주소지명</label> <input
-								class="form-control" type="text" id="account-company"
+							<label for="account-company">주소지명</label> 
+							<input class="form-control" type="text" name="a_name"
 								placeholder="우리집" required>
 						</div>
 					</div>
 					<div class="col-md-6">
 						<div class="form-group">
-							<label for="account-country">지역</label> <select
-								class="form-control" id="account-country">
+							<label for="account-country">지역</label> 
+							<select class="form-control" name="city">
 								<option selected>지역 선택</option>
 								<option>서울특별시</option>
 								<option>부산광역시</option>
@@ -421,18 +436,20 @@
 					</div>
 					<div class="col-md-6">
 						<div class="form-group">
-							<label for="account-zip">우편번호</label> <input class="form-control"
-								type="text" id="account-zip" placehoder="(예)16074" required>
+							<label for="account-zip">우편번호</label> 
+							<input class="form-control" type="text" id="account-zip" 
+							name="post" placeholder="(예)16074" required>
 						</div>
 					</div>
 					<div class="col-md-6">
 						<div class="form-group">
-							<label for="account-city">상세주소 입력</label> <input
-								class="form-control" type="text" id="account-address"
-								placeholder="(예)서초구 백암빌딩 비트캠프" required>
+							<label for="account-city">상세주소 입력</label> 
+							<input class="form-control" type="text" id="account-address"
+								name="street" placeholder="(예)서초구 백암빌딩 비트캠프" required>
 						</div>
 						<div class="text-right">
-							<button class="btn btn-primary margin-bottom-none" type="button"
+						<!--toast : 실제 성공 시에만 출력하기 ??? -->
+							<button class="btn btn-primary margin-bottom-none" type="submit"
 								data-toast data-toast-position="topRight"
 								data-toast-type="success" data-toast-icon="icon-circle-check"
 								data-toast-title="완료!"
