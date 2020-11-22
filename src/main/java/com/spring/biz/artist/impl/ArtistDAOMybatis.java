@@ -1,5 +1,6 @@
 package com.spring.biz.artist.impl;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.mybatis.spring.SqlSessionTemplate;
@@ -34,27 +35,19 @@ public class ArtistDAOMybatis {
 	}
 	
 	//작가조회(하나)
-	public ArtistVO getArtist(ArtistVO vo) {
-		return mybatis.selectOne("artistDAO.getArtist", vo);
+	public ArtistVO getArtist(String id) {
+		return mybatis.selectOne("artistDAO.getArtist", id);
 	}
 	
 	//작가목록
-	public List<ArtistVO> getArtistList(ArtistVO vo){
-		return mybatis.selectList("artistDAO.getArtistList", vo);
+	public List<ArtistVO> getArtistList(){
+		return mybatis.selectList("artistDAO.getArtistList");
+	}
+
+	public List<ArtistVO> searchByName(String nickname) {
+		return mybatis.selectList("artistDAO.searchByName", nickname);
 	}
 }
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 

@@ -6,6 +6,7 @@ public interface ArtistService {
 	void insertArtist(ArtistVO vo);
 	void updateArtist(ArtistVO vo);
 	void deleteArtist(ArtistVO vo);
-	ArtistVO getArtist(ArtistVO vo);
-	List<ArtistVO> getArtistList(ArtistVO vo);
+	ArtistVO getArtist(String id);
+	List<ArtistVO> getArtistList();
+	List<ArtistVO> searchByName(String nickname);
 }

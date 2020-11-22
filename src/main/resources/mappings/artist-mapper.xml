@@ -17,19 +17,19 @@
 	
 	<delete id="deleteArtist" parameterType="artist">
 		DELETE FROM ARTIST WHERE ID = #{id}
-	</delete>
+	</delete> -->
 	
-	<select id="getArtist" parameterType="artist" resultType="artist">
+	<select id="getArtist" parameterType="String" resultType="artist">
 		SELECT * FROM ARTIST WHERE ID = #{id}
 	</select>
 	
-	<select id="getArtistList" parameterType="artist" resultType="artist">
+	<select id="getArtistList" resultType="artist">
 		SELECT * FROM ARTIST
 	</select>
 	
-	<select id="getAllPrinting" parameterType="product" resultType="product">
-		SELECT P_CODE, P_NAME, P_IMG FROM PRODUCT WHERE A_ID = #{id}
-	</select>-->
+	<select id="searchByName" parameterType="String" resultType="artist">
+		SELECT * FROM ARTIST WHERE NICKNAME LIKE #{nickname}
+	</select>
 
 </mapper>
 

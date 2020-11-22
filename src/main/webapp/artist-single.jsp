@@ -242,9 +242,9 @@
           <!-- Artist Info -->
           <div class="col-md-6 mb-30">
             <div class="card border-default bg-white pt-2 box-shadow">
-              <div class="card-body">
-                <h2 class="mb-3">SeoHyun Oh</h2>
-                <p class="text-sm text-muted">¡Hola! Me llamo SeoHyun Oh. Básicamente, pinto el paisaje.</p>
+              <div action="getArtist.do" method="get" class="card-body">
+                <h2 class="mb-3">${artist.nickname }</h2>
+                <p class="text-sm text-muted">${artist.a_detail }</p>
                 <div class="d-flex flex-wrap justify-content-between align-items-center">
                   <a class="btn btn-outline-secondary btn-sm text-danger" href="#">
                     <i class="material-icons favorite_border"></i>&nbsp;Follow</a>

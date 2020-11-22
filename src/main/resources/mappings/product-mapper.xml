@@ -20,8 +20,6 @@
 		SELECT * FROM PRODUCT
 	</select>
 	
-
-	
 	<!-- <insert id="insertProduct" parameterType="product">
 		INSERT INTO PRODUCT (P_CODE, P_NAME, PRICE, A_ID, P_SIZE, P_DATE)
 		VALUES #{p_code}, #{p_name}, #{price}, #{a_id}, #{p_size}, #{p_date})

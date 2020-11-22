@@ -9,6 +9,12 @@ public class ArtistVO {
 		System.out.println("~~~ArtistVO 객체생성~~~");
 	}
 	
+	public ArtistVO(String id, String nickname, String a_detail) {
+		this.id = id;
+		this.nickname = nickname;
+		this.a_detail = a_detail;
+	}
+
 	public String getId() {
 		return id;
 	}
