@@ -96,7 +96,7 @@ public class MemberController {
 	
 	@RequestMapping("/updateMember.do")
 	public String updateMember(@ModelAttribute("member") MemberVO vo) {
-		String name = vo.getId();
+		String name = vo.getName();
 		System.out.println("name : " + name);
 		System.out.println(">>> 프로필 수정 처리");
 		System.out.println("member : " + vo);
