@@ -29,7 +29,6 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
     <script type="text/javascript">
     	$(document).ready(function () {
-    		var MainProduct;
 			getMainProduct();
 		})
 		function getMainProduct() {
@@ -38,9 +37,18 @@
 				url : '<c:url value="/getMainProduct.do"/>',
 				async : false,
 				success : function (data) {
-					//console.log(data);
-					MainProduct = data;
-					console.log(MainProduct);
+					console.log(data);
+					$.each(data,function(i,item){
+						var Str = '<div class="col-xl-3 col-lg-4 col-sm-6">'+
+						'<div class="product-card-thumb"> <span class="product-badge text-danger">Sale</span><a class="product-card-link" href="shop-single.jsp"></a><img src="resources/img/shop/th01.jpg" alt="Product">'+
+						'<div class="product-card-buttons">'+
+						'<button class="btn btn-white btn-sm btn-wishlist" data-toggle="tooltip" title="Wishlist"><i class="material-icons favorite_border"></i></button>'+
+						'<button class="btn btn-primary btn-sm" data-toast data-toast-type="success" data-toast-position="topRight" data-toast-icon="material-icons check" data-toast-title="Product" data-toast-message="successfuly added to cart!">Add to Cart</button>'+
+						'</div></div><div class="product-card-details">'+
+						'<h3 class="product-card-title"><a href="shop-single.jsp">'+item.p_name+'</a></h3>'+
+						'<h4 class="product-card-price"><del>$49.00</del>$38.00</h4></div></div>';
+	                $("#MainProduct").append(Str);
+					})
 				}
 			})
 		}
@@ -372,11 +380,10 @@
 
         <!-- Fetured Products-->
         <div class="col-xl-9 col-md-8">
-          <div class="row">
+          <div class="row" id="MainProduct">
             <!-- Item-->
-            <c:forEach items="" var="product" varStatus="i">
             <div class="col-xl-3 col-lg-4 col-sm-6">
-              <div class="product-card mb-30">
+              <div class="product-card mb-30" >
                 <div class="product-card-thumb"> <span class="product-badge text-danger">Sale</span><a class="product-card-link" href="shop-single.jsp"></a><img src="resources/img/shop/th01.jpg" alt="Product">
                   <div class="product-card-buttons">
                     <!-- 버튼 클릭시 위시리스트 디비작업 -->
@@ -386,14 +393,13 @@
                   </div>
                 </div>
                 <div class="product-card-details">
-                  <h3 class="product-card-title"><a href="shop-single.jsp">${product.id }</a></h3>
+                  <h3 class="product-card-title"><a href="shop-single.jsp">제품명</a></h3>
                   <h4 class="product-card-price">
                     <del>$49.00</del>$38.00
                   </h4>
                 </div>
               </div>
             </div>
-            </c:forEach>
           </div>
         </div>
         <!-- <div class="col-xl-3 col-md-4" style="display:flex" >
