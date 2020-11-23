@@ -258,9 +258,9 @@
         <div class="filters-pane pb-3" id="filters">
         </div>
         <!-- Search Box-->
-        <form class="filters-pane pb-3" id="search-box">
+        <form action="searchByName.do" method="post" class="filters-pane pb-3" id="search-box">
           <div class="form-group">
-            <input class="form-control" type="text" placeholder="작가명을 입력한 후, 엔터를 누르세요">
+            <input class="form-control" type="text" placeholder="작가명을 입력한 후, 엔터를 누르세요" id="nickname" name="nickname">
           </div>
         </form>
       </div>
@@ -270,57 +270,20 @@
       <div class="row mb-2">
         <!-- Item-->
         <!-- 디비 주르륵 -->
+        <c:forEach var="item" items="${artistList}">    
         <div class="col-xl-3 col-lg-4 col-sm-6">
           <div class="product-card mb-30">
-            <div class="product-card-thumb"><a class="product-card-link" href="artist-single.jsp"></a><img src="resources/img/shop/ARTIST1.jpg" alt="Product">
+            <div class="product-card-thumb"><a class="product-card-link" href="getArtist.do?id=${item.id }"></a><img src="resources/img/shop/ARTIST1.jpg" alt="Product">
               <div class="product-card-buttons">
                 <button class="btn btn-white btn-sm btn-wishlist" data-toggle="tooltip" title="Follow"><i class="material-icons favorite_border"></i></button>
               </div>
             </div>
             <div class="product-card-details">
-              <h3 class="product-card-title"><a href="artist-single.jsp">SeoHyun Oh</a></h3>
+              <h3 class="product-card-title"><a href="getArtist.do?id=${item.id }">${item.nickname }</a></h3>
             </div>
           </div>
         </div>
-		<!-- Item-->
-        <div class="col-xl-3 col-lg-4 col-sm-6">
-          <div class="product-card mb-30">
-            <div class="product-card-thumb"><a class="product-card-link" href="artist-single.jsp"></a><img src="resources/img/shop/ARTIST2.jpg" alt="Product">
-              <div class="product-card-buttons">
-                <button class="btn btn-white btn-sm btn-wishlist" data-toggle="tooltip" title="Follow"><i class="material-icons favorite_border"></i></button>
-              </div>
-            </div>
-            <div class="product-card-details">
-              <h3 class="product-card-title"><a href="shop-single.jsp">YeonHee Gwak</a></h3>
-            </div>
-          </div>
-        </div>
-        <!-- Item-->
-        <div class="col-xl-3 col-lg-4 col-sm-6">
-          <div class="product-card mb-30">
-            <div class="product-card-thumb"><a class="product-card-link" href="artist-single.jsp"></a><img src="resources/img/shop/ARTIST3.jpg" alt="Product">
-              <div class="product-card-buttons">
-                <button class="btn btn-white btn-sm btn-wishlist" data-toggle="tooltip" title="Follow"><i class="material-icons favorite_border"></i></button>
-              </div>
-            </div>
-            <div class="product-card-details">
-              <h3 class="product-card-title"><a href="shop-single.jsp">DongHee Lee</a></h3>
-            </div>
-          </div>
-        </div>
-        <!-- Item-->
-        <div class="col-xl-3 col-lg-4 col-sm-6">
-          <div class="product-card mb-30">
-            <div class="product-card-thumb"><a class="product-card-link" href="artist-single.jsp"></a><img src="resources/img/shop/ARTIST4.jpg" alt="Product">
-              <div class="product-card-buttons">
-                <button class="btn btn-white btn-sm btn-wishlist" data-toggle="tooltip" title="Follow"><i class="material-icons favorite_border"></i></button>
-              </div>
-            </div>
-            <div class="product-card-details">
-              <h3 class="product-card-title"><a href="shop-single.jsp">Hee Song</a></h3>
-            </div>
-          </div>
-        </div>
+    	</c:forEach>
       <!-- Pagination-->
       <nav class="pagination">
         <div class="column">
