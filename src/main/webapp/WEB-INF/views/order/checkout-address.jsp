@@ -50,7 +50,7 @@
 		<div class="site-branding">
 			<a class="site-logo hidden-xs-down" href="index.jsp"><img
 				src="resources/img/logo/logo.png" alt="Unishop"></a><a
-				class="site-logo logo-sm hidden-sm-up" href="index.jsp"><img
+				class="site-logo logo-sm hidden-sm-up" href="main.do"><img
 				src="resources/img/logo/logo-sm.png" alt="Unishop"></a>
 		</div>
 		<!-- Main Navigation-->
@@ -360,7 +360,7 @@
               <div class="form-group">
                 <label for="checkout-phone">전화번호</label>
                 <input class="form-control" type="text" id="checkout-phone"
-                 value="${member.phone}" placeholder="(예)010-1111-1234" value="${member.phone}">
+                 value="${member.phone}" placeholder="(예)010-1111-1234">
               </div>
             </div>
           </div>
@@ -375,7 +375,7 @@
             <div class="col-sm-6">
               <div class="form-group">
                 <label for="checkout-country">지역</label>
-                <select class="form-control" name="city">
+                <select class="form-control" name="city" value=${address.city}>
 	                <option>지역 선택</option>
 	                <option>서울특별시</option>
 					<option>부산광역시</option>
@@ -457,7 +457,7 @@
           <hr class="padding-bottom-1x">
           <div class="d-flex justify-content-between">
           <button class="btn btn-outline-secondary m-0" href="cart.jsp">카트로 돌아가기</button>
-          <button class="btn btn-primary m-0" type="submit" href="insertAddress.do?id=test">Continue</button>
+          <button class="btn btn-primary m-0" type="submit" href="insertAddress.do">Continue</button>
           </div>
         </div>
         <!-- Sidebar          -->

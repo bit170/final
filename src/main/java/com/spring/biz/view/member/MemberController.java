@@ -39,7 +39,7 @@ public class MemberController {
 	@RequestMapping(value = "/account.do", method = RequestMethod.GET)
 	public String account(Model model) {
 		System.out.println("account() 실행");
-		return "redirect:account-wishlist.jsp";
+		return "/WEB-INF/views/account/account-wishlist.jsp";
 	}
 	
 	@RequestMapping(value="/login.do", method = RequestMethod.POST)
@@ -84,15 +84,11 @@ public class MemberController {
 		return "redirect:index.jsp";
 	}	
 	
-//	@RequestMapping("/getMember.do")
-//	public String getMember(MemberVO vo, Model model) {
-//		MemberVO member = memberService.getMember(vo);
-//
-//		model.addAttribute("member", member);
-//		System.out.println("member : " + member);
-//		
-//		return "account-profile.jsp";
-//	}
+	@RequestMapping("/getMember.do")
+	public String getMember() {
+		
+		return "/WEB-INF/views/account/account-profile.jsp";
+	}
 	
 	@RequestMapping("/updateMember.do")
 	public String updateMember(@ModelAttribute("member") MemberVO vo) {
@@ -102,7 +98,7 @@ public class MemberController {
 		System.out.println("member : " + vo);
 		memberService.updateMember(vo);
 		
-		return "redirect:account-profile.jsp";
+		return "/WEB-INF/views/account/account-profile.jsp";
 	}
 	
 }

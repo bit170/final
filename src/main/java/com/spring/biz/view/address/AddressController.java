@@ -24,18 +24,15 @@ public class AddressController {
 	}
 	
 	@RequestMapping("/insertAddress.do")
-	public String insertAddress(@ModelAttribute("address") AddressVO vo, HttpSession session, Model model) {
-		String name = (String)session.getAttribute("member.name");
-		String phone = (String)session.getAttribute("member.phone");
-		model.addAttribute("member.name", name);
-		model.addAttribute("member.phone", phone);
+	public String insertAddress(@ModelAttribute("address") AddressVO vo) {
 		
 		String id = vo.getId();
 		String a_name = vo.getA_name();
 		System.out.println("id : " + id + "의 주소지 :" + a_name +"입력 성공!!");
 		addrService.insertAddr(vo);
 		
-		return "/WEB-INF/views/account/account-address.jsp";
+		// 결제페이지 완료 시 결제페이지로 포워딩
+		return "redirect:WEB-INF/views/account/account-address.jsp";
 		
 	}
 	
@@ -47,10 +44,11 @@ public class AddressController {
 		System.out.println("id : " + id + "의 주소지 :" + a_name + "수정 성공!!");
 		addrService.updateAddr(vo);
 		
-		return "/WEB-INF/views/account/redirect:checkout-address.jsp";
+		
+		return "/WEB-INF/views/account/account-address.jsp";
 	}
 	
-	@RequestMapping("/getAddress.do")
+	@RequestMapping(value = "/getAddress.do")
 	public String getAddress(AddressVO vo, Model model, HttpSession session) {
 		AddressVO addr = addrService.getAddr(vo);
 		MemberVO mvo = (MemberVO) session.getAttribute("member");
@@ -59,7 +57,7 @@ public class AddressController {
 		model.addAttribute("address", addr);
 		System.out.println("address : " + addr);
 		
-		return "/WEB-INF/views/account/checkout-address.jsp";
+		return "/WEB-INF/views/account/account-address.jsp";
 	}
 	
 	@RequestMapping("/checkout.do")
@@ -69,7 +67,7 @@ public class AddressController {
 		model.addAttribute("member", mvo);
 		System.out.println("member : " + mvo);
 		
-		return "/getAddress.do";
+		return "/WEB-INF/views/order/checkout-address.jsp";
 		
 		
 	}

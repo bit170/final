@@ -36,6 +36,11 @@ public class MemberDAO {
 		mybatis.update("memberDAO.updateMember", vo);
 	}
 	
+	public MemberVO getMember(MemberVO vo) {
+		System.out.println(">>> getMember(memberVO) 실행");
+		return mybatis.selectOne("memberDAO.getMember", vo);
+	}
+	
 }
 
 

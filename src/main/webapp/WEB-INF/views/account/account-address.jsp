@@ -311,9 +311,9 @@
 		<div class="container">
 			<h1>나의 주소록</h1>
 			<ul class="breadcrumbs">
-				<li><a href="index.jsp">홈</a></li>
+				<li><a href="main.do">홈</a></li>
 				<li class="separator">&nbsp;/&nbsp;</li>
-				<li><a href="account-orders.jsp">나의 계정</a></li>
+				<li><a href="account.do">나의 계정</a></li>
 				<li class="separator">&nbsp;/&nbsp;</li>
 				<li>Contact Address</li>
 			</ul>
@@ -335,9 +335,8 @@
 								src="resources/img/account/user-ava.jpg" alt="User">
 						</div> -->
 						<div class="user-data">
-<<<<<<< HEAD
-							<h5><%-- ${member.name} --%></h5>
-							<span><%-- ${member.joindate} --%></span>
+							<h5>${member.name}</h5>
+							<span>${member.joindate}</span>
 						</div>
 					</div>
 				</aside>
@@ -352,9 +351,9 @@
 					<a class="list-group-item" href="account-orders.jsp">
 						<i class="icon-heart"></i>주문목록
 						<span class="badge badge-default badge-pill">3</span></a> 
-					<a class="list-group-item" href="getMember.do<%-- ?id=${member.id} --%>">
+					<a class="list-group-item" href="getMember.do">
 						<i class="icon-head"></i>프로필 수정</a> 
-					<a class="list-group-item with-badge active" href="account-address.jsp">
+					<a class="list-group-item with-badge active" href="#">
 						<i class="icon-map"></i>주소록</a> 
 					<a class="list-group-item" href="account-myCanvas.jsp">
 						<i class="icon-head"></i>마이 캔버스</a>
@@ -451,106 +450,7 @@
 						</div>
 						<div class="text-right">
 						<!--toast : 실제 성공 시에만 출력하기 ??? -->
-							<button class="btn btn-primary margin-bottom-none" type="submit" />
-							<h5>${member.name}</h5>
-							<span>${member.joindate}</span>
-						</div>
-					</div>
-				</aside>
-				<!-- 마이페이지 목록 수정 (연희) -->
-				<nav class="list-group">
-					<a class="list-group-item" href="account-wishlist.jsp">
-						<i class="icon-heart"></i>위시리스트
-						<span class="badge badge-default badge-pill">1</span></a> 
-					<a class="list-group-item" href="account-follows.jsp">
-						<i class="icon-heart"></i>팔로우
-						<span class="badge badge-default badge-pill">3</span></a> 
-					<a class="list-group-item" href="account-orders.jsp">
-						<i class="icon-heart"></i>주문목록
-						<span class="badge badge-default badge-pill">3</span></a> 
-					<a class="list-group-item" href="getMember.do?id=${member.id}">
-						<i class="icon-head"></i>프로필 수정</a> 
-					<a class="list-group-item with-badge active" href="account-address.jsp">
-						<i class="icon-map"></i>주소록</a> 
-					<a class="list-group-item" href="account-myCanvas.jsp">
-						<i class="icon-head"></i>마이 캔버스</a>
-				</nav>
-			</div>
-			<!-- 주소록 폼 -->
-			<div class="col-lg-8">
-				<div class="col-12 padding-top-1x">
-					<!--  <h4>내 주소록</h4> -->
-					<hr class="padding-bottom-1x">
-					<div class="custom-control custom-radio custom-control-inline">
-						<input class="custom-control-input" type="radio" id="ex-radio-4"
-							name="radio2"> <label class="custom-control-label"
-							for="ex-radio-4"> 주소 1 / 주소지명 </label>
-					</div>
-					<div class="custom-control custom-radio custom-control-inline">
-						<input class="custom-control-input" type="radio" id="ex-radio-5"
-							name="radio2" checked> <label
-							class="custom-control-label" for="ex-radio-5"> 주소 2 /
-							주소지명 </label>
-					</div>
-					<div class="custom-control custom-radio custom-control-inline">
-						<input class="custom-control-input" type="radio" id="ex-radio-6"
-							name="radio2"> <label class="custom-control-label"
-							for="ex-radio-6"> 주소 3 / 주소지명 </label>
-					</div>
-					<hr class="margin-top-1x margin-bottom-1x">
-
-				</div>
-				<div class="padding-top-2x mt-2 hidden-lg-up"></div>
-				<h4>주소지 수정</h4>
-				<hr class="padding-bottom-1x">
-				<form class="row">
-					<div class="col-md-6">
-						<div class="form-group">
-							<label for="account-company">주소지명</label> <input
-								class="form-control" type="text" id="account-company"
-								placeholder="우리집" required>
-						</div>
-					</div>
-					<div class="col-md-6">
-						<div class="form-group">
-							<label for="account-country">지역</label> <select
-								class="form-control" id="account-country">
-								<option selected>지역 선택</option>
-								<option>서울특별시</option>
-								<option>부산광역시</option>
-								<option>인천광역시</option>
-								<option>대구광역시</option>
-								<option>광주광역시</option>
-								<option>대전광역시</option>
-								<option>울산광역시</option>
-								<option>세종특별자치시</option>
-								<option>경기도</option>
-								<option>강원도</option>
-								<option>충청북도</option>
-								<option>충청남도</option>
-								<option>경상북도</option>
-								<option>경상남도</option>
-								<option>전라북도</option>
-								<option>전라남도</option>
-								<option>제주도</option>
-							</select>
-						</div>
-					</div>
-					<div class="col-md-6">
-						<div class="form-group">
-							<label for="account-zip">우편번호</label> <input class="form-control"
-								type="text" id="account-zip" placehoder="(예)16074" required>
-						</div>
-					</div>
-					<div class="col-md-6">
-						<div class="form-group">
-							<label for="account-city">상세주소 입력</label> <input
-								class="form-control" type="text" id="account-address"
-								placeholder="(예)서초구 백암빌딩 비트캠프" required>
-						</div>
-						<div class="text-right">
-							<button class="btn btn-primary margin-bottom-none" type="button"
->>>>>>> branch 'yhg' of https://github.com/bit170/final.git
+							<button class="btn btn-primary margin-bottom-none" type="submit"
 								data-toast data-toast-position="topRight"
 								data-toast-type="success" data-toast-icon="icon-circle-check"
 								data-toast-title="완료!"

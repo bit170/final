@@ -278,7 +278,6 @@
 				</aside>
 				<!-- 마이페이지 목록 수정 (연희) -->
 				<nav class="list-group">
-<<<<<<< HEAD
 					<a class="list-group-item with-badge active" href="account-wishlist.jsp">
 						<i class="icon-heart"></i>위시리스트
 						<span class="badge badge-default badge-pill">1</span></a> 
@@ -288,9 +287,9 @@
 					<a class="list-group-item" href="account-orders.jsp">
 						<i class="icon-heart"></i>주문목록
 						<span class="badge badge-default badge-pill">3</span></a> 
-					<a class="list-group-item" href="getMember.do?id=test">
+					<a class="list-group-item" href="getMember.do">
 						<i class="icon-head"></i>프로필 수정</a> 
-					<a class="list-group-item" href="getAddress.do?id=test">
+					<a class="list-group-item" href="getAddress.do">
 						<i class="icon-map"></i>주소록</a> 
 					<a class="list-group-item" href="account-myCanvas.jsp">
 						<i class="icon-head"></i>마이 캔버스</a>
@@ -305,36 +304,8 @@
 							<tr>
 								<th>내 위시 작품목록</th>
 								<th class="text-center"><a
-									class="btn btn-sm btn-outline-danger" href="#">위시리스트 비우기</a></th>
-=======
-					<a class="list-group-item" href="account-wishlist.jsp">
-						<i class="icon-heart"></i>위시리스트
-						<span class="badge badge-default badge-pill">1</span></a> 
-					<a class="list-group-item" href="account-follows.jsp">
-						<i class="icon-heart"></i>팔로우
-						<span class="badge badge-default badge-pill">3</span></a> 
-					<a class="list-group-item with-badge active" href="account-orders.jsp">
-						<i class="icon-heart"></i>주문목록
-						<span class="badge badge-default badge-pill">3</span></a> 
-					<a class="list-group-item" href="getMember.do?id=${member.id}">
-						<i class="icon-head"></i>프로필 수정</a> 
-					<a class="list-group-item" href="account-address.jsp">
-						<i class="icon-map"></i>주소록</a> 
-					<a class="list-group-item" href="account-myCanvas.jsp">
-						<i class="icon-head"></i>마이 캔버스</a>
-				</nav>
-			</div>
-			<div class="col-lg-8">
-				<div class="padding-top-2x mt-2 hidden-lg-up"></div>
-				<!-- Wishlist Table-->
-				<div class="table-responsive wishlist-table margin-bottom-none">
-					<table class="table">
-						<thead>
-							<tr>
-								<th>내 위시 작품목록</th>
-								<th class="text-center"><a
-									class="btn btn-sm btn-outline-danger" href="#<!-- /deleteWishlist.do -->">위시리스트 비우기</a></th>
->>>>>>> branch 'yhg' of https://github.com/bit170/final.git
+									class="btn btn-sm btn-outline-danger" href="deleteWishlist.do">위시리스트 비우기</a></th>
+
 							</tr>
 						</thead>
 						<tbody>
@@ -345,10 +316,11 @@
 											src="resources/img/shop/cart/01.jpg" alt="Product"></a>
 										<div class="product-info">
 											<h4 class="product-title">
-												<a href="shop-single.jsp">작품이름</a>
+												<a href="shop-single.jsp">${product.p_name}</a>
 											</h4>
-											<div class="text-lg text-medium text-muted">$가격</div>
+											<div class="text-lg text-medium text-muted">${product.price}</div>
 											<div class="text-sm">
+											<!-- 가능여부 : 해당 p_name 이 product 테이블에 없을 경우 비활성화 -->
 												가능여부 :
 												<div class="d-inline text-success">구매 가능</div>
 											</div>
