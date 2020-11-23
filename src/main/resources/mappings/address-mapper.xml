@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="addressDAO">
+
+	<!-- update / select 문 프로필 수정 시 사용 ( 연희 ) -->
+	
+	<select id="getAddr" parameterType="address" resultType="address">
+		SELECT * FROM addr WHERE ID=#{id} AND NAME = #{name}
+	</select>
+	
+	<insert id="insertAddr" parameterType="address">
+		INSERT INTO ADDR (A_NAME, CITY, POST, STREET, ID)
+		VALUES (#{a_name}, #{city}, #{post}, #{street}, #{id})
+	</insert>
+	
+	<update id="updateAddr" parameterType="address">
+		UPDATE ADDR
+		SET A_NAME = #{a_name}, CITY = #{city}, POST = #{post},
+		STREET = #{street}
+		WHERE ID = #{id}
+		
+	</update> 
+</mapper>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

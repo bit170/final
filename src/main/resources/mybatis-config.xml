@@ -17,8 +17,8 @@
         <!-- <typeAlias alias="member" type="com.spring.biz.member.MemberVO"/> -->
         
     <!-- 마이페이지 정보 수정 (연희) -->
-    
 		<typeAlias alias="member" type="com.spring.biz.member.MemberVO" />
+		<typeAlias alias="address" type="com.spring.biz.address.AddressVO" />
 		
 	<!-- 작가페이지 관련 alias 추가 (서현) -->
 		<typeAlias alias="artist" type="com.spring.biz.artist.ArtistVO"/>
