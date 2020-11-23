@@ -12,7 +12,7 @@ import com.spring.biz.address.AddressVO;
 import com.spring.biz.member.MemberVO;
 
 @Controller
-@SessionAttributes("addr")
+@SessionAttributes({"address","member"})
 public class AddressController {
 	@Autowired
 	private AddressService addrService;
@@ -26,10 +26,10 @@ public class AddressController {
 		String id = vo.getId();
 		String a_name = vo.getA_name();
 		String cnt = vo.getCnt();
-		System.out.println("id : " + id + "의 " + cnt + "번째 주소지 :" + a_name +"입력 성공!!");
+		System.out.println("id : " + id + "의 주소지 :" + a_name +"입력 성공!!");
 		addrService.insertAddr(vo);
 		
-		return "redirect:checkout-address.jsp";
+		return "redirect:/WEB-INF/views/account/account-address.jsp";
 		
 	}
 	
@@ -38,20 +38,20 @@ public class AddressController {
 		String id = vo.getId();
 		String a_name = vo.getA_name();
 		String cnt = vo.getCnt();
-		System.out.println("id : " + id + "의 " + cnt + "번째 주소지 :" + a_name + "수정 성공!!");
+		System.out.println("id : " + id + "의 주소지 :" + a_name + "수정 성공!!");
 		addrService.updateAddr(vo);
 		
-		return "redirect:account-address.jsp";
+		return "redirect:checkout-address.jsp";
 	}
 	
 	@RequestMapping("/getAddress.do")
 	public String getAddress(AddressVO vo, Model model) {
 		AddressVO addr = addrService.getAddr(vo);
 		
-		model.addAttribute("addr", addr);
+		model.addAttribute("address", addr);
 		System.out.println("address : " + addr);
 		
-		return "checkout-address.jsp";
+		return "/WEB-INF/views/account/checkout-address.jsp";
 	}
 	
 	

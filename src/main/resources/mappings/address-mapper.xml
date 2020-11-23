@@ -7,12 +7,13 @@
 	<!-- update / select 문 프로필 수정 시 사용 ( 연희 ) -->
 	
 	<select id="getAddr" parameterType="address" resultType="address">
-		SELECT * FROM addr WHERE ID=#{id} AND NAME = #{name}
+		SELECT * FROM ADDR WHERE ID=#{id} AND NAME = #{name}
 	</select>
 	
 	<insert id="insertAddr" parameterType="address">
 		INSERT INTO ADDR (A_NAME, CITY, POST, STREET, ID)
-		VALUES (#{a_name}, #{city}, #{post}, #{street}, #{id})
+		VALUES (#{a_name}, #{city}, #{post}, #{street})
+		WHERE ID =  #{id}
 	</insert>
 	
 	<update id="updateAddr" parameterType="address">

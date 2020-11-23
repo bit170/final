@@ -346,10 +346,10 @@
 					<a class="list-group-item" href="account-follows.jsp">
 						<i class="icon-heart"></i>팔로우
 						<span class="badge badge-default badge-pill">3</span></a> 
-					<a class="list-group-item with-badge active" href="account-orders.jsp">
+					<a class="list-group-item" href="account-orders.jsp">
 						<i class="icon-heart"></i>주문목록
 						<span class="badge badge-default badge-pill">3</span></a> 
-					<a class="list-group-item" href="getMember.do?id=${member.id}">
+					<a class="list-group-item with-badge active" href="getMember.do?id=${member.id}">
 						<i class="icon-head"></i>프로필 수정</a> 
 					<a class="list-group-item" href="account-address.jsp">
 						<i class="icon-map"></i>주소록</a> 
@@ -360,7 +360,7 @@
 			<div class="col-lg-8">
 				<div class="padding-top-2x mt-2 hidden-lg-up"></div>
 				<!-- 수정 값 전송 -->
-				<form class="row" action="updateMember.do" method="post" enctype="multipart/form-data">
+				<form class="row" action="updateMember.do?id=test" method="post" enctype="multipart/form-data">
 					<div class="col-md-6">
 						<div class="form-group">
 							<label for="account-fn">이름</label> <input class="form-control" placeholder="이름"
@@ -388,30 +388,47 @@
 						</div>
 					</div>
 					
+					<div class="col-md-6">
+						<div class="form-group">
+							<label for="account-pass">비밀번호 입력</label> <input
+								class="form-control" type="password" id="account-pwd">
+						</div>
+					</div>
+					<div class="col-md-6">
+						<div class="form-group">
+							<label for="account-confirm-pass">비밀번호 확인</label> <input
+								class="form-control" type="password" id="account-pwd2"
+								 name="pwd" onchange="isSame()" />&nbsp;&nbsp;<span id="same"></span>
+						</div>
+					</div>
+					
 					<!-- 새 비밀번호 입력 시 바말번호 확인과 값이 같은지 확인 후 변경하기 ??? -->
-					<div class="col-md-6">
-						<div class="form-group">
-							<label for="account-pass">새 비밀번호</label> <input
-								class="form-control" type="password" id="account-pass" placeholder="******">
-						</div>
-					</div>
-					<div class="col-md-6">
-						<div class="form-group">
-							<label for="account-confirm-pass">새 비밀번호 확인</label> <input
-								class="form-control" type="password" id="account-confirm-pass" placeholder="******"
-								 name="pwd">
-						</div>
-					</div>
+					<script>
+						function isSame() {
+							var pwd1 = document.twin.account-pwd.value;
+							var pwd2 = document.twin.account-pwd2.value;
+							if(pwd1.length < 6 || pwd1.length > 16){
+								window.alert('비밀번호는 6글자 이상, 16글자 이하만 가능합니다.');
+								document.getElementById('pwd1').value = document.getElementById('pwd2').value='';
+								document.getElementById('same').innerHTML='';
+								}
+							if(document.getElementById('pwd1').value!='' && document.getElementById('pwd2').value!=''){
+								if(document.getElementById('pwd1').value == document.getElementById('pwd2').value {
+									document.getElementById('same').innerHTML='비밀번호가 일치합니다.';
+									document.getElementById('same').style.color='gray';
+									}else{
+										document.getElementById('same').innerHTML='비밀번호가 일치하지 않습니다.';
+										document.getElementById('same').style.color='darkred';
+										}
+								} 
+							}
+					</script>
 					<div class="col-12">
 						<hr class="mt-2 mb-3">
 						<div
 							class="d-flex flex-wrap justify-content-between align-items-center">
 							<div class="custom-control custom-checkbox d-block">
-								<!-- 체크 박스 삭제 -->
-								<!-- <input class="custom-control-input" type="checkbox"
-									id="subscribe_me" checked> <label
-									class="custom-control-label" for="subscribe_me">Subscribe
-									me to Newsletter</label> -->
+						
 							</div>
 							<button class="btn btn-primary margin-right-none" type="submit"
 								data-toast data-toast-position="topRight"

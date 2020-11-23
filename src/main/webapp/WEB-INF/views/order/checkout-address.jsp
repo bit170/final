@@ -6,7 +6,7 @@
 <html lang="en">
   <head>
     <meta charset="utf-8">
-    <title>체크아웃 - 주소입력
+    <title>체크아웃 - 배송지입력
     </title>
 <!-- SEO Meta Tags-->
 <meta name="description"
@@ -413,7 +413,7 @@
                 value="${address.street}" placeholder="(예)서초구 백암빌딩 비트캠프" required>
               </div>
             </div>
-            	<!-- 아이디 전달을 위한 hidden tag -->
+            	<!-- 테스트 아이디 전달을 위한 hidden tag -->
             	<input type="hidden" value="test" name="id">
           </div>
           <h4>내 주소록 불러오기</h4>
@@ -482,6 +482,8 @@
                 </tr>
               </table>
             </section>
+            </aside>
+            </div>
             </form>
             <!-- Featured Products Widget-->
            <!--  <section class="widget widget-featured-products border-0">

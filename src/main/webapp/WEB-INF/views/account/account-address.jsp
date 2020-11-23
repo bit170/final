@@ -335,8 +335,8 @@
 								src="resources/img/account/user-ava.jpg" alt="User">
 						</div> -->
 						<div class="user-data">
-							<h5>${member.name}</h5>
-							<span>${member.joindate}</span>
+							<h5><%-- ${member.name} --%></h5>
+							<span><%-- ${member.joindate} --%></span>
 						</div>
 					</div>
 				</aside>
@@ -351,7 +351,7 @@
 					<a class="list-group-item" href="account-orders.jsp">
 						<i class="icon-heart"></i>주문목록
 						<span class="badge badge-default badge-pill">3</span></a> 
-					<a class="list-group-item" href="getMember.do?id=${member.id}">
+					<a class="list-group-item" href="getMember.do<%-- ?id=${member.id} --%>">
 						<i class="icon-head"></i>프로필 수정</a> 
 					<a class="list-group-item with-badge active" href="account-address.jsp">
 						<i class="icon-map"></i>주소록</a> 
@@ -405,14 +405,14 @@
 					<div class="col-md-6">
 						<div class="form-group">
 							<label for="account-company">주소지명</label> 
-							<input class="form-control" type="text" name="a_name"
+							<input class="form-control" type="text" name="a_name" value="${address.a_name}"
 								placeholder="우리집" required>
 						</div>
 					</div>
 					<div class="col-md-6">
 						<div class="form-group">
 							<label for="account-country">지역</label> 
-							<select class="form-control" name="city">
+							<select class="form-control" name="city" value="${address.city}">
 								<option selected>지역 선택</option>
 								<option>서울특별시</option>
 								<option>부산광역시</option>
@@ -438,14 +438,15 @@
 						<div class="form-group">
 							<label for="account-zip">우편번호</label> 
 							<input class="form-control" type="text" id="account-zip" 
-							name="post" placeholder="(예)16074" required>
+							name="post" value="${address.post}" placeholder="(예)16074" required>
 						</div>
 					</div>
 					<div class="col-md-6">
 						<div class="form-group">
 							<label for="account-city">상세주소 입력</label> 
 							<input class="form-control" type="text" id="account-address"
-								name="street" placeholder="(예)서초구 백암빌딩 비트캠프" required>
+								name="street" value="${address.street}" placeholder="(예)서초구 백암빌딩 비트캠프" required>
+								<input type="hidden" name="id" value="test">
 						</div>
 						<div class="text-right">
 						<!--toast : 실제 성공 시에만 출력하기 ??? -->

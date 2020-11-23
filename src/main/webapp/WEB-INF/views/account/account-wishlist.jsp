@@ -1,12 +1,13 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+	pageEncoding="UTF-8" isELIgnored="false"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="utf-8">
-<title>마이페이지 - 팔로잉</title>
-<!-- SEO Meta Tags-->
+
+<meta charset="UTF-8">
+<title>마이페이지 - 위시리스트</title>
+<meta charset="UTF-8">
 <meta name="description"
 	content="Unishop - Universal E-Commerce Template">
 <meta name="keywords"
@@ -32,15 +33,18 @@
 	href="<c:url value="resources/css/styles.min.css" />">
 <!-- Modernizr-->
 <script src="resources/js/modernizr.min.js" /></script>
+<!-- JavaScript (jQuery) libraries, plugins and custom scripts-->
+<script src="<c:url value="resources/js/vendor.min.js" />"></script>
+<script src="<c:url value="resources/js/scripts.min.js" />"></script>
 
 </head>
 <!-- Body-->
 <body>
-	<!-- Navbar-->
-	<!-- Remove "navbar-sticky" class to make navigation bar scrollable with the page.-->
-	<header class="navbar navbar-sticky">
-		<!-- Site Branding-->
-		<!-- 브랜드 로고 -->
+ <!-- Navbar-->
+  <!-- Remove "navbar-sticky" class to make navigation bar scrollable with the page.-->
+  <header class="navbar navbar-sticky">
+    <!-- Site Branding-->
+    <!-- 브랜드 로고 -->
       <div class="site-branding"><a class="site-logo hidden-xs-down" href="index.jsp"><img src="resources/img/logo/logo.png" alt="Unishop"></a><a class="site-logo logo-sm hidden-sm-up" href="index.jsp"><img src="resources/img/logo/logo-sm.png" alt="Unishop"></a>
       </div>
       <!-- Main Navigation-->
@@ -241,18 +245,18 @@
 	<!-- Page Title-->
 	<div class="page-title">
 		<div class="container">
-			<h1>팔로우 작가</h1>
+			<h1>내 위시리스트</h1>
 			<ul class="breadcrumbs">
 				<li><a href="index.jsp">홈</a></li>
 				<li class="separator">&nbsp;/&nbsp;</li>
 				<li><a href="account-orders.jsp">나의 계정</a></li>
 				<li class="separator">&nbsp;/&nbsp;</li>
-				<li>Following</li>
+				<li>My Wishlist</li>
 			</ul>
 		</div>
 	</div>
 	<!-- Page Content-->
-	<div class="container padding-bottom-3x mb-1">
+	<div class="container padding-bottom-3x mb-2">
 		<div class="row">
 			<div class="col-lg-4">
 				<aside class="user-info-wrapper">
@@ -260,10 +264,10 @@
 						style="background-image: url(img/account/user-cover-img.jpg);">
 					</div>
 					<div class="user-info">
-						<!-- 사용자 사진 -->
+					<!-- 사용자 사진 -->
 						<!-- <div class="user-avatar">
 							<a class="edit-avatar" href="#"><i
-								class="material-icons edit"></i>수정하기</a><img
+								class="material-icons edit"></i>Edit</a><img
 								src="resources/img/account/user-ava.jpg" alt="User">
 						</div> -->
 						<div class="user-data">
@@ -274,23 +278,22 @@
 				</aside>
 				<!-- 마이페이지 목록 수정 (연희) -->
 				<nav class="list-group">
-					<a class="list-group-item" href="account-wishlist.jsp">
+					<a class="list-group-item with-badge active" href="account-wishlist.jsp">
 						<i class="icon-heart"></i>위시리스트
 						<span class="badge badge-default badge-pill">1</span></a> 
-					<a class="list-group-item with-badge active" href="account-follows.jsp">
+					<a class="list-group-item" href="account-follows.jsp">
 						<i class="icon-heart"></i>팔로우
 						<span class="badge badge-default badge-pill">3</span></a> 
 					<a class="list-group-item" href="account-orders.jsp">
 						<i class="icon-heart"></i>주문목록
 						<span class="badge badge-default badge-pill">3</span></a> 
-					<a class="list-group-item" href="getMember.do?id=${member.id}">
+					<a class="list-group-item" href="getMember.do?id=test">
 						<i class="icon-head"></i>프로필 수정</a> 
-					<a class="list-group-item" href="account-address.jsp">
+					<a class="list-group-item" href="getAddress.do?id=test">
 						<i class="icon-map"></i>주소록</a> 
 					<a class="list-group-item" href="account-myCanvas.jsp">
 						<i class="icon-head"></i>마이 캔버스</a>
 				</nav>
-
 			</div>
 			<div class="col-lg-8">
 				<div class="padding-top-2x mt-2 hidden-lg-up"></div>
@@ -299,9 +302,9 @@
 					<table class="table">
 						<thead>
 							<tr>
-								<th>팔로잉 하는 작가 목록</th>
+								<th>내 위시 작품목록</th>
 								<th class="text-center"><a
-									class="btn btn-sm btn-outline-danger" href="#">모든 팔로잉 취소</a></th>
+									class="btn btn-sm btn-outline-danger" href="#">위시리스트 비우기</a></th>
 							</tr>
 						</thead>
 						<tbody>
@@ -312,14 +315,15 @@
 											src="resources/img/shop/cart/01.jpg" alt="Product"></a>
 										<div class="product-info">
 											<h4 class="product-title">
-												<a href="shop-single.jsp">작가 이름</a>
+												<a href="shop-single.jsp">작품이름</a>
 											</h4>
-											<div class="text-lg text-medium text-muted">작가소개글이 있으면 넣고 너무길면 줄임말 표시 ...</div>
-											<!-- <div class="text-sm">
-												뭐넣을까? : 
-												<div class="d-inline text-muted">뭐넣지</div>
-											</div> -->
+											<div class="text-lg text-medium text-muted">$가격</div>
+											<div class="text-sm">
+												가능여부 :
+												<div class="d-inline text-success">구매 가능</div>
+											</div>
 										</div>
+									</div>
 								</td>
 								<td class="text-center"><a class="remove-from-cart"
 									href="#" data-toggle="tooltip" title="Remove item"><i
@@ -332,14 +336,13 @@
 				<div class="custom-control custom-checkbox">
 					<input class="custom-control-input" type="checkbox" id="inform_me"
 						checked> <label class="custom-control-label"
-						for="inform_me">Inform me when item from my wishlist is
-						available</label>
+						for="inform_me">해당 작품의 작가 새로운 작품 알림 받기</label>
 				</div>
 			</div>
 		</div>
 	</div>
-	<!-- Site Footer-->
-	<footer class="site-footer">
+<!-- Site Footer-->
+    <footer class="site-footer">
       <div class="column text-center">
         <p class="text-sm mb-4">Need Support? Call<span class="text-primary">&nbsp;010 - 4355 - 2504</span></p>
         <p class="text-xxs text-muted mb-0 mt-3">© All rights reserved. Made with <i class='material-icons favorite text-danger'></i> by 곽연희, 송희, 오서현, 이동희</p>
@@ -361,13 +364,10 @@
         </div>
       </div> -->
     </footer>
-	<!-- Back To Top Button-->
+    <!-- Back To Top Button-->
 	<a class="scroll-to-top-btn" href="#"><i
 		class="material-icons trending_flat"></i></a>
 	<!-- Backdrop-->
 	<div class="site-backdrop"></div>
-	<!-- JavaScript (jQuery) libraries, plugins and custom scripts-->
-	<script src="<c:url value="resources/js/vendor.min.js" />"></script>
-	<script src="<c:url value="resources/js/scripts.min.js" />"></script>
 </body>
 </html>
