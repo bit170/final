@@ -29,14 +29,18 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
     <script type="text/javascript">
     	$(document).ready(function () {
+    		var MainProduct;
 			getMainProduct();
 		})
 		function getMainProduct() {
 			$.ajax({
 				type : "GET",
 				url : '<c:url value="/getMainProduct.do"/>',
+				async : false,
 				success : function (data) {
-					console.log(data);
+					//console.log(data);
+					MainProduct = data;
+					console.log(MainProduct);
 				}
 			})
 		}
@@ -370,6 +374,7 @@
         <div class="col-xl-9 col-md-8">
           <div class="row">
             <!-- Item-->
+            <c:forEach items="" var="product" varStatus="i">
             <div class="col-xl-3 col-lg-4 col-sm-6">
               <div class="product-card mb-30">
                 <div class="product-card-thumb"> <span class="product-badge text-danger">Sale</span><a class="product-card-link" href="shop-single.jsp"></a><img src="resources/img/shop/th01.jpg" alt="Product">
@@ -381,13 +386,14 @@
                   </div>
                 </div>
                 <div class="product-card-details">
-                  <h3 class="product-card-title"><a href="shop-single.jsp">Storage Box</a></h3>
+                  <h3 class="product-card-title"><a href="shop-single.jsp">${product.id }</a></h3>
                   <h4 class="product-card-price">
                     <del>$49.00</del>$38.00
                   </h4>
                 </div>
               </div>
             </div>
+            </c:forEach>
           </div>
         </div>
         <!-- <div class="col-xl-3 col-md-4" style="display:flex" >

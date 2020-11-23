@@ -7,6 +7,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.SessionAttributes;
 
 import com.spring.biz.product.ProductService;
@@ -32,7 +33,9 @@ public class ProductController {
 //	}
 	
 	@RequestMapping(value = "/getMainProduct.do", method = RequestMethod.GET)
-	public 
+	public @ResponseBody List<ProductVO> getMainProduct() {
+		return productService.getMainProduct();
+	}
 	
 	@RequestMapping(value="/getProductList.do", method = RequestMethod.GET)
 	public String getBoardList(ProductVO vo, Model model) {
