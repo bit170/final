@@ -26,8 +26,20 @@
     <link id="mainStyles" rel="stylesheet" media="screen" href="resources/css/styles.min.css">
     <!-- Modernizr-->
     <script src="resources/js/modernizr.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
     <script type="text/javascript">
-    	
+    	$(document).ready(function () {
+			getMainProduct();
+		})
+		function getMainProduct() {
+			$.ajax({
+				type : "GET",
+				url : '<c:url value="/getMainProduct.do"/>',
+				success : function (data) {
+					console.log(data);
+				}
+			})
+		}
     </script>
   </head>
   <!-- Body-->

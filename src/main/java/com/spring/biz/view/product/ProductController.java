@@ -31,6 +31,9 @@ public class ProductController {
 //		return "shop-single.jsp";
 //	}
 	
+	@RequestMapping(value = "/getMainProduct.do", method = RequestMethod.GET)
+	public 
+	
 	@RequestMapping(value="/getProductList.do", method = RequestMethod.GET)
 	public String getBoardList(ProductVO vo, Model model) {
 		System.out.println(">>> 게시글 전체 목록 보여주기");
