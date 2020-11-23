@@ -55,7 +55,7 @@ public class MemberController {
 			MemberVO member = memberService.getMember(svo);
 			System.out.println(member.getName());
 			model.addAttribute("member", member);
-			return "/WEB-INF/main/index.jsp";
+			return "/WEB-INF/views/main/index.jsp";
 		} else {
 			System.out.println("> 로그인 실패~~~");
 			return "index.do";
