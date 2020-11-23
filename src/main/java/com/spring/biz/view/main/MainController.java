@@ -18,6 +18,7 @@ public class MainController {
 
 	@RequestMapping("/main.do")
 	public String main() {
-		return "/WEB-INF/main/index.jsp";
+    
+		return "/WEB-INF/views/main/index.jsp";
 	}
 }
