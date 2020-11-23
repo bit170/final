@@ -48,7 +48,7 @@
 						'<h3 class="product-card-title"><a href="shop-single.jsp">'+item.p_name+'</a></h3>'+
 						'<h4 class="product-card-price"><del>$49.00</del>$38.00</h4></div></div>';
 	                $("#MainProduct").append(Str);
-					})
+					});
 				}
 			})
 		}
