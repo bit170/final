@@ -312,11 +312,17 @@
 											src="resources/img/shop/cart/01.jpg" alt="Product"></a>
 										<div class="product-info">
 											<h4 class="product-title">
+<<<<<<< HEAD
 											<%-- <c:if test="${!empty follow}"> --%>
 											
 												<a href="shop-single.jsp">${artist.nickname}</a>
 											</h4>
 											<div class="text-lg text-medium text-muted">${artist.a_detail}</div>
+=======
+												<a href="shop-single.jsp">작가 이름</a>
+											</h4>
+											<div class="text-lg text-medium text-muted">작가소개글이 있으면 넣고 너무길면 줄임말 표시 ...</div>
+>>>>>>> branch 'yhg' of https://github.com/bit170/final.git
 											<!-- <div class="text-sm">
 												뭐넣을까? : 
 												<div class="d-inline text-muted">뭐넣지</div>

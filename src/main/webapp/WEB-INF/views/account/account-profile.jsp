@@ -346,6 +346,7 @@
 					<a class="list-group-item" href="account-follows.jsp">
 						<i class="icon-heart"></i>팔로우
 						<span class="badge badge-default badge-pill">3</span></a> 
+<<<<<<< HEAD
 					<a class="list-group-item" href="account-orders.jsp">
 						<i class="icon-heart"></i>주문목록
 						<span class="badge badge-default badge-pill">3</span></a> 
@@ -429,6 +430,72 @@
 							class="d-flex flex-wrap justify-content-between align-items-center">
 							<div class="custom-control custom-checkbox d-block">
 						
+=======
+					<a class="list-group-item with-badge active" href="account-orders.jsp">
+						<i class="icon-heart"></i>주문목록
+						<span class="badge badge-default badge-pill">3</span></a> 
+					<a class="list-group-item" href="getMember.do?id=${member.id}">
+						<i class="icon-head"></i>프로필 수정</a> 
+					<a class="list-group-item" href="account-address.jsp">
+						<i class="icon-map"></i>주소록</a> 
+					<a class="list-group-item" href="account-myCanvas.jsp">
+						<i class="icon-head"></i>마이 캔버스</a>
+				</nav>
+			</div>
+			<div class="col-lg-8">
+				<div class="padding-top-2x mt-2 hidden-lg-up"></div>
+				<!-- 수정 값 전송 -->
+				<form class="row" action="updateMember.do" method="post" enctype="multipart/form-data">
+					<div class="col-md-6">
+						<div class="form-group">
+							<label for="account-fn">이름</label> <input class="form-control" placeholder="이름"
+								type="text" id="account-name" name="name" value="${member.name}" required>
+						</div>
+					</div>
+					<div class="col-md-6">
+						<div class="form-group">
+							<label for="account-ln">닉네임</label> <input class="form-control" placeholder="닉네임"
+								type="text" id="account-nickname" name="nickname" value="${member.nickname}" required>
+						</div>
+					</div>
+					<div class="col-md-6">
+						<div class="form-group">
+							<label for="account-email">이메일</label> <input
+								class="form-control" type="email" placeholder="이메일 형식으로 입력하세요" 
+								id="account-email"  name="email" value="${member.email}" required>
+						</div>
+					</div>
+					<div class="col-md-6">
+						<div class="form-group">
+							<label for="account-phone">전화번호</label> <input
+								class="form-control" type="text" placeholder="전화번호" id="account-phone" name="phone" 
+								value="${member.phone}" required>
+						</div>
+					</div>
+					<div class="col-md-6">
+						<div class="form-group">
+							<label for="account-pass">새 비밀번호</label> <input
+								class="form-control" type="password" id="account-pass" placeholder="******">
+						</div>
+					</div>
+					<div class="col-md-6">
+						<div class="form-group">
+							<label for="account-confirm-pass">새 비밀번호 확인</label> <input
+								class="form-control" type="password" id="account-confirm-pass" placeholder="******"
+								 name="pwd">
+						</div>
+					</div>
+					<div class="col-12">
+						<hr class="mt-2 mb-3">
+						<div
+							class="d-flex flex-wrap justify-content-between align-items-center">
+							<div class="custom-control custom-checkbox d-block">
+								<!-- 체크 박스 삭제 -->
+								<!-- <input class="custom-control-input" type="checkbox"
+									id="subscribe_me" checked> <label
+									class="custom-control-label" for="subscribe_me">Subscribe
+									me to Newsletter</label> -->
+>>>>>>> branch 'yhg' of https://github.com/bit170/final.git
 							</div>
 							<button class="btn btn-primary margin-right-none" type="submit"
 								data-toast data-toast-position="topRight"

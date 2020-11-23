@@ -39,7 +39,6 @@ public class MemberController {
 	@RequestMapping(value = "/account.do", method = RequestMethod.GET)
 	public String account(Model model) {
 		System.out.println("account() 실행");
-		
 		return "redirect:account-wishlist.jsp";
 	}
 	
@@ -53,11 +52,13 @@ public class MemberController {
 		S_MemberVO sMember = memberService.getSMember(svo);
 		if (sMember != null) {
 			System.out.println("> 로그인 성공!!");
-			model.addAttribute("member", sMember);
-			return "index.jsp";
+			MemberVO member = memberService.getMember(svo);
+			System.out.println(member.getName());
+			model.addAttribute("member", member);
+			return "/WEB-INF/views/main/index.jsp";
 		} else {
 			System.out.println("> 로그인 실패~~~");
-			return "index.jsp";
+			return "index.do";
 		}
 	}
 	
@@ -83,15 +84,15 @@ public class MemberController {
 		return "redirect:index.jsp";
 	}	
 	
-	@RequestMapping("/getMember.do")
-	public String getMember(MemberVO vo, Model model) {
-		MemberVO member = memberService.getMember(vo);
-
-		model.addAttribute("member", member);
-		System.out.println("member : " + member);
-		
-		return "account-profile.jsp";
-	}
+//	@RequestMapping("/getMember.do")
+//	public String getMember(MemberVO vo, Model model) {
+//		MemberVO member = memberService.getMember(vo);
+//
+//		model.addAttribute("member", member);
+//		System.out.println("member : " + member);
+//		
+//		return "account-profile.jsp";
+//	}
 	
 	@RequestMapping("/updateMember.do")
 	public String updateMember(@ModelAttribute("member") MemberVO vo) {

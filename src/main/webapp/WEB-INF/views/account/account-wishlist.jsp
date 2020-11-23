@@ -278,6 +278,7 @@
 				</aside>
 				<!-- 마이페이지 목록 수정 (연희) -->
 				<nav class="list-group">
+<<<<<<< HEAD
 					<a class="list-group-item with-badge active" href="account-wishlist.jsp">
 						<i class="icon-heart"></i>위시리스트
 						<span class="badge badge-default badge-pill">1</span></a> 
@@ -305,6 +306,35 @@
 								<th>내 위시 작품목록</th>
 								<th class="text-center"><a
 									class="btn btn-sm btn-outline-danger" href="#">위시리스트 비우기</a></th>
+=======
+					<a class="list-group-item" href="account-wishlist.jsp">
+						<i class="icon-heart"></i>위시리스트
+						<span class="badge badge-default badge-pill">1</span></a> 
+					<a class="list-group-item" href="account-follows.jsp">
+						<i class="icon-heart"></i>팔로우
+						<span class="badge badge-default badge-pill">3</span></a> 
+					<a class="list-group-item with-badge active" href="account-orders.jsp">
+						<i class="icon-heart"></i>주문목록
+						<span class="badge badge-default badge-pill">3</span></a> 
+					<a class="list-group-item" href="getMember.do?id=${member.id}">
+						<i class="icon-head"></i>프로필 수정</a> 
+					<a class="list-group-item" href="account-address.jsp">
+						<i class="icon-map"></i>주소록</a> 
+					<a class="list-group-item" href="account-myCanvas.jsp">
+						<i class="icon-head"></i>마이 캔버스</a>
+				</nav>
+			</div>
+			<div class="col-lg-8">
+				<div class="padding-top-2x mt-2 hidden-lg-up"></div>
+				<!-- Wishlist Table-->
+				<div class="table-responsive wishlist-table margin-bottom-none">
+					<table class="table">
+						<thead>
+							<tr>
+								<th>내 위시 작품목록</th>
+								<th class="text-center"><a
+									class="btn btn-sm btn-outline-danger" href="#<!-- /deleteWishlist.do -->">위시리스트 비우기</a></th>
+>>>>>>> branch 'yhg' of https://github.com/bit170/final.git
 							</tr>
 						</thead>
 						<tbody>

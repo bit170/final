@@ -379,6 +379,7 @@
 						</div>
 					</div>
 					</div>
+<<<<<<< HEAD
 					<div class="d-flex justify-content-between">
 					<a class="btn btn-outline-secondary" href="account-myCanvas.jsp">마이페이지로</a>
 					<div class="text-center">
@@ -400,6 +401,29 @@
 									<a href="insert-canvas.jsp"><img
 										src="resources/img/gallery/th05.jpg" alt="Image">
 										<span class="caption">새 작품 추가하기</a></span>
+=======
+					<div class="d-flex justify-content-center">
+					<a class="btn btn-outline-secondary" href="account-myCanvas.jsp">마이페이지로</a>
+					<div class="text-center">
+						<a class="btn btn-primary" href="account-myCanvas.jsp">수정하기</a>
+					</div>
+				</div>
+					<hr class="margin-bottom-1x">
+					
+				<div class="padding-top-2x mt-2 hidden-lg-up"></div>
+				<form class="row">
+					<div class="col-md-10">
+						<div class="form-group">
+							<h4> 작품 추가 & 수정하기 </h4>
+							<hr class="margin-bottom-1x">
+							<div class="isotope-grid cols-2 grid-no-gap">
+								<div class="gutter-sizer"></div>
+								<div class="grid-sizer"></div>
+								<div class="grid-item gallery-item">
+									<a href="insert-canvas.jsp"><img
+										src="resources/img/gallery/th05.jpg" alt="Image"><span
+										class="caption">새 작품 추가하기</a></span>
+>>>>>>> branch 'yhg' of https://github.com/bit170/final.git
 								</div>
 								<div class="grid-item gallery-item">
 									<a href="update-canvas.jsp"><img
