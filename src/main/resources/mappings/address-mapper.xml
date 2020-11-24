@@ -7,20 +7,25 @@
 	<!-- update / select 문 프로필 수정 시 사용 ( 연희 ) -->
 	
 	<select id="getAddr" parameterType="address" resultType="address">
-		SELECT * FROM ADDR WHERE ID=#{id} AND NAME = #{name}
+		SELECT * FROM ADDRESS WHERE ID=#{id}
+		<if test="a_name != null">
+		 AND A_NAME = #{a_name}
+		</if>
 	</select>
 	
 	<insert id="insertAddr" parameterType="address">
-		INSERT INTO ADDR (A_NAME, CITY, POST, STREET, ID)
-		VALUES (#{a_name}, #{city}, #{post}, #{street})
-		WHERE ID =  #{id}
+		<!-- <if test=""></if> -->
+		INSERT INTO ADDRESS (A_NAME, POST, ADDRESS, EXTRA_ADDRESS, ID)
+		VALUES (#{a_name}, #{post}, #{address}, #{extra_address}, #{id})
 	</insert>
 	
 	<update id="updateAddr" parameterType="address">
-		UPDATE ADDR
-		SET A_NAME = #{a_name}, CITY = #{city}, POST = #{post},
-		STREET = #{street}
+		UPDATE ADDRESS
+		SET A_NAME = #{a_name}, ADDRESS = #{address}, POST = #{post}, EXTRA_ADDRESS = #{extra_address}
+		<!-- <choose> <when -->
 		WHERE ID = #{id}
+		
+		<!-- </choose> -->
 		
 	</update> 
 </mapper>

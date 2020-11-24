@@ -38,272 +38,240 @@
 </head>
 <!-- Body-->
 <body>
-	<!-- Navbar-->
-	<!-- Remove "navbar-sticky" class to make navigation bar scrollable with the page.-->
-	<header class="navbar navbar-sticky">
-		<!-- Site Branding-->
-		<!-- 브랜드 로고 -->
-		<div class="site-branding">
-			<a class="site-logo hidden-xs-down" href="index.jsp"><img
-				src="resources/img/logo/logo.png" alt="Unishop"></a><a
-				class="site-logo logo-sm hidden-sm-up" href="index.jsp"><img
-				src="resources/img/logo/logo-sm.png" alt="Unishop"></a>
-		</div>
-		<!-- Main Navigation-->
-		<!-- 상단 메뉴 -->
-		<nav class="site-menu">
-			<ul>
-				<!-- 해당 페이지에 class="active" 추가해줘야함-->
-				<li class="active"><a href="index.jsp"><span>Home</span></a></li>
-				<li><a href="artist-boxed-ft.jsp"><span>Artist</span></a></li>
-				<li><a href="shop-boxed-ls.jsp"><span>Shop</span></a>
-					<ul class="sub-menu">
-						<li><a href="shop-boxed-ls.jsp">수채화</a></li>
-						<li><a href="shop-boxed-ls.jsp">유화</a></li>
-						<li><a href="shop-boxed-ls.jsp">수묵화</a></li>
-						<li><a href="shop-boxed-ls.jsp">크로키</a></li>
-						<li><a href="shop-boxed-ls.jsp">기타</a></li>
-					</ul></li>
-				<li><a href="#"><span>Pages</span></a>
-					<ul class="sub-menu">
-						<li><a href="about.jsp">About Us</a></li>
-						<li><a href="contacts.jsp">Contacts</a></li>
-						<li><a href="faq.jsp">Help / FAQ</a></li>
-						<li><a href="404.jsp">404 Not Found</a></li>
-						<li><a class="text-danger" href="docs/dev-setup.jsp">Documentation</a></li>
-					</ul></li>
-			</ul>
-		</nav>
-		<!-- Toolbar-->
-		<!-- 메뉴바 우측 아이콘 -->
-		<div class="toolbar">
-			<div class="inner">
-				<a class="toolbar-toggle mobile-menu-toggle" href="#mobileMenu"><i
-					class="material-icons menu"></i></a><a
-					class="toolbar-toggle search-toggle" href="#search"><i
-					class="material-icons search"></i></a><a class="toolbar-toggle"
-					href="#account"><i class="material-icons person"></i></a><a
-					class="toolbar-toggle" href="#cart"><i><span
-						class="material-icons shopping_basket"></span> <!-- 조건문 넣기 --> <span
-						class="count">합</span></i></a>
-			</div>
-			<!-- Toolbar Dropdown-->
-			<div class="toolbar-dropdown">
-				<!-- Mobile Menu Section-->
-				<!-- 모바일 돋보기 -->
-				<div class="toolbar-section" id="mobileMenu">
-					<!-- Search Box-->
-					<form class="input-group form-group" method="get">
-						<span class="input-group-btn">
-							<button type="submit">
-								<i class="material-icons search"></i>
-							</button>
-						</span> <input class="form-control" type="search"
-							placeholder="태그/작품/작가 검색">
-					</form>
-					<!-- Slideable (Mobile) Menu-->
-					<nav class="slideable-menu mt-4">
-						<ul class="menu">
-							<!-- 페이지에 active 클래스 추가해줘야함 -->
-							<li class="has-children active"><span><a
-									href="index.jsp"><span>Home</span></a></span></li>
-							<li><span><a href="artist-boxed-ft.jsp "><span>Artist</span></a></span></li>
-							<li class="has-children"><span><a
-									href="shop-boxed-ls.jsp"><span>Shop</span></a><span
-									class="sub-menu-toggle"></span></span>
-								<ul class="slideable-submenu">
-									<li><a href="shop-categories.jsp">수채화</a></li>
-									<li><a href="shop-categories.jsp">유화</a></li>
-									<li><a href="shop-categories.jsp">수묵화</a></li>
-									<li><a href="shop-categories.jsp">크로키</a></li>
-									<li><a href="shop-categories.jsp">기타</a></li>
-								</ul></li>
-							<li class="has-children"><span><a href="#">Pages</a><span
-									class="sub-menu-toggle"></span></span>
-								<ul class="slideable-submenu">
-									<li><a href="about.jsp">About Us</a></li>
-									<li><a href="contacts.jsp">Contacts</a></li>
-									<li><a href="faq.jsp">Help / FAQ</a></li>
-									<li><a href="404.jsp">404 Not Found</a></li>
-									<li><a class="text-danger" href="docs/dev-setup.jsp">Documentation</a></li>
-								</ul></li>
-						</ul>
-					</nav>
-				</div>
-				<!-- Search Section-->
-				<div class="toolbar-section" id="search">
-					<form class="search-form mb-2" method="get">
-						<input type="search" placeholder="태그/작가/작품을 검색"><i
-							class="material-icons search"></i>
-					</form>
-					<!-- 검색 결과 -->
-					<!-- Products-->
-					<div class="widget widget-featured-products">
-						<h3 class="widget-title">Found in Products</h3>
-						<!-- Entry-->
-						<!-- 검색결과 주르륵 -->
-						<div class="entry">
-							<div class="entry-thumb">
-								<a href="shop-single.jsp"><img
-									src="resources/img/shop/widget/01.png" alt="Product"></a>
-							</div>
-							<div class="entry-content">
-								<h4 class="entry-title">
-									<a href="shop-single.jsp">ㅇㅇ <span class='text-highlighted'>검색어와
-											일치하는 부분</span></a>
-								</h4>
-								<span class="entry-meta">가격</span>
-							</div>
-						</div>
-					</div>
-					<!-- 작가결과-->
-					<div class="widget widget-featured-products">
-						<h3 class="widget-title">Found in Artist</h3>
-						<!-- Entry-->
-						<div class="entry">
-							<div class="entry-thumb">
-								<a href="작가상세"><img src="resources/img/blog/widget/01.jpg"
-									alt="Post"></a>
-							</div>
-							<div class="entry-content">
-								<h4 class="entry-title">
-									<a href="작가상세"><span class='text-highlighted'>검색어
-											일치부분</span> 블라블라</a>
-								</h4>
-								<span class="entry-meta">아이디?</span>
-							</div>
-						</div>
-					</div>
-				</div>
-				<!-- Account Section-->
-				<!-- 사람아이콘 -->
+    <!-- Navbar-->
+    <!-- Remove "navbar-sticky" class to make navigation bar scrollable with the page.-->
+    <header class="navbar navbar-sticky">
+      <!-- Site Branding-->
+      <!-- 브랜드 로고 -->
+      <div class="site-branding"><a class="site-logo hidden-xs-down" href="main.do"><img src="resources/img/logo/logo.png" alt="Unishop"></a><a class="site-logo logo-sm hidden-sm-up" href="main.do"><img src="resources/img/logo/logo-sm.png" alt="Unishop"></a>
+      </div>
+      <!-- Main Navigation-->
+      <!-- 상단 메뉴 -->
+      <nav class="site-menu">
+        <ul>
+          <!-- 해당 페이지에 class="active" 추가해줘야함-->
+          <li class="active"><a href="main.do"><span>Home</span></a>
+          </li>
+          <li><a href="artist-boxed-ft.jsp"><span>Artist</span></a></li>
+          <li><a href="getProductList.do"><span>Shop</span></a>
+            <ul class="sub-menu">
+                <li><a href="shop-boxed-ls.jsp">수채화</a></li>
+                <li><a href="shop-boxed-ls.jsp">유화</a></li>
+                <li><a href="shop-boxed-ls.jsp">수묵화</a></li>
+                <li><a href="shop-boxed-ls.jsp">크로키</a></li>
+                <li><a href="shop-boxed-ls.jsp">기타</a></li>
+            </ul>
+          </li>
+          <li><a href="#"><span>Pages</span></a>
+            <ul class="sub-menu">
+                <li><a href="about.jsp">About Us</a></li>
+                <li><a href="contacts.jsp">Contacts</a></li>
+                <li><a href="faq.jsp">Help / FAQ</a></li>
+                <li><a href="404.jsp">404 Not Found</a></li>
+              <li><a class="text-danger" href="docs/dev-setup.jsp">Documentation</a></li>
+            </ul>
+          </li>
+        </ul>
+      </nav>
+      <!-- Toolbar-->
+      <!-- 메뉴바 우측 아이콘 -->
+      <div class="toolbar">
+        <div class="inner"><a class="toolbar-toggle mobile-menu-toggle" href="#mobileMenu"><i class="material-icons menu"></i></a><a class="toolbar-toggle search-toggle" href="#search"><i class="material-icons search"></i></a><a class="toolbar-toggle" href="#account"><i class="material-icons person"></i></a><a class="toolbar-toggle" href="#cart"><i><span class="material-icons shopping_basket"></span>
+          <!-- 조건문 넣기 -->
+          <span class="count">합</span></i></a></div>
+        <!-- Toolbar Dropdown-->
+        <div class="toolbar-dropdown">
+          <!-- Mobile Menu Section-->
+          <!-- 모바일 돋보기 -->
+          <div class="toolbar-section" id="mobileMenu">
+            <!-- Search Box-->
+            <form class="input-group form-group" method="get"><span class="input-group-btn">
+                <button type="submit"><i class="material-icons search"></i></button></span>
+              <input class="form-control" type="search" placeholder="태그/작품/작가 검색">
+            </form>
+            <!-- Slideable (Mobile) Menu-->
+            <nav class="slideable-menu mt-4">
+              <ul class="menu">
+                <!-- 페이지에 active 클래스 추가해줘야함 -->
+                <li class="has-children active"><span><a href="main.do"><span>Home</span></a></span>
+                </li>
+                <li ><span><a href="artist-boxed-ft.jsp "><span>Artist</span></a></span></li>
+                <li class="has-children"><span><a href="shop-boxed-ls.jsp"><span>Shop</span></a><span class="sub-menu-toggle"></span></span>
+                  <ul class="slideable-submenu">
+                      <li><a href="shop-categories.jsp">수채화</a></li>
+                      <li><a href="shop-categories.jsp">유화</a></li>
+                      <li><a href="shop-categories.jsp">수묵화</a></li>
+                      <li><a href="shop-categories.jsp">크로키</a></li>
+                      <li><a href="shop-categories.jsp">기타</a></li>
+                  </ul>
+                </li>
+                <li class="has-children"><span><a href="#">Pages</a><span class="sub-menu-toggle"></span></span>
+                  <ul class="slideable-submenu">
+                      <li><a href="about.jsp">About Us</a></li>
+                      <li><a href="contacts.jsp">Contacts</a></li>
+                      <li><a href="faq.jsp">Help / FAQ</a></li>
+                      <li><a href="404.jsp">404 Not Found</a></li>
+                    <li><a class="text-danger" href="docs/dev-setup.jsp">Documentation</a></li>
+                  </ul>
+                </li>
+              </ul>
+            </nav>
+          </div>
+          <!-- Search Section-->
+          <div class="toolbar-section" id="search">
+            <form class="search-form mb-2" method="get">
+              <input type="search" placeholder="태그/작가/작품을 검색"><i class="material-icons search"></i>
+            </form>
+            <!-- 검색 결과 -->
+            <!-- Products-->
+            <div class="widget widget-featured-products">
+              <h3 class="widget-title">Found in Products</h3>
+              <!-- Entry-->
+              <!-- 검색결과 주르륵 -->
+              <div class="entry">
+                <div class="entry-thumb"><a href="shop-single.jsp"><img src="resources/img/shop/widget/01.png" alt="Product"></a></div>
+                <div class="entry-content">
+                  <h4 class="entry-title"><a href="shop-single.jsp">ㅇㅇ <span class='text-highlighted'>검색어와 일치하는 부분</span></a></h4><span class="entry-meta">가격</span>
+                </div>
+              </div>
+            </div>
+            <!-- 작가결과-->
+            <div class="widget widget-featured-products">
+              <h3 class="widget-title">Found in Artist</h3>
+              <!-- Entry-->
+              <div class="entry">
+                <div class="entry-thumb"><a href="작가상세"><img src="resources/img/blog/widget/01.jpg" alt="Post"></a></div>
+                <div class="entry-content">
+                  <h4 class="entry-title"><a href="작가상세"><span class='text-highlighted'>검색어 일치부분</span> 블라블라</a></h4><span class="entry-meta">아이디?</span>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- Account Section-->
+          <!-- 사람아이콘 -->
 
-				<!-- 로그인 후 로그아웃, 마이페이지버튼 -->
-				<!-- <div class="toolbar-section" id="account">
-            <p class="text-muted text-sm mt-4"><h4>뫄뫄뫄<h4></p>
-            <p class="text-muted text-sm mt-4">환영합니다</p>
-            <button class="btn btn-primary btn-block" type="submit">Log Out</button>
-            <button class="btn btn-primary btn-block" type="submit"><a href="account-wishlist.jsp">My page</button>
-          </div> -->
-				<div class="toolbar-section" id="account">
-					<ul class="nav nav-tabs nav-justified" role="tablist">
-						<li class="nav-item"><a class="nav-link active" href="#login"
-							data-toggle="tab" role="tab">Log In</a></li>
-						<li class="nav-item"><a class="nav-link" href="#signup"
-							data-toggle="tab" role="tab">Sign Up</a></li>
-					</ul>
-					<div class="tab-content">
-						<div class="tab-pane fade show active" id="login" role="tabpanel">
-							<!-- 로그인 폼 -->
-							<form autocomplete="off" id="login-form">
-								<div class="form-group input-group">
-									<input class="form-control" type="text" placeholder="Id"
-										required><span class="input-group-addon"><i
-										class="material-icons mail"></i></span>
-								</div>
-								<div class="form-group input-group">
-									<input class="form-control" type="password"
-										placeholder="Password" required><span
-										class="input-group-addon"><i
-										class="material-icons lock"></i></span>
-								</div>
-								<!-- 로그인 유지 -> 어떻게? -->
-								<div class="custom-control custom-checkbox form-group">
-									<input class="custom-control-input" type="checkbox" id="logged"
-										checked> <label class="custom-control-label"
-										for="logged">Keep me logged in</label>
-								</div>
-								<!-- 로그인 버튼 -->
-								<button class="btn btn-primary btn-block" type="submit">Log
-									In</button>
-							</form>
-						</div>
-						<div class="tab-pane fade" id="signup" role="tabpanel">
-							<form autocomplete="off" id="signup-form">
-								<div class="form-group">
-									<input class="form-control" type="text" placeholder="Name"
-										required>
-								</div>
-								<div class="form-group">
-									<input class="form-control" type="email" placeholder="Email"
-										required>
-								</div>
-								<div class="form-group">
-									<input class="form-control" type="text" placeholder="Id"
-										required> 중복확인하고 싶은데에..
-								</div>
-								<div class="form-group">
-									<input class="form-control" type="password"
-										placeholder="Password" required>
-								</div>
-								<div class="form-group">
-									<input class="form-control" type="password"
-										placeholder="Confirm Password" required>
-								</div>
-								<button class="btn btn-primary btn-block" type="submit">Sign
-									Up</button>
-								<p class="text-muted text-sm mt-4">OR sign up with your
-									social account</p>
-								<a class="media-btn media-facebook" href="#"><i
-									class="socicon-facebook"></i><span>Signup with Facebook</span></a><a
-									class="media-btn media-google" href="#"><i
-									class="socicon-googleplus"></i><span>Signup with Google+</span></a><a
-									class="media-btn media-twitter" href="#"><i
-									class="socicon-twitter"></i><span>Signup with Twitter</span></a>
-							</form>
-						</div>
-					</div>
-				</div>
-				<!-- Shopping Cart Section-->
-				<div class="toolbar-section" id="cart">
-					<div class="table-responsive shopping-cart mb-0">
-						<table class="table">
-							<thead>
-								<tr>
-									<th colspan="2">
-										<div class="d-flex justify-content-between align-items-center">
-											Products<a class="navi-link text-uppercase" href="cart.jsp"><span
-												class="text-xxs">Expand Cart</span><i
-												class="material-icons keyboard_arrow_right"></i></a>
-										</div>
-									</th>
-								</tr>
-							</thead>
-							<tbody>
-								<tr>
-									<td>
-										<div class="product-item">
-											<a class="product-thumb" href="shop-single.jsp"><img
-												src="resources/img/shop/cart/01.jpg" alt="Product"></a>
-											<div class="product-info">
-												<h4 class="product-title">
-													<a href="shop-single.jsp">작품이름</a>
-												</h4>
-												<span><em>Price:</em> 가격</span>
-											</div>
-										</div>
-									</td>
-									<!-- 삭제처리는 어떻게? 장바구니 품목을 디비에 저장하지 않으면 리스트형태로 세션이나 어딘가에 보관? 그럼 삭제버튼 클릭시 리스트에서 remove하면 될까? -->
-									<td class="text-center"><a class="remove-from-cart"
-										href="삭제처리"><i class="material-icons icon_close"></i></a></td>
-								</tr>
-							</tbody>
-						</table>
-					</div>
-					<!-- 장바구니 합계 -->
-					<hr class="mb-3">
-					<div
-						class="d-flex flex-wrap justify-content-between align-items-center">
-						<div class="pr-2 py-1 text-sm">
-							Subtotal: <span class='text-dark text-medium'>장바구니 합계 값</span>
-						</div>
-						<a class="btn btn-sm btn-success mb-0 mr-0"
-							href="checkout-address.jsp">Checkout</a>
-					</div>
-				</div>
-			</div>
-		</div>
-	</header>
+          <!-- 로그인 후 로그아웃, 마이페이지버튼 -->
+          <c:if test="${!empty member}">
+	         <div class="toolbar-section" id="account">
+	         <form action="logout.do" method="post">
+	            <p class="text-muted text-sm mt-4"><h4>${member.id }<span>님</span><h4></p>
+	            <p class="text-muted text-sm mt-4">환영합니다</p>
+	            <button class="btn btn-primary" type="submit">Log Out</button> 
+	            <!-- <a class="btn btn-primary mx-0 scale-up delay-1" href="shop-boxed-ls.jsp">Log Out</a> -->
+	            <!-- <button class="btn btn-primary btn-block" type="submit"><a href="account-wishlist.jsp">My page</button> -->
+	            <a class="btn btn-primary mx-0 scale-up delay-1" href="account.do">My page</a>
+	          </form>  
+	         </div>
+          </c:if>
+          <c:if test="${empty member}">
+          
+          <div class="toolbar-section" id="account">
+            <ul class="nav nav-tabs nav-justified" role="tablist">
+              <li class="nav-item"><a class="nav-link active" href="#login" data-toggle="tab" role="tab">Log In</a></li>
+              <li class="nav-item"><a class="nav-link" href="#signup" data-toggle="tab" role="tab">Sign Up</a></li>
+            </ul>
+            <div class="tab-content">
+              <div class="tab-pane fade show active" id="login" role="tabpanel">
+                <!-- 로그인 폼 -->
+                <form action="login.do" method="post" autocomplete="off" id="login-form">
+                  <div class="form-group input-group">
+                    <input class="form-control" type="text" placeholder="Id" name="id" required><span class="input-group-addon"><i class="material-icons mail"></i></span>
+                  </div>
+                  <div class="form-group input-group">
+                    <input class="form-control" type="password" placeholder="Password" name="pwd" required><span class="input-group-addon"><i class="material-icons lock"></i></span>
+                  </div>
+                  <!-- 로그인 유지 -> 어떻게? -->
+                  <div class="custom-control custom-checkbox form-group">
+                    <input class="custom-control-input" type="checkbox" id="logged" checked>
+                    <label class="custom-control-label" for="logged">Keep me logged in</label>
+                  </div>
+                  <!-- 로그인 버튼 -->
+                  <button class="btn btn-primary btn-block" type="submit">Log In</button>
+                </form>
+              </div>
+              <div class="tab-pane fade" id="signup" role="tabpanel">
+                <form method="post" autocomplete="off" id="signup-form">
+                  <div class="form-group">
+                    <input class="form-control" type="text" placeholder="Name" name="name" required>
+                  </div>
+                  <div class="form-group">
+                    <input class="form-control" type="email" placeholder="Email" name="email" required>
+                  </div>
+                  <div class="form-group">
+                    <input class="form-control" type="text" placeholder="Phone" name="phone" required>
+                  </div>
+              	<div class="form-group">
+                    <div style="display:flex">
+                      <input class="form-control" type="text" placeholder="Id" name="id" required style="max-width:80%">
+                      <a class="btn btn-primary" style="margin:0;margin-left:2%" href="/idCheck.do" >중복확인</a>
+                      
+                      <%-- <a class="btn btn-primary" style="margin:0;margin-left:2%" href="idCheck.jsp?id=<%= %>">중복확인</a> --%>
+                      <!-- <script type="text/javascript">
+                         var id = $(document).getElementByName("id").value();
+                         function idCheck() {
+                        	alert(id); 
+                     		location.href = 'idCheck.jsp?id='+id;
+                  		 }
+                      </script> -->
+                    </div>
+                    <!-- <script type="text/javascript">
+                       function idCheck() {
+                          var id = document.getbyName("id").value;
+                          var href = "idCheck.jsp?id="+id;
+                     document.location.href = href;
+                  }
+                    </script> -->
+                  </div>
+                  <div class="form-group">
+                    <input class="form-control" type="password" placeholder="Password" required>
+                  </div>
+                  <div class="form-group">
+                    <input class="form-control" type="password" placeholder="Confirm Password" name="pwd" required>
+                  </div>
+                  <div class="form-group">
+                    <input class="form-control" type="text" placeholder="NickName" name="nickname" required>
+                  </div>
+                  <button class="btn btn-primary btn-block" type="submit">Sign Up</button>
+                </form>
+              </div>
+            </div>
+          </div>
+          </c:if>
+          <!-- Shopping Cart Section-->
+          <div class="toolbar-section" id="cart">
+            <div class="table-responsive shopping-cart mb-0">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th colspan="2">
+                      <div class="d-flex justify-content-between align-items-center">Products<a class="navi-link text-uppercase" href="cart.jsp"><span class="text-xxs">Expand Cart</span><i class="material-icons keyboard_arrow_right"></i></a></div>
+                    </th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>
+                      <div class="product-item"><a class="product-thumb" href="shop-single.jsp"><img src="resources/img/shop/cart/01.jpg" alt="Product"></a>
+                        <div class="product-info">
+                          <h4 class="product-title"><a href="shop-single.jsp">작품이름</a></h4><span><em>Price:</em> 가격</span>
+                        </div>
+                      </div>
+                    </td>
+                    <!-- 삭제처리는 어떻게? 장바구니 품목을 디비에 저장하지 않으면 리스트형태로 세션이나 어딘가에 보관? 그럼 삭제버튼 클릭시 리스트에서 remove하면 될까? -->
+                    <td class="text-center"><a class="remove-from-cart" href="삭제처리"><i class="material-icons icon_close"></i></a></td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <!-- 장바구니 합계 -->
+            <hr class="mb-3">
+            <div class="d-flex flex-wrap justify-content-between align-items-center">
+              <div class="pr-2 py-1 text-sm">Subtotal: <span class='text-dark text-medium'>장바구니 합계 값</span></div><a class="btn btn-sm btn-success mb-0 mr-0" href="checkout.do">Checkout</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </header>
 	<!-- Page Title-->
 	<div class="page-title">
 		<div class="container">
@@ -360,7 +328,7 @@
 			<div class="col-lg-8">
 				<div class="padding-top-2x mt-2 hidden-lg-up"></div>
 				<!-- 수정 값 전송 -->
-				<form class="row" action="updateMember.do" method="post" enctype="multipart/form-data">
+				<form name="profile" class="row" action="updateMember.do" method="post" enctype="multipart/form-data">
 					<div class="col-md-6">
 						<div class="form-group">
 							<label for="account-fn">이름</label> <input class="form-control" placeholder="이름"
@@ -391,38 +359,17 @@
 					<div class="col-md-6">
 						<div class="form-group">
 							<label for="account-pass">비밀번호 입력</label> <input
-								class="form-control" type="password" id="account-pwd">
+								class="form-control" type="password" id="account-pwd" name="pwd1">
 						</div>
 					</div>
 					<div class="col-md-6">
 						<div class="form-group">
 							<label for="account-confirm-pass">비밀번호 확인</label> <input
 								class="form-control" type="password" id="account-pwd2"
-								 name="pwd" onchange="isSame()" />&nbsp;&nbsp;<span id="same"></span>
+								 name="pwd2" /><!-- &nbsp;&nbsp;<span id="same"></span> -->
 						</div>
 					</div>
 					
-					<!-- 새 비밀번호 입력 시 바말번호 확인과 값이 같은지 확인 후 변경하기 ??? -->
-					<script>
-						function isSame() {
-							var pwd1 = document.twin.account-pwd.value;
-							var pwd2 = document.twin.account-pwd2.value;
-							if(pwd1.length < 6 || pwd1.length > 16){
-								window.alert('비밀번호는 6글자 이상, 16글자 이하만 가능합니다.');
-								document.getElementById('pwd1').value = document.getElementById('pwd2').value='';
-								document.getElementById('same').innerHTML='';
-								}
-							if(document.getElementById('pwd1').value!='' && document.getElementById('pwd2').value!=''){
-								if(document.getElementById('pwd1').value == document.getElementById('pwd2').value {
-									document.getElementById('same').innerHTML='비밀번호가 일치합니다.';
-									document.getElementById('same').style.color='gray';
-									}else{
-										document.getElementById('same').innerHTML='비밀번호가 일치하지 않습니다.';
-										document.getElementById('same').style.color='darkred';
-										}
-								} 
-							}
-					</script>
 					<div class="col-12">
 						<hr class="mt-2 mb-3">
 						<div
@@ -430,11 +377,27 @@
 							<div class="custom-control custom-checkbox d-block">
 					
 							</div>
-							<button class="btn btn-primary margin-right-none" type="submit"
-								data-toast data-toast-position="topRight"
-								data-toast-type="success" data-toast-icon="icon-circle-check"
-								data-toast-title="성공!"
-								data-toast-message="회원정보 수정완료!">회원정보 업데이트</button>
+							<input class="btn btn-primary margin-right-none" type="button" onClick="pwCheck()" value="회원정보 업데이트" />
+					<!-- 새 비밀번호 입력 시 바말번호 확인과 값이 같은지 확인 후 변경하기 ??? -->
+					<script type="text/javascript">
+						function pwCheck(){
+							var pwCheck = document.profile;
+							var pwd1 = pwCheck.pwd1.value;
+							var pwd2 = pwCheck.pwd2.value;
+
+							if ((pwd1.length < 4 || pwd2.length < 4) || 
+								(pwd1 == "" || pwd2 == "")) {
+								alert("비밀번호는 최소 4자리 입력해주세요.");
+								}else if{
+								(pwd1 != pwd2){
+									alert("비밀번호가 다릅니다.");
+									}else{
+										pwCheck.method = "post";
+										pwCheck.action = "updateMember.do";
+										pwCheck.submit();
+										}
+							}
+					</script>
 						</div>
 					</div>
 				</form>

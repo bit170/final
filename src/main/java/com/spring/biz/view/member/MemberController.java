@@ -58,7 +58,7 @@ public class MemberController {
 			return "/WEB-INF/views/main/index.jsp";
 		} else {
 			System.out.println("> 로그인 실패~~~");
-			return "index.do";
+			return "main.do";
 		}
 	}
 	

@@ -9,19 +9,19 @@
 	</select> -->
 	
 	<select id="getSMember" parameterType="svo" resultType="svo" >
-		select * from test where id=#{id} and pwd=#{pwd}
+		select * from member where id=#{id} and pwd=#{pwd}
 	</select>
 	
 	<!-- update / select 문 프로필 수정 시 사용 ( 연희 ) -->
 	<update id="updateMember" parameterType="member">
-		UPDATE test
+		UPDATE MEMBER
 		SET PWD = #{pwd}, NAME = #{name}, PHONE = #{phone}, 
 		EMAIL = #{email}, NICKNAME = #{nickname}
 		WHERE ID = #{id}
 	</update>
 	
 	<select id="getMember" parameterType="svo" resultType="member">
-		SELECT * FROM test WHERE ID=#{id}
+		SELECT * FROM MEMBER WHERE ID=#{id}
 	</select>
 	<!-- <insert id="insertBoard" parameterType="board">
 		INSERT INTO BOARD (SEQ, TITLE, WRITER, CONTENT)

@@ -268,7 +268,7 @@
 						<div class="form-group">
 							<label for="checkout-ln">* 작품 가격</label> <input
 								class="form-control" type="text" id="checkout-ln"
-								data-type="currency" placeholder="$100,000">
+								data-type="currency" placeholder="₩100,000">
 						</div>
 					</div>
 				</div>
