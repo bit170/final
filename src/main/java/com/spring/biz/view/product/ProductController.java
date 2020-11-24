@@ -32,10 +32,18 @@ public class ProductController {
 //		return "shop-single.jsp";
 //	}
 	
-	@RequestMapping(value = "/getMainProduct.do", method = RequestMethod.GET)
-	public @ResponseBody List<ProductVO> getMainProduct() {
-		return productService.getMainProduct();
-	}
+//	@RequestMapping(value = "/getMainProduct.do", method = RequestMethod.GET)
+//	public @ResponseBody List<ProductVO> getMainProduct() {
+//		return productService.getMainProduct();
+//	}
+	
+//	@RequestMapping(value = "/getMainProduct.do", method = RequestMethod.GET)
+//	public String getMainProduct(Model model) {
+//		List<ProductVO> list = productService.getMainProduct();
+//		model.addAttribute("MainProduct", list);
+//		System.out.println(model.containsAttribute("MainProduct"));
+//		return "/WEB-INF/views/main/index.jsp";
+//	}
 	
 	@RequestMapping(value="/getProductList.do", method = RequestMethod.GET)
 	public String getBoardList(ProductVO vo, Model model) {
