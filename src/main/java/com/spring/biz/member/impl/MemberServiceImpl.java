@@ -48,10 +48,4 @@ public class MemberServiceImpl implements MemberService {
 		return memberDAO.getMember(svo);
 	}
 
-	@Override
-	public MemberVO getMember(MemberVO vo) {
-		System.out.println("memberService.getMember(svo) 실행");
-		return memberDAO.getMember(vo);
-	}
-
 }

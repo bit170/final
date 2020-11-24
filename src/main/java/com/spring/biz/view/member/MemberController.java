@@ -40,6 +40,7 @@ public class MemberController {
 	public String account(Model model) {
 		System.out.println("account() 실행");
 		return "/WEB-INF/views/account/account-wishlist.jsp";
+
 	}
 	
 	@RequestMapping(value="/login.do", method = RequestMethod.POST)
