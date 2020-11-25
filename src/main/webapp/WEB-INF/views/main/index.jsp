@@ -2,6 +2,7 @@
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -27,11 +28,47 @@
     <!-- Modernizr-->
     <script src="resources/js/modernizr.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
-    <!-- <script type="text/javascript">
+    <script type="text/javascript">
+    	
     	$(document).ready(function () {
-			getMainProduct();
-		})
-		function getMainProduct() {
+    		 $("#signup_id").blur(function () {
+    			 var signup_id = $("#signup_id").val();
+ 				console.log(signup_id);
+    			 checkId(signup_id);
+    		 });
+    	/* 아이디 중복체크 == 성공!!
+    		리턴값에 따른 후처리 필요	
+    	*/	 
+    		 function checkId(signup_id) {
+ 				$.ajax({
+ 					type : 'POST',
+ 					url : '${pageContext.request.contextPath}/idCheck.do',
+ 					data : {"signup_id" : signup_id}
+ 				}).done(function (data) {
+ 					alert(data);
+					console.log(data);
+				}).fail(function (request,status,error) {
+					alert("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
+				})
+			}
+		});
+	    /* function idCheck() {
+	    	 $("#signup_id").blur(function () { 
+				var signup_id = $("#signup_id").val();
+				console.log(signup_id);
+				$.ajax({
+					url : '/idCheck.do',
+					type : 'post',
+					dataType : 'json',
+					data : {signup_id : signup_id},
+					async : false,
+					success : function (data) {
+						alert(data);
+					}
+				});
+			 }); 
+		} */
+		/* function getMainProduct() {
     		
 			$.ajax({
 				type : "GET",
@@ -39,7 +76,7 @@
 				async : false,
 				success : function (data) {
 					console.log(data);
-					/* $.each(data,function(i,item){
+					 $.each(data,function(i,item){
 						var Str = '<div class="col-xl-3 col-lg-4 col-sm-6">'+
 						'<div class="product-card-thumb"> <span class="product-badge text-danger">Sale</span><a class="product-card-link" href="shop-single.jsp"></a><img src="resources/img/shop/th01.jpg" alt="Product">'+
 						'<div class="product-card-buttons">'+
@@ -49,14 +86,14 @@
 						'<h3 class="product-card-title"><a href="shop-single.jsp">'+item.p_name+'</a></h3>'+
 						'<h4 class="product-card-price"><del>$49.00</del>$38.00</h4></div></div>';
 	                $("#MainProduct").append(Str); 
-					});*/
+					});
 					
 				}
-			});
-			/* $("#MainProduct").trigger('create'); */
+			}); 
+			 $("#MainProduct").trigger('create'); 
 			
-		}
-    </script> -->
+		}  */
+    </script>
   </head>
   <!-- Body-->
   <body>
@@ -225,11 +262,13 @@
                     <input class="form-control" type="text" placeholder="Phone" name="phone" required>
                   </div>
               	<div class="form-group">
-                    <div style="display:flex">
-                      <input class="form-control" type="text" placeholder="Id" name="id" required style="max-width:80%">
-                      <a class="btn btn-primary" style="margin:0;margin-left:2%" href="/idCheck.do" >중복확인</a>
+                    <input class="form-control" type="text" placeholder="Id" id="signup_id" name="id" required>
+                    <div></div>
+                    <%-- <div style="display:flex">
+                      <input class="form-control" type="text" placeholder="Id" id="signup_id" name="id" required style="max-width:80%">
+                      <!-- <a class="btn btn-primary" style="margin:0;margin-left:2%" onclick="" >중복확인</a> -->
                       
-                      <%-- <a class="btn btn-primary" style="margin:0;margin-left:2%" href="idCheck.jsp?id=<%= %>">중복확인</a> --%>
+                      <a class="btn btn-primary" style="margin:0;margin-left:2%" href="idCheck.jsp?id=<%= %>">중복확인</a>
                       <!-- <script type="text/javascript">
                          var id = $(document).getElementByName("id").value();
                          function idCheck() {
@@ -237,7 +276,7 @@
                      		location.href = 'idCheck.jsp?id='+id;
                   		 }
                       </script> -->
-                    </div>
+                    </div> --%>
                     <!-- <script type="text/javascript">
                        function idCheck() {
                           var id = document.getbyName("id").value;
