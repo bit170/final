@@ -56,12 +56,14 @@ public class AddressController {
 		MemberVO mvo = (MemberVO)session.getAttribute("member");
 		System.out.println("getAddress() 생성");
 		
-		if(vo.getId() == null) {
+		if(vo.getId() == null & mvo.getId() != null) {
 			String id = mvo.getId();
 			vo.setId(id);
 		}
-			model.addAttribute("address", vo);
-			System.out.println("address : " + vo);
+			
+		addrService.getAddr(vo);
+		model.addAttribute("address", vo);
+		System.out.println("address : " + vo);
 		
 		return "/WEB-INF/views/account/account-address.jsp";
 	}
@@ -69,8 +71,11 @@ public class AddressController {
 	@RequestMapping("/checkout.do")
 	public String checkoutAddress(AddressVO vo, Model model) {
 		System.out.println("checkoutAddress() 실행");
+		
+		addrService.getAddr(vo);
 		model.addAttribute("address", vo);
 		System.out.println("address : " + vo);
+		
 		
 		return "/WEB-INF/views/order/checkout-address.jsp";
 	}

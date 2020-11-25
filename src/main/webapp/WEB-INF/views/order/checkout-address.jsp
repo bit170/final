@@ -293,6 +293,45 @@
     <!-- Page Content-->
     <div class="container padding-bottom-3x mb-2">
       <!-- <div class="row"> -->
+      <h4>내 주소록</h4>
+          <hr class="padding-bottom-1x">
+      <form name="radiobtn" action="getAddress.do" method="get" >
+					
+					<div class="custom-control custom-radio custom-control-inline">
+						<input class="custom-control-input" type="radio" id="ex-radio-4" 
+							name="a_name" value="home" checked> 
+							<label class="custom-control-label" for="ex-radio-4"> 집 </label>
+							
+					</div>
+					<div class="custom-control custom-radio custom-control-inline">
+						<input class="custom-control-input" type="radio" id="ex-radio-5" 
+							name="a_name" value="work"> 
+							<label class="custom-control-label" for="ex-radio-5" disable> 직장/학교 </label>
+					</div>
+					<div class="custom-control custom-radio custom-control-inline">
+						<input class="custom-control-input" type="radio" id="ex-radio-6"
+							name="a_name" value="etc"> 
+							<label class="custom-control-label" for="ex-radio-6" disable> 기타 </label>
+					</div>
+					<input class="btn btn-sm btn-secondary" type="submit" value="주소록 불러오기">
+					</form>
+					<hr class="padding-bottom-1x">
+      
+         <!-- radio 체크여부 확인 -->
+	    <script>
+			function fn1() {
+				var rd1 = document.getElementById("ex-radio-4").value;
+				var rd2 = document.getElementById("ex-radio-5").value;
+				var rd3 = document.getElemnetById("ex-radio-6").value;
+
+				if(rd1.checked == true)
+					alert (rd1.value);
+				else if(rd2.checked == true)
+					alert (rd2.value);
+				else if(rd3.checked == true)
+					alert (rd3.value);
+				}
+	    </script>
       <form name="address" class="row" action="insertAddress.do" method="post" enctype="multipart/form-data">
         <!-- Checkout Address-->
         <div class="col-xl-9 col-lg-8">
@@ -321,7 +360,7 @@
               </div>
             </div>
           </div>
-          <div class="row">
+         <%--  <div class="row">
             <div class="col-sm-6">
               <div class="form-group">
                 <label for="checkout-company">배송지명</label>
@@ -334,7 +373,7 @@
                
               </div>
             </div>
-          </div>
+          </div> --%>
           <div class="row">
             <div class="col-sm-6">
               <div class="form-group">
@@ -347,8 +386,9 @@
               <div class="form-group">
               <label for="account-city"></label> 
 				<input type="button" class="btn btn-outline-secondary" onclick="showPostcode()" value="우편번호 찾기">      
-				</div>      </div>
-            </div>
+			  </div>      
+			</div>
+          </div>
           <div class="row">
             <div class="col-sm-6">
               <div class="form-group">
@@ -367,66 +407,14 @@
             	<!-- 테스트 아이디 전달을 위한 hidden tag -->
             	<input type="hidden" value="${member.id}" name="id">
           </div>
-          <h4>내 주소록 불러오기</h4>
-          <hr class="padding-bottom-1x">
-          <div class="form-group">
-            <!--  <h4>내 주소록</h4> -->
-            
-					<div class="custom-control custom-radio custom-control-inline">
-						<input class="custom-control-input" type="radio" id="ex-radio-4" 
-							name="radio2" value=addr1 checked> 
-							<%-- <c:if test="${!empty address}">
-							<label class="custom-control-label" for="ex-radio-4"> ${address.a_name} </label>
-							</c:if>
-							<c:if test="${empty address}"> --%>
-							<label class="custom-control-label" for="ex-radio-4"> 집  </label>
-							<%-- </c:if> --%>
-							
-					</div>
-					
-					<div class="custom-control custom-radio custom-control-inline">
-						<input class="custom-control-input" type="radio" id="ex-radio-5" 
-							name="radio2" value=addr2> 
-							<%-- <c:if test="${!empty address}">
-							<label class="custom-control-label" for="ex-radio-5"> ${address.a_name} </label>
-							</c:if>
-							<c:if test="${empty address}"> --%>
-							<label class="custom-control-label" for="ex-radio-5"> 직장/학교 </label>
-							<%-- </c:if> --%>
-					</div>
-					<div class="custom-control custom-radio custom-control-inline">
-						<input class="custom-control-input" type="radio" id="ex-radio-6"
-							name="radio2" value=addr3> 
-							<%-- <c:if test="${!empty address}">
-							<label class="custom-control-label" for="ex-radio-6"> ${address.a_name} </label>
-							</c:if>
-							<c:if test="${empty address}"> --%>
-							<label class="custom-control-label" for="ex-radio-6"> 기타 </label>
-							<%-- </c:if> --%>
-					</div>
-          </div>
+          
           <hr class="padding-bottom-1x">
           <div class="d-flex justify-content-between">
-          <button class="btn btn-outline-secondary m-0" onclick="fn1()">카트로 돌아가기</button>
+          <button class="btn btn-outline-secondary m-0" href="cart.jsp">카트로 돌아가기</button>
           <button class="btn btn-primary m-0" type="submit">Continue</button>
           </div>
         </div>
         
-         <!-- radio 체크여부 확인 -->
-	    <script>
-			function fn1() {
-				var rd1 = document.getElementById("ex-radio-4");
-				var rd2 = document.getElementById("ex-radio-5");
-				var rd3 = document.getElemnetById("ex-radio-6");
-
-				if(rd1.checked == true)
-					alert (rd1.value);
-				else if(rd2.checked == true)
-					alert (rd2.value);
-				else if(rd3.checked == true)
-					alert (rd3.value);
-				}
-	    </script>
         
         <!-- 우편번호 받아오기 api script -->
         <script>

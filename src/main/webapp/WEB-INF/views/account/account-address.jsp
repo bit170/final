@@ -333,38 +333,26 @@
 			<div class="col-lg-8">
 				<div class="col-12 padding-top-1x">
 					<!-- 주소 선택 라디오 버튼 -->
+					<form name="radiobtn" action="getAddress.do" method="get" >
 					<hr class="padding-bottom-1x">
 					<div class="custom-control custom-radio custom-control-inline">
 						<input class="custom-control-input" type="radio" id="ex-radio-4" 
-							name="radio2" value="addr1" checked> 
-							<%-- <c:if test="${!empty address}">
-							<label class="custom-control-label" for="ex-radio-4"> ${address.a_name} </label>
-							</c:if>
-							<c:if test="${empty address}"> --%>
+							name="a_name" value="addr1" checked> 
 							<label class="custom-control-label" for="ex-radio-4"> 집 </label>
-							<%-- </c:if> --%>
 							
 					</div>
 					<div class="custom-control custom-radio custom-control-inline">
 						<input class="custom-control-input" type="radio" id="ex-radio-5" 
-							name="radio2" value="addr2"> 
-							<%-- <c:if test="${!empty address}">
-							<label class="custom-control-label" for="ex-radio-5"> ${address.a_name} </label>
-							</c:if>
-							<c:if test="${empty address}"> --%>
-							<label class="custom-control-label" for="ex-radio-5"> 직장/학교 </label>
-							<%-- </c:if> --%>
+							name="a_name" value="addr2"> 
+							<label class="custom-control-label" for="ex-radio-5" disable> 직장/학교 </label>
 					</div>
 					<div class="custom-control custom-radio custom-control-inline">
 						<input class="custom-control-input" type="radio" id="ex-radio-6"
-							name="radio2" value="addr3"> 
-							<%-- <c:if test="${!empty address}">
-							<label class="custom-control-label" for="ex-radio-6"> ${address.a_name} </label>
-							</c:if>
-							<c:if test="${empty address}"> --%>
-							<label class="custom-control-label" for="ex-radio-6"> 기타 </label>
-							<%-- </c:if> --%>
+							name="a_name" value="addr3"> 
+							<label class="custom-control-label" for="ex-radio-6" disable> 기타 </label>
 					</div>
+					<input class="btn btn-sm btn-secondary" type="submit" value="주소록 불러오기">
+					</form>
 					<hr class="margin-top-1x margin-bottom-1x">
 
 				</div>
@@ -374,7 +362,7 @@
 				<h4>주소지 수정</h4>
 				<hr class="padding-bottom-1x">
 				<form class="row" action="updateAddress.do" method="post" enctype="multipart/form-data">
-					<div class="col-md-6">
+					<%-- <div class="col-md-6">
 						<div class="form-group">
 							<label for="account-company">주소지명</label> 
 							<input class="form-control" type="text" name="a_name" value="${address.a_name}"
@@ -385,7 +373,7 @@
 						<div class="form-group">
 							   
 						</div>
-					</div>
+					</div> --%>
 					<div class="col-md-6">
 						<div class="form-group">
 							<label for="account-zip">우편번호</label> 

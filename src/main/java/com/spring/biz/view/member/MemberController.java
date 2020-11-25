@@ -47,14 +47,14 @@ public class MemberController {
 	public String login(S_MemberVO svo, Model model,HttpSession session) {
 		System.out.println(">> 로그인 메소드 실행 - POST");
 		System.out.println("vo : " + svo);
-		System.out.println("id : " + svo.getId()+"pwd: "+svo.getPwd());
-		System.out.println("MemberDAO : " + memberService);
+		System.out.println("id : " + svo.getId()+" pwd: "+svo.getPwd());
+//		System.out.println("MemberDAO : " + memberService);
 		
 		S_MemberVO sMember = memberService.getSMember(svo);
 		if (sMember != null) {
 			System.out.println("> 로그인 성공!!");
 			MemberVO member = memberService.getMember(svo);
-			System.out.println(member.getName());
+			System.out.println("회원이름 : " + member.getName());
 			model.addAttribute("member", member);
 			return "/WEB-INF/views/main/index.jsp";
 		} else {
