@@ -1,4 +1,4 @@
-package com.spring.biz.view.wishlist.impl;
+package com.spring.biz.wishlist.impl;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

@@ -312,20 +312,20 @@
 				</aside>
 				<!-- 마이페이지 목록 수정 (연희) -->
 				<nav class="list-group">
-					<a class="list-group-item" href="account-wishlist.jsp">
+					<a class="list-group-item" href="getWishlist.do">
 						<i class="icon-heart"></i>위시리스트
 						<span class="badge badge-default badge-pill">1</span></a> 
-					<a class="list-group-item" href="account-follows.jsp">
+					<a class="list-group-item" href="getFollow.do">
 						<i class="icon-heart"></i>팔로우
 						<span class="badge badge-default badge-pill">3</span></a> 
-					<a class="list-group-item" href="account-orders.jsp">
+					<a class="list-group-item" href="getOrder.do">
 						<i class="icon-heart"></i>주문목록
 						<span class="badge badge-default badge-pill">3</span></a> 
 					<a class="list-group-item" href="getMember.do">
 						<i class="icon-head"></i>프로필 수정</a> 
-					<a class="list-group-item with-badge active" href="#">
+					<a class="list-group-item with-badge active" href="getAddress.do">
 						<i class="icon-map"></i>주소록</a> 
-					<a class="list-group-item" href="account-myCanvas.jsp">
+					<a class="list-group-item" href="getMyCanvas.do">
 						<i class="icon-head"></i>마이 캔버스</a>
 				</nav>
 			</div>
@@ -336,34 +336,34 @@
 					<hr class="padding-bottom-1x">
 					<div class="custom-control custom-radio custom-control-inline">
 						<input class="custom-control-input" type="radio" id="ex-radio-4" 
-							name="radio2" value=addr1 checked> 
-							<c:if test="${!empty address}">
-							<label class="custom-control-label" for="addr1"> ${address.a_name} </label>
+							name="radio2" value="addr1" checked> 
+							<%-- <c:if test="${!empty address}">
+							<label class="custom-control-label" for="ex-radio-4"> ${address.a_name} </label>
 							</c:if>
-							<c:if test="${empty address}">
-							<label class="custom-control-label" for="addr1"> 주소 1 </label>
-							</c:if>
+							<c:if test="${empty address}"> --%>
+							<label class="custom-control-label" for="ex-radio-4"> 집 </label>
+							<%-- </c:if> --%>
 							
 					</div>
 					<div class="custom-control custom-radio custom-control-inline">
 						<input class="custom-control-input" type="radio" id="ex-radio-5" 
-							name="radio2" value=addr2> 
-							<c:if test="${!empty address}">
-							<label class="custom-control-label" for="addr1"> ${address.a_name} </label>
+							name="radio2" value="addr2"> 
+							<%-- <c:if test="${!empty address}">
+							<label class="custom-control-label" for="ex-radio-5"> ${address.a_name} </label>
 							</c:if>
-							<c:if test="${empty address}">
-							<label class="custom-control-label" for="addr1"> 주소 2 </label>
-							</c:if>
+							<c:if test="${empty address}"> --%>
+							<label class="custom-control-label" for="ex-radio-5"> 직장/학교 </label>
+							<%-- </c:if> --%>
 					</div>
 					<div class="custom-control custom-radio custom-control-inline">
 						<input class="custom-control-input" type="radio" id="ex-radio-6"
-							name="radio2" value=addr3> 
-							<c:if test="${!empty address}">
-							<label class="custom-control-label" for="addr1"> ${address.a_name} </label>
+							name="radio2" value="addr3"> 
+							<%-- <c:if test="${!empty address}">
+							<label class="custom-control-label" for="ex-radio-6"> ${address.a_name} </label>
 							</c:if>
-							<c:if test="${empty address}">
-							<label class="custom-control-label" for="addr1"> 주소 3 </label>
-							</c:if>
+							<c:if test="${empty address}"> --%>
+							<label class="custom-control-label" for="ex-radio-6"> 기타 </label>
+							<%-- </c:if> --%>
 					</div>
 					<hr class="margin-top-1x margin-bottom-1x">
 
@@ -405,26 +405,33 @@
                 				value="${address.address}" placeholder="도로명 주소 or 지번 주소" required>
 								<input type="hidden" name="id" value="${member.id} }">
 						</div>
-						</div>
+					</div>
 					<div class="col-md-6">
 						<div class="form-group">
 							<label for="checkout-address1">상세주소 입력</label>
 			                <input class="form-control" type="text" name="extra_address" id="extra_address"
 		               				value="${address.extra_address}" placeholder="상세주소" required>
 						</div>
-						</div>
-						<div class="text-right">
-						<!--toast : 실제 성공 시에만 출력하기 ??? -->
+					</div>
+					<div class="col-12">
+						<hr class="mt-2 mb-3">
+					<div class="d-flex flex-wrap justify-content-between align-items-center">
+					<div class="custom-control custom-checkbox d-block">
+					</div>						
+							<!--toast : 실제 성공 시에만 출력하기 ??? -->
 							<button class="btn btn-primary margin-bottom-none" type="submit"
 								data-toast data-toast-position="topRight"
 								data-toast-type="success" data-toast-icon="icon-circle-check"
 								data-toast-title="완료!"
 								data-toast-message="주소가 성공적으로 변경되었습니다.">업데이트</button>
-						</div>
 					</div>
+				</div>
 			</form>
 		</div>
 	</div>
+</div>
+
+		<!-- 우편번호 api script -->
 					<script>
         function showPostcode() {
             new daum.Postcode({
@@ -481,6 +488,7 @@
             }).open();
         }
     </script>
+    
 	<!-- Site Footer-->
 	<footer class="site-footer">
       <div class="column text-center">

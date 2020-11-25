@@ -1,5 +1,7 @@
 package com.spring.biz.view.address;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -9,6 +11,7 @@ import org.springframework.web.bind.annotation.SessionAttributes;
 
 import com.spring.biz.address.AddressService;
 import com.spring.biz.address.AddressVO;
+import com.spring.biz.member.MemberVO;
 
 @Controller
 @SessionAttributes({"address","member"})
@@ -26,7 +29,7 @@ public class AddressController {
 		String id = vo.getId();
 		String a_name = vo.getA_name();
 		System.out.println("address : " + vo);
-		System.out.println("id : " + id + "의 주소지 :" + a_name +"입력 성공!!");
+		System.out.println("id : " + id + "의 주소지 :" + a_name +" 입력 성공!!");
 		addrService.insertAddr(vo);
 		
 		
@@ -41,7 +44,7 @@ public class AddressController {
 		System.out.println("updateAddress() 실행");
 		String id = vo.getId();
 		String a_name = vo.getA_name();
-		System.out.println("id : " + id + "의 주소지 :" + a_name + "수정 성공!!");
+		System.out.println("id : " + id + "의 주소지 :" + a_name + " 수정 성공!!");
 		addrService.updateAddr(vo);
 		
 		
@@ -49,11 +52,16 @@ public class AddressController {
 	}
 	
 	@RequestMapping(value = "/getAddress.do")
-	public String getAddress(AddressVO vo, Model model) {
+	public String getAddress(AddressVO vo, Model model, HttpSession session) {
+		MemberVO mvo = (MemberVO)session.getAttribute("member");
 		System.out.println("getAddress() 생성");
 		
-		model.addAttribute("address", vo);
-		System.out.println("address : " + vo);
+		if(vo.getId() == null) {
+			String id = mvo.getId();
+			vo.setId(id);
+		}
+			model.addAttribute("address", vo);
+			System.out.println("address : " + vo);
 		
 		return "/WEB-INF/views/account/account-address.jsp";
 	}
