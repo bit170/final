@@ -34,7 +34,11 @@
     		 $("#signup_id").blur(function () {
     			 var signup_id = $("#signup_id").val();
  				console.log(signup_id);
-    			 checkId(signup_id);
+ 				if(signup_id != ""){
+    			 	checkId(signup_id);
+ 				}else{
+ 					$("#idCheck_result").html("");
+ 				}
     		 });
     	/* 아이디 중복체크 == 성공!!
     		리턴값에 따른 후처리 필요	
@@ -45,11 +49,19 @@
  					url : '${pageContext.request.contextPath}/idCheck.do',
  					data : {"signup_id" : signup_id}
  				}).done(function (data) {
- 					alert(data);
 					console.log(data);
+					idResult(data);
 				}).fail(function (request,status,error) {
 					alert("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
 				})
+			}
+    		
+    		function idResult(data) {
+    			if(data==0){
+					$("#idCheck_result").html("사용가능한 아이디입니다.").css("color","green");
+    			}else{
+    				$("#idCheck_result").html("이미 사용중인 아이디입니다.").css("color","red");
+    			}
 			}
 		});
 	    /* function idCheck() {
@@ -263,27 +275,7 @@
                   </div>
               	<div class="form-group">
                     <input class="form-control" type="text" placeholder="Id" id="signup_id" name="id" required>
-                    <div></div>
-                    <%-- <div style="display:flex">
-                      <input class="form-control" type="text" placeholder="Id" id="signup_id" name="id" required style="max-width:80%">
-                      <!-- <a class="btn btn-primary" style="margin:0;margin-left:2%" onclick="" >중복확인</a> -->
-                      
-                      <a class="btn btn-primary" style="margin:0;margin-left:2%" href="idCheck.jsp?id=<%= %>">중복확인</a>
-                      <!-- <script type="text/javascript">
-                         var id = $(document).getElementByName("id").value();
-                         function idCheck() {
-                        	alert(id); 
-                     		location.href = 'idCheck.jsp?id='+id;
-                  		 }
-                      </script> -->
-                    </div> --%>
-                    <!-- <script type="text/javascript">
-                       function idCheck() {
-                          var id = document.getbyName("id").value;
-                          var href = "idCheck.jsp?id="+id;
-                     document.location.href = href;
-                  }
-                    </script> -->
+                    <div id="idCheck_result"></div>
                   </div>
                   <div class="form-group">
                     <input class="form-control" type="password" placeholder="Password" required>
