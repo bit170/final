@@ -31,68 +31,86 @@
     <script type="text/javascript">
     	
     	$(document).ready(function () {
+    		/* 회원가입 성공 후  model attribute에 바인딩한 객체를 확인 */
+            var signedUp= '${signedUp}';
+            if(signedUp != null){
+            	alert("회원가입을 축하합니다. 이메일 인증 후 사용할 수 있습니다.");
+            }
+            
+            
     		 $("#signup_id").blur(function () {
     			 var signup_id = $("#signup_id").val();
  				console.log(signup_id);
-    			 checkId(signup_id);
+ 				if(signup_id != ""){
+    			 	checkId(signup_id);
+ 				}else{
+ 					$("#idCheck_result").html("");
+ 				}
     		 });
+    		 
+    		 if(sessionStorage.getItem("signedUp") != null){
+    			 alert("회원가입이 완료되었습니다. 이메일 인증 후 사용할 수 있습니다. ");
+    		 }
     	/* 아이디 중복체크 == 성공!!
     		리턴값에 따른 후처리 필요	
     	*/	 
+    		/* $('#signup-form').submit(
+	    		function () {
+	    			var formData = $('#signup-form').serialize();
+	    			alert("signUp() 실행");
+					$.ajax({
+						type : 'POST',
+						url : '${pageContext.request.contextPath}/signup.do',
+						data : formData,
+						dataType : 'json'
+					}).done(function (data) {
+						console.log(data);
+					}).fail(function (request, status, error) {
+						alert("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
+					})
+				}
+    		); */
     		 function checkId(signup_id) {
  				$.ajax({
  					type : 'POST',
  					url : '${pageContext.request.contextPath}/idCheck.do',
  					data : {"signup_id" : signup_id}
  				}).done(function (data) {
- 					alert(data);
 					console.log(data);
+					idResult(data);
 				}).fail(function (request,status,error) {
 					alert("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
 				})
 			}
-		});
-	    /* function idCheck() {
-	    	 $("#signup_id").blur(function () { 
-				var signup_id = $("#signup_id").val();
-				console.log(signup_id);
-				$.ajax({
-					url : '/idCheck.do',
-					type : 'post',
-					dataType : 'json',
-					data : {signup_id : signup_id},
-					async : false,
-					success : function (data) {
-						alert(data);
-					}
-				});
-			 }); 
-		} */
-		/* function getMainProduct() {
     		
-			$.ajax({
-				type : "GET",
-				url : '<c:url value="/getMainProduct.do"/>',
-				async : false,
-				success : function (data) {
-					console.log(data);
-					 $.each(data,function(i,item){
-						var Str = '<div class="col-xl-3 col-lg-4 col-sm-6">'+
-						'<div class="product-card-thumb"> <span class="product-badge text-danger">Sale</span><a class="product-card-link" href="shop-single.jsp"></a><img src="resources/img/shop/th01.jpg" alt="Product">'+
-						'<div class="product-card-buttons">'+
-						'<button class="btn btn-white btn-sm btn-wishlist" data-toggle="tooltip" title="Wishlist"><i class="material-icons favorite_border"></i></button>'+
-						'<button class="btn btn-primary btn-sm" data-toast data-toast-type="success" data-toast-position="topRight" data-toast-icon="material-icons check" data-toast-title="Product" data-toast-message="successfuly added to cart!">Add to Cart</button>'+
-						'</div></div><div class="product-card-details">'+
-						'<h3 class="product-card-title"><a href="shop-single.jsp">'+item.p_name+'</a></h3>'+
-						'<h4 class="product-card-price"><del>$49.00</del>$38.00</h4></div></div>';
-	                $("#MainProduct").append(Str); 
-					});
-					
-				}
-			}); 
-			 $("#MainProduct").trigger('create'); 
-			
-		}  */
+    		function idResult(data) {
+    			if(data==0){
+					$("#idCheck_result").html("사용가능한 아이디입니다.").css("color","green");
+    			}else{
+    				$("#idCheck_result").html("이미 사용중인 아이디입니다.").css("color","red");
+    			}
+			}
+    		
+    		$("#pw1").blur(function () {
+   			 	pwCheck();
+   		 	});
+    		$("#pw2").blur(function () {
+				pwCheck();
+			});
+    		function pwCheck() {
+    			var pw1 = $("#pw1").val();
+      			 var pw2 = $("#pw2").val();
+   				console.log(pw1);
+   				if(pw2 == "" || pw1 ==""){
+   					$("#pwCheck_result").html("비밀번호를 입력해주세요").css("color","red");
+   				}else if(pw1 == pw2){
+   					$("#pwCheck_result").html("비밀번호가 일치합니다").css("color","green");
+   				}else{
+   					$("#pwCheck_result").html("비밀번호가 일치하지 않습니다.").css("color","red");
+   				}
+			}
+		});
+	    
     </script>
   </head>
   <!-- Body-->
@@ -251,7 +269,8 @@
                 </form>
               </div>
               <div class="tab-pane fade" id="signup" role="tabpanel">
-                <form method="post" autocomplete="off" id="signup-form">
+                <form method="post" autocomplete="off" id="signup-form" action="signUp.do"> 
+                <!-- <form method="post" autocomplete="off" id="signup-form" > -->
                   <div class="form-group">
                     <input class="form-control" type="text" placeholder="Name" name="name" required>
                   </div>
@@ -263,33 +282,14 @@
                   </div>
               	<div class="form-group">
                     <input class="form-control" type="text" placeholder="Id" id="signup_id" name="id" required>
-                    <div></div>
-                    <%-- <div style="display:flex">
-                      <input class="form-control" type="text" placeholder="Id" id="signup_id" name="id" required style="max-width:80%">
-                      <!-- <a class="btn btn-primary" style="margin:0;margin-left:2%" onclick="" >중복확인</a> -->
-                      
-                      <a class="btn btn-primary" style="margin:0;margin-left:2%" href="idCheck.jsp?id=<%= %>">중복확인</a>
-                      <!-- <script type="text/javascript">
-                         var id = $(document).getElementByName("id").value();
-                         function idCheck() {
-                        	alert(id); 
-                     		location.href = 'idCheck.jsp?id='+id;
-                  		 }
-                      </script> -->
-                    </div> --%>
-                    <!-- <script type="text/javascript">
-                       function idCheck() {
-                          var id = document.getbyName("id").value;
-                          var href = "idCheck.jsp?id="+id;
-                     document.location.href = href;
-                  }
-                    </script> -->
+                    <div id="idCheck_result"></div>
                   </div>
                   <div class="form-group">
-                    <input class="form-control" type="password" placeholder="Password" required>
+                    <input class="form-control" type="password" placeholder="Password" id="pw1" required>
                   </div>
                   <div class="form-group">
-                    <input class="form-control" type="password" placeholder="Confirm Password" name="pwd" required>
+                    <input class="form-control" type="password" placeholder="Confirm Password" id="pw2" name="pwd" required>
+                    <div id="pwCheck_result"></div>
                   </div>
                   <div class="form-group">
                     <input class="form-control" type="text" placeholder="NickName" name="nickname" required>
@@ -525,18 +525,6 @@
     <script src="resources/js/scripts.min.js"></script>
   </body>
 </html>
-
-
-
-
-
-
-
-
-
-
-
-
 
 
     
