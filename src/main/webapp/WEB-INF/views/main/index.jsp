@@ -63,48 +63,21 @@
     				$("#idCheck_result").html("이미 사용중인 아이디입니다.").css("color","red");
     			}
 			}
-		});
-	    /* function idCheck() {
-	    	 $("#signup_id").blur(function () { 
-				var signup_id = $("#signup_id").val();
-				console.log(signup_id);
-				$.ajax({
-					url : '/idCheck.do',
-					type : 'post',
-					dataType : 'json',
-					data : {signup_id : signup_id},
-					async : false,
-					success : function (data) {
-						alert(data);
-					}
-				});
-			 }); 
-		} */
-		/* function getMainProduct() {
     		
-			$.ajax({
-				type : "GET",
-				url : '<c:url value="/getMainProduct.do"/>',
-				async : false,
-				success : function (data) {
-					console.log(data);
-					 $.each(data,function(i,item){
-						var Str = '<div class="col-xl-3 col-lg-4 col-sm-6">'+
-						'<div class="product-card-thumb"> <span class="product-badge text-danger">Sale</span><a class="product-card-link" href="shop-single.jsp"></a><img src="resources/img/shop/th01.jpg" alt="Product">'+
-						'<div class="product-card-buttons">'+
-						'<button class="btn btn-white btn-sm btn-wishlist" data-toggle="tooltip" title="Wishlist"><i class="material-icons favorite_border"></i></button>'+
-						'<button class="btn btn-primary btn-sm" data-toast data-toast-type="success" data-toast-position="topRight" data-toast-icon="material-icons check" data-toast-title="Product" data-toast-message="successfuly added to cart!">Add to Cart</button>'+
-						'</div></div><div class="product-card-details">'+
-						'<h3 class="product-card-title"><a href="shop-single.jsp">'+item.p_name+'</a></h3>'+
-						'<h4 class="product-card-price"><del>$49.00</del>$38.00</h4></div></div>';
-	                $("#MainProduct").append(Str); 
-					});
-					
+    		$("#pw2").blur(function () {
+   			 var pw1 = $("#pw1").val();
+   			 var pw2 = $("#pw2").val();
+				console.log(pw1);
+				if(pw2 == "" || pw1 ==""){
+					$("#pwCheck_result").html("비밀번호를 입력해주세요").css("color","red");
+				}else if(pw1 == pw2){
+					$("#pwCheck_result").html("비밀번호가 일치합니다").css("color","green");
+				}else{
+					$("#pwCheck_result").html("비밀번호가 일치하지 않습니다.").css("color","red");
 				}
-			}); 
-			 $("#MainProduct").trigger('create'); 
-			
-		}  */
+   		 });
+		});
+	    
     </script>
   </head>
   <!-- Body-->
@@ -278,10 +251,11 @@
                     <div id="idCheck_result"></div>
                   </div>
                   <div class="form-group">
-                    <input class="form-control" type="password" placeholder="Password" required>
+                    <input class="form-control" type="password" placeholder="Password" id="pw1" required>
                   </div>
                   <div class="form-group">
-                    <input class="form-control" type="password" placeholder="Confirm Password" name="pwd" required>
+                    <input class="form-control" type="password" placeholder="Confirm Password" id="pw2" name="pwd" required>
+                    <div id="pwCheck_result"></div>
                   </div>
                   <div class="form-group">
                     <input class="form-control" type="text" placeholder="NickName" name="nickname" required>
