@@ -1,15 +1,22 @@
 package com.spring.biz.view.main;
 
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.SessionAttributes;
 
 import com.spring.biz.member.MemberVO;
+import com.spring.biz.product.ProductService;
+import com.spring.biz.product.ProductVO;
 
 @Controller
 public class MainController {
-	
+	@Autowired
+	private ProductService productService;
 	
 	
 	public MainController() {
@@ -17,8 +24,36 @@ public class MainController {
 	}
 
 	@RequestMapping("/main.do")
-	public String main() {
-    
-		return "/WEB-INF/views/main/index.jsp";
+	public String main(Model model) {
+		List<ProductVO> list = productService.getMainProduct();
+		model.addAttribute("MainProduct", list);
+		
+		
+		return "main/index";
 	}
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

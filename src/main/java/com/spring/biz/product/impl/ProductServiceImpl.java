@@ -23,6 +23,11 @@ public class ProductServiceImpl implements ProductService{
 	public List<ProductVO> getProductList(ProductVO vo) {
 		return productDAO.getProductList(vo);
 	}
+
+	@Override
+	public List<ProductVO> getMainProduct() {
+		return productDAO.getMainProduct();
+	}
 	
 //	public ProductServiceImpl() {
 //		System.out.println(">> ProductServiceImpl() 객체 생성");
