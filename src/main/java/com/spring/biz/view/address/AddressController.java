@@ -48,7 +48,7 @@ public class AddressController {
 		addrService.updateAddr(vo);
 		
 		
-		return "redirect:/WEB-INF/views/account/account-address.jsp";
+		return "account/account-address";
 	}
 	
 	@RequestMapping(value = "/getAddress.do")
@@ -65,7 +65,7 @@ public class AddressController {
 		model.addAttribute("address", vo);
 		System.out.println("address : " + vo);
 		
-		return "account-address";
+		return "account/account-address";
 	}
 	
 

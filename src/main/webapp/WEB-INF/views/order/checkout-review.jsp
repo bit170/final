@@ -34,7 +34,8 @@
     <header class="navbar navbar-sticky">
       <!-- Site Branding-->
       <!-- 브랜드 로고 -->
-      <div class="site-branding"><a class="site-logo hidden-xs-down" href="main.do"><img src="resources/img/logo/logo.png" alt="Unishop"></a><a class="site-logo logo-sm hidden-sm-up" href="main.do"><img src="resources/img/logo/logo-sm.png" alt="Unishop"></a>
+      <div class="site-branding"><a class="site-logo hidden-xs-down" href="main.do"><img src="resources/img/logo/logo.png" alt="Unishop"></a>
+      	<a class="site-logo logo-sm hidden-sm-up" href="main.do"><img src="resources/img/logo/logo-sm.png" alt="Unishop"></a>
       </div>
       <!-- Main Navigation-->
       <!-- 상단 메뉴 -->
@@ -43,23 +44,22 @@
           <!-- 해당 페이지에 class="active" 추가해줘야함-->
           <li class="active"><a href="main.do"><span>Home</span></a>
           </li>
-          <li><a href="artist-boxed-ft.jsp"><span>Artist</span></a></li>
+          <li><a href="getArtistList.do"><span>Artist</span></a></li>
           <li><a href="getProductList.do"><span>Shop</span></a>
             <ul class="sub-menu">
-                <li><a href="shop-boxed-ls.jsp">수채화</a></li>
-                <li><a href="shop-boxed-ls.jsp">유화</a></li>
-                <li><a href="shop-boxed-ls.jsp">수묵화</a></li>
-                <li><a href="shop-boxed-ls.jsp">크로키</a></li>
-                <li><a href="shop-boxed-ls.jsp">기타</a></li>
+                <li><a href="getProductList.do?category=water">수채화</a></li>
+                <li><a href="getProductList.do?category=oil">유화</a></li>
+                <li><a href="getProductList.do?category=black">수묵화</a></li>
+                <li><a href="getProductList.do?category=crocky">크로키</a></li>
+                <li><a href="getProductList.do?category=etc">기타</a></li>
             </ul>
           </li>
           <li><a href="#"><span>Pages</span></a>
             <ul class="sub-menu">
-                <li><a href="about.jsp">About Us</a></li>
-                <li><a href="contacts.jsp">Contacts</a></li>
-                <li><a href="faq.jsp">Help / FAQ</a></li>
-                <li><a href="404.jsp">404 Not Found</a></li>
-              <li><a class="text-danger" href="docs/dev-setup.jsp">Documentation</a></li>
+            <!-- 홈페이지 소개글?? (연희) -->
+                <li><a href="about.do">우리 사이트는요</a></li>
+                <li><a href="contacts.do">문의</a></li>
+                <li><a href="faq.do">FAQ</a></li>
             </ul>
           </li>
         </ul>
@@ -67,7 +67,11 @@
       <!-- Toolbar-->
       <!-- 메뉴바 우측 아이콘 -->
       <div class="toolbar">
-        <div class="inner"><a class="toolbar-toggle mobile-menu-toggle" href="#mobileMenu"><i class="material-icons menu"></i></a><a class="toolbar-toggle search-toggle" href="#search"><i class="material-icons search"></i></a><a class="toolbar-toggle" href="#account"><i class="material-icons person"></i></a><a class="toolbar-toggle" href="#cart"><i><span class="material-icons shopping_basket"></span>
+        <div class="inner">
+        	<a class="toolbar-toggle mobile-menu-toggle" href="#mobileMenu"><i class="material-icons menu"></i></a>
+        	<a class="toolbar-toggle search-toggle" href="#search"><i class="material-icons search"></i></a>
+        	<a class="toolbar-toggle" href="#account"><i class="material-icons person"></i></a>
+        	<a class="toolbar-toggle" href="#cart"><i><span class="material-icons shopping_basket"></span>
           <!-- 조건문 넣기 -->
           <span class="count">합</span></i></a></div>
         <!-- Toolbar Dropdown-->
@@ -86,23 +90,21 @@
                 <!-- 페이지에 active 클래스 추가해줘야함 -->
                 <li class="has-children active"><span><a href="main.do"><span>Home</span></a></span>
                 </li>
-                <li ><span><a href="artist-boxed-ft.jsp "><span>Artist</span></a></span></li>
-                <li class="has-children"><span><a href="shop-boxed-ls.jsp"><span>Shop</span></a><span class="sub-menu-toggle"></span></span>
+                <li ><span><a href="getArtistList.do "><span>Artist</span></a></span></li>
+                <li class="has-children"><span><a href="getProductList.do"><span>Shop</span></a><span class="sub-menu-toggle"></span></span>
                   <ul class="slideable-submenu">
-                      <li><a href="shop-categories.jsp">수채화</a></li>
-                      <li><a href="shop-categories.jsp">유화</a></li>
-                      <li><a href="shop-categories.jsp">수묵화</a></li>
-                      <li><a href="shop-categories.jsp">크로키</a></li>
-                      <li><a href="shop-categories.jsp">기타</a></li>
+                <li><a href="getProductList.do?category=water">수채화</a></li>
+                <li><a href="getProductList.do?category=oil">유화</a></li>
+                <li><a href="getProductList.do?category=black">수묵화</a></li>
+                <li><a href="getProductList.do?category=crocky">크로키</a></li>
+                <li><a href="getProductList.do?category=etc">기타</a></li>
                   </ul>
                 </li>
                 <li class="has-children"><span><a href="#">Pages</a><span class="sub-menu-toggle"></span></span>
                   <ul class="slideable-submenu">
-                      <li><a href="about.jsp">About Us</a></li>
-                      <li><a href="contacts.jsp">Contacts</a></li>
-                      <li><a href="faq.jsp">Help / FAQ</a></li>
-                      <li><a href="404.jsp">404 Not Found</a></li>
-                    <li><a class="text-danger" href="docs/dev-setup.jsp">Documentation</a></li>
+                <li><a href="about.do">우리 사이트는요</a></li>
+                <li><a href="contacts.do">문의</a></li>
+                <li><a href="faq.do">FAQ</a></li>
                   </ul>
                 </li>
               </ul>
@@ -120,9 +122,11 @@
               <!-- Entry-->
               <!-- 검색결과 주르륵 -->
               <div class="entry">
-                <div class="entry-thumb"><a href="shop-single.jsp"><img src="resources/img/shop/widget/01.png" alt="Product"></a></div>
+                <div class="entry-thumb">
+                	<a href="getProduct.do"><img src="resources/img/shop/widget/01.png" alt="Product"></a></div>
                 <div class="entry-content">
-                  <h4 class="entry-title"><a href="shop-single.jsp">ㅇㅇ <span class='text-highlighted'>검색어와 일치하는 부분</span></a></h4><span class="entry-meta">가격</span>
+                  <h4 class="entry-title">
+                  	<a href="getProduct.do">ㅇㅇ <span class='text-highlighted'>검색어와 일치하는 부분</span></a></h4><span class="entry-meta">가격</span>
                 </div>
               </div>
             </div>
@@ -143,16 +147,18 @@
 
           <!-- 로그인 후 로그아웃, 마이페이지버튼 -->
           <c:if test="${!empty member}">
-           <div class="toolbar-section" id="account">
-           <form action="logout.do" method="post">
-              <p class="text-muted text-sm mt-4"><h4>${member.id }<span>님</span><h4></p>
-              <p class="text-muted text-sm mt-4">환영합니다</p>
-              <button class="btn btn-primary" type="submit">Log Out</button> 
-              <!-- <a class="btn btn-primary mx-0 scale-up delay-1" href="shop-boxed-ls.jsp">Log Out</a> -->
-              <!-- <button class="btn btn-primary btn-block" type="submit"><a href="account-wishlist.jsp">My page</button> -->
-              <a class="btn btn-primary mx-0 scale-up delay-1" href="account.do">My page</a>
-            </form>  
-           </div>
+	         <div class="toolbar-section" id="account">
+	         <form action="logout.do" method="post">
+	            <p class="text-muted text-sm mt-4"><h4>${member.id }<span>님</span><h4></p>
+	            <p class="text-muted text-sm mt-4">환영합니다</p>
+	            <button class="btn btn-primary" type="submit">Log Out</button> 
+	            <!-- <a class="btn btn-primary mx-0 scale-up delay-1" href="shop-boxed-ls.jsp">Log Out</a> -->
+	            <!-- <button class="btn btn-primary btn-block" type="submit"><a href="account-wishlist.jsp">My page</button> -->
+
+	            <a class="btn btn-primary mx-0 scale-up delay-1" href="account.do">My page</a>
+
+	          </form>  
+	         </div>
           </c:if>
           <c:if test="${empty member}">
           
@@ -166,22 +172,25 @@
                 <!-- 로그인 폼 -->
                 <form action="login.do" method="post" autocomplete="off" id="login-form">
                   <div class="form-group input-group">
-                    <input class="form-control" type="text" placeholder="Id" name="id" required><span class="input-group-addon"><i class="material-icons mail"></i></span>
+                    <input class="form-control" type="text" placeholder="Id" name="id" required>
+                    <span class="input-group-addon"><i class="material-icons mail"></i></span>
                   </div>
                   <div class="form-group input-group">
-                    <input class="form-control" type="password" placeholder="Password" name="pwd" required><span class="input-group-addon"><i class="material-icons lock"></i></span>
+                    <input class="form-control" type="password" placeholder="Password" name="pwd" required>
+                    <span class="input-group-addon"><i class="material-icons lock"></i></span>
                   </div>
                   <!-- 로그인 유지 -> 어떻게? -->
                   <div class="custom-control custom-checkbox form-group">
                     <input class="custom-control-input" type="checkbox" id="logged" checked>
-                    <label class="custom-control-label" for="logged">Keep me logged in</label>
+                    <label class="custom-control-label" for="logged">로그인 유지</label>
                   </div>
                   <!-- 로그인 버튼 -->
                   <button class="btn btn-primary btn-block" type="submit">Log In</button>
                 </form>
               </div>
               <div class="tab-pane fade" id="signup" role="tabpanel">
-                <form method="post" autocomplete="off" id="signup-form">
+                <form method="post" autocomplete="off" id="signup-form" action="signUp.do"> 
+                <!-- <form method="post" autocomplete="off" id="signup-form" > -->
                   <div class="form-group">
                     <input class="form-control" type="text" placeholder="Name" name="name" required>
                   </div>
@@ -191,38 +200,21 @@
                   <div class="form-group">
                     <input class="form-control" type="text" placeholder="Phone" name="phone" required>
                   </div>
-                <div class="form-group">
-                    <div style="display:flex">
-                      <input class="form-control" type="text" placeholder="Id" name="id" required style="max-width:80%">
-                      <a class="btn btn-primary" style="margin:0;margin-left:2%" href="/idCheck.do" >중복확인</a>
-                      
-                      <%-- <a class="btn btn-primary" style="margin:0;margin-left:2%" href="idCheck.jsp?id=<%= %>">중복확인</a> --%>
-                      <!-- <script type="text/javascript">
-                         var id = $(document).getElementByName("id").value();
-                         function idCheck() {
-                          alert(id); 
-                        location.href = 'idCheck.jsp?id='+id;
-                       }
-                      </script> -->
-                    </div>
-                    <!-- <script type="text/javascript">
-                       function idCheck() {
-                          var id = document.getbyName("id").value;
-                          var href = "idCheck.jsp?id="+id;
-                     document.location.href = href;
-                  }
-                    </script> -->
+              	<div class="form-group">
+                    <input class="form-control" type="text" placeholder="Id" id="signup_id" name="id" required>
+                    <div id="idCheck_result"></div>
                   </div>
                   <div class="form-group">
-                    <input class="form-control" type="password" placeholder="Password" required>
+                    <input class="form-control" type="password" placeholder="Password" id="pw1" required>
                   </div>
                   <div class="form-group">
-                    <input class="form-control" type="password" placeholder="Confirm Password" name="pwd" required>
+                    <input class="form-control" type="password" placeholder="Confirm Password" id="pw2" name="pwd" required>
+                    <div id="pwCheck_result"></div>
                   </div>
                   <div class="form-group">
                     <input class="form-control" type="text" placeholder="NickName" name="nickname" required>
                   </div>
-                  <button class="btn btn-primary btn-block" type="submit">Sign Up</button>
+                  <button class="btn btn-primary btn-block" type="submit">회원가입</button>
                 </form>
               </div>
             </div>
@@ -235,21 +227,33 @@
                 <thead>
                   <tr>
                     <th colspan="2">
-                      <div class="d-flex justify-content-between align-items-center">Products<a class="navi-link text-uppercase" href="cart.jsp"><span class="text-xxs">Expand Cart</span><i class="material-icons keyboard_arrow_right"></i></a></div>
+                      <div class="d-flex justify-content-between align-items-center">Products
+                      <c:if test="${!empty cartList }">
+                      <a class="navi-link text-uppercase" href="getCart.do"><span class="text-xxs">Expand Cart</span><i class="material-icons keyboard_arrow_right"></i></a>
+                      </c:if>
+                      <c:if test="${empty cartList }">
+                      <a class="navi-link text-uppercase" href="getProductList.do"><span class="text-xxs">작품 보러가기</span><i class="material-icons keyboard_arrow_right"></i></a>
+                      </c:if>
+                      </div>
                     </th>
                   </tr>
                 </thead>
                 <tbody>
                   <tr>
                     <td>
-                      <div class="product-item"><a class="product-thumb" href="shop-single.jsp"><img src="resources/img/shop/cart/01.jpg" alt="Product"></a>
+                    <c:if test="${empty cartList }">
+                   	 장바구니가 비었습니다.
+                    </c:if>
+                    <c:if test="${!empty cartList }">
+                      <div class="product-item"><a class="product-thumb" href="getProduct.do"><img src="resources/img/shop/cart/01.jpg" alt="Product"></a>
                         <div class="product-info">
-                          <h4 class="product-title"><a href="shop-single.jsp">작품이름</a></h4><span><em>Price:</em> 가격</span>
+                          <h4 class="product-title"><a href="getProduct.do">작품이름</a></h4><span><em>Price:</em> 가격</span>
                         </div>
                       </div>
-                    </td>
                     <!-- 삭제처리는 어떻게? 장바구니 품목을 디비에 저장하지 않으면 리스트형태로 세션이나 어딘가에 보관? 그럼 삭제버튼 클릭시 리스트에서 remove하면 될까? -->
                     <td class="text-center"><a class="remove-from-cart" href="삭제처리"><i class="material-icons icon_close"></i></a></td>
+                    </c:if>  
+                    </td>
                   </tr>
                 </tbody>
               </table>
@@ -257,7 +261,10 @@
             <!-- 장바구니 합계 -->
             <hr class="mb-3">
             <div class="d-flex flex-wrap justify-content-between align-items-center">
-              <div class="pr-2 py-1 text-sm">Subtotal: <span class='text-dark text-medium'>장바구니 합계 값</span></div><a class="btn btn-sm btn-success mb-0 mr-0" href="checkout.do">Checkout</a>
+              <div class="pr-2 py-1 text-sm">Subtotal: <span class='text-dark text-medium'>장바구니 합계 값</span></div>
+              <c:if test="${!empty cartList }">
+              <a class="btn btn-sm btn-success mb-0 mr-0" href="checkout.do">Checkout</a>
+              </c:if>
             </div>
           </div>
         </div>

@@ -45,7 +45,7 @@ public class MemberController {
 	public String account(Model model) {
 		System.out.println("account() 실행");
 
-		return "redirect:account-wishlist.jsp";
+		return "redirect:getWishlists.do";
 
 	}
 	

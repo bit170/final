@@ -7,7 +7,7 @@
 <html lang="en">
   <head>
     <meta charset="utf-8">
-    <title>Unishop | Universal E-Commerce Template</title>
+    <title>미술품팔아요</title>
     <!-- SEO Meta Tags-->
     <meta name="description" content="Unishop - Universal E-Commerce Template">
     <meta name="keywords" content="shop, e-commerce, modern, flat style, responsive, online store, business, mobile, blog, bootstrap 4, html5, css3, jquery, js, gallery, slider, touch, creative, clean">
@@ -120,32 +120,32 @@
     <header class="navbar navbar-sticky">
       <!-- Site Branding-->
       <!-- 브랜드 로고 -->
-      <div class="site-branding"><a class="site-logo hidden-xs-down" href="index.jsp"><img src="resources/img/logo/logo.png" alt="Unishop"></a><a class="site-logo logo-sm hidden-sm-up" href="index.jsp"><img src="resources/img/logo/logo-sm.png" alt="Unishop"></a>
+      <div class="site-branding"><a class="site-logo hidden-xs-down" href="main.do"><img src="resources/img/logo/logo.png" alt="Unishop"></a>
+      	<a class="site-logo logo-sm hidden-sm-up" href="main.do"><img src="resources/img/logo/logo-sm.png" alt="Unishop"></a>
       </div>
       <!-- Main Navigation-->
       <!-- 상단 메뉴 -->
       <nav class="site-menu">
         <ul>
           <!-- 해당 페이지에 class="active" 추가해줘야함-->
-          <li class="active"><a href="index.jsp"><span>Home</span></a>
+          <li class="active"><a href="main.do"><span>Home</span></a>
           </li>
           <li><a href="getArtistList.do"><span>Artist</span></a></li>
           <li><a href="getProductList.do"><span>Shop</span></a>
             <ul class="sub-menu">
-                <li><a href="shop-boxed-ls.jsp">수채화</a></li>
-                <li><a href="shop-boxed-ls.jsp">유화</a></li>
-                <li><a href="shop-boxed-ls.jsp">수묵화</a></li>
-                <li><a href="shop-boxed-ls.jsp">크로키</a></li>
-                <li><a href="shop-boxed-ls.jsp">기타</a></li>
+                <li><a href="getProductList.do?category=water">수채화</a></li>
+                <li><a href="getProductList.do?category=oil">유화</a></li>
+                <li><a href="getProductList.do?category=black">수묵화</a></li>
+                <li><a href="getProductList.do?category=crocky">크로키</a></li>
+                <li><a href="getProductList.do?category=etc">기타</a></li>
             </ul>
           </li>
           <li><a href="#"><span>Pages</span></a>
             <ul class="sub-menu">
-                <li><a href="about.jsp">About Us</a></li>
-                <li><a href="contacts.jsp">Contacts</a></li>
-                <li><a href="faq.jsp">Help / FAQ</a></li>
-                <li><a href="404.jsp">404 Not Found</a></li>
-              <li><a class="text-danger" href="docs/dev-setup.jsp">Documentation</a></li>
+            <!-- 홈페이지 소개글?? (연희) -->
+                <li><a href="about.do">우리 사이트는요</a></li>
+                <li><a href="contacts.do">문의</a></li>
+                <li><a href="faq.do">FAQ</a></li>
             </ul>
           </li>
         </ul>
@@ -153,7 +153,11 @@
       <!-- Toolbar-->
       <!-- 메뉴바 우측 아이콘 -->
       <div class="toolbar">
-        <div class="inner"><a class="toolbar-toggle mobile-menu-toggle" href="#mobileMenu"><i class="material-icons menu"></i></a><a class="toolbar-toggle search-toggle" href="#search"><i class="material-icons search"></i></a><a class="toolbar-toggle" href="#account"><i class="material-icons person"></i></a><a class="toolbar-toggle" href="#cart"><i><span class="material-icons shopping_basket"></span>
+        <div class="inner">
+        	<a class="toolbar-toggle mobile-menu-toggle" href="#mobileMenu"><i class="material-icons menu"></i></a>
+        	<a class="toolbar-toggle search-toggle" href="#search"><i class="material-icons search"></i></a>
+        	<a class="toolbar-toggle" href="#account"><i class="material-icons person"></i></a>
+        	<a class="toolbar-toggle" href="#cart"><i><span class="material-icons shopping_basket"></span>
           <!-- 조건문 넣기 -->
           <span class="count">합</span></i></a></div>
         <!-- Toolbar Dropdown-->
@@ -170,25 +174,23 @@
             <nav class="slideable-menu mt-4">
               <ul class="menu">
                 <!-- 페이지에 active 클래스 추가해줘야함 -->
-                <li class="has-children active"><span><a href="index.jsp"><span>Home</span></a></span>
+                <li class="has-children active"><span><a href="main.do"><span>Home</span></a></span>
                 </li>
                 <li ><span><a href="getArtistList.do "><span>Artist</span></a></span></li>
-                <li class="has-children"><span><a href="shop-boxed-ls.jsp"><span>Shop</span></a><span class="sub-menu-toggle"></span></span>
+                <li class="has-children"><span><a href="getProductList.do"><span>Shop</span></a><span class="sub-menu-toggle"></span></span>
                   <ul class="slideable-submenu">
-                      <li><a href="shop-categories.jsp">수채화</a></li>
-                      <li><a href="shop-categories.jsp">유화</a></li>
-                      <li><a href="shop-categories.jsp">수묵화</a></li>
-                      <li><a href="shop-categories.jsp">크로키</a></li>
-                      <li><a href="shop-categories.jsp">기타</a></li>
+                <li><a href="getProductList.do?category=water">수채화</a></li>
+                <li><a href="getProductList.do?category=oil">유화</a></li>
+                <li><a href="getProductList.do?category=black">수묵화</a></li>
+                <li><a href="getProductList.do?category=crocky">크로키</a></li>
+                <li><a href="getProductList.do?category=etc">기타</a></li>
                   </ul>
                 </li>
                 <li class="has-children"><span><a href="#">Pages</a><span class="sub-menu-toggle"></span></span>
                   <ul class="slideable-submenu">
-                      <li><a href="about.jsp">About Us</a></li>
-                      <li><a href="contacts.jsp">Contacts</a></li>
-                      <li><a href="faq.jsp">Help / FAQ</a></li>
-                      <li><a href="404.jsp">404 Not Found</a></li>
-                    <li><a class="text-danger" href="docs/dev-setup.jsp">Documentation</a></li>
+                <li><a href="about.do">우리 사이트는요</a></li>
+                <li><a href="contacts.do">문의</a></li>
+                <li><a href="faq.do">FAQ</a></li>
                   </ul>
                 </li>
               </ul>
@@ -206,9 +208,11 @@
               <!-- Entry-->
               <!-- 검색결과 주르륵 -->
               <div class="entry">
-                <div class="entry-thumb"><a href="shop-single.jsp"><img src="resources/img/shop/widget/01.png" alt="Product"></a></div>
+                <div class="entry-thumb">
+                	<a href="getProduct.do"><img src="resources/img/shop/widget/01.png" alt="Product"></a></div>
                 <div class="entry-content">
-                  <h4 class="entry-title"><a href="shop-single.jsp">ㅇㅇ <span class='text-highlighted'>검색어와 일치하는 부분</span></a></h4><span class="entry-meta">가격</span>
+                  <h4 class="entry-title">
+                  	<a href="getProduct.do">ㅇㅇ <span class='text-highlighted'>검색어와 일치하는 부분</span></a></h4><span class="entry-meta">가격</span>
                 </div>
               </div>
             </div>
@@ -254,15 +258,17 @@
                 <!-- 로그인 폼 -->
                 <form action="login.do" method="post" autocomplete="off" id="login-form">
                   <div class="form-group input-group">
-                    <input class="form-control" type="text" placeholder="Id" name="id" required><span class="input-group-addon"><i class="material-icons mail"></i></span>
+                    <input class="form-control" type="text" placeholder="Id" name="id" required>
+                    <span class="input-group-addon"><i class="material-icons mail"></i></span>
                   </div>
                   <div class="form-group input-group">
-                    <input class="form-control" type="password" placeholder="Password" name="pwd" required><span class="input-group-addon"><i class="material-icons lock"></i></span>
+                    <input class="form-control" type="password" placeholder="Password" name="pwd" required>
+                    <span class="input-group-addon"><i class="material-icons lock"></i></span>
                   </div>
                   <!-- 로그인 유지 -> 어떻게? -->
                   <div class="custom-control custom-checkbox form-group">
                     <input class="custom-control-input" type="checkbox" id="logged" checked>
-                    <label class="custom-control-label" for="logged">Keep me logged in</label>
+                    <label class="custom-control-label" for="logged">로그인 유지</label>
                   </div>
                   <!-- 로그인 버튼 -->
                   <button class="btn btn-primary btn-block" type="submit">Log In</button>
@@ -294,7 +300,7 @@
                   <div class="form-group">
                     <input class="form-control" type="text" placeholder="NickName" name="nickname" required>
                   </div>
-                  <button class="btn btn-primary btn-block" type="submit">Sign Up</button>
+                  <button class="btn btn-primary btn-block" type="submit">회원가입</button>
                 </form>
               </div>
             </div>
@@ -309,10 +315,10 @@
                     <th colspan="2">
                       <div class="d-flex justify-content-between align-items-center">Products
                       <c:if test="${!empty cartList }">
-                      <a class="navi-link text-uppercase" href="cart.jsp"><span class="text-xxs">Expand Cart</span><i class="material-icons keyboard_arrow_right"></i></a>
+                      <a class="navi-link text-uppercase" href="getCart.do"><span class="text-xxs">Expand Cart</span><i class="material-icons keyboard_arrow_right"></i></a>
                       </c:if>
                       <c:if test="${empty cartList }">
-                      <a class="navi-link text-uppercase" href="shop-boxed-ls.jsp"><span class="text-xxs">작품 보러가기</span><i class="material-icons keyboard_arrow_right"></i></a>
+                      <a class="navi-link text-uppercase" href="getProductList.do"><span class="text-xxs">작품 보러가기</span><i class="material-icons keyboard_arrow_right"></i></a>
                       </c:if>
                       </div>
                     </th>
@@ -325,9 +331,9 @@
                    	 장바구니가 비었습니다.
                     </c:if>
                     <c:if test="${!empty cartList }">
-                      <div class="product-item"><a class="product-thumb" href="shop-single.jsp"><img src="resources/img/shop/cart/01.jpg" alt="Product"></a>
+                      <div class="product-item"><a class="product-thumb" href="getProduct.do"><img src="resources/img/shop/cart/01.jpg" alt="Product"></a>
                         <div class="product-info">
-                          <h4 class="product-title"><a href="shop-single.jsp">작품이름</a></h4><span><em>Price:</em> 가격</span>
+                          <h4 class="product-title"><a href="getProduct.do">작품이름</a></h4><span><em>Price:</em> 가격</span>
                         </div>
                       </div>
                     <!-- 삭제처리는 어떻게? 장바구니 품목을 디비에 저장하지 않으면 리스트형태로 세션이나 어딘가에 보관? 그럼 삭제버튼 클릭시 리스트에서 remove하면 될까? -->
@@ -343,7 +349,7 @@
             <div class="d-flex flex-wrap justify-content-between align-items-center">
               <div class="pr-2 py-1 text-sm">Subtotal: <span class='text-dark text-medium'>장바구니 합계 값</span></div>
               <c:if test="${!empty cartList }">
-              <a class="btn btn-sm btn-success mb-0 mr-0" href="checkout-address.jsp">Checkout</a>
+              <a class="btn btn-sm btn-success mb-0 mr-0" href="checkout.do">Checkout</a>
               </c:if>
             </div>
           </div>
@@ -362,7 +368,8 @@
             <div class="col-xl-4 col-md-6">
               <div class="padding-top-3x padding-bottom-3x px-3 px-lg-5 text-center text-md-left from-bottom">
                 <h2>그림 사러 오세요~</h2>
-                <p class="text-sm text-muted">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris.</p><a class="btn btn-primary mx-0 scale-up delay-1" href="shop-boxed-ls.jsp">View Collection</a>
+                <p class="text-sm text-muted">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris.</p>
+                	<a class="btn btn-primary mx-0 scale-up delay-1" href="getProductList.do">View Collection</a>
               </div>
             </div>
           </div>
@@ -375,7 +382,8 @@
             <div class="col-xl-4 col-md-6">
               <div class="padding-top-3x padding-bottom-3x px-3 px-lg-5 text-center text-md-left from-bottom">
                 <h2> &amp; 세상에 알려지지 않은 작가들~ </h2>
-                <p class="text-sm text-muted">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris.</p><a class="btn btn-primary mx-0 scale-up delay-1" href="artist-boxed-ft.jsp">더 많은 작가들</a>
+                <p class="text-sm text-muted">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris.</p>
+                <a class="btn btn-primary mx-0 scale-up delay-1" href="getArtistList.do">더 많은 작가들</a>
               </div>
             </div>
           </div>
@@ -388,7 +396,7 @@
     <section class="container padding-top-3x padding-bottom-3x">
       <h3 class="text-center mb-30">인기 작가</h3>
       <div class="row">
-        <div class="col-md-3 col-sm-6 mb-30"><a class="category-card flex-wrap text-center pt-0" href="artist-single.jsp">
+        <div class="col-md-3 col-sm-6 mb-30"><a class="category-card flex-wrap text-center pt-0" href="getArtist.do">
             <div class="category-card-thumb w-100"><img src="resources/img/shop/categories/03.jpg" alt="Category"></div>
             <div class="category-card-info w-100">
               <h3 class="category-card-title">작가이름?</h3>
@@ -413,7 +421,7 @@
               <h4 class="category-card-subtitle">Starting from $95.99</h4>
             </div></a></div> -->
       </div>
-      <div class="text-center"><a class="btn btn-outline-secondary mb-0" href="artist-boxed-ft.jsp">모든 작가</a></div>
+      <div class="text-center"><a class="btn btn-outline-secondary mb-0" href="getArtistList.do">모든 작가</a></div>
     </section>
     <!-- 작품 추천 -->
     <section class="container-fluid padding-top-3x pb-5">
@@ -428,7 +436,8 @@
             <c:forEach items="${MainProduct }" var="mProduct">
             <div class="col-xl-3 col-lg-4 col-sm-6">
               <div class="product-card mb-30" >
-                <div class="product-card-thumb"> <span class="product-badge text-danger">Sale</span><a class="product-card-link" href="shop-single.jsp"></a><img src="resources/img/shop/th01.jpg" alt="Product">
+                <div class="product-card-thumb"> <span class="product-badge text-danger">Sale</span>
+                	<a class="product-card-link" href="getProduct.do"></a><img src="resources/img/shop/th01.jpg" alt="Product">
                   <div class="product-card-buttons">
                     <!-- 버튼 클릭시 위시리스트 디비작업 -->
                     <button class="btn btn-white btn-sm btn-wishlist" data-toggle="tooltip" title="Wishlist"><i class="material-icons favorite_border"></i></button>
@@ -437,7 +446,7 @@
                   </div>
                 </div>
                 <div class="product-card-details">
-                  <h3 class="product-card-title"><a href="shop-single.jsp">${mProduct.p_name }</a></h3>
+                  <h3 class="product-card-title"><a href="getProduct.do">${mProduct.p_name }</a></h3>
                   <h4 class="product-card-price">
                     <del>$49.00</del>$38.00
                   </h4>
@@ -455,7 +464,7 @@
             <div class="card-body text-center">
               <div class="text-center" style="margin-top:65%">
                 <h2>  더 많은 작품이 궁금하세요?</h2>
-                <a class="btn btn-outline-secondary mb-0" href="shop-boxed-ls.jsp">모든 작품</a>
+                <a class="btn btn-outline-secondary mb-0" href="getProductList.do">모든 작품</a>
               </div>
               <!-- <h2>Special Offer <span class='text-danger'>-30%</span></h2><a class="d-inline-block" href="shop-single.jsp"><img src="resources/img/shop/special-offer02.jpg" alt="Special Offer"></a>
               <h3 class="h5 text-normal pt-3"><a class="navi-link" href="shop-single.jsp">FLOS Indoor Lighting</a></h3>
