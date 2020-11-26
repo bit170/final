@@ -22,8 +22,7 @@ public class MemberDAO {
 	}
 	
 	public int getId(String id) {
-		/* mybatis.selectOne("memberDAO.getId", id) */
-		return 0;
+		return mybatis.selectOne("memberDAO.getId", id); 
 	}
 
 	public MemberVO getMember(S_MemberVO svo) {
