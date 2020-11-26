@@ -64,18 +64,24 @@
     			}
 			}
     		
+    		$("#pw1").blur(function () {
+   			 	pwCheck();
+   		 	});
     		$("#pw2").blur(function () {
-   			 var pw1 = $("#pw1").val();
-   			 var pw2 = $("#pw2").val();
-				console.log(pw1);
-				if(pw2 == "" || pw1 ==""){
-					$("#pwCheck_result").html("비밀번호를 입력해주세요").css("color","red");
-				}else if(pw1 == pw2){
-					$("#pwCheck_result").html("비밀번호가 일치합니다").css("color","green");
-				}else{
-					$("#pwCheck_result").html("비밀번호가 일치하지 않습니다.").css("color","red");
-				}
-   		 });
+				pwCheck();
+			});
+    		function pwCheck() {
+    			var pw1 = $("#pw1").val();
+      			 var pw2 = $("#pw2").val();
+   				console.log(pw1);
+   				if(pw2 == "" || pw1 ==""){
+   					$("#pwCheck_result").html("비밀번호를 입력해주세요").css("color","red");
+   				}else if(pw1 == pw2){
+   					$("#pwCheck_result").html("비밀번호가 일치합니다").css("color","green");
+   				}else{
+   					$("#pwCheck_result").html("비밀번호가 일치하지 않습니다.").css("color","red");
+   				}
+			}
 		});
 	    
     </script>
