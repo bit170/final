@@ -35,7 +35,7 @@ public class AddressController {
 		
 		// 결제페이지 완료 시 결제페이지로 포워딩
 //		return "/WEB-INF/views/account/account-address.jsp";
-		return "rediect:payment.do";
+		return "account/account-address";
 		
 	}
 	

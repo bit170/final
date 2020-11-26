@@ -23,14 +23,14 @@ public class ProductController {
 		System.out.println(">>>> ProductController() 객체 생성");
 	}
 
-//	@RequestMapping(value="/getProduct.do", method = RequestMethod.POST)
-//	public String getProduct(ProductVO vo, Model model) {
+	@RequestMapping(value="/getProduct.do")
+	public String getProduct(ProductVO vo, Model model) {
 //		ProductVO product = productService.getProduct(vo);
 //		model.addAttribute("product", product);
 //		System.out.println("작품코드 : " + vo.getP_code() + "작품명 : " + vo.getP_name());
-//		
-//		return "shop-single.jsp";
-//	}
+		
+		return "product/shop-single";
+	}
 	
 //	@RequestMapping(value = "/getMainProduct.do", method = RequestMethod.GET)
 //	public @ResponseBody List<ProductVO> getMainProduct() {
@@ -53,7 +53,7 @@ public class ProductController {
 		model.addAttribute("productList", list);
 		System.out.println(list.isEmpty());
 		System.out.println(list);
-		return "shop-boxed-ls.jsp";
+		return "product/shop-boxed-ls";
 	}
 
 

@@ -363,7 +363,7 @@
         <div class="container-fluid">
           <div class="row align-items-center">
             <div class="col-md-6">
-              <div class="pr-3 pt-5 pb-0 py-md-5"><img class="d-block" src="resources/img/hero-slider/01.png" alt="Product"></div>
+              <div class="pr-3 pt-5 pb-0 py-md-5"><img class="d-block" src="resources/img/product/3.png" alt="Product"></div>
             </div>
             <div class="col-xl-4 col-md-6">
               <div class="padding-top-3x padding-bottom-3x px-3 px-lg-5 text-center text-md-left from-bottom">
@@ -377,7 +377,7 @@
         <div class="container-fluid">
           <div class="row align-items-center">
             <div class="col-md-6">
-              <div class="pr-3 pt-5 pb-0 py-md-5"><img class="d-block" src="resources/img/hero-slider/02.png" alt="Product"></div>
+              <div class="pr-3 pt-5 pb-0 py-md-5"><img class="d-block" src="resources/img/product/1.png" alt="Product"></div>
             </div>
             <div class="col-xl-4 col-md-6">
               <div class="padding-top-3x padding-bottom-3x px-3 px-lg-5 text-center text-md-left from-bottom">
@@ -397,7 +397,7 @@
       <h3 class="text-center mb-30">인기 작가</h3>
       <div class="row">
         <div class="col-md-3 col-sm-6 mb-30"><a class="category-card flex-wrap text-center pt-0" href="getArtist.do">
-            <div class="category-card-thumb w-100"><img src="resources/img/shop/categories/03.jpg" alt="Category"></div>
+            <div class="category-card-thumb w-100"><img src="resources/img/product/2.png" alt="Category"></div>
             <div class="category-card-info w-100">
               <h3 class="category-card-title">작가이름?</h3>
               <h4 class="category-card-subtitle">뭘 넣을까</h4>
@@ -433,20 +433,23 @@
         <div class="col-xl-9 col-md-8">
           <div class="row" id="MainProduct">
             <!-- Item-->
-            <c:forEach items="${MainProduct }" var="mProduct">
+            <c:forEach items="${MainProduct}" var="mProduct">
             <div class="col-xl-3 col-lg-4 col-sm-6">
               <div class="product-card mb-30" >
                 <div class="product-card-thumb"> <span class="product-badge text-danger">Sale</span>
-                	<a class="product-card-link" href="getProduct.do"></a><img src="resources/img/shop/th01.jpg" alt="Product">
+                	<a class="product-card-link" href="getProduct.do"></a><img src="resources/img/product/5.png" alt="Product">
                   <div class="product-card-buttons">
                     <!-- 버튼 클릭시 위시리스트 디비작업 -->
-                    <button class="btn btn-white btn-sm btn-wishlist" data-toggle="tooltip" title="Wishlist"><i class="material-icons favorite_border"></i></button>
+                    <button class="btn btn-white btn-sm btn-wishlist" data-toggle="tooltip" title="Wishlist">
+                    	<i class="material-icons favorite_border"></i></button>
                     <!-- 버튼 클릭시 해당 제품 데이터 어딘가에 저장 후 장바구니에 넣을것 -->
-                    <button class="btn btn-primary btn-sm" data-toast data-toast-type="success" data-toast-position="topRight" data-toast-icon="material-icons check" data-toast-title="Product" data-toast-message="successfuly added to cart!">Add to Cart</button>
+                    <button class="btn btn-primary btn-sm" data-toast data-toast-type="success" 
+                    		data-toast-position="topRight" data-toast-icon="material-icons check" 
+                    		data-toast-title="Product" data-toast-message="장바구니 담기 성공!">장바구니 담기</button>
                   </div>
                 </div>
                 <div class="product-card-details">
-                  <h3 class="product-card-title"><a href="getProduct.do">${mProduct.p_name }</a></h3>
+                  <h3 class="product-card-title"><a href="getProduct.do">${mProduct.p_name}</a></h3>
                   <h4 class="product-card-price">
                     <del>$49.00</del>$38.00
                   </h4>

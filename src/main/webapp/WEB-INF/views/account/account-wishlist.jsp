@@ -343,11 +343,11 @@
 							<tr>
 								<td>
 									<div class="product-item">
-										<a class="product-thumb" href="shop-single.do"><img
+										<a class="product-thumb" href="getProduct.do"><img
 											src="resources/img/shop/cart/01.jpg" alt="Product"></a>
 										<div class="product-info">
 											<h4 class="product-title">
-												<a href="shop-single.do">${product.p_name}</a>
+												<a href="getProduct.do">${product.p_name}</a>
 											</h4>
 											<div class="text-lg text-medium text-muted">${product.price}</div>
 											<div class="text-sm">

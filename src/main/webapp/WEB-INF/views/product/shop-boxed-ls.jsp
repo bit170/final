@@ -275,12 +275,12 @@
     <!-- Page Title-->
     <div class="page-title">
       <div class="container">
-        <h1>제품 페이지</h1>
+        <h1>작품 페이지</h1>
         <ul class="breadcrumbs">
-          <li><a href="index.jsp">제품</a>
+          <li><a href="main.do">Home</a>
           </li>
           <li class="separator">&nbsp;/&nbsp;</li>
-          <li>제품을 다 보자</li>
+          <li>Product ALL</li>
         </ul>
       </div>
     </div>
@@ -307,186 +307,23 @@
             <!-- Item-->
             <div class="col-lg-4 col-sm-6">
               <div class="product-card mb-30">
-                <div class="product-card-thumb"> <span class="product-badge text-danger">Sale</span><a class="product-card-link" href="shop-single.jsp"></a><img src="resources/img/shop/th01.jpg" alt="Product">
+                <div class="product-card-thumb"> <span class="product-badge text-danger">Sale</span><a class="product-card-link" href="getProduct.do"></a>
+                	<img src="resources/img/product/4.png" alt="Product">
                   <div class="product-card-buttons">
                     <button class="btn btn-white btn-sm btn-wishlist" data-toggle="tooltip" title="Wishlist"><i class="material-icons favorite_border"></i></button>
-                    <button class="btn btn-primary btn-sm" data-toast data-toast-type="success" data-toast-position="topRight" data-toast-icon="material-icons check" data-toast-title="Product" data-toast-message="successfuly added to cart!">Add to Cart</button>
+                    <button class="btn btn-primary btn-sm" data-toast data-toast-type="success" data-toast-position="topRight" 
+                    		data-toast-icon="material-icons check" data-toast-title="Product" data-toast-message="성공적으로 장바구니에 담겼습니다!">장바구니에 담기</button>
                   </div>
                 </div>
                 <div class="product-card-details">
-                  <h3 class="product-card-title"><a href="shop-single.jsp">Storage Box</a></h3>
+                  <h3 class="product-card-title"><a href="getProduct.do">비카소</a></h3>
                   <h4 class="product-card-price">
-                    <del>$49.00</del>$38.00
+                    <del>₩500,000</del>₩350,000
                   </h4>
                 </div>
               </div>
             </div>
-            <!-- Item-->
-            <div class="col-lg-4 col-sm-6">
-              <div class="product-card mb-30">
-                <div class="product-card-thumb"> <a class="product-card-link" href="shop-single.jsp"></a><img src="resources/img/shop/th04.jpg" alt="Product">
-                  <div class="product-card-buttons">
-                    <button class="btn btn-white btn-sm btn-wishlist" data-toggle="tooltip" title="Wishlist"><i class="material-icons favorite_border"></i></button>
-                    <button class="btn btn-primary btn-sm" data-toast data-toast-type="success" data-toast-position="topRight" data-toast-icon="material-icons check" data-toast-title="Product" data-toast-message="successfuly added to cart!">Add to Cart</button>
-                  </div>
-                </div>
-                <div class="product-card-details">
-                  <h3 class="product-card-title"><a href="shop-single.jsp">File Cabinet</a></h3>
-                  <h4 class="product-card-price">$265.00</h4>
-                </div>
-              </div>
-            </div>
-            <!-- Item-->
-            <div class="col-lg-4 col-sm-6">
-              <div class="product-card mb-30">
-                <div class="product-card-thumb"><span class="product-rating text-warning"><i class="material-icons star"></i><i class="material-icons star"></i><i class="material-icons star"></i><i class="material-icons star_half"></i><i class="material-icons star_border"></i></span><a class="product-card-link" href="shop-single.jsp"></a><img src="resources/img/shop/th03.jpg" alt="Product">
-                  <div class="product-card-buttons">
-                    <button class="btn btn-white btn-sm btn-wishlist" data-toggle="tooltip" title="Wishlist"><i class="material-icons favorite_border"></i></button>
-                    <button class="btn btn-primary btn-sm" data-toast data-toast-type="success" data-toast-position="topRight" data-toast-icon="material-icons check" data-toast-title="Product" data-toast-message="successfuly added to cart!">Add to Cart</button>
-                  </div>
-                </div>
-                <div class="product-card-details">
-                  <h3 class="product-card-title"><a href="shop-single.jsp">Hook Basket</a></h3>
-                  <h4 class="product-card-price">$112.50</h4>
-                </div>
-              </div>
-            </div>
-            <!-- Item-->
-            <div class="col-lg-4 col-sm-6">
-              <div class="product-card mb-30">
-                <div class="product-card-thumb"><a class="product-card-link" href="shop-single.jsp"></a><img src="resources/img/shop/th05.jpg" alt="Product">
-                  <div class="product-card-buttons">
-                    <button class="btn btn-white btn-sm btn-wishlist" data-toggle="tooltip" title="Wishlist"><i class="material-icons favorite_border"></i></button>
-                    <button class="btn btn-primary btn-sm" data-toast data-toast-type="success" data-toast-position="topRight" data-toast-icon="material-icons check" data-toast-title="Product" data-toast-message="successfuly added to cart!">Add to Cart</button>
-                  </div>
-                </div>
-                <div class="product-card-details">
-                  <h3 class="product-card-title"><a href="shop-single.jsp">Lounge Chair</a></h3>
-                  <h4 class="product-card-price">$1420.00</h4>
-                </div>
-              </div>
-            </div>
-            <!-- Item-->
-            <div class="col-lg-4 col-sm-6">
-              <div class="product-card mb-30">
-                <div class="product-card-thumb"><span class="product-badge text-muted">Out of stock</span><a class="product-card-link" href="shop-single.jsp"></a><img src="resources/img/shop/th06.jpg" alt="Product">
-                  <div class="product-card-buttons">
-                    <button class="btn btn-white btn-sm btn-wishlist" data-toggle="tooltip" title="Wishlist"><i class="material-icons favorite_border"></i></button><a class="btn btn-white btn-sm" hre="shop-single.jsp">View Details</a>
-                  </div>
-                </div>
-                <div class="product-card-details">
-                  <h3 class="product-card-title"><a href="shop-single.jsp">LED Lighting</a></h3>
-                  <h4 class="product-card-price">$130.00</h4>
-                </div>
-              </div>
-            </div>
-            <!-- Item-->
-            <div class="col-lg-4 col-sm-6">
-              <div class="product-card mb-30">
-                <div class="product-card-thumb"><a class="product-card-link" href="shop-single.jsp"></a><img src="resources/img/shop/th07.jpg" alt="Product">
-                  <div class="product-card-buttons">
-                    <button class="btn btn-white btn-sm btn-wishlist" data-toggle="tooltip" title="Wishlist"><i class="material-icons favorite_border"></i></button>
-                    <button class="btn btn-primary btn-sm" data-toast data-toast-type="success" data-toast-position="topRight" data-toast-icon="material-icons check" data-toast-title="Product" data-toast-message="successfuly added to cart!">Add to Cart</button>
-                  </div>
-                </div>
-                <div class="product-card-details">
-                  <h3 class="product-card-title"><a href="shop-single.jsp">Lounge Chair</a></h3>
-                  <h4 class="product-card-price">$1099.00</h4>
-                </div>
-              </div>
-            </div>
-            <!-- Item-->
-            <div class="col-lg-4 col-sm-6">
-              <div class="product-card mb-30">
-                <div class="product-card-thumb"><span class="product-rating text-warning"><i class="material-icons star"></i><i class="material-icons star"></i><i class="material-icons star"></i><i class="material-icons star"></i><i class="material-icons star_border"></i></span><a class="product-card-link" href="shop-single.jsp"></a><img src="resources/img/shop/th08.jpg" alt="Product">
-                  <div class="product-card-buttons">
-                    <button class="btn btn-white btn-sm btn-wishlist" data-toggle="tooltip" title="Wishlist"><i class="material-icons favorite_border"></i></button>
-                    <button class="btn btn-primary btn-sm" data-toast data-toast-type="success" data-toast-position="topRight" data-toast-icon="material-icons check" data-toast-title="Product" data-toast-message="successfuly added to cart!">Add to Cart</button>
-                  </div>
-                </div>
-                <div class="product-card-details">
-                  <h3 class="product-card-title"><a href="shop-single.jsp">Tissue Holder</a></h3>
-                  <h4 class="product-card-price">$76.40</h4>
-                </div>
-              </div>
-            </div>
-            <!-- Item-->
-            <div class="col-lg-4 col-sm-6">
-              <div class="product-card mb-30">
-                <div class="product-card-thumb"><a class="product-card-link" href="shop-single.jsp"></a><img src="resources/img/shop/th09.jpg" alt="Product">
-                  <div class="product-card-buttons">
-                    <button class="btn btn-white btn-sm btn-wishlist" data-toggle="tooltip" title="Wishlist"><i class="material-icons favorite_border"></i></button>
-                    <button class="btn btn-primary btn-sm" data-toast data-toast-type="success" data-toast-position="topRight" data-toast-icon="material-icons check" data-toast-title="Product" data-toast-message="successfuly added to cart!">Add to Cart</button>
-                  </div>
-                </div>
-                <div class="product-card-details">
-                  <h3 class="product-card-title"><a href="shop-single.jsp">Campfire Table</a></h3>
-                  <h4 class="product-card-price">$1087.00</h4>
-                </div>
-              </div>
-            </div>
-            <!-- Item-->
-            <div class="col-lg-4 col-sm-6">
-              <div class="product-card mb-30">
-                <div class="product-card-thumb"> <span class="product-badge text-danger">Sale</span><a class="product-card-link" href="shop-single.jsp"></a><img src="resources/img/shop/th10.jpg" alt="Product">
-                  <div class="product-card-buttons">
-                    <button class="btn btn-white btn-sm btn-wishlist" data-toggle="tooltip" title="Wishlist"><i class="material-icons favorite_border"></i></button>
-                    <button class="btn btn-primary btn-sm" data-toast data-toast-type="success" data-toast-position="topRight" data-toast-icon="material-icons check" data-toast-title="Product" data-toast-message="successfuly added to cart!">Add to Cart</button>
-                  </div>
-                </div>
-                <div class="product-card-details">
-                  <h3 class="product-card-title"><a href="shop-single.jsp">Pendant Lamp</a></h3>
-                  <h4 class="product-card-price">
-                    <del>$54.00</del>$27.00
-                  </h4>
-                </div>
-              </div>
-            </div>
-            <!-- Item-->
-            <div class="col-lg-4 col-sm-6">
-              <div class="product-card mb-30">
-                <div class="product-card-thumb"><a class="product-card-link" href="shop-single.jsp"></a><img src="resources/img/shop/th11.jpg" alt="Product">
-                  <div class="product-card-buttons">
-                    <button class="btn btn-white btn-sm btn-wishlist" data-toggle="tooltip" title="Wishlist"><i class="material-icons favorite_border"></i></button>
-                    <button class="btn btn-primary btn-sm" data-toast data-toast-type="success" data-toast-position="topRight" data-toast-icon="material-icons check" data-toast-title="Product" data-toast-message="successfuly added to cart!">Add to Cart</button>
-                  </div>
-                </div>
-                <div class="product-card-details">
-                  <h3 class="product-card-title"><a href="shop-single.jsp">Stylish Chair</a></h3>
-                  <h4 class="product-card-price">$417.00</h4>
-                </div>
-              </div>
-            </div>
-            <!-- Item-->
-            <div class="col-lg-4 col-sm-6">
-              <div class="product-card mb-30">
-                <div class="product-card-thumb"><a class="product-card-link" href="shop-single.jsp"></a><img src="resources/img/shop/th14.jpg" alt="Product">
-                  <div class="product-card-buttons">
-                    <button class="btn btn-white btn-sm btn-wishlist" data-toggle="tooltip" title="Wishlist"><i class="material-icons favorite_border"></i></button>
-                    <button class="btn btn-primary btn-sm" data-toast data-toast-type="success" data-toast-position="topRight" data-toast-icon="material-icons check" data-toast-title="Product" data-toast-message="successfuly added to cart!">Add to Cart</button>
-                  </div>
-                </div>
-                <div class="product-card-details">
-                  <h3 class="product-card-title"><a href="shop-single.jsp">Paper Table</a></h3>
-                  <h4 class="product-card-price">$289.00</h4>
-                </div>
-              </div>
-            </div>
-            <!-- Item-->
-            <div class="col-lg-4 col-sm-6">
-              <div class="product-card mb-30">
-                <div class="product-card-thumb"><a class="product-card-link" href="shop-single.jsp"></a><img src="resources/img/shop/th13.jpg" alt="Product">
-                  <div class="product-card-buttons">
-                    <button class="btn btn-white btn-sm btn-wishlist" data-toggle="tooltip" title="Wishlist"><i class="material-icons favorite_border"></i></button>
-                    <button class="btn btn-primary btn-sm" data-toast data-toast-type="success" data-toast-position="topRight" data-toast-icon="material-icons check" data-toast-title="Product" data-toast-message="successfuly added to cart!">Add to Cart</button>
-                  </div>
-                </div>
-                <div class="product-card-details">
-                  <h3 class="product-card-title"><a href="shop-single.jsp">Office Chair</a></h3>
-                  <h4 class="product-card-price">$329.00</h4>
-                </div>
-              </div>
-            </div>
+           
           </div>
           <!-- Pagination-->
           <nav class="pagination">

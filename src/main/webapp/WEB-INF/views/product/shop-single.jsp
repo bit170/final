@@ -349,9 +349,9 @@
           <div class="col-md-6 mb-30">
             <div class="card border-default bg-white pt-2 box-shadow">
               <div class="card-body">
-                <h2 class="mb-3">Stow 3-Drawer File Cabinet</h2>
-                <h3 class="text-normal">$265.00</h3>
-                <p class="text-sm text-muted"> 작가명 <br> 작품 설명 쏼라쏼라 <br> #태그태그</p>
+                <h2 class="mb-3">서랍 사진 같은 서랍 그림</h2>
+                <h3 class="text-normal">₩265,000</h3>
+                <p class="text-sm text-muted"> 내가그린그림 <br> 작품 설명 쏼라쏼라 <br> #사진같지만 #사실그림</p>
                 <div class="row">
                   <div class="col-sm-6">
                   </div>
@@ -361,7 +361,7 @@
                   </div>
                   <div class="col-sm-8">
                     <div class="pt-4 hidden-sm-up"></div>
-                    <button class="btn btn-primary btn-block my-0">Add To Cart</button>
+                    <button class="btn btn-primary btn-block my-0">장바구니 담기</button>
                   </div>
                 </div>
                 <ul class="list-unstyled text-sm mb-4">
@@ -379,7 +379,7 @@
     </div>
     <div class="container padding-bottom-3x pt-5 mb-1">
       <!-- Related Products Carousel-->
-      <h3 class="text-center padding-top-2x mt-2 padding-bottom-1x">You May Also Like</h3>
+      <h3 class="text-center padding-top-2x mt-2 padding-bottom-1x">이런 상품은 어떠세요 ? </h3>
       <!-- Carousel-->
       <div class="owl-carousel" data-owl-carousel="{ &quot;nav&quot;: false, &quot;dots&quot;: true, &quot;margin&quot;: 30, &quot;responsive&quot;: {&quot;0&quot;:{&quot;items&quot;:1},&quot;576&quot;:{&quot;items&quot;:2},&quot;768&quot;:{&quot;items&quot;:3},&quot;991&quot;:{&quot;items&quot;:4},&quot;1200&quot;:{&quot;items&quot;:4}} }">
         <!-- Product-->

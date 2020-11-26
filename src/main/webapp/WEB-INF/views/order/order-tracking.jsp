@@ -48,9 +48,9 @@
                 <tbody>
                   <tr>
                     <td>
-                      <div class="product-item"><a class="product-thumb" href="shop-single.html"><img src="resources/img/shop/cart/01.jpg" alt="Product"></a>
+                      <div class="product-item"><a class="product-thumb" href="getProduct.do?p_name="><img src="resources/img/shop/cart/01.jpg" alt="Product"></a>
                         <div class="product-info">
-                          <h4 class="product-title"><a href="shop-single.html">3-Drawer File Cabinet<small>x 1</small></a></h4><span><em>Color:</em> Aqua</span><span><em>Accent Color:</em> White</span>
+                          <h4 class="product-title"><a href="getProduct.do?p_name=">3-Drawer File Cabinet<small>x 1</small></a></h4><span><em>Color:</em> Aqua</span><span><em>Accent Color:</em> White</span>
                         </div>
                       </div>
                     </td>
@@ -58,9 +58,9 @@
                   </tr>
                   <tr>
                     <td>
-                      <div class="product-item"><a class="product-thumb" href="shop-single.html"><img src="resources/img/shop/cart/02.jpg" alt="Product"></a>
+                      <div class="product-item"><a class="product-thumb" href="getProduct.do?p_name="><img src="resources/img/shop/cart/02.jpg" alt="Product"></a>
                         <div class="product-info">
-                          <h4 class="product-title"><a href="shop-single.html">Plastic Tissue Holder<small>x 2</small></a></h4><span><em>Size:</em> Medium</span><span><em>Color:</em> White</span>
+                          <h4 class="product-title"><a href="getProduct.do?p_name=">Plastic Tissue Holder<small>x 2</small></a></h4><span><em>Size:</em> Medium</span><span><em>Color:</em> White</span>
                         </div>
                       </div>
                     </td>
@@ -68,9 +68,9 @@
                   </tr>
                   <tr>
                     <td>
-                      <div class="product-item"><a class="product-thumb" href="shop-single.html"><img src="resources/img/shop/cart/03.jpg" alt="Product"></a>
+                      <div class="product-item"><a class="product-thumb" href="getProduct.do?p_name="><img src="resources/img/shop/cart/03.jpg" alt="Product"></a>
                         <div class="product-info">
-                          <h4 class="product-title"><a href="shop-single.html">Campfire Paper Table<small>x 1</small></a></h4><span><em>Color:</em> Walnut</span><span><em>Accent Color:</em> Turquoise</span>
+                          <h4 class="product-title"><a href="getProduct.do?p_name=">Campfire Paper Table<small>x 1</small></a></h4><span><em>Color:</em> Walnut</span><span><em>Accent Color:</em> Turquoise</span>
                         </div>
                       </div>
                     </td>
@@ -213,8 +213,6 @@
 	            <p class="text-muted text-sm mt-4"><h4>${member.id }<span>님</span><h4></p>
 	            <p class="text-muted text-sm mt-4">환영합니다</p>
 	            <button class="btn btn-primary" type="submit">Log Out</button> 
-	            <!-- <a class="btn btn-primary mx-0 scale-up delay-1" href="shop-boxed-ls.jsp">Log Out</a> -->
-	            <!-- <button class="btn btn-primary btn-block" type="submit"><a href="account-wishlist.jsp">My page</button> -->
 
 	            <a class="btn btn-primary mx-0 scale-up delay-1" href="account.do">My page</a>
 

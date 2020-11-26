@@ -343,12 +343,12 @@
 					<div class="custom-control custom-radio custom-control-inline">
 						<input class="custom-control-input" type="radio" id="ex-radio-5" 
 							name="a_name" value="addr2"> 
-							<label class="custom-control-label" for="ex-radio-5" disable> 직장/학교 </label>
+							<label class="custom-control-label" for="ex-radio-5"> 직장/학교 </label>
 					</div>
 					<div class="custom-control custom-radio custom-control-inline">
 						<input class="custom-control-input" type="radio" id="ex-radio-6"
 							name="a_name" value="addr3"> 
-							<label class="custom-control-label" for="ex-radio-6" disable> 기타 </label>
+							<label class="custom-control-label" for="ex-radio-6"> 기타 </label>
 					</div>
 					<input class="btn btn-sm btn-secondary" type="submit" value="주소록 불러오기">
 					</form>
@@ -360,8 +360,8 @@
 				<div class="padding-top-2x mt-2 hidden-lg-up"></div>
 				<h4>주소지 수정</h4>
 				<hr class="padding-bottom-1x">
-				<form class="row" action="updateAddress.do" method="post" enctype="multipart/form-data">
-					<%-- <div class="col-md-6">
+				<form class="row" action="insertAddress.do" method="post" enctype="multipart/form-data">
+					<div class="col-md-6">
 						<div class="form-group">
 							<label for="account-company">주소지명</label> 
 							<input class="form-control" type="text" name="a_name" value="${address.a_name}"
@@ -372,12 +372,12 @@
 						<div class="form-group">
 							   
 						</div>
-					</div> --%>
+					</div>
 					<div class="col-md-6">
 						<div class="form-group">
-							<label for="account-zip">우편번호</label> 
-							<input class="form-control" type="number" id="account-zip" 
-							name="post" value="${address.post}" placeholder="(예)16074" readonly>
+			                <label for="checkout-zip">우편번호</label>
+			                <input class="form-control" type="number" id="post" name="post"
+                			 value="${address.post}" placeholder="우편번호" readonly>
 						</div>
 					</div>
 					<div class="col-md-6">
@@ -387,19 +387,19 @@
 					</div>
 					<div class="col-md-6">
 						<div class="form-group">
-							<label for="account-city">주소 입력</label> 
-							<input class="form-control" type="text" name="address" id="address"
-                				value="${address.address}" placeholder="도로명 주소 or 지번 주소" required>
-								<input type="hidden" name="id" value="${member.id} }">
+			                <label for="checkout-address1">주소 입력</label>
+			                <input class="form-control" type="text" name="address" id="address"
+			                value="${address.address}" placeholder="도로명 주소 or 지번 주소" required>
 						</div>
 					</div>
 					<div class="col-md-6">
-						<div class="form-group">
-							<label for="checkout-address1">상세주소 입력</label>
-			                <input class="form-control" type="text" name="extra_address" id="extra_address"
-		               				value="${address.extra_address}" placeholder="상세주소" required>
-						</div>
-					</div>
+		                <label for="checkout-address1">상세주소 입력</label>
+		                <input class="form-control" type="text" name="extra_address" id="extra_address"
+		                value="${address.extra_address}" placeholder="상세주소" required>
+	              </div>
+	           	 </div>
+            	<!-- 테스트 아이디 전달을 위한 hidden tag -->
+            	<input type="hidden" value="${member.id}" name="id">
 					<div class="col-12">
 						<hr class="mt-2 mb-3">
 					<div class="d-flex flex-wrap justify-content-between align-items-center">

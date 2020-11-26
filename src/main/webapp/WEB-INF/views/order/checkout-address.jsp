@@ -167,8 +167,6 @@
 	            <p class="text-muted text-sm mt-4"><h4>${member.id }<span>님</span><h4></p>
 	            <p class="text-muted text-sm mt-4">환영합니다</p>
 	            <button class="btn btn-primary" type="submit">Log Out</button> 
-	            <!-- <a class="btn btn-primary mx-0 scale-up delay-1" href="shop-boxed-ls.jsp">Log Out</a> -->
-	            <!-- <button class="btn btn-primary btn-block" type="submit"><a href="account-wishlist.jsp">My page</button> -->
 
 	            <a class="btn btn-primary mx-0 scale-up delay-1" href="account.do">My page</a>
 
@@ -290,7 +288,7 @@
       <div class="container">
         <h1>체크아웃</h1>
         <ul class="breadcrumbs">
-          <li><a href="index.jsp">Home</a>
+          <li><a href="main.do">Home</a>
           </li>
           <li class="separator">&nbsp;/&nbsp;</li>
           <li>Checkout - Address</li>
