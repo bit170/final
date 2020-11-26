@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -133,7 +133,7 @@
       <nav class="site-menu">
         <ul>
           <!-- 해당 페이지에 class="active" 추가해줘야함-->
-          <li class="active"><a href="index.jsp"><span>Home</span></a>
+          <li class="active"><a href="main.do"><span>Home</span></a>
           </li>
           <li><a href="getArtistList.do"><span>Artist</span></a></li>
           <li><a href="getProductList.do"><span>Shop</span></a>
@@ -161,7 +161,10 @@
       <div class="toolbar">
         <div class="inner"><a class="toolbar-toggle mobile-menu-toggle" href="#mobileMenu"><i class="material-icons menu"></i></a><a class="toolbar-toggle search-toggle" href="#search"><i class="material-icons search"></i></a><a class="toolbar-toggle" href="#account"><i class="material-icons person"></i></a><a class="toolbar-toggle" href="#cart"><i><span class="material-icons shopping_basket"></span>
           <!-- 조건문 넣기 -->
-          <span class="count">합</span></i></a></div>
+          <c:if test="${!empty cartList }">
+          <span class="count">${fn:length(cartList)}</span>
+          </c:if>
+          </i></a></div>
         <!-- Toolbar Dropdown-->
         <div class="toolbar-dropdown">
           <!-- Mobile Menu Section-->
@@ -176,7 +179,7 @@
             <nav class="slideable-menu mt-4">
               <ul class="menu">
                 <!-- 페이지에 active 클래스 추가해줘야함 -->
-                <li class="has-children active"><span><a href="index.jsp"><span>Home</span></a></span>
+                <li class="has-children active"><span><a href="main.do"><span>Home</span></a></span>
                 </li>
                 <li ><span><a href="artist-boxed-ft.jsp "><span>Artist</span></a></span></li>
                 <li class="has-children"><span><a href="shop-boxed-ls.jsp"><span>Shop</span></a><span class="sub-menu-toggle"></span></span>
