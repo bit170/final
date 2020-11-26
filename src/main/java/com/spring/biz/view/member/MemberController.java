@@ -42,6 +42,7 @@ public class MemberController {
 	@RequestMapping(value = "/account.do", method = RequestMethod.GET)
 	public String account(Model model) {
 		System.out.println("account() 실행");
+		
 		return "redirect:account-wishlist.jsp";
 	}
 	
@@ -66,10 +67,10 @@ public class MemberController {
 			MemberVO member = memberService.getMember(svo);
 			System.out.println(member.getName());
 			model.addAttribute("member", member);
-			return "/WEB-INF/views/main/index.jsp";
+			return "main/index";
 		} else {
 			System.out.println("> 로그인 실패~~~");
-			return "index.do";
+			return "main.do";
 		}
 	}
 	
@@ -92,7 +93,7 @@ public class MemberController {
 		
 		status.setComplete();
 		//redirect 후 session 초기화
-		return "redirect:index.jsp";
+		return "redirect:main.do";
 	}	
 	
 //	@RequestMapping("/getMember.do")

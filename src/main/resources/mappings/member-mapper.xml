@@ -9,7 +9,7 @@
 	</select> 
 	
 	<select id="getSMember" parameterType="svo" resultType="svo" >
-		select * from test where id=#{id} and pwd=#{pwd}
+		select * from member where id=#{id} and pwd=#{pwd}
 	</select>
 	
 	<!-- update / select 문 프로필 수정 시 사용 ( 연희 ) -->
