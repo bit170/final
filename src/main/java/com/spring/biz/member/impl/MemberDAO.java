@@ -22,13 +22,12 @@ public class MemberDAO {
 	}
 	
 	public int getId(String id) {
-		/* mybatis.selectOne("memberDAO.getId", id) */
-		return 0;
+		return mybatis.selectOne("memberDAO.getId", id); 
 	}
 
-	public MemberVO getMember(MemberVO vo) {
+	public MemberVO getMember(S_MemberVO svo) {
 		System.out.println(">>> getMember() 실행");
-		return mybatis.selectOne("memberDAO.getMember", vo);
+		return mybatis.selectOne("memberDAO.getMember", svo);
 	}
 	
 	public void updateMember(MemberVO vo) {

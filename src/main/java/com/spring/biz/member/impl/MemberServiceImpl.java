@@ -12,10 +12,6 @@ public class MemberServiceImpl implements MemberService {
 	@Autowired
 	private MemberDAO memberDAO;
 
-	@Override
-	public MemberVO getMember(MemberVO vo) {
-		return memberDAO.getMember(vo);
-	}
 
 	@Override
 	public void updateMember(MemberVO vo) {
@@ -36,14 +32,19 @@ public class MemberServiceImpl implements MemberService {
 
 	@Override
 	public int checkId(String id) {
-//		memberDAO.getId(id)
-		return 0;
+		return memberDAO.getId(id);
 	}
 
 	@Override
 	public S_MemberVO getSMember(S_MemberVO svo) {
 		System.out.println("memberService.getSMember() 실행");
 		return memberDAO.getSMember(svo);
+	}
+
+	@Override
+	public MemberVO getMember(S_MemberVO svo) {
+		System.out.println("memberService.getMember(svo) 실행");
+		return memberDAO.getMember(svo);
 	}
 
 }
