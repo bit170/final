@@ -376,4 +376,5 @@
 	<script src="<c:url value="resources/js/vendor.min.js" />"></script>
 	<script src="<c:url value="resources/js/scripts.min.js" />"></script>
 </body>
+
 </html>

@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -42,7 +43,9 @@ public class MemberController {
 	@RequestMapping(value = "/account.do", method = RequestMethod.GET)
 	public String account(Model model) {
 		System.out.println("account() 실행");
+
 		return "redirect:account-wishlist.jsp";
+
 	}
 	
 	@RequestMapping(value = "/idCheck.do", method = RequestMethod.POST)
@@ -53,23 +56,53 @@ public class MemberController {
 		return memberService.checkId(signup_id);
 	}
 	
+	@RequestMapping(value = "/signUp.do", method = RequestMethod.POST)
+	public String signup(MemberVO vo, HttpSession session) {
+		System.out.println("signup() 실행");
+		System.out.println("vo : "+vo);
+		int result = memberService.insertMember(vo);
+		if(result>0) {
+			System.out.println("회원가입 완료");
+			session.setAttribute("signedUp", vo);
+//			model.addAttribute("signedUp", vo);
+			return "redirect:main.do";
+		}else {
+			System.out.println("회원가입 실패");
+			return "main/index";
+		}
+	}
+	
+//	@RequestMapping(value = "/signup.do", method = RequestMethod.POST)
+//	public @ResponseBody int signup(@RequestBody MemberVO vo, Model model) {
+//		System.out.println("signup() 실행");
+//		System.out.println("vo : "+vo);
+//		int result = memberService.insertMember(vo);
+//		if(result>0) {
+//			System.out.println("회원가입 완료");
+//			model.addAttribute("signedUp", vo);
+//		}else {
+//			System.out.println("회원가입 실패");
+//		}
+//		return result;
+//	}
+	
 	@RequestMapping(value="/login.do", method = RequestMethod.POST)
 	public String login(S_MemberVO svo, Model model,HttpSession session) {
 		System.out.println(">> 로그인 메소드 실행 - POST");
 		System.out.println("vo : " + svo);
-		System.out.println("id : " + svo.getId()+"pwd: "+svo.getPwd());
-		System.out.println("MemberDAO : " + memberService);
+		System.out.println("id : " + svo.getId()+" pwd: "+svo.getPwd());
+//		System.out.println("MemberDAO : " + memberService);
 		
 		S_MemberVO sMember = memberService.getSMember(svo);
 		if (sMember != null) {
 			System.out.println("> 로그인 성공!!");
 			MemberVO member = memberService.getMember(svo);
-			System.out.println(member.getName());
+			System.out.println("회원이름 : " + member.getName());
 			model.addAttribute("member", member);
-			return "/WEB-INF/views/main/index.jsp";
+			return "main/index";
 		} else {
 			System.out.println("> 로그인 실패~~~");
-			return "index.do";
+			return "redirect:main.do";
 		}
 	}
 	
@@ -92,18 +125,14 @@ public class MemberController {
 		
 		status.setComplete();
 		//redirect 후 session 초기화
-		return "redirect:index.jsp";
+		return "redirect:main.do";
 	}	
 	
-//	@RequestMapping("/getMember.do")
-//	public String getMember(MemberVO vo, Model model) {
-//		MemberVO member = memberService.getMember(vo);
-//
-//		model.addAttribute("member", member);
-//		System.out.println("member : " + member);
-//		
-//		return "account-profile.jsp";
-//	}
+	@RequestMapping("/getMember.do")
+	public String getMember() {
+		
+		return "/WEB-INF/views/account/account-profile.jsp";
+	}
 	
 	@RequestMapping("/updateMember.do")
 	public String updateMember(@ModelAttribute("member") MemberVO vo) {
@@ -113,7 +142,7 @@ public class MemberController {
 		System.out.println("member : " + vo);
 		memberService.updateMember(vo);
 		
-		return "redirect:account-profile.jsp";
+		return "/WEB-INF/views/account/account-profile.jsp";
 	}
 	
 }
