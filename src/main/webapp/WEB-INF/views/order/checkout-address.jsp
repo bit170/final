@@ -338,9 +338,9 @@
           <div class="steps flex-sm-nowrap mb-5">
           	<a class="step active" href="#">
               <h4 class="step-title">1. 배송지 입력</h4></a>
-            <a class="step" href="checkout-shipping.jsp">
+            <a class="step" href="payment.do">
               <h4 class="step-title">2. 결제</h4></a>
-            <a class="step" href="checkout-review.jsp">
+            <a class="step" href="review.do">
               <h4 class="step-title">3. 리뷰</h4></a></div>
           <h4>배송지 입력</h4>
           <hr class="padding-bottom-1x">
@@ -360,7 +360,7 @@
               </div>
             </div>
           </div>
-         <%--  <div class="row">
+          <div class="row">
             <div class="col-sm-6">
               <div class="form-group">
                 <label for="checkout-company">배송지명</label>
@@ -373,7 +373,7 @@
                
               </div>
             </div>
-          </div> --%>
+          </div>
           <div class="row">
             <div class="col-sm-6">
               <div class="form-group">
@@ -410,7 +410,7 @@
           
           <hr class="padding-bottom-1x">
           <div class="d-flex justify-content-between">
-          <button class="btn btn-outline-secondary m-0" href="cart.jsp">카트로 돌아가기</button>
+          <button class="btn btn-outline-secondary m-0" href="cart.do">카트로 돌아가기</button>
           <button class="btn btn-primary m-0" type="submit">Continue</button>
           </div>
         </div>

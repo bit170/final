@@ -21,11 +21,14 @@
     <link rel="apple-touch-icon" sizes="180x180" href="touch-icon-iphone-retina.png">
     <link rel="apple-touch-icon" sizes="167x167" href="touch-icon-ipad-retina.png">
     <!-- Vendor Styles including: Bootstrap, Font Icons, Plugins, etc.-->
-    <link rel="stylesheet" media="screen" href="resouces/css/vendor.min.css">
+    <link rel="stylesheet" media="screen" 
+			href="<c:url value="resources/css/vendor.min.css" />">
     <!-- Interactive Credit Card-->
-    <link rel="stylesheet" media="screen" href="resouces/css/card.min.css">
+    <link rel="stylesheet" media="screen" 
+			href="<c:url value="resources/css/card.min.css" />">
     <!-- Main Template Styles-->
-    <link id="mainStyles" rel="stylesheet" media="screen" href="resouces/css/styles.min.css">
+    <link id="mainStyles" rel="stylesheet" media="screen" 
+			href="<c:url value="resources/css/styles.min.css" />">
     <!-- Modernizr-->
     <script src="resources/js/modernizr.min.js"></script>
   </head>
@@ -283,11 +286,11 @@
         <!-- Checkout Adress-->
         <div class="col-xl-9 col-lg-8">
           <div class="steps flex-sm-nowrap mb-5">
-            <a class="step" href="checkout-address.html">
+            <a class="step" href="checkout.do">
               <h4 class="step-title"><i class="material-icons check_circle"></i>1. 배송지 입력</h4></a>
-            <a class="step active" href="checkout-payment.html">
+            <a class="step active" href="payment.do">
               <h4 class="step-title"><i class="material-icons check_circle"></i>2. 결제</h4></a>
-            <a class="step" href="checkout-review.html">
+            <a class="step" href="review.do">
               <h4 class="step-title">3. 주문확인</h4></a></div>
           <h4>Choose Payment Method</h4>
           <hr class="padding-bottom-1x">
@@ -362,7 +365,8 @@
               </div>
             </div>
           </div>
-          <div class="d-flex justify-content-between pt-4 mt-2"><a class="btn btn-outline-secondary m-0" href="checkout-shipping.html">Back</a><a class="btn btn-primary m-0" href="checkout-review.html">Continue</a></div>
+          <div class="d-flex justify-content-between pt-4 mt-2"><a class="btn btn-outline-secondary m-0" href="checkout.do">뒤로가기</a>
+          <a class="btn btn-primary m-0" href="review.do">계속하기</a></div>
         </div>
         <!-- Sidebar          -->
         <div class="col-xl-3 col-lg-4">
@@ -416,9 +420,10 @@
               </div>
             </section>
             <!-- Promo Banner-->
-            <div class="fw-section mt-1 px-4 py-5 text-center" style="background-image: url(img/banners/alert-bg.jpg);">
-              <h3 class="text-white">Check our <br><span class='text-bold'>Latest Offers.</span><br> Save up to <span class='text-bold'>50%</span></h3><a class="btn btn-primary btn-sm" href="#">View Offers</a>
-            </div>
+           <!--  <div class="fw-section mt-1 px-4 py-5 text-center" style="background-image: url(img/banners/alert-bg.jpg);">
+              <h3 class="text-white">Check our <br><span class='text-bold'>Latest Offers.</span><br> Save up to <span class='text-bold'>50%</span></h3>
+              <a class="btn btn-primary btn-sm" href="#">View Offers</a>
+            </div> -->
           </aside>
         </div>
       </div>

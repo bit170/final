@@ -34,8 +34,8 @@ public class AddressController {
 		
 		
 		// 결제페이지 완료 시 결제페이지로 포워딩
-		return "/WEB-INF/views/account/account-address.jsp";
-//		return "/WEB-INF/views/order/checkout-payment.jsp";
+//		return "/WEB-INF/views/account/account-address.jsp";
+		return "/payment.do";
 		
 	}
 	
@@ -68,16 +68,5 @@ public class AddressController {
 		return "/WEB-INF/views/account/account-address.jsp";
 	}
 	
-	@RequestMapping("/checkout.do")
-	public String checkoutAddress(AddressVO vo, Model model) {
-		System.out.println("checkoutAddress() 실행");
-		
-		addrService.getAddr(vo);
-		model.addAttribute("address", vo);
-		System.out.println("address : " + vo);
-		
-		
-		return "/WEB-INF/views/order/checkout-address.jsp";
-	}
 
 }

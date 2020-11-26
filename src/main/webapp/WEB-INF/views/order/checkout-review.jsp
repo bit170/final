@@ -281,11 +281,11 @@
         <!-- Checkout Shipping-->
         <div class="col-xl-9 col-lg-8">
           <div class="steps flex-sm-nowrap mb-5">
-            <a class="step" href="checkout-address.html">
+            <a class="step" href="checkout.do">
               <h4 class="step-title"><i class="material-icons check_circle"></i>1. 배송지 입력</h4></a>
-            <a class="step" href="checkout-payment.html">
+            <a class="step" href="payment.do">
               <h4 class="step-title"><i class="material-icons check_circle"></i>2. 결제</h4></a>
-            <a class="step active" href="checkout-review.html">
+            <a class="step active" href="review.do">
               <h4 class="step-title"><i class="material-icons check_circle"></i>3. 리뷰</h4></a></div>
           <h4>주문을 확인해주세요 !</h4>
           <hr class="padding-bottom-1x">
@@ -293,8 +293,8 @@
             <table class="table">
               <thead>
                 <tr>
-                  <th>Product Name</th>
-                  <th class="text-center">Subtotal</th>
+                  <th>제품명</th>
+                  <th class="text-center">합 계</th>
                   <th></th>
                 </tr>
               </thead>
@@ -308,29 +308,7 @@
                     </div>
                   </td>
                   <td class="text-center text-lg text-medium">$257.00</td>
-                  <td class="text-center"><a class="btn btn-outline-secondary btn-sm" href="cart.html">Edit</a></td>
-                </tr>
-                <tr>
-                  <td>
-                    <div class="product-item"><a class="product-thumb" href="shop-single.html"><img src="resouces/img/shop/cart/02.jpg" alt="Product"></a>
-                      <div class="product-info">
-                        <h4 class="product-title"><a href="shop-single.html">Plastic Tissue Holder<small>x 2</small></a></h4><span><em>Size:</em> Medium</span><span><em>Color:</em> White</span>
-                      </div>
-                    </div>
-                  </td>
-                  <td class="text-center text-lg text-medium">$152.80</td>
-                  <td class="text-center"><a class="btn btn-outline-secondary btn-sm" href="cart.html">Edit</a></td>
-                </tr>
-                <tr>
-                  <td>
-                    <div class="product-item"><a class="product-thumb" href="shop-single.html"><img src="resouces/img/shop/cart/03.jpg" alt="Product"></a>
-                      <div class="product-info">
-                        <h4 class="product-title"><a href="shop-single.html">Campfire Paper Table<small>x 1</small></a></h4><span><em>Color:</em> Walnut</span><span><em>Accent Color:</em> Turquoise</span>
-                      </div>
-                    </div>
-                  </td>
-                  <td class="text-center text-lg text-medium">$289.00</td>
-                  <td class="text-center"><a class="btn btn-outline-secondary btn-sm" href="cart.html">Edit</a></td>
+                  <td class="text-center"><a class="btn btn-outline-secondary btn-sm" href="cart.do">Edit</a></td>
                 </tr>
               </tbody>
             </table>
@@ -341,7 +319,7 @@
             <div class="col-sm-6">
               <h5>Shipping to:</h5>
               <ul class="list-unstyled text-sm">
-                <li><span class='text-muted'>Client:</span> Daniel Adams</li>
+                <li><span class='text-muted'>주문자명:</span> "${member.name}"</li>
                 <li><span class='text-muted'>Address:</span> 44 Shirley Ave. West Chicago, IL 60185, USA</li>
                 <li><span class='text-muted'>Phone:</span> +1(808) 764 554 330</li>
               </ul>
@@ -354,7 +332,8 @@
             </div>
           </div>
           <hr class="padding-bottom-1x">
-          <div class="d-flex justify-content-between"><a class="btn btn-outline-secondary m-0" href="checkout-payment.html">Back</a><a class="btn btn-primary m-0" href="checkout-complete.html">Complete Order</a></div>
+          <div class="d-flex justify-content-between"><a class="btn btn-outline-secondary m-0" href="payment.do">돌아가기</a>
+          <a class="btn btn-primary m-0" href="complete.do">주문완료</a></div>
         </div>
         <!-- Sidebar          -->
         <div class="col-xl-3 col-lg-4">
@@ -371,10 +350,6 @@
                 <tr>
                   <td>Shipping:</td>
                   <td class="text-medium">$35.50</td>
-                </tr>
-                <tr>
-                  <td>Estimated tax:</td>
-                  <td class="text-medium">$7.42</td>
                 </tr>
                 <tr>
                   <td></td>
@@ -408,9 +383,11 @@
               </div>
             </section>
             <!-- Promo Banner-->
-            <div class="fw-section mt-1 px-4 py-5 text-center" style="background-image: url(img/banners/alert-bg.jpg);">
-              <h3 class="text-white">Check our <br><span class='text-bold'>Latest Offers.</span><br> Save up to <span class='text-bold'>50%</span></h3><a class="btn btn-primary btn-sm" href="#">View Offers</a>
-            </div>
+           <!--  <div class="fw-section mt-1 px-4 py-5 text-center" style="background-image: url(img/banners/alert-bg.jpg);">
+              <h3 class="text-white">Check our <br>
+              <span class='text-bold'>Latest Offers.</span><br> Save up to <span class='text-bold'>50%</span></h3>
+              <a class="btn btn-primary btn-sm" href="#">View Offers</a>
+            </div> -->
           </aside>
         </div>
       </div>
