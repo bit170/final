@@ -292,16 +292,16 @@
               <h4 class="step-title"><i class="material-icons check_circle"></i>2. 결제</h4></a>
             <a class="step" href="review.do">
               <h4 class="step-title">3. 주문확인</h4></a></div>
-          <h4>Choose Payment Method</h4>
+          <h4>결제 방식을 선택하세요</h4>
           <hr class="padding-bottom-1x">
           <div class="accordion" id="accordion" role="tablist">
             <div class="card">
               <div class="card-header" role="tab">
-                <h6><a href="#card" data-toggle="collapse"><i class="icon-columns"></i>Pay with Credit Card</a></h6>
+                <h6><a href="#card" data-toggle="collapse"><i class="icon-columns"></i>신용카드로 결제</a></h6>
               </div>
               <div class="collapse show" id="card" data-parent="#accordion" role="tabpanel">
                 <div class="card-body">
-                  <p class="text-sm">We accept following credit cards:&nbsp;<img class="d-inline-block align-middle" src="resources/img/cards.png" style="width: 187px;" alt="Cerdit Cards"></p>
+                  <p class="text-sm">사용가능한 카드사:&nbsp;<img class="d-inline-block align-middle" src="resources/img/cards.png" style="width: 187px;" alt="Cerdit Cards"></p>
                   <div class="card-wrapper"></div>
                   <form class="interactive-credit-card row">
                     <div class="form-group col-sm-6">
@@ -317,7 +317,7 @@
                       <input class="form-control" type="text" name="cvc" placeholder="CVC" required>
                     </div>
                     <div class="col-sm-6">
-                      <button class="btn btn-outline-primary btn-block margin-top-none" type="submit">Submit</button>
+                      <button class="btn btn-outline-primary btn-block margin-top-none" type="submit">결제하기</button>
                     </div>
                   </form>
                 </div>
@@ -325,45 +325,32 @@
             </div>
             <div class="card">
               <div class="card-header" role="tab">
-                <h6><a class="collapsed" href="#paypal" data-toggle="collapse"><i class="socicon-paypal"></i>Pay with PayPal</a></h6>
+                <h6><a class="collapsed" href="#paypal" data-toggle="collapse"><!-- <i class="socicon-paypal"></i> -->
+                		카카오페이로 결제</a></h6>
               </div>
               <div class="collapse" id="paypal" data-parent="#accordion" role="tabpanel">
                 <div class="card-body">
-                  <p class="text-sm">PayPal - the safer, easier way to pay</p>
+                  <p class="text-sm">카카오페이로 결제하기</p>
+                      <img src="resources/payment_icon_yellow_small.png" alt="kakaopay">
                   <form class="row" method="post">
                     <div class="col-sm-6">
                       <div class="form-group">
-                        <input class="form-control" type="email" placeholder="E-mail" required>
+                        <input class="form-control" type="email" placeholder="카카오톡 아이디" required>
                       </div>
                     </div>
                     <div class="col-sm-6">
                       <div class="form-group">
-                        <input class="form-control" type="password" placeholder="Password" required>
+                        <input class="form-control" type="password" placeholder="" required>
                       </div>
                     </div>
-                    <div class="col-12">
-                      <div class="d-flex flex-wrap justify-content-between align-items-center"><a class="navi-link text-sm" href="#">Forgot password?</a>
-                        <button class="btn btn-outline-primary margin-top-none" type="submit">Log In</button>
-                      </div>
+                    <div class="col-sm-6">
+                        <button class="btn btn-outline-primary margin-top-none" type="submit">결제하기</button>
                     </div>
                   </form>
                 </div>
               </div>
             </div>
-            <div class="card">
-              <div class="card-header" role="tab">
-                <h6><a class="collapsed" href="#points" data-toggle="collapse"><i class="material-icons redeem"></i>Redeem Reward Points</a></h6>
-              </div>
-              <div class="collapse" id="points" data-parent="#accordion" role="tabpanel">
-                <div class="card-body">
-                  <p>You currently have<span class="text-medium text-dark"> 622</span> Reward Points to spend.</p>
-                  <div class="custom-control custom-checkbox d-block">
-                    <input class="custom-control-input" type="checkbox" id="use_points">
-                    <label class="custom-control-label" for="use_points">Use my Reward Points to pay for this order.</label>
-                  </div>
-                </div>
-              </div>
-            </div>
+
           </div>
           <div class="d-flex justify-content-between pt-4 mt-2"><a class="btn btn-outline-secondary m-0" href="checkout.do">뒤로가기</a>
           <a class="btn btn-primary m-0" href="review.do">계속하기</a></div>

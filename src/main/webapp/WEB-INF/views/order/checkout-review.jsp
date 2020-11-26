@@ -308,26 +308,26 @@
                     </div>
                   </td>
                   <td class="text-center text-lg text-medium">$257.00</td>
-                  <td class="text-center"><a class="btn btn-outline-secondary btn-sm" href="cart.do">Edit</a></td>
+                  <td class="text-center"><a class="btn btn-outline-secondary btn-sm" href="cart.do">변경</a></td>
                 </tr>
               </tbody>
             </table>
           </div>
           <hr class="padding-bottom-1x">
-          <div class="text-right padding-bottom-1x">Subtotal: <span class='text-medium text-dark'>$622.40</span></div>
+          <div class="text-right padding-bottom-1x">합 계l: <span class='text-medium text-dark'>$622.40</span></div>
           <div class="row padding-top-1x mt-3 mb-4">
             <div class="col-sm-6">
-              <h5>Shipping to:</h5>
+              <h5>받으시는 분 :</h5>
               <ul class="list-unstyled text-sm">
-                <li><span class='text-muted'>주문자명:</span> "${member.name}"</li>
-                <li><span class='text-muted'>Address:</span> 44 Shirley Ave. West Chicago, IL 60185, USA</li>
-                <li><span class='text-muted'>Phone:</span> +1(808) 764 554 330</li>
+                <li><span class='text-muted'>주문자명:</span> ${member.name}</li>
+                <li><span class='text-muted'>주소:</span> ${address.address} ${address.extra_address} ${address.post}</li>
+                <li><span class='text-muted'>전화번호:</span> ${member.phone}</li>
               </ul>
             </div>
             <div class="col-sm-6">
-              <h5>Payment method:</h5>
+              <h5>지불방법:</h5>
               <ul class="list-unstyled text-sm">
-                <li><span class='text-muted'>Credit Card:</span> **** **** **** 5300</li>
+                <li><span class='text-muted'>신용카드:</span> **** **** **** 5300</li>
               </ul>
             </div>
           </div>
@@ -341,16 +341,16 @@
             <div class="padding-top-2x hidden-lg-up"></div>
             <!-- Order Summary Widget-->
             <section class="widget widget-order-summary bg-secondary border-0 p-4">
-              <h3 class="widget-title">Order Summary</h3>
+              <h3 class="widget-title">주문 요약</h3>
               <table class="table text-sm mb-0">
                 <tr>
                   <td>Cart Subtotal:</td>
                   <td class="text-medium">$622.40</td>
                 </tr>
-                <tr>
+               <!--  <tr>
                   <td>Shipping:</td>
                   <td class="text-medium">$35.50</td>
-                </tr>
+                </tr>   -->
                 <tr>
                   <td></td>
                   <td class="text-lg text-medium">$665.32</td>
