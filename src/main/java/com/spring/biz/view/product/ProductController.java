@@ -1,17 +1,10 @@
 package com.spring.biz.view.product;
 
-import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.SessionAttributes;
 
 import com.spring.biz.product.ProductService;
-import com.spring.biz.product.ProductVO;
 
 @Controller
 @SessionAttributes("product")
@@ -23,6 +16,8 @@ public class ProductController {
 		System.out.println(">>>> ProductController() 객체 생성");
 	}
 
+	//@RequestMapping(value="/addNewProduct.do", method= {RequestMethod.POST})
+	//public 
 //	@RequestMapping(value="/getProduct.do", method = RequestMethod.POST)
 //	public String getProduct(ProductVO vo, Model model) {
 //		ProductVO product = productService.getProduct(vo);
