@@ -295,12 +295,6 @@
 						style="background-image: url(img/account/user-cover-img.jpg);">
 					</div>
 					<div class="user-info">
-					<!-- 사용자 사진 -->
-						<!-- <div class="user-avatar">
-							<a class="edit-avatar" href="#"><i
-								class="material-icons edit"></i>수정하기</a><img
-								src="resources/img/account/user-ava.jpg" alt="User">
-						</div> -->
 						<div class="user-data">
 							<h5>${member.name} 님의 계정</h5>
 							<span>${member.joindate}</span>

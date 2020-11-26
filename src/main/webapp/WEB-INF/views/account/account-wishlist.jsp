@@ -247,9 +247,9 @@
 		<div class="container">
 			<h1>내 위시리스트</h1>
 			<ul class="breadcrumbs">
-				<li><a href="index.jsp">홈</a></li>
+				<li><a href="main.do">홈</a></li>
 				<li class="separator">&nbsp;/&nbsp;</li>
-				<li><a href="account-orders.jsp">나의 계정</a></li>
+				<li><a href="account-orders.do">나의 계정</a></li>
 				<li class="separator">&nbsp;/&nbsp;</li>
 				<li>My Wishlist</li>
 			</ul>
@@ -281,7 +281,7 @@
 					<a class="list-group-item with-badge active" href="account-wishlist.jsp">
 						<i class="icon-heart"></i>위시리스트
 						<span class="badge badge-default badge-pill">1</span></a> 
-					<a class="list-group-item" href="account-follows.jsp">
+					<a class="list-group-item" href="account-follows.do">
 						<i class="icon-heart"></i>팔로우
 						<span class="badge badge-default badge-pill">3</span></a> 
 					<a class="list-group-item" href="account-orders.jsp">
@@ -291,7 +291,7 @@
 						<i class="icon-head"></i>프로필 수정</a> 
 					<a class="list-group-item" href="getAddress.do">
 						<i class="icon-map"></i>주소록</a> 
-					<a class="list-group-item" href="account-myCanvas.jsp">
+					<a class="list-group-item" href="account-myCanvas.do">
 						<i class="icon-head"></i>마이 캔버스</a>
 				</nav>
 			</div>
@@ -312,11 +312,11 @@
 							<tr>
 								<td>
 									<div class="product-item">
-										<a class="product-thumb" href="shop-single.jsp"><img
+										<a class="product-thumb" href="shop-single.do"><img
 											src="resources/img/shop/cart/01.jpg" alt="Product"></a>
 										<div class="product-info">
 											<h4 class="product-title">
-												<a href="shop-single.jsp">${product.p_name}</a>
+												<a href="shop-single.do">${product.p_name}</a>
 											</h4>
 											<div class="text-lg text-medium text-muted">${product.price}</div>
 											<div class="text-sm">
