@@ -29,13 +29,18 @@
     <script src="resources/js/modernizr.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
     <script type="text/javascript">
-    	
+    	var signedUp = "${signedUp.id}";
+		/* 문제 : 메인화면 올때마다 알림창 뜸 ;; */    	
+    	if(signedUp != ""){
+    		alert("		"+signedUp+"님 가입을 환영합니다.\n이메일 인증 후 로그인 할 수 있습니다. ");
+    		
+    	}
     	$(document).ready(function () {
     		/* 회원가입 성공 후  model attribute에 바인딩한 객체를 확인 */
-            var signedUp= '${signedUp}';
+            /* var signedUp= '${signedUp.id}';
             if(signedUp != null){
             	alert("회원가입을 축하합니다. 이메일 인증 후 사용할 수 있습니다.");
-            }
+            } */
             
             
     		 $("#signup_id").blur(function () {
@@ -115,6 +120,7 @@
   </head>
   <!-- Body-->
   <body>
+  
     <!-- Navbar-->
     <!-- Remove "navbar-sticky" class to make navigation bar scrollable with the page.-->
     <header class="navbar navbar-sticky">
