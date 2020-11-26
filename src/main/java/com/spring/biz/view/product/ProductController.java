@@ -45,16 +45,16 @@ public class ProductController {
 //		return "/WEB-INF/views/main/index.jsp";
 //	}
 	
-	@RequestMapping(value="/getProductList.do", method = RequestMethod.GET)
-	public String getBoardList(ProductVO vo, Model model) {
-		System.out.println(">>> 게시글 전체 목록 보여주기");
-		
-		List<ProductVO> list = productService.getProductList(vo);
-		model.addAttribute("productList", list);
-		System.out.println(list.isEmpty());
-		System.out.println(list);
-		return "shop-boxed-ls.jsp";
-	}
+//	@RequestMapping(value="/getProductList.do", method = RequestMethod.GET)
+//	public String getBoardList(ProductVO vo, Model model) {
+//		System.out.println(">>> 게시글 전체 목록 보여주기");
+//		
+//		List<ProductVO> list = productService.getProductList(vo);
+//		model.addAttribute("productList", list);
+//		System.out.println(list.isEmpty());
+//		System.out.println(list);
+//		return "shop-boxed-ls.jsp";
+//	}
 
 
 }

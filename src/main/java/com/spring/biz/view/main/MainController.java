@@ -25,8 +25,8 @@ public class MainController {
 
 	@RequestMapping("/main.do")
 	public String main(Model model) {
-		List<ProductVO> list = productService.getMainProduct();
-		model.addAttribute("MainProduct", list);
+		//List<ProductVO> list = productService.getMainProduct();
+		//model.addAttribute("MainProduct", list);
 		
 		
 		return "main/index";
