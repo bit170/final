@@ -5,10 +5,11 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.SessionAttributes;
 
 import com.spring.biz.product.ProductService;
+import com.spring.biz.view.common.BaseController;
 
 @Controller
 @SessionAttributes("product")
-public class ProductController {
+public class ProductController extends BaseController {
 	@Autowired
 	private ProductService productService;
 	

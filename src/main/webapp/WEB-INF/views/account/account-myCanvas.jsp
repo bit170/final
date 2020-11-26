@@ -43,9 +43,9 @@
 		<!-- Site Branding-->
 		<!-- 브랜드 로고 -->
 		<div class="site-branding">
-			<a class="site-logo hidden-xs-down" href="index.jsp"><img
+			<a class="site-logo hidden-xs-down" href="index.do"><img
 				src="resources/img/logo/logo.png" alt="Unishop"></a><a
-				class="site-logo logo-sm hidden-sm-up" href="index.jsp"><img
+				class="site-logo logo-sm hidden-sm-up" href="index.do"><img
 				src="resources/img/logo/logo-sm.png" alt="Unishop"></a>
 		</div>
 		<!-- Main Navigation-->
@@ -53,7 +53,7 @@
 		<nav class="site-menu">
 			<ul>
 				<!-- 해당 페이지에 class="active" 추가해줘야함-->
-				<li class="active"><a href="index.jsp"><span>Home</span></a></li>
+				<li class="active"><a href="index.do"><span>Home</span></a></li>
 				<li><a href="artist-boxed-ft.jsp"><span>Artist</span></a></li>
 				<li><a href="shop-boxed-ls.jsp"><span>Shop</span></a>
 					<ul class="sub-menu">
@@ -105,7 +105,7 @@
 						<ul class="menu">
 							<!-- 페이지에 active 클래스 추가해줘야함 -->
 							<li class="has-children active"><span><a
-									href="index.jsp"><span>Home</span></a></span></li>
+									href="index.do"><span>Home</span></a></span></li>
 							<li><span><a href="artist-boxed-ft.jsp "><span>Artist</span></a></span></li>
 							<li class="has-children"><span><a
 									href="shop-boxed-ls.jsp"><span>Shop</span></a><span
@@ -308,7 +308,7 @@
 		<div class="container">
 			<h1>나의 캔버스</h1>
 			<ul class="breadcrumbs">
-				<li><a href="index.jsp">홈</a></li>
+				<li><a href="index.do">홈</a></li>
 				<li class="separator">&nbsp;/&nbsp;</li>
 				<li><a href="account-orders.jsp">나의 계정</a></li>
 				<li class="separator">&nbsp;/&nbsp;</li>
@@ -352,7 +352,7 @@
 						<i class="icon-head"></i>프로필 수정</a> 
 					<a class="list-group-item" href="account-address.jsp">
 						<i class="icon-map"></i>주소록</a> 
-					<a class="list-group-item with-badge active" href="account-myCanvas.jsp">
+					<a class="list-group-item with-badge active" href="account-myCanvas.do">
 						<i class="icon-head"></i>마이 캔버스</a>
 				</nav>
 			</div>
@@ -381,9 +381,9 @@
 					</div>
 <<<<<<< HEAD
 					<div class="d-flex justify-content-between">
-					<a class="btn btn-outline-secondary" href="account-myCanvas.jsp">마이페이지로</a>
+					<a class="btn btn-outline-secondary" href="account-myCanvas.do">마이페이지로</a>
 					<div class="text-center">
-						<a class="btn btn-primary" href="account-myCanvas.jsp">수정하기</a>
+						<a class="btn btn-primary" href="account-myCanvas.do">수정하기</a>
 					</div>
 				</div>
 					<hr class="margin-bottom-1x">
@@ -398,14 +398,17 @@
 								<div class="gutter-sizer"></div>
 								<div class="grid-sizer"></div>
 								<div class="grid-item gallery-item">
-									<a href="insert-canvas.jsp"><img
-										src="resources/img/gallery/th05.jpg" alt="Image">
-										<span class="caption">새 작품 추가하기</a></span>
+									<a href="insert-canvas.do"><img
+										src="resources/img/gallery/th05.jpg" alt="Image"></a>
+										<span class="caption">새 작품 추가하기</span>
+									</div>
+								</div>
+							</div>
 =======
 					<div class="d-flex justify-content-center">
-					<a class="btn btn-outline-secondary" href="account-myCanvas.jsp">마이페이지로</a>
+					<a class="btn btn-outline-secondary" href="account-myCanvas.do">마이페이지로</a>
 					<div class="text-center">
-						<a class="btn btn-primary" href="account-myCanvas.jsp">수정하기</a>
+						<a class="btn btn-primary" href="account-myCanvas.do">수정하기</a>
 					</div>
 				</div>
 					<hr class="margin-bottom-1x">
@@ -420,23 +423,23 @@
 								<div class="gutter-sizer"></div>
 								<div class="grid-sizer"></div>
 								<div class="grid-item gallery-item">
-									<a href="insert-canvas.jsp"><img
-										src="resources/img/gallery/th05.jpg" alt="Image"><span
-										class="caption">새 작품 추가하기</a></span>
->>>>>>> branch 'yhg' of https://github.com/bit170/final.git
+									<a href="insert-canvas.do">
+									<img src="resources/img/gallery/th05.jpg" alt="Image"></a>
+										<span class="caption">새 작품 추가하기</span>
+		<!-- >>>>>>> branch 'yhg' of https://github.com/bit170/final.git -->
 								</div>
 								<div class="grid-item gallery-item">
-									<a href="update-canvas.jsp"><img
-										src="resources/img/gallery/th01.jpg" alt="Image"></a><span
-										class="caption">Bonsai on the table</span>
+									<a href="update-canvas.do">
+									<img src="resources/img/gallery/th01.jpg" alt="Image"></a>
+									<span class="caption">Bonsai on the table</span>
 								</div>
 								<div class="grid-item gallery-item">
-									<a href="update-canvas.jsp"><img
+									<a href="update-canvas.do"><img
 										src="resources/img/gallery/th04.jpg" alt="Image"></a><span
 										class="caption">Working desk</span>
 								</div>
 								<div class="grid-item gallery-item">
-									<a href="update-canvas.jsp"><img
+									<a href="update-canvas.do"><img
 										src="resources/img/gallery/th06.jpg" alt="Image"></a><span
 										class="caption">Table lamp</span>
 								</div>

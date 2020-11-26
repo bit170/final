@@ -18,14 +18,14 @@ public abstract class BaseController {
 		Iterator<String> fileNames = multipartRequest.getFileNames();
 		while(fileNames.hasNext()){
 			PImageFileVO pimageFileVO =new PImageFileVO();
-			String fileName = fileNames.next();
-			pimageFileVO.setPi_filetype(fileName);
-			MultipartFile mFile = multipartRequest.getFile(fileName);
+			String p_filename = fileNames.next();
+			pimageFileVO.setPi_filetype(p_filename);
+			MultipartFile mFile = multipartRequest.getFile(p_filename);
 			String originalFileName=mFile.getOriginalFilename();
 			pimageFileVO.setP_filename(originalFileName);
 			pfileList.add(pimageFileVO);
 			
-			File file = new File(CURR_IMAGE_REPO_PATH +"\\"+ fileName);
+			File file = new File(CURR_IMAGE_REPO_PATH +"\\"+ p_filename);
 			if(mFile.getSize()!=0){ //File Null Check
 				if(! file.exists()){ 
 					if(file.getParentFile().mkdirs()){ 
