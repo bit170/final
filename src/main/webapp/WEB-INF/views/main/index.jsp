@@ -172,7 +172,7 @@
                 <!-- 페이지에 active 클래스 추가해줘야함 -->
                 <li class="has-children active"><span><a href="index.jsp"><span>Home</span></a></span>
                 </li>
-                <li ><span><a href="artist-boxed-ft.jsp "><span>Artist</span></a></span></li>
+                <li ><span><a href="getArtistList.do "><span>Artist</span></a></span></li>
                 <li class="has-children"><span><a href="shop-boxed-ls.jsp"><span>Shop</span></a><span class="sub-menu-toggle"></span></span>
                   <ul class="slideable-submenu">
                       <li><a href="shop-categories.jsp">수채화</a></li>

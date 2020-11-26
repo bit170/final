@@ -42,7 +42,7 @@
           <!-- 해당 페이지에 class="active" 추가해줘야함-->
           <li class="active"><a href="index.jsp"><span>Home</span></a>
           </li>
-          <li><a href="artist-boxed-ft.jsp"><span>Artist</span></a></li>
+          <li><a href="getArtistList.do"><span>Artist</span></a></li>
           <li><a href="shop-boxed-ls.jsp"><span>Shop</span></a>
             <ul class="sub-menu">
                 <li><a href="shop-boxed-ls.jsp">수채화</a></li>
@@ -242,13 +242,13 @@
           <!-- Artist Info -->
           <div class="col-md-6 mb-30">
             <div class="card border-default bg-white pt-2 box-shadow">
-              <div action="getArtist.do" method="get" class="card-body">
+              <div class="card-body">
                 <h2 class="mb-3">${artist.nickname }</h2>
                 <p class="text-sm text-muted">${artist.a_detail }</p>
                 <div class="d-flex flex-wrap justify-content-between align-items-center">
-                  <a class="btn btn-outline-secondary btn-sm text-danger" >
+                  <a href="Follow.do?a_id=${artist.id }" class="btn btn-outline-secondary btn-sm text-danger" >
                     <i class="material-icons favorite_border"></i>&nbsp;Follow</a>
-                </div>
+                  </div>
               </div>
             </div>
           </div>

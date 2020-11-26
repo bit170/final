@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="followDAO">
+
+	<select id="selectFollow" parameterType="follow" resultType="String">
+		SELECT A_ID FROM FOLLOW
+		WHERE ID = #{id} AND A_ID = #{a_id}
+	</select>
+	<insert id="insertFollow" parameterType="follow">
+		INSERT INTO FOLLOW(ID, A_ID)
+		VALUES (#{id}, #{a_id})
+	</insert>
+	
+	<delete id="deleteFollow" parameterType="follow">
+		DELETE FROM FOLLOW WHERE ID = #{id} AND A_ID = #{a_id}
+	</delete>
+	
+	<delete id="deleteAllFollow" parameterType="String">
+		DELETE FROM FOLLOW WHERE ID = #{id}
+	</delete>
+	
+	<select id="getFollowList" parameterType="String" resultType="artist">
+		SELECT * FROM ARTIST 
+		WHERE ID IN (SELECT A_ID FROM FOLLOW WHERE ID = #{id})
+	</select>
+
+</mapper>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
