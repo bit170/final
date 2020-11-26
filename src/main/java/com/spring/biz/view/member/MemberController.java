@@ -53,6 +53,20 @@ public class MemberController {
 		System.out.println(signup_id);
 		return memberService.checkId(signup_id);
 	}
+	@RequestMapping(value = "/signup.do", method = RequestMethod.POST)
+	public String signup(MemberVO vo, Model model) {
+		System.out.println("signup() 실행");
+		System.out.println("vo : "+vo);
+		int result = memberService.insertMember(vo);
+		if(result>0) {
+			System.out.println("회원가입 완료");
+			model.addAttribute("signedUp", vo);
+			return "main/index";
+		}else {
+			System.out.println("회원가입 실패");
+			return "main/index";
+		}
+	}
 	
 	@RequestMapping(value="/login.do", method = RequestMethod.POST)
 	public String login(S_MemberVO svo, Model model,HttpSession session) {

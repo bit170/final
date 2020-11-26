@@ -242,7 +242,7 @@
                 </form>
               </div>
               <div class="tab-pane fade" id="signup" role="tabpanel">
-                <form method="post" autocomplete="off" id="signup-form">
+                <form method="post" autocomplete="off" id="signup-form" action="signup.do">
                   <div class="form-group">
                     <input class="form-control" type="text" placeholder="Name" name="name" required>
                   </div>
