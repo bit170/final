@@ -20,6 +20,10 @@
 		WHERE ID = #{id}
 	</update>
 	
+	<insert id="insertMember" parameterType="member">
+		insert into member values (#{id},#{pwd},#{name},#{phone},#{email},#{nickname})
+	</insert>
+	
 	<select id="getMember" parameterType="svo" resultType="member">
 		SELECT * FROM MEMBER WHERE ID=#{id}
 	</select>

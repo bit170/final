@@ -12,7 +12,9 @@ public class MemberVO {
 	public MemberVO() {}
 	
 	
+
 	public MemberVO(String id, String pwd, String name, String phone, String email, String nickname, String joindate) {
+
 		super();
 		this.id = id;
 		this.pwd = pwd;
@@ -53,6 +55,7 @@ public class MemberVO {
 	public void setPhone(String phone) {
 		this.phone = phone;
 	}
+
 	public String getNickname() {
 		return nickname;
 	}
