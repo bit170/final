@@ -7,6 +7,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.SessionAttributes;
 
 import com.spring.biz.artist.ArtistService;
@@ -33,17 +34,17 @@ public class ArtistController {
 		List<ArtistVO> list = artistService.searchByName(nickname);
 		model.addAttribute("artistList", list);
 		System.out.println(list.isEmpty());
-		return "/WEB-INF/views/artist/artist-boxed-ft.jsp";
+		return "artist/artist-boxed-ft";
 	}
 	@RequestMapping(value="/getArtist.do", method=RequestMethod.GET)
-	public String getArtist(String id, Model model) {
+	public String getArtist(@RequestParam String id, Model model) {
 		System.out.println("Controller의 getArtist!!!");
-		
+		System.out.println(id);
 		ArtistVO avo = artistService.getArtist(id);
 		model.addAttribute("artist", avo);
 		System.out.println(avo);
 		
-		return "/WEB-INF/views/artist/artist-single.jsp";
+		return "artist/artist-single";
 	}
 	@RequestMapping(value = "/getArtistList.do", method=RequestMethod.GET)
 	public String getArtistList(Model model) {
@@ -52,7 +53,7 @@ public class ArtistController {
 		List<ArtistVO> list = artistService.getArtistList();
 		model.addAttribute("artistList", list);
 		System.out.println(list.isEmpty());
-		return "/WEB-INF/views/artist/artist-boxed-ft.jsp";
+		return "artist/artist-boxed-ft";
 	}
 	/*
 	 * @RequestMapping(value="/getAllPrinting.do", method=RequestMethod.GET) public

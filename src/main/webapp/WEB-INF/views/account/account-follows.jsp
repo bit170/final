@@ -257,7 +257,7 @@
 			<div class="col-lg-4">
 				<aside class="user-info-wrapper">
 					<div class="user-cover"
-						style="background-image: url(img/account/user-cover-img.jpg);">
+						style="background-image: url(resources/img/account/user-cover-img.jpg);">
 					</div>
 					<div class="user-info">
 						<!-- 사용자 사진 -->
@@ -294,37 +294,43 @@
 			</div>
 			<div class="col-lg-8">
 				<div class="padding-top-2x mt-2 hidden-lg-up"></div>
-				<!-- Wishlist Table-->
+				<!-- Follow Table-->
 				<div class="table-responsive wishlist-table margin-bottom-none">
 					<table class="table">
 						<thead>
 							<tr>
 								<th>팔로잉 하는 작가 목록</th>
-								<th class="text-center"><a
-									class="btn btn-sm btn-outline-danger" href="#">모든 팔로잉 취소</a></th>
+								<th class="text-center">
+								<a class="btn btn-sm btn-outline-danger" href="deleteAllFollow.do?id=aaa">모든 팔로잉 취소</a></th>
 							</tr>
 						</thead>
 						<tbody>
-							<tr>
-								<td>
-									<div class="product-item">
-										<a class="product-thumb" href="shop-single.jsp"><img
-											src="resources/img/shop/cart/01.jpg" alt="Product"></a>
-										<div class="product-info">
-											<h4 class="product-title">
-												<a href="shop-single.jsp">작가 이름</a>
-											</h4>
-											<div class="text-lg text-medium text-muted">작가소개글이 있으면 넣고 너무길면 줄임말 표시 ...</div>
-											<!-- <div class="text-sm">
-												뭐넣을까? : 
-												<div class="d-inline text-muted">뭐넣지</div>
-											</div> -->
-										</div>
-								</td>
-								<td class="text-center"><a class="remove-from-cart"
-									href="#" data-toggle="tooltip" title="Remove item"><i
-										class="material-icons icon_close"></i></a></td>
-							</tr>
+							<c:forEach var="item" items="${followList}">
+		                     <tr>
+		                        
+		                        <td>
+		                           
+		                           <div class="product-item">
+		                              <a class="product-thumb" href="getArtist.do?id=${item.id }"><img
+		                                 src="resources/img/shop/cart/01.jpg" alt="Product"></a>
+		                              <div class="product-info">
+		                                 <h4 class="product-title">
+		                                    <a href="getArtist.do?id=${item.id }">${item.nickname }</a>
+		                                 </h4>
+		                                 <div class="text-lg text-medium text-muted">${item.a_detail }</div>
+		                                 <!-- <div class="text-sm">
+		                                    	뭐넣을까? : 
+		                                    <div class="d-inline text-muted">뭐넣지</div> -->
+		                              </div>
+		                           </div>
+		                           
+		                        </td>
+		                        <td class="text-center"><a class="remove-from-cart"
+		                           href="deleteFollow.do?id=aaa&a_id=ccc" data-toggle="tooltip" title="Remove item"><i
+		                              class="material-icons icon_close"></i></a></td>
+		                        
+		                     </tr>
+                     </c:forEach>
 						</tbody>
 					</table>
 				</div>
