@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"isELIgnored="false"%>
+    pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html lang="en">
@@ -145,7 +145,7 @@
           <c:if test="${!empty member}">
            <div class="toolbar-section" id="account">
            <form action="logout.do" method="post">
-              <p class="text-muted text-sm mt-4"><h4>${member.id }<span>님</span><h4></p>
+              <p class="text-muted text-sm mt-4"><h4>${member.id }<span>님</span></h4></p>
               <p class="text-muted text-sm mt-4">환영합니다</p>
               <button class="btn btn-primary" type="submit">Log Out</button> 
               <!-- <a class="btn btn-primary mx-0 scale-up delay-1" href="shop-boxed-ls.jsp">Log Out</a> -->
@@ -281,11 +281,13 @@
         <div class="card-body padding-top-2x">
           <h3 class="card-title mb-4">구매해 주셔서 감사합니다 !</h3>
           <p class="text-sm mb-2">최대한 빠른 시일 내에 작가님이 배송해 드릴 예정입니다.</p>
-          <p class="text-sm mb-2">결제번호를 꼭 기억해주세요 ~ ! <span class="text-medium">34VB5540K83</span></p>
-          <p class="text-sm mb-2">You will be receiving an email shortly with confirmation of your order. 
-            <u>You can now:</u>
+          <p class="text-sm mb-2"> 주문하신 건에 대한 주문번호는 <span class="text-medium">4836238423<!-- ${ord.o_code} --></span> 입니다 :) </p>
+          <p class="text-sm mb-2"> 이메일로 주문내역을 전송해드렸습니다.
           </p>
-          <div class="padding-top-1x padding-bottom-1x"><a class="btn btn-outline-secondary" href="shop-boxed-ls.html">Go Back Shopping</a><a class="btn btn-outline-primary" href="order-tracking.html"><i class="material-icons my_location"></i>&nbsp;Track order</a></div>
+          <div class="padding-top-1x padding-bottom-1x">
+          		<a class="btn btn-outline-secondary" href="shop-boxed-ls.html">계속 쇼핑하기</a>
+          		<a class="btn btn-outline-primary" href="account-order.do">
+          			<i class="material-icons my_location"></i>&nbsp;주문 추적하기</a></div>
         </div>
       </div>
     </div>
