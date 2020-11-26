@@ -15,6 +15,12 @@
 		<org.slf4j-version>1.6.6</org.slf4j-version>
 	</properties>
 	<dependencies>
+	<!-- jquery (연희) -->
+		<dependency>
+		    <groupId>org.webjars</groupId>
+		    <artifactId>jquery</artifactId>
+		    <version>2.2.4</version>
+		</dependency>
 		<!-- tiles-jsp (연희) -->
 		<dependency>
 			<groupId>org.apache.tiles</groupId>

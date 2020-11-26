@@ -268,7 +268,7 @@
 						<div class="form-group">
 							<label for="checkout-ln">* 작품 가격</label> <input
 								class="form-control" type="text" id="checkout-ln"
-								data-type="currency" placeholder="$100,000">
+								data-type="currency" placeholder="₩100,000">
 						</div>
 					</div>
 				</div>
@@ -343,7 +343,11 @@
 
 				<hr class="padding-bottom-1x">
 
+<<<<<<< HEAD
+				 <div class="d-flex justify-content-between">
+=======
 				<div class="d-flex justify-content-center">
+>>>>>>> branch 'yhg' of https://github.com/bit170/final.git
 					<a class="btn btn-outline-secondary" href="account-myCanvas.jsp">마이페이지로</a>
 					<div class="text-center">
 						<a class="btn btn-primary" href="account-myCanvas.jsp">수정하기</a> <a
