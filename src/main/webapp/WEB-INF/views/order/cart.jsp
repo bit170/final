@@ -1,49 +1,34 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8" isELIgnored="false" %>
+    pageEncoding="UTF-8" isELIgnored="false"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-
 <!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="utf-8">
-    <title>체크아웃 - 배송지입력
+    <title>장바구니
     </title>
-<!-- SEO Meta Tags-->
-<meta name="description"
-	content="Unishop - Universal E-Commerce Template">
-<meta name="keywords"
-	content="shop, e-commerce, modern, flat style, responsive, online store, business, mobile, blog, bootstrap 4, html5, css3, jquery, js, gallery, slider, touch, creative, clean">
-<meta name="author" content="Rokaux">
-<!-- Mobile Specific Meta Tag-->
-<meta name="viewport"
-	content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-<!-- Favicon and Apple Icons-->
-<link rel="icon" type="image/x-icon" href="favicon.ico">
-<link rel="icon" type="image/png" href="favicon.png">
-<link rel="apple-touch-icon" href="touch-icon-iphone.png">
-<link rel="apple-touch-icon" sizes="152x152" href="touch-icon-ipad.png">
-<link rel="apple-touch-icon" sizes="180x180"
-	href="touch-icon-iphone-retina.png">
-<link rel="apple-touch-icon" sizes="167x167"
-	href="touch-icon-ipad-retina.png">
-<!-- Vendor Styles including: Bootstrap, Font Icons, Plugins, etc.-->
-<link rel="stylesheet" media="screen"
-	href="<c:url value="resources/css/vendor.min.css" />">
-<!-- Main Template Styles-->
-<link id="mainStyles" rel="stylesheet" media="screen"
-	href="<c:url value="resources/css/styles.min.css" />">
-<!-- Modernizr-->
-<script src="resources/js/modernizr.min.js" /></script>
-<!-- JavaScript (jQuery) libraries, plugins and custom scripts-->
-<script src="<c:url value="resources/js/vendor.min.js" />"></script>
-<script src="<c:url value="resources/js/scripts.min.js" />"></script>
-<script src="resources/js/card.min.js"></script>
-<script src="https://t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
-<script src="/webjars/jquery/2.2.4/jqueyr.min.js"></script>
-
-</head>
-<!-- Body-->
-<body>
+    <!-- SEO Meta Tags-->
+    <meta name="description" content="Unishop - Universal E-Commerce Template">
+    <meta name="keywords" content="shop, e-commerce, modern, flat style, responsive, online store, business, mobile, blog, bootstrap 4, html5, css3, jquery, js, gallery, slider, touch, creative, clean">
+    <meta name="author" content="Rokaux">
+    <!-- Mobile Specific Meta Tag-->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <!-- Favicon and Apple Icons-->
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
+    <link rel="icon" type="image/png" href="favicon.png">
+    <link rel="apple-touch-icon" href="touch-icon-iphone.png">
+    <link rel="apple-touch-icon" sizes="152x152" href="touch-icon-ipad.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="touch-icon-iphone-retina.png">
+    <link rel="apple-touch-icon" sizes="167x167" href="touch-icon-ipad-retina.png">
+    <!-- Vendor Styles including: Bootstrap, Font Icons, Plugins, etc.-->
+    <link rel="stylesheet" media="screen" href="css/vendor.min.css">
+    <!-- Main Template Styles-->
+    <link id="mainStyles" rel="stylesheet" media="screen" href="css/styles.min.css">
+    <!-- Modernizr-->
+    <script src="js/modernizr.min.js"></script>
+  </head>
+  <!-- Body-->
+  <body>
     <!-- Navbar-->
     <!-- Remove "navbar-sticky" class to make navigation bar scrollable with the page.-->
     <header class="navbar navbar-sticky">
@@ -158,16 +143,16 @@
 
           <!-- 로그인 후 로그아웃, 마이페이지버튼 -->
           <c:if test="${!empty member}">
-	         <div class="toolbar-section" id="account">
-	         <form action="logout.do" method="post">
-	            <p class="text-muted text-sm mt-4"><h4>${member.id }<span>님</span><h4></p>
-	            <p class="text-muted text-sm mt-4">환영합니다</p>
-	            <button class="btn btn-primary" type="submit">Log Out</button> 
-	            <!-- <a class="btn btn-primary mx-0 scale-up delay-1" href="shop-boxed-ls.jsp">Log Out</a> -->
-	            <!-- <button class="btn btn-primary btn-block" type="submit"><a href="account-wishlist.jsp">My page</button> -->
-	            <a class="btn btn-primary mx-0 scale-up delay-1" href="account.do">My page</a>
-	          </form>  
-	         </div>
+           <div class="toolbar-section" id="account">
+           <form action="logout.do" method="post">
+              <p class="text-muted text-sm mt-4"><h4>${member.id }<span>님</span><h4></p>
+              <p class="text-muted text-sm mt-4">환영합니다</p>
+              <button class="btn btn-primary" type="submit">Log Out</button> 
+              <!-- <a class="btn btn-primary mx-0 scale-up delay-1" href="shop-boxed-ls.jsp">Log Out</a> -->
+              <!-- <button class="btn btn-primary btn-block" type="submit"><a href="account-wishlist.jsp">My page</button> -->
+              <a class="btn btn-primary mx-0 scale-up delay-1" href="account.do">My page</a>
+            </form>  
+           </div>
           </c:if>
           <c:if test="${empty member}">
           
@@ -206,7 +191,7 @@
                   <div class="form-group">
                     <input class="form-control" type="text" placeholder="Phone" name="phone" required>
                   </div>
-              	<div class="form-group">
+                <div class="form-group">
                     <div style="display:flex">
                       <input class="form-control" type="text" placeholder="Id" name="id" required style="max-width:80%">
                       <a class="btn btn-primary" style="margin:0;margin-left:2%" href="/idCheck.do" >중복확인</a>
@@ -215,9 +200,9 @@
                       <!-- <script type="text/javascript">
                          var id = $(document).getElementByName("id").value();
                          function idCheck() {
-                        	alert(id); 
-                     		location.href = 'idCheck.jsp?id='+id;
-                  		 }
+                          alert(id); 
+                        location.href = 'idCheck.jsp?id='+id;
+                       }
                       </script> -->
                     </div>
                     <!-- <script type="text/javascript">
@@ -281,216 +266,205 @@
     <!-- Page Title-->
     <div class="page-title">
       <div class="container">
-        <h1>체크아웃</h1>
+        <h1>Cart</h1>
         <ul class="breadcrumbs">
-          <li><a href="index.jsp">Home</a>
+          <li><a href="index.html">Home</a>
           </li>
           <li class="separator">&nbsp;/&nbsp;</li>
-          <li>Checkout - Address</li>
+          <li>Cart</li>
         </ul>
       </div>
     </div>
     <!-- Page Content-->
-    <div class="container padding-bottom-3x mb-2">
-      <!-- <div class="row"> -->
-      <h4>내 주소록</h4>
-          <hr class="padding-bottom-1x">
-      <form name="radiobtn" action="getAddress.do" method="get" >
-					
-					<div class="custom-control custom-radio custom-control-inline">
-						<input class="custom-control-input" type="radio" id="ex-radio-4" 
-							name="a_name" value="home" checked> 
-							<label class="custom-control-label" for="ex-radio-4"> 집 </label>
-							
-					</div>
-					<div class="custom-control custom-radio custom-control-inline">
-						<input class="custom-control-input" type="radio" id="ex-radio-5" 
-							name="a_name" value="work"> 
-							<label class="custom-control-label" for="ex-radio-5" disable> 직장/학교 </label>
-					</div>
-					<div class="custom-control custom-radio custom-control-inline">
-						<input class="custom-control-input" type="radio" id="ex-radio-6"
-							name="a_name" value="etc"> 
-							<label class="custom-control-label" for="ex-radio-6" disable> 기타 </label>
-					</div>
-					<input class="btn btn-sm btn-secondary" type="submit" value="주소록 불러오기">
-					</form>
-					<hr class="padding-bottom-1x">
-      
-         <!-- radio 체크여부 확인 -->
-	    <script>
-			function fn1() {
-				var rd1 = document.getElementById("ex-radio-4").value;
-				var rd2 = document.getElementById("ex-radio-5").value;
-				var rd3 = document.getElemnetById("ex-radio-6").value;
-
-				if(rd1.checked == true)
-					alert (rd1.value);
-				else if(rd2.checked == true)
-					alert (rd2.value);
-				else if(rd3.checked == true)
-					alert (rd3.value);
-				}
-	    </script>
-      <form name="address" class="row" action="insertAddress.do" method="post" enctype="multipart/form-data">
-        <!-- Checkout Address-->
-        <div class="col-xl-9 col-lg-8">
-          <div class="steps flex-sm-nowrap mb-5">
-          	<a class="step active" href="#">
-              <h4 class="step-title">1. 배송지 입력</h4></a>
-            <a class="step" href="payment.do">
-              <h4 class="step-title">2. 결제</h4></a>
-            <a class="step" href="review.do">
-              <h4 class="step-title">3. 리뷰</h4></a></div>
-          <h4>배송지 입력</h4>
-          <hr class="padding-bottom-1x">
-          <div class="row">
-            <div class="col-sm-6">
-              <div class="form-group">
-                <label for="checkout-fn">이름</label>
-                <input class="form-control" type="text" id="name"
-                placeholder="이름을 입력해주세요" value="${member.name}" required>
-              </div>
-            </div>
-            <div class="col-sm-6">
-              <div class="form-group">
-                <label for="checkout-phone">전화번호</label>
-                <input class="form-control" type="text" id="checkout-phone"
-                 value="${member.phone}" placeholder="(예)010-1111-1234">
-              </div>
+    <div class="container padding-bottom-3x mb-1">
+      <!-- Alert-->
+      <div class="alert alert-info alert-dismissible fade show text-center" style="margin-bottom: 30px;"><span class="alert-close" data-dismiss="alert"></span><i class="material-icons redeem lead"></i>&nbsp;&nbsp;With this purchase you will earn <strong>622</strong> Reward Points.</div>
+      <!-- Shopping Cart-->
+      <div class="table-responsive shopping-cart">
+        <table class="table">
+          <thead>
+            <tr>
+              <th>Product Name</th>
+              <th class="text-center">Quantity</th>
+              <th class="text-center">Subtotal</th>
+              <th class="text-center">Discount</th>
+              <th class="text-center"><a class="btn btn-sm btn-outline-danger" href="#">Clear Cart</a></th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>
+                <div class="product-item"><a class="product-thumb" href="shop-single.html"><img src="img/shop/cart/01.jpg" alt="Product"></a>
+                  <div class="product-info">
+                    <h4 class="product-title"><a href="shop-single.html">3-Drawer File Cabinet</a></h4><span><em>Color:</em> Aqua</span><span><em>Accent Color:</em> White</span>
+                  </div>
+                </div>
+              </td>
+              <td class="text-center">
+                <div class="count-input">
+                  <select class="form-control">
+                    <option>1</option>
+                    <option>2</option>
+                    <option>3</option>
+                    <option>4</option>
+                    <option>5</option>
+                  </select>
+                </div>
+              </td>
+              <td class="text-center text-lg text-medium">$269.00</td>
+              <td class="text-center text-lg text-medium">$12.00</td>
+              <td class="text-center"><a class="remove-from-cart" href="#" data-toggle="tooltip" title="Remove item"><i class="material-icons icon_close"></i></a></td>
+            </tr>
+            <tr>
+              <td>
+                <div class="product-item"><a class="product-thumb" href="shop-single.html"><img src="img/shop/cart/02.jpg" alt="Product"></a>
+                  <div class="product-info">
+                    <h4 class="product-title"><a href="shop-single.html">Plastic Tissue Holder</a></h4><span><em>Size:</em> Medium</span><span><em>Color:</em> White</span>
+                  </div>
+                </div>
+              </td>
+              <td class="text-center">
+                <div class="count-input">
+                  <select class="form-control">
+                    <option>1</option>
+                    <option selected>2</option>
+                    <option>3</option>
+                    <option>4</option>
+                    <option>5</option>
+                  </select>
+                </div>
+              </td>
+              <td class="text-center text-lg text-medium">$152.80</td>
+              <td class="text-center">&mdash;</td>
+              <td class="text-center"><a class="remove-from-cart" href="#" data-toggle="tooltip" title="Remove item"><i class="material-icons icon_close"></i></a></td>
+            </tr>
+            <tr>
+              <td>
+                <div class="product-item"><a class="product-thumb" href="shop-single.html"><img src="img/shop/cart/03.jpg" alt="Product"></a>
+                  <div class="product-info">
+                    <h4 class="product-title"><a href="shop-single.html">Campfire Paper Table</a></h4><span><em>Color:</em> Walnut</span><span><em>Accent Color:</em> White</span>
+                  </div>
+                </div>
+              </td>
+              <td class="text-center">
+                <div class="count-input">
+                  <select class="form-control">
+                    <option>1</option>
+                    <option>2</option>
+                    <option>3</option>
+                    <option>4</option>
+                    <option>5</option>
+                  </select>
+                </div>
+              </td>
+              <td class="text-center text-lg text-medium">$289.00</td>
+              <td class="text-center">&mdash;</td>
+              <td class="text-center"><a class="remove-from-cart" href="#" data-toggle="tooltip" title="Remove item"><i class="material-icons icon_close"></i></a></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="shopping-cart-footer">
+        <div class="column">
+          <form class="coupon-form" method="post">
+            <input class="form-control form-control-sm" type="text" placeholder="Coupon code" required>
+            <button class="btn btn-outline-primary btn-sm" type="submit">Apply Coupon</button>
+          </form>
+        </div>
+        <div class="column text-lg">Subtotal: <span class="text-medium text-dark">$622.40</span></div>
+      </div>
+      <div class="shopping-cart-footer">
+        <div class="column"><a class="btn btn-outline-secondary" href="shop-boxed-ls.html"><i class="icon-arrow-left"></i>&nbsp;Back to Shopping</a></div>
+        <div class="column"><a class="btn btn-primary" href="#" data-toast data-toast-type="success" data-toast-position="topRight" data-toast-icon="icon-circle-check" data-toast-title="Your cart" data-toast-message="is updated successfully!">Update Cart</a><a class="btn btn-success" href="checkout-address.html">Checkout</a></div>
+      </div>
+      <!-- Related Products Carousel-->
+      <h3 class="text-center padding-top-2x mt-2 padding-bottom-1x">You May Also Like</h3>
+      <!-- Carousel-->
+      <div class="owl-carousel" data-owl-carousel="{ &quot;nav&quot;: false, &quot;dots&quot;: true, &quot;margin&quot;: 30, &quot;responsive&quot;: {&quot;0&quot;:{&quot;items&quot;:1},&quot;576&quot;:{&quot;items&quot;:2},&quot;768&quot;:{&quot;items&quot;:3},&quot;991&quot;:{&quot;items&quot;:4},&quot;1200&quot;:{&quot;items&quot;:4}} }">
+        <!-- Product-->
+        <div class="product-card">
+          <div class="product-card-thumb"> <span class="product-badge text-danger">Sale</span><a class="product-card-link" href="shop-single.html"></a><img src="img/shop/th10.jpg" alt="Product">
+            <div class="product-card-buttons">
+              <button class="btn btn-white btn-sm btn-wishlist" data-toggle="tooltip" title="Wishlist"><i class="material-icons favorite_border"></i></button>
+              <button class="btn btn-primary btn-sm" data-toast data-toast-type="success" data-toast-position="topRight" data-toast-icon="material-icons check" data-toast-title="Product" data-toast-message="successfuly added to cart!">Add to Cart</button>
             </div>
           </div>
-          <div class="row">
-            <div class="col-sm-6">
-              <div class="form-group">
-                <label for="checkout-company">배송지명</label>
-                <input class="form-control" type="text" name="a_name"
-                 value="${address.a_name}" placeholder="(예)우리집" required>
-              </div>
-            </div>
-            <div class="col-sm-6">
-              <div class="form-group">
-               
-              </div>
-            </div>
-          </div>
-          <div class="row">
-            <div class="col-sm-6">
-              <div class="form-group">
-                <label for="checkout-zip">우편번호</label>
-                <input class="form-control" type="number" id="post" name="post"
-                 value="${address.post}" placeholder="우편번호" readonly>
-              </div>
-            </div>
-            <div class="col-sm-6">
-              <div class="form-group">
-              <label for="account-city"></label> 
-				<input type="button" class="btn btn-outline-secondary" onclick="showPostcode()" value="우편번호 찾기">      
-			  </div>      
-			</div>
-          </div>
-          <div class="row">
-            <div class="col-sm-6">
-              <div class="form-group">
-                <label for="checkout-address1">주소 입력</label>
-                <input class="form-control" type="text" name="address" id="address"
-                value="${address.address}" placeholder="도로명 주소 or 지번 주소" required>
-              </div>
-            </div>
-            <div class="col-sm-6">
-              <div class="form-group">
-                <label for="checkout-address1">상세주소 입력</label>
-                <input class="form-control" type="text" name="extra_address" id="extra_address"
-                value="${address.extra_address}" placeholder="상세주소" required>
-              </div>
-            </div>
-            	<!-- 테스트 아이디 전달을 위한 hidden tag -->
-            	<input type="hidden" value="${member.id}" name="id">
-          </div>
-          
-          <hr class="padding-bottom-1x">
-          <div class="d-flex justify-content-between">
-          <button class="btn btn-outline-secondary m-0" href="cart.do">카트로 돌아가기</button>
-          <button class="btn btn-primary m-0" type="submit">Continue</button>
+          <div class="product-card-details">
+            <h3 class="product-card-title"><a href="shop-single.html">Pendant Lamp</a></h3>
+            <h4 class="product-card-price">
+              <del>$54.00</del>$27.00
+            </h4>
           </div>
         </div>
-        
-        
-        <!-- 우편번호 받아오기 api script -->
-        <script>
-        function showPostcode() {
-            new daum.Postcode({
-                oncomplete: function(data) {
-                    var roadAddr = data.roadAddress; // 도로명 주소 변수
-                    var extraRoadAddr = ''; // 참고 항목 변수
-                    if(data.bname !== '' && /[동|로|가]$/g.test(data.bname)){
-                        extraRoadAddr += data.bname;
-                    }
-                    if(data.buildingName !== '' && data.apartment === 'Y'){
-                       extraRoadAddr += (extraRoadAddr !== '' ? ', ' + data.buildingName : data.buildingName);
-                    }
-                    if(extraRoadAddr !== ''){
-                        extraRoadAddr = ' (' + extraRoadAddr + ')';
-                    }
-
-                    document.getElementById('post').value = data.zonecode;
-                    document.getElementById("address").value = roadAddr;
-                    document.getElementById("address").value = data.jibunAddress;
-                    
-                    if(roadAddr !== ''){
-                        document.getElementById("extra_address").value = extraRoadAddr;
-                    } else {
-                        document.getElementById("extra_address").value = '';
-                    }
-
-                    var guideTextBox = document.getElementById("guide");
-                    if(data.autoRoadAddress) {
-                        var expRoadAddr = data.autoRoadAddress + extraRoadAddr;
-                        guideTextBox.innerHTML = '(예상 도로명 주소 : ' + expRoadAddr + ')';
-                        guideTextBox.style.display = 'block';
-
-                    } else if(data.autoJibunAddress) {
-                        var expJibunAddr = data.autoJibunAddress;
-                        guideTextBox.innerHTML = '(예상 지번 주소 : ' + expJibunAddr + ')';
-                        guideTextBox.style.display = 'block';
-                    } else {
-                        guideTextBox.innerHTML = '';
-                        guideTextBox.style.display = 'none';
-                    }
-                }
-            }).open();
-        }
-    </script>
-	    
-   
-        <!-- Sidebar          -->
-        <div class="col-xl-3 col-lg-4">
-          <aside class="sidebar">
-            <div class="padding-top-2x hidden-lg-up"></div>
-            <!-- Order Summary Widget-->
-            <section class="widget widget-order-summary bg-secondary border-0 p-4">
-              <h3 class="widget-title">주문 요약</h3>
-              <table class="table text-sm mb-0">
-                <tr>
-                  <td>총 금액 : </td>
-                  <td class="text-medium">$622.40</td>
-                </tr>
-                <tr>
-                  <td>배송비 :</td>
-                  <td class="text-medium">$35.50</td>
-                </tr>
-                <tr>
-                  <td></td>
-                  <td class="text-lg text-medium">$657.90</td>
-                </tr>
-              </table>
-            </section>
-            </aside>
+        <!-- Product-->
+        <div class="product-card">
+          <div class="product-card-thumb"><a class="product-card-link" href="shop-single.html"></a><img src="img/shop/th11.jpg" alt="Product">
+            <div class="product-card-buttons">
+              <button class="btn btn-white btn-sm btn-wishlist" data-toggle="tooltip" title="Wishlist"><i class="material-icons favorite_border"></i></button>
+              <button class="btn btn-primary btn-sm" data-toast data-toast-type="success" data-toast-position="topRight" data-toast-icon="material-icons check" data-toast-title="Product" data-toast-message="successfuly added to cart!">Add to Cart</button>
             </div>
-            </form>
+          </div>
+          <div class="product-card-details">
+            <h3 class="product-card-title"><a href="shop-single.html">Stylish Chair</a></h3>
+            <h4 class="product-card-price">$417.00</h4>
+          </div>
         </div>
+        <!-- Product-->
+        <div class="product-card">
+          <div class="product-card-thumb"><span class="product-rating text-warning"><i class="material-icons star"></i><i class="material-icons star"></i><i class="material-icons star"></i><i class="material-icons star"></i><i class="material-icons star_border"></i></span><a class="product-card-link" href="shop-single.html"></a><img src="img/shop/th07.jpg" alt="Product">
+            <div class="product-card-buttons">
+              <button class="btn btn-white btn-sm btn-wishlist" data-toggle="tooltip" title="Wishlist"><i class="material-icons favorite_border"></i></button>
+              <button class="btn btn-primary btn-sm" data-toast data-toast-type="success" data-toast-position="topRight" data-toast-icon="material-icons check" data-toast-title="Product" data-toast-message="successfuly added to cart!">Add to Cart</button>
+            </div>
+          </div>
+          <div class="product-card-details">
+            <h3 class="product-card-title"><a href="shop-single.html">Lounge Chair</a></h3>
+            <h4 class="product-card-price">$1099.00</h4>
+          </div>
+        </div>
+        <!-- Product-->
+        <div class="product-card">
+          <div class="product-card-thumb"><a class="product-card-link" href="shop-single.html"></a><img src="img/shop/th16.jpg" alt="Product">
+            <div class="product-card-buttons">
+              <button class="btn btn-white btn-sm btn-wishlist" data-toggle="tooltip" title="Wishlist"><i class="material-icons favorite_border"></i></button>
+              <button class="btn btn-primary btn-sm" data-toast data-toast-type="success" data-toast-position="topRight" data-toast-icon="material-icons check" data-toast-title="Product" data-toast-message="successfuly added to cart!">Add to Cart</button>
+            </div>
+          </div>
+          <div class="product-card-details">
+            <h3 class="product-card-title"><a href="shop-single.html">Navy Box Bench</a></h3>
+            <h4 class="product-card-price">$75.00</h4>
+          </div>
+        </div>
+        <!-- Product-->
+        <div class="product-card">
+          <div class="product-card-thumb"><a class="product-card-link" href="shop-single.html"></a><img src="img/shop/th09.jpg" alt="Product">
+            <div class="product-card-buttons">
+              <button class="btn btn-white btn-sm btn-wishlist" data-toggle="tooltip" title="Wishlist"><i class="material-icons favorite_border"></i></button>
+              <button class="btn btn-primary btn-sm" data-toast data-toast-type="success" data-toast-position="topRight" data-toast-icon="material-icons check" data-toast-title="Product" data-toast-message="successfuly added to cart!">Add to Cart</button>
+            </div>
+          </div>
+          <div class="product-card-details">
+            <h3 class="product-card-title"><a href="shop-single.html">Campfire Table</a></h3>
+            <h4 class="product-card-price">$1087.00</h4>
+          </div>
+        </div>
+        <!-- Product-->
+        <div class="product-card mb-30">
+          <div class="product-card-thumb"><a class="product-card-link" href="shop-single.html"></a><img src="img/shop/th06.jpg" alt="Product">
+            <div class="product-card-buttons">
+              <button class="btn btn-white btn-sm btn-wishlist" data-toggle="tooltip" title="Wishlist"><i class="material-icons favorite_border"></i></button>
+              <button class="btn btn-primary btn-sm" data-toast data-toast-type="success" data-toast-position="topRight" data-toast-icon="material-icons check" data-toast-title="Product" data-toast-message="successfuly added to cart!">Add to Cart</button>
+            </div>
+          </div>
+          <div class="product-card-details">
+            <h3 class="product-card-title"><a href="shop-single.html">LED Lighting</a></h3>
+            <h4 class="product-card-price">$130.00</h4>
+          </div>
+        </div>
+      </div>
+    </div>
     <!-- Site Footer-->
-   <footer class="site-footer">
+  <footer class="site-footer">
       <div class="column text-center">
         <p class="text-sm mb-4">Need Support? Call<span class="text-primary">&nbsp;010 - 4355 - 2504</span></p>
         <p class="text-xxs text-muted mb-0 mt-3">© All rights reserved. Made with <i class='material-icons favorite text-danger'></i> by 곽연희, 송희, 오서현, 이동희</p>
@@ -516,6 +490,7 @@
     <!-- Backdrop-->
     <div class="site-backdrop"></div>
     <!-- JavaScript (jQuery) libraries, plugins and custom scripts-->
-
+    <script src="js/vendor.min.js"></script>
+    <script src="js/scripts.min.js"></script>
   </body>
 </html>

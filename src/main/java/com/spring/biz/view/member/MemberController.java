@@ -42,8 +42,9 @@ public class MemberController {
 	@RequestMapping(value = "/account.do", method = RequestMethod.GET)
 	public String account(Model model) {
 		System.out.println("account() 실행");
-		
+
 		return "redirect:account-wishlist.jsp";
+
 	}
 	
 	@RequestMapping(value = "/idCheck.do", method = RequestMethod.POST)
@@ -58,14 +59,14 @@ public class MemberController {
 	public String login(S_MemberVO svo, Model model,HttpSession session) {
 		System.out.println(">> 로그인 메소드 실행 - POST");
 		System.out.println("vo : " + svo);
-		System.out.println("id : " + svo.getId()+"pwd: "+svo.getPwd());
-		System.out.println("MemberDAO : " + memberService);
+		System.out.println("id : " + svo.getId()+" pwd: "+svo.getPwd());
+//		System.out.println("MemberDAO : " + memberService);
 		
 		S_MemberVO sMember = memberService.getSMember(svo);
 		if (sMember != null) {
 			System.out.println("> 로그인 성공!!");
 			MemberVO member = memberService.getMember(svo);
-			System.out.println(member.getName());
+			System.out.println("회원이름 : " + member.getName());
 			model.addAttribute("member", member);
 			return "main/index";
 		} else {
@@ -96,15 +97,11 @@ public class MemberController {
 		return "redirect:main.do";
 	}	
 	
-//	@RequestMapping("/getMember.do")
-//	public String getMember(MemberVO vo, Model model) {
-//		MemberVO member = memberService.getMember(vo);
-//
-//		model.addAttribute("member", member);
-//		System.out.println("member : " + member);
-//		
-//		return "account-profile.jsp";
-//	}
+	@RequestMapping("/getMember.do")
+	public String getMember() {
+		
+		return "/WEB-INF/views/account/account-profile.jsp";
+	}
 	
 	@RequestMapping("/updateMember.do")
 	public String updateMember(@ModelAttribute("member") MemberVO vo) {
@@ -114,7 +111,7 @@ public class MemberController {
 		System.out.println("member : " + vo);
 		memberService.updateMember(vo);
 		
-		return "redirect:account-profile.jsp";
+		return "/WEB-INF/views/account/account-profile.jsp";
 	}
 	
 }
