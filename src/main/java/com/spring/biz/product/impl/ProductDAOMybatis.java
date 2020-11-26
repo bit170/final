@@ -30,4 +30,9 @@ public class ProductDAOMybatis {
 		return mybatis.selectList("productDAO.getProductList");
 	}
 
+	public List<ProductVO> getMainProduct() {
+		System.out.println("productDAO.getMainProduct()");
+		return mybatis.selectList("productDAO.getMainProduct");
+	}
+
 }

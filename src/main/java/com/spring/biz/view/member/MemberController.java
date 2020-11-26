@@ -1,5 +1,6 @@
 package com.spring.biz.view.member;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -8,6 +9,8 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.bind.support.SessionStatus;
 
@@ -39,8 +42,17 @@ public class MemberController {
 	@RequestMapping(value = "/account.do", method = RequestMethod.GET)
 	public String account(Model model) {
 		System.out.println("account() 실행");
-		return "/WEB-INF/views/account/account-wishlist.jsp";
 
+		return "redirect:account-wishlist.jsp";
+
+	}
+	
+	@RequestMapping(value = "/idCheck.do", method = RequestMethod.POST)
+	public @ResponseBody int idCheck(HttpServletRequest request) {
+		System.out.println("idCheck()");
+		String signup_id = request.getParameter("signup_id");
+		System.out.println(signup_id);
+		return memberService.checkId(signup_id);
 	}
 	
 	@RequestMapping(value="/login.do", method = RequestMethod.POST)
@@ -56,7 +68,7 @@ public class MemberController {
 			MemberVO member = memberService.getMember(svo);
 			System.out.println("회원이름 : " + member.getName());
 			model.addAttribute("member", member);
-			return "/WEB-INF/views/main/index.jsp";
+			return "main/index";
 		} else {
 			System.out.println("> 로그인 실패~~~");
 			return "main.do";
@@ -82,7 +94,7 @@ public class MemberController {
 		
 		status.setComplete();
 		//redirect 후 session 초기화
-		return "redirect:index.jsp";
+		return "redirect:main.do";
 	}	
 	
 	@RequestMapping("/getMember.do")

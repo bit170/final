@@ -32,8 +32,7 @@ public class MemberServiceImpl implements MemberService {
 
 	@Override
 	public int checkId(String id) {
-//		memberDAO.getId(id)
-		return 0;
+		return memberDAO.getId(id);
 	}
 
 	@Override
