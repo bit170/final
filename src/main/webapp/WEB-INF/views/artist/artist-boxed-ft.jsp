@@ -42,7 +42,7 @@
           <!-- 해당 페이지에 class="active" 추가해줘야함-->
           <li class="active"><a href="index.jsp"><span>Home</span></a>
           </li>
-          <li><a href="artist-boxed-ft.jsp"><span>Artist</span></a></li>
+          <li><a href="getArtistList.do"><span>Artist</span></a></li>
           <li><a href="shop-boxed-ls.jsp"><span>Shop</span></a>
             <ul class="sub-menu">
                 <li><a href="shop-boxed-ls.jsp">수채화</a></li>
@@ -274,8 +274,10 @@
         <div class="col-xl-3 col-lg-4 col-sm-6">
           <div class="product-card mb-30">
             <div class="product-card-thumb"><a class="product-card-link" href="getArtist.do?id=${item.id }"></a><img src="resources/img/shop/ARTIST1.jpg" alt="Product">
-              <div class="product-card-buttons">
-                <button class="btn btn-white btn-sm btn-wishlist" data-toggle="tooltip" title="Follow"><i class="material-icons favorite_border"></i></button>
+              <div action="Follow.do?id=bbb&a_id=${item.id }" class="product-card-buttons">
+                <!-- <button class="btn btn-white btn-sm btn-wishlist" data-toggle="tooltip" title="Follow"><i class="material-icons favorite_border"></i></button>-->
+                <button class="btn btn-primary margin-bottom-none" type="button" data-toast data-toast-position="topRight" data-toast-type="success"
+                data-toast-icon="icon-circle-check" data-toast-title="Follow!" data-toast-message="Follow!">♡ </button>
               </div>
             </div>
             <div class="product-card-details">

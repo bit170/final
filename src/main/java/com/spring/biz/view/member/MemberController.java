@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -55,6 +56,36 @@ public class MemberController {
 		return memberService.checkId(signup_id);
 	}
 	
+	@RequestMapping(value = "/signUp.do", method = RequestMethod.POST)
+	public String signup(MemberVO vo, HttpSession session) {
+		System.out.println("signup() 실행");
+		System.out.println("vo : "+vo);
+		int result = memberService.insertMember(vo);
+		if(result>0) {
+			System.out.println("회원가입 완료");
+			session.setAttribute("signedUp", vo);
+//			model.addAttribute("signedUp", vo);
+			return "redirect:main.do";
+		}else {
+			System.out.println("회원가입 실패");
+			return "main/index";
+		}
+	}
+	
+//	@RequestMapping(value = "/signup.do", method = RequestMethod.POST)
+//	public @ResponseBody int signup(@RequestBody MemberVO vo, Model model) {
+//		System.out.println("signup() 실행");
+//		System.out.println("vo : "+vo);
+//		int result = memberService.insertMember(vo);
+//		if(result>0) {
+//			System.out.println("회원가입 완료");
+//			model.addAttribute("signedUp", vo);
+//		}else {
+//			System.out.println("회원가입 실패");
+//		}
+//		return result;
+//	}
+	
 	@RequestMapping(value="/login.do", method = RequestMethod.POST)
 	public String login(S_MemberVO svo, Model model,HttpSession session) {
 		System.out.println(">> 로그인 메소드 실행 - POST");
@@ -71,7 +102,7 @@ public class MemberController {
 			return "main/index";
 		} else {
 			System.out.println("> 로그인 실패~~~");
-			return "main.do";
+			return "redirect:main.do";
 		}
 	}
 	
