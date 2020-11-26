@@ -31,6 +31,13 @@
     <script type="text/javascript">
     	
     	$(document).ready(function () {
+    		/* 회원가입 성공 후  model attribute에 바인딩한 객체를 확인 */
+            var signedUp= '${signedUp}';
+            if(signedUp != null){
+            	alert("회원가입을 축하합니다. 이메일 인증 후 사용할 수 있습니다.");
+            }
+            
+            
     		 $("#signup_id").blur(function () {
     			 var signup_id = $("#signup_id").val();
  				console.log(signup_id);
@@ -40,9 +47,29 @@
  					$("#idCheck_result").html("");
  				}
     		 });
+    		 
+    		 if(sessionStorage.getItem("signedUp") != null){
+    			 alert("회원가입이 완료되었습니다. 이메일 인증 후 사용할 수 있습니다. ");
+    		 }
     	/* 아이디 중복체크 == 성공!!
     		리턴값에 따른 후처리 필요	
     	*/	 
+    		/* $('#signup-form').submit(
+	    		function () {
+	    			var formData = $('#signup-form').serialize();
+	    			alert("signUp() 실행");
+					$.ajax({
+						type : 'POST',
+						url : '${pageContext.request.contextPath}/signup.do',
+						data : formData,
+						dataType : 'json'
+					}).done(function (data) {
+						console.log(data);
+					}).fail(function (request, status, error) {
+						alert("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
+					})
+				}
+    		); */
     		 function checkId(signup_id) {
  				$.ajax({
  					type : 'POST',
@@ -242,7 +269,8 @@
                 </form>
               </div>
               <div class="tab-pane fade" id="signup" role="tabpanel">
-                <form method="post" autocomplete="off" id="signup-form" action="signup.do">
+                <form method="post" autocomplete="off" id="signup-form" action="signUp.do"> 
+                <!-- <form method="post" autocomplete="off" id="signup-form" > -->
                   <div class="form-group">
                     <input class="form-control" type="text" placeholder="Name" name="name" required>
                   </div>
