@@ -42,7 +42,6 @@ public class MemberController {
 	@RequestMapping(value = "/account.do", method = RequestMethod.GET)
 	public String account(Model model) {
 		System.out.println("account() 실행");
-		
 		return "redirect:account-wishlist.jsp";
 	}
 	
