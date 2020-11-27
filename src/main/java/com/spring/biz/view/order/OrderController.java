@@ -10,4 +10,9 @@ public class OrderController {
 	public String orderTracking() {
 		return "order/order-tracking";
 	}
+	
+	@RequestMapping("/cart.do")
+	public String getCart() {
+		return "order/cart";
+	}
 }
