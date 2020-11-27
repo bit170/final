@@ -7,7 +7,7 @@
 <html lang="en">
   <head>
     <meta charset="utf-8">
-    <title>미술품팔아요</title>
+    <title>아트플레이스</title>
     <!-- SEO Meta Tags-->
     <meta name="description" content="Unishop - Universal E-Commerce Template">
     <meta name="keywords" content="shop, e-commerce, modern, flat style, responsive, online store, business, mobile, blog, bootstrap 4, html5, css3, jquery, js, gallery, slider, touch, creative, clean">
@@ -368,8 +368,8 @@
             <div class="col-xl-4 col-md-6">
               <div class="padding-top-3x padding-bottom-3x px-3 px-lg-5 text-center text-md-left from-bottom">
                 <h2>그림 사러 오세요~</h2>
-                <p class="text-sm text-muted">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris.</p>
-                	<a class="btn btn-primary mx-0 scale-up delay-1" href="getProductList.do">View Collection</a>
+                <p class="text-sm text-muted">집 안이 허전하시다면 ? 이사 간 벽이 너무 썰렁하다면 ? 따뜻한 그림 한 점 가져가세요 </p>
+                	<a class="btn btn-primary mx-0 scale-up delay-1" href="getProductList.do">아트 컬렉션</a>
               </div>
             </div>
           </div>
@@ -381,8 +381,8 @@
             </div>
             <div class="col-xl-4 col-md-6">
               <div class="padding-top-3x padding-bottom-3x px-3 px-lg-5 text-center text-md-left from-bottom">
-                <h2> &amp; 세상에 알려지지 않은 작가들~ </h2>
-                <p class="text-sm text-muted">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris.</p>
+                <h2> 세상에 알려지지 않은 작가들~ </h2>
+                <p class="text-sm text-muted">이곳에선 모두가 아티스트가 될 수 있습니다! 모두가 내가 그린 기린그림을 팔 수 있는 곳 !       여러분도 도전해보세욧</p>
                 <a class="btn btn-primary mx-0 scale-up delay-1" href="getArtistList.do">더 많은 작가들</a>
               </div>
             </div>
@@ -399,8 +399,8 @@
         <div class="col-md-3 col-sm-6 mb-30"><a class="category-card flex-wrap text-center pt-0" href="getArtist.do">
             <div class="category-card-thumb w-100"><img src="resources/img/product/2.png" alt="Category"></div>
             <div class="category-card-info w-100">
-              <h3 class="category-card-title">작가이름?</h3>
-              <h4 class="category-card-subtitle">뭘 넣을까</h4>
+              <h3 class="category-card-title">${artist.a_name}</h3>
+              <h4 class="category-card-subtitle">뭐가좋을까</h4>
             </div></a></div>
         <!-- <div class="col-md-3 col-sm-6 mb-30"><a class="category-card flex-wrap text-center pt-0" href="shop-boxed-ls.jsp">
             <div class="category-card-thumb w-100"><img src="resources/img/shop/categories/04.jpg" alt="Category"></div>
@@ -451,7 +451,7 @@
                 <div class="product-card-details">
                   <h3 class="product-card-title"><a href="getProduct.do">${mProduct.p_name}</a></h3>
                   <h4 class="product-card-price">
-                    <del>$49.00</del>$38.00
+                    <del>₩${mProduct.price}0</del>₩${mProduct.price}
                   </h4>
                 </div>
               </div>
@@ -506,28 +506,28 @@
         </div>
       </div>
     </section> -->
-    <!-- Site Footer-->
+<!-- Site Footer-->
     <footer class="site-footer">
       <div class="column text-center">
-        <p class="text-sm mb-4">Need Support? Call<span class="text-primary">&nbsp;001 (917) 555-4836</span></p><a class="social-button sb-skype" href="#" data-toggle="tooltip" data-placement="top" title="Skype"><i class="socicon-skype"></i></a><a class="social-button sb-facebook" href="#" data-toggle="tooltip" data-placement="top" title="Facebook"><i class="socicon-facebook"></i></a><a class="social-button sb-google-plus" href="#" data-toggle="tooltip" data-placement="top" title="Google +"><i class="socicon-googleplus"></i></a><a class="social-button sb-twitter" href="#" data-toggle="tooltip" data-placement="top" title="Twitter"><i class="socicon-twitter"></i></a><a class="social-button sb-instagram" href="#" data-toggle="tooltip" data-placement="top" title="Instagram"><i class="socicon-instagram"></i></a>
-        <p class="text-xxs text-muted mb-0 mt-3">© All rights reserved. Made with <i class='material-icons favorite text-danger'></i> by rokaux</p>
+        <p class="text-sm mb-4">Need Support? Call<span class="text-primary">&nbsp;010 - 4355 - 2504</span></p>
+        <p class="text-xxs text-muted mb-0 mt-3">© All rights reserved. Made with <i class='material-icons favorite text-danger'></i> by 곽연희, 송희, 오서현, 이동희</p>
       </div>
-      <div class="column">
+      <!-- <div class="column">
         <h3 class="widget-title text-center">Subscription<small>To receive latest offers and discounts from the shop.</small></h3>
         <form class="subscribe-form input-group" action="//rokaux.us12.list-manage.com/subscribe/post?u=c7103e2c981361a6639545bd5&amp;id=1194bb7544" method="post" target="_blank" novalidate><span class="input-group-btn">
             <button type="submit"><i class="material-icons send"></i></button></span>
-          <input class="form-control" type="email" name="EMAIL" placeholder="Your e-mail">
+          <input class="form-control" type="email" name="EMAIL" placeholder="Your e-mail"> -->
           <!-- real people should not fill this in and expect good things - do not remove this or risk form bot signups-->
           <div style="position: absolute; left: -5000px;" aria-hidden="true">
             <input type="text" name="b_c7103e2c981361a6639545bd5_1194bb7544" tabindex="-1" value>
           </div>
         </form>
       </div>
-      <div class="column">
+      <!-- <div class="column">
         <h3 class="widget-title text-center">Payment Methods<small>We support one of the following payment methods.</small></h3>
         <div class="footer-cards"><img src="resources/img/cards.png" alt="Payment Methods">
         </div>
-      </div>
+      </div> -->
     </footer>
     <!-- Back To Top Button--><a class="scroll-to-top-btn" href="#"><i class="material-icons trending_flat"></i></a>
     <!-- Backdrop-->

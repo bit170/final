@@ -5,7 +5,7 @@
 <html lang="en">
   <head>
     <meta charset="utf-8">
-    <title>Product ALL
+    <title>전체 아트보기
     </title>
     <!-- SEO Meta Tags-->
     <meta name="description" content="Unishop - Universal E-Commerce Template">
@@ -280,7 +280,7 @@
           <li><a href="main.do">Home</a>
           </li>
           <li class="separator">&nbsp;/&nbsp;</li>
-          <li>Product ALL</li>
+          <li>Whole Product</li>
         </ul>
       </div>
     </div>
@@ -330,11 +330,11 @@
             <div class="column">
               <ul class="pages">
                 <li class="active"><a href="#">1</a></li>
-                <li><a href="#">2</a></li>
+                <!-- <li><a href="#">2</a></li>
                 <li><a href="#">3</a></li>
                 <li><a href="#">4</a></li>
                 <li>...</li>
-                <li><a href="#">12</a></li>
+                <li><a href="#">12</a></li> -->
               </ul>
             </div>
             <div class="column text-right hidden-xs-down"><a class="btn btn-outline-secondary btn-sm" href="#">Next&nbsp;<i class="material-icons keyboard_arrow_right"></i></a></div>
@@ -348,7 +348,7 @@
             <section class="widget widget-categories pt-0">
               <h3 class="widget-title">작품 Categories</h3>
               <ul>
-                <li class="has-children expanded"><a href="#">Desks &amp; Benching</a><span>(1138)</span>
+                <li class="has-children expanded">수채화<a href="#"></a><span>(1138)</span>
                   <!-- <ul>
                     <li><a href="#">Executive Desks</a><span>(508)</span>
                       <ul>
@@ -366,7 +366,7 @@
                     <li><a href="#">Office Chairs</a><span>(110)</span></li>
                   </ul> -->
                 </li>
-                <li class="has-children"><a href="#">Lighting</a><span>(2356)</span>
+                <li class="has-children"><a href="#">유화</a><span>(2356)</span>
                   <!-- <ul>
                     <li><a href="#">Indoor Lights</a><span>(1032)</span>
                       <ul>
@@ -387,7 +387,7 @@
                     <li><a href="#">Dimmers &amp; Controls</a><span>(386)</span></li>
                   </ul> -->
                 </li>
-                <li class="has-children"><a href="#">Storage Units</a><span>(420)</span>
+                <li class="has-children"><a href="#">수묵화</a><span>(420)</span>
                   <!-- <ul>
                     <li><a href="#">Bookcases</a><span>(180)</span></li>
                     <li><a href="#">Box Seats &amp; Benches</a><span>(132)</span></li>
@@ -395,7 +395,16 @@
                     <li><a href="#">Caskets</a><span>(61)</span></li>
                   </ul> -->
                 </li>
-                <li class="has-children"><a href="#">Furniture Accessories</a><span>(874)</span>
+                <li class="has-children"><a href="#">크로키</a><span>(874)</span>
+                  <!-- <ul>
+                    <li><a href="#">Cable &amp; Power Management</a><span>(211)</span></li>
+                    <li><a href="#">Desk Add Ons</a><span>(195)</span></li>
+                    <li><a href="#">Desk Risers</a><span>(159)</span></li>
+                    <li><a href="#">Lamps</a><span>(203)</span></li>
+                    <li><a href="#">Monitor Arms</a><span>(106)</span></li>
+                  </ul> -->
+                </li>
+                <li class="has-children"><a href="#">기타</a><span>(10)</span>
                   <!-- <ul>
                     <li><a href="#">Cable &amp; Power Management</a><span>(211)</span></li>
                     <li><a href="#">Desk Add Ons</a><span>(195)</span></li>
@@ -408,30 +417,30 @@
             </section>
             <!-- Widget Sorting-->
             <section class="widget widget-icon-list">
-              <h3 class="widget-title">Sort By</h3>
+              <h3 class="widget-title">정렬</h3>
               <ul>
-                <li><a href="#"><i class="material-icons sort"></i>Default</a></li>
-                <li><a href="#"><i class="material-icons favorite_border"></i>Popularity</a></li>
-                <li><a href="#"><i class="material-icons vertical_align_top"></i>Last entries</a></li>
+                <li><a href="#"><i class="material-icons sort"></i>기본 정렬</a></li>
+                <li><a href="#"><i class="material-icons favorite_border"></i>인기순</a></li>
+                <li><a href="#"><i class="material-icons vertical_align_top"></i>최신순</a></li>
                 <!-- <li><a href="#"><i class="material-icons star_border"></i>Average rating</a></li> -->
-                <li><a href="#"><i class="material-icons sort_by_alpha"></i>Alphabetically</a></li>
+                <li><a href="#"><i class="material-icons sort_by_alpha"></i>가나다순</a></li>
               </ul>
             </section>
             <!-- Widget Price Range-->
             <section class="widget widget-categories">
-              <h3 class="widget-title">Price Range</h3>
+              <h3 class="widget-title">가격 범위</h3>
               <form class="price-range-slider" method="post" data-start-min="250" data-start-max="650" data-min="0" data-max="1000" data-step="1">
                 <div class="ui-range-slider"></div>
                 <footer class="ui-range-slider-footer">
                   <div class="column">
-                    <button class="btn btn-outline-primary btn-sm" type="submit">Filter</button>
+                    <button class="btn btn-outline-primary btn-sm" type="submit">분류</button>
                   </div>
                   <div class="column">
                     <div class="ui-range-values">
-                      <div class="ui-range-value-min">$<span></span>
+                      <div class="ui-range-value-min">₩<span></span>
                         <input type="hidden">
                       </div>&nbsp;-&nbsp;
-                      <div class="ui-range-value-max">$<span></span>
+                      <div class="ui-range-value-max">₩<span></span>
                         <input type="hidden">
                       </div>
                     </div>

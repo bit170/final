@@ -59,7 +59,7 @@
                     <td>
                       <div class="product-item"><a class="product-thumb" href="order-tracking.do?p_name="><img src="resources/img/shop/cart/01.jpg" alt="Product"></a>
                         <div class="product-info">
-                          <h4 class="product-title"><a href="order-tracking.do?p_name=">그림 이름<small>x 1</small></a></h4><span><em>Color:</em> Aqua</span><span><em>Accent Color:</em> White</span>
+                          <h4 class="product-title"><a href="order-tracking.do">그림 이름<small>x 1</small></a></h4><span><em>Color:</em> Aqua</span><span><em>Accent Color:</em> White</span>
                         </div>
                       </div>
                     </td>

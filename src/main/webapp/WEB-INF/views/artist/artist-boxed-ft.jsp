@@ -269,10 +269,15 @@
     </header>
     <!-- Page Title-->
     <div class="page-title">
-      <div class="container">
-        <h1>ARTIST</h1>
+       <div class="container">
+        <h1>작가 페이지</h1>
+        <ul class="breadcrumbs">
+          <li><a href="main.do">Home</a>
+          </li>
+          <li class="separator">&nbsp;/&nbsp;</li>
+          <li>Whole Artist</li>
+        </ul>
       </div>
-    </div>
     <!-- Page Content-->
     <!-- Filters-->
     <div class="container">

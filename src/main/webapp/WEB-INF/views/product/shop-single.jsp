@@ -5,8 +5,7 @@
 <html lang="en">
   <head>
     <meta charset="utf-8">
-    <title>Product - single
-    </title>
+    <title>작품 페이지</title>
     <!-- SEO Meta Tags-->
     <meta name="description" content="Unishop - Universal E-Commerce Template">
     <meta name="keywords" content="shop, e-commerce, modern, flat style, responsive, online store, business, mobile, blog, bootstrap 4, html5, css3, jquery, js, gallery, slider, touch, creative, clean">
