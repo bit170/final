@@ -30,7 +30,7 @@ public class FollowController {
 	
 	//팔로우추가,취소(작가페이지에서)
 	@RequestMapping(value = "/Follow.do", method=RequestMethod.GET)
-	public String Follow(String a_id, HttpSession sess) {
+	public String Follow(String a_id, String page, HttpSession sess) {
 		System.out.println("Controller의 Follow!!!");
 		MemberVO memberVO = (MemberVO)sess.getAttribute("member");
 		System.out.println("id : " + memberVO.getId() +"a_id : " + a_id);
@@ -49,8 +49,15 @@ public class FollowController {
 			System.out.println("id : " + fvo.getId()+"a_id : " + fvo.getA_id());
 			followService.insertFollow(fvo);
 		}
-		return "redirect:getArtist.do?id=" + a_id;
+		
+		String goPage = null;
+		if(page.equals("all"))
+			goPage = "redirect:getArtistList.do";
+		else if(page.equals("single"))
+			goPage = "redirect:getArtist.do?id=" + a_id;
+		return goPage;
 	}
+	
 	//팔로우취소(마이페이지에서)
 	@RequestMapping(value = "/deleteFollow.do", method=RequestMethod.GET)
 	public String deleteFollow(FollowVO vo) {
