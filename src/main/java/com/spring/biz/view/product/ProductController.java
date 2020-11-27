@@ -21,12 +21,14 @@ public class ProductController extends BaseController {
 	//public 
 //	@RequestMapping(value="/getProduct.do", method = RequestMethod.POST)
 //	public String getProduct(ProductVO vo, Model model) {
+	@RequestMapping(value="/getProduct.do")
+	public String getProduct(ProductVO vo, Model model) {
 //		ProductVO product = productService.getProduct(vo);
 //		model.addAttribute("product", product);
 //		System.out.println("작품코드 : " + vo.getP_code() + "작품명 : " + vo.getP_name());
-//		
-//		return "shop-single.jsp";
-//	}
+		
+		return "product/shop-single";
+	}
 	
 //	@RequestMapping(value = "/getMainProduct.do", method = RequestMethod.GET)
 //	public @ResponseBody List<ProductVO> getMainProduct() {
@@ -41,16 +43,16 @@ public class ProductController extends BaseController {
 //		return "/WEB-INF/views/main/index.jsp";
 //	}
 	
-//	@RequestMapping(value="/getProductList.do", method = RequestMethod.GET)
-//	public String getBoardList(ProductVO vo, Model model) {
-//		System.out.println(">>> 게시글 전체 목록 보여주기");
-//		
-//		List<ProductVO> list = productService.getProductList(vo);
-//		model.addAttribute("productList", list);
-//		System.out.println(list.isEmpty());
-//		System.out.println(list);
-//		return "shop-boxed-ls.jsp";
-//	}
+	@RequestMapping(value="/getProductList.do", method = RequestMethod.GET)
+	public String getBoardList(ProductVO vo, Model model) {
+		System.out.println(">>> 게시글 전체 목록 보여주기");
+		
+		List<ProductVO> list = productService.getProductList(vo);
+		model.addAttribute("productList", list);
+		System.out.println(list.isEmpty());
+		System.out.println(list);
+		return "product/shop-boxed-ls";
+	}
 
 
 }

@@ -21,6 +21,7 @@ import com.spring.biz.member.S_MemberVO;
 
 @Controller
 @SessionAttributes("member")
+//@RequestMapping(value="account/")
 public class MemberController {
 	@Autowired
 	private MemberService memberService;
@@ -44,7 +45,7 @@ public class MemberController {
 	public String account(Model model) {
 		System.out.println("account() 실행");
 
-		return "redirect:account-wishlist.jsp";
+		return "redirect:getWishlists.do";
 
 	}
 	
@@ -131,7 +132,7 @@ public class MemberController {
 	@RequestMapping("/getMember.do")
 	public String getMember() {
 		
-		return "/WEB-INF/views/account/account-profile.jsp";
+		return "account/account-profile";
 	}
 	
 	@RequestMapping("/updateMember.do")
@@ -142,7 +143,7 @@ public class MemberController {
 		System.out.println("member : " + vo);
 		memberService.updateMember(vo);
 		
-		return "/WEB-INF/views/account/account-profile.jsp";
+		return "account/account-profile";
 	}
 	
 }

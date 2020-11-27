@@ -18,8 +18,7 @@ public class MainController {
 		System.out.println("mainController 객체 생성");
 	}
 
-	@RequestMapping("/main.do")
-
+	@RequestMapping("main.do")
 	public String main(Model model) {
 		//List<ProductVO> list = productService.getMainProduct();
 		//model.addAttribute("MainProduct", list);
@@ -28,28 +27,4 @@ public class MainController {
 
 	}
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
