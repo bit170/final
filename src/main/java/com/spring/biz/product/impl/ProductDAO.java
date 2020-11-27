@@ -4,12 +4,12 @@ import java.util.List;
 import java.util.Map;
 
 import org.apache.ibatis.session.SqlSession;
-import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataAccessException;
 import org.springframework.stereotype.Repository;
 
 import com.spring.biz.product.PImageFileVO;
+import com.spring.biz.product.ProductVO;
 
 @Repository
 public class ProductDAO {
@@ -38,11 +38,11 @@ public class ProductDAO {
 //		return mybatis.selectOne("productDAO.getProduct", vo);
 //	}
 		
-//	//글 목록 조회
-//	public List<ProductVO> getProductList(ProductVO vo) {
-//		System.out.println("===> MyBatis로 getProductList() 실행");
-//		return mybatis.selectList("productDAO.getProductList");
-//	}
+	//글 목록 조회
+	public List<ProductVO> getProductList(ProductVO vo) {
+		System.out.println("===> MyBatis로 getProductList() 실행");
+		return sqlSession.selectList("productDAO.getProductList");
+	}
 //
 //	public List<ProductVO> getMainProduct() {
 //		System.out.println("productDAO.getMainProduct()");

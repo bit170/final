@@ -1,6 +1,7 @@
 package com.spring.biz.product.impl;
 
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -8,6 +9,7 @@ import org.springframework.stereotype.Service;
 
 import com.spring.biz.product.PImageFileVO;
 import com.spring.biz.product.ProductService;
+import com.spring.biz.product.ProductVO;
 
 @Service("productService")
 public class ProductServiceImpl implements ProductService{
@@ -26,15 +28,16 @@ public class ProductServiceImpl implements ProductService{
 		return p_code;
 	}
 
+
 	//@Override
 //	public ProductVO getProduct(ProductVO vo) {
 //		return productDAO.getProduct(vo);
 //	}
 
-//	@Override
-//	public List<ProductVO> getProductList(ProductVO vo) {
-//		return productDAO.getProductList(vo);
-//	}
+	@Override
+	public List<ProductVO> getProductList(ProductVO vo) {
+		return productDAO.getProductList(vo);
+	}
 //
 //	@Override
 //	public List<ProductVO> getMainProduct() {
