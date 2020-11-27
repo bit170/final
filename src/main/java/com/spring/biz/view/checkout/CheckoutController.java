@@ -33,22 +33,22 @@ public class CheckoutController {
 		System.out.println("address : " + vo);
 		
 		
-		return "/WEB-INF/views/order/checkout-address.jsp";
+		return "order/checkout-address";
 	}
 	
 	@RequestMapping("/payment.do")
 	public String payment() {
-		return "/WEB-INF/views/order/checkout-payment.jsp";
-	}
+		return "order/checkout-payment";
+	}      
 	
 	@RequestMapping("/review.do")
 	public String review() {
-		return "/WEB-INF/views/order/checkout-review.jsp";
+		return "order/checkout-review";
 	}
 	
 	@RequestMapping("/complete.do")
 	public String complete() {
-		return "/WEB-INF/views/order/checkout-complete.jsp";
+		return "order/checkout-complete";
 	}
 	
 }

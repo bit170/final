@@ -35,7 +35,7 @@ public class AddressController {
 		
 		// 결제페이지 완료 시 결제페이지로 포워딩
 //		return "/WEB-INF/views/account/account-address.jsp";
-		return "/payment.do";
+		return "account/account-address";
 		
 	}
 	
@@ -48,7 +48,7 @@ public class AddressController {
 		addrService.updateAddr(vo);
 		
 		
-		return "redirect:/WEB-INF/views/account/account-address.jsp";
+		return "account/account-address";
 	}
 	
 	@RequestMapping(value = "/getAddress.do")
@@ -65,7 +65,7 @@ public class AddressController {
 		model.addAttribute("address", vo);
 		System.out.println("address : " + vo);
 		
-		return "/WEB-INF/views/account/account-address.jsp";
+		return "account/account-address";
 	}
 	
 
