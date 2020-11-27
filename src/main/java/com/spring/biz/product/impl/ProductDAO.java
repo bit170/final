@@ -25,9 +25,9 @@ public class ProductDAO {
 		return (String) newProductMap.get("p_code");
 	}
 	
-	public void insertProductImageFile(List fileList) throws DataAccessException{
-		for(int i=0; i<fileList.size(); i++) {
-			PImageFileVO pimageFileVO=(PImageFileVO)fileList.get(i);
+	public void insertProductImageFile(List pfileList) throws DataAccessException{
+		for(int i=0; i<pfileList.size(); i++) {
+			PImageFileVO pimageFileVO=(PImageFileVO)pfileList.get(i);
 			sqlSession.insert("pimage", pimageFileVO);
 		}
 	}

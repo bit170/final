@@ -10,4 +10,7 @@ public interface ProductService {
 //	List<ProductVO> getMainProduct();
 	
 	public String addNewProduct(Map newProductMap) throws Exception;
+
+	public void addNewProductImage(List pimageFileList) throws Exception;
+
 }

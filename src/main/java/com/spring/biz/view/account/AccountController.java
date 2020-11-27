@@ -19,4 +19,9 @@ public class AccountController {
 	public String getOrderList() {
 		return "account/account-orders";
 	}
+	
+	@RequestMapping("/insert-canvas.do")
+	public String insertcanvas() {
+		return "product/insert-canvas";
+	}
 }

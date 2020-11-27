@@ -28,6 +28,10 @@ public class ProductServiceImpl implements ProductService{
 		return p_code;
 	}
 
+	@Override
+	public void addNewProductImage(List pimageFileList) throws Exception{
+		productDAO.insertProductImageFile(pimageFileList);
+	}
 
 	//@Override
 //	public ProductVO getProduct(ProductVO vo) {
@@ -43,6 +47,7 @@ public class ProductServiceImpl implements ProductService{
 //	public List<ProductVO> getMainProduct() {
 //		return productDAO.getMainProduct();
 //	}
+
 	
 //	public ProductServiceImpl() {
 //		System.out.println(">> ProductServiceImpl() 객체 생성");

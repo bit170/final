@@ -290,7 +290,7 @@
 	</div>
 	<!-- Page Content-->
 	<div class="container padding-bottom-3x mb-2">
-	<form action="${contextPath}/addNewProduct.do" method="post"  enctype="multipart/form-data">
+	<form action="addNewProduct.do" method="post"  enctype="multipart/form-data">
 		<div class="row">
 			<!-- 작품 수정하기 ( 연희 ) -->
         <div class="col-xl-9 col-lg-8">
@@ -374,10 +374,13 @@
 				<div class="d-flex justify-content-center">
 					<a class="btn btn-outline-secondary" href="getMyCanvasList.do">마이페이지로</a>
 					<div class="text-right">
-						<a class="btn btn-primary" href="insertMyCanvas.do">추가하기</a>
+						<input type="submit" value="등록하기" class="btn btn-primary" />
+					
 					</div>
 				</div>
 			</div>
+			</div>
+			</form>
 
 			<!-- Site Footer-->
 			<footer class="site-footer">
