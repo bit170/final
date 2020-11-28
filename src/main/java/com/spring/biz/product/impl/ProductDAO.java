@@ -21,14 +21,14 @@ public class ProductDAO {
 	}	
 		
 	public String insertNewProduct(Map newProductMap) throws DataAccessException{
-		sqlSession.insert("product", newProductMap);
+		sqlSession.insert("productDAO.insertNewProduct", newProductMap);
 		return (String) newProductMap.get("p_code");
 	}
 	
 	public void insertProductImageFile(List pfileList) throws DataAccessException{
 		for(int i=0; i<pfileList.size(); i++) {
 			PImageFileVO pimageFileVO=(PImageFileVO)pfileList.get(i);
-			sqlSession.insert("pimage", pimageFileVO);
+			sqlSession.insert("productDAO.insetPImageFile", pimageFileVO);
 		}
 	}
 	

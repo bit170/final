@@ -24,10 +24,14 @@ public abstract class BaseController {
 			String p_filename = fileNames.next();
 			pimageFileVO.setP_filename(p_filename);
 			MultipartFile mFile = multipartRequest.getFile(p_filename);
+			System.out.println(mFile.getName()+"(getName())"+mFile.getOriginalFilename()+
+					"(getOriginalFilename())"+mFile.getContentType()+"(getContentType())");
 			
 			String type = mFile.getContentType();
 			pimageFileVO.setPi_filetype(type);
 			
+			String originName = mFile.getOriginalFilename();
+//			pimageFileVO.set
 //			String originalFileName=mFile.getOriginalFilename();
 //			pimageFileVO.setP_filename(originalFileName);
 			
