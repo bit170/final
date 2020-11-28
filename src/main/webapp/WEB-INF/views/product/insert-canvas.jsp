@@ -179,7 +179,7 @@ $(document).ready(function(){
           <c:if test="${!empty member}">
 	         <div class="toolbar-section" id="account">
 	         <form action="logout.do" method="post">
-	            <p class="text-muted text-sm mt-4"><h4>${member.id }<span>님</span><h4></p>
+	            <p class="text-muted text-sm mt-4"><h4>${member.id }<span>님</span></h4></p>
 	            <p class="text-muted text-sm mt-4">환영합니다</p>
 	            <button class="btn btn-primary" type="submit">Log Out</button> 
 
@@ -312,16 +312,16 @@ $(document).ready(function(){
 	<!-- Page Content-->
 	<div class="container padding-bottom-3x mb-2">
 	<form action="addNewProduct.do" method="post"  enctype="multipart/form-data">
-		<div class="row">
+		<!-- <div class="row"> -->
 			<!-- 작품 수정하기 ( 연희 ) -->
-        <div class="col-xl-9 col-lg-8">
+        <div class="col-xl-9 col-lg-8" style="max-width : 100%">
           <h4>내 작품 수정하기</h4>
           <hr class="padding-bottom-1x">
           <div class="row">
             <div class="col-sm-6">
               <div class="form-group">
-                <label for="checkout-fn">* 작품명</label>
-                <input name="p_name" class="form-control" type="text" id="checkout-fn">
+                <label for="checkout-fn1">* 작품명</label>
+                <input name="p_name" class="form-control" type="text" id="checkout-fn1">
               </div>
             </div>
             <div class="col-sm-6">
@@ -334,8 +334,8 @@ $(document).ready(function(){
           <div class="row">
             <div class="col-sm-6">
               <div class="form-group">
-                <label for="checkout-fn">* 작품 사이즈</label>
-                <input name="p_size" class="form-control" type="text" id="checkout-fn">
+                <label for="checkout-fn2">* 작품 사이즈</label>
+                <input name="p_size" class="form-control" type="text" id="checkout-fn2">
               </div>
             </div>
             <div class="col-sm-6">
@@ -367,9 +367,11 @@ $(document).ready(function(){
                 </div>
               </div>
             </div>
-              <div class="col-sm-6">
+          </div>
+          <div class="row">
+             <div class="col-sm-6">
                 <div class="form-group">
-                  <label for="checkout-ln"> 카테고리 </label>
+                  <label for="select-input"> 카테고리 </label>
                   <!-- <label class="col-2 col-form-label text-muted" for="select-input">Select</label> -->
                   <select name = "p_category" class="form-control" id="select-input">
                     <option>카테고리를 선택해주세요 ! </option>
@@ -384,24 +386,23 @@ $(document).ready(function(){
               </div>
               <div class="col-sm-6">
                 <div class="form-group">
-                  <label for="checkout-ln"> 작품 설명</label>
+                  <label for="textarea-input"> 작품 설명</label>
                   <textarea name = "p_detail" class="form-control text-muted" id="textarea-input" rows="5">작품을 간략하게 설명해주세요 !</textarea>
                 </div>
               </div>
             </div>
 
-				<hr class="padding-bottom-1x">
+			<hr class="padding-bottom-1x">
 
-				<div class="d-flex justify-content-center">
-					<a class="btn btn-outline-secondary" href="getMyCanvasList.do">마이페이지로</a>
-					<div class="text-right">
-						<input type="submit" value="등록하기" class="btn btn-primary" />
-					
-					</div>
+			<div class="d-flex justify-content-center">
+				<a class="btn btn-outline-secondary" href="getMyCanvasList.do">마이페이지로</a>
+				<div class="text-right">
+					<input type="submit" value="등록하기" class="btn btn-primary" />
 				</div>
 			</div>
-			</div>
-			</form>
+		</div>
+		<!-- </div> -->
+	</form>
 
 			<!-- Site Footer-->
 			<footer class="site-footer">
