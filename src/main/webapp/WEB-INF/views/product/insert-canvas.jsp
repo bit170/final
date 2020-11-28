@@ -34,7 +34,28 @@
 	href="<c:url value="resources/css/styles.min.css" />">
 <!-- Modernizr-->
 <script src="<c:url value="resources/js/modernizr.min.js" />"></script>
-
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+<script type="text/javascript">
+/* 추가된 파일명 띄우기 */
+$(document).ready(function(){ 
+	var fileTarget = $('.custom-file-input'); 
+	
+	fileTarget.on('change', function(){ // 값이 변경되면 
+		var filename = $(this).val().split('/').pop().split('\\').pop(); // 파일명만 추출
+		alert(filename);
+		$(this).siblings('.custom-file-label').html(filename); 
+	}); 
+})
+	// function fileName(a) {
+		//var filename = a.split('/').pop().split('\\').pop();
+		//alert(filename);
+		/* $('#LoadImg').attr('src', e.target.result); */
+		//$(this).siblings('.custom-file-label').val(filename); 
+		//$(this).html(filename);
+		//alert(this);
+		/* $("#file-input").attr('value',filename); */
+	//} 
+</script>
 </head>
 <!-- Body-->
 <body>
@@ -321,8 +342,8 @@
               <div class="form-group">
                 <label for="checkout-ln">* 사진 1</label>
                 <div class="custom-file">
-                <input name = "main_image" class="custom-file-input" type="file" id="file-input">
-                <label class="custom-file-label" for="file-input"></label>
+                <input name = "main_image" class="custom-file-input" type="file" id="file-input1">
+                <label class="custom-file-label" for="file-input1"></label>
               </div>
               </div>
             </div>
@@ -332,8 +353,8 @@
               <div class="form-group">
                 <label for="checkout-fn"> 사진 2</label>
                 <div class="custom-file">
-                  <input name="detail_image1" class="custom-file-input" type="file" id="file-input">
-                  <label class="custom-file-label" for="file-input"></label>
+                  <input name="detail_image1" class="custom-file-input" type="file" id="file-input2">
+                  <label class="custom-file-label" for="file-input2"></label>
                 </div>
               </div>
             </div>
@@ -341,8 +362,8 @@
               <div class="form-group">
                 <label for="checkout-ln"> 사진 3</label>
                 <div class="custom-file">
-                  <input name="detail_image2" class="custom-file-input" type="file" id="file-input">
-                  <label class="custom-file-label" for="file-input"></label>
+                  <input name="detail_image2" class="custom-file-input" type="file" id="file-input3">
+                  <label class="custom-file-label" for="file-input3"></label>
                 </div>
               </div>
             </div>
