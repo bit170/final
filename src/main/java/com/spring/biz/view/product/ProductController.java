@@ -41,12 +41,14 @@ public class ProductController extends BaseController {
 
 	@RequestMapping(value="/addNewProduct.do" ,method={RequestMethod.POST})
 	public ResponseEntity addNewProduct(MultipartHttpServletRequest multipartRequest, HttpServletResponse response)  throws Exception {
+		System.out.println("addNewProduct() 실행");
+		
 		multipartRequest.setCharacterEncoding("utf-8");
 		response.setContentType("text/html; charset=UTF-8");
 		String pimageFileName=null;
 		
 		Map newProductMap = new HashMap();
-		Enumeration enu=multipartRequest.getParameterNames();
+		Enumeration enu = multipartRequest.getParameterNames();
 		while(enu.hasMoreElements()){
 			String name=(String)enu.nextElement();
 			String value=multipartRequest.getParameter(name);
@@ -54,11 +56,13 @@ public class ProductController extends BaseController {
 		}
 		
 		HttpSession session = multipartRequest.getSession();
-		MemberVO memberVO = (MemberVO) session.getAttribute("member");
-		String reg_id = memberVO.getId();
+//		MemberVO memberVO = (MemberVO) session.getAttribute("member");
+//		String reg_id = memberVO.getId();
+		String reg_id = "test";
 		
+		List<PImageFileVO> pimageFileList = upload(multipartRequest);
+		System.out.println(pimageFileList.size());	//확인용
 		
-		List<PImageFileVO> pimageFileList =upload(multipartRequest);
 		if(pimageFileList!= null && pimageFileList.size()!=0) {
 			for(PImageFileVO pimageFileVO : pimageFileList) {
 				pimageFileVO.setReg_id(reg_id);
