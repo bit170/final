@@ -8,7 +8,7 @@
 		<result property="p_code" column="p_code" />
 		<result property="p_name" column="p_name" />
 		<result property="price" column="price" />
-		<result property="id" column="id" />
+		<!-- <result property="id" column="id" /> -->
 		<result property="p_size" column="p_size" />
 		<result property="p_category" column="p_category" />
 		<result property="p_detail" column="p_detail" />
@@ -27,17 +27,17 @@
 			select seq_p_code.nextval from dual
 		</selectKey>
 		<![CDATA[
-			insert into product (p_code, p_name, price, id, p_size, p_category, p_detail)
-			values( #{p_code}, #{p_name}, #{price}, #{id}, #{p_size}, #{p_category}, #{p_detail} )
+			insert into product (p_code, p_name, price, p_size, p_category, p_detail)
+			values( #{p_code}, #{p_name}, #{price},  #{p_size}, #{p_category}, #{p_detail} )
 		]]>
 	</insert>
 	
-	<insert id="insetPImageFile" parameterType="pimage">
+	<insert id="insertPImageFile" parameterType="pimage">
 		<selectKey resultType="String" keyProperty="pi_code" order="BEFORE">
 			select seq_pi_code.nextval from dual
 		</selectKey>
 		<![CDATA[
-			inset into p_image (p_code, pi_filename, pi_code, pi_filetype, reg_id)
+			insert into p_image (p_code, pi_filename, pi_code, pi_filetype, reg_id)
 			values( #{p_code}, #{pi_filename}, #{pi_code}, #{pi_filetype}, #{reg_id} )
 		]]>
 	</insert>

@@ -52,13 +52,15 @@ public class ProductController extends BaseController {
 		while(enu.hasMoreElements()){
 			String name=(String)enu.nextElement();
 			String value=multipartRequest.getParameter(name);
+			System.out.println(name);
+			System.out.println(value);
 			newProductMap.put(name,value);
 		}
 		
 		HttpSession session = multipartRequest.getSession();
-//		MemberVO memberVO = (MemberVO) session.getAttribute("member");
-//		String reg_id = memberVO.getId();
-		String reg_id = "test";
+		MemberVO memberVO = (MemberVO) session.getAttribute("member");
+		String reg_id = memberVO.getId();
+		System.out.println(reg_id);
 		
 		List<PImageFileVO> pimageFileList = upload(multipartRequest);
 		System.out.println(pimageFileList.size());	//확인용
@@ -78,7 +80,7 @@ public class ProductController extends BaseController {
 			String p_code = productService.addNewProduct(newProductMap);
 			if(pimageFileList!=null && pimageFileList.size()!=0) {
 				for(PImageFileVO  pimageFileVO:pimageFileList) {
-					pimageFileName = pimageFileVO.getP_filename();
+					pimageFileName = pimageFileVO.getPi_filename();
 					File srcFile = new File(CURR_IMAGE_REPO_PATH+"\\"+"temp"+"\\"+pimageFileName);
 					File destDir = new File(CURR_IMAGE_REPO_PATH+"\\"+p_code);
 					FileUtils.moveFileToDirectory(srcFile, destDir,true);
@@ -91,7 +93,7 @@ public class ProductController extends BaseController {
 		}catch(Exception e) {
 			if(pimageFileList!=null && pimageFileList.size()!=0) {
 				for(PImageFileVO  pimageFileVO:pimageFileList) {
-					pimageFileName = pimageFileVO.getP_filename();
+					pimageFileName = pimageFileVO.getPi_filename();
 					File srcFile = new File(CURR_IMAGE_REPO_PATH+"\\"+"temp"+"\\"+pimageFileName);
 					srcFile.delete();
 				}
@@ -99,7 +101,7 @@ public class ProductController extends BaseController {
 			
 			message= "<script>";
 			message += " alert('오류가 발생했습니다. 다시 시도해 주세요');";
-			message +=" location.href='"+multipartRequest.getContextPath()+"product/insert-canvas';";
+			message +=" location.href='"+multipartRequest.getContextPath()+"/product/insert-canvas';";
 			message +=("</script>");
 			e.printStackTrace();
 		}
@@ -108,13 +110,13 @@ public class ProductController extends BaseController {
 	}
 	
 	
-	@RequestMapping(value="/addNewProductImage.do" ,method={RequestMethod.POST})
-	public void addNewProductImage(MultipartHttpServletRequest multipartRequest, HttpServletResponse response)
+	@RequestMapping(value="/addNewPImage.do" ,method={RequestMethod.POST})
+	public void addNewPImage(MultipartHttpServletRequest multipartRequest, HttpServletResponse response)
 			throws Exception {
 		System.out.println("addNewProductImage");
 		multipartRequest.setCharacterEncoding("utf-8");
 		response.setContentType("text/html; charset=utf-8");
-		String p_filename=null;
+		String pi_filename=null;
 		
 		Map proudctMap = new HashMap();
 		Enumeration enu=multipartRequest.getParameterNames();
@@ -139,10 +141,10 @@ public class ProductController extends BaseController {
 					pimageFileVO.setReg_id(reg_id);
 				}
 				
-			    productService.addNewProductImage(pimageFileList);
+			    productService.addNewPImage(pimageFileList);
 				for(PImageFileVO  pimageFileVO:pimageFileList) {
-					p_filename = pimageFileVO.getP_filename();
-					File srcFile = new File(CURR_IMAGE_REPO_PATH+"\\"+"temp"+"\\"+p_filename);
+					pi_filename = pimageFileVO.getPi_filename();
+					File srcFile = new File(CURR_IMAGE_REPO_PATH+"\\"+"temp"+"\\"+pi_filename);
 					File destDir = new File(CURR_IMAGE_REPO_PATH+"\\"+p_code);
 					FileUtils.moveFileToDirectory(srcFile, destDir,true);
 				}
@@ -150,8 +152,8 @@ public class ProductController extends BaseController {
 		}catch(Exception e) {
 			if(pimageFileList!=null && pimageFileList.size()!=0) {
 				for(PImageFileVO  pimageFileVO:pimageFileList) {
-					p_filename = pimageFileVO.getP_filename();
-					File srcFile = new File(CURR_IMAGE_REPO_PATH+"\\"+"temp"+"\\"+p_filename);
+					pi_filename = pimageFileVO.getPi_filename();
+					File srcFile = new File(CURR_IMAGE_REPO_PATH+"\\"+"temp"+"\\"+pi_filename);
 					srcFile.delete();
 				}
 			}
@@ -181,16 +183,16 @@ public class ProductController extends BaseController {
 //		return "/WEB-INF/views/main/index.jsp";
 //	}
 	
-	@RequestMapping(value="/getProductList.do", method = RequestMethod.GET)
-	public String getBoardList(ProductVO vo, Model model) {
-		System.out.println(">>> 게시글 전체 목록 보여주기");
-		
-		List<ProductVO> list = productService.getProductList(vo);
-		model.addAttribute("productList", list);
-		System.out.println(list.isEmpty());
-		System.out.println(list);
-		return "product/shop-boxed-ls";
-	}
+//	@RequestMapping(value="/getProductList.do", method = RequestMethod.GET)
+//	public String getBoardList(ProductVO vo, Model model) {
+//		System.out.println(">>> 게시글 전체 목록 보여주기");
+//		
+//		List<ProductVO> list = productService.getProductList(vo);
+//		model.addAttribute("productList", list);
+//		System.out.println(list.isEmpty());
+//		System.out.println(list);
+//		return "product/shop-boxed-ls";
+//	}
 
 
 }

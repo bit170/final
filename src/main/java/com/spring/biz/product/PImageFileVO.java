@@ -2,17 +2,17 @@ package com.spring.biz.product;
 
 public class PImageFileVO {
 	private String p_code;
-	private String p_filename;
+	private String pi_filename;
 	private String pi_code;
 	private String pi_filetype;
 	private String reg_id;
 	
 	public PImageFileVO() {}
 	
-	public PImageFileVO(String p_code, String p_filename, String pi_code, String pi_filetype, String reg_id) {
+	public PImageFileVO(String p_code, String pi_filename, String pi_code, String pi_filetype, String reg_id) {
 		super();
 		this.p_code = p_code;
-		this.p_filename = p_filename;
+		this.pi_filename = pi_filename;
 		this.pi_code = pi_code;
 		this.pi_filetype = pi_filetype;
 		this.reg_id = reg_id;
@@ -27,12 +27,12 @@ public class PImageFileVO {
 		this.p_code = p_code;
 	}
 
-	public String getP_filename() {
-		return p_filename;
+	public String getPi_filename() {
+		return pi_filename;
 	}
 
-	public void setP_filename(String p_filename) {
-		this.p_filename = p_filename;
+	public void setPi_filename(String pi_filename) {
+		this.pi_filename = pi_filename;
 	}
 
 	public String getPi_code() {
