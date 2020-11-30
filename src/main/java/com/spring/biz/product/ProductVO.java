@@ -8,25 +8,23 @@ public class ProductVO {
 	private String p_code;
 	private String p_name;
 	private int price;
-	private String a_id;
 	private String p_size;
 	private Date p_date;
-	private String p_img;
 	private String p_category;
+	private String p_detail;
 	
 	
 	public ProductVO() {}
 
-	public ProductVO(String p_code, String p_name, int price, String a_id, String p_size, Date p_date, String p_img, String p_category) {
+	public ProductVO(String p_code, String p_name, int price, String p_size, Date p_date, String p_category, String p_detail) {
 		super();
 		this.p_code = p_code;
 		this.p_name = p_name;
 		this.price = price;
-		this.a_id = a_id;
 		this.p_size = p_size;
 		this.p_date = p_date;
-		this.p_img = p_img;
 		this.p_category = p_category;
+		this.p_detail = p_detail;
 	}
 	
 	public String getP_code() {
@@ -53,14 +51,6 @@ public class ProductVO {
 		this.price = price;
 	}
 
-	public String getA_id() {
-		return a_id;
-	}
-
-	public void setA_id(String a_id) {
-		this.a_id = a_id;
-	}
-
 	public String getP_size() {
 		return p_size;
 	}
@@ -77,14 +67,6 @@ public class ProductVO {
 		this.p_date = p_date;
 	}
 
-	public String getP_img() {
-		return p_img;
-	}
-
-	public void setP_img(String p_img) {
-		this.p_img = p_img;
-	}
-
 	public String getP_category() {
 		return p_category;
 	}
@@ -93,15 +75,19 @@ public class ProductVO {
 		this.p_category = p_category;
 	}
 
-	@Override
-	public String toString() {
-		return "ProductVO [p_code=" + p_code + ", p_name=" + p_name + ", price=" + price + ", a_id=" + a_id
-				+ ", p_size=" + p_size + ", p_date=" + p_date + ", p_img=" + p_img + ", p_category=" + p_category + "]";
+	public String getP_detail() {
+		return p_detail;
 	}
 
-	
+	public void setP_detail(String p_detail) {
+		this.p_detail = p_detail;
+	}
 
-	
-	
-	
+	@Override
+	public String toString() {
+		return "ProductVO [p_code=" + p_code + ", p_name=" + p_name + ", price=" + price
+				+ ", p_size=" + p_size + ", p_date=" + p_date + ", p_category=" + p_category + ", p_detail=" + p_detail
+				+ "]";
+	}
+
 }

@@ -350,9 +350,9 @@
 					</div>
 					</div>
 					<div class="d-flex justify-content-between">
-					<a class="btn btn-outline-secondary" href="account-myCanvas.jsp">마이페이지로</a>
+					<a class="btn btn-outline-secondary" href="account-myCanvas.do">마이페이지로</a>
 					<div class="text-center">
-						<a class="btn btn-primary" href="account-myCanvas.jsp">수정하기</a>
+						<a class="btn btn-primary" href="account-myCanvas.do">수정하기</a>
 					</div>
 				</div>
 					<hr class="margin-bottom-1x">
@@ -367,13 +367,16 @@
 								<div class="gutter-sizer"></div>
 								<div class="grid-sizer"></div>
 								<div class="grid-item gallery-item">
-									<a href="insert-canvas.jsp"><img
-										src="resources/img/gallery/th05.jpg" alt="Image">
-										<span class="caption">새 작품 추가하기</a></span>
+									<a href="insert-canvas.do"><img
+										src="resources/img/gallery/th05.jpg" alt="Image"></a>
+										<span class="caption">새 작품 추가하기</span>
+									</div>
+								</div>
+							</div>
 					<div class="d-flex justify-content-center">
-					<a class="btn btn-outline-secondary" href="account-myCanvas.jsp">마이페이지로</a>
+					<a class="btn btn-outline-secondary" href="account-myCanvas.do">마이페이지로</a>
 					<div class="text-center">
-						<a class="btn btn-primary" href="account-myCanvas.jsp">수정하기</a>
+						<a class="btn btn-primary" href="account-myCanvas.do">수정하기</a>
 					</div>
 				</div>
 					<hr class="margin-bottom-1x">
@@ -388,22 +391,23 @@
 								<div class="gutter-sizer"></div>
 								<div class="grid-sizer"></div>
 								<div class="grid-item gallery-item">
-									<a href="insert-canvas.jsp"><img
-										src="resources/img/gallery/th05.jpg" alt="Image"><span
-										class="caption">새 작품 추가하기</a></span>
+									<a href="insert-canvas.do">
+									<img src="resources/img/gallery/th05.jpg" alt="Image"></a>
+										<span class="caption">새 작품 추가하기</span>
+		<!-- >>>>>>> branch 'yhg' of https://github.com/bit170/final.git -->
 								</div>
 								<div class="grid-item gallery-item">
-									<a href="update-canvas.jsp"><img
-										src="resources/img/gallery/th01.jpg" alt="Image"></a><span
-										class="caption">Bonsai on the table</span>
+									<a href="update-canvas.do">
+									<img src="resources/img/gallery/th01.jpg" alt="Image"></a>
+									<span class="caption">Bonsai on the table</span>
 								</div>
 								<div class="grid-item gallery-item">
-									<a href="update-canvas.jsp"><img
+									<a href="update-canvas.do"><img
 										src="resources/img/gallery/th04.jpg" alt="Image"></a><span
 										class="caption">Working desk</span>
 								</div>
 								<div class="grid-item gallery-item">
-									<a href="update-canvas.jsp"><img
+									<a href="update-canvas.do"><img
 										src="resources/img/gallery/th06.jpg" alt="Image"></a><span
 										class="caption">Table lamp</span>
 								</div>

@@ -3,16 +3,52 @@
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
   <mapper namespace="productDAO">
-
+	<!-- resultMap 정의 -->
+	<resultMap id="productResult" type="product">
+		<result property="p_code" column="p_code" />
+		<result property="p_name" column="p_name" />
+		<result property="price" column="price" />
+		<!-- <result property="id" column="id" /> -->
+		<result property="p_size" column="p_size" />
+		<result property="p_category" column="p_category" />
+		<result property="p_detail" column="p_detail" />
+	</resultMap>
 	
-	<resultMap id="ProductList" type="pvo"/>
-	<select id="getProductList" parameterType="pvo" resultMap="ProductList">
+	<resultMap id="pimageResult" type="pimage">
+		<result property="p_code" column="p_code" />
+		<result property="pi_filename" column="pi_filename" />
+		<result property="pi_code" column="pi_code" />
+		<result property="pi_filetype" column="pi_filetype" />
+		<result property="nickname" column="nickname" />
+	</resultMap>
+	
+	<insert id="insertNewProduct" parameterType="java.util.Map">
+		<selectKey resultType="String" keyProperty="p_code" order="BEFORE">
+			select seq_p_code.nextval from dual
+		</selectKey>
+		<![CDATA[
+			insert into product (p_code, p_name, price, p_size, p_category, p_detail)
+			values( #{p_code}, #{p_name}, #{price},  #{p_size}, #{p_category}, #{p_detail} )
+		]]>
+	</insert>
+	
+	<insert id="insertPImageFile" parameterType="pimage">
+		<selectKey resultType="String" keyProperty="pi_code" order="BEFORE">
+			select seq_pi_code.nextval from dual
+		</selectKey>
+		<![CDATA[
+			insert into p_image (p_code, pi_filename, pi_code, pi_filetype, nickname)
+			values( #{p_code}, #{pi_filename}, #{pi_code}, #{pi_filetype}, #{nickname} )
+		]]>
+	</insert>
+	
+	<!-- <select id="getProductList" parameterType="product" resultMap="ProductList">
 		SELECT * FROM PRODUCT
 	</select>
 	
-	<!-- 맞는 쿼리문 작성할 것(메인에 출력할 작품리스트 -->
+	맞는 쿼리문 작성할 것(메인에 출력할 작품리스트
 	<select id="getMainProduct" resultMap="ProductList">
 		select * from product
-	</select>
+	</select> -->
 	
 </mapper>
