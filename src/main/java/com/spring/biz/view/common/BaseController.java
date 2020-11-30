@@ -22,14 +22,17 @@ public abstract class BaseController {
 			PImageFileVO pimageFileVO =new PImageFileVO();
 			
 			String pi_filename = fileNames.next();
-			pimageFileVO.setPi_filename(pi_filename);
+			pimageFileVO.setPi_filetype(pi_filename);
 			MultipartFile mFile = multipartRequest.getFile(pi_filename);
 			
 			//String type = mFile.getContentType();
 			//pimageFileVO.setPi_filetype(type);
 			
 			String originalFileName=mFile.getOriginalFilename();
+			System.out.println(originalFileName);
 			pimageFileVO.setPi_filename(originalFileName);
+			System.out.println(pimageFileVO.getPi_filename());
+			pfileList.add(pimageFileVO);
 			
 			File file = new File(CURR_IMAGE_REPO_PATH +"\\"+ pi_filename);
 			if(mFile.getSize()!=0){ //File Null Check
@@ -42,9 +45,9 @@ public abstract class BaseController {
 						}
 					}
 				}
-				mFile.transferTo(file);
-				pfileList.add(pimageFileVO);
-				//mFile.transferTo(new File(CURR_IMAGE_REPO_PATH +"\\"+"temp"+ "\\"+originalFileName));
+//				mFile.transferTo(file);
+//				pfileList.add(pimageFileVO);
+				mFile.transferTo(new File(CURR_IMAGE_REPO_PATH +"\\"+"temp"+ "\\"+originalFileName));
 			}
 		}
 		return pfileList;

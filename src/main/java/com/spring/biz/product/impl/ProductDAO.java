@@ -30,6 +30,7 @@ public class ProductDAO {
 	public void insertPImageFile(List pfileList) throws DataAccessException{
 		for(int i=0; i<pfileList.size(); i++) {
 			PImageFileVO pimageFileVO=(PImageFileVO)pfileList.get(i);
+			System.out.println(pimageFileVO);
 			mybatis.insert("productDAO.insertPImageFile", pimageFileVO);
 		}
 	}
