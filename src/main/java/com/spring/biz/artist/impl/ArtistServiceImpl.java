@@ -49,4 +49,5 @@ public class ArtistServiceImpl implements ArtistService{
 		return artistDAO.searchByName(nickname);
 	}
 
+	
 }

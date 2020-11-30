@@ -33,20 +33,26 @@ public class ProductDAO {
 	}
 	
 	//글 조회(하나만)
-//	public ProductVO getProduct(ProductVO vo) {
-//		System.out.println("===> MyBatis로 getProduct() 실행");
-//		return mybatis.selectOne("productDAO.getProduct", vo);
-//	}
+	public ProductVO getProduct(ProductVO vo) {
+		System.out.println("===> MyBatis로 getProduct() 실행");
+		return sqlSession.selectOne("productDAO.getProduct", vo);
+	}
 		
 	//글 목록 조회
 	public List<ProductVO> getProductList(ProductVO vo) {
 		System.out.println("===> MyBatis로 getProductList() 실행");
 		return sqlSession.selectList("productDAO.getProductList");
 	}
-//
-//	public List<ProductVO> getMainProduct() {
-//		System.out.println("productDAO.getMainProduct()");
-//		return mybatis.selectList("productDAO.getMainProduct");
-//	}
+
+	public List<ProductVO> getMainProduct() {
+		System.out.println("productDAO.getMainProduct()");
+		return sqlSession.selectList("productDAO.getMainProduct");
+	}
+
+	public List<ProductVO> getSearchResult(String keyword) {
+		System.out.println("productDAO.getSearchResult()");
+				//작품 이름에 keyword가 포함된 작품객체 리스트로 받아오기
+		return sqlSession.selectList("productDAO.getSearchResult", keyword);
+	}
 
 }

@@ -31,7 +31,7 @@
     <script type="text/javascript">
     	
     	$(document).ready(function () {
-    		/* 회원가입 성공 후  model attribute에 바인딩한 객체를 확인 */
+    		/* 회원가입 성공 후  model attribute에 바인딩한 객체를 확인, 한 번만 알리기 위해선 ajax사용이 답인가? */
             var signedUp= '${signedUp.id}';
             if(signedUp != ""){
             	alert("회원가입을 축하합니다. 이메일 인증 후 사용할 수 있습니다.");
@@ -48,9 +48,6 @@
  				}
     		 });
     		 
-    		 if(sessionStorage.getItem("signedUp") != null){
-    			 alert("회원가입이 완료되었습니다. 이메일 인증 후 사용할 수 있습니다. ");
-    		 }
     	/* 아이디 중복체크 == 성공!!
     		리턴값에 따른 후처리 필요	
     	*/	 
@@ -109,7 +106,28 @@
    					$("#pwCheck_result").html("비밀번호가 일치하지 않습니다.").css("color","red");
    				}
 			}
+    		
 		});
+    		/* 검색기능(엔터 입력시 실행)  */
+    		function enter(keyword) {
+				if(window.event.keyCode == 13){
+					search(keyword);
+				}
+			}
+    		function search(keyword){
+    			alert("search() 실행");
+    			$.ajax({
+ 					type : 'POST',
+ 					url : '${pageContext.request.contextPath}/search.do',
+ 					data : {"keyword" : keyword}
+ 				}).done(function () {
+					var result = '${searchProduct}';
+					alert(result);
+					
+				}).fail(function (request,status,error) {
+					alert("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
+				})
+    		}
 	    
     </script>
   </head>
@@ -198,8 +216,8 @@
           </div>
           <!-- Search Section-->
           <div class="toolbar-section" id="search">
-            <form class="search-form mb-2" method="get">
-              <input type="search" placeholder="태그/작가/작품을 검색"><i class="material-icons search"></i>
+            <form class="search-form mb-2" onsubmit="return false">
+              <input type="search" placeholder="태그/작가/작품을 검색" onkeyup="if( event.keyCode==13 ){enter(this.value);}"><i class="material-icons search"></i>
             </form>
             <!-- 검색 결과 -->
             <!-- Products-->

@@ -47,6 +47,8 @@ public class ArtistDAOMybatis {
 	public List<ArtistVO> searchByName(String nickname) {
 		return mybatis.selectList("artistDAO.searchByName", nickname);
 	}
+
+	
 }
 
 

@@ -33,25 +33,30 @@ public class ProductServiceImpl implements ProductService{
 		productDAO.insertProductImageFile(pimageFileList);
 	}
 
-	//@Override
-//	public ProductVO getProduct(ProductVO vo) {
-//		return productDAO.getProduct(vo);
-//	}
+	@Override
+	public ProductVO getProduct(ProductVO vo) {
+		return productDAO.getProduct(vo);
+	}
 
 	@Override
 	public List<ProductVO> getProductList(ProductVO vo) {
 		return productDAO.getProductList(vo);
 	}
-//
-//	@Override
-//	public List<ProductVO> getMainProduct() {
-//		return productDAO.getMainProduct();
-//	}
+
+	@Override
+	public List<ProductVO> getMainProduct() {
+		return productDAO.getMainProduct();
+	}
 
 	
-//	public ProductServiceImpl() {
-//		System.out.println(">> ProductServiceImpl() 객체 생성");
-//	}
+	public ProductServiceImpl() {
+		System.out.println(">> ProductServiceImpl() 객체 생성");
+	}
+
+	@Override
+	public List<ProductVO> searchProduct(String keyword) {
+		return productDAO.getSearchResult(keyword);
+	}
 	
 	
 }
