@@ -1,5 +1,6 @@
 package com.spring.biz.artist.impl;
 
+import java.util.HashMap;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,8 +21,8 @@ public class ArtistServiceImpl implements ArtistService{
 	}
 
 	@Override
-	public void insertArtist(ArtistVO vo) {
-		artistDAO.insertArtist(vo);
+	public void insertArtist(HashMap<String, Object> idNickname) {
+		artistDAO.insertArtist(idNickname);
 	}
 
 	@Override
@@ -34,6 +35,11 @@ public class ArtistServiceImpl implements ArtistService{
 		artistDAO.deleteArtist(vo);
 	}
 
+	@Override
+	public int alreadyArtist(String id) {
+		return artistDAO.alreadyArtist(id);
+	}
+	
 	@Override
 	public ArtistVO getArtist(String id) {
 		return artistDAO.getArtist(id);
