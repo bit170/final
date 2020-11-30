@@ -12,6 +12,10 @@ public interface ProductService {
 	public String addNewProduct(Map newProductMap) throws Exception;
 
 	public void addNewPImage(List pimageFileList) throws Exception;
+	
+	public void modifyProductInfo(Map productMap) throws Exception;
+	
+	public void modifyPImage(List<PImageFileVO> pimageFileList) throws Exception;
 
 //	public List productImageFile(String p_code) throws Exception;
 }
