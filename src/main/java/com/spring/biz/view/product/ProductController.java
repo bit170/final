@@ -63,7 +63,7 @@ public class ProductController extends BaseController {
 		System.out.println(reg_id);
 		
 		List<PImageFileVO> pimageFileList = upload(multipartRequest);
-		System.out.println(pimageFileList.size());	//확인용
+		//System.out.println(pimageFileList.size());	//확인용
 		
 		if(pimageFileList!= null && pimageFileList.size()!=0) {
 			for(PImageFileVO pimageFileVO : pimageFileList) {
@@ -136,6 +136,7 @@ public class ProductController extends BaseController {
 			pimageFileList =upload(multipartRequest);
 			if(pimageFileList!= null && pimageFileList.size()!=0) {
 				for(PImageFileVO pimageFileVO : pimageFileList) {
+					
 					p_code = (String)proudctMap.get("p_code");
 					pimageFileVO.setP_code(p_code);
 					pimageFileVO.setReg_id(reg_id);
