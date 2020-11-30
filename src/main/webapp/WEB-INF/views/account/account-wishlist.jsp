@@ -309,13 +309,27 @@
 				</aside>
 				<!-- 마이페이지 목록 수정 (연희) -->
 				<nav class="list-group">
-					<a class="list-group-item with-badge active" href="getWishlists.do">
+					<a class="list-group-item with-badge active" href="getWishlists.do?id=${member.id}">
+					<c:if test="${!empty wishlist}">
 						<i class="icon-heart"></i>위시리스트
-						<span class="badge badge-default badge-pill">1</span></a> 
-					<a class="list-group-item" href="getFollowList.do">
+						<span class="badge badge-default badge-pill">1</span>
+						</c:if>
+					<c:if test="${empty wishlist}">
+						<i class="icon-heart"></i>위시리스트
+						<span class="badge badge-default badge-pill"></span>
+						</c:if>
+						</a>
+					<a class="list-group-item" href="getFollowList.do?id=${member.id}">
+						<c:if test="${!empty follow}">
 						<i class="icon-heart"></i>팔로우
-						<span class="badge badge-default badge-pill">3</span></a> 
-					<a class="list-group-item" href="getOrderList.do">
+						<span class="badge badge-default badge-pill">3</span>
+						</c:if>
+						<c:if test="${empty follow}">
+						<i class="icon-heart"></i>팔로우
+						<span class="badge badge-default badge-pill"></span>
+						</c:if>
+						</a> 
+					<a class="list-group-item" href="getOrderList.do?id=${member.id}">
 						<i class="icon-heart"></i>주문목록
 						<span class="badge badge-default badge-pill">3</span></a> 
 					<a class="list-group-item" href="getMember.do?id=${member.id}">
@@ -334,17 +348,18 @@
 						<thead>
 							<tr>
 								<th>내 위시 작품목록</th>
-								<th class="text-center"><a
-									class="btn btn-sm btn-outline-danger" href="deleteWishlist.do">위시리스트 비우기</a></th>
-
+								<th class="text-center">
+								<a class="btn btn-sm btn-outline-danger" href="deleteWishlist.do">위시리스트 비우기</a></th>
 							</tr>
 						</thead>
 						<tbody>
+						<c:if test="${!empty wishlist}">
 							<tr>
 								<td>
+								<c:forEach items="${wishlists}" var="product">
 									<div class="product-item">
 										<a class="product-thumb" href="getProduct.do"><img
-											src="resources/img/shop/cart/01.jpg" alt="Product"></a>
+											src="resources/img/product/${product.p_img}" alt="Product"></a>
 										<div class="product-info">
 											<h4 class="product-title">
 												<a href="getProduct.do">${product.p_name}</a>
@@ -357,19 +372,30 @@
 											</div>
 										</div>
 									</div>
+									</c:forEach>
 								</td>
 								<td class="text-center"><a class="remove-from-cart"
 									href="#" data-toggle="tooltip" title="Remove item"><i
 										class="material-icons icon_close"></i></a></td>
 							</tr>
+							</c:if>
+						<c:if test="${empty wishlist}">
+							<tr>
+								<td>
+									<div class="product-item">
+									<h2 align="center">위시리스트가 없습니다.</h2>
+									</div>
+								</td>
+							</tr>
+							</c:if>
 						</tbody>
 					</table>
 				</div>
 				<hr class="mb-4">
-				<div class="custom-control custom-checkbox">
+				<!-- <div class="custom-control custom-checkbox">
 					<input class="custom-control-input" type="checkbox" id="inform_me"
 						checked> <label class="custom-control-label"
-						for="inform_me">해당 작품의 작가 새로운 작품 알림 받기</label>
+						for="inform_me">해당 작품의 작가 새로운 작품 알림 받기</label> -->
 				</div>
 			</div>
 		</div>

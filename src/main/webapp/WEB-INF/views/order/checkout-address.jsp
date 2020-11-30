@@ -298,9 +298,9 @@
     <!-- Page Content-->
     <div class="container padding-bottom-3x mb-2">
       <!-- <div class="row"> -->
-      <h4>내 주소록</h4>
-          <hr class="padding-bottom-1x">
-      <form name="radiobtn" action="getAddress.do" method="get" >
+     <!--  <h4>내 주소록</h4>
+          <hr class="padding-bottom-1x"> -->
+      <!-- <form name="radiobtn" action="getAddress.do" method="get" >
 					
 					<div class="custom-control custom-radio custom-control-inline">
 						<input class="custom-control-input" type="radio" id="ex-radio-4" 
@@ -320,10 +320,10 @@
 					</div>
 					<input class="btn btn-sm btn-secondary" type="submit" value="주소록 불러오기">
 					</form>
-					<hr class="padding-bottom-1x">
+					<hr class="padding-bottom-1x"> -->
       
          <!-- radio 체크여부 확인 -->
-	    <script>
+	   <!--  <script>
 			function fn1() {
 				var rd1 = document.getElementById("ex-radio-4").value;
 				var rd2 = document.getElementById("ex-radio-5").value;
@@ -336,7 +336,7 @@
 				else if(rd3.checked == true)
 					alert (rd3.value);
 				}
-	    </script>
+	    </script> -->
       <form name="address" class="row" action="insertAddress.do" method="post" enctype="multipart/form-data">
         <!-- Checkout Address-->
         <div class="col-xl-9 col-lg-8">
@@ -370,7 +370,7 @@
               <div class="form-group">
                 <label for="checkout-company">배송지명</label>
                 <input class="form-control" type="text" name="a_name"
-                 value="${address.a_name}" placeholder="(예)우리집" required>
+                 value="${address.a_name}" placeholder="(예) 집 / 학교 / 회사 " required>
               </div>
             </div>
             <div class="col-sm-6">
@@ -390,7 +390,8 @@
             <div class="col-sm-6">
               <div class="form-group">
               <label for="account-city"></label> 
-				<input type="button" class="btn btn-outline-secondary" onclick="showPostcode()" value="우편번호 찾기">      
+				<input type="button" class="btn btn-outline-secondary" onclick="showPostcode()" 
+				value="우편번호 찾기">      
 			  </div>      
 			</div>
           </div>
@@ -409,14 +410,14 @@
                 value="${address.extra_address}" placeholder="상세주소" required>
               </div>
             </div>
-            	<!-- 테스트 아이디 전달을 위한 hidden tag -->
+            	<!-- 아이디 전달을 위한 hidden tag -->
             	<input type="hidden" value="${member.id}" name="id">
           </div>
           
           <hr class="padding-bottom-1x">
           <div class="d-flex justify-content-between">
           <button class="btn btn-outline-secondary m-0" href="cart.do">카트로 돌아가기</button>
-          <button class="btn btn-primary m-0" type="submit">Continue</button>
+          <button class="btn btn-primary m-0" type="submit">결제하기</button>
           </div>
         </div>
         
@@ -478,15 +479,15 @@
               <table class="table text-sm mb-0">
                 <tr>
                   <td>총 금액 : </td>
-                  <td class="text-medium">$622.40</td>
+                  <td class="text-medium">₩${product.price}</td>
                 </tr>
-                <tr>
+               <!--  <tr>
                   <td>배송비 :</td>
                   <td class="text-medium">$35.50</td>
-                </tr>
+                </tr> -->
                 <tr>
                   <td></td>
-                  <td class="text-lg text-medium">$657.90</td>
+                  <td class="text-lg text-medium">₩${product.price}</td>
                 </tr>
               </table>
             </section>

@@ -7,11 +7,13 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.SessionAttributes;
 
 import com.spring.biz.address.AddressService;
 import com.spring.biz.address.AddressVO;
 import com.spring.biz.member.MemberVO;
+import com.spring.biz.product.ProductVO;
 
 @Controller
 @SessionAttributes({"address","member"})
@@ -24,18 +26,18 @@ public class AddressController {
 	}
 	
 	@RequestMapping("/insertAddress.do")
-	public String insertAddress(@ModelAttribute("address") AddressVO vo) {
+	public String insertAddress(@ModelAttribute("address") AddressVO vo, HttpSession session) {
 		System.out.println("insertAddress() 실행");
+		addrService.insertAddr(vo);
 		String id = vo.getId();
 		String a_name = vo.getA_name();
+		
+		ProductVO pvo = (ProductVO) session.getAttribute("product");
+		session.setAttribute("product", pvo);
 		System.out.println("address : " + vo);
+		
 		System.out.println("id : " + id + "의 주소지 :" + a_name +" 입력 성공!!");
-		addrService.insertAddr(vo);
-		
-		
-		// 결제페이지 완료 시 결제페이지로 포워딩
-//		return "/WEB-INF/views/account/account-address.jsp";
-		return "account/account-address";
+		return "order/checkout-payment";
 		
 	}
 	
@@ -51,7 +53,7 @@ public class AddressController {
 		return "account/account-address";
 	}
 	
-	@RequestMapping(value = "/getAddress.do")
+	@RequestMapping(value = "/getAddress.do" , method = RequestMethod.POST)
 	public String getAddress(AddressVO vo, Model model, HttpSession session) {
 		MemberVO mvo = (MemberVO)session.getAttribute("member");
 		System.out.println("getAddress() 생성");
@@ -68,5 +70,4 @@ public class AddressController {
 		return "account/account-address";
 	}
 	
-
 }

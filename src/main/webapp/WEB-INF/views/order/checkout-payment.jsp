@@ -366,29 +366,25 @@
             <div class="padding-top-2x hidden-lg-up"></div>
             <!-- Order Summary Widget-->
             <section class="widget widget-order-summary bg-secondary border-0 p-4">
-              <h3 class="widget-title">Order Summary</h3>
+              <h3 class="widget-title">주문 내역</h3>
               <table class="table text-sm mb-0">
                 <tr>
-                  <td>Cart Subtotal:</td>
-                  <td class="text-medium">$622.40</td>
+                  <td>주문 금액:</td>
+                  <td class="text-medium">${product.price}</td>
                 </tr>
-                <tr>
+               <!--  <tr>
                   <td>Shipping:</td>
                   <td class="text-medium">$35.50</td>
-                </tr>
-                <tr>
-                  <td>Estimated tax:</td>
-                  <td class="text-medium">$7.42</td>
-                </tr>
+                </tr> -->
                 <tr>
                   <td></td>
-                  <td class="text-lg text-medium">$665.32</td>
+                  <td class="text-lg text-medium">${product.price}</td>
                 </tr>
               </table>
             </section>
             <!-- Featured Products Widget-->
             <section class="widget widget-featured-products border-0">
-              <h3 class="widget-title">Recently Viewed</h3>
+              <h3 class="widget-title">최근 본 상품</h3>
               <!-- Entry-->
               <div class="entry">
                 <div class="entry-thumb"><a href="shop-single.html"><img src="resources/img/shop/widget/01.png" alt="Product"></a></div>

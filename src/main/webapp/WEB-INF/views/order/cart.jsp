@@ -14,18 +14,18 @@
     <!-- Mobile Specific Meta Tag-->
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <!-- Favicon and Apple Icons-->
-    <link rel="icon" type="image/x-icon" href="favicon.ico">
-    <link rel="icon" type="image/png" href="favicon.png">
+    <link rel="icon" type="image/x-icon" href="resources/favicon.ico">
+    <link rel="icon" type="image/png" href="resources/favicon.png">
     <link rel="apple-touch-icon" href="touch-icon-iphone.png">
     <link rel="apple-touch-icon" sizes="152x152" href="touch-icon-ipad.png">
     <link rel="apple-touch-icon" sizes="180x180" href="touch-icon-iphone-retina.png">
     <link rel="apple-touch-icon" sizes="167x167" href="touch-icon-ipad-retina.png">
     <!-- Vendor Styles including: Bootstrap, Font Icons, Plugins, etc.-->
-    <link rel="stylesheet" media="screen" href="css/vendor.min.css">
+    <link rel="stylesheet" media="screen" href="resources/css/vendor.min.css">
     <!-- Main Template Styles-->
-    <link id="mainStyles" rel="stylesheet" media="screen" href="css/styles.min.css">
+    <link id="mainStyles" rel="stylesheet" media="screen" href="resources/css/styles.min.css">
     <!-- Modernizr-->
-    <script src="js/modernizr.min.js"></script>
+    <script src="resources/js/modernizr.min.js"></script>
   </head>
   <!-- Body-->
   <body>
@@ -137,7 +137,8 @@
               <div class="entry">
                 <div class="entry-thumb"><a href="작가상세"><img src="resources/img/blog/widget/01.jpg" alt="Post"></a></div>
                 <div class="entry-content">
-                  <h4 class="entry-title"><a href="작가상세"><span class='text-highlighted'>검색어 일치부분</span> 블라블라</a></h4><span class="entry-meta">아이디?</span>
+                  <h4 class="entry-title"><a href="작가상세"><span class='text-highlighted'>검색어 일치부분</span> 블라블라</a></h4>
+                  	<span class="entry-meta">아이디?</span>
                 </div>
               </div>
             </div>
@@ -226,10 +227,10 @@
                   <tr>
                     <th colspan="2">
                       <div class="d-flex justify-content-between align-items-center">Products
-                      <c:if test="${!empty cartList }">
+                      <c:if test="${!empty cartList}">
                       <a class="navi-link text-uppercase" href="getCart.do"><span class="text-xxs">Expand Cart</span><i class="material-icons keyboard_arrow_right"></i></a>
                       </c:if>
-                      <c:if test="${empty cartList }">
+                      <c:if test="${empty cartList}">
                       <a class="navi-link text-uppercase" href="getProductList.do"><span class="text-xxs">작품 보러가기</span><i class="material-icons keyboard_arrow_right"></i></a>
                       </c:if>
                       </div>
@@ -239,10 +240,10 @@
                 <tbody>
                   <tr>
                     <td>
-                    <c:if test="${empty cartList }">
+                    <c:if test="${empty cartList}">
                    	 장바구니가 비었습니다.
                     </c:if>
-                    <c:if test="${!empty cartList }">
+                    <c:if test="${!empty cartList}">
                       <div class="product-item"><a class="product-thumb" href="getProduct.do"><img src="resources/img/shop/cart/01.jpg" alt="Product"></a>
                         <div class="product-info">
                           <h4 class="product-title"><a href="getProduct.do">작품이름</a></h4><span><em>Price:</em> 가격</span>
@@ -259,8 +260,8 @@
             <!-- 장바구니 합계 -->
             <hr class="mb-3">
             <div class="d-flex flex-wrap justify-content-between align-items-center">
-              <div class="pr-2 py-1 text-sm">Subtotal: <span class='text-dark text-medium'>장바구니 합계 값</span></div>
               <c:if test="${!empty cartList }">
+              <div class="pr-2 py-1 text-sm">Subtotal: <span class='text-dark text-medium'>장바구니 합계 값</span></div>
               <a class="btn btn-sm btn-success mb-0 mr-0" href="checkout.do">Checkout</a>
               </c:if>
             </div>
@@ -271,9 +272,9 @@
     <!-- Page Title-->
     <div class="page-title">
       <div class="container">
-        <h1>Cart</h1>
+        <h1>장바구니</h1>
         <ul class="breadcrumbs">
-          <li><a href="index.html">Home</a>
+          <li><a href="main.do">Home</a>
           </li>
           <li class="separator">&nbsp;/&nbsp;</li>
           <li>Cart</li>
@@ -289,113 +290,100 @@
         <table class="table">
           <thead>
             <tr>
-              <th>Product Name</th>
-              <th class="text-center">Quantity</th>
-              <th class="text-center">Subtotal</th>
-              <th class="text-center">Discount</th>
-              <th class="text-center"><a class="btn btn-sm btn-outline-danger" href="#">Clear Cart</a></th>
+              <th>작품명</th>
+              <th class="text-center">가 격</th>
+              <th class="text-center"><a class="btn btn-sm btn-outline-danger" href="#">장바구니 비우기</a></th>
             </tr>
           </thead>
           <tbody>
+          			
+                <c:if test="${!empty cartList}">
+                <c:forEach var="cart" items="${cartList}">
             <tr>
               <td>
-                <div class="product-item"><a class="product-thumb" href="shop-single.html"><img src="img/shop/cart/01.jpg" alt="Product"></a>
+                <div class="product-item">
+                	<a class="product-thumb" href="getProduct.do?name=${cart.p_name}">
+                		<img src="resources/img/product/${cart.p_img}" alt="Product"></a>
                   <div class="product-info">
-                    <h4 class="product-title"><a href="shop-single.html">3-Drawer File Cabinet</a></h4><span><em>Color:</em> Aqua</span><span><em>Accent Color:</em> White</span>
+                    <h4 class="product-title"><a href="getProduct.do">${cart.p_name}</a></h4>
+                    	<%-- <span><em>카테고리:</em> ${product.p_category}</span>
+                    	<span><em>작가:</em> ${product.a_id}</span> --%>
                   </div>
                 </div>
               </td>
-              <td class="text-center">
-                <div class="count-input">
-                  <select class="form-control">
-                    <option>1</option>
-                    <option>2</option>
-                    <option>3</option>
-                    <option>4</option>
-                    <option>5</option>
-                  </select>
-                </div>
-              </td>
-              <td class="text-center text-lg text-medium">$269.00</td>
-              <td class="text-center text-lg text-medium">$12.00</td>
-              <td class="text-center"><a class="remove-from-cart" href="#" data-toggle="tooltip" title="Remove item"><i class="material-icons icon_close"></i></a></td>
+              <td class="text-center text-lg text-medium">${cart.c_price}</td>
+              <td class="text-center"><a class="remove-from-cart" href="deleteCartList.do" data-toggle="tooltip" title="Remove item"><i class="material-icons icon_close"></i></a></td>
             </tr>
+            </c:forEach>
+            </c:if>
+                <c:if test="${empty cartList}">
             <tr>
               <td>
-                <div class="product-item"><a class="product-thumb" href="shop-single.html"><img src="img/shop/cart/02.jpg" alt="Product"></a>
+                <div class="product-item">
                   <div class="product-info">
-                    <h4 class="product-title"><a href="shop-single.html">Plastic Tissue Holder</a></h4><span><em>Size:</em> Medium</span><span><em>Color:</em> White</span>
+                  		<h4>장바구니가 비었습니다.</h4>
                   </div>
                 </div>
               </td>
-              <td class="text-center">
-                <div class="count-input">
-                  <select class="form-control">
-                    <option>1</option>
-                    <option selected>2</option>
-                    <option>3</option>
-                    <option>4</option>
-                    <option>5</option>
-                  </select>
-                </div>
-              </td>
-              <td class="text-center text-lg text-medium">$152.80</td>
-              <td class="text-center">&mdash;</td>
-              <td class="text-center"><a class="remove-from-cart" href="#" data-toggle="tooltip" title="Remove item"><i class="material-icons icon_close"></i></a></td>
             </tr>
-            <tr>
-              <td>
-                <div class="product-item"><a class="product-thumb" href="shop-single.html"><img src="img/shop/cart/03.jpg" alt="Product"></a>
-                  <div class="product-info">
-                    <h4 class="product-title"><a href="shop-single.html">Campfire Paper Table</a></h4><span><em>Color:</em> Walnut</span><span><em>Accent Color:</em> White</span>
-                  </div>
-                </div>
-              </td>
-              <td class="text-center">
-                <div class="count-input">
-                  <select class="form-control">
-                    <option>1</option>
-                    <option>2</option>
-                    <option>3</option>
-                    <option>4</option>
-                    <option>5</option>
-                  </select>
-                </div>
-              </td>
-              <td class="text-center text-lg text-medium">$289.00</td>
-              <td class="text-center">&mdash;</td>
-              <td class="text-center"><a class="remove-from-cart" href="#" data-toggle="tooltip" title="Remove item"><i class="material-icons icon_close"></i></a></td>
-            </tr>
+            </c:if>
           </tbody>
         </table>
       </div>
+        <c:if test="${!empty cartList}">
+        <c:set var = "total" value= "0" />
+        <c:forEach var="cart" items="${cartList}">
+        <c:set var = "total" value="${total + cart.c_price}" />
       <div class="shopping-cart-footer">
         <div class="column">
-          <form class="coupon-form" method="post">
+         <!--  <form class="coupon-form" method="post">
             <input class="form-control form-control-sm" type="text" placeholder="Coupon code" required>
             <button class="btn btn-outline-primary btn-sm" type="submit">Apply Coupon</button>
-          </form>
+          </form> -->
         </div>
-        <div class="column text-lg">Subtotal: <span class="text-medium text-dark">$622.40</span></div>
+        <div class="column text-lg">
+        	총 주문 금액: <span class="text-medium text-dark">₩<c:out value="${total}" /></span></div>
       </div>
       <div class="shopping-cart-footer">
-        <div class="column"><a class="btn btn-outline-secondary" href="shop-boxed-ls.html"><i class="icon-arrow-left"></i>&nbsp;Back to Shopping</a></div>
-        <div class="column"><a class="btn btn-primary" href="#" data-toast data-toast-type="success" data-toast-position="topRight" data-toast-icon="icon-circle-check" data-toast-title="Your cart" data-toast-message="is updated successfully!">Update Cart</a><a class="btn btn-success" href="checkout-address.html">Checkout</a></div>
+        <div class="column">
+        	<a class="btn btn-outline-secondary" href="getProductList.do">
+        		<i class="icon-arrow-left"></i>&nbsp;계속 쇼핑하기</a></div>
+        <div class="column">
+        	<!-- <a class="btn btn-primary" href="#" data-toast data-toast-type="성공!" 
+        		data-toast-position="topRight" data-toast-icon="icon-circle-check" 
+        		data-toast-title="장바구니" data-toast-message="수정이 완료되었습니다!">카트 업데이트</a> -->
+       		<a class="btn btn-success" href="getAddress.do?id=${member.id}">주문하기</a></div>
       </div>
+      </c:forEach>
+      </c:if>
+        <c:if test="${empty cartList}">
+      <div class="shopping-cart-footer">
+        <div class="column">
+        </div>
+        <div class="column text-lg">총 주문 금액: <span class="text-medium text-dark">0</span></div>
+      </div>
+      <div class="shopping-cart-footer">
+        <div class="column">
+        	<a class="btn btn-outline-secondary" href="getProductList.do">
+        		<i class="icon-arrow-left"></i>&nbsp;계속 쇼핑하기</a></div>
+        <div class="column">
+      </div>
+      </div>
+      </c:if>
       <!-- Related Products Carousel-->
-      <h3 class="text-center padding-top-2x mt-2 padding-bottom-1x">You May Also Like</h3>
-      <!-- Carousel-->
+      <h3 class="text-center padding-top-2x mt-2 padding-bottom-1x">이런 상품은 어떠세요 ?</h3>
+      <!-- 제퓸 넘어가는 동작 : Carousel-->
       <div class="owl-carousel" data-owl-carousel="{ &quot;nav&quot;: false, &quot;dots&quot;: true, &quot;margin&quot;: 30, &quot;responsive&quot;: {&quot;0&quot;:{&quot;items&quot;:1},&quot;576&quot;:{&quot;items&quot;:2},&quot;768&quot;:{&quot;items&quot;:3},&quot;991&quot;:{&quot;items&quot;:4},&quot;1200&quot;:{&quot;items&quot;:4}} }">
         <!-- Product-->
         <div class="product-card">
-          <div class="product-card-thumb"> <span class="product-badge text-danger">Sale</span><a class="product-card-link" href="shop-single.html"></a><img src="img/shop/th10.jpg" alt="Product">
+          <div class="product-card-thumb"> <span class="product-badge text-danger">Sale</span><a class="product-card-link" href="getProduct.do"></a><img src="resources/img/shop/th10.jpg" alt="Product">
             <div class="product-card-buttons">
               <button class="btn btn-white btn-sm btn-wishlist" data-toggle="tooltip" title="Wishlist"><i class="material-icons favorite_border"></i></button>
               <button class="btn btn-primary btn-sm" data-toast data-toast-type="success" data-toast-position="topRight" data-toast-icon="material-icons check" data-toast-title="Product" data-toast-message="successfuly added to cart!">Add to Cart</button>
             </div>
           </div>
           <div class="product-card-details">
-            <h3 class="product-card-title"><a href="shop-single.html">Pendant Lamp</a></h3>
+            <h3 class="product-card-title"><a href="getProduct.do">Pendant Lamp</a></h3>
             <h4 class="product-card-price">
               <del>$54.00</del>$27.00
             </h4>
@@ -403,66 +391,66 @@
         </div>
         <!-- Product-->
         <div class="product-card">
-          <div class="product-card-thumb"><a class="product-card-link" href="shop-single.html"></a><img src="img/shop/th11.jpg" alt="Product">
+          <div class="product-card-thumb"><a class="product-card-link" href="getProduct.do"></a><img src="resources/img/shop/th11.jpg" alt="Product">
             <div class="product-card-buttons">
               <button class="btn btn-white btn-sm btn-wishlist" data-toggle="tooltip" title="Wishlist"><i class="material-icons favorite_border"></i></button>
               <button class="btn btn-primary btn-sm" data-toast data-toast-type="success" data-toast-position="topRight" data-toast-icon="material-icons check" data-toast-title="Product" data-toast-message="successfuly added to cart!">Add to Cart</button>
             </div>
           </div>
           <div class="product-card-details">
-            <h3 class="product-card-title"><a href="shop-single.html">Stylish Chair</a></h3>
+            <h3 class="product-card-title"><a href="getProduct.do">Stylish Chair</a></h3>
             <h4 class="product-card-price">$417.00</h4>
           </div>
         </div>
         <!-- Product-->
         <div class="product-card">
-          <div class="product-card-thumb"><span class="product-rating text-warning"><i class="material-icons star"></i><i class="material-icons star"></i><i class="material-icons star"></i><i class="material-icons star"></i><i class="material-icons star_border"></i></span><a class="product-card-link" href="shop-single.html"></a><img src="img/shop/th07.jpg" alt="Product">
+          <div class="product-card-thumb"><span class="product-rating text-warning"><i class="material-icons star"></i><i class="material-icons star"></i><i class="material-icons star"></i><i class="material-icons star"></i><i class="material-icons star_border"></i></span><a class="product-card-link" href="getProduct.do"></a><img src="resources/img/shop/th07.jpg" alt="Product">
             <div class="product-card-buttons">
               <button class="btn btn-white btn-sm btn-wishlist" data-toggle="tooltip" title="Wishlist"><i class="material-icons favorite_border"></i></button>
               <button class="btn btn-primary btn-sm" data-toast data-toast-type="success" data-toast-position="topRight" data-toast-icon="material-icons check" data-toast-title="Product" data-toast-message="successfuly added to cart!">Add to Cart</button>
             </div>
           </div>
           <div class="product-card-details">
-            <h3 class="product-card-title"><a href="shop-single.html">Lounge Chair</a></h3>
+            <h3 class="product-card-title"><a href="getProduct.do">Lounge Chair</a></h3>
             <h4 class="product-card-price">$1099.00</h4>
           </div>
         </div>
         <!-- Product-->
         <div class="product-card">
-          <div class="product-card-thumb"><a class="product-card-link" href="shop-single.html"></a><img src="img/shop/th16.jpg" alt="Product">
+          <div class="product-card-thumb"><a class="product-card-link" href="getProduct.do"></a><img src="resources/img/shop/th16.jpg" alt="Product">
             <div class="product-card-buttons">
               <button class="btn btn-white btn-sm btn-wishlist" data-toggle="tooltip" title="Wishlist"><i class="material-icons favorite_border"></i></button>
               <button class="btn btn-primary btn-sm" data-toast data-toast-type="success" data-toast-position="topRight" data-toast-icon="material-icons check" data-toast-title="Product" data-toast-message="successfuly added to cart!">Add to Cart</button>
             </div>
           </div>
           <div class="product-card-details">
-            <h3 class="product-card-title"><a href="shop-single.html">Navy Box Bench</a></h3>
+            <h3 class="product-card-title"><a href="getProduct.do">Navy Box Bench</a></h3>
             <h4 class="product-card-price">$75.00</h4>
           </div>
         </div>
         <!-- Product-->
         <div class="product-card">
-          <div class="product-card-thumb"><a class="product-card-link" href="shop-single.html"></a><img src="img/shop/th09.jpg" alt="Product">
+          <div class="product-card-thumb"><a class="product-card-link" href="getProduct.do"></a><img src="resources/img/shop/th09.jpg" alt="Product">
             <div class="product-card-buttons">
               <button class="btn btn-white btn-sm btn-wishlist" data-toggle="tooltip" title="Wishlist"><i class="material-icons favorite_border"></i></button>
               <button class="btn btn-primary btn-sm" data-toast data-toast-type="success" data-toast-position="topRight" data-toast-icon="material-icons check" data-toast-title="Product" data-toast-message="successfuly added to cart!">Add to Cart</button>
             </div>
           </div>
           <div class="product-card-details">
-            <h3 class="product-card-title"><a href="shop-single.html">Campfire Table</a></h3>
+            <h3 class="product-card-title"><a href="getProduct.do">Campfire Table</a></h3>
             <h4 class="product-card-price">$1087.00</h4>
           </div>
         </div>
         <!-- Product-->
         <div class="product-card mb-30">
-          <div class="product-card-thumb"><a class="product-card-link" href="shop-single.html"></a><img src="img/shop/th06.jpg" alt="Product">
+          <div class="product-card-thumb"><a class="product-card-link" href="getProduct.do"></a><img src="resources/img/shop/th06.jpg" alt="Product">
             <div class="product-card-buttons">
               <button class="btn btn-white btn-sm btn-wishlist" data-toggle="tooltip" title="Wishlist"><i class="material-icons favorite_border"></i></button>
               <button class="btn btn-primary btn-sm" data-toast data-toast-type="success" data-toast-position="topRight" data-toast-icon="material-icons check" data-toast-title="Product" data-toast-message="successfuly added to cart!">Add to Cart</button>
             </div>
           </div>
           <div class="product-card-details">
-            <h3 class="product-card-title"><a href="shop-single.html">LED Lighting</a></h3>
+            <h3 class="product-card-title"><a href="getProduct.do">LED Lighting</a></h3>
             <h4 class="product-card-price">$130.00</h4>
           </div>
         </div>
@@ -495,7 +483,7 @@
     <!-- Backdrop-->
     <div class="site-backdrop"></div>
     <!-- JavaScript (jQuery) libraries, plugins and custom scripts-->
-    <script src="js/vendor.min.js"></script>
-    <script src="js/scripts.min.js"></script>
+    <script src="resources/js/vendor.min.js"></script>
+    <script src="resources/js/scripts.min.js"></script>
   </body>
 </html>

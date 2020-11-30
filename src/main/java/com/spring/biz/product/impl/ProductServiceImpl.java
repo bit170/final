@@ -14,10 +14,10 @@ public class ProductServiceImpl implements ProductService{
 	@Autowired
 	private ProductDAOMybatis productDAO;
 
-	//@Override
-//	public ProductVO getProduct(ProductVO vo) {
-//		return productDAO.getProduct(vo);
-//	}
+	@Override
+	public ProductVO getProduct(ProductVO vo) {
+		return productDAO.getProduct(vo);
+	}
 
 	@Override
 	public List<ProductVO> getProductList(ProductVO vo) {

@@ -28,60 +28,7 @@
   </head>
   <!-- Body-->
   <body>
-    <!-- Leave a Review-->
-    <form class="modal fade" method="post" id="leaveReview" tabindex="-1">
-      <div class="modal-dialog modal-lg">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h4 class="modal-title">Leave a Review</h4>
-            <button class="close" type="button" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-          </div>
-          <div class="modal-body">
-            <div class="row">
-              <div class="col-sm-6">
-                <div class="form-group">
-                  <label for="review-name">Your Name</label>
-                  <input class="form-control" type="text" id="review-name" required>
-                </div>
-              </div>
-              <div class="col-sm-6">
-                <div class="form-group">
-                  <label for="review-email">Your Email</label>
-                  <input class="form-control" type="email" id="review-email" required>
-                </div>
-              </div>
-            </div>
-            <div class="row">
-              <div class="col-sm-6">
-                <div class="form-group">
-                  <label for="review-subject">Subject</label>
-                  <input class="form-control" type="text" id="review-subject" required>
-                </div>
-              </div>
-              <div class="col-sm-6">
-                <div class="form-group">
-                  <label for="review-rating">Rating</label>
-                  <select class="form-control" id="review-rating">
-                    <option>5 Stars</option>
-                    <option>4 Stars</option>
-                    <option>3 Stars</option>
-                    <option>2 Stars</option>
-                    <option>1 Star</option>
-                  </select>
-                </div>
-              </div>
-            </div>
-            <div class="form-group">
-              <label for="review-message">Review</label>
-              <textarea class="form-control" id="review-message" rows="8" required></textarea>
-            </div>
-          </div>
-          <div class="modal-footer">
-            <button class="btn btn-primary" type="submit">Submit Review</button>
-          </div>
-        </div>
-      </div>
-    </form>
+
     <!-- Navbar-->
     <!-- Remove "navbar-sticky" class to make navigation bar scrollable with the page.-->
     <header class="navbar navbar-sticky">
@@ -327,17 +274,26 @@
     <div class="bg-secondary pb-4 padding-top-3x">
       <div class="container">
         <div class="row">
+          <c:if test="${!empty product}">
           <!-- Product Gallery-->
           <div class="col-md-6 mb-30">
             <div class="product-gallery">
               <div class="product-carousel owl-carousel gallery-wrapper">
-                <div class="gallery-item" data-hash="one"><a href="img/shop/single/01.jpg" data-size="555x480"><img src="resources/img/shop/single/01.jpg" alt="Product"></a></div>
-                <div class="gallery-item" data-hash="two"><a href="img/shop/single/02.jpg" data-size="555x480"><img src="resources/img/shop/single/02.jpg" alt="Product"></a></div>
-                <div class="gallery-item" data-hash="three"><a href="img/shop/single/03.jpg" data-size="555x480"><img src="resources/img/shop/single/03.jpg" alt="Product"></a></div>
-                <div class="gallery-item" data-hash="four"><a href="img/shop/single/04.jpg" data-size="555x480"><img src="resources/img/shop/single/04.jpg" alt="Product"></a></div>
+                <div class="gallery-item" data-hash="one">
+                	<a href="img/shop/single/01.jpg" data-size="555x480">
+                	<img src="resources/img/product/${product.p_img}" alt="Product"></a></div>
+                <div class="gallery-item" data-hash="two">
+                	<a href="img/shop/single/02.jpg" data-size="555x480">
+                	<img src="resources/img/shop/single/02.jpg" alt="Product"></a></div>
+                <div class="gallery-item" data-hash="three">
+                	<a href="img/shop/single/03.jpg" data-size="555x480">
+                	<img src="resources/img/shop/single/03.jpg" alt="Product"></a></div>
+                <div class="gallery-item" data-hash="four">
+                	<a href="img/shop/single/04.jpg" data-size="555x480">
+                	<img src="resources/img/shop/single/04.jpg" alt="Product"></a></div>
               </div>
               <ul class="product-thumbnails">
-                <li class="active"><a href="#one"><img src="resources/img/shop/single/th01.jpg" alt="Product"></a></li>
+                <li class="active"><a href="#one"><img src="resources/img/product/${product.p_img}" alt="Product"></a></li>
                 <li><a href="#two"><img src="resources/img/shop/single/th02.jpg" alt="Product"></a></li>
                 <li><a href="#three"><img src="resources/img/shop/single/th03.jpg" alt="Product"></a></li>
                 <li><a href="#four"><img src="resources/img/shop/single/th04.jpg" alt="Product"></a></li>
@@ -347,10 +303,12 @@
           <!-- Product Info-->
           <div class="col-md-6 mb-30">
             <div class="card border-default bg-white pt-2 box-shadow">
+            <!-- product 추가시 name 값 바꿔주기 -->
+            	<form action="insertCart.do?p_code=p0001" method="get">
               <div class="card-body">
-                <h2 class="mb-3">서랍 사진 같은 서랍 그림</h2>
-                <h3 class="text-normal">₩265,000</h3>
-                <p class="text-sm text-muted"> 내가그린그림 <br> 작품 설명 쏼라쏼라 <br> #사진같지만 #사실그림</p>
+                <h2 class="mb-3">${product.p_name}</h2>
+                <h3 class="text-normal">₩${product.price}</h3>
+                <p class="text-sm text-muted"> ${product.a_id}<br> 작품 설명 : ${product.p_detail}</p>
                 <div class="row">
                   <div class="col-sm-6">
                   </div>
@@ -360,24 +318,31 @@
                   </div>
                   <div class="col-sm-8">
                     <div class="pt-4 hidden-sm-up"></div>
-                    <button class="btn btn-primary btn-block my-0">장바구니 담기</button>
+                    <input class="btn btn-primary btn-block my-0" value="장바구니 담기" type="submit">
                   </div>
                 </div>
                 <ul class="list-unstyled text-sm mb-4">
-                  <li><span class='text-dark text-medium'>상품코드:</span> #994587623</li>
-                  <li><span class='text-dark text-medium'>Categories:</span> <a href='#' class='navi-link'>Furniture</a>, <a href='#' class='navi-link'>File Cabinets</a></li>
+                  <li><span class='text-dark text-medium'>상품코드:</span> ${product.p_code}</li>
+                  <li><span class='text-dark text-medium'>Categories:</span> 
+                  	<a href='#' class='navi-link'>${product.p_category}</a>, 
+                  	<a href='#' class='navi-link'></a></li>
                 </ul>
-                <div class="d-flex flex-wrap justify-content-between align-items-center"><a class="btn btn-outline-secondary btn-sm text-danger" href="#"><i class="material-icons favorite_border"></i>&nbsp;Save To Wishlist</a>
-                  <!-- <div class="py-2"><span class="d-inline-block align-middle text-sm text-muted mr-2">Share:</span><a class="social-button shape-rounded sb-facebook" href="#" data-toggle="tooltip" data-placement="top" title="Facebook"><i class="socicon-facebook"></i></a><a class="social-button shape-rounded sb-twitter" href="#" data-toggle="tooltip" data-placement="top" title="Twitter"><i class="socicon-twitter"></i></a><a class="social-button shape-rounded sb-instagram" href="#" data-toggle="tooltip" data-placement="top" title="Instagram"><i class="socicon-instagram"></i></a><a class="social-button shape-rounded sb-google-plus" href="#" data-toggle="tooltip" data-placement="top" title="Google +"><i class="socicon-googleplus"></i></a></div> -->
+                </div>
+            	</form>
+                <div class="d-flex flex-wrap justify-content-between align-items-center">
+                	<!-- 상품 업로드 시 href 루트 변경하기!! -->
+                	<a class="btn btn-outline-secondary btn-sm text-danger" 
+                		href="insertWishlist.do?p_code=${product.p_code}">
+                	<i class="material-icons favorite_border"></i>&nbsp;위시리스트에 담기</a>
                 </div>
               </div>
             </div>
+            </c:if>
           </div>
         </div>
       </div>
-    </div>
     <div class="container padding-bottom-3x pt-5 mb-1">
-      <!-- Related Products Carousel-->
+      <!-- 추천 상품 Products Carousel-->
       <h3 class="text-center padding-top-2x mt-2 padding-bottom-1x">이런 상품은 어떠세요 ? </h3>
       <!-- Carousel-->
       <div class="owl-carousel" data-owl-carousel="{ &quot;nav&quot;: false, &quot;dots&quot;: true, &quot;margin&quot;: 30, &quot;responsive&quot;: {&quot;0&quot;:{&quot;items&quot;:1},&quot;576&quot;:{&quot;items&quot;:2},&quot;768&quot;:{&quot;items&quot;:3},&quot;991&quot;:{&quot;items&quot;:4},&quot;1200&quot;:{&quot;items&quot;:4}} }">
@@ -398,7 +363,9 @@
         </div>
         <!-- Product-->
         <div class="product-card">
-          <div class="product-card-thumb"><a class="product-card-link" href="shop-single.jsp"></a><img src="resources/img/shop/th11.jpg" alt="Product">
+          <div class="product-card-thumb">
+	          	<a class="product-card-link" href="getProduct.do"></a>
+	          	<img src="resources/img/shop/th11.jpg" alt="Product">
             <div class="product-card-buttons">
               <button class="btn btn-white btn-sm btn-wishlist" data-toggle="tooltip" title="Wishlist"><i class="material-icons favorite_border"></i></button>
               <button class="btn btn-primary btn-sm" data-toast data-toast-type="success" data-toast-position="topRight" data-toast-icon="material-icons check" data-toast-title="Product" data-toast-message="successfuly added to cart!">Add to Cart</button>

@@ -5,7 +5,7 @@
 <html lang="en">
   <head>
     <meta charset="utf-8">
-    <title>전체 아트보기
+    <title>전체 작품보기
     </title>
     <!-- SEO Meta Tags-->
     <meta name="description" content="Unishop - Universal E-Commerce Template">
@@ -303,28 +303,50 @@
             </form>
           </div>
           <!-- Products Grid-->
+                <c:if test="${!empty productList}">
           <div class="row mb-2">
             <!-- Item-->
+                <c:forEach var="product" items="${productList}">
             <div class="col-lg-4 col-sm-6">
               <div class="product-card mb-30">
-                <div class="product-card-thumb"> <span class="product-badge text-danger">Sale</span><a class="product-card-link" href="getProduct.do"></a>
-                	<img src="resources/img/product/4.png" alt="Product">
+                <div class="product-card-thumb"> <span class="product-badge text-danger">Sale</span>
+                	<a class="product-card-link" href="getProduct.do?p_code=${product.p_code}"></a>
+                	<img src="resources/img/product/${product.p_img}" alt="Product">
                   <div class="product-card-buttons">
-                    <button class="btn btn-white btn-sm btn-wishlist" data-toggle="tooltip" title="Wishlist"><i class="material-icons favorite_border"></i></button>
-                    <button class="btn btn-primary btn-sm" data-toast data-toast-type="success" data-toast-position="topRight" 
-                    		data-toast-icon="material-icons check" data-toast-title="Product" data-toast-message="성공적으로 장바구니에 담겼습니다!">장바구니에 담기</button>
+                   <%--  <button class="btn btn-white btn-sm btn-wishlist" data-toggle="tooltip" 
+                    		title="Wishlist" onclick="location=insertWishlist.do?p_code=${product.p_code}">
+                    	<i class="material-icons favorite_border"></i></button>	 --%>
+                    <button class="btn btn-white btn-sm" data-toast data-toast-type="info" 
+                    		data-toast-position="topRight" data-toast-icon="material-icons check" 
+                    		data-toast-title="성공!" data-toast-message="성공적으로 위시리스트에 담겼습니다!" 
+                    		onclick="location=insertWishlist.do?p_code=${product.p_code}">
+                    		<i class="material-icons favorite_border"></i></button>
+                    <button class="btn btn-primary btn-sm" data-toast data-toast-type="success" 
+                    		data-toast-position="topRight" data-toast-icon="material-icons check" 
+                    		data-toast-title="성공!" data-toast-message="성공적으로 장바구니에 담겼습니다!" 
+                    		onclick="location.href=insertCart.do?p_code=${product.p_code}">장바구니에 담기</button>
                   </div>
                 </div>
                 <div class="product-card-details">
-                  <h3 class="product-card-title"><a href="getProduct.do">비카소</a></h3>
+                  <h3 class="product-card-title"><a href="getProduct.do?p_code=${product.p_code}">${product.p_name}</a></h3>
                   <h4 class="product-card-price">
-                    <del>₩500,000</del>₩350,000
+                    <del>₩${product.price * 2}</del>₩${product.price}
                   </h4>
                 </div>
               </div>
             </div>
-           
+                </c:forEach>
           </div>
+                </c:if>
+                <c:if test="${!empty productList}">
+          <div class="row mb-2">
+            <div class="col-lg-4 col-sm-6">
+              <div class="product-card mb-30">
+				<h2>등록된 작품이 없습니다.</h2>
+              </div>
+            </div>
+            </div>
+                </c:if>
           <!-- Pagination-->
           <nav class="pagination">
             <div class="column">
@@ -429,7 +451,7 @@
             <!-- Widget Price Range-->
             <section class="widget widget-categories">
               <h3 class="widget-title">가격 범위</h3>
-              <form class="price-range-slider" method="post" data-start-min="250" data-start-max="650" data-min="0" data-max="1000" data-step="1">
+              <form class="price-range-slider" method="post" data-start-min="0" data-start-max="100" data-min="0" data-max="300" data-step="1">
                 <div class="ui-range-slider"></div>
                 <footer class="ui-range-slider-footer">
                   <div class="column">
@@ -442,7 +464,7 @@
                       </div>&nbsp;-&nbsp;
                       <div class="ui-range-value-max">₩<span></span>
                         <input type="hidden">
-                      </div>
+                      </div>(만원)
                     </div>
                   </div>
                 </footer>

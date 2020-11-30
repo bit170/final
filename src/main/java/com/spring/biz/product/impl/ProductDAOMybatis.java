@@ -19,10 +19,10 @@ public class ProductDAOMybatis {
 	}	
 		
 	//글 조회(하나만)
-//	public ProductVO getProduct(ProductVO vo) {
-//		System.out.println("===> MyBatis로 getProduct() 실행");
-//		return mybatis.selectOne("productDAO.getProduct", vo);
-//	}
+	public ProductVO getProduct(ProductVO vo) {
+		System.out.println("===> MyBatis로 getProduct() 실행");
+		return mybatis.selectOne("productDAO.getProduct", vo);
+	}
 		
 	//글 목록 조회
 	public List<ProductVO> getProductList(ProductVO vo) {
@@ -31,7 +31,7 @@ public class ProductDAOMybatis {
 	}
 
 	public List<ProductVO> getMainProduct() {
-		System.out.println("productDAO.getMainProduct()");
+		System.out.println("productDAO.getMainProduct() 실행");
 		return mybatis.selectList("productDAO.getMainProduct");
 	}
 

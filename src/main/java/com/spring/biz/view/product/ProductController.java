@@ -25,9 +25,9 @@ public class ProductController {
 
 	@RequestMapping(value="/getProduct.do")
 	public String getProduct(ProductVO vo, Model model) {
-//		ProductVO product = productService.getProduct(vo);
-//		model.addAttribute("product", product);
-//		System.out.println("작품코드 : " + vo.getP_code() + "작품명 : " + vo.getP_name());
+		ProductVO product = productService.getProduct(vo);
+		model.addAttribute("product", product);
+		System.out.println("작품코드 : " + vo.getP_code() + " 작품명 : " + vo.getP_name());
 		
 		return "product/shop-single";
 	}
@@ -55,6 +55,5 @@ public class ProductController {
 		System.out.println(list);
 		return "product/shop-boxed-ls";
 	}
-
 
 }

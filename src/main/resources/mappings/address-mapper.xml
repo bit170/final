@@ -9,19 +9,19 @@
 	<select id="getAddr" parameterType="address" resultType="address">
 		SELECT * FROM ADDRESS WHERE ID=#{id}
 		<if test="a_name != null">
-		 AND A_NAME = #{a_name}
+		 AND NAME = #{name}
 		</if>
 	</select>
 	
 	<insert id="insertAddr" parameterType="address">
 		<!-- <if test=""></if> -->
-		INSERT INTO ADDRESS (A_NAME, POST, ADDRESS, EXTRA_ADDRESS, ID)
-		VALUES (#{a_name}, #{post}, #{address}, #{extra_address}, #{id})
+		INSERT INTO ADDRESS (NAME, POST, ADDRESS, EXTRA_ADDRESS, ID)
+		VALUES (#{name}, #{post}, #{address}, #{extra_address}, #{id})
 	</insert>
 	
 	<update id="updateAddr" parameterType="address">
 		UPDATE ADDRESS
-		SET A_NAME = #{a_name}, ADDRESS = #{address}, POST = #{post}, EXTRA_ADDRESS = #{extra_address}
+		SET NAME = #{name}, ADDRESS = #{address}, POST = #{post}, EXTRA_ADDRESS = #{extra_address}
 		<!-- <choose> <when -->
 		WHERE ID = #{id}
 		
