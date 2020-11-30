@@ -5,17 +5,17 @@ public class PImageFileVO {
 	private String pi_filename;
 	private String pi_code;
 	private String pi_filetype;
-	private String nickname;
+	private String id;
 	
 	public PImageFileVO() {}
 	
-	public PImageFileVO(String p_code, String pi_filename, String pi_code, String pi_filetype, String nickname) {
+	public PImageFileVO(String p_code, String pi_filename, String pi_code, String pi_filetype, String id) {
 		super();
 		this.p_code = p_code;
 		this.pi_filename = pi_filename;
 		this.pi_code = pi_code;
 		this.pi_filetype = pi_filetype;
-		this.nickname = nickname;
+		this.id = id;
 		
 	}
 
@@ -51,12 +51,12 @@ public class PImageFileVO {
 		this.pi_filetype = pi_filetype;
 	}
 
-	public String getNickname() {
-		return nickname;
+	public String getId() {
+		return id;
 	}
 
-	public void setNickname(String nickname) {
-		this.nickname = nickname;
+	public void setId(String id) {
+		this.id = id;
 	}
 
 	

@@ -35,6 +35,17 @@ public class ProductDAO {
 		}
 	}
 	
+	public void updateProductInfo(Map productMap) throws DataAccessException{
+		mybatis.update("productDAO.updateProductInfo", productMap);
+	}
+	
+	public void updatePImage(List<PImageFileVO> pimageFileList) throws DataAccessException{
+		for(int i=0; i<pimageFileList.size();i++){
+			PImageFileVO pimageFileVO = pimageFileList.get(i);
+			mybatis.update("productDAO.updatePImage",pimageFileVO);
+		}
+	}
+		
 	//글 조회(하나만)
 //	public ProductVO getProduct(ProductVO vo) {
 //		System.out.println("===> MyBatis로 getProduct() 실행");
