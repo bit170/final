@@ -19,7 +19,7 @@
 		<result property="pi_filename" column="pi_filename" />
 		<result property="pi_code" column="pi_code" />
 		<result property="pi_filetype" column="pi_filetype" />
-		<result property="reg_id" column="reg_id" />
+		<result property="nickname" column="nickname" />
 	</resultMap>
 	
 	<insert id="insertNewProduct" parameterType="java.util.Map">
@@ -37,8 +37,8 @@
 			select seq_pi_code.nextval from dual
 		</selectKey>
 		<![CDATA[
-			insert into p_image (p_code, pi_filename, pi_code, pi_filetype, reg_id)
-			values( #{p_code}, #{pi_filename}, #{pi_code}, #{pi_filetype}, #{reg_id} )
+			insert into p_image (p_code, pi_filename, pi_code, pi_filetype, nickname)
+			values( #{p_code}, #{pi_filename}, #{pi_code}, #{pi_filetype}, #{nickname} )
 		]]>
 	</insert>
 	

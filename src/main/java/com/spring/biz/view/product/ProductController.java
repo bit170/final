@@ -59,15 +59,15 @@ public class ProductController extends BaseController {
 		
 		HttpSession session = multipartRequest.getSession();
 		MemberVO memberVO = (MemberVO) session.getAttribute("member");
-		String reg_id = memberVO.getId();
-		System.out.println(reg_id);
+		String nickname = memberVO.getNickname();
+		System.out.println(nickname);
 		
 		List<PImageFileVO> pimageFileList = upload(multipartRequest);
 		//System.out.println(pimageFileList.size());	//확인용
 		
 		if(pimageFileList!= null && pimageFileList.size()!=0) {
 			for(PImageFileVO pimageFileVO : pimageFileList) {
-				pimageFileVO.setReg_id(reg_id);
+				pimageFileVO.setNickname(nickname);
 			}
 			newProductMap.put("pimageFileList", pimageFileList);
 		}
@@ -88,7 +88,7 @@ public class ProductController extends BaseController {
 			}
 			message= "<script>";
 			message += " alert('새상품을 추가했습니다.');";
-			message +=" location.href='"+multipartRequest.getContextPath()+"/account/account-myCanvas';";
+			message +=" location.href='"+multipartRequest.getContextPath()+"/getMyCanvas.do';";
 			message +=("</script>");
 		}catch(Exception e) {
 			if(pimageFileList!=null && pimageFileList.size()!=0) {
@@ -101,7 +101,7 @@ public class ProductController extends BaseController {
 			
 			message= "<script>";
 			message += " alert('오류가 발생했습니다. 다시 시도해 주세요');";
-			message +=" location.href='"+multipartRequest.getContextPath()+"/product/insert-canvas';";
+			message +=" location.href='"+multipartRequest.getContextPath()+"/insert-canvas.do';";
 			message +=("</script>");
 			e.printStackTrace();
 		}
@@ -128,7 +128,7 @@ public class ProductController extends BaseController {
 		
 		HttpSession session = multipartRequest.getSession();
 		MemberVO memberVO = (MemberVO) session.getAttribute("member");
-		String reg_id = memberVO.getId();
+		String nickname = memberVO.getNickname();
 		
 		List<PImageFileVO> pimageFileList=null;
 		String p_code=null;
@@ -139,7 +139,7 @@ public class ProductController extends BaseController {
 					
 					p_code = (String)proudctMap.get("p_code");
 					pimageFileVO.setP_code(p_code);
-					pimageFileVO.setReg_id(reg_id);
+					pimageFileVO.setNickname(nickname);
 				}
 				
 			    productService.addNewPImage(pimageFileList);
