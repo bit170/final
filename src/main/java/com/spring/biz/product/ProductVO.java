@@ -8,7 +8,6 @@ public class ProductVO {
 	private String p_code;
 	private String p_name;
 	private int price;
-	private String a_id;
 	private String p_size;
 	private Date p_date;
 	private String p_category;
@@ -17,12 +16,11 @@ public class ProductVO {
 	
 	public ProductVO() {}
 
-	public ProductVO(String p_code, String p_name, int price, String a_id, String p_size, Date p_date, String p_category, String p_detail) {
+	public ProductVO(String p_code, String p_name, int price, String p_size, Date p_date, String p_category, String p_detail) {
 		super();
 		this.p_code = p_code;
 		this.p_name = p_name;
 		this.price = price;
-		this.a_id = a_id;
 		this.p_size = p_size;
 		this.p_date = p_date;
 		this.p_category = p_category;
@@ -51,14 +49,6 @@ public class ProductVO {
 
 	public void setPrice(int price) {
 		this.price = price;
-	}
-
-	public String getA_id() {
-		return a_id;
-	}
-
-	public void setA_id(String a_id) {
-		this.a_id = a_id;
 	}
 
 	public String getP_size() {
@@ -95,9 +85,9 @@ public class ProductVO {
 
 	@Override
 	public String toString() {
-		return "ProductVO [p_code=" + p_code + ", p_name=" + p_name + ", price=" + price + ", a_id=" + a_id
-				+ ", p_size=" + p_size + ", p_date=" + p_date + ", p_category=" + p_category
-				+ ", p_detail=" + p_detail + "]";
+		return "ProductVO [p_code=" + p_code + ", p_name=" + p_name + ", price=" + price
+				+ ", p_size=" + p_size + ", p_date=" + p_date + ", p_category=" + p_category + ", p_detail=" + p_detail
+				+ "]";
 	}
 
 }
