@@ -38,6 +38,7 @@ public class ArtistDAOMybatis {
 	//작가 테이블에 존재여부 확인
 	public int alreadyArtist(String id) {
 		return mybatis.selectOne("artistDAO.alreadyArtist", id);
+		
 	}
 	
 	//작가조회(하나)

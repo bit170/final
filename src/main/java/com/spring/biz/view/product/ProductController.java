@@ -1,4 +1,4 @@
-package com.spring.biz.view.product;
+ package com.spring.biz.view.product;
 
 import java.io.File;
 import java.util.Enumeration;
@@ -36,6 +36,7 @@ public class ProductController extends BaseController {
 	
 	@Autowired
 	private ProductService productService;
+	@Autowired
 	private ArtistService artistService;
 	
 	public ProductController() {
