@@ -123,7 +123,7 @@ public class OrderController {
 				System.out.println(index);
 			}
 		}
-		cartList.remove(index-2);
+		cartList.remove(index-1);
 		
 		
 		return "redirect:getCart.do";

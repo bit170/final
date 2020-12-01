@@ -9,7 +9,7 @@
 	<select id="getAddr" parameterType="address" resultType="address">
 		SELECT * FROM ADDRESS WHERE ID=#{id}
 		<if test="a_name != null">
-		 AND NAME = #{name}
+		 AND A_NAME = #{a_name}
 		</if>
 	</select>
 	
@@ -21,7 +21,7 @@
 	
 	<update id="updateAddr" parameterType="address">
 		UPDATE ADDRESS
-		SET NAME = #{name}, ADDRESS = #{address}, POST = #{post}, EXTRA_ADDRESS = #{extra_address}
+		SET A_NAME = #{a_name}, ADDRESS = #{address}, POST = #{post}, EXTRA_ADDRESS = #{extra_address}
 		<!-- <choose> <when -->
 		WHERE ID = #{id}
 		

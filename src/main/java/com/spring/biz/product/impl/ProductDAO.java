@@ -63,11 +63,11 @@ public class ProductDAO {
 		return mybatis.selectList("productDAO.getMainProduct");
 	}
 
-	public List selectProductImageFileList(String p_code) throws DataAccessException{
-		List pimageList = new ArrayList();
-		pimageList=(List)mybatis.selectList("productDAO.selectProductImageFileList", p_code);
-
-		return pimageList;
-	}
+//	public List selectProductImageFileList(String p_code) throws DataAccessException{
+//		List pimageList = new ArrayList();
+//		pimageList=(List)mybatis.selectList("productDAO.selectProductImageFileList", p_code);
+//
+//		return pimageList;
+//	}
 
 }

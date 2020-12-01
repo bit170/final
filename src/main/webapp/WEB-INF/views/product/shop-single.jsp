@@ -308,7 +308,7 @@
           <div class="col-md-6 mb-30">
             <div class="card border-default bg-white pt-2 box-shadow">
             <!-- product 추가시 name 값 바꿔주기 -->
-            	<form action="insertCart.do?p_code=p0001" method="get">
+            	<form action="insertCart.do?p_code=${product.p_code}" method="get">
               <div class="card-body">
                 <h2 class="mb-3">${product.p_name}</h2>
                 <h3 class="text-normal">₩ <fmt:formatNumber pattern="###,###,###" value="${product.price}" /></h3>

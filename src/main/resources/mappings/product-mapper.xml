@@ -54,57 +54,6 @@
 		p_code = #{p_code} and pi_code = #{pi_code}
 	</update>
 	
-	
-	<insert id="insertNewProduct" parameterType="java.util.Map">
-		<selectKey resultType="String" keyProperty="p_code" order="BEFORE">
-			select seq_p_code.nextval from dual
-		</selectKey>
-		<![CDATA[
-			insert into product (p_code, p_name, price, p_size, p_category, p_detail)
-			values( #{p_code}, #{p_name}, #{price},  #{p_size}, #{p_category}, #{p_detail} )
-		]]>
-	</insert>
-	
-	<insert id="insertPImageFile" parameterType="pimage">
-		<selectKey resultType="String" keyProperty="pi_code" order="BEFORE">
-			select seq_pi_code.nextval from dual
-		</selectKey>
-		<![CDATA[
-			insert into p_image (p_code, pi_filename, pi_code, pi_filetype, id)
-			values( #{p_code}, #{pi_filename}, #{pi_code}, #{pi_filetype}, #{id} )
-		]]>
-	</insert>
-	
-	<update id="updateProductInfo" parameterType="java.util.HashMap" >
-		update product
-		<set>
-			<if test=" p_name !='' and p_name !=null">
-				p_name = #{p_name},
-			</if>
-			<if test=" price !='' and price !=null">
-				price = #{price},
-			</if>
-			<if test=" p_category !='' and p_category !=null">
-				p_category = #{p_category},
-			</if>
-			<if test=" p_detail !='' and p_detail !=null">
-				p_detail = #{p_detail},
-			</if>
-			<if test=" price !='' and price !=null">
-				price = #{price}
-			</if>
-		</set>
-		where
-		p_code = #{p_code}
-	</update>
-	
-	<update id="updatePImage" parameterType="pimage">
-		update p_image
-		set pi_name = #{pi_name}
-		where
-		p_code = #{p_code} and pi_code = #{pi_code}
-	</update>
-	
 	<select id="getProductList" parameterType="product" resultType="product">
 		SELECT * FROM PRODUCT
 	</select>
