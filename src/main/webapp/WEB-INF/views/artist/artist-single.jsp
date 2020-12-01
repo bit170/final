@@ -283,7 +283,7 @@
                 <h2 class="mb-3">${artist.nickname }</h2>
                 <p class="text-sm text-muted">${artist.a_detail }</p>
                 <div class="d-flex flex-wrap justify-content-between align-items-center">
-                  <a href="Follow.do?a_id=${artist.id }" class="btn btn-outline-secondary btn-sm text-danger" >
+                  <a href="Follow.do?a_id=${artist.id }&page=single" class="btn btn-outline-secondary btn-sm text-danger" >
                     <i class="material-icons favorite_border"></i>&nbsp;Follow</a>
                   </div>
               </div>

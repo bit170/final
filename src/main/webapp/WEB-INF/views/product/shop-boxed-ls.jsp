@@ -1,12 +1,14 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<c:set var="contextPath"  value="${pageContext.request.contextPath}"  />
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="utf-8">
-    <title>전체 작품보기
+    <title>작품 전체 페이지
     </title>
     <!-- SEO Meta Tags-->
     <meta name="description" content="Unishop - Universal E-Commerce Template">
@@ -36,15 +38,15 @@
     <!-- Remove "navbar-sticky" class to make navigation bar scrollable with the page.-->
     <header class="navbar navbar-sticky">
       <!-- Site Branding-->
-      <!-- 브랜드 로고 -->
+      <!-- ë¸ëë ë¡ê³  -->
       <div class="site-branding"><a class="site-logo hidden-xs-down" href="main.do"><img src="resources/img/logo/logo.png" alt="Unishop"></a>
       	<a class="site-logo logo-sm hidden-sm-up" href="main.do"><img src="resources/img/logo/logo-sm.png" alt="Unishop"></a>
       </div>
       <!-- Main Navigation-->
-      <!-- 상단 메뉴 -->
+      <!-- ìë¨ ë©ë´ -->
       <nav class="site-menu">
         <ul>
-          <!-- 해당 페이지에 class="active" 추가해줘야함-->
+          <!-- í´ë¹ íì´ì§ì class="active" ì¶ê°í´ì¤ì¼í¨-->
           <li class="active"><a href="main.do"><span>Home</span></a>
           </li>
           <li><a href="getArtistList.do"><span>Artist</span></a></li>
@@ -69,13 +71,13 @@
       </nav>
       <!-- Toolbar-->
       <!-- 메뉴바 우측 아이콘 -->
-      <div class="toolbar">
+       <div class="toolbar">
         <div class="inner">
         	<a class="toolbar-toggle mobile-menu-toggle" href="#mobileMenu"><i class="material-icons menu"></i></a>
         	<a class="toolbar-toggle search-toggle" href="#search"><i class="material-icons search"></i></a>
         	<a class="toolbar-toggle" href="#account"><i class="material-icons person"></i></a>
         	<a class="toolbar-toggle" href="#cart"><i><span class="material-icons shopping_basket"></span>
-          <!-- 조건문 넣기 -->
+          <!-- ì¡°ê±´ë¬¸ ë£ê¸° -->
           <span class="count">합</span></i></a></div>
         <!-- Toolbar Dropdown-->
         <div class="toolbar-dropdown">
@@ -85,12 +87,12 @@
             <!-- Search Box-->
             <form class="input-group form-group" method="get"><span class="input-group-btn">
                 <button type="submit"><i class="material-icons search"></i></button></span>
-              <input class="form-control" type="search" placeholder="태그/작품/작가 검색">
+              <input class="form-control" type="search" placeholder="태그/작품/작가 검색">
             </form>
             <!-- Slideable (Mobile) Menu-->
             <nav class="slideable-menu mt-4">
               <ul class="menu">
-                <!-- 페이지에 active 클래스 추가해줘야함 -->
+                 <!-- 페이지에 active 클래스 추가해줘야함 -->
                 <li class="has-children active"><span><a href="main.do"><span>Home</span></a></span>
                 </li>
                 <li ><span><a href="getArtistList.do "><span>Artist</span></a></span></li>
@@ -118,19 +120,19 @@
             <form class="search-form mb-2" method="get">
               <input type="search" placeholder="태그/작가/작품을 검색"><i class="material-icons search"></i>
             </form>
-            <!-- 검색 결과 -->
+            <!-- ê²ì ê²°ê³¼ -->
             <!-- Products-->
             <div class="widget widget-featured-products">
               <h3 class="widget-title">Found in Products</h3>
               <!-- Entry-->
-              <!-- 검색결과 주르륵 -->
+              <!-- ê²ìê²°ê³¼ ì£¼ë¥´ë¥µ -->
               <div class="entry">
                 <div class="entry-thumb">
                 	<a href="getProduct.do"><img src="resources/img/shop/widget/01.png" alt="Product"></a></div>
                 <div class="entry-content">
                   <h4 class="entry-title">
-                  	<a href="getProduct.do">ㅇㅇ <span class='text-highlighted'>검색어와 일치하는 부분</span></a></h4><span class="entry-meta">가격</span>
-                </div>
+                  	<a href="getProduct.do">ㅇㅇ 
+                  	<span class='text-highlighted'>검색어와 일치하는 부분</span></a></h4><span class="entry-meta">가격</span>
               </div>
             </div>
             <!-- 작가결과-->
@@ -276,7 +278,7 @@
     <!-- Page Title-->
     <div class="page-title">
       <div class="container">
-        <h1>작품 페이지</h1>
+        <h1>작품 전체 페이지</h1>
         <ul class="breadcrumbs">
           <li><a href="main.do">Home</a>
           </li>
@@ -306,24 +308,25 @@
           <!-- Products Grid-->
                 <c:if test="${!empty productList}">
           <div class="row mb-2">
-            <!-- Item-->
+ <!-- Item-->
                 <c:forEach var="product" items="${productList}">
             <div class="col-lg-4 col-sm-6">
               <div class="product-card mb-30">
-                <div class="product-card-thumb"> <span class="product-badge text-danger">Sale</span>
-                	<a class="product-card-link" href="getProduct.do?p_code=${product.p_code}"></a>
-                	<img src="resources/img/product/5.png" alt="Product">
+                <div class="product-card-thumb">
+                <a class="product-card-link" href="${contextPath}/product/productdetail.do?p_code=${p_code}"></a>
+                <img src="${contextPath}/thumbnails.do?p_code=${p_code}&fileName=${filename}"
+                		 alt="Product">
                   <div class="product-card-buttons">
                     <button class="btn btn-white btn-sm" data-toast data-toast-type="info" 
                     		data-toast-position="topRight" data-toast-icon="material-icons check" 
                     		data-toast-title="성공!" data-toast-message="성공적으로 위시리스트에 담겼습니다!" 
-                    		onclick="location.href='insertWishlist.do?p_code=${product.p_code}'">
+                    		onclick="location=insertWishlist.do?p_code=${product.p_code}">
                     		<i class="material-icons favorite_border"></i></button>
                     <button class="btn btn-primary btn-sm" data-toast data-toast-type="success" 
                     		data-toast-position="topRight" data-toast-icon="material-icons check" 
                     		data-toast-title="성공!" data-toast-message="성공적으로 장바구니에 담겼습니다!" 
-                    		onclick="location.href='insertCart.do?p_code=${product.p_code}'">장바구니에 담기</button>
-                  </div>
+                    		onclick="location.href=insertCart.do?p_code=${product.p_code}">장바구니에 담기</button>                  
+                    		</div>
                 </div>
                 <div class="product-card-details">
                   <h3 class="product-card-title"><a href="getProduct.do?p_code=${product.p_code}">${product.p_name}</a></h3>
@@ -341,7 +344,7 @@
           <div class="row mb-2">
             <div class="col-lg-4 col-sm-6">
               <div class="product-card mb-30">
-				<h2>등록된 작품이 없습니다.</h2>
+				<h2>작품이 없습니다.</h2>
               </div>
             </div>
             </div>
@@ -367,7 +370,7 @@
           <aside class="sidebar sidebar-offcanvas position-left"><span class="sidebar-close"><i class="material-icons icon_close"></i></span>
             <!-- Widget Categories-->
             <section class="widget widget-categories pt-0">
-              <h3 class="widget-title">작품 Categories</h3>
+<h3 class="widget-title">작품 Categories</h3>
               <ul>
                 <li class="has-children expanded">수채화<a href="#"></a><span>(1138)</span>
                   <!-- <ul>

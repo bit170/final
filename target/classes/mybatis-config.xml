@@ -10,14 +10,11 @@
 	<typeAliases>
 		
     	<typeAlias type="com.spring.biz.member.S_MemberVO" alias="svo"/>
-
 		 <typeAlias alias="product" type="com.spring.biz.product.ProductVO" /> 
 		 <typeAlias alias="pimage" type="com.spring.biz.product.PImageFileVO" /> 
 		<typeAlias alias="member" type="com.spring.biz.member.MemberVO" />
 		<typeAlias alias="address" type="com.spring.biz.address.AddressVO" />
-
 		<typeAlias alias="artist" type="com.spring.biz.artist.ArtistVO"/>
-
 		<typeAlias alias="follow" type="com.spring.biz.follow.FollowVO"/>
 
 	</typeAliases>

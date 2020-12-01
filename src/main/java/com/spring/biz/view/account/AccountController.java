@@ -1,7 +1,10 @@
 package com.spring.biz.view.account;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+
+import com.spring.biz.product.ProductService;
 
 @Controller
 public class AccountController {
@@ -19,4 +22,14 @@ public class AccountController {
 	public String getOrderList() {
 		return "account/account-orders";
 	}
+	
+	@RequestMapping("/insert-canvas.do")
+	public String insertcanvas() {
+		return "product/insert-canvas";
+	}
+	
+	@RequestMapping(value = "/account-myCanvas.do")
+	public String accountmyCanvas() {
+		return "account/account-myCanvas";
+	}	
 }
