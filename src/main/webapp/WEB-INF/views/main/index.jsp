@@ -110,40 +110,33 @@
 		});
     		/* 검색기능(엔터 입력시 실행)  */
     		function enter(keyword) {
-				if(window.event.keyCode == 13){
 					search(keyword);
-				}
 			}
-    		/* function search(keyword){
-    			alert("search() 실행");
-    			$.ajax({
- 					type : 'POST',
- 					url : '${pageContext.request.contextPath}/searchable.do',
- 					data : {"keyword" : keyword}
- 				}).done(function (result) {
-					alert(result);
-					if(result==0){
-						alert("쿼리 결과 : null");
-					}
-					
-				}).fail(function (request,status,error) {
-					alert("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
-				})
-    		} */
      		function search(keyword){
     			alert("search() 실행");
     			$.ajax({
  					type : 'POST',
  					url : '${pageContext.request.contextPath}/search.do',
- 					data : {"keyword" : keyword}
- 				}).done(function () {
-					var result = '${searchProduct}';
-					alert(result);
-					
+ 					data : {"keyword" : keyword},
+ 					dataType : 'json'
+ 				}).done(function (data) {	//ajax는 실행결과와 상관없이 리턴값이 없으면 오류발생 
+ 					if(data.productList){
+						alert(data.productList); 
+ 						showResult(data.productList);
+ 					}
+					sessionStorage.setItem("searchProduct", JSON.stringify(data.productList));
+					/* alert(sessionStorage.getItem("searchProduct")); */
+					/* getResult(); */
+					if(data.artistList){
+						showResult(data.artistList);
+					}
 				}).fail(function (request,status,error) {
 					alert("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
 				})
     		} 
+    		function showResult(result) {
+				
+			}
 	    
     </script>
   </head>
@@ -237,30 +230,34 @@
             </form>
             <!-- 검색 결과 -->
             <!-- Products-->
-            <div class="widget widget-featured-products">
-              <h3 class="widget-title">Found in Products</h3>
-              <!-- Entry-->
-              <!-- 검색결과 주르륵 -->
-              <div class="entry">
-                <div class="entry-thumb">
-                	<a href="getProduct.do"><img src="resources/img/shop/widget/01.png" alt="Product"></a></div>
-                <div class="entry-content">
-                  <h4 class="entry-title">
-                  	<a href="getProduct.do">ㅇㅇ <span class='text-highlighted'>검색어와 일치하는 부분</span></a></h4><span class="entry-meta">가격</span>
-                </div>
-              </div>
-            </div>
+            <%-- <c:if test="${not empty searchProduct }"> --%>
+	            <div class="widget widget-featured-products">
+	              <h3 class="widget-title">Found in Products</h3>
+	              <!-- Entry-->
+	              <!-- 검색결과 주르륵 -->
+	              <div class="entry">
+	                <div class="entry-thumb">
+	                	<a href="getProduct.do"><img src="resources/img/shop/widget/01.png" alt="Product"></a></div>
+	                <div class="entry-content">
+	                  <h4 class="entry-title">
+	                  	<a href="getProduct.do">ㅇㅇ <span class='text-highlighted'>검색어와 일치하는 부분</span></a></h4><span class="entry-meta">가격</span>
+	                </div>
+	              </div>
+	            </div>
+            <%-- </c:if> --%>
             <!-- 작가결과-->
-            <div class="widget widget-featured-products">
-              <h3 class="widget-title">Found in Artist</h3>
-              <!-- Entry-->
-              <div class="entry">
-                <div class="entry-thumb"><a href="작가상세"><img src="resources/img/blog/widget/01.jpg" alt="Post"></a></div>
-                <div class="entry-content">
-                  <h4 class="entry-title"><a href="작가상세"><span class='text-highlighted'>검색어 일치부분</span> 블라블라</a></h4><span class="entry-meta">아이디?</span>
-                </div>
-              </div>
-            </div>
+            <c:if test="${not empty searchArtist }">
+	            <div class="widget widget-featured-products">
+	              <h3 class="widget-title">Found in Artist</h3>
+	              <!-- Entry-->
+	              <div class="entry">
+	                <div class="entry-thumb"><a href="작가상세"><img src="resources/img/blog/widget/01.jpg" alt="Post"></a></div>
+	                <div class="entry-content">
+	                  <h4 class="entry-title"><a href="작가상세"><span class='text-highlighted'>검색어 일치부분</span> 블라블라</a></h4><span class="entry-meta">아이디?</span>
+	                </div>
+	              </div>
+	            </div>
+          	</c:if>
           </div>
           <!-- Account Section-->
           <!-- 사람아이콘 -->

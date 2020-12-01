@@ -48,26 +48,28 @@ public class MainController {
 //		return artistService.searchable(keyword);
 //	}
 	@RequestMapping(value = "search.do", method = RequestMethod.POST)
-	public void search(HttpServletRequest request, Model model) {
+	public @ResponseBody Map<String, List> search(HttpServletRequest request, Model model) {
 		System.out.println("ajax -> search()");
 		String keyword = request.getParameter("keyword");
 		System.out.println("검색어 : "+keyword);
-		try {
-			List<ProductVO> productList = productService.searchProduct(keyword);
-			System.out.println(productList);
-			if(productList!=null) {
-				model.addAttribute("searchProduct", productList);
-			}
-			//productList를 파라미터로 해서 작품 메인이미지리스트 받아와야함.
-			
-			int result = artistService.searchable(keyword);
-			if(result>0) {
-				List<ArtistVO> artistList = artistService.searchByName(keyword);
-				model.addAttribute("searchArtist", artistList);
-			}
-		}catch (Exception e) {
-			e.printStackTrace();
+		Map<String, List> result = new HashMap<String, List>();
+		List<ProductVO> productList = productService.searchProduct(keyword);
+		System.out.println(productList);
+//		int result = 0;
+		if(productList!=null) {
+			result.put("productList", productList);
+//			model.addAttribute("searchProduct", productList);
+//			result += 1;
 		}
+		//productList를 파라미터로 해서 작품 메인이미지리스트 받아와야함.
+		
+		List<ArtistVO> artistList = artistService.searchByName(keyword);
+		if(artistList != null) {
+			result.put("artistList", artistList);
+//			model.addAttribute("searchArtist", artistList);
+//			result += 10;
+		}
+		return result;
 	}
 }
 
