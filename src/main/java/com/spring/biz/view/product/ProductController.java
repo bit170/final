@@ -1,4 +1,4 @@
-package com.spring.biz.view.product;
+ package com.spring.biz.view.product;
 
 import java.io.File;
 import java.util.Enumeration;
@@ -24,6 +24,8 @@ import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.spring.biz.artist.ArtistService;
+import com.spring.biz.artist.ArtistVO;
 import com.spring.biz.member.MemberVO;
 import com.spring.biz.product.PImageFileVO;
 import com.spring.biz.product.ProductService;
@@ -37,6 +39,8 @@ public class ProductController extends BaseController {
 	
 	@Autowired
 	private ProductService productService;
+	@Autowired
+	private ArtistService artistService;
 	
 	public ProductController() {
 		System.out.println(">>>> ProductController() 객체 생성");
@@ -93,6 +97,17 @@ public class ProductController extends BaseController {
 			message += " alert('새상품을 추가했습니다.');";
 			message +=" location.href='"+multipartRequest.getContextPath()+"/getMyCanvas.do';";
 			message +=("</script>");
+			
+			String id = memberVO.getId();
+			System.out.println(id);
+			int alreadyArtist = artistService.alreadyArtist(id);
+			if(alreadyArtist == 0) {
+				HashMap<String,Object> idNickname = new HashMap<String,Object>();
+				idNickname.put("id", id);
+				idNickname.put("nickname", nickname);
+				artistService.insertArtist(idNickname);
+			}
+			
 		}catch(Exception e) {
 			if(pimageFileList!=null && pimageFileList.size()!=0) {
 				for(PImageFileVO  pimageFileVO:pimageFileList) {
