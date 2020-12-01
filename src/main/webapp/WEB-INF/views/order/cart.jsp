@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8" isELIgnored="false"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -228,7 +229,7 @@
                     <th colspan="2">
                       <div class="d-flex justify-content-between align-items-center">Products
                       <c:if test="${!empty cartList}">
-                      <a class="navi-link text-uppercase" href="getCart.do"><span class="text-xxs">Expand Cart</span><i class="material-icons keyboard_arrow_right"></i></a>
+                      <a class="navi-link text-uppercase" href="getCart.do"><span class="text-xxs">장바구니 크게 보기</span><i class="material-icons keyboard_arrow_right"></i></a>
                       </c:if>
                       <c:if test="${empty cartList}">
                       <a class="navi-link text-uppercase" href="getProductList.do"><span class="text-xxs">작품 보러가기</span><i class="material-icons keyboard_arrow_right"></i></a>
@@ -238,22 +239,32 @@
                   </tr>
                 </thead>
                 <tbody>
+                    <c:if test="${empty cartList}">
                   <tr>
                     <td>
-                    <c:if test="${empty cartList}">
                    	 장바구니가 비었습니다.
+                    </td>
+                  </tr>
                     </c:if>
                     <c:if test="${!empty cartList}">
-                      <div class="product-item"><a class="product-thumb" href="getProduct.do"><img src="resources/img/shop/cart/01.jpg" alt="Product"></a>
+		                <c:forEach var="cart" items="${cartList}">
+                  <tr>
+                    <td>
+                      <div class="product-item">
+                      <a class="product-thumb" href="getProduct.do?p_code=${cart.p_code}">
+                      	  <img src="resources/img/product/5.png" alt="Product"></a>
                         <div class="product-info">
-                          <h4 class="product-title"><a href="getProduct.do">작품이름</a></h4><span><em>Price:</em> 가격</span>
+                          <h4 class="product-title">
+                          	<a href="getProduct.do?p_code=${cart.p_code}">${cart.p_name}</a></h4>
+                          	<span><em>가 격 : </em>₩ <fmt:formatNumber pattern="###,###,###" value="${cart.c_price}" /></span>
                         </div>
                       </div>
                     <!-- 삭제처리는 어떻게? 장바구니 품목을 디비에 저장하지 않으면 리스트형태로 세션이나 어딘가에 보관? 그럼 삭제버튼 클릭시 리스트에서 remove하면 될까? -->
-                    <td class="text-center"><a class="remove-from-cart" href="삭제처리"><i class="material-icons icon_close"></i></a></td>
-                    </c:if>  
                     </td>
+                    <td class="text-center"><a class="remove-from-cart" href="deleteCart.do"><i class="material-icons icon_close"></i></a></td>
                   </tr>
+                    </c:forEach>
+                    </c:if>  
                 </tbody>
               </table>
             </div>
@@ -261,8 +272,14 @@
             <hr class="mb-3">
             <div class="d-flex flex-wrap justify-content-between align-items-center">
               <c:if test="${!empty cartList }">
-              <div class="pr-2 py-1 text-sm">Subtotal: <span class='text-dark text-medium'>장바구니 합계 값</span></div>
-              <a class="btn btn-sm btn-success mb-0 mr-0" href="checkout.do">Checkout</a>
+              <c:set var = "total" value= "0" />
+		        <c:forEach var="cart" items="${cartList}">
+		        <c:set var = "total" value="${total + cart.c_price}" />
+		      	</c:forEach>
+              <div class="pr-2 py-1 text-sm">합 계 : <span class='text-dark text-medium'>
+              ₩<fmt:formatNumber pattern="###,###,###" value="${total}" />
+              		<%-- <c:out value='${total}' /> --%></span></div>
+              <a class="btn btn-sm btn-success mb-0 mr-0" href="getAddress.do?id=${member.id}">주문하기</a>
               </c:if>
             </div>
           </div>
@@ -283,8 +300,8 @@
     </div>
     <!-- Page Content-->
     <div class="container padding-bottom-3x mb-1">
-      <!-- Alert-->
-      <div class="alert alert-info alert-dismissible fade show text-center" style="margin-bottom: 30px;"><span class="alert-close" data-dismiss="alert"></span><i class="material-icons redeem lead"></i>&nbsp;&nbsp;With this purchase you will earn <strong>622</strong> Reward Points.</div>
+      <!-- Alert
+      <div class="alert alert-info alert-dismissible fade show text-center" style="margin-bottom: 30px;"><span class="alert-close" data-dismiss="alert"></span><i class="material-icons redeem lead"></i>&nbsp;&nbsp;With this purchase you will earn <strong>622</strong> Reward Points.</div> -->
       <!-- Shopping Cart-->
       <div class="table-responsive shopping-cart">
         <table class="table">
@@ -292,7 +309,7 @@
             <tr>
               <th>작품명</th>
               <th class="text-center">가 격</th>
-              <th class="text-center"><a class="btn btn-sm btn-outline-danger" href="#">장바구니 비우기</a></th>
+              <th class="text-center"><a class="btn btn-sm btn-outline-danger" href="deleteCartList.do">장바구니 비우기</a></th>
             </tr>
           </thead>
           <tbody>
@@ -303,7 +320,7 @@
               <td>
                 <div class="product-item">
                 	<a class="product-thumb" href="getProduct.do?name=${cart.p_name}">
-                		<img src="resources/img/product/${cart.p_img}" alt="Product"></a>
+                		<img src="resources/img/product/1.png" alt="Product"></a>
                   <div class="product-info">
                     <h4 class="product-title"><a href="getProduct.do">${cart.p_name}</a></h4>
                     	<%-- <span><em>카테고리:</em> ${product.p_category}</span>
@@ -311,8 +328,8 @@
                   </div>
                 </div>
               </td>
-              <td class="text-center text-lg text-medium">${cart.c_price}</td>
-              <td class="text-center"><a class="remove-from-cart" href="deleteCartList.do" data-toggle="tooltip" title="Remove item"><i class="material-icons icon_close"></i></a></td>
+              <td class="text-center text-lg text-medium">₩ <fmt:formatNumber pattern="###,###,###" value="${cart.c_price}" /></td>
+              <td class="text-center"><a class="remove-from-cart" href="deleteCart.do?p_code=${cart.p_code}" data-toggle="tooltip" title="Remove item"><i class="material-icons icon_close"></i></a></td>
             </tr>
             </c:forEach>
             </c:if>
@@ -334,15 +351,10 @@
         <c:set var = "total" value= "0" />
         <c:forEach var="cart" items="${cartList}">
         <c:set var = "total" value="${total + cart.c_price}" />
+      </c:forEach>
       <div class="shopping-cart-footer">
-        <div class="column">
-         <!--  <form class="coupon-form" method="post">
-            <input class="form-control form-control-sm" type="text" placeholder="Coupon code" required>
-            <button class="btn btn-outline-primary btn-sm" type="submit">Apply Coupon</button>
-          </form> -->
-        </div>
         <div class="column text-lg">
-        	총 주문 금액: <span class="text-medium text-dark">₩<c:out value="${total}" /></span></div>
+        	총 주문 금액: <span class="text-medium text-dark">₩ <fmt:formatNumber pattern="###,###,###" value="${total}" /></span></div>
       </div>
       <div class="shopping-cart-footer">
         <div class="column">
@@ -354,7 +366,6 @@
         		data-toast-title="장바구니" data-toast-message="수정이 완료되었습니다!">카트 업데이트</a> -->
        		<a class="btn btn-success" href="getAddress.do?id=${member.id}">주문하기</a></div>
       </div>
-      </c:forEach>
       </c:if>
         <c:if test="${empty cartList}">
       <div class="shopping-cart-footer">

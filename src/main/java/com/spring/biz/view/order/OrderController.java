@@ -10,14 +10,12 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.SessionAttributes;
-import org.springframework.web.bind.support.SessionStatus;
-
 import com.spring.biz.address.AddressService;
 import com.spring.biz.address.AddressVO;
 import com.spring.biz.member.MemberVO;
 import com.spring.biz.order.CartVO;
-import com.spring.biz.product.ProductService;
 import com.spring.biz.product.ProductVO;
 
 @Controller
@@ -59,49 +57,102 @@ public class OrderController {
 	}
 	
 	@RequestMapping("/insertCart.do")
-	public String insertCart(HttpSession sess, ProductVO vo, Model model) {
+	public String insertCart(HttpSession sess, Model model) {
 		sess.setMaxInactiveInterval(60*60);
-		List<CartVO> cartList = new ArrayList<>();
-		CartVO cvo = new CartVO();
-		System.out.println("장바구니에 담은 작품 : " + sess.getAttribute("product"));
-		ProductVO pvo = (ProductVO) sess.getAttribute("product");
-		if(pvo != null) {
-			cvo.setP_code(pvo.getP_code());
-			cvo.setP_name(pvo.getP_name());
-			cvo.setc_price(pvo.getPrice());
-			cartList.add(cvo);
-			
-			int index = 1;
-			for(CartVO cart:cartList) {
-				System.out.println(index++ + "번째 장바구니 작품정보 : " + cart);
+		System.out.println("클릭한 상품 " + (ProductVO) sess.getAttribute("product"));
+		
+		if(sess.getAttribute("cartList") != null) {
+			List<CartVO> cartList = (List<CartVO>) sess.getAttribute("cartList");
+			System.out.println("세션 장바구니 정보 : " + (List<CartVO>) sess.getAttribute("cartList"));
+			CartVO cvo = new CartVO();
+			System.out.println("지금 장바구니에 담긴 작품 : " + sess.getAttribute("product"));
+			ProductVO pvo = (ProductVO) sess.getAttribute("product");
+			if(pvo != null) {
+				cvo.setP_code(pvo.getP_code());
+				cvo.setP_name(pvo.getP_name());
+				cvo.setc_price(pvo.getPrice());
+				cartList.add(cvo);
+				
+				int index = 1;
+				for(CartVO cart:cartList) {
+					System.out.println(index++ + "번째 장바구니 작품정보 : " + cart);
+				}
+				model.addAttribute("cartList", cartList);
 			}
-			model.addAttribute("cartList", cartList);
+			else if (pvo == null) {
+				System.out.println("해당 작품이 존재하지 않습니다.");
+				
+			}
+			
+		}else if(sess.getAttribute("cartList") == null) {
+			System.out.println("세션 장바구니가 비었습니다.");
+			List<CartVO> cartList = new ArrayList<>();
+			CartVO cvo = new CartVO();
+			System.out.println("지금 장바구니에 담긴 작품 : " + sess.getAttribute("product"));
+			ProductVO pvo = (ProductVO) sess.getAttribute("product");
+			if(pvo != null) {
+				cvo.setP_code(pvo.getP_code());
+				cvo.setP_name(pvo.getP_name());
+				cvo.setc_price(pvo.getPrice());
+				cartList.add(cvo);
+				
+				int index = 1;
+				for(CartVO cart:cartList) {
+					System.out.println(index++ + "번째 장바구니 작품정보 : " + cart);
+				}
+				model.addAttribute("cartList", cartList);
+			}
+			else if (pvo == null) {
+				System.out.println("해당 작품이 존재하지 않습니다.");
+			
 		}
-		else if (pvo == null) {
-			System.out.println("해당 작품이 존재하지 않습니다.");
 		}
 		
-		return "redirect:getCart.do";
+		return "redirect:getProductList.do";
 	}
 	
 	// 장바구니 작품 하나만 지우기
 	@RequestMapping("/deleteCart.do")
-	public String deleteCart(SessionStatus status) {
+	public String deleteCart(@RequestParam String p_code, HttpSession sess) {
 		
-		status.setComplete();
+		List<CartVO> cartList = (List<CartVO>) sess.getAttribute("cartList");
+		int index = 0;
+		for(CartVO cart : cartList) {
+			index++;
+			if(cart.getP_code() == p_code) {
+				System.out.println(index);
+			}
+		}
+		cartList.remove(index-2);
+		
 		
 		return "redirect:getCart.do";
 	}
 		
 	// 장바구니 전체 비우기
 	@RequestMapping("/deleteCartList.do")
-	public String deleteCartList(SessionStatus status) {
+	public String deleteCartList(HttpSession session) {
 		
 		// 세션에 저장되있는 카트 비우기 -> 로그인은 유지 가능?
-		status.setComplete();
+		List<CartVO> cartList = (List<CartVO>)session.getAttribute("cartList");
+		cartList.removeAll(cartList);
+		
 		
 		return "redirect:getCart.do";
 		
+	}
+	
+	@RequestMapping("/getPayment.do")
+	public String getPayment(HttpSession session) {
+		
+		if((List<CartVO>)session.getAttribute("cartList") != null) {
+			List<CartVO> cartList = (List<CartVO>)session.getAttribute("cartList");
+			int total=0;
+			for(CartVO cart : cartList)
+				cart.setc_price(cart.getc_price()+total);
+		}
+		
+		return "order/checkout-payment";
 	}
 	
 }

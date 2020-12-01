@@ -353,7 +353,7 @@
             <div class="col-sm-6">
               <div class="form-group">
                 <label for="checkout-fn">이름</label>
-                <input class="form-control" type="text" id="name"
+                <input class="form-control" type="text" id="checkout-name"
                 placeholder="이름을 입력해주세요" value="${member.name}" required>
               </div>
             </div>

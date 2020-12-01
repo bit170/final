@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -311,26 +312,24 @@
               <div class="product-card mb-30">
                 <div class="product-card-thumb"> <span class="product-badge text-danger">Sale</span>
                 	<a class="product-card-link" href="getProduct.do?p_code=${product.p_code}"></a>
-                	<img src="resources/img/product/${product.p_img}" alt="Product">
+                	<img src="resources/img/product/5.png" alt="Product">
                   <div class="product-card-buttons">
-                   <%--  <button class="btn btn-white btn-sm btn-wishlist" data-toggle="tooltip" 
-                    		title="Wishlist" onclick="location=insertWishlist.do?p_code=${product.p_code}">
-                    	<i class="material-icons favorite_border"></i></button>	 --%>
                     <button class="btn btn-white btn-sm" data-toast data-toast-type="info" 
                     		data-toast-position="topRight" data-toast-icon="material-icons check" 
                     		data-toast-title="성공!" data-toast-message="성공적으로 위시리스트에 담겼습니다!" 
-                    		onclick="location=insertWishlist.do?p_code=${product.p_code}">
+                    		onclick="location.href='insertWishlist.do?p_code=${product.p_code}'">
                     		<i class="material-icons favorite_border"></i></button>
                     <button class="btn btn-primary btn-sm" data-toast data-toast-type="success" 
                     		data-toast-position="topRight" data-toast-icon="material-icons check" 
                     		data-toast-title="성공!" data-toast-message="성공적으로 장바구니에 담겼습니다!" 
-                    		onclick="location.href=insertCart.do?p_code=${product.p_code}">장바구니에 담기</button>
+                    		onclick="location.href='insertCart.do?p_code=${product.p_code}'">장바구니에 담기</button>
                   </div>
                 </div>
                 <div class="product-card-details">
                   <h3 class="product-card-title"><a href="getProduct.do?p_code=${product.p_code}">${product.p_name}</a></h3>
                   <h4 class="product-card-price">
-                    <del>₩${product.price * 2}</del>₩${product.price}
+                    <del>₩ <fmt:formatNumber pattern="###,###,###" value="${product.price * 2}" /></del>
+                    	₩ <fmt:formatNumber pattern="###,###,###" value="${product.price}" />
                   </h4>
                 </div>
               </div>

@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -274,6 +275,9 @@
     <div class="bg-secondary pb-4 padding-top-3x">
       <div class="container">
         <div class="row">
+          <c:if test="${empty product}">
+          <script> alert("선택한 상품이 존재하지 않습니다.")</script>
+          </c:if>
           <c:if test="${!empty product}">
           <!-- Product Gallery-->
           <div class="col-md-6 mb-30">
@@ -281,7 +285,7 @@
               <div class="product-carousel owl-carousel gallery-wrapper">
                 <div class="gallery-item" data-hash="one">
                 	<a href="img/shop/single/01.jpg" data-size="555x480">
-                	<img src="resources/img/product/${product.p_img}" alt="Product"></a></div>
+                	<img src="resources/img/product/5.png" alt="Product"></a></div>
                 <div class="gallery-item" data-hash="two">
                 	<a href="img/shop/single/02.jpg" data-size="555x480">
                 	<img src="resources/img/shop/single/02.jpg" alt="Product"></a></div>
@@ -293,7 +297,7 @@
                 	<img src="resources/img/shop/single/04.jpg" alt="Product"></a></div>
               </div>
               <ul class="product-thumbnails">
-                <li class="active"><a href="#one"><img src="resources/img/product/${product.p_img}" alt="Product"></a></li>
+                <li class="active"><a href="#one"><img src="resources/img/product/5.png" alt="Product"></a></li>
                 <li><a href="#two"><img src="resources/img/shop/single/th02.jpg" alt="Product"></a></li>
                 <li><a href="#three"><img src="resources/img/shop/single/th03.jpg" alt="Product"></a></li>
                 <li><a href="#four"><img src="resources/img/shop/single/th04.jpg" alt="Product"></a></li>
@@ -307,7 +311,7 @@
             	<form action="insertCart.do?p_code=p0001" method="get">
               <div class="card-body">
                 <h2 class="mb-3">${product.p_name}</h2>
-                <h3 class="text-normal">₩${product.price}</h3>
+                <h3 class="text-normal">₩ <fmt:formatNumber pattern="###,###,###" value="${product.price}" /></h3>
                 <p class="text-sm text-muted"> ${product.a_id}<br> 작품 설명 : ${product.p_detail}</p>
                 <div class="row">
                   <div class="col-sm-6">

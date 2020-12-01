@@ -15,8 +15,8 @@
 	
 	<insert id="insertAddr" parameterType="address">
 		<!-- <if test=""></if> -->
-		INSERT INTO ADDRESS (NAME, POST, ADDRESS, EXTRA_ADDRESS, ID)
-		VALUES (#{name}, #{post}, #{address}, #{extra_address}, #{id})
+		INSERT INTO ADDRESS (A_NAME, POST, ADDRESS, EXTRA_ADDRESS, ID)
+		VALUES (#{a_name}, #{post}, #{address}, #{extra_address}, #{id})
 	</insert>
 	
 	<update id="updateAddr" parameterType="address">
