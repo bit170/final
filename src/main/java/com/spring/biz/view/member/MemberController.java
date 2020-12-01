@@ -21,7 +21,6 @@ import com.spring.biz.member.S_MemberVO;
 
 @Controller
 @SessionAttributes("member")
-//@RequestMapping(value="account/")
 public class MemberController {
 	@Autowired
 	private MemberService memberService;

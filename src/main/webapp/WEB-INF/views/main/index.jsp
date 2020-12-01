@@ -7,7 +7,7 @@
 <html lang="en">
   <head>
     <meta charset="utf-8">
-    <title>아트플레이스</title>
+    <title>내가 그린 그림</title>
     <!-- SEO Meta Tags-->
     <meta name="description" content="Unishop - Universal E-Commerce Template">
     <meta name="keywords" content="shop, e-commerce, modern, flat style, responsive, online store, business, mobile, blog, bootstrap 4, html5, css3, jquery, js, gallery, slider, touch, creative, clean">
@@ -223,7 +223,8 @@
               <div class="entry">
                 <div class="entry-thumb"><a href="작가상세"><img src="resources/img/blog/widget/01.jpg" alt="Post"></a></div>
                 <div class="entry-content">
-                  <h4 class="entry-title"><a href="작가상세"><span class='text-highlighted'>검색어 일치부분</span> 블라블라</a></h4><span class="entry-meta">아이디?</span>
+                  <h4 class="entry-title"><a href="작가상세"><span class='text-highlighted'>검색어 일치부분</span> 블라블라</a></h4>
+                  	<span class="entry-meta">아이디?</span>
                 </div>
               </div>
             </div>
@@ -238,8 +239,6 @@
 	            <p class="text-muted text-sm mt-4"><h4>${member.id }<span>님</span><h4></p>
 	            <p class="text-muted text-sm mt-4">환영합니다</p>
 	            <button class="btn btn-primary" type="submit">Log Out</button> 
-	            <!-- <a class="btn btn-primary mx-0 scale-up delay-1" href="shop-boxed-ls.jsp">Log Out</a> -->
-	            <!-- <button class="btn btn-primary btn-block" type="submit"><a href="account-wishlist.jsp">My page</button> -->
 
 	            <a class="btn btn-primary mx-0 scale-up delay-1" href="account.do">My page</a>
 
@@ -314,10 +313,10 @@
                   <tr>
                     <th colspan="2">
                       <div class="d-flex justify-content-between align-items-center">Products
-                      <c:if test="${!empty cartList }">
-                      <a class="navi-link text-uppercase" href="getCart.do"><span class="text-xxs">Expand Cart</span><i class="material-icons keyboard_arrow_right"></i></a>
+                      <c:if test="${!empty cartList}">
+                      <a class="navi-link text-uppercase" href="getCart.do"><span class="text-xxs">장바구니 크게 보기</span><i class="material-icons keyboard_arrow_right"></i></a>
                       </c:if>
-                      <c:if test="${empty cartList }">
+                      <c:if test="${empty cartList}">
                       <a class="navi-link text-uppercase" href="getProductList.do"><span class="text-xxs">작품 보러가기</span><i class="material-icons keyboard_arrow_right"></i></a>
                       </c:if>
                       </div>
@@ -325,31 +324,47 @@
                   </tr>
                 </thead>
                 <tbody>
+                    <c:if test="${empty cartList}">
                   <tr>
                     <td>
-                    <c:if test="${empty cartList }">
                    	 장바구니가 비었습니다.
+                    </td>
+                  </tr>
                     </c:if>
-                    <c:if test="${!empty cartList }">
-                      <div class="product-item"><a class="product-thumb" href="getProduct.do"><img src="resources/img/shop/cart/01.jpg" alt="Product"></a>
+                    <c:if test="${!empty cartList}">
+		                <c:forEach var="cart" items="${cartList}">
+                  <tr>
+                    <td>
+                      <div class="product-item">
+                      <a class="product-thumb" href="getProduct.do?p_code=${cart.p_code}">
+                      	  <img src="resources/img/product/5.png" alt="Product"></a>
                         <div class="product-info">
-                          <h4 class="product-title"><a href="getProduct.do">작품이름</a></h4><span><em>Price:</em> 가격</span>
+                          <h4 class="product-title">
+                          	<a href="getProduct.do?p_code=${cart.p_code}">${cart.p_name}</a></h4>
+                          	<span><em>가 격 : </em>₩ <fmt:formatNumber pattern="###,###,###" value="${cart.c_price}" /></span>
                         </div>
                       </div>
                     <!-- 삭제처리는 어떻게? 장바구니 품목을 디비에 저장하지 않으면 리스트형태로 세션이나 어딘가에 보관? 그럼 삭제버튼 클릭시 리스트에서 remove하면 될까? -->
-                    <td class="text-center"><a class="remove-from-cart" href="삭제처리"><i class="material-icons icon_close"></i></a></td>
-                    </c:if>  
                     </td>
+                    <td class="text-center"><a class="remove-from-cart" href="deleteCart.do"><i class="material-icons icon_close"></i></a></td>
                   </tr>
+                    </c:forEach>
+                    </c:if>  
                 </tbody>
               </table>
             </div>
             <!-- 장바구니 합계 -->
             <hr class="mb-3">
             <div class="d-flex flex-wrap justify-content-between align-items-center">
-              <div class="pr-2 py-1 text-sm">Subtotal: <span class='text-dark text-medium'>장바구니 합계 값</span></div>
               <c:if test="${!empty cartList }">
-              <a class="btn btn-sm btn-success mb-0 mr-0" href="checkout.do">Checkout</a>
+              <c:set var = "total" value= "0" />
+		        <c:forEach var="cart" items="${cartList}">
+		        <c:set var = "total" value="${total + cart.c_price}" />
+		      	</c:forEach>
+              <div class="pr-2 py-1 text-sm">합 계 : <span class='text-dark text-medium'>
+              ₩ <fmt:formatNumber pattern="###,###,###" value="${total}" />
+              		<%-- <c:out value='${total}' /> --%></span></div>
+              <a class="btn btn-sm btn-success mb-0 mr-0" href="checkout.do?id=${member.id}">주문하기</a>
               </c:if>
             </div>
           </div>
@@ -382,7 +397,7 @@
             <div class="col-xl-4 col-md-6">
               <div class="padding-top-3x padding-bottom-3x px-3 px-lg-5 text-center text-md-left from-bottom">
                 <h2> 세상에 알려지지 않은 작가들~ </h2>
-                <p class="text-sm text-muted">이곳에선 모두가 아티스트가 될 수 있습니다! 모두가 내가 그린 기린그림을 팔 수 있는 곳 !       여러분도 도전해보세욧</p>
+                <p class="text-sm text-muted">이곳에선 모두가 아티스트가 될 수 있습니다! 모두가 내가 그린 기린그림을 팔 수 있는 곳 ! 여러분도 도전해보세욧</p>
                 <a class="btn btn-primary mx-0 scale-up delay-1" href="getArtistList.do">더 많은 작가들</a>
               </div>
             </div>
@@ -445,7 +460,8 @@
                     <!-- 버튼 클릭시 해당 제품 데이터 어딘가에 저장 후 장바구니에 넣을것 -->
                     <button class="btn btn-primary btn-sm" data-toast data-toast-type="success" 
                     		data-toast-position="topRight" data-toast-icon="material-icons check" 
-                    		data-toast-title="Product" data-toast-message="장바구니 담기 성공!">장바구니 담기</button>
+                    		data-toast-title="Product" data-toast-message="장바구니 담기 성공!" 
+                    		onclick="location.href='insertCart.do?p_code=${mProduct.p_code}'">장바구니 담기</button>
                   </div>
                 </div>
                 <div class="product-card-details">

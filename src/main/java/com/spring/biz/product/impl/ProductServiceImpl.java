@@ -17,7 +17,6 @@ public class ProductServiceImpl implements ProductService {
 	@Autowired
 	private ProductDAO productDAO;
 
-	@Override
 	public String addNewProduct(Map newProductMap) throws Exception {
 		String p_code = productDAO.insertNewProduct(newProductMap);
 		ArrayList<PImageFileVO> pimageFileList = (ArrayList) newProductMap.get("pimageFileList");
@@ -47,23 +46,23 @@ public class ProductServiceImpl implements ProductService {
 //	 }
 	
 
-	// @Override
-//	public ProductVO getProduct(ProductVO vo) {
-//		return productDAO.getProduct(vo);
-//	}
+	 @Override
+	public ProductVO getProduct(ProductVO vo) {
+		return productDAO.getProduct(vo);
+	}
 
-//	@Override
-//	public List<ProductVO> getProductList(ProductVO vo) {
-//		return productDAO.getProductList(vo);
-//	}
-//
-//	@Override
-//	public List<ProductVO> getMainProduct() {
-//		return productDAO.getMainProduct();
-//	}
+	@Override
+	public List<ProductVO> getProductList(ProductVO vo) {
+		return productDAO.getProductList(vo);
+	}
 
-//	public ProductServiceImpl() {
-//		System.out.println(">> ProductServiceImpl() 객체 생성");
-//	}
+	@Override
+	public List<ProductVO> getMainProduct() {
+		return productDAO.getMainProduct();
+	}
+
+	public ProductServiceImpl() {
+		System.out.println(">> ProductServiceImpl() 객체 생성");
+	}
 
 }

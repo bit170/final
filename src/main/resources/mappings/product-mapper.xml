@@ -3,24 +3,6 @@
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
   <mapper namespace="productDAO">
-	<!-- resultMap 정의 -->
-	<resultMap id="productResult" type="product">
-		<result property="p_code" column="p_code" />
-		<result property="p_name" column="p_name" />
-		<result property="price" column="price" />
-		<!-- <result property="id" column="id" /> -->
-		<result property="p_size" column="p_size" />
-		<result property="p_category" column="p_category" />
-		<result property="p_detail" column="p_detail" />
-	</resultMap>
-	
-	<resultMap id="pimageResult" type="pimage">
-		<result property="p_code" column="p_code" />
-		<result property="pi_filename" column="pi_filename" />
-		<result property="pi_code" column="pi_code" />
-		<result property="pi_filetype" column="pi_filetype" />
-		<result property="id" column="id" />
-	</resultMap>
 	
 	<insert id="insertNewProduct" parameterType="java.util.Map">
 		<selectKey resultType="String" keyProperty="p_code" order="BEFORE">
@@ -72,13 +54,16 @@
 		p_code = #{p_code} and pi_code = #{pi_code}
 	</update>
 	
-	<!-- <select id="getProductList" parameterType="product" resultMap="ProductList">
+	<select id="getProductList" parameterType="product" resultType="product">
 		SELECT * FROM PRODUCT
 	</select>
 	
-	맞는 쿼리문 작성할 것(메인에 출력할 작품리스트
-	<select id="getMainProduct" resultMap="ProductList">
+	<select id="getMainProduct" resultType="product">
 		select * from product
-	</select> -->
+	</select>
+	
+	<select id="getProduct" resultType="product">
+		select * from product where p_code = #{p_code}
+	</select>
 	
 </mapper>
