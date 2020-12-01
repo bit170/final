@@ -42,8 +42,8 @@ public class ProductServiceImpl implements ProductService {
 	public void modifyPImage(List<PImageFileVO> pimageFileList) throws Exception{
 		productDAO.updatePImage(pimageFileList);
 	}
-	 public List productImageFile(String p_code) throws Exception{ List
-		 pimageList =productDAO.selectProductImageFileList(p_code); return pimageList;
+	 public List<PImageFileVO> productImageFile(String p_code) throws Exception{ 
+		 return productDAO.selectProductImageFileList(p_code); 
 	 }
 	
 

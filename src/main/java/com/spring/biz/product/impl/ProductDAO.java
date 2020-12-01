@@ -73,11 +73,8 @@ public class ProductDAO {
 		return mybatis.selectOne("productDAO.searchable", keyword);
 	}
 
-	public List selectProductImageFileList(String p_code) throws DataAccessException{
-		List pimageList = new ArrayList();
-		pimageList=(List)mybatis.selectList("productDAO.selectProductImageFileList", p_code);
-
-		return pimageList;
+	public List<PImageFileVO> selectProductImageFileList(String p_code) throws DataAccessException{
+		return mybatis.selectList("productDAO.selectProductImageFileList", p_code);
 	}
 
 }
