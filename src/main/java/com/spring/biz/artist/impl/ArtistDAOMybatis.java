@@ -1,6 +1,7 @@
 package com.spring.biz.artist.impl;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 import org.mybatis.spring.SqlSessionTemplate;
@@ -20,8 +21,8 @@ public class ArtistDAOMybatis {
 	}
 	
 	//작가등록
-	public void insertArtist(ArtistVO vo) {
-		mybatis.insert("artistDAO.insertArtist", vo);
+	public void insertArtist(HashMap<String,Object> idNickname) {
+		mybatis.insert("artistDAO.insertArtist", idNickname);
 	}
 	
 	//작가수정
@@ -32,6 +33,12 @@ public class ArtistDAOMybatis {
 	//작가삭제
 	public void deleteArtist(ArtistVO vo) {
 		mybatis.delete("artistDAO.deleteArtist", vo);
+	}
+	
+	//작가 테이블에 존재여부 확인
+	public int alreadyArtist(String id) {
+		return mybatis.selectOne("artistDAO.alreadyArtist", id);
+		
 	}
 	
 	//작가조회(하나)

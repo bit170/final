@@ -21,34 +21,37 @@ public abstract class BaseController {
 		while(fileNames.hasNext()){
 			PImageFileVO pimageFileVO =new PImageFileVO();
 			
-			String p_filename = fileNames.next();
-			pimageFileVO.setP_filename(p_filename);
-			MultipartFile mFile = multipartRequest.getFile(p_filename);
-			System.out.println(mFile.getName()+"(getName())"+mFile.getOriginalFilename()+
-					"(getOriginalFilename())"+mFile.getContentType()+"(getContentType())");
+			String pi_filename = fileNames.next();
 			
-			String type = mFile.getContentType();
-			pimageFileVO.setPi_filetype(type);
-			
-			String originName = mFile.getOriginalFilename();
-//			pimageFileVO.set
-//			String originalFileName=mFile.getOriginalFilename();
-//			pimageFileVO.setP_filename(originalFileName);
-			
-			File file = new File(CURR_IMAGE_REPO_PATH +"\\"+ p_filename);
-			if(mFile.getSize()!=0){ //File Null Check
-				if(! file.exists()){ 
-					if(file.getParentFile().mkdirs()){ 
-						try {
-							file.createNewFile();
-						}catch(IOException e) {
-							e.printStackTrace();
+				pimageFileVO.setPi_filetype(pi_filename);
+				MultipartFile mFile = multipartRequest.getFile(pi_filename);
+				
+				//String type = mFile.getContentType();
+				//pimageFileVO.setPi_filetype(type);
+				
+				String originalFileName=mFile.getOriginalFilename();
+				System.out.println(originalFileName);
+				if(!("".equals(originalFileName))) {
+					pimageFileVO.setPi_filename(originalFileName);
+					pfileList.add(pimageFileVO);
+					
+					File file = new File(CURR_IMAGE_REPO_PATH +"\\"+ pi_filename);
+					if(mFile.getSize()!=0){ //File Null Check
+						if(! file.exists()){ 
+							if(file.getParentFile().mkdirs()){ 
+								try {
+									file.createNewFile();
+								}catch(IOException e) {
+									e.printStackTrace();
+								}
+							}
 						}
+	//				mFile.transferTo(file);
+	//				pfileList.add(pimageFileVO);
+						mFile.transferTo(new File(CURR_IMAGE_REPO_PATH +"\\"+"temp"+ "\\"+originalFileName));
 					}
 				}
-				mFile.transferTo(file);
-				pfileList.add(pimageFileVO);
-			}
+			
 		}
 		return pfileList;
 	}
