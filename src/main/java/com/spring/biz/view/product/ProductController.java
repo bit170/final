@@ -98,7 +98,7 @@ public class ProductController extends BaseController {
 			message +=" location.href='"+multipartRequest.getContextPath()+"/getMyCanvas.do';";
 			message +=("</script>");
 			
-			String id = memberVO.getId();
+			String nickname = memberVO.getNickname();
 			System.out.println(id);
 			int alreadyArtist = artistService.alreadyArtist(id);
 			if(alreadyArtist == 0) {
