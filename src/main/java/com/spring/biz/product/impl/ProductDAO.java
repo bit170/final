@@ -55,4 +55,9 @@ public class ProductDAO {
 		return sqlSession.selectList("productDAO.getSearchResult", keyword);
 	}
 
+	public int searchable(String keyword) {
+		System.out.println("productDAO.searchable() 실행");
+		return sqlSession.selectOne("productDAO.searchable", keyword);
+	}
+
 }

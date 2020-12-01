@@ -48,6 +48,10 @@ public class ArtistDAOMybatis {
 		return mybatis.selectList("artistDAO.searchByName", nickname);
 	}
 
+	public int searchable(String keyword) {
+		return mybatis.selectOne("artistDAO.searchable", keyword);
+	}
+
 	
 }
 

@@ -46,6 +46,9 @@
 		select * from product where p_name like '%' || #{keyword} || '%'
 	</select>
 	
+	<select id="searchable" parameterType="String" resultType="Integer">
+		SELECT COUNT(*) FROM PRODUCT WHERE A_ID LIKE '%' || #{nickname} || '%'
+	</select>
 	<!-- <select id="getProductList" parameterType="product" resultMap="ProductList">
 		SELECT * FROM PRODUCT
 	</select>

@@ -13,5 +13,6 @@ public interface ProductService {
 
 	public void addNewProductImage(List pimageFileList) throws Exception;
 	List<ProductVO> searchProduct(String keyword);
+	int searchable(String keyword);
 
 }

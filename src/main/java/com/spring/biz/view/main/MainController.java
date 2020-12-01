@@ -24,6 +24,7 @@ import com.spring.biz.product.ProductVO;
 public class MainController {
 	@Autowired
 	private ProductService productService;
+	@Autowired
 	private ArtistService artistService;
 	
 	public MainController() {
@@ -38,6 +39,14 @@ public class MainController {
 		return "main/index";
 
 	}
+//	@RequestMapping(value = "searchable.do", method = RequestMethod.POST)
+//	public @ResponseBody int search(HttpServletRequest request, Model model) {
+//		System.out.println("ajax -> searchable()");
+//		String keyword = request.getParameter("keyword");
+//		System.out.println("검색어 : "+keyword);
+//		
+//		return artistService.searchable(keyword);
+//	}
 	@RequestMapping(value = "search.do", method = RequestMethod.POST)
 	public void search(HttpServletRequest request, Model model) {
 		System.out.println("ajax -> search()");
@@ -45,14 +54,15 @@ public class MainController {
 		System.out.println("검색어 : "+keyword);
 		try {
 			List<ProductVO> productList = productService.searchProduct(keyword);
+			System.out.println(productList);
 			if(productList!=null) {
 				model.addAttribute("searchProduct", productList);
 			}
 			//productList를 파라미터로 해서 작품 메인이미지리스트 받아와야함.
 			
-			int result = artistService.
-			List<ArtistVO> artistList = artistService.searchByName(keyword);
-			if(artistList != null) {
+			int result = artistService.searchable(keyword);
+			if(result>0) {
+				List<ArtistVO> artistList = artistService.searchByName(keyword);
 				model.addAttribute("searchArtist", artistList);
 			}
 		}catch (Exception e) {

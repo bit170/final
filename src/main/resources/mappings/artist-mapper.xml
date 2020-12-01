@@ -31,6 +31,9 @@
 	<select id="searchByName" parameterType="String" resultType="artist">
 		SELECT * FROM ARTIST WHERE NICKNAME LIKE '%' || #{nickname} || '%'
 	</select>
+	<select id="searchable" parameterType="String" resultType="Integer">
+		SELECT COUNT(*) FROM ARTIST WHERE NICKNAME LIKE '%' || #{nickname} || '%'
+	</select>
 
 </mapper>
 

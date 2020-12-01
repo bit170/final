@@ -49,5 +49,10 @@ public class ArtistServiceImpl implements ArtistService{
 		return artistDAO.searchByName(nickname);
 	}
 
+	@Override
+	public int searchable(String keyword) {
+		return artistDAO.searchable(keyword);
+	}
+
 	
 }

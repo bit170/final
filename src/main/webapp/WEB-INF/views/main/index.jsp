@@ -114,7 +114,23 @@
 					search(keyword);
 				}
 			}
-    		function search(keyword){
+    		/* function search(keyword){
+    			alert("search() 실행");
+    			$.ajax({
+ 					type : 'POST',
+ 					url : '${pageContext.request.contextPath}/searchable.do',
+ 					data : {"keyword" : keyword}
+ 				}).done(function (result) {
+					alert(result);
+					if(result==0){
+						alert("쿼리 결과 : null");
+					}
+					
+				}).fail(function (request,status,error) {
+					alert("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
+				})
+    		} */
+     		function search(keyword){
     			alert("search() 실행");
     			$.ajax({
  					type : 'POST',
@@ -127,7 +143,7 @@
 				}).fail(function (request,status,error) {
 					alert("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
 				})
-    		}
+    		} 
 	    
     </script>
   </head>
