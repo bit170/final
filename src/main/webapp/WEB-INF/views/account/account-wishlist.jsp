@@ -148,7 +148,8 @@
               <div class="entry">
                 <div class="entry-thumb"><a href="작가상세"><img src="resources/img/blog/widget/01.jpg" alt="Post"></a></div>
                 <div class="entry-content">
-                  <h4 class="entry-title"><a href="작가상세"><span class='text-highlighted'>검색어 일치부분</span> 블라블라</a></h4><span class="entry-meta">아이디?</span>
+                  <h4 class="entry-title"><a href="작가상세"><span class='text-highlighted'>검색어 일치부분</span> 블라블라</a></h4>
+                  	<span class="entry-meta">아이디?</span>
                 </div>
               </div>
             </div>
@@ -237,10 +238,10 @@
                   <tr>
                     <th colspan="2">
                       <div class="d-flex justify-content-between align-items-center">Products
-                      <c:if test="${!empty cartList }">
-                      <a class="navi-link text-uppercase" href="getCart.do"><span class="text-xxs">Expand Cart</span><i class="material-icons keyboard_arrow_right"></i></a>
+                      <c:if test="${!empty cartList}">
+                      <a class="navi-link text-uppercase" href="getCart.do"><span class="text-xxs">장바구니 크게 보기</span><i class="material-icons keyboard_arrow_right"></i></a>
                       </c:if>
-                      <c:if test="${empty cartList }">
+                      <c:if test="${empty cartList}">
                       <a class="navi-link text-uppercase" href="getProductList.do"><span class="text-xxs">작품 보러가기</span><i class="material-icons keyboard_arrow_right"></i></a>
                       </c:if>
                       </div>
@@ -248,31 +249,47 @@
                   </tr>
                 </thead>
                 <tbody>
+                    <c:if test="${empty cartList}">
                   <tr>
                     <td>
-                    <c:if test="${empty cartList }">
                    	 장바구니가 비었습니다.
+                    </td>
+                  </tr>
                     </c:if>
-                    <c:if test="${!empty cartList }">
-                      <div class="product-item"><a class="product-thumb" href="getProduct.do"><img src="resources/img/shop/cart/01.jpg" alt="Product"></a>
+                    <c:if test="${!empty cartList}">
+		                <c:forEach var="cart" items="${cartList}">
+                  <tr>
+                    <td>
+                      <div class="product-item">
+                      <a class="product-thumb" href="getProduct.do?p_code=${cart.p_code}">
+                      	  <img src="resources/img/product/5.png" alt="Product"></a>
                         <div class="product-info">
-                          <h4 class="product-title"><a href="getProduct.do">작품이름</a></h4><span><em>Price:</em> 가격</span>
+                          <h4 class="product-title">
+                          	<a href="getProduct.do?p_code=${cart.p_code}">${cart.p_name}</a></h4>
+                          	<span><em>가 격 : </em>₩ <fmt:formatNumber pattern="###,###,###" value="${cart.c_price}" /></span>
                         </div>
                       </div>
                     <!-- 삭제처리는 어떻게? 장바구니 품목을 디비에 저장하지 않으면 리스트형태로 세션이나 어딘가에 보관? 그럼 삭제버튼 클릭시 리스트에서 remove하면 될까? -->
-                    <td class="text-center"><a class="remove-from-cart" href="삭제처리"><i class="material-icons icon_close"></i></a></td>
-                    </c:if>  
                     </td>
+                    <td class="text-center"><a class="remove-from-cart" href="deleteCart.do"><i class="material-icons icon_close"></i></a></td>
                   </tr>
+                    </c:forEach>
+                    </c:if>  
                 </tbody>
               </table>
             </div>
             <!-- 장바구니 합계 -->
             <hr class="mb-3">
             <div class="d-flex flex-wrap justify-content-between align-items-center">
-              <div class="pr-2 py-1 text-sm">Subtotal: <span class='text-dark text-medium'>장바구니 합계 값</span></div>
               <c:if test="${!empty cartList }">
-              <a class="btn btn-sm btn-success mb-0 mr-0" href="checkout.do">Checkout</a>
+              <c:set var = "total" value= "0" />
+		        <c:forEach var="cart" items="${cartList}">
+		        <c:set var = "total" value="${total + cart.c_price}" />
+		      	</c:forEach>
+              <div class="pr-2 py-1 text-sm">합 계 : <span class='text-dark text-medium'>
+              ₩ <fmt:formatNumber pattern="###,###,###" value="${total}" />
+              		<%-- <c:out value='${total}' /> --%></span></div>
+              <a class="btn btn-sm btn-success mb-0 mr-0" href="checkout.do?id=${member.id}">주문하기</a>
               </c:if>
             </div>
           </div>

@@ -277,7 +277,7 @@
 		        <c:set var = "total" value="${total + cart.c_price}" />
 		      	</c:forEach>
               <div class="pr-2 py-1 text-sm">합 계 : <span class='text-dark text-medium'>
-              ₩<fmt:formatNumber pattern="###,###,###" value="${total}" />
+              ₩ <fmt:formatNumber pattern="###,###,###" value="${total}" />
               		<%-- <c:out value='${total}' /> --%></span></div>
               <a class="btn btn-sm btn-success mb-0 mr-0" href="checkout.do?id=${member.id}">주문하기</a>
               </c:if>
@@ -371,7 +371,7 @@
       <div class="shopping-cart-footer">
         <div class="column">
         </div>
-        <div class="column text-lg">총 주문 금액: <span class="text-medium text-dark">0</span></div>
+        <div class="column text-lg">총 주문 금액:₩ <span class="text-medium text-dark">0</span></div>
       </div>
       <div class="shopping-cart-footer">
         <div class="column">
