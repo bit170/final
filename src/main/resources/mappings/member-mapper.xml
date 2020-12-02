@@ -21,7 +21,7 @@
 	</update>
 	
 	<insert id="insertMember" parameterType="member">
-		insert into member values (#{id},#{pwd},#{name},#{phone},#{email},#{nickname})
+		insert into member values (#{id},#{pwd},#{name},#{phone},#{email},#{nickname},sysdate)
 	</insert>
 	
 	<select id="getMember" parameterType="svo" resultType="member">

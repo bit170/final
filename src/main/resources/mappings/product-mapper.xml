@@ -24,7 +24,7 @@
 		]]>
 	</insert>
 	
-	<select id="getSearchResult" parameterType="String" resultMap="productResult">
+	<select id="getSearchResult" parameterType="String" resultType="product">
 		select * from product where p_name like '%' || #{keyword} || '%'
 	</select>
 	

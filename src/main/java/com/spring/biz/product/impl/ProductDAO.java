@@ -66,11 +66,6 @@ public class ProductDAO {
 	}
 
 
-	public List<ProductVO> getMainProduct() {
-		System.out.println("productDAO.getMainProduct()");
-		return mybatis.selectList("productDAO.getMainProduct");
-	}
-
 	public List<ProductVO> getSearchResult(String keyword) {
 		System.out.println("productDAO.getSearchResult()");
 				//작품 이름에 keyword가 포함된 작품객체 리스트로 받아오기
