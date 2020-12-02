@@ -66,6 +66,17 @@ public class ArtistDAOMybatis {
 	public List<ArtistVO> searchByName(String nickname) {
 		return mybatis.selectList("artistDAO.searchByName", nickname);
 	}
+
+
+	public int searchable(String keyword) {
+		return mybatis.selectOne("artistDAO.searchable", keyword);
+	}
+
+	public List<ArtistVO> getMainArtist() {
+		return mybatis.selectList("artistDAO.getMainArtist");
+	}
+
+
 	
 	//작가프사 파일명 받아오기
 	public String searchFilename(String id) {
