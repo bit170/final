@@ -70,4 +70,12 @@ public class ArtistServiceImpl implements ArtistService{
 		return artistDAO.searchFilename(id);
 	}
 
+
+	@Override
+	public List<ArtistVO> getMainArtist() {
+		return artistDAO.getMainArtist();
+	}
+
+	
+
 }
