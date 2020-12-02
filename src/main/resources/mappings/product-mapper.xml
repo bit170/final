@@ -66,9 +66,6 @@
 		SELECT * FROM PRODUCT
 	</select>
 
-	<select id="getMainProduct" resultType="product">
-		select * from product
-	</select>
 
 	<select id="getProduct" resultType="product">
 		select * from product where p_code = #{p_code}

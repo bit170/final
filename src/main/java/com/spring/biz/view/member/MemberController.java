@@ -58,7 +58,7 @@ public class MemberController {
 			return "redirect:main.do";
 		}else {
 			System.out.println("회원가입 실패");
-			return "main/index";
+			return "main.do";
 		}
 	}
 	
@@ -76,7 +76,7 @@ public class MemberController {
 			MemberVO member = memberService.getMember(svo);
 			System.out.println("회원이름 : " + member.getName());
 			model.addAttribute("member", member);
-			return "redirect:main/index";
+			return "redirect:main.do";
 		} else {
 			System.out.println("> 로그인 실패~~~");
 			return "redirect:main.do";

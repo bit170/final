@@ -427,10 +427,11 @@
     <section class="container padding-top-3x padding-bottom-3x">
       <h3 class="text-center mb-30">인기 작가</h3>
       <div class="row">
+      <c:forEach items="${MainArtist}" var="mArtist">
         <div class="col-md-3 col-sm-6 mb-30"><a class="category-card flex-wrap text-center pt-0" href="getArtist.do">
             <div class="category-card-thumb w-100"><img src="resources/img/product/2.png" alt="Category"></div>
             <div class="category-card-info w-100">
-              <h3 class="category-card-title">${artist.a_name}</h3>
+              <h3 class="category-card-title">${mArtist.a_name}</h3>
               <h4 class="category-card-subtitle">뭐가좋을까</h4>
             </div></a></div>
         <!-- <div class="col-md-3 col-sm-6 mb-30"><a class="category-card flex-wrap text-center pt-0" href="shop-boxed-ls.jsp">
@@ -451,6 +452,7 @@
               <h3 class="category-card-title">작가4</h3>
               <h4 class="category-card-subtitle">Starting from $95.99</h4>
             </div></a></div> -->
+      </c:forEach>
       </div>
       <div class="text-center"><a class="btn btn-outline-secondary mb-0" href="getArtistList.do">모든 작가</a></div>
     </section>
