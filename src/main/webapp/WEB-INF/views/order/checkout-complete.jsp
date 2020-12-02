@@ -304,12 +304,12 @@
           <h3 class="card-title mb-4">구매해 주셔서 감사합니다 !</h3>
           <p class="text-sm mb-2">최대한 빠른 시일 내에 작가님이 배송해 드릴 예정입니다.</p>
           <p class="text-sm mb-2"> 주문하신 건에 대한 주문번호는 <span class="text-medium">4836238423<!-- ${ord.o_code} --></span> 입니다 :) </p>
-          <p class="text-sm mb-2"> 이메일로 주문내역을 전송해드렸습니다.
+          <p class="text-sm mb-2"> 마이페이지에서 주문내역을 확인하실 수 있습니다.
           </p>
           <div class="padding-top-1x padding-bottom-1x">
           		<a class="btn btn-outline-secondary" href="shop-boxed-ls.html">계속 쇼핑하기</a>
-          		<a class="btn btn-outline-primary" href="account-order.do">
-          			<i class="material-icons my_location"></i>&nbsp;주문 추적하기</a></div>
+          		<a class="btn btn-outline-primary" href="getOrderList.do">
+          			<i class="material-icons my_location"></i>&nbsp;주문내역 확인</a></div>
         </div>
       </div>
     </div>

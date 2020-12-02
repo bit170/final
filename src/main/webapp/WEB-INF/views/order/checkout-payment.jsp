@@ -361,24 +361,24 @@
           
           <script type="text/javascript">
 
-          		/*  IMP.request_pay({
+          		/* IMP.request_pay({
         	    pg : 'html5_inicis', // version 1.1.0부터 지원.
         	    pay_method : 'card',
         	    merchant_uid : 'merchant_' + new Date().getTime(),
-        	    name : '내가그린그림',
-        	    amount : document.getElementById("total"),
-        	    buyer_email : document.getElementById("email"),
-        	    buyer_name : document.getElementById("name"),
-        	    buyer_tel : document.getElementById("phone"),
-        	    buyer_addr : document.getElementById("address"),
-        	    buyer_postcode : document.getElementById("post"),
+        	    name : '캔버스마켓',
+        	    amount : document.getElementById("total").val(),
+        	    buyer_email : document.getElementById("email").val(),
+        	    buyer_name : document.getElementById("name").val(),
+        	    buyer_tel : document.getElementById("phone").val(),
+        	    buyer_addr : document.getElementById("address").val(),
+        	    buyer_postcode : document.getElementById("post").val(),
         	    m_redirect_url : 'http://192.168.0.222:8080/biz/review.do' */
 
 			    IMP.request_pay({
         	    pg : 'html5_inicis', // version 1.1.0부터 지원.
         	    pay_method : 'card',
         	    merchant_uid : 'merchant_' + new Date().getTime(),
-        	    name : '내가그린그림',
+        	    name : '캔버스 마켓',
         	    amount : 1000,
         	    buyer_email : 'hohohoduck@naver.com',
         	    buyer_name : '곽연희',

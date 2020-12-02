@@ -497,7 +497,7 @@
               <table class="table text-sm mb-0">
                 <tr>
                   <td>총 금액 : </td>
-                  <td class="text-medium">₩ <fmt:formatNumber pattern="###,###,###" value="${product.price}" /></td>
+                  <td class="text-medium">₩ <fmt:formatNumber pattern="###,###,###" value="${total}" /></td>
                 </tr>
                <!--  <tr>
                   <td>배송비 :</td>
@@ -505,7 +505,7 @@
                 </tr> -->
                 <tr>
                   <td></td>
-                  <td class="text-lg text-medium">₩ <fmt:formatNumber pattern="###,###,###" value="${product.price}" /></td>
+                  <td class="text-lg text-medium">₩ <fmt:formatNumber pattern="###,###,###" value="${total}" /></td>
                 </tr>
               </table>
             </section>

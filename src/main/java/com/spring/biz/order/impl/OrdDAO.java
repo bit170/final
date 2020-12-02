@@ -30,4 +30,8 @@ public class OrdDAO {
 	public List<S_OrdVO> getS_OrdList(String o_code){
 		return mybatis.selectList("ordDAO.getS_OrdList", o_code);
 	}
+	
+	public List<OrdVO> getOrdList(String id){
+		return mybatis.selectList("ordDAO.getOrdList", id);
+	}
 }

@@ -42,13 +42,15 @@
       <div class="modal-dialog modal-lg">
         <div class="modal-content">
           <div class="modal-header">
-            <h4 class="modal-title"> 주문 번호 - 34VB5540K83</h4>
+            <h4 class="modal-title"> 주문 번호 - ${order.o_code} </h4>
             <button class="close" type="button" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
           </div>
           <div class="modal-body">
             <div class="table-responsive shopping-cart mb-0">
               <table class="table">
                 <thead>
+                
+                <!-- S_ord forEach문 넣기 -->
                   <tr>
                     <th>작품 이름</th>
                     <th class="text-center">총 금액</th>
@@ -65,33 +67,12 @@
                     </td>
                     <td class="text-center text-lg text-medium">$그림가격</td>
                   </tr>
-                  <tr>
-                    <td>
-                      <div class="product-item"><a class="product-thumb" href="order-tracking.do?p_name="><img src="resources/img/shop/cart/02.jpg" alt="Product"></a>
-                        <div class="product-info">
-                          <h4 class="product-title"><a href="order-tracking.do?p_name=">그림 이름<small>x 2</small></a></h4><span><em>Size:</em> Medium</span><span><em>Color:</em> White</span>
-                        </div>
-                      </div>
-                    </td>
-                    <td class="text-center text-lg text-medium">$그림가격</td>
-                  </tr>
-                  <tr>
-                    <td>
-                      <div class="product-item"><a class="product-thumb" href="order-tracking.do?p_name="><img src="resources/img/shop/cart/03.jpg" alt="Product"></a>
-                        <div class="product-info">
-                          <h4 class="product-title"><a href="order-tracking.do?p_name=">그림 이름<small>x 1</small></a></h4><span><em>Color:</em> Walnut</span><span><em>Accent Color:</em> Turquoise</span>
-                        </div>
-                      </div>
-                    </td>
-                    <td class="text-center text-lg text-medium">$그림가격</td>
-                  </tr>
                 </tbody>
               </table>
             </div>
             <hr class="mb-3">
             <div class="d-flex flex-wrap justify-content-between align-items-center pb-2">
               <div class="px-2 py-1">상품 가격: <span class='text-medium'>$622.40</span></div>
-              <div class="px-2 py-1">배송료: <span class='text-medium'>$35.50</span></div>
               <div class="text-lg px-2 py-1">총 합: <span class='text-medium'>$665.32</span></div>
             </div>
           </div>
@@ -429,54 +410,27 @@
 							</tr>
 						</thead>
 						<tbody>
+						<!-- ord forEach문 넣기 -->
+							<c:if test="${!empty orderList}">
+							<c:forEach items="${orderList}" var="order">
 							<tr>
-								<td class="align-middle"><a class="text-medium navi-link"
-									href="#" data-toggle="modal" data-target="#orderDetails">78A643CD409</a></td>
-								<td class="align-middle">August 08, 2017</td>
-								<td class="align-middle"><span
-									class="d-inline-block bg-danger text-white text-xs p-1">취소완료</span></td>
-								<td class="align-middle"><span class="text-medium">$760.50</span></td>
+								<td class="align-middle">
+								<a class="text-medium navi-link" href="#" data-toggle="modal" data-target="#orderDetails">
+									${order.o_code}</a></td>
+								<td class="align-middle">${order.o_date}</td>
+								<td class="align-middle">
+								<span class="d-inline-block bg-info text-white text-xs p-1">배송 준비중</span></td>
+								<td class="align-middle"><span class="text-medium"> ${order.total} </span></td>
 							</tr>
+							</c:forEach>
+							</c:if>
+							<c:if test="${empty orderList}">
 							<tr>
-								<td class="align-middle"><a class="text-medium navi-link"
-									href="#" data-toggle="modal" data-target="#orderDetails">34VB5540K83</a></td>
-								<td class="align-middle">July 21, 2017</td>
-								<td class="align-middle"><span
-									class="d-inline-block bg-info text-white text-xs p-1">배송 준비중</span></td>
-								<td class="align-middle"><span class="text-medium">$665.32</span></td>
+								<td class="align-middle">
+									<h4>주문하신 목록이 없습니다.</h4>
+								</td>
 							</tr>
-							<tr>
-								<td class="align-middle"><a class="text-medium navi-link"
-									href="#" data-toggle="modal" data-target="#orderDetails">112P45A90V2</a></td>
-								<td class="align-middle">June 15, 2017</td>
-								<td class="align-middle"><span
-									class="d-inline-block bg-warning text-white text-xs p-1">배송지연</span></td>
-								<td class="align-middle"><span class="text-medium">$1,264.00</span></td>
-							</tr>
-							<tr>
-								<td class="align-middle"><a class="text-medium navi-link"
-									href="#" data-toggle="modal" data-target="#orderDetails">28BA67U0981</a></td>
-								<td class="align-middle">May 19, 2017</td>
-								<td class="align-middle"><span
-									class="d-inline-block bg-success text-white text-xs p-1">배송완료!</span></td>
-								<td class="align-middle"><span class="text-medium">$198.35</span></td>
-							</tr>
-							<tr>
-								<td class="align-middle"><a class="text-medium navi-link"
-									href="#" data-toggle="modal" data-target="#orderDetails">502TR872W2</a></td>
-								<td class="align-middle">April 04, 2017</td>
-								<td class="align-middle"><span
-									class="d-inline-block bg-success text-white text-xs p-1">배송완료!</span></td>
-								<td class="align-middle"><span class="text-medium">$2,133.90</span></td>
-							</tr>
-							<tr>
-								<td class="align-middle"><a class="text-medium navi-link"
-									href="#" data-toggle="modal" data-target="#orderDetails">47H76G09F33</a></td>
-								<td class="align-middle">March 30, 2017</td>
-								<td class="align-middle"><span
-									class="d-inline-block bg-success text-white text-xs p-1">배송완료!</span></td>
-								<td class="align-middle"><span class="text-medium">$86.40</span></td>
-							</tr>
+							</c:if>
 						</tbody>
 					</table>
 				</div>

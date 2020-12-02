@@ -6,7 +6,7 @@
 <html lang="en">
   <head>
     <meta charset="utf-8">
-    <title>체크아웃 - 주문확인
+    <title>체크아웃 - 결제확인
     </title>
     <!-- SEO Meta Tags-->
     <meta name="description" content="Unishop - Universal E-Commerce Template">
@@ -310,7 +310,7 @@
               <h4 class="step-title"><i class="material-icons check_circle"></i>2. 결제</h4></a>
             <a class="step active" href="review.do">
               <h4 class="step-title"><i class="material-icons check_circle"></i>3. 리뷰</h4></a></div>
-          <h4>주문을 확인해주세요 !</h4>
+          <h4>결제를 확인해주세요 !</h4>
           <hr class="padding-bottom-1x">
           <div class="table-responsive shopping-cart mb-0">
             <table class="table">
@@ -324,9 +324,7 @@
               <tbody>
               
               <c:if test="${!empty cartList}">
-              	<c:set var = "total" value= "0" />
 		        <c:forEach var="cart" items="${cartList}">
-		        <c:set var = "total" value="${total + cart.c_price}" />
                 <tr>
                   <td>
                     <div class="product-item">

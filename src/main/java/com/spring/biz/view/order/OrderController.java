@@ -2,6 +2,7 @@ package com.spring.biz.view.order;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 
 import javax.servlet.http.HttpSession;
 
@@ -18,6 +19,7 @@ import com.spring.biz.address.AddressVO;
 import com.spring.biz.member.MemberVO;
 import com.spring.biz.order.CartVO;
 import com.spring.biz.order.OrdService;
+import com.spring.biz.order.OrdVO;
 import com.spring.biz.product.ProductVO;
 
 @Controller
@@ -82,6 +84,14 @@ public class OrderController {
 				for (CartVO cart : cartList) {
 					System.out.println(index++ + "번째 장바구니 작품정보 : " + cart);
 				}
+				
+				int total = 0;
+				for (CartVO cart : cartList) {
+					total = cart.getc_price() + total;
+				}
+				System.out.println("total : " + total);
+				sess.setAttribute("total", total);
+				
 				model.addAttribute("cartList", cartList);
 			} else if (pvo == null) {
 				System.out.println("해당 작품이 존재하지 않습니다.");
@@ -143,22 +153,69 @@ public class OrderController {
 	@RequestMapping("/getPayment.do")
 	public String getPayment(HttpSession session, Model model) {
 
-		if ((List<CartVO>) session.getAttribute("cartList") != null) {
-			System.out.println("cart의 값 true");
-			List<CartVO> cartList = (List<CartVO>) session.getAttribute("cartList");
-			int total = 0;
-			for (CartVO cart : cartList) {
-				total = cart.getc_price() + total;
-			}
-			System.out.println("total : " + total);
-			session.setAttribute("total", total);
-			
 			AddressVO avo = (AddressVO) session.getAttribute("address");
 			System.out.println("주소확인 : " + avo.getAddress());
 			System.out.println("우편번호 확인 : " + avo.getPost());
-		}
 
 		return "order/checkout-payment";
+	}
+	
+	
+	@RequestMapping("/review.do")
+	public String getReview(HttpSession session, Model model) {
+		
+		
+		if ((List<CartVO>) session.getAttribute("cartList") != null) {
+			System.out.println("cart값 true ");
+			
+			MemberVO mvo = (MemberVO) session.getAttribute("member");
+//			String total = (String) session.getAttribute("total");
+			OrdVO ovo = new OrdVO();
+			ovo.setId(mvo.getId());
+			ovo.setO_code(randomNum(6));
+			ovo.setTotal("300000");
+			
+			ordService.insertOrd(ovo);
+			System.out.println(">> ordVO : " + ovo);
+			
+//			S_Ord table insert 하기
+//			List<CartVO> cartList = (List<CartVO>) session.getAttribute("cartList");
+//			
+////			카트에서 p_code 받아오기
+//			String[] p_codes = new String[cartList.size()];
+//				for(CartVO cvo : cartList) {
+//					int i = 0;
+//					p_codes[i]= cvo.getP_code();
+//					i++;
+//				}
+//				
+//				OrdVO ovo = new OrdVO();
+////				ord 테이블에 추가
+//				for(String p_code : p_codes) {
+////					ovo.set
+//				}
+			
+		}
+		return "order/checkout-review";
+	}
+	
+	@RequestMapping("/complete.do")
+	public String complete() {
+		return "order/checkout-complete";
+	}
+	
+	// o_code 랜덤키 생성을 위한 메서드 (연희) (파라미터에 원하는 자릿수 넣기)
+	public static String randomNum(int len) {
+		
+		Random rand = new Random();
+		String numStr = "";
+		
+		for(int i=0; i<len; i++) {
+			String ran = Integer.toString(rand.nextInt(10));
+			numStr += ran;
+			
+		}
+		return numStr;
 	}
 
 }

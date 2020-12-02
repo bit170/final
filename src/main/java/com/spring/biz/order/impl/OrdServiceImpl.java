@@ -33,5 +33,10 @@ public class OrdServiceImpl implements OrdService{
 	public List<S_OrdVO> getS_OrdList(String o_code) {
 		return ordDAO.getS_OrdList(o_code);
 	}
+
+	@Override
+	public List<OrdVO> getOrdList(String id) {
+		return ordDAO.getOrdList(id);
+	}
 	
 }
