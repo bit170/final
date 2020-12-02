@@ -85,7 +85,7 @@
 	</select>
 	
 	
-	<select id="getMainProduct" resultMap="ProductList">
+	<select id="getMainProduct" resultType="product">
 		<![CDATA[
 		select * from product where p_code in( 
         		select p_code from
