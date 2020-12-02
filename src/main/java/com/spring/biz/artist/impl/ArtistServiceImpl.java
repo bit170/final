@@ -46,13 +46,13 @@ public class ArtistServiceImpl implements ArtistService{
 //	}
 
 	@Override
-	public int alreadyArtist(String id) {
-		return artistDAO.alreadyArtist(id);
+	public int alreadyArtist(String a_id) {
+		return artistDAO.alreadyArtist(a_id);
 	}
 	
 	@Override
-	public ArtistVO getArtist(String id) {
-		return artistDAO.getArtist(id);
+	public ArtistVO getArtist(String a_id) {
+		return artistDAO.getArtist(a_id);
 	}
 
 	@Override
@@ -66,10 +66,9 @@ public class ArtistServiceImpl implements ArtistService{
 	}
 
 	@Override
-	public String searchFilename(String id) {
-		return artistDAO.searchFilename(id);
+	public String searchFilename(String a_id) {
+		return artistDAO.searchFilename(a_id);
 	}
-
 
 	@Override
 	public List<ArtistVO> getMainArtist() {
@@ -81,7 +80,5 @@ public class ArtistServiceImpl implements ArtistService{
 		// TODO Auto-generated method stub
 		return 0;
 	}
-
-	
 
 }
