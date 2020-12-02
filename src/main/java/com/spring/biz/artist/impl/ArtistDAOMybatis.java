@@ -3,11 +3,14 @@ package com.spring.biz.artist.impl;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.DataAccessException;
 import org.springframework.stereotype.Repository;
 
+import com.spring.biz.artist.AImageFileVO;
 import com.spring.biz.artist.ArtistVO;
 
 @Repository
@@ -20,28 +23,36 @@ public class ArtistDAOMybatis {
 		System.out.println("~~~ ArtistDAOMybatis() 객체 생성 ~~~");
 	}
 	
-	//작가등록
-	public void insertArtist(HashMap<String,Object> idNickname) {
+	//작가등록(작품게시 시,아이디&닉네임)
+	public void insertArtist(HashMap idNickname) {
 		mybatis.insert("artistDAO.insertArtist", idNickname);
 	}
 	
-	//작가수정
-	public void updateArtist(ArtistVO vo) {
-		mybatis.update("artistDAO.updateArtist", vo);
+	//작가소개 수정
+	public void addArtistInfo(Map newArtistMap) throws DataAccessException{
+		mybatis.update("artistDAO.addArtistInfo", newArtistMap);
+	}
+	
+	//작가프사 수정
+	public void insertAImageFile(List afileList) throws DataAccessException{
+		for(int i=0; i<afileList.size(); i++) {
+			AImageFileVO aimageFileVO = (AImageFileVO)afileList.get(i);
+			System.out.println(aimageFileVO);
+			mybatis.insert("artistDAO.insertAImageFile", aimageFileVO);
+		}
 	}
 	
 	//작가삭제
-	public void deleteArtist(ArtistVO vo) {
-		mybatis.delete("artistDAO.deleteArtist", vo);
-	}
+//	public void deleteArtist(ArtistVO vo) {
+//		mybatis.delete("artistDAO.deleteArtist", vo);
+//	}
 	
 	//작가 테이블에 존재여부 확인
 	public int alreadyArtist(String id) {
 		return mybatis.selectOne("artistDAO.alreadyArtist", id);
-		
 	}
 	
-	//작가조회(하나)
+	//작가조회(한 명)
 	public ArtistVO getArtist(String id) {
 		return mybatis.selectOne("artistDAO.getArtist", id);
 	}
@@ -51,15 +62,16 @@ public class ArtistDAOMybatis {
 		return mybatis.selectList("artistDAO.getArtistList");
 	}
 
+	//작가검색(닉네임)
 	public List<ArtistVO> searchByName(String nickname) {
 		return mybatis.selectList("artistDAO.searchByName", nickname);
 	}
-
-	public int searchable(String keyword) {
-		return mybatis.selectOne("artistDAO.searchable", keyword);
-	}
-
 	
+	//작가프사 파일명 받아오기
+	public String searchFilename(String id) {
+		String aiCode = mybatis.selectOne("artistDAO.searchAiCode", id);
+		return mybatis.selectOne("artistDAO.getFilename", aiCode);
+	}
 }
 
 
