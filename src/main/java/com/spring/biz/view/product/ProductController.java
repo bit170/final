@@ -70,6 +70,9 @@ public class ProductController extends BaseController {
 		String id = memberVO.getId();
 		System.out.println(id);
 		
+		newProductMap.put("id", id);
+
+		
 		List<PImageFileVO> pimageFileList = upload(multipartRequest);
 		//System.out.println(pimageFileList.size());	//확인용
 		
