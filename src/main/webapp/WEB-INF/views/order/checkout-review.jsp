@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8" isELIgnored="false"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -290,7 +291,7 @@
       <div class="container">
         <h1>체크아웃</h1>
         <ul class="breadcrumbs">
-          <li><a href="index.html">Home</a>
+          <li><a href="main.do">Home</a>
           </li>
           <li class="separator">&nbsp;/&nbsp;</li>
           <li>Checkout - Review</li>
@@ -321,22 +322,35 @@
                 </tr>
               </thead>
               <tbody>
+              
+              <c:if test="${!empty cartList}">
+              	<c:set var = "total" value= "0" />
+		        <c:forEach var="cart" items="${cartList}">
+		        <c:set var = "total" value="${total + cart.c_price}" />
                 <tr>
                   <td>
-                    <div class="product-item"><a class="product-thumb" href="shop-single.html"><img src="resouces/img/shop/cart/01.jpg" alt="Product"></a>
+                    <div class="product-item">
+                    	<a class="product-thumb" href="getProduct.do?p_code=${cart.p_code}">
+                    	<img src="resouces/img/product/5.png" alt="Product"></a>
                       <div class="product-info">
-                        <h4 class="product-title"><a href="shop-single.html">3-Drawer File Cabinet<small>x 1</small></a></h4><span><em>Color:</em> Aqua</span><span><em>Accent Color:</em> White</span>
+                        <h4 class="product-title">
+                        	<a href="getProduct.do?p_code=${cart.p_code}">${cart.p_name}<small>x 1</small></a></h4>
+							<!-- product ? or cartList에 넣어야할까 ? 아니면 비워둘까 -->
+							<%-- <span><em>카테고리:</em> ${product.p_category}</span>
+                    		<span><em>작가:</em> ${product.a_id}</span> --%>
                       </div>
                     </div>
                   </td>
-                  <td class="text-center text-lg text-medium">$257.00</td>
+                  <td class="text-center text-lg text-medium" id="c_price"></td>
                   <td class="text-center"><a class="btn btn-outline-secondary btn-sm" href="cart.do">변경</a></td>
                 </tr>
+                </c:forEach>
+                </c:if>
               </tbody>
             </table>
           </div>
           <hr class="padding-bottom-1x">
-          <div class="text-right padding-bottom-1x">합 계l: <span class='text-medium text-dark'>$622.40</span></div>
+          <div class="text-right padding-bottom-1x">합 계: <span class='text-medium text-dark'>₩ <fmt:formatNumber pattern="###,###,###" value="${total}" /></span></div>
           <div class="row padding-top-1x mt-3 mb-4">
             <div class="col-sm-6">
               <h5>받으시는 분 :</h5>
@@ -349,7 +363,7 @@
             <div class="col-sm-6">
               <h5>지불방법:</h5>
               <ul class="list-unstyled text-sm">
-                <li><span class='text-muted'>신용카드:</span> **** **** **** 5300</li>
+                <li><span class='text-muted'>KG 이니시스 </span> </li>
               </ul>
             </div>
           </div>
@@ -366,8 +380,8 @@
               <h3 class="widget-title">주문 요약</h3>
               <table class="table text-sm mb-0">
                 <tr>
-                  <td>Cart Subtotal:</td>
-                  <td class="text-medium">$622.40</td>
+                  <td>장바구니 총 합계:</td>
+                  <td class="text-medium">₩ <fmt:formatNumber pattern="###,###,###" value="${total}" /></td>
                 </tr>
                <!--  <tr>
                   <td>Shipping:</td>
@@ -375,41 +389,10 @@
                 </tr>   -->
                 <tr>
                   <td></td>
-                  <td class="text-lg text-medium">$665.32</td>
+                  <td class="text-lg text-medium">₩ <fmt:formatNumber pattern="###,###,###" value="${total}" /></td>
                 </tr>
               </table>
             </section>
-            <!-- Featured Products Widget-->
-            <section class="widget widget-featured-products border-0">
-              <h3 class="widget-title">Recently Viewed</h3>
-              <!-- Entry-->
-              <div class="entry">
-                <div class="entry-thumb"><a href="shop-single.html"><img src="resouces/img/shop/widget/01.png" alt="Product"></a></div>
-                <div class="entry-content">
-                  <h4 class="entry-title"><a href="shop-single.html">Max Task Chair</a></h4><span class="entry-meta">$299.00</span>
-                </div>
-              </div>
-              <!-- Entry-->
-              <div class="entry">
-                <div class="entry-thumb"><a href="shop-single.html"><img src="resouces/img/shop/widget/02.png" alt="Product"></a></div>
-                <div class="entry-content">
-                  <h4 class="entry-title"><a href="shop-single.html">Drawer File Cabinet</a></h4><span class="entry-meta">$265.00</span>
-                </div>
-              </div>
-              <!-- Entry-->
-              <div class="entry">
-                <div class="entry-thumb"><a href="shop-single.html"><img src="resouces/img/shop/widget/03.png" alt="Product"></a></div>
-                <div class="entry-content">
-                  <h4 class="entry-title"><a href="shop-single.html">Campfire Paper Table</a></h4><span class="entry-meta">$570.00</span>
-                </div>
-              </div>
-            </section>
-            <!-- Promo Banner-->
-           <!--  <div class="fw-section mt-1 px-4 py-5 text-center" style="background-image: url(img/banners/alert-bg.jpg);">
-              <h3 class="text-white">Check our <br>
-              <span class='text-bold'>Latest Offers.</span><br> Save up to <span class='text-bold'>50%</span></h3>
-              <a class="btn btn-primary btn-sm" href="#">View Offers</a>
-            </div> -->
           </aside>
         </div>
       </div>

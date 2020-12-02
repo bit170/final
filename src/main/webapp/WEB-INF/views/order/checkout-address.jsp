@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8" isELIgnored="false" %>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -496,7 +497,7 @@
               <table class="table text-sm mb-0">
                 <tr>
                   <td>총 금액 : </td>
-                  <td class="text-medium">₩${product.price}</td>
+                  <td class="text-medium">₩ <fmt:formatNumber pattern="###,###,###" value="${product.price}" /></td>
                 </tr>
                <!--  <tr>
                   <td>배송비 :</td>
@@ -504,7 +505,7 @@
                 </tr> -->
                 <tr>
                   <td></td>
-                  <td class="text-lg text-medium">₩${product.price}</td>
+                  <td class="text-lg text-medium">₩ <fmt:formatNumber pattern="###,###,###" value="${product.price}" /></td>
                 </tr>
               </table>
             </section>

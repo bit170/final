@@ -14,12 +14,28 @@
 		<org.aspectj-version>1.6.10</org.aspectj-version>
 		<org.slf4j-version>1.6.6</org.slf4j-version>
 	</properties>
+
+		<!-- 결제 api (연희) -->
+	<repositories>
+		<repository>
+			<id>jitpack.io</id>
+			<url>https://jitpack.io</url>
+		</repository>
+	</repositories>
+
 	<dependencies>
-	<!-- jquery (연희) -->
+		<!-- 결제 api (연희) -->
 		<dependency>
-		    <groupId>org.webjars</groupId>
-		    <artifactId>jquery</artifactId>
-		    <version>2.2.4</version>
+			<groupId>com.github.iamport</groupId>
+			<artifactId>iamport-rest-client-java</artifactId>
+			<version>0.2.12</version>
+		</dependency>
+
+		<!-- jquery (연희) -->
+		<dependency>
+			<groupId>org.webjars</groupId>
+			<artifactId>jquery</artifactId>
+			<version>2.2.4</version>
 		</dependency>
 		<!-- tiles-jsp (연희) -->
 		<dependency>
@@ -194,22 +210,22 @@
 			<artifactId>thumbnailator</artifactId>
 			<version>0.4.8</version>
 		</dependency>
-		
+
 		<!-- 파일 업로드하기 -->
-		<dependency> 
-			<groupId>commons-fileupload</groupId> 
-			<artifactId>commons-fileupload</artifactId> 
-			<version>1.3.2</version> 
+		<dependency>
+			<groupId>commons-fileupload</groupId>
+			<artifactId>commons-fileupload</artifactId>
+			<version>1.3.2</version>
 		</dependency>
 		<dependency>
-	         <groupId>commons-io</groupId>
-	         <artifactId>commons-io</artifactId>
-	         <version>2.4</version>
-       </dependency>
-		<dependency> 
-			<groupId>org.imgscalr</groupId> 
-			<artifactId>imgscalr-lib</artifactId> 
-			<version>4.2</version> 
+			<groupId>commons-io</groupId>
+			<artifactId>commons-io</artifactId>
+			<version>2.4</version>
+		</dependency>
+		<dependency>
+			<groupId>org.imgscalr</groupId>
+			<artifactId>imgscalr-lib</artifactId>
+			<version>4.2</version>
 		</dependency>
 
 		<!-- Test -->

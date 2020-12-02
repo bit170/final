@@ -364,7 +364,7 @@
         	<!-- <a class="btn btn-primary" href="#" data-toast data-toast-type="성공!" 
         		data-toast-position="topRight" data-toast-icon="icon-circle-check" 
         		data-toast-title="장바구니" data-toast-message="수정이 완료되었습니다!">카트 업데이트</a> -->
-       		<a class="btn btn-success" href="getAddress.do?id=${member.id}">주문하기</a></div>
+       		<a class="btn btn-success" href="checkout.do?id=${member.id}">주문하기</a></div>
       </div>
       </c:if>
         <c:if test="${empty cartList}">
@@ -382,10 +382,10 @@
       </div>
       </c:if>
       <!-- Related Products Carousel-->
-      <h3 class="text-center padding-top-2x mt-2 padding-bottom-1x">이런 상품은 어떠세요 ?</h3>
-      <!-- 제퓸 넘어가는 동작 : Carousel-->
+      <!-- <h3 class="text-center padding-top-2x mt-2 padding-bottom-1x">이런 상품은 어떠세요 ?</h3>
+      제퓸 넘어가는 동작 : Carousel
       <div class="owl-carousel" data-owl-carousel="{ &quot;nav&quot;: false, &quot;dots&quot;: true, &quot;margin&quot;: 30, &quot;responsive&quot;: {&quot;0&quot;:{&quot;items&quot;:1},&quot;576&quot;:{&quot;items&quot;:2},&quot;768&quot;:{&quot;items&quot;:3},&quot;991&quot;:{&quot;items&quot;:4},&quot;1200&quot;:{&quot;items&quot;:4}} }">
-        <!-- Product-->
+        Product
         <div class="product-card">
           <div class="product-card-thumb"> <span class="product-badge text-danger">Sale</span><a class="product-card-link" href="getProduct.do"></a><img src="resources/img/shop/th10.jpg" alt="Product">
             <div class="product-card-buttons">
@@ -400,7 +400,7 @@
             </h4>
           </div>
         </div>
-        <!-- Product-->
+        Product
         <div class="product-card">
           <div class="product-card-thumb"><a class="product-card-link" href="getProduct.do"></a><img src="resources/img/shop/th11.jpg" alt="Product">
             <div class="product-card-buttons">
@@ -413,7 +413,7 @@
             <h4 class="product-card-price">$417.00</h4>
           </div>
         </div>
-        <!-- Product-->
+        Product
         <div class="product-card">
           <div class="product-card-thumb"><span class="product-rating text-warning"><i class="material-icons star"></i><i class="material-icons star"></i><i class="material-icons star"></i><i class="material-icons star"></i><i class="material-icons star_border"></i></span><a class="product-card-link" href="getProduct.do"></a><img src="resources/img/shop/th07.jpg" alt="Product">
             <div class="product-card-buttons">
@@ -426,7 +426,7 @@
             <h4 class="product-card-price">$1099.00</h4>
           </div>
         </div>
-        <!-- Product-->
+        Product
         <div class="product-card">
           <div class="product-card-thumb"><a class="product-card-link" href="getProduct.do"></a><img src="resources/img/shop/th16.jpg" alt="Product">
             <div class="product-card-buttons">
@@ -439,7 +439,7 @@
             <h4 class="product-card-price">$75.00</h4>
           </div>
         </div>
-        <!-- Product-->
+        Product
         <div class="product-card">
           <div class="product-card-thumb"><a class="product-card-link" href="getProduct.do"></a><img src="resources/img/shop/th09.jpg" alt="Product">
             <div class="product-card-buttons">
@@ -452,7 +452,7 @@
             <h4 class="product-card-price">$1087.00</h4>
           </div>
         </div>
-        <!-- Product-->
+        Product
         <div class="product-card mb-30">
           <div class="product-card-thumb"><a class="product-card-link" href="getProduct.do"></a><img src="resources/img/shop/th06.jpg" alt="Product">
             <div class="product-card-buttons">
@@ -466,7 +466,7 @@
           </div>
         </div>
       </div>
-    </div>
+    </div> -->
     <!-- Site Footer-->
   <footer class="site-footer">
       <div class="column text-center">

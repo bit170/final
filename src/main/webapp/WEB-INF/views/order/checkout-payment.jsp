@@ -2,6 +2,7 @@
     pageEncoding="UTF-8" isELIgnored="false" %>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -32,6 +33,9 @@
 			href="<c:url value="resources/css/styles.min.css" />">
     <!-- Modernizr-->
     <script src="resources/js/modernizr.min.js"></script>
+    <script type="text/javascript" src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+	<script type="text/javascript" src="https://service.iamport.kr/js/iamport.payment-1.1.5.js"></script>
+	<!-- <script type="text/javascript" src="https://cdn.iamport.kr/js/iamport.payment-x.y.z.js"></script> -->
   </head>
   <!-- Body-->
   <body>
@@ -296,7 +300,7 @@
       <div class="container">
         <h1>체크아웃 - 결제</h1>
         <ul class="breadcrumbs">
-          <li><a href="index.html">Home</a>
+          <li><a href="main.do">Home</a>
           </li>
           <li class="separator">&nbsp;/&nbsp;</li>
           <li>Checkout - Payment</li>
@@ -307,6 +311,7 @@
     <div class="container padding-bottom-3x mb-2">
       <div class="row">
         <!-- Checkout Adress-->
+<script type="text/javascript"> IMP.init('imp39212394'); </script>
         <div class="col-xl-9 col-lg-8">
           <div class="steps flex-sm-nowrap mb-5">
             <a class="step" href="checkout.do">
@@ -327,58 +332,82 @@
                   <p class="text-sm">사용가능한 카드사:&nbsp;<img class="d-inline-block align-middle" src="resources/img/cards.png" style="width: 187px;" alt="Cerdit Cards"></p>
                   <div class="card-wrapper"></div>
                   <form class="interactive-credit-card row">
-                    <div class="form-group col-sm-6">
-                      <input class="form-control" type="text" name="number" placeholder="Card Number" required>
+                 <!--  <form class="row"> -->
+                    <div class="form-group col-sm-3">
+                      <input class="form-control" type="text" name="name" id="name" placeholder="이름" value="${member.name}" required>
                     </div>
                     <div class="form-group col-sm-6">
-                      <input class="form-control" type="text" name="name" placeholder="Full Name" required>
+                      <input class="form-control" type="text" name="email" id="email" placeholder="이메일" value="${member.email}" required>
+                    </div>
+                    <div class="form-group col-sm-6">
+                      <input class="form-control" type="text" name="phone" id="phone" placeholder="전화번호" value="${member.phone}" required>
+                    </div>
+                    <div class="form-group col-sm-6">
+                      <input class="form-control" type="text" name="address" id="address" 
+                      		placeholder="주소" value="${address.address}" required>
                     </div>
                     <div class="form-group col-sm-3">
-                      <input class="form-control" type="text" name="expiry" placeholder="MM/YY" required>
+                      <input class="form-control" type="text" name="post" id="post" 
+                      		placeholder="우편번호" value="${address.post}" required>
                     </div>
-                    <div class="form-group col-sm-3">
-                      <input class="form-control" type="text" name="cvc" placeholder="CVC" required>
-                    </div>
-                    <div class="col-sm-6">
-                      <button class="btn btn-outline-primary btn-block margin-top-none" type="submit">결제하기</button>
+                    <div class="col-sm-3">
+                      <button class="btn btn-outline-primary btn-block margin-top-none" onclick="IMP.request_pay()">결제하기</button>
                     </div>
                   </form>
                 </div>
               </div>
             </div>
-            <div class="card">
-              <div class="card-header" role="tab">
-                <h6><a class="collapsed" href="#paypal" data-toggle="collapse"><!-- <i class="socicon-paypal"></i> -->
-                		카카오페이로 결제</a></h6>
-              </div>
-              <div class="collapse" id="paypal" data-parent="#accordion" role="tabpanel">
-                <div class="card-body">
-                  <p class="text-sm">카카오페이로 결제하기</p>
-                      <img src="resources/payment_icon_yellow_small.png" alt="kakaopay">
-                  <form class="row" method="post">
-                    <div class="col-sm-6">
-                      <div class="form-group">
-                        <input class="form-control" type="email" placeholder="카카오톡 아이디" required>
-                      </div>
-                    </div>
-                    <div class="col-sm-6">
-                      <div class="form-group">
-                        <input class="form-control" type="password" placeholder="" required>
-                      </div>
-                    </div>
-                    <div class="col-sm-6">
-                        <button class="btn btn-outline-primary margin-top-none" type="submit">결제하기</button>
-                    </div>
-                  </form>
-                </div>
-              </div>
-            </div>
-
           </div>
-          <div class="d-flex justify-content-between pt-4 mt-2"><a class="btn btn-outline-secondary m-0" href="checkout.do">뒤로가기</a>
+          
+          <script type="text/javascript">
+
+          		/*  IMP.request_pay({
+        	    pg : 'html5_inicis', // version 1.1.0부터 지원.
+        	    pay_method : 'card',
+        	    merchant_uid : 'merchant_' + new Date().getTime(),
+        	    name : '내가그린그림',
+        	    amount : document.getElementById("total"),
+        	    buyer_email : document.getElementById("email"),
+        	    buyer_name : document.getElementById("name"),
+        	    buyer_tel : document.getElementById("phone"),
+        	    buyer_addr : document.getElementById("address"),
+        	    buyer_postcode : document.getElementById("post"),
+        	    m_redirect_url : 'http://192.168.0.222:8080/biz/review.do' */
+
+			    IMP.request_pay({
+        	    pg : 'html5_inicis', // version 1.1.0부터 지원.
+        	    pay_method : 'card',
+        	    merchant_uid : 'merchant_' + new Date().getTime(),
+        	    name : '내가그린그림',
+        	    amount : 1000,
+        	    buyer_email : 'hohohoduck@naver.com',
+        	    buyer_name : '곽연희',
+        	    buyer_tel : '010-7276-8912',
+        	    buyer_addr : '주소',
+        	    buyer_postcode : '11111',
+        	    m_redirect_url : 'http://192.168.0.222:8080/biz/review.do'
+        	}, function(rsp) {
+        	    if ( rsp.success ) {
+        	        var msg = '결제가 완료되었습니다.';
+        	       /*  msg += '고유ID : ' + rsp.imp_uid;
+        	        msg += '상점 거래ID : ' + rsp.merchant_uid;
+        	        msg += '결제 금액 : ' + rsp.paid_amount;
+        	        msg += '카드 승인번호 : ' + rsp.apply_num; */
+        	        msg += '계속하기 버튼을 클릭해 주문을 확인해주세요 ~!'
+        	    } else {
+        	        var msg = '결제에 실패하였습니다.';
+        	        msg += '에러내용 : ' + rsp.error_msg;
+        	    }
+        	    alert(msg);
+        	});
+          
+          </script>
+          
+          <div class="d-flex justify-content-between pt-4 mt-2"><a class="btn btn-outline-secondary m-0" href="checkout.do?id=${member.id}">뒤로가기</a>
           <a class="btn btn-primary m-0" href="review.do">계속하기</a></div>
         </div>
-        <!-- Sidebar          -->
+        <!-- Sidebar -->
+        <!-- 결제 페이지 내 사이드 바 -->
         <div class="col-xl-3 col-lg-4">
           <aside class="sidebar">
             <div class="padding-top-2x hidden-lg-up"></div>
@@ -388,7 +417,8 @@
               <table class="table text-sm mb-0">
                 <tr>
                   <td>주문 금액:</td>
-                  <td class="text-medium">₩ <fmt:formatNumber pattern="###,###,###" value="${product.price}" /></td>
+                  <td class="text-medium">₩ <fmt:formatNumber pattern="###,###,###" value="${total}" /></td>
+                  <input type="hidden" id="total" value="${total}">
                 </tr>
                <!--  <tr>
                   <td>Shipping:</td>
@@ -396,40 +426,10 @@
                 </tr> -->
                 <tr>
                   <td></td>
-                  <td class="text-lg text-medium">₩ <fmt:formatNumber pattern="###,###,###" value="${product.price}" /></td>
+                  <td class="text-lg text-medium">₩ <fmt:formatNumber pattern="###,###,###" value="${total}" /></td>
                 </tr>
               </table>
             </section>
-            <!-- Featured Products Widget-->
-            <section class="widget widget-featured-products border-0">
-              <h3 class="widget-title">최근 본 상품</h3>
-              <!-- Entry-->
-              <div class="entry">
-                <div class="entry-thumb"><a href="shop-single.html"><img src="resources/img/shop/widget/01.png" alt="Product"></a></div>
-                <div class="entry-content">
-                  <h4 class="entry-title"><a href="shop-single.html">Max Task Chair</a></h4><span class="entry-meta">$299.00</span>
-                </div>
-              </div>
-              <!-- Entry-->
-              <div class="entry">
-                <div class="entry-thumb"><a href="shop-single.html"><img src="resources/img/shop/widget/02.png" alt="Product"></a></div>
-                <div class="entry-content">
-                  <h4 class="entry-title"><a href="shop-single.html">Drawer File Cabinet</a></h4><span class="entry-meta">$265.00</span>
-                </div>
-              </div>
-              <!-- Entry-->
-              <div class="entry">
-                <div class="entry-thumb"><a href="shop-single.html"><img src="resources/img/shop/widget/03.png" alt="Product"></a></div>
-                <div class="entry-content">
-                  <h4 class="entry-title"><a href="shop-single.html">Campfire Paper Table</a></h4><span class="entry-meta">$570.00</span>
-                </div>
-              </div>
-            </section>
-            <!-- Promo Banner-->
-           <!--  <div class="fw-section mt-1 px-4 py-5 text-center" style="background-image: url(img/banners/alert-bg.jpg);">
-              <h3 class="text-white">Check our <br><span class='text-bold'>Latest Offers.</span><br> Save up to <span class='text-bold'>50%</span></h3>
-              <a class="btn btn-primary btn-sm" href="#">View Offers</a>
-            </div> -->
           </aside>
         </div>
       </div>

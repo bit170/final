@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="ordDAO">
+
+	<insert id="insertOrd" parameterType="ord">
+		INSERT INTO ORD VALUES (#{o_code}, #{id}, #{a_id}, sysdate)
+	</insert>
+	
+	<insert id="insertS_Ord" parameterType="sOrd">
+		INSERT INTO S_ORD VALUES (#{o_code}, #{p_code})
+	</insert>
+	
+	<select id="getS_OrdList" resultType="sOrd">
+		SELECT * FROM S_ORD WHERE O_CODE = #{o_code}
+	</select>
+
+	
+
+</mapper>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
