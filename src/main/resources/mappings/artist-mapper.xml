@@ -3,13 +3,38 @@
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="artistDAO">
-	<resultMap type="artist" id="artistList"/>
- 	<insert id="insertArtist" parameterType="artist">
-		INSERT INTO ARTIST (ID, NICKNAME, A_DETAIL, A_IMG)
-		VALUES #{id}, #{nickname}, #{a_detail}, #{a_img}
+
+<!-- resultMap 정의 -->
+	<resultMap id="aimageResult" type="aimage">
+		<result property="id" column="id" />
+		<result property="ai_filename" column="ai_filename" />
+		<result property="ai_code" column="ai_code" />
+	</resultMap>
+
+	<insert id="insertArtist" parameterType="hashmap">
+		INSERT INTO ARTIST (ID, NICKNAME)
+		VALUES (#{id}, #{nickname})
 	</insert>
 	
- <update id="updateArtist" parameterType="artist">
+	<update id="addArtistInfo" parameterType="java.util.Map">
+	<![CDATA[
+			UPDATE ARTIST 
+			SET A_DETAIL = #{a_detail}
+			WHERE ID = #{id}
+		]]>
+	</update>
+	
+	<insert id="insertAImageFile" parameterType="aimage">
+		<selectKey resultType="String" keyProperty="ai_code" order="BEFORE">
+			select seq_ai_code.nextval from dual
+		</selectKey>
+		<![CDATA[
+			INSERT INTO A_IMAGE (ID, AI_FILENAME, AI_CODE)
+			VALUES (#{id}, #{ai_filename}, #{ai_code})
+		]]>
+	</insert>
+	
+<!-- <update id="updateArtist" parameterType="artist">
 		UPDATE ARTIST
 		SET A_DETAIL = #{a_detail}, A_IMG = #{a_img}
 		WHERE ID = #{id}
@@ -17,7 +42,7 @@
 	
 	<delete id="deleteArtist" parameterType="artist">
 		DELETE FROM ARTIST WHERE ID = #{id}
-	</delete> 
+	</delete> -->
 	
 	<select id="alreadyArtist" parameterType="String" resultType="Integer">
 		SELECT COUNT(*) FROM ARTIST WHERE ID = #{id}
@@ -34,10 +59,7 @@
 	<select id="searchByName" parameterType="String" resultType="artist">
 		SELECT * FROM ARTIST WHERE NICKNAME LIKE '%' || #{nickname} || '%'
 	</select>
-	<select id="searchable" parameterType="String" resultType="Integer">
-		SELECT COUNT(*) FROM ARTIST WHERE NICKNAME LIKE '%' || #{nickname} || '%'
-	</select>
-	
+
 	<select id="getMainArtist" resultType="artist">
 	<![CDATA[
 		select * from artist where id in( 
@@ -48,25 +70,16 @@
 	]]>		           	 
 	</select>
 	
+
+
+	<select id="searchAiCode" parameterType="String" resultType="String">
+		SELECT MAX(AI_CODE) FROM A_IMAGE WHERE ID = #{id}
+	</select>
+	
+	<select id="getFilename" parameterType="String" resultType="String">
+		SELECT AI_FILENAME FROM A_IMAGE WHERE AI_CODE = #{aiCode}
+	</select>
+
 </mapper>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 

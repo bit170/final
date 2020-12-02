@@ -332,7 +332,7 @@
         <c:forEach var="item" items="${artistList}">    
         <div class="col-xl-3 col-lg-4 col-sm-6">
           <div class="product-card mb-30">
-            <div class="product-card-thumb"><a class="product-card-link" href="getArtist.do?id=${item.id }"></a><img src="resources/img/shop/ARTIST1.jpg" alt="Product">
+            <div class="product-card-thumb"><a class="product-card-link" href="getArtist.do?id=${item.id }"></a><img src="<c:url value='/aThumbnails.do?id=${item.id }' />" alt="Image" alt="Product">
               <div class="product-card-buttons">
                 <!-- <button class="btn btn-white btn-sm btn-wishlist" data-toggle="tooltip" title="Follow"><i class="material-icons favorite_border"></i></button>-->
                 <button onclick="location.href='Follow.do?a_id=${item.id }&page=all'" class="btn btn-primary margin-bottom-none" type="button" data-toast data-toast-position="topRight" data-toast-type="success"
