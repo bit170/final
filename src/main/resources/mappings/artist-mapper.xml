@@ -37,7 +37,17 @@
 	<select id="searchable" parameterType="String" resultType="Integer">
 		SELECT COUNT(*) FROM ARTIST WHERE NICKNAME LIKE '%' || #{nickname} || '%'
 	</select>
-
+	
+	<select id="getMainArtist" resultType="artist">
+	<![CDATA[
+		select * from artist where id in( 
+        		select a_id from
+	        		(select a_id, rownum num from 
+				        (select a_id, count(a_id) cnt from follow group by a_id order by cnt desc))
+			           	 where num<5)
+	]]>		           	 
+	</select>
+	
 </mapper>
 
 

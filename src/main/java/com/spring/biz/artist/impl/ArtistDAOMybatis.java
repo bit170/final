@@ -59,6 +59,10 @@ public class ArtistDAOMybatis {
 		return mybatis.selectOne("artistDAO.searchable", keyword);
 	}
 
+	public List<ArtistVO> getMainArtist() {
+		return mybatis.selectList("artistDAO.getMainArtist");
+	}
+
 	
 }
 

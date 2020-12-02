@@ -80,13 +80,22 @@
 		p_code = #{p_code} and pi_code = #{pi_code}
 	</update>
 	
-	<!-- <select id="getProductList" parameterType="product" resultMap="ProductList">
+	 <select id="getProductList" parameterType="product" resultMap="ProductList">
 		SELECT * FROM PRODUCT
 	</select>
 	
-	맞는 쿼리문 작성할 것(메인에 출력할 작품리스트
+	
 	<select id="getMainProduct" resultMap="ProductList">
 		select * from product
-	</select> -->
+	</select> 
 	
 </mapper>
+
+
+
+
+
+
+
+
+

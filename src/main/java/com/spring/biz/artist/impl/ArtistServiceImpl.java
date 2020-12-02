@@ -60,5 +60,10 @@ public class ArtistServiceImpl implements ArtistService{
 		return artistDAO.searchable(keyword);
 	}
 
+	@Override
+	public List<ArtistVO> getMainArtist() {
+		return artistDAO.getMainArtist();
+	}
+
 	
 }

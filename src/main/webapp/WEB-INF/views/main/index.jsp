@@ -464,11 +464,11 @@
         <div class="col-xl-9 col-md-8">
           <div class="row" id="MainProduct">
             <!-- Item-->
-            <%-- <c:forEach items="${MainProduct}" var="mProduct"> --%>
+             <c:forEach items="${MainProduct}" var="mProduct"> 
 	            <div class="col-xl-3 col-lg-4 col-sm-6">
 	              <div class="product-card mb-30" >
 	                <div class="product-card-thumb"> <span class="product-badge text-danger">Sale</span>
-	                	<a class="product-card-link" href="getProduct.do"></a><img src="<c:url value='/thumbnails.do?p_code=test&pfilename=main.jpg' />" alt="Product">
+	                	<a class="product-card-link" href="getProduct.do"></a><img src="<c:url value='/thumbnails.do?p_code=${mProduct.p_code }&pfilename=main.jpg' />" alt="Product">
 	                  <div class="product-card-buttons">
 	                    <!-- 버튼 클릭시 위시리스트 디비작업 -->
 	                    <button class="btn btn-white btn-sm btn-wishlist" data-toggle="tooltip" title="Wishlist">
@@ -487,7 +487,7 @@
 	                </div>
 	              </div>
 	            </div>
-            <%-- </c:forEach> --%>
+             </c:forEach> 
           </div>
         </div>
         <!-- <div class="col-xl-3 col-md-4" style="display:flex" >

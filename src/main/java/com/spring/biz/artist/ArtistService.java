@@ -12,4 +12,5 @@ public interface ArtistService {
 	List<ArtistVO> getArtistList();
 	List<ArtistVO> searchByName(String nickname);
 	int searchable(String keyword);
+	List<ArtistVO> getMainArtist();
 }
