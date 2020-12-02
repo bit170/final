@@ -317,7 +317,7 @@
       <div class="isotope-grid cols-2">
         <div class="gutter-sizer"></div>
         <div class="grid-sizer"></div>
-        <div class="grid-item"><a href="getProduct.do?p_name="><img src="resources/img/shop/ARTIST1.jpg" alt="Image"></a></div>
+        <div class="grid-item"><a href="getProduct.do?p_name="><img src="${pageContext.request.contextPath }/download?imageFileName=${imageFileName }" alt="Image"></a></div>
         <div class="grid-item gallery-item"><a href="getProduct.do?p_name="><img src="resources/img/shop/ARTIST2.jpg" alt="Image"></a><span class="caption">Frida Kahlo</span></div>
         <div class="grid-item gallery-item"><a href="getProduct.do?p_name="><img src="resources/img/shop/ARTIST3.jpg" alt="Image"></a><span class="caption">Rembrandt</span></div>
         <div class="grid-item gallery-item"><a href="getProduct.do?p_name="><img src="resources/img/shop/ARTIST4.jpg" alt="Image"></a><span class="caption">Michelangelo</span></div>
