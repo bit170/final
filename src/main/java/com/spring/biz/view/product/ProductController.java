@@ -70,6 +70,9 @@ public class ProductController extends BaseController {
 		String id = memberVO.getId();
 		System.out.println(id);
 		
+		newProductMap.put("id", id);
+
+		
 		List<PImageFileVO> pimageFileList = upload(multipartRequest);
 		//System.out.println(pimageFileList.size());	//확인용
 		
@@ -99,7 +102,7 @@ public class ProductController extends BaseController {
 			message +=" location.href='"+multipartRequest.getContextPath()+"/getMyCanvas.do';";
 			message +=("</script>");
 			
-			String id = memberVO.getId();
+			String nickname = memberVO.getNickname();
 			System.out.println(id);
 			int alreadyArtist = artistService.alreadyArtist(id);
 			if(alreadyArtist == 0) {

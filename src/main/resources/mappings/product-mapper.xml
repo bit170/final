@@ -9,8 +9,8 @@
 			select seq_p_code.nextval from dual
 		</selectKey>
 		<![CDATA[
-			insert into product (p_code, p_name, price, p_size, p_category, p_detail)
-			values( #{p_code}, #{p_name}, #{price},  #{p_size}, #{p_category}, #{p_detail} )
+			insert into product (p_code, p_name, price, p_size, p_category, p_detail, id)
+			values( #{p_code}, #{p_name}, #{price},  #{p_size}, #{p_category}, #{p_detail}, #{id} )
 		]]>
 	</insert>
 	
