@@ -464,30 +464,30 @@
         <div class="col-xl-9 col-md-8">
           <div class="row" id="MainProduct">
             <!-- Item-->
-            <c:forEach items="${MainProduct}" var="mProduct">
-            <div class="col-xl-3 col-lg-4 col-sm-6">
-              <div class="product-card mb-30" >
-                <div class="product-card-thumb"> <span class="product-badge text-danger">Sale</span>
-                	<a class="product-card-link" href="getProduct.do"></a><img src="resources/img/product/5.png" alt="Product">
-                  <div class="product-card-buttons">
-                    <!-- 버튼 클릭시 위시리스트 디비작업 -->
-                    <button class="btn btn-white btn-sm btn-wishlist" data-toggle="tooltip" title="Wishlist">
-                    	<i class="material-icons favorite_border"></i></button>
-                    <!-- 버튼 클릭시 해당 제품 데이터 어딘가에 저장 후 장바구니에 넣을것 -->
-                    <button class="btn btn-primary btn-sm" data-toast data-toast-type="success" 
-                    		data-toast-position="topRight" data-toast-icon="material-icons check" 
-                    		data-toast-title="Product" data-toast-message="장바구니 담기 성공!">장바구니 담기</button>
-                  </div>
-                </div>
-                <div class="product-card-details">
-                  <h3 class="product-card-title"><a href="getProduct.do">${mProduct.p_name}</a></h3>
-                  <h4 class="product-card-price">
-                    <del>₩${mProduct.price}0</del>₩${mProduct.price}
-                  </h4>
-                </div>
-              </div>
-            </div>
-            </c:forEach>
+            <%-- <c:forEach items="${MainProduct}" var="mProduct"> --%>
+	            <div class="col-xl-3 col-lg-4 col-sm-6">
+	              <div class="product-card mb-30" >
+	                <div class="product-card-thumb"> <span class="product-badge text-danger">Sale</span>
+	                	<a class="product-card-link" href="getProduct.do"></a><img src="/download?p_code=test?filename=main" alt="Product">
+	                  <div class="product-card-buttons">
+	                    <!-- 버튼 클릭시 위시리스트 디비작업 -->
+	                    <button class="btn btn-white btn-sm btn-wishlist" data-toggle="tooltip" title="Wishlist">
+	                    	<i class="material-icons favorite_border"></i></button>
+	                    <!-- 버튼 클릭시 해당 제품 데이터 어딘가에 저장 후 장바구니에 넣을것 -->
+	                    <button class="btn btn-primary btn-sm" data-toast data-toast-type="success" 
+	                    		data-toast-position="topRight" data-toast-icon="material-icons check" 
+	                    		data-toast-title="Product" data-toast-message="장바구니 담기 성공!">장바구니 담기</button>
+	                  </div>
+	                </div>
+	                <div class="product-card-details">
+	                  <h3 class="product-card-title"><a href="getProduct.do">${mProduct.p_name}</a></h3>
+	                  <h4 class="product-card-price">
+	                    <del>₩${mProduct.price}0</del>₩${mProduct.price}
+	                  </h4>
+	                </div>
+	              </div>
+	            </div>
+            <%-- </c:forEach> --%>
           </div>
         </div>
         <!-- <div class="col-xl-3 col-md-4" style="display:flex" >
