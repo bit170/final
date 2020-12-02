@@ -1,6 +1,7 @@
  package com.spring.biz.view.product;
 
 import java.io.File;
+import java.util.ArrayList;
 import java.util.Enumeration;
 import java.util.HashMap;
 import java.util.List;
@@ -277,6 +278,29 @@ public class ProductController extends BaseController {
 		return "product/shop-single";
 	}
 	
+	@RequestMapping(value = "getCategory.do", method = RequestMethod.GET)
+	public String getCategory(HttpServletRequest request, Model model){
+		System.out.println("getCategory() 실행");
+		String category = request.getParameter("category");
+		if(category.equals("water")) {
+			category = "수채화";
+		}else if(category.equals("oil")) {
+			category = "유화";
+		}else if(category.equals("black")) {
+			category = "수묵화";
+		}else if(category.equals("crocky")) {
+			category = "크로키";
+		}else if(category.equals("etc")) {
+			category = "기타";
+		}
+		System.out.println(category);
+		List<ProductVO> categoryList = productService.getCategory(category);
+		System.out.println(categoryList.get(0).getP_category());
+		model.addAttribute("productList", categoryList);
+		return "product/shop-boxed-ls";
+	}
+	
+	
 //	@RequestMapping(value = "/getMainProduct.do", method = RequestMethod.GET)
 //	public @ResponseBody List<ProductVO> getMainProduct() {
 //		return productService.getMainProduct();
@@ -289,8 +313,10 @@ public class ProductController extends BaseController {
 		
 		List<ProductVO> list = productService.getProductList(vo);
 		model.addAttribute("productList", list);
-		System.out.println(list.isEmpty());
-		System.out.println(list);
+		List<Integer> categoryCnt = productService.categoryCnt();
+		System.out.println(categoryCnt.get(0));
+		model.addAttribute("categoryCnt", categoryCnt);
+		
 		return "product/shop-boxed-ls";
 	}
 
