@@ -2,14 +2,16 @@ package com.spring.biz.artist;
 
 import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public interface ArtistService {
-	void insertArtist(HashMap<String,Object> idNickname);
-	void updateArtist(ArtistVO vo);
-	void deleteArtist(ArtistVO vo);
+	void insertArtist(HashMap idNickname);
+	void addArtistInfo(Map newArtistMap) throws Exception;
+	void addNewAImage(List aimageFileList) throws Exception;
+//	void deleteArtist(ArtistVO vo);
 	int alreadyArtist(String id);
 	ArtistVO getArtist(String id);
 	List<ArtistVO> getArtistList();
 	List<ArtistVO> searchByName(String nickname);
-	int searchable(String keyword);
+	String searchFilename(String id);
 }

@@ -289,7 +289,7 @@
       <div class="container">
         <div class="row">
           <!-- Product Gallery-->
-          <div class="col-sm-4 text-center mb-4"><img class="d-block w-150 mx-auto img-thumbnail rounded-circle mb-3" src="resources/img/shop/ARTIST4.jpg" alt="Team">
+          <div class="col-sm-4 text-center mb-4"><img class="d-block w-150 mx-auto img-thumbnail rounded-circle mb-3" src="<c:url value='/aDownload.do?id=${artist.id }' />" alt="Team">
 
           </div>
 

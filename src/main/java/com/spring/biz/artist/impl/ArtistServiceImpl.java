@@ -1,11 +1,14 @@
 package com.spring.biz.artist.impl;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.spring.biz.artist.AImageFileVO;
 import com.spring.biz.artist.ArtistService;
 import com.spring.biz.artist.ArtistVO;
 
@@ -21,19 +24,26 @@ public class ArtistServiceImpl implements ArtistService{
 	}
 
 	@Override
-	public void insertArtist(HashMap<String, Object> idNickname) {
+	public void insertArtist(HashMap idNickname) {
 		artistDAO.insertArtist(idNickname);
 	}
 
 	@Override
-	public void updateArtist(ArtistVO vo) {
-		artistDAO.updateArtist(vo);
+	public void addArtistInfo(Map newArtistMap) throws Exception {
+		artistDAO.addArtistInfo(newArtistMap);
+		ArrayList<AImageFileVO> aimageFileList = (ArrayList)newArtistMap.get("aimageFileList");
+		artistDAO.insertAImageFile(aimageFileList);
 	}
-
+	
 	@Override
-	public void deleteArtist(ArtistVO vo) {
-		artistDAO.deleteArtist(vo);
+	public void addNewAImage(List aimageFileList) throws Exception {
+		artistDAO.insertAImageFile(aimageFileList);
 	}
+	
+//	@Override
+//	public void deleteArtist(ArtistVO vo) {
+//		artistDAO.deleteArtist(vo);
+//	}
 
 	@Override
 	public int alreadyArtist(String id) {
@@ -56,9 +66,8 @@ public class ArtistServiceImpl implements ArtistService{
 	}
 
 	@Override
-	public int searchable(String keyword) {
-		return artistDAO.searchable(keyword);
+	public String searchFilename(String id) {
+		return artistDAO.searchFilename(id);
 	}
 
-	
 }

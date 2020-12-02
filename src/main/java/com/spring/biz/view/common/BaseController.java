@@ -9,6 +9,7 @@ import java.util.List;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 
+import com.spring.biz.artist.AImageFileVO;
 import com.spring.biz.product.PImageFileVO;
 
 public abstract class BaseController {
@@ -54,5 +55,46 @@ public abstract class BaseController {
 			
 		}
 		return pfileList;
+	}
+	
+	protected List<AImageFileVO> uploadA(MultipartHttpServletRequest multipartRequest) throws Exception{
+		System.out.println("BaseController의 uploadA()");
+		List<AImageFileVO> afileList= new ArrayList<AImageFileVO>();
+		Iterator<String> fileNames = multipartRequest.getFileNames();
+		while(fileNames.hasNext()){
+			AImageFileVO aimageFileVO =new AImageFileVO();
+			
+			String ai_filename = fileNames.next();
+			
+				MultipartFile mFile = multipartRequest.getFile(ai_filename);
+				
+				//String type = mFile.getContentType();
+				//pimageFileVO.setPi_filetype(type);
+				
+				String originalFileName=mFile.getOriginalFilename();
+				System.out.println(originalFileName);
+				if(!("".equals(originalFileName))) {
+					aimageFileVO.setAi_filename(originalFileName);
+					afileList.add(aimageFileVO);
+					
+					File file = new File(CURR_IMAGE_REPO_PATH +"\\"+ ai_filename);
+					if(mFile.getSize()!=0){ //File Null Check
+						if(! file.exists()){ 
+							if(file.getParentFile().mkdirs()){ 
+								try {
+									file.createNewFile();
+								}catch(IOException e) {
+									e.printStackTrace();
+								}
+							}
+						}
+	//				mFile.transferTo(file);
+	//				pfileList.add(pimageFileVO);
+						mFile.transferTo(new File(CURR_IMAGE_REPO_PATH +"\\"+"temp"+ "\\"+originalFileName));
+					}
+				}
+			
+		}
+		return afileList;
 	}
 }
