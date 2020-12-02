@@ -17,7 +17,6 @@ public class ProductServiceImpl implements ProductService {
 	@Autowired
 	private ProductDAO productDAO;
 
-	@Override
 	public String addNewProduct(Map newProductMap) throws Exception {
 		String p_code = productDAO.insertNewProduct(newProductMap);
 		ArrayList<PImageFileVO> pimageFileList = (ArrayList) newProductMap.get("pimageFileList");
@@ -57,6 +56,7 @@ public class ProductServiceImpl implements ProductService {
 		return productDAO.getProductList(vo);
 	}
 
+
 	@Override
 	public List<ProductVO> getMainProduct() {
 		return productDAO.getMainProduct();
@@ -75,6 +75,7 @@ public class ProductServiceImpl implements ProductService {
 	@Override
 	public int searchable(String keyword) {
 		return productDAO.searchable(keyword);
+
 	}
 
 	@Override

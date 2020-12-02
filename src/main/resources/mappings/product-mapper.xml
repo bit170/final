@@ -3,25 +3,7 @@
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
   <mapper namespace="productDAO">
-	<!-- resultMap 정의 -->
-	<resultMap id="productResult" type="product">
-		<result property="p_code" column="p_code" />
-		<result property="p_name" column="p_name" />
-		<result property="price" column="price" />
-		<!-- <result property="id" column="id" /> -->
-		<result property="p_size" column="p_size" />
-		<result property="p_category" column="p_category" />
-		<result property="p_detail" column="p_detail" />
-	</resultMap>
-	
-	<resultMap id="pimageResult" type="pimage">
-		<result property="p_code" column="p_code" />
-		<result property="pi_filename" column="pi_filename" />
-		<result property="pi_code" column="pi_code" />
-		<result property="pi_filetype" column="pi_filetype" />
-		<result property="id" column="id" />
-	</resultMap>
-	
+
 	<insert id="insertNewProduct" parameterType="java.util.Map">
 		<selectKey resultType="String" keyProperty="p_code" order="BEFORE">
 			select seq_p_code.nextval from dual
@@ -31,7 +13,7 @@
 			values( #{p_code}, #{p_name}, #{price},  #{p_size}, #{p_category}, #{p_detail} )
 		]]>
 	</insert>
-	
+
 	<insert id="insertPImageFile" parameterType="pimage">
 		<selectKey resultType="String" keyProperty="pi_code" order="BEFORE">
 			select seq_pi_code.nextval from dual
@@ -41,15 +23,15 @@
 			values( #{p_code}, #{pi_filename}, #{pi_code}, #{pi_filetype}, #{id} )
 		]]>
 	</insert>
-	
-	<select id="getSearchResult" parameterType="String" resultMap="productResult">
+
+	<select id="getSearchResult" parameterType="String" resultType="product">
 		select * from product where p_name like '%' || #{keyword} || '%'
 	</select>
-	
+
 	<select id="searchable" parameterType="String" resultType="Integer">
 		SELECT COUNT(*) FROM PRODUCT WHERE A_ID LIKE '%' || #{nickname} || '%'
 	</select>
-	
+
 	<update id="updateProductInfo" parameterType="java.util.HashMap" >
 		update product
 		<set>
@@ -72,36 +54,34 @@
 		where
 		p_code = #{p_code}
 	</update>
-	
+
 	<update id="updatePImage" parameterType="pimage">
 		update p_image
 		set pi_name = #{pi_name}
 		where
 		p_code = #{p_code} and pi_code = #{pi_code}
 	</update>
-	
-	 <select id="getProductList" parameterType="product" resultType="product">
+
+	<select id="getProductList" parameterType="product" resultType="product">
 		SELECT * FROM PRODUCT
 	</select>
-	
-	
+
+	<select id="getMainProduct" resultType="product">
+		select * from product
+	</select>
+
+	<select id="getProduct" resultType="product">
+		select * from product where p_code = #{p_code}
+	</select>
+
 	<select id="getMainProduct" resultType="product">
 		<![CDATA[
-		select * from product where p_code in( 
+		select * from product where p_code in(
         		select p_code from
-	        		(select p_code, rownum num from 
+	        		(select p_code, rownum num from
 				        (select p_code, count(p_code) cnt from wishlist group by p_code order by cnt desc))
 			           	 where num<7)
-		]]>		
-	</select> 
-	
+		]]>
+	</select>
+
 </mapper>
-
-
-
-
-
-
-
-
-

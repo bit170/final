@@ -29,7 +29,7 @@
     <script src="resources/js/modernizr.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
     <script type="text/javascript">
-    	
+
     	$(document).ready(function () {
     		/* 회원가입 성공 후  model attribute에 바인딩한 객체를 확인, 한 번만 알리기 위해선 ajax사용이 답인가? */
             var signedUp= '${signedUp.id}';
@@ -37,7 +37,7 @@
             	alert("회원가입을 축하합니다. 이메일 인증 후 사용할 수 있습니다.");
             }
             signedUp = "";
-            
+
     		 $("#signup_id").blur(function () {
     			 var signup_id = $("#signup_id").val();
  				console.log(signup_id);
@@ -47,10 +47,10 @@
  					$("#idCheck_result").html("");
  				}
     		 });
-    		 
+
     	/* 아이디 중복체크 == 성공!!
-    		리턴값에 따른 후처리 필요	
-    	*/	 
+    		리턴값에 따른 후처리 필요
+    	*/
     		/* $('#signup-form').submit(
 	    		function () {
 	    			var formData = $('#signup-form').serialize();
@@ -79,7 +79,7 @@
 					alert("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
 				})
 			}
-    		
+
     		function idResult(data) {
     			if(data==0){
 					$("#idCheck_result").html("사용가능한 아이디입니다.").css("color","green");
@@ -87,7 +87,7 @@
     				$("#idCheck_result").html("이미 사용중인 아이디입니다.").css("color","red");
     			}
 			}
-    		
+
     		$("#pw1").blur(function () {
    			 	pwCheck();
    		 	});
@@ -106,7 +106,7 @@
    					$("#pwCheck_result").html("비밀번호가 일치하지 않습니다.").css("color","red");
    				}
 			}
-    		
+
 		});
     		/* 검색기능(엔터 입력시 실행)  */
     		function enter(keyword) {
@@ -119,9 +119,9 @@
  					url : '${pageContext.request.contextPath}/search.do',
  					data : {"keyword" : keyword},
  					dataType : 'json'
- 				}).done(function (data) {	//ajax는 실행결과와 상관없이 리턴값이 없으면 오류발생 
+ 				}).done(function (data) {	//ajax는 실행결과와 상관없이 리턴값이 없으면 오류발생
  					if(data.productList){
-						alert(data.productList); 
+						alert(data.productList);
  						showResult(data.productList);
  					}
 					sessionStorage.setItem("searchProduct", JSON.stringify(data.productList));
@@ -133,11 +133,11 @@
 				}).fail(function (request,status,error) {
 					alert("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
 				})
-    		} 
+    		}
     		function showResult(result) {
-				
+
 			}
-	    
+
     </script>
   </head>
   <!-- Body-->
@@ -268,17 +268,17 @@
 	         <form action="logout.do" method="post">
 	            <p class="text-muted text-sm mt-4"><h4>${member.id }<span>님</span><h4></p>
 	            <p class="text-muted text-sm mt-4">환영합니다</p>
-	            <button class="btn btn-primary" type="submit">Log Out</button> 
+	            <button class="btn btn-primary" type="submit">Log Out</button>
 	            <!-- <a class="btn btn-primary mx-0 scale-up delay-1" href="shop-boxed-ls.jsp">Log Out</a> -->
 	            <!-- <button class="btn btn-primary btn-block" type="submit"><a href="account-wishlist.jsp">My page</button> -->
 
 	            <a class="btn btn-primary mx-0 scale-up delay-1" href="account.do">My page</a>
 
-	          </form>  
+	          </form>
 	         </div>
           </c:if>
           <c:if test="${empty member}">
-          
+
           <div class="toolbar-section" id="account">
             <ul class="nav nav-tabs nav-justified" role="tablist">
               <li class="nav-item"><a class="nav-link active" href="#login" data-toggle="tab" role="tab">Log In</a></li>
@@ -306,7 +306,7 @@
                 </form>
               </div>
               <div class="tab-pane fade" id="signup" role="tabpanel">
-                <form method="post" autocomplete="off" id="signup-form" action="signUp.do"> 
+                <form method="post" autocomplete="off" id="signup-form" action="signUp.do">
                 <!-- <form method="post" autocomplete="off" id="signup-form" > -->
                   <div class="form-group">
                     <input class="form-control" type="text" placeholder="Name" name="name" required>
@@ -369,7 +369,7 @@
                       </div>
                     <!-- 삭제처리는 어떻게? 장바구니 품목을 디비에 저장하지 않으면 리스트형태로 세션이나 어딘가에 보관? 그럼 삭제버튼 클릭시 리스트에서 remove하면 될까? -->
                     <td class="text-center"><a class="remove-from-cart" href="삭제처리"><i class="material-icons icon_close"></i></a></td>
-                    </c:if>  
+                    </c:if>
                     </td>
                   </tr>
                 </tbody>
@@ -464,7 +464,7 @@
         <div class="col-xl-9 col-md-8">
           <div class="row" id="MainProduct">
             <!-- Item-->
-             <c:forEach items="${MainProduct}" var="mProduct"> 
+             <c:forEach items="${MainProduct}" var="mProduct">
 	            <div class="col-xl-3 col-lg-4 col-sm-6">
 	              <div class="product-card mb-30" >
 	                <div class="product-card-thumb"> <span class="product-badge text-danger">Sale</span>
@@ -474,8 +474,8 @@
 	                    <button class="btn btn-white btn-sm btn-wishlist" data-toggle="tooltip" title="Wishlist">
 	                    	<i class="material-icons favorite_border"></i></button>
 	                    <!-- 버튼 클릭시 해당 제품 데이터 어딘가에 저장 후 장바구니에 넣을것 -->
-	                    <button class="btn btn-primary btn-sm" data-toast data-toast-type="success" 
-	                    		data-toast-position="topRight" data-toast-icon="material-icons check" 
+	                    <button class="btn btn-primary btn-sm" data-toast data-toast-type="success"
+	                    		data-toast-position="topRight" data-toast-icon="material-icons check"
 	                    		data-toast-title="Product" data-toast-message="장바구니 담기 성공!">장바구니 담기</button>
 	                  </div>
 	                </div>
@@ -487,7 +487,7 @@
 	                </div>
 	              </div>
 	            </div>
-             </c:forEach> 
+             </c:forEach>
           </div>
         </div>
         <!-- <div class="col-xl-3 col-md-4" style="display:flex" >
@@ -568,6 +568,3 @@
     <script src="resources/js/scripts.min.js"></script>
   </body>
 </html>
-
-
-    

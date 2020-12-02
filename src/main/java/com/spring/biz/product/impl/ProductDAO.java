@@ -45,7 +45,9 @@ public class ProductDAO {
 		}
 	}
 		
-	//글 조회(하나만)
+
+//	글 조회(하나만)
+
 	public ProductVO getProduct(ProductVO vo) {
 		System.out.println("===> MyBatis로 getProduct() 실행");
 		return mybatis.selectOne("productDAO.getProduct", vo);
@@ -57,10 +59,12 @@ public class ProductDAO {
 		return mybatis.selectList("productDAO.getProductList");
 	}
 
+
 	public List<ProductVO> getMainProduct() {
 		System.out.println("productDAO.getMainProduct()");
 		return mybatis.selectList("productDAO.getMainProduct");
 	}
+
 
 	public List<ProductVO> getSearchResult(String keyword) {
 		System.out.println("productDAO.getSearchResult()");
