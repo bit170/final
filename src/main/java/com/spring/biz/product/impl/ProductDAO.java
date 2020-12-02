@@ -4,7 +4,6 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
-import org.apache.ibatis.session.SqlSession;
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataAccessException;
@@ -46,7 +45,9 @@ public class ProductDAO {
 		}
 	}
 		
+
 //	글 조회(하나만)
+
 	public ProductVO getProduct(ProductVO vo) {
 		System.out.println("===> MyBatis로 getProduct() 실행");
 		return mybatis.selectOne("productDAO.getProduct", vo);
@@ -58,16 +59,31 @@ public class ProductDAO {
 		return mybatis.selectList("productDAO.getProductList");
 	}
 
+
 	public List<ProductVO> getMainProduct() {
 		System.out.println("productDAO.getMainProduct()");
 		return mybatis.selectList("productDAO.getMainProduct");
 	}
 
-//	public List selectProductImageFileList(String p_code) throws DataAccessException{
-//		List pimageList = new ArrayList();
-//		pimageList=(List)mybatis.selectList("productDAO.selectProductImageFileList", p_code);
-//
-//		return pimageList;
-//	}
+
+	public List<ProductVO> getMainProduct() {
+		System.out.println("productDAO.getMainProduct()");
+		return mybatis.selectList("productDAO.getMainProduct");
+	}
+
+	public List<ProductVO> getSearchResult(String keyword) {
+		System.out.println("productDAO.getSearchResult()");
+				//작품 이름에 keyword가 포함된 작품객체 리스트로 받아오기
+		return mybatis.selectList("productDAO.getSearchResult", keyword);
+	}
+
+	public int searchable(String keyword) {
+		System.out.println("productDAO.searchable() 실행");
+		return mybatis.selectOne("productDAO.searchable", keyword);
+	}
+
+	public List<PImageFileVO> selectProductImageFileList(String p_code) throws DataAccessException{
+		return mybatis.selectList("productDAO.selectProductImageFileList", p_code);
+	}
 
 }

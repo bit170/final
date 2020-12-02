@@ -1,5 +1,7 @@
 Manifest-Version: 1.0
-Built-By: yonnie.gk
-Build-Jdk: 15
+
+Built-By: bitcamp
+Build-Jdk: 10.0.2
+
 Created-By: Maven Integration for Eclipse
 

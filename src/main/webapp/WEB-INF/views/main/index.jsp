@@ -31,12 +31,12 @@
     <script type="text/javascript">
     	
     	$(document).ready(function () {
-    		/* 회원가입 성공 후  model attribute에 바인딩한 객체를 확인 */
-            var signedUp= '${signedUp}';
-            if(signedUp != null){
+    		/* 회원가입 성공 후  model attribute에 바인딩한 객체를 확인, 한 번만 알리기 위해선 ajax사용이 답인가? */
+            var signedUp= '${signedUp.id}';
+            if(signedUp != ""){
             	alert("회원가입을 축하합니다. 이메일 인증 후 사용할 수 있습니다.");
             }
-            
+            signedUp = "";
             
     		 $("#signup_id").blur(function () {
     			 var signup_id = $("#signup_id").val();
@@ -48,9 +48,6 @@
  				}
     		 });
     		 
-    		 if(sessionStorage.getItem("signedUp") != null){
-    			 alert("회원가입이 완료되었습니다. 이메일 인증 후 사용할 수 있습니다. ");
-    		 }
     	/* 아이디 중복체크 == 성공!!
     		리턴값에 따른 후처리 필요	
     	*/	 
@@ -109,7 +106,37 @@
    					$("#pwCheck_result").html("비밀번호가 일치하지 않습니다.").css("color","red");
    				}
 			}
+    		
 		});
+    		/* 검색기능(엔터 입력시 실행)  */
+    		function enter(keyword) {
+					search(keyword);
+			}
+     		function search(keyword){
+    			alert("search() 실행");
+    			$.ajax({
+ 					type : 'POST',
+ 					url : '${pageContext.request.contextPath}/search.do',
+ 					data : {"keyword" : keyword},
+ 					dataType : 'json'
+ 				}).done(function (data) {	//ajax는 실행결과와 상관없이 리턴값이 없으면 오류발생 
+ 					if(data.productList){
+						alert(data.productList); 
+ 						showResult(data.productList);
+ 					}
+					sessionStorage.setItem("searchProduct", JSON.stringify(data.productList));
+					/* alert(sessionStorage.getItem("searchProduct")); */
+					/* getResult(); */
+					if(data.artistList){
+						showResult(data.artistList);
+					}
+				}).fail(function (request,status,error) {
+					alert("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
+				})
+    		} 
+    		function showResult(result) {
+				
+			}
 	    
     </script>
   </head>
@@ -198,36 +225,41 @@
           </div>
           <!-- Search Section-->
           <div class="toolbar-section" id="search">
-            <form class="search-form mb-2" method="get">
-              <input type="search" placeholder="태그/작가/작품을 검색"><i class="material-icons search"></i>
+            <form class="search-form mb-2" onsubmit="return false">
+              <input type="search" placeholder="태그/작가/작품을 검색" onkeyup="if( event.keyCode==13 ){enter(this.value);}"><i class="material-icons search"></i>
             </form>
             <!-- 검색 결과 -->
             <!-- Products-->
-            <div class="widget widget-featured-products">
-              <h3 class="widget-title">Found in Products</h3>
-              <!-- Entry-->
-              <!-- 검색결과 주르륵 -->
-              <div class="entry">
-                <div class="entry-thumb">
-                	<a href="getProduct.do"><img src="resources/img/shop/widget/01.png" alt="Product"></a></div>
-                <div class="entry-content">
-                  <h4 class="entry-title">
-                  	<a href="getProduct.do">ㅇㅇ <span class='text-highlighted'>검색어와 일치하는 부분</span></a></h4><span class="entry-meta">가격</span>
-                </div>
-              </div>
-            </div>
+            <%-- <c:if test="${not empty searchProduct }"> --%>
+	            <div class="widget widget-featured-products">
+	              <h3 class="widget-title">Found in Products</h3>
+	              <!-- Entry-->
+	              <!-- 검색결과 주르륵 -->
+	              <div class="entry">
+	                <div class="entry-thumb">
+	                	<a href="getProduct.do"><img src="resources/img/shop/widget/01.png" alt="Product"></a></div>
+	                <div class="entry-content">
+	                  <h4 class="entry-title">
+	                  	<a href="getProduct.do">ㅇㅇ <span class='text-highlighted'>검색어와 일치하는 부분</span></a></h4><span class="entry-meta">가격</span>
+	                </div>
+	              </div>
+	            </div>
+            <%-- </c:if> --%>
             <!-- 작가결과-->
-            <div class="widget widget-featured-products">
-              <h3 class="widget-title">Found in Artist</h3>
-              <!-- Entry-->
-              <div class="entry">
-                <div class="entry-thumb"><a href="작가상세"><img src="resources/img/blog/widget/01.jpg" alt="Post"></a></div>
-                <div class="entry-content">
-                  <h4 class="entry-title"><a href="작가상세"><span class='text-highlighted'>검색어 일치부분</span> 블라블라</a></h4>
-                  	<span class="entry-meta">아이디?</span>
-                </div>
-              </div>
-            </div>
+
+            <c:if test="${not empty searchArtist }">
+	            <div class="widget widget-featured-products">
+	              <h3 class="widget-title">Found in Artist</h3>
+	              <!-- Entry-->
+	              <div class="entry">
+	                <div class="entry-thumb"><a href="작가상세"><img src="resources/img/blog/widget/01.jpg" alt="Post"></a></div>
+	                <div class="entry-content">
+	                  <h4 class="entry-title"><a href="작가상세"><span class='text-highlighted'>검색어 일치부분</span> 블라블라</a></h4><span class="entry-meta">아이디?</span>
+	                </div>
+	              </div>
+	            </div>
+          	</c:if>
+
           </div>
           <!-- Account Section-->
           <!-- 사람아이콘 -->
@@ -448,31 +480,32 @@
         <div class="col-xl-9 col-md-8">
           <div class="row" id="MainProduct">
             <!-- Item-->
-            <c:forEach items="${MainProduct}" var="mProduct">
-            <div class="col-xl-3 col-lg-4 col-sm-6">
-              <div class="product-card mb-30" >
-                <div class="product-card-thumb"> <span class="product-badge text-danger">Sale</span>
-                	<a class="product-card-link" href="getProduct.do"></a><img src="resources/img/product/5.png" alt="Product">
-                  <div class="product-card-buttons">
-                    <!-- 버튼 클릭시 위시리스트 디비작업 -->
-                    <button class="btn btn-white btn-sm btn-wishlist" data-toggle="tooltip" title="Wishlist">
-                    	<i class="material-icons favorite_border"></i></button>
-                    <!-- 버튼 클릭시 해당 제품 데이터 어딘가에 저장 후 장바구니에 넣을것 -->
-                    <button class="btn btn-primary btn-sm" data-toast data-toast-type="success" 
-                    		data-toast-position="topRight" data-toast-icon="material-icons check" 
-                    		data-toast-title="Product" data-toast-message="장바구니 담기 성공!" 
-                    		onclick="location.href='insertCart.do?p_code=${mProduct.p_code}'">장바구니 담기</button>
-                  </div>
-                </div>
-                <div class="product-card-details">
-                  <h3 class="product-card-title"><a href="getProduct.do">${mProduct.p_name}</a></h3>
-                  <h4 class="product-card-price">
-                    <del>₩${mProduct.price}0</del>₩${mProduct.price}
-                  </h4>
-                </div>
-              </div>
-            </div>
-            </c:forEach>
+
+            <%-- <c:forEach items="${MainProduct}" var="mProduct"> --%>
+	            <div class="col-xl-3 col-lg-4 col-sm-6">
+	              <div class="product-card mb-30" >
+	                <div class="product-card-thumb"> <span class="product-badge text-danger">Sale</span>
+	                	<a class="product-card-link" href="getProduct.do"></a><img src="<c:url value='/thumbnails.do?p_code=test&pfilename=main.jpg' />" alt="Product">
+	                  <div class="product-card-buttons">
+	                    <!-- 버튼 클릭시 위시리스트 디비작업 -->
+	                    <button class="btn btn-white btn-sm btn-wishlist" data-toggle="tooltip" title="Wishlist">
+	                    	<i class="material-icons favorite_border"></i></button>
+	                    <!-- 버튼 클릭시 해당 제품 데이터 어딘가에 저장 후 장바구니에 넣을것 -->
+	                    <button class="btn btn-primary btn-sm" data-toast data-toast-type="success" 
+	                    		data-toast-position="topRight" data-toast-icon="material-icons check" 
+	                    		data-toast-title="Product" data-toast-message="장바구니 담기 성공!">장바구니 담기</button>
+	                  </div>
+	                </div>
+	                <div class="product-card-details">
+	                  <h3 class="product-card-title"><a href="getProduct.do">${mProduct.p_name}</a></h3>
+	                  <h4 class="product-card-price">
+	                    <del>₩${mProduct.price}0</del>₩${mProduct.price}
+	                  </h4>
+	                </div>
+	              </div>
+	            </div>
+            <%-- </c:forEach> --%>
+
           </div>
         </div>
         <!-- <div class="col-xl-3 col-md-4" style="display:flex" >
