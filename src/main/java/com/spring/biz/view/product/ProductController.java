@@ -68,15 +68,19 @@ public class ProductController extends BaseController {
 		
 		HttpSession session = multipartRequest.getSession();
 		MemberVO memberVO = (MemberVO) session.getAttribute("member");
-		String id = memberVO.getId();
-		System.out.println(id);
+		String a_id = memberVO.getId();
+		System.out.println(a_id);
+		
+		newProductMap.put("a_id", a_id);
+
+		
 		
 		List<PImageFileVO> pimageFileList = upload(multipartRequest);
 		//System.out.println(pimageFileList.size());	//확인용
 		
 		if(pimageFileList!= null && pimageFileList.size()!=0) {
 			for(PImageFileVO pimageFileVO : pimageFileList) {
-				pimageFileVO.setId(id);
+				pimageFileVO.setA_id(a_id);
 			}
 			newProductMap.put("pimageFileList", pimageFileList);
 		}
@@ -101,11 +105,11 @@ public class ProductController extends BaseController {
 			message +=("</script>");
 			
 			String nickname = memberVO.getNickname();
-			System.out.println(id);
-			int alreadyArtist = artistService.alreadyArtist(id);
+			System.out.println(a_id);
+			int alreadyArtist = artistService.alreadyArtist(a_id);
 			if(alreadyArtist == 0) {
 				HashMap<String,Object> idNickname = new HashMap<String,Object>();
-				idNickname.put("id", id);
+				idNickname.put("a_id", a_id);
 				idNickname.put("nickname", nickname);
 				artistService.insertArtist(idNickname);
 			}
@@ -148,7 +152,7 @@ public class ProductController extends BaseController {
 		
 		HttpSession session = multipartRequest.getSession();
 		MemberVO memberVO = (MemberVO) session.getAttribute("member");
-		String id = memberVO.getId();
+		String a_id = memberVO.getId();
 		
 		List<PImageFileVO> pimageFileList=null;
 		String p_code=null;
@@ -159,7 +163,7 @@ public class ProductController extends BaseController {
 					
 					p_code = (String)proudctMap.get("p_code");
 					pimageFileVO.setP_code(p_code);
-					pimageFileVO.setId(id);
+					pimageFileVO.setA_id(a_id);
 				}
 				
 			    productService.addNewPImage(pimageFileList);
@@ -232,7 +236,7 @@ public class ProductController extends BaseController {
 		
 		HttpSession session = multipartRequest.getSession();
 		MemberVO memberVO = (MemberVO) session.getAttribute("memberInfo");
-		String id = memberVO.getId();
+		String a_id = memberVO.getId();
 		
 		List<PImageFileVO> pimageFileList=null;
 		String p_code = null;
@@ -242,10 +246,10 @@ public class ProductController extends BaseController {
 			if(pimageFileList!= null && pimageFileList.size()!=0) {
 				for(PImageFileVO pimageFileVO : pimageFileList) {
 					p_code = (String)productMap.get("p_code");
-					pi_code = (String)productMap.get("image_id");
+					pi_code = (String)productMap.get("pi_code");
 					pimageFileVO.setP_code(p_code);
 					pimageFileVO.setPi_code(pi_code);
-					pimageFileVO.setId(id);
+					pimageFileVO.setA_id(a_id);
 				}
 				
 			    productService.modifyPImage(pimageFileList);

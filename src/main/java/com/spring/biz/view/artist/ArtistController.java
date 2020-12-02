@@ -37,10 +37,10 @@ public class ArtistController {
 		return "artist/artist-boxed-ft";
 	}
 	@RequestMapping(value="/getArtist.do", method=RequestMethod.GET)
-	public String getArtist(@RequestParam String id, Model model) {
+	public String getArtist(@RequestParam String a_id, Model model) {
 		System.out.println("Controller의 getArtist!!!");
-		System.out.println(id);
-		ArtistVO avo = artistService.getArtist(id);
+		System.out.println(a_id);
+		ArtistVO avo = artistService.getArtist(a_id);
 		model.addAttribute("artist", avo);
 		System.out.println(avo);
 		

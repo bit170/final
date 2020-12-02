@@ -1,25 +1,25 @@
 package com.spring.biz.artist;
 
 public class AImageFileVO {
-	private String id;
+	private String a_id;
 	private String ai_filename;
 	private String ai_code;
 	
 	public AImageFileVO() {}
 
-	public AImageFileVO(String id, String ai_filename, String ai_code) {
+	public AImageFileVO(String a_id, String ai_filename, String ai_code) {
 		super();
-		this.id = id;
+		this.a_id = a_id;
 		this.ai_filename = ai_filename;
 		this.ai_code = ai_code;
 	}
 
-	public String getId() {
-		return id;
+	public String getA_id() {
+		return a_id;
 	}
 
-	public void setId(String id) {
-		this.id = id;
+	public void setA_id(String id) {
+		this.a_id = a_id;
 	}
 
 	public String getAi_filename() {

@@ -6,21 +6,21 @@
 
 <!-- resultMap 정의 -->
 	<resultMap id="aimageResult" type="aimage">
-		<result property="id" column="id" />
+		<result property="a_id" column="a_id" />
 		<result property="ai_filename" column="ai_filename" />
 		<result property="ai_code" column="ai_code" />
 	</resultMap>
 
 	<insert id="insertArtist" parameterType="hashmap">
-		INSERT INTO ARTIST (ID, NICKNAME)
-		VALUES (#{id}, #{nickname})
+		INSERT INTO ARTIST (A_ID, NICKNAME)
+		VALUES (#{a_id}, #{nickname})
 	</insert>
 	
 	<update id="addArtistInfo" parameterType="java.util.Map">
 	<![CDATA[
 			UPDATE ARTIST 
 			SET A_DETAIL = #{a_detail}
-			WHERE ID = #{id}
+			WHERE A_ID = #{a_id}
 		]]>
 	</update>
 	
@@ -29,8 +29,8 @@
 			select seq_ai_code.nextval from dual
 		</selectKey>
 		<![CDATA[
-			INSERT INTO A_IMAGE (ID, AI_FILENAME, AI_CODE)
-			VALUES (#{id}, #{ai_filename}, #{ai_code})
+			INSERT INTO A_IMAGE (A_ID, AI_FILENAME, AI_CODE)
+			VALUES (#{a_id}, #{ai_filename}, #{ai_code})
 		]]>
 	</insert>
 	
@@ -45,11 +45,11 @@
 	</delete> -->
 	
 	<select id="alreadyArtist" parameterType="String" resultType="Integer">
-		SELECT COUNT(*) FROM ARTIST WHERE ID = #{id}
+		SELECT COUNT(*) FROM ARTIST WHERE A_ID = #{a_id}
 	</select>
 	
 	<select id="getArtist" parameterType="String" resultType="artist">
-		SELECT * FROM ARTIST WHERE ID = #{id}
+		SELECT * FROM ARTIST WHERE A_ID = #{a_id}
 	</select>
 	
 	<select id="getArtistList" resultType="artist">
@@ -73,7 +73,7 @@
 
 
 	<select id="searchAiCode" parameterType="String" resultType="String">
-		SELECT MAX(AI_CODE) FROM A_IMAGE WHERE ID = #{id}
+		SELECT MAX(AI_CODE) FROM A_IMAGE WHERE A_ID = #{a_id}
 	</select>
 	
 	<select id="getFilename" parameterType="String" resultType="String">
