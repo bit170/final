@@ -29,16 +29,6 @@ public class MemberController {
 		System.out.println(">>> MemberController() 객체 생성");
 	}
 	
-//	@RequestMapping(value = "/idCheck.do", method = RequestMethod.POST)
-//	public String idCheck(String id, Model model) {
-//		System.out.println("idCheck()메소드 실행");
-//		int result = -1;
-//		result = memberService.checkId(id);
-//		if(result>0) {
-//			model.addAttribute("idChecked", "ok");
-//		}
-//		return "index.jsp";
-//	}
 	
 	@RequestMapping(value = "/account.do", method = RequestMethod.GET)
 	public String account(Model model) {
@@ -72,19 +62,6 @@ public class MemberController {
 		}
 	}
 	
-//	@RequestMapping(value = "/signup.do", method = RequestMethod.POST)
-//	public @ResponseBody int signup(@RequestBody MemberVO vo, Model model) {
-//		System.out.println("signup() 실행");
-//		System.out.println("vo : "+vo);
-//		int result = memberService.insertMember(vo);
-//		if(result>0) {
-//			System.out.println("회원가입 완료");
-//			model.addAttribute("signedUp", vo);
-//		}else {
-//			System.out.println("회원가입 실패");
-//		}
-//		return result;
-//	}
 	
 	@RequestMapping(value="/login.do", method = RequestMethod.POST)
 	public String login(S_MemberVO svo, Model model,HttpSession session) {
@@ -99,7 +76,7 @@ public class MemberController {
 			MemberVO member = memberService.getMember(svo);
 			System.out.println("회원이름 : " + member.getName());
 			model.addAttribute("member", member);
-			return "main/index";
+			return "redirect:main/index";
 		} else {
 			System.out.println("> 로그인 실패~~~");
 			return "redirect:main.do";

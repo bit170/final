@@ -24,6 +24,14 @@
 		]]>
 	</insert>
 	
+	<select id="getSearchResult" parameterType="String" resultType="product">
+		select * from product where p_name like '%' || #{keyword} || '%'
+	</select>
+	
+	<select id="searchable" parameterType="String" resultType="Integer">
+		SELECT COUNT(*) FROM PRODUCT WHERE A_ID LIKE '%' || #{nickname} || '%'
+	</select>
+	
 	<update id="updateProductInfo" parameterType="java.util.HashMap" >
 		update product
 		<set>

@@ -41,9 +41,9 @@ public class ProductServiceImpl implements ProductService {
 	public void modifyPImage(List<PImageFileVO> pimageFileList) throws Exception{
 		productDAO.updatePImage(pimageFileList);
 	}
-//	 public List productImageFile(String p_code) throws Exception{ List
-//		 pimageList =productDAO.selectProductImageFileList(p_code); return pimageList;
-//	 }
+	 public List<PImageFileVO> productImageFile(String p_code) throws Exception{ 
+		 return productDAO.selectProductImageFileList(p_code); 
+	 }
 	
 
 	 @Override
@@ -56,13 +56,32 @@ public class ProductServiceImpl implements ProductService {
 		return productDAO.getProductList(vo);
 	}
 
+
 	@Override
 	public List<ProductVO> getMainProduct() {
 		return productDAO.getMainProduct();
 	}
 
+	
 	public ProductServiceImpl() {
 		System.out.println(">> ProductServiceImpl() 객체 생성");
 	}
 
+	@Override
+	public List<ProductVO> searchProduct(String keyword) {
+		return productDAO.getSearchResult(keyword);
+	}
+
+	@Override
+	public int searchable(String keyword) {
+		return productDAO.searchable(keyword);
+
+	}
+
+	@Override
+	public void addNewProductImage(List pimageFileList) throws Exception {
+		
+	}
+	
 }
+	
