@@ -18,7 +18,7 @@ public class AImageFileVO {
 		return a_id;
 	}
 
-	public void setA_id(String id) {
+	public void setA_id(String a_id) {
 		this.a_id = a_id;
 	}
 

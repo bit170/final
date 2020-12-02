@@ -89,7 +89,7 @@
                 <!-- 페이지에 active 클래스 추가해줘야함 -->
                 <li class="has-children active"><span><a href="main.do"><span>Home</span></a></span>
                 </li>
-                <li ><span><a href="getArtistList.do "><span>Artist</span></a></span></li>
+                <li ><span><a href="getArtistList.do"><span>Artist</span></a></span></li>
                 <li class="has-children"><span><a href="getProductList.do"><span>Shop</span></a><span class="sub-menu-toggle"></span></span>
                   <ul class="slideable-submenu">
                 <li><a href="getProductList.do?category=water">수채화</a></li>
@@ -332,15 +332,15 @@
         <c:forEach var="item" items="${artistList}">    
         <div class="col-xl-3 col-lg-4 col-sm-6">
           <div class="product-card mb-30">
-            <div class="product-card-thumb"><a class="product-card-link" href="getArtist.do?id=${item.id }"></a><img src="<c:url value='/aThumbnails.do?id=${item.id }' />" alt="Image" alt="Product">
+            <div class="product-card-thumb"><a class="product-card-link" href="getArtist.do?a_id=${item.a_id }"></a><img src="<c:url value='/aThumbnails.do?a_id=${item.a_id }' />" alt="Image" alt="Product">
               <div class="product-card-buttons">
                 <!-- <button class="btn btn-white btn-sm btn-wishlist" data-toggle="tooltip" title="Follow"><i class="material-icons favorite_border"></i></button>-->
-                <button onclick="location.href='Follow.do?a_id=${item.id }&page=all'" class="btn btn-primary margin-bottom-none" type="button" data-toast data-toast-position="topRight" data-toast-type="success"
+                <button onclick="location.href='Follow.do?a_id=${item.a_id }&page=all'" class="btn btn-primary margin-bottom-none" type="button" data-toast data-toast-position="topRight" data-toast-type="success"
                 data-toast-icon="icon-circle-check" data-toast-title="Follow!" data-toast-message="Follow!">♡ </button>
               </div>
             </div>
             <div class="product-card-details">
-              <h3 class="product-card-title"><a href="getArtist.do?id=${item.id }">${item.nickname }</a></h3>
+              <h3 class="product-card-title"><a href="getArtist.do?a_id=${item.a_id }">${item.nickname }</a></h3>
             </div>
           </div>
         </div>

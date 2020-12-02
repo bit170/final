@@ -48,13 +48,13 @@ public class ArtistDAOMybatis {
 //	}
 	
 	//작가 테이블에 존재여부 확인
-	public int alreadyArtist(String id) {
-		return mybatis.selectOne("artistDAO.alreadyArtist", id);
+	public int alreadyArtist(String a_id) {
+		return mybatis.selectOne("artistDAO.alreadyArtist", a_id);
 	}
 	
 	//작가조회(한 명)
-	public ArtistVO getArtist(String id) {
-		return mybatis.selectOne("artistDAO.getArtist", id);
+	public ArtistVO getArtist(String a_id) {
+		return mybatis.selectOne("artistDAO.getArtist", a_id);
 	}
 	
 	//작가목록
@@ -76,15 +76,13 @@ public class ArtistDAOMybatis {
 		return mybatis.selectList("artistDAO.getMainArtist");
 	}
 
-
 	
 	//작가프사 파일명 받아오기
-	public String searchFilename(String id) {
-		String aiCode = mybatis.selectOne("artistDAO.searchAiCode", id);
+	public String searchFilename(String a_id) {
+		String aiCode = mybatis.selectOne("artistDAO.searchAiCode", a_id);
 		return mybatis.selectOne("artistDAO.getFilename", aiCode);
 	}
 }
-
 
 
 
