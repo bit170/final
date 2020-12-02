@@ -36,7 +36,7 @@ public class MainController {
 		List<ProductVO> plist = productService.getMainProduct();
 		model.addAttribute("MainProduct", plist);
 		List<ArtistVO> alist = artistService.getMainArtist();
-		
+		model.addAttribute("MainArtist", alist);
 		
 		return "main/index";
 

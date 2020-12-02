@@ -86,7 +86,13 @@
 	
 	
 	<select id="getMainProduct" resultMap="ProductList">
-		select * from product
+		<![CDATA[
+		select * from product where p_code in( 
+        		select p_code from
+	        		(select p_code, rownum num from 
+				        (select p_code, count(p_code) cnt from wishlist group by p_code order by cnt desc))
+			           	 where num<7)
+		]]>		
 	</select> 
 	
 </mapper>
