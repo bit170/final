@@ -25,11 +25,11 @@ public class AFileDownloadController {
 	private ArtistService artistService;
 	
 	@RequestMapping("/aDownload")
-	protected void aDownload(@RequestParam("id") String id,
+	protected void aDownload(@RequestParam("a_id") String a_id,
 		                 	 HttpServletResponse response) throws Exception {
 		OutputStream out = response.getOutputStream();
-		String filename = artistService.searchFilename(id);
-		String filePath=CURR_IMAGE_REPO_PATH+"\\"+id+"\\"+filename;
+		String filename = artistService.searchFilename(a_id);
+		String filePath=CURR_IMAGE_REPO_PATH+"\\"+a_id+"\\"+filename;
 		File image=new File(filePath);
 		if(image.exists()) {
 			System.out.println(image.getName());
@@ -54,12 +54,12 @@ public class AFileDownloadController {
 			                 HttpServletResponse response) throws Exception {
 		
 		System.out.println("thumbnails() 실행");
-		String id = request.getParameter("id"); 
-		String filename = artistService.searchFilename(id);
-		System.out.println("id : "+id+" filename : "+filename);
+		String a_id = request.getParameter("a_id"); 
+		String filename = artistService.searchFilename(a_id);
+		System.out.println("a_id : "+a_id+" filename : "+filename);
 		
 		OutputStream out = response.getOutputStream();
-		String filePath=CURR_IMAGE_REPO_PATH + "\\" + id + "\\" + filename;
+		String filePath=CURR_IMAGE_REPO_PATH + "\\" + a_id + "\\" + filename;
 		System.out.println(filePath);
 		
 		File image=new File(filePath);

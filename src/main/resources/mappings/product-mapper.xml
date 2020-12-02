@@ -9,8 +9,8 @@
 			select seq_p_code.nextval from dual
 		</selectKey>
 		<![CDATA[
-			insert into product (p_code, p_name, price, p_size, p_category, p_detail)
-			values( #{p_code}, #{p_name}, #{price},  #{p_size}, #{p_category}, #{p_detail} )
+			insert into product (p_code, p_name, price, p_size, p_category, p_detail, a_id)
+			values( #{p_code}, #{p_name}, #{price},  #{p_size}, #{p_category}, #{p_detail}, #{a_id} )
 		]]>
 	</insert>
 	
@@ -19,8 +19,8 @@
 			select seq_pi_code.nextval from dual
 		</selectKey>
 		<![CDATA[
-			insert into p_image (p_code, pi_filename, pi_code, pi_filetype, id)
-			values( #{p_code}, #{pi_filename}, #{pi_code}, #{pi_filetype}, #{id} )
+			insert into p_image (p_code, pi_filename, pi_code, pi_filetype, a_id)
+			values( #{p_code}, #{pi_filename}, #{pi_code}, #{pi_filetype}, #{a_id} )
 		]]>
 	</insert>
 	
