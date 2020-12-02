@@ -80,7 +80,7 @@
 		p_code = #{p_code} and pi_code = #{pi_code}
 	</update>
 	
-	 <select id="getProductList" parameterType="product" resultMap="ProductList">
+	 <select id="getProductList" parameterType="product" resultType="product">
 		SELECT * FROM PRODUCT
 	</select>
 	
