@@ -76,6 +76,12 @@ public class ArtistServiceImpl implements ArtistService{
 		return artistDAO.getMainArtist();
 	}
 
+	@Override
+	public int searchable(String keyword) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
 	
 
 }
