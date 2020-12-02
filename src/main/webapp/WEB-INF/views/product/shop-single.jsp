@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -28,60 +29,6 @@
   </head>
   <!-- Body-->
   <body>
-    <!-- Leave a Review-->
-    <form class="modal fade" method="post" id="leaveReview" tabindex="-1">
-      <div class="modal-dialog modal-lg">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h4 class="modal-title">Leave a Review</h4>
-            <button class="close" type="button" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-          </div>
-          <div class="modal-body">
-            <div class="row">
-              <div class="col-sm-6">
-                <div class="form-group">
-                  <label for="review-name">Your Name</label>
-                  <input class="form-control" type="text" id="review-name" required>
-                </div>
-              </div>
-              <div class="col-sm-6">
-                <div class="form-group">
-                  <label for="review-email">Your Email</label>
-                  <input class="form-control" type="email" id="review-email" required>
-                </div>
-              </div>
-            </div>
-            <div class="row">
-              <div class="col-sm-6">
-                <div class="form-group">
-                  <label for="review-subject">Subject</label>
-                  <input class="form-control" type="text" id="review-subject" required>
-                </div>
-              </div>
-              <div class="col-sm-6">
-                <div class="form-group">
-                  <label for="review-rating">Rating</label>
-                  <select class="form-control" id="review-rating">
-                    <option>5 Stars</option>
-                    <option>4 Stars</option>
-                    <option>3 Stars</option>
-                    <option>2 Stars</option>
-                    <option>1 Star</option>
-                  </select>
-                </div>
-              </div>
-            </div>
-            <div class="form-group">
-              <label for="review-message">Review</label>
-              <textarea class="form-control" id="review-message" rows="8" required></textarea>
-            </div>
-          </div>
-          <div class="modal-footer">
-            <button class="btn btn-primary" type="submit">Submit Review</button>
-          </div>
-        </div>
-      </div>
-    </form>
     <!-- Navbar-->
     <!-- Remove "navbar-sticky" class to make navigation bar scrollable with the page.-->
     <header class="navbar navbar-sticky">
@@ -190,7 +137,8 @@
               <div class="entry">
                 <div class="entry-thumb"><a href="작가상세"><img src="resources/img/blog/widget/01.jpg" alt="Post"></a></div>
                 <div class="entry-content">
-                  <h4 class="entry-title"><a href="작가상세"><span class='text-highlighted'>검색어 일치부분</span> 블라블라</a></h4><span class="entry-meta">아이디?</span>
+                  <h4 class="entry-title"><a href="작가상세"><span class='text-highlighted'>검색어 일치부분</span> 블라블라</a></h4>
+                  	<span class="entry-meta">아이디?</span>
                 </div>
               </div>
             </div>
@@ -205,8 +153,6 @@
 	            <p class="text-muted text-sm mt-4"><h4>${member.id }<span>님</span><h4></p>
 	            <p class="text-muted text-sm mt-4">환영합니다</p>
 	            <button class="btn btn-primary" type="submit">Log Out</button> 
-	            <!-- <a class="btn btn-primary mx-0 scale-up delay-1" href="shop-boxed-ls.jsp">Log Out</a> -->
-	            <!-- <button class="btn btn-primary btn-block" type="submit"><a href="account-wishlist.jsp">My page</button> -->
 
 	            <a class="btn btn-primary mx-0 scale-up delay-1" href="account.do">My page</a>
 
@@ -281,10 +227,10 @@
                   <tr>
                     <th colspan="2">
                       <div class="d-flex justify-content-between align-items-center">Products
-                      <c:if test="${!empty cartList }">
-                      <a class="navi-link text-uppercase" href="getCart.do"><span class="text-xxs">Expand Cart</span><i class="material-icons keyboard_arrow_right"></i></a>
+                      <c:if test="${!empty cartList}">
+                      <a class="navi-link text-uppercase" href="getCart.do"><span class="text-xxs">장바구니 크게 보기</span><i class="material-icons keyboard_arrow_right"></i></a>
                       </c:if>
-                      <c:if test="${empty cartList }">
+                      <c:if test="${empty cartList}">
                       <a class="navi-link text-uppercase" href="getProductList.do"><span class="text-xxs">작품 보러가기</span><i class="material-icons keyboard_arrow_right"></i></a>
                       </c:if>
                       </div>
@@ -292,31 +238,47 @@
                   </tr>
                 </thead>
                 <tbody>
+                    <c:if test="${empty cartList}">
                   <tr>
                     <td>
-                    <c:if test="${empty cartList }">
                    	 장바구니가 비었습니다.
+                    </td>
+                  </tr>
                     </c:if>
-                    <c:if test="${!empty cartList }">
-                      <div class="product-item"><a class="product-thumb" href="getProduct.do"><img src="resources/img/shop/cart/01.jpg" alt="Product"></a>
+                    <c:if test="${!empty cartList}">
+		                <c:forEach var="cart" items="${cartList}">
+                  <tr>
+                    <td>
+                      <div class="product-item">
+                      <a class="product-thumb" href="getProduct.do?p_code=${cart.p_code}">
+                      	  <img src="resources/img/product/5.png" alt="Product"></a>
                         <div class="product-info">
-                          <h4 class="product-title"><a href="getProduct.do">작품이름</a></h4><span><em>Price:</em> 가격</span>
+                          <h4 class="product-title">
+                          	<a href="getProduct.do?p_code=${cart.p_code}">${cart.p_name}</a></h4>
+                          	<span><em>가 격 : </em>₩ <fmt:formatNumber pattern="###,###,###" value="${cart.c_price}" /></span>
                         </div>
                       </div>
                     <!-- 삭제처리는 어떻게? 장바구니 품목을 디비에 저장하지 않으면 리스트형태로 세션이나 어딘가에 보관? 그럼 삭제버튼 클릭시 리스트에서 remove하면 될까? -->
-                    <td class="text-center"><a class="remove-from-cart" href="삭제처리"><i class="material-icons icon_close"></i></a></td>
-                    </c:if>  
                     </td>
+                    <td class="text-center"><a class="remove-from-cart" href="deleteCart.do"><i class="material-icons icon_close"></i></a></td>
                   </tr>
+                    </c:forEach>
+                    </c:if>  
                 </tbody>
               </table>
             </div>
             <!-- 장바구니 합계 -->
             <hr class="mb-3">
             <div class="d-flex flex-wrap justify-content-between align-items-center">
-              <div class="pr-2 py-1 text-sm">Subtotal: <span class='text-dark text-medium'>장바구니 합계 값</span></div>
               <c:if test="${!empty cartList }">
-              <a class="btn btn-sm btn-success mb-0 mr-0" href="checkout.do">Checkout</a>
+              <c:set var = "total" value= "0" />
+		        <c:forEach var="cart" items="${cartList}">
+		        <c:set var = "total" value="${total + cart.c_price}" />
+		      	</c:forEach>
+              <div class="pr-2 py-1 text-sm">합 계 : <span class='text-dark text-medium'>
+              ₩ <fmt:formatNumber pattern="###,###,###" value="${total}" />
+              		<%-- <c:out value='${total}' /> --%></span></div>
+              <a class="btn btn-sm btn-success mb-0 mr-0" href="checkout.do?id=${member.id}">주문하기</a>
               </c:if>
             </div>
           </div>
@@ -327,17 +289,29 @@
     <div class="bg-secondary pb-4 padding-top-3x">
       <div class="container">
         <div class="row">
+          <c:if test="${empty product}">
+          <script> alert("선택한 상품이 존재하지 않습니다.")</script>
+          </c:if>
+          <c:if test="${!empty product}">
           <!-- Product Gallery-->
           <div class="col-md-6 mb-30">
             <div class="product-gallery">
               <div class="product-carousel owl-carousel gallery-wrapper">
-                <div class="gallery-item" data-hash="one"><a href="img/shop/single/01.jpg" data-size="555x480"><img src="resources/img/shop/single/01.jpg" alt="Product"></a></div>
-                <div class="gallery-item" data-hash="two"><a href="img/shop/single/02.jpg" data-size="555x480"><img src="resources/img/shop/single/02.jpg" alt="Product"></a></div>
-                <div class="gallery-item" data-hash="three"><a href="img/shop/single/03.jpg" data-size="555x480"><img src="resources/img/shop/single/03.jpg" alt="Product"></a></div>
-                <div class="gallery-item" data-hash="four"><a href="img/shop/single/04.jpg" data-size="555x480"><img src="resources/img/shop/single/04.jpg" alt="Product"></a></div>
+                <div class="gallery-item" data-hash="one">
+                	<a href="img/shop/single/01.jpg" data-size="555x480">
+                	<img src="resources/img/product/5.png" alt="Product"></a></div>
+                <div class="gallery-item" data-hash="two">
+                	<a href="img/shop/single/02.jpg" data-size="555x480">
+                	<img src="resources/img/shop/single/02.jpg" alt="Product"></a></div>
+                <div class="gallery-item" data-hash="three">
+                	<a href="img/shop/single/03.jpg" data-size="555x480">
+                	<img src="resources/img/shop/single/03.jpg" alt="Product"></a></div>
+                <div class="gallery-item" data-hash="four">
+                	<a href="img/shop/single/04.jpg" data-size="555x480">
+                	<img src="resources/img/shop/single/04.jpg" alt="Product"></a></div>
               </div>
               <ul class="product-thumbnails">
-                <li class="active"><a href="#one"><img src="resources/img/shop/single/th01.jpg" alt="Product"></a></li>
+                <li class="active"><a href="#one"><img src="resources/img/product/5.png" alt="Product"></a></li>
                 <li><a href="#two"><img src="resources/img/shop/single/th02.jpg" alt="Product"></a></li>
                 <li><a href="#three"><img src="resources/img/shop/single/th03.jpg" alt="Product"></a></li>
                 <li><a href="#four"><img src="resources/img/shop/single/th04.jpg" alt="Product"></a></li>
@@ -347,10 +321,12 @@
           <!-- Product Info-->
           <div class="col-md-6 mb-30">
             <div class="card border-default bg-white pt-2 box-shadow">
+            <!-- product 추가시 name 값 바꿔주기 -->
+            	<form action="insertCart.do?p_code=${product.p_code}" method="get">
               <div class="card-body">
-                <h2 class="mb-3">서랍 사진 같은 서랍 그림</h2>
-                <h3 class="text-normal">₩265,000</h3>
-                <p class="text-sm text-muted"> 내가그린그림 <br> 작품 설명 쏼라쏼라 <br> #사진같지만 #사실그림</p>
+                <h2 class="mb-3">${product.p_name}</h2>
+                <h3 class="text-normal">₩ <fmt:formatNumber pattern="###,###,###" value="${product.price}" /></h3>
+                <p class="text-sm text-muted"> ${product.a_id}<br> 작품 설명 : ${product.p_detail}</p>
                 <div class="row">
                   <div class="col-sm-6">
                   </div>
@@ -360,24 +336,31 @@
                   </div>
                   <div class="col-sm-8">
                     <div class="pt-4 hidden-sm-up"></div>
-                    <button class="btn btn-primary btn-block my-0">장바구니 담기</button>
+                    <input class="btn btn-primary btn-block my-0" value="장바구니 담기" type="submit">
                   </div>
                 </div>
                 <ul class="list-unstyled text-sm mb-4">
-                  <li><span class='text-dark text-medium'>상품코드:</span> #994587623</li>
-                  <li><span class='text-dark text-medium'>Categories:</span> <a href='#' class='navi-link'>Furniture</a>, <a href='#' class='navi-link'>File Cabinets</a></li>
+                  <li><span class='text-dark text-medium'>상품코드:</span> ${product.p_code}</li>
+                  <li><span class='text-dark text-medium'>Categories:</span> 
+                  	<a href='#' class='navi-link'>${product.p_category}</a>, 
+                  	<a href='#' class='navi-link'></a></li>
                 </ul>
-                <div class="d-flex flex-wrap justify-content-between align-items-center"><a class="btn btn-outline-secondary btn-sm text-danger" href="#"><i class="material-icons favorite_border"></i>&nbsp;Save To Wishlist</a>
-                  <!-- <div class="py-2"><span class="d-inline-block align-middle text-sm text-muted mr-2">Share:</span><a class="social-button shape-rounded sb-facebook" href="#" data-toggle="tooltip" data-placement="top" title="Facebook"><i class="socicon-facebook"></i></a><a class="social-button shape-rounded sb-twitter" href="#" data-toggle="tooltip" data-placement="top" title="Twitter"><i class="socicon-twitter"></i></a><a class="social-button shape-rounded sb-instagram" href="#" data-toggle="tooltip" data-placement="top" title="Instagram"><i class="socicon-instagram"></i></a><a class="social-button shape-rounded sb-google-plus" href="#" data-toggle="tooltip" data-placement="top" title="Google +"><i class="socicon-googleplus"></i></a></div> -->
+                </div>
+            	</form>
+                <div class="d-flex flex-wrap justify-content-between align-items-center">
+                	<!-- 상품 업로드 시 href 루트 변경하기!! -->
+                	<a class="btn btn-outline-secondary btn-sm text-danger" 
+                		href="insertWishlist.do?p_code=${product.p_code}">
+                	<i class="material-icons favorite_border"></i>&nbsp;위시리스트에 담기</a>
                 </div>
               </div>
             </div>
+            </c:if>
           </div>
         </div>
       </div>
-    </div>
     <div class="container padding-bottom-3x pt-5 mb-1">
-      <!-- Related Products Carousel-->
+      <!-- 추천 상품 Products Carousel-->
       <h3 class="text-center padding-top-2x mt-2 padding-bottom-1x">이런 상품은 어떠세요 ? </h3>
       <!-- Carousel-->
       <div class="owl-carousel" data-owl-carousel="{ &quot;nav&quot;: false, &quot;dots&quot;: true, &quot;margin&quot;: 30, &quot;responsive&quot;: {&quot;0&quot;:{&quot;items&quot;:1},&quot;576&quot;:{&quot;items&quot;:2},&quot;768&quot;:{&quot;items&quot;:3},&quot;991&quot;:{&quot;items&quot;:4},&quot;1200&quot;:{&quot;items&quot;:4}} }">
@@ -398,7 +381,9 @@
         </div>
         <!-- Product-->
         <div class="product-card">
-          <div class="product-card-thumb"><a class="product-card-link" href="shop-single.jsp"></a><img src="resources/img/shop/th11.jpg" alt="Product">
+          <div class="product-card-thumb">
+	          	<a class="product-card-link" href="getProduct.do"></a>
+	          	<img src="resources/img/shop/th11.jpg" alt="Product">
             <div class="product-card-buttons">
               <button class="btn btn-white btn-sm btn-wishlist" data-toggle="tooltip" title="Wishlist"><i class="material-icons favorite_border"></i></button>
               <button class="btn btn-primary btn-sm" data-toast data-toast-type="success" data-toast-position="topRight" data-toast-icon="material-icons check" data-toast-title="Product" data-toast-message="successfuly added to cart!">Add to Cart</button>

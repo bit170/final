@@ -1,4 +1,4 @@
-package com.spring.biz.view.product;
+ package com.spring.biz.view.product;
 
 import java.io.File;
 import java.util.Enumeration;
@@ -20,10 +20,13 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.spring.biz.artist.ArtistService;
+import com.spring.biz.artist.ArtistVO;
 import com.spring.biz.member.MemberVO;
 import com.spring.biz.product.PImageFileVO;
 import com.spring.biz.product.ProductService;
@@ -37,6 +40,8 @@ public class ProductController extends BaseController {
 	
 	@Autowired
 	private ProductService productService;
+	@Autowired
+	private ArtistService artistService;
 	
 	public ProductController() {
 		System.out.println(">>>> ProductController() 객체 생성");
@@ -93,6 +98,17 @@ public class ProductController extends BaseController {
 			message += " alert('새상품을 추가했습니다.');";
 			message +=" location.href='"+multipartRequest.getContextPath()+"/getMyCanvas.do';";
 			message +=("</script>");
+			
+			String id = memberVO.getId();
+			System.out.println(id);
+			int alreadyArtist = artistService.alreadyArtist(id);
+			if(alreadyArtist == 0) {
+				HashMap<String,Object> idNickname = new HashMap<String,Object>();
+				idNickname.put("id", id);
+				idNickname.put("nickname", nickname);
+				artistService.insertArtist(idNickname);
+			}
+			
 		}catch(Exception e) {
 			if(pimageFileList!=null && pimageFileList.size()!=0) {
 				for(PImageFileVO  pimageFileVO:pimageFileList) {
@@ -254,9 +270,9 @@ public class ProductController extends BaseController {
 	
 	@RequestMapping(value="/getProduct.do")
 	public String getProduct(ProductVO vo, Model model) {
-//		ProductVO product = productService.getProduct(vo);
-//		model.addAttribute("product", product);
-//		System.out.println("작품코드 : " + vo.getP_code() + "작품명 : " + vo.getP_name());
+		ProductVO product = productService.getProduct(vo);
+		model.addAttribute("product", product);
+		System.out.println("작품코드 : " + vo.getP_code() + " 작품명 : " + vo.getP_name());
 		
 		return "product/shop-single";
 	}
@@ -266,24 +282,23 @@ public class ProductController extends BaseController {
 //		return productService.getMainProduct();
 //	}
 	
-//	@RequestMapping(value = "/getMainProduct.do", method = RequestMethod.GET)
-//	public String getMainProduct(Model model) {
-//		List<ProductVO> list = productService.getMainProduct();
-//		model.addAttribute("MainProduct", list);
-//		System.out.println(model.containsAttribute("MainProduct"));
-//		return "/WEB-INF/views/main/index.jsp";
-//	}
+	@RequestMapping(value = "/getMainProduct.do", method = RequestMethod.GET)
+	public String getMainProduct(Model model) {
+		List<ProductVO> list = productService.getMainProduct();
+		model.addAttribute("MainProduct", list);
+		System.out.println(model.containsAttribute("MainProduct"));
+		return "/WEB-INF/views/main/index.jsp";
+	}
 	
-//	@RequestMapping(value="/getProductList.do", method = RequestMethod.GET)
-//	public String getBoardList(ProductVO vo, Model model) {
-//		System.out.println(">>> 게시글 전체 목록 보여주기");
-//		
-//		List<ProductVO> list = productService.getProductList(vo);
-//		model.addAttribute("productList", list);
-//		System.out.println(list.isEmpty());
-//		System.out.println(list);
-//		return "product/shop-boxed-ls";
-//	}
-
+	@RequestMapping(value="/getProductList.do", method = RequestMethod.GET)
+	public String getBoardList(ProductVO vo, Model model) {
+		System.out.println(">>> 게시글 전체 목록 보여주기");
+		
+		List<ProductVO> list = productService.getProductList(vo);
+		model.addAttribute("productList", list);
+		System.out.println(list.isEmpty());
+		System.out.println(list);
+		return "product/shop-boxed-ls";
+	}
 
 }

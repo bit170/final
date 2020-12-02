@@ -46,22 +46,22 @@ public class ProductDAO {
 		}
 	}
 		
-	//글 조회(하나만)
-//	public ProductVO getProduct(ProductVO vo) {
-//		System.out.println("===> MyBatis로 getProduct() 실행");
-//		return mybatis.selectOne("productDAO.getProduct", vo);
-//	}
+//	글 조회(하나만)
+	public ProductVO getProduct(ProductVO vo) {
+		System.out.println("===> MyBatis로 getProduct() 실행");
+		return mybatis.selectOne("productDAO.getProduct", vo);
+	}
 		
-//	//글 목록 조회
-//	public List<ProductVO> getProductList(ProductVO vo) {
-//		System.out.println("===> MyBatis로 getProductList() 실행");
-//		return mybatis.selectList("productDAO.getProductList");
-//	}
-//
-//	public List<ProductVO> getMainProduct() {
-//		System.out.println("productDAO.getMainProduct()");
-//		return mybatis.selectList("productDAO.getMainProduct");
-//	}
+	//글 목록 조회
+	public List<ProductVO> getProductList(ProductVO vo) {
+		System.out.println("===> MyBatis로 getProductList() 실행");
+		return mybatis.selectList("productDAO.getProductList");
+	}
+
+	public List<ProductVO> getMainProduct() {
+		System.out.println("productDAO.getMainProduct()");
+		return mybatis.selectList("productDAO.getMainProduct");
+	}
 
 //	public List selectProductImageFileList(String p_code) throws DataAccessException{
 //		List pimageList = new ArrayList();
