@@ -73,8 +73,6 @@ public class ProductController extends BaseController {
 		newProductMap.put("a_id", a_id);
 
 		
-		newProductMap.put("id", id);
-
 		
 		List<PImageFileVO> pimageFileList = upload(multipartRequest);
 		//System.out.println(pimageFileList.size());	//확인용
