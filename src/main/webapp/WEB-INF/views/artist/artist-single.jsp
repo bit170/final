@@ -289,7 +289,7 @@
       <div class="container">
         <div class="row">
           <!-- Product Gallery-->
-          <div class="col-sm-4 text-center mb-4"><img class="d-block w-150 mx-auto img-thumbnail rounded-circle mb-3" src="<c:url value='/aDownload.do?id=${artist.id }' />" alt="Team">
+          <div class="col-sm-4 text-center mb-4"><img class="d-block w-150 mx-auto img-thumbnail rounded-circle mb-3" src="<c:url value='/aDownload.do?a_id=${artist.a_id }' />" alt="Team">
 
           </div>
 
@@ -300,7 +300,7 @@
                 <h2 class="mb-3">${artist.nickname }</h2>
                 <p class="text-sm text-muted">${artist.a_detail }</p>
                 <div class="d-flex flex-wrap justify-content-between align-items-center">
-                  <a href="Follow.do?a_id=${artist.id }&page=single" class="btn btn-outline-secondary btn-sm text-danger" >
+                  <a href="Follow.do?a_id=${artist.a_id }&page=single" class="btn btn-outline-secondary btn-sm text-danger" >
                     <i class="material-icons favorite_border"></i>&nbsp;Follow</a>
                   </div>
               </div>
