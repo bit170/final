@@ -305,12 +305,12 @@
               </c:forEach>  	
               </div>
               <ul class="product-thumbnails">
-                <li class="active"><a href="#one"><img src="<c:url value='/thumbnails.do?p_code=${product.p_code }&pfilename=main.jpg' />" alt="Product"></a></li>
+                <li class="active"><a href="#one"><img src="<c:url value='/thumbnails.do?p_code=${product.p_code }&pfiletype=main_image' />" alt="Product"></a></li>
                 <c:if test="${fn:length(productImgs) >1 }">
-                <li><a href="#two"><img src="<c:url value='/download.do?p_code=${product.p_code }&pfiletype=detail1.jpg' />" alt="Product"></a></li>
+                <li><a href="#two"><img src="<c:url value='/thumbnails.do?p_code=${product.p_code }&pfiletype=detail_image1' />" alt="Product"></a></li>
                 </c:if>
                 <c:if test="${fn:length(productImgs) >2 }">
-                <li><a href="#three"><img src="<c:url value='/download.do?p_code=${product.p_code }&pfiletype=detail2.jpg' />" alt="Product"></a></li>
+                <li><a href="#three"><img src="<c:url value='/thumbnails.do?p_code=${product.p_code }&pfiletype=detail_image2' />" alt="Product"></a></li>
                 </c:if>
               </ul>
             </div>

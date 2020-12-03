@@ -59,7 +59,12 @@ public class ProductServiceImpl implements ProductService {
 
 	@Override
 	public List<ProductVO> getMainProduct() {
-		return productDAO.getMainProduct();
+		List<ProductVO> mList = productDAO.getMainProduct();
+		System.out.println(mList.size());
+		if(mList.size()==0) {
+			mList = productDAO.getMain();
+		}
+		return mList; 
 	}
 
 	
@@ -101,6 +106,11 @@ public class ProductServiceImpl implements ProductService {
 	@Override
 	public String getFileName(String p_code) {
 		return productDAO.getFileName(p_code);
+	}
+
+	@Override
+	public String getFileName(String p_code, String pi_filetype) {
+		return productDAO.getFileName(p_code,pi_filetype);
 	}
 	
 }
