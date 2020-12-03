@@ -354,11 +354,24 @@
             	</form>
 			
 				<c:if test="${product.price > 0}">
+					<c:if test="${empty member}">
                	 <div class="d-flex flex-wrap justify-content-between align-items-center">
-                	<a class="btn btn-outline-secondary btn-sm text-danger" 
+                	<a class="btn btn-outline-secondary btn-sm text-danger" data-toast data-toast-type="danger" 
+	                    		data-toast-position="topRight" data-toast-icon="material-icons check" 
+	                    		data-toast-title="login needed" data-toast-message="로그인이 필요한 서비스입니다!"
+                    		onclick="#">
+                	<i class="material-icons favorite_border"></i>&nbsp;위시리스트에 담기</a>
+               	 </div>
+               	 </c:if>
+					<c:if test="${!empty member}">
+               	 <div class="d-flex flex-wrap justify-content-between align-items-center">
+                	<a class="btn btn-outline-secondary btn-sm text-danger" data-toast data-toast-type="success" 
+	                    		data-toast-position="topRight" data-toast-icon="material-icons check" 
+	                    		data-toast-title="success!" data-toast-message="위시리스트 추가 성공!"
                 		href="insertWishlist.do?p_code=${product.p_code}">
                 	<i class="material-icons favorite_border"></i>&nbsp;위시리스트에 담기</a>
                	 </div>
+               	 </c:if>
                 </c:if>
 				<c:if test="${product.price eq 0}">
                	 <div class="d-flex flex-wrap justify-content-between align-items-center">

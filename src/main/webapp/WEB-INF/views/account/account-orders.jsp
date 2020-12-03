@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -53,27 +54,41 @@
                 <!-- S_ord forEach문 넣기 -->
                   <tr>
                     <th>작품 이름</th>
-                    <th class="text-center">총 금액</th>
+                    <th class="text-center">${order.total}</th>
                   </tr>
                 </thead>
+                    	<c:if test="${!empty orderList}">
                 <tbody>
                   <tr>
+                  <c:forEach var="product" items="${orderList}">
                     <td>
-                      <div class="product-item"><a class="product-thumb" href="order-tracking.do?p_name="><img src="resources/img/shop/cart/01.jpg" alt="Product"></a>
+                      <div class="product-item"><a class="product-thumb" href="order-tracking.do?p_name=">
+                      		<img src="resources/img/product/05.jpg" alt="Product"></a>
                         <div class="product-info">
-                          <h4 class="product-title"><a href="order-tracking.do">그림 이름<small>x 1</small></a></h4><span><em>Color:</em> Aqua</span><span><em>Accent Color:</em> White</span>
+                          <h4 class="product-title"><a href="order-tracking.do?p_code=${product.p_code}">${product.p_name}
+                          	<small>x 1</small></a></h4>
+                          		<span><em>카테고리 : </em> ${product.p_category}</span>
+                          		<span><em>아티스트 : </em> ${product.a_id}</span>
                         </div>
                       </div>
                     </td>
-                    <td class="text-center text-lg text-medium">$그림가격</td>
+                    <td class="text-center text-lg text-medium"></td>
+                    </c:forEach>
                   </tr>
                 </tbody>
+                  </c:if>
               </table>
             </div>
             <hr class="mb-3">
             <div class="d-flex flex-wrap justify-content-between align-items-center pb-2">
-              <div class="px-2 py-1">상품 가격: <span class='text-medium'>$622.40</span></div>
-              <div class="text-lg px-2 py-1">총 합: <span class='text-medium'>$665.32</span></div>
+			<c:if test="${!empty orderList}">
+				<c:forEach var="product" items="${orderList}">
+              <div class="px-2 py-1">상품 가격: <span class='text-medium'>
+              	₩ <fmt:formatNumber pattern="###,###,###" value="${product.price}" /></span></div>
+              <div class="text-lg px-2 py-1">총 합: <span class='text-medium'>
+              	₩ <fmt:formatNumber pattern="###,###,###" value="${order.total}" /></span></div>
+              </c:forEach>
+              </c:if>
             </div>
           </div>
         </div>
@@ -367,28 +382,32 @@
 				<!-- 마이페이지 목록 수정 (연희) -->
 				<nav class="list-group">
 					<a class="list-group-item" href="getWishlists.do?id=${member.id}">
-					<c:if test="${!empty wishlist}">
 						<i class="icon-heart"></i>위시리스트
+					<c:if test="${!empty wishlist}">
 						<span class="badge badge-default badge-pill">1</span>
 						</c:if>
 					<c:if test="${empty wishlist}">
-						<i class="icon-heart"></i>위시리스트
 						<span class="badge badge-default badge-pill"></span>
 						</c:if>
 						</a>
 					<a class="list-group-item" href="getFollowList.do?id=${member.id}">
-						<c:if test="${!empty follow}">
 						<i class="icon-heart"></i>팔로우
+						<c:if test="${!empty follow}">
 						<span class="badge badge-default badge-pill">3</span>
 						</c:if>
 						<c:if test="${empty follow}">
-						<i class="icon-heart"></i>팔로우
 						<span class="badge badge-default badge-pill"></span>
 						</c:if>
 						</a> 
-					<a class="list-group-item with-badge active" href="getOrderList.do?id=${member.id}">
+						<a class="list-group-item with-badge active" href="getOrderList.do?id=${member.id}">
 						<i class="icon-heart"></i>주문목록
-						<span class="badge badge-default badge-pill">3</span></a> 
+						<c:if test="${!empty order}">
+						<span class="badge badge-default badge-pill">3</span>
+						</c:if>
+						<c:if test="${empty order}">
+						<span class="badge badge-default badge-pill"></span>
+						</c:if>
+						</a> 
 					<a class="list-group-item" href="getMember.do?id=${member.id}">
 						<i class="icon-head"></i>프로필 수정</a> 
 					<a class="list-group-item" href="getAddress.do">
@@ -420,7 +439,8 @@
 								<td class="align-middle">${order.o_date}</td>
 								<td class="align-middle">
 								<span class="d-inline-block bg-info text-white text-xs p-1">배송 준비중</span></td>
-								<td class="align-middle"><span class="text-medium"> ${order.total} </span></td>
+								<td class="align-middle"><span class="text-medium"> 
+									₩ <fmt:formatNumber pattern="###,###,###" value="${order.total}" /> </span></td>
 							</tr>
 							</c:forEach>
 							</c:if>

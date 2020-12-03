@@ -327,28 +327,32 @@
 				<!-- 마이페이지 목록 수정 (연희) -->
 				<nav class="list-group">
 					<a class="list-group-item with-badge active" href="getWishlists.do?id=${member.id}">
-					<c:if test="${!empty wishlist}">
 						<i class="icon-heart"></i>위시리스트
+					<c:if test="${!empty wishlist}">
 						<span class="badge badge-default badge-pill">1</span>
 						</c:if>
 					<c:if test="${empty wishlist}">
-						<i class="icon-heart"></i>위시리스트
 						<span class="badge badge-default badge-pill"></span>
 						</c:if>
 						</a>
 					<a class="list-group-item" href="getFollowList.do?id=${member.id}">
-						<c:if test="${!empty follow}">
 						<i class="icon-heart"></i>팔로우
-						<span class="badge badge-default badge-pill">3</span>
+						<c:if test="${!empty follow}">
+						<span class="badge badge-default badge-pill">1</span>
 						</c:if>
 						<c:if test="${empty follow}">
-						<i class="icon-heart"></i>팔로우
 						<span class="badge badge-default badge-pill"></span>
 						</c:if>
 						</a> 
 					<a class="list-group-item" href="getOrderList.do?id=${member.id}">
 						<i class="icon-heart"></i>주문목록
-						<span class="badge badge-default badge-pill">3</span></a> 
+						<c:if test="${!empty order}">
+						<span class="badge badge-default badge-pill">1</span>
+						</c:if>
+						<c:if test="${empty order}">
+						<span class="badge badge-default badge-pill"></span>
+						</c:if>
+						</a> 
 					<a class="list-group-item" href="getMember.do?id=${member.id}">
 						<i class="icon-head"></i>프로필 수정</a> 
 					<a class="list-group-item" href="getAddress.do">
@@ -373,15 +377,15 @@
 						<c:if test="${!empty wishlist}">
 							<tr>
 								<td>
-								<c:forEach items="${wishlists}" var="product">
+								<%-- <c:forEach items="${wishlists}" var="product"> --%>
 									<div class="product-item">
 										<a class="product-thumb" href="getProduct.do"><img
-											src="resources/img/product/${product.p_img}" alt="Product"></a>
+											src="resources/img/product/5.png" alt="Product"></a>
 										<div class="product-info">
 											<h4 class="product-title">
-												<a href="getProduct.do">${product.p_name}</a>
+												<a href="getProduct.do">${wishlist.p_code}</a>
 											</h4>
-											<div class="text-lg text-medium text-muted">${product.price}</div>
+											<div class="text-lg text-medium text-muted">가격</div>
 											<div class="text-sm">
 											<!-- 가능여부 : 해당 p_name 이 product 테이블에 없을 경우 비활성화 -->
 												가능여부 :
@@ -389,10 +393,10 @@
 											</div>
 										</div>
 									</div>
-									</c:forEach>
+									<%-- </c:forEach> --%>
 								</td>
 								<td class="text-center"><a class="remove-from-cart"
-									href="#" data-toggle="tooltip" title="Remove item"><i
+									href="deleteWishlist.do?id=${wishlist.id},p_code=${wishlist.p_code}" data-toggle="tooltip" title="위시리스트에서 제거"><i
 										class="material-icons icon_close"></i></a></td>
 							</tr>
 							</c:if>

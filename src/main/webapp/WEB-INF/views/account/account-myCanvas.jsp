@@ -325,28 +325,32 @@
 				<!-- 마이페이지 목록 수정 (연희) -->
 				<nav class="list-group">
 					<a class="list-group-item" href="getWishlists.do?id=${member.id}">
-					<c:if test="${!empty wishlist}">
 						<i class="icon-heart"></i>위시리스트
+					<c:if test="${!empty wishlist}">
 						<span class="badge badge-default badge-pill">1</span>
 						</c:if>
 					<c:if test="${empty wishlist}">
-						<i class="icon-heart"></i>위시리스트
 						<span class="badge badge-default badge-pill"></span>
 						</c:if>
 						</a>
 					<a class="list-group-item" href="getFollowList.do?id=${member.id}">
-						<c:if test="${!empty follow}">
 						<i class="icon-heart"></i>팔로우
-						<span class="badge badge-default badge-pill">3</span>
+						<c:if test="${!empty follow}">
+						<span class="badge badge-default badge-pill">1</span>
 						</c:if>
 						<c:if test="${empty follow}">
-						<i class="icon-heart"></i>팔로우
 						<span class="badge badge-default badge-pill"></span>
 						</c:if>
 						</a> 
 					<a class="list-group-item" href="getOrderList.do?id=${member.id}">
 						<i class="icon-heart"></i>주문목록
-						<span class="badge badge-default badge-pill">3</span></a> 
+						<c:if test="${!empty order}">
+						<span class="badge badge-default badge-pill">1</span>
+						</c:if>
+						<c:if test="${empty order}">
+						<span class="badge badge-default badge-pill"></span>
+						</c:if>
+						</a> 
 					<a class="list-group-item" href="getMember.do?id=${member.id}">
 						<i class="icon-head"></i>프로필 수정</a> 
 					<a class="list-group-item" href="getAddress.do">

@@ -359,7 +359,7 @@
             </div>
           </div>
           
-          <script type="text/javascript">
+          <script>
 
           		/* IMP.request_pay({
         	    pg : 'html5_inicis', // version 1.1.0부터 지원.
@@ -373,16 +373,16 @@
         	    buyer_addr : document.getElementById("address").val(),
         	    buyer_postcode : document.getElementById("post").val(),
         	    m_redirect_url : 'http://192.168.0.222:8080/biz/review.do' */
-
+        	    
 			    IMP.request_pay({
         	    pg : 'html5_inicis', // version 1.1.0부터 지원.
         	    pay_method : 'card',
         	    merchant_uid : 'merchant_' + new Date().getTime(),
         	    name : '캔버스 마켓',
-        	    amount : 1000,
-        	    buyer_email : 'hohohoduck@naver.com',
-        	    buyer_name : '곽연희',
-        	    buyer_tel : '010-7276-8912',
+        	    amount : 200000,
+        	    buyer_email : 'email',
+        	    buyer_name : '이름',
+        	    buyer_tel : '010-2222-2222',
         	    buyer_addr : '주소',
         	    buyer_postcode : '11111',
         	    m_redirect_url : 'http://192.168.0.222:8080/biz/review.do'

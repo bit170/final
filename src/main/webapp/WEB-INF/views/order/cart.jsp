@@ -261,7 +261,7 @@
                       </div>
                     <!-- 삭제처리는 어떻게? 장바구니 품목을 디비에 저장하지 않으면 리스트형태로 세션이나 어딘가에 보관? 그럼 삭제버튼 클릭시 리스트에서 remove하면 될까? -->
                     </td>
-                    <td class="text-center"><a class="remove-from-cart" href="deleteCart.do"><i class="material-icons icon_close"></i></a></td>
+                    <td class="text-center"><a class="remove-from-cart" href="deleteCart.do?p_code=${cart.p_code}"><i class="material-icons icon_close"></i></a></td>
                   </tr>
                     </c:forEach>
                     </c:if>  
@@ -279,8 +279,15 @@
               <div class="pr-2 py-1 text-sm">합 계 : <span class='text-dark text-medium'>
               ₩ <fmt:formatNumber pattern="###,###,###" value="${total}" />
               		<%-- <c:out value='${total}' /> --%></span></div>
-              <a class="btn btn-sm btn-success mb-0 mr-0" href="checkout.do?id=${member.id}">주문하기</a>
+             <c:if test="${!empty member}">
+              	<a class="btn btn-sm btn-success mb-0 mr-0" href="checkout.do?id=${member.id}">주문하기</a>
               </c:if>
+             <c:if test="${empty member}">
+              <a class="btn btn-sm btn-success mb-0 mr-0" href="#" data-toast data-toast-type="danger" 
+        		data-toast-position="topRight" data-toast-icon="icon-circle-check" 
+        		data-toast-title="login needed" data-toast-message="로그인이 필요한 서비스입니다.">주문하기</a>
+             </c:if>
+            </c:if>
             </div>
           </div>
         </div>
@@ -364,7 +371,16 @@
         	<!-- <a class="btn btn-primary" href="#" data-toast data-toast-type="성공!" 
         		data-toast-position="topRight" data-toast-icon="icon-circle-check" 
         		data-toast-title="장바구니" data-toast-message="수정이 완료되었습니다!">카트 업데이트</a> -->
-       		<a class="btn btn-success" href="checkout.do?id=${member.id}">주문하기</a></div>
+        	<c:if test="${!empty member}">
+       		<a class="btn btn-success" href="checkout.do?id=${member.id}">주문하기</a>
+       		</c:if>
+        	<c:if test="${empty member}">
+       		<a class="btn btn-success" href="#" data-toast data-toast-type="danger" 
+        		data-toast-position="topRight" data-toast-icon="icon-circle-check" 
+        		data-toast-title="login needed" data-toast-message="로그인이 필요한 서비스입니다.">주문하기</a>
+       		</c:if>
+       		</div>
+       		
       </div>
       </c:if>
         <c:if test="${empty cartList}">

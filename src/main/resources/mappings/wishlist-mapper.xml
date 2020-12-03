@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="wishlistDAO">
+
+	<insert id="insertWishlist" parameterType="wishlist">
+		INSERT INTO WISHLIST(P_CODE, ID)
+		VALUES (#{p_code}, #{id})
+	</insert>
+	
+	<delete id="deleteWishlist" parameterType="wishlist">
+		DELETE FROM WISHLIST WHERE ID = #{id} AND P_CODE = #{p_code}
+	</delete>
+	
+	<delete id="deleteAllWishlists" parameterType="String">
+		DELETE FROM WISHLIST WHERE ID = #{id}
+	</delete>
+	
+	<select id="getWishlists" parameterType="String" resultType="wishlist">
+		SELECT * FROM WISHLIST 
+		WHERE ID = #{id}
+	</select>
+
+</mapper>
+

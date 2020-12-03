@@ -24,7 +24,7 @@ import com.spring.biz.product.ProductService;
 import com.spring.biz.product.ProductVO;
 
 @Controller
-@SessionAttributes({ "cart", "cartList", "member", "ord" })
+@SessionAttributes({ "cart", "cartList", "member", "order" })
 public class OrderController {
 
 	@Autowired
@@ -71,12 +71,6 @@ public class OrderController {
 		sess.setMaxInactiveInterval(60 * 60);
 		System.out.println("클릭한 상품 " + (ProductVO) sess.getAttribute("product"));
 
-//		작품 가격이 0 원일 경우 카트 비활성화
-//		ProductVO pvo = (ProductVO) sess.getAttribute("product");
-//		if( pvo.getPrice() == 0 ) {
-//			return "redirect:getProductList.do";
-
-//		}else {
 		if (sess.getAttribute("cartList") != null) {
 			List<CartVO> cartList = (List<CartVO>) sess.getAttribute("cartList");
 			System.out.println("세션 장바구니 정보 : " + (List<CartVO>) sess.getAttribute("cartList"));
@@ -141,6 +135,8 @@ public class OrderController {
 		for (CartVO cart : cartList) {
 			index++;
 			if (cart.getP_code() == p_code) {
+				System.out.println(p_code);
+				System.out.println(cart.getP_code());
 				System.out.println(index);
 			}
 		}
@@ -176,15 +172,18 @@ public class OrderController {
 		if ((List<CartVO>) session.getAttribute("cartList") != null) {
 			System.out.println("cart값 true ");
 
+			System.out.println("total : " + session.getAttribute("total"));
+			
 			MemberVO mvo = (MemberVO) session.getAttribute("member");
-//			String total = (String) session.getAttribute("total");
+			String total = Integer.toString((Integer) session.getAttribute("total"));
 			OrdVO ovo = new OrdVO();
 			ovo.setId(mvo.getId());
 			ovo.setO_code(randomNum(6));
-			ovo.setTotal("300000");
+			ovo.setTotal(total);
 
 			ordService.insertOrd(ovo);
 			System.out.println(">> ordVO : " + ovo);
+			session.setAttribute("order", ovo);
 
 			// 작품 가격 0 원으로 변경
 			List<CartVO> cartList = (List<CartVO>) session.getAttribute("cartList");
