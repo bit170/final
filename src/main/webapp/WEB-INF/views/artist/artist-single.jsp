@@ -318,9 +318,11 @@
         <div class="gutter-sizer"></div>
         <div class="grid-sizer"></div>
         <c:forEach var="item" items="${allList}">
-        <div class="grid-item"><a href="#"><img src="<c:url value='/thumbnails.do?p_code=${item.p_code }&pi_filename=${item.pi_filename }' />" alt="Image"></a></div>
+        <div class="grid-item">
+        <a href="#"><img src="<c:url value='/download.do?p_code=${item.p_code }&filename=${item.pi_filename }' />" alt="Image"></a>
+		</div>
         </c:forEach>
-      </div>
+      	</div>
     </div>
     <!-- Site Footer-->
     <footer class="site-footer">
