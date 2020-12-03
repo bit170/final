@@ -81,4 +81,12 @@ public class ProductDAO {
 		return mybatis.selectList("productDAO.selectProductImageFileList", p_code);
 	}
 
+	public List<ProductVO> getCategory(String category) {
+		return mybatis.selectList("productDAO.getCategoryList", category);
+	}
+
+	public List<Integer> categoryCnt() {
+		return mybatis.selectList("productDAO.categoryCnt");
+	}
+
 }

@@ -82,6 +82,16 @@ public class ProductServiceImpl implements ProductService {
 	public void addNewProductImage(List pimageFileList) throws Exception {
 		
 	}
+
+	@Override
+	public List<ProductVO> getCategory(String category) {
+		return productDAO.getCategory(category);
+	}
+
+	@Override
+	public List<Integer> categoryCnt() {
+		return productDAO.categoryCnt();
+	}
 	
 }
 	

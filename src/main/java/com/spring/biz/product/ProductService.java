@@ -1,5 +1,6 @@
 package com.spring.biz.product;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
@@ -22,6 +23,8 @@ public interface ProductService {
 	public void modifyProductInfo(Map productMap) throws Exception;
 	
 	public void modifyPImage(List<PImageFileVO> pimageFileList) throws Exception;
+	List<ProductVO> getCategory(String category);
+	List<Integer> categoryCnt();
 
 //	public List productImageFile(String p_code) throws Exception;
 }

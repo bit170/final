@@ -33,11 +33,11 @@
 
     	$(document).ready(function () {
     		/* 회원가입 성공 후  model attribute에 바인딩한 객체를 확인, 한 번만 알리기 위해선 ajax사용이 답인가? */
-            var signedUp= '${signedUp.id}';
+            /* var signedUp= '${signedUp.id}';
             if(signedUp != ""){
             	alert("회원가입을 축하합니다. 이메일 인증 후 사용할 수 있습니다.");
             }
-            signedUp = "";
+            signedUp = ""; */
 
     		 $("#signup_id").blur(function () {
     			 var signup_id = $("#signup_id").val();
@@ -571,4 +571,3 @@
     <script src="resources/js/scripts.min.js"></script>
   </body>
 </html>
-
