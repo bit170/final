@@ -69,7 +69,7 @@
 	</select>
 	
 	<select id="getAllPrinting" parameterType="String" resultMap="allPrinting">
-		SELECT P_CODE as p_code, PI_FILENAME as p_code FROM P_IMAGE WHERE A_ID = #{a_id}
+		SELECT P_CODE, PI_FILENAME FROM P_IMAGE WHERE A_ID = #{a_id}
 	</select>
 	
 
