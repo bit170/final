@@ -60,12 +60,11 @@ public class FileDownloadController {
 		
 		System.out.println("thumbnails() 실행");
 		String p_code = request.getParameter("p_code"); 
-//		String pi_filetype = request.getParameter("pfiletype");
-//		Map<String, String> imgCode = new HashMap<String, String>();
-//		imgCode.put("p_code", p_code);
-//		imgCode.put("pi_filetype", pi_filetype);
-		String pi_filename = productService.getFileName(p_code);
-//		String pi_filename = request.getParameter("pfilename");
+		String pi_filetype = request.getParameter("pfiletype");
+		String pi_filename = productService.getFileName(p_code,pi_filetype);
+		if("".equals(pi_filetype)) {
+			pi_filename = productService.getFileName(p_code);
+		}
 		System.out.println("pi_filename : "+pi_filename+" p_code : "+p_code);
 		OutputStream out = response.getOutputStream();
 		String filePath=CURR_IMAGE_REPO_PATH+"\\"+p_code+"\\"+pi_filename;

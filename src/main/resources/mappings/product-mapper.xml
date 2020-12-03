@@ -94,6 +94,14 @@
 		select pi_filename from p_image where p_code=#{p_code} and pi_filetype='main'
 	</select>
 	<select id="getMain" resultType="product">
-		select 
+		<![CDATA[
+		select * from product where p_code in(
+        		select p_code from
+	        		(select p_code, rownum num from product
+			           	 where num<7)
+		]]> 
+	</select>
+	<select id="imgFileName" resultType="String" parameterType="java.util.HashMap">
+		select pi_filename from p_image where p_code=#{p_code} and pi_filetype=#{pi_filetype}
 	</select>
 </mapper>

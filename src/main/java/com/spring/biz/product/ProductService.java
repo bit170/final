@@ -27,6 +27,7 @@ public interface ProductService {
 	List<Integer> categoryCnt();
 	List<PImageFileVO> getImages(String p_code);
 	String getFileName(String p_code);
+	String getFileName(String p_code, String pi_filetype);
 
 //	public List productImageFile(String p_code) throws Exception;
 }
