@@ -1,7 +1,7 @@
 package com.spring.biz.artist;
 
 public class ArtistVO {
-	private String id;
+	private String a_id;
 	private String nickname;
 	private String a_detail;
 	
@@ -9,17 +9,17 @@ public class ArtistVO {
 		System.out.println("~~~ArtistVO 객체생성~~~");
 	}
 	
-	public ArtistVO(String id, String nickname, String a_detail) {
-		this.id = id;
+	public ArtistVO(String a_id, String nickname, String a_detail) {
+		this.a_id = a_id;
 		this.nickname = nickname;
 		this.a_detail = a_detail;
 	}
 
-	public String getId() {
-		return id;
+	public String getA_id() {
+		return a_id;
 	}
-	public void setId(String id) {
-		this.id = id;
+	public void setA_id(String a_id) {
+		this.a_id = a_id;
 	}
 	public String getNickname() {
 		return nickname;
@@ -36,6 +36,6 @@ public class ArtistVO {
 	
 	@Override
 	public String toString() {
-		return "ArtistVO [id=" + id + ", nickname=" + nickname + ", a_detail=" + a_detail + "]";
+		return "ArtistVO [a_id=" + a_id + ", nickname=" + nickname + ", a_detail=" + a_detail + "]";
 	}
 }

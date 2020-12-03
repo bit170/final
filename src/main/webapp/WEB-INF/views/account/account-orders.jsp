@@ -60,6 +60,7 @@
                     	<c:if test="${!empty sOrderList}">
                 <tbody>
                   <c:forEach var="product" items="${sOrderList}">
+                  <c:forEach var="sOder" items="${sOder}">
                   <tr>
                     <td>
                       <div class="product-item"><a class="product-thumb" href="order-tracking.do?o_code=${order.o_code}">
@@ -72,8 +73,9 @@
                         </div>
                       </div>
                     </td>
-                    <td class="text-center text-lg text-medium">${product.price}</td>
+                    <td class="text-center text-lg text-medium">${sOrder.p_price}</td>
                   </tr>
+                  </c:forEach>
                     </c:forEach>
                 </tbody>
                   </c:if>

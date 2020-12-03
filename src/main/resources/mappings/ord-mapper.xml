@@ -14,7 +14,7 @@
 	</select>
 	
 	<insert id="insertS_Ord" parameterType="sOrd">
-		INSERT INTO S_ORD VALUES (#{o_code}, #{p_code}, #{a_id})
+		INSERT INTO S_ORD VALUES (#{o_code}, #{p_code}, #{a_id}, #{p_price})
 	</insert>
 	
 	<select id="getS_OrdList" resultType="sOrd">

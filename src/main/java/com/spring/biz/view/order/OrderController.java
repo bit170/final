@@ -89,7 +89,7 @@ public class OrderController {
 					System.out.println(index++ + "번째 장바구니 작품정보 : " + cart);
 				}
 
-				int total = 0;
+				String total = "";
 				for (CartVO cart : cartList) {
 					total = cart.getc_price() + total;
 				}

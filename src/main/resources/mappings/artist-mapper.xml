@@ -5,26 +5,26 @@
 <mapper namespace="artistDAO">
 	<resultMap type="artist" id="artistList"/>
  	<insert id="insertArtist" parameterType="artist">
-		INSERT INTO ARTIST (ID, NICKNAME, A_DETAIL, A_IMG)
-		VALUES #{id}, #{nickname}, #{a_detail}, #{a_img}
+		INSERT INTO ARTIST (A_ID, NICKNAME, A_DETAIL, A_IMG)
+		VALUES #{a_id}, #{nickname}, #{a_detail}, #{a_img}
 	</insert>
 	
  <update id="updateArtist" parameterType="artist">
 		UPDATE ARTIST
 		SET A_DETAIL = #{a_detail}, A_IMG = #{a_img}
-		WHERE ID = #{id}
+		WHERE A_ID = #{a_id}
 	</update>
 	
 	<delete id="deleteArtist" parameterType="artist">
-		DELETE FROM ARTIST WHERE ID = #{id}
+		DELETE FROM ARTIST WHERE A_ID = #{a_id}
 	</delete> 
 	
 	<select id="alreadyArtist" parameterType="String" resultType="Integer">
-		SELECT COUNT(*) FROM ARTIST WHERE ID = #{id}
+		SELECT COUNT(*) FROM ARTIST WHERE A_ID = #{a_id}
 	</select>
 	
 	<select id="getArtist" parameterType="String" resultType="artist">
-		SELECT * FROM ARTIST WHERE ID = #{id}
+		SELECT * FROM ARTIST WHERE A_ID = #{a_id}
 	</select>
 	
 	<select id="getArtistList" resultType="artist">

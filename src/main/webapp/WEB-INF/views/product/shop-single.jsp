@@ -377,7 +377,9 @@
               <div class="card-body">
                 <h2 class="mb-3">${product.p_name}</h2>
                 <h3 class="text-normal">₩ <fmt:formatNumber pattern="###,###,###" value="${product.price}" /></h3>
-                <p class="text-sm text-muted"> ${product.a_id}<br> 작품 설명 : ${product.p_detail}</p>
+                <p class="text-sm text-muted">
+                	<a class='navi-link' href="getArtist.do?a_id=${product.a_id}">${product.a_id}</a><br>
+                	 작품 설명 : ${product.p_detail}</p>
                 <div class="row">
                   <div class="col-sm-6">
                   </div>
@@ -385,7 +387,17 @@
                 <div class="row align-items-end mb-4">
                   <div class="col-sm-4">
                   </div>
-                  <div class="col-sm-8">
+                  
+                </div>
+                <ul class="list-unstyled text-sm mb-4">
+                  <li><span class='text-dark text-medium'>작품코드:</span> ${product.p_code}</li>
+                  <li><span class='text-dark text-medium'>작품사이즈:</span> ${product.p_size}</li>
+                  <li><span class='text-dark text-medium'>Categories:</span> 
+                  	<a href='#' class='navi-link'>${product.p_category}</a> 
+                  	<a href='#' class='navi-link'></a></li>
+                </ul>
+                </div>
+                <div class="col-sm-8">
                     <div class="pt-4 hidden-sm-up"></div>
                   <c:if test="${product.price > 0}">
                     <input class="btn btn-primary btn-block my-0" value="장바구니 담기" type="submit">
@@ -394,14 +406,6 @@
                     <input class="btn btn-outline-primary btn-block my-0" value="SOLD OUT" type="text" onclick="#">
                     </c:if>
                   </div>
-                </div>
-                <ul class="list-unstyled text-sm mb-4">
-                  <li><span class='text-dark text-medium'>상품코드:</span> ${product.p_code}</li>
-                  <li><span class='text-dark text-medium'>Categories:</span> 
-                  	<a href='#' class='navi-link'>${product.p_category}</a>, 
-                  	<a href='#' class='navi-link'></a></li>
-                </ul>
-                </div>
             	</form>
 			
 				<c:if test="${product.price > 0}">

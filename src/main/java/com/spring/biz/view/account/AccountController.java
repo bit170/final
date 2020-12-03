@@ -59,6 +59,7 @@ public class AccountController {
 		
 		model.addAttribute("orderList", orderList);
 		model.addAttribute("sOrderList", sOderList);
+		model.addAttribute("sOrder", svoList);
 		return "account/account-orders";
 	}
 	
