@@ -319,7 +319,7 @@
         <div class="grid-sizer"></div>
         <c:forEach var="item" items="${allList}">
         <div class="grid-item">
-        <a href="getProduct.do?p_code=${item.p_code}"><img src="<c:url value='/download.do?p_code=${item.p_code }&filename=${item.pi_filename }' />" alt="Image"></a>
+        <a href="getProduct.do?p_code=${item.p_code}"><img src="<c:url value='/download.do?p_code=${item.p_code }&pfilename=${item.pi_filename }' />" alt="Image"></a>
 		</div>
         </c:forEach>
       	</div>
