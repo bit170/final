@@ -54,7 +54,7 @@ public class FollowController {
 		if(page.equals("all"))
 			goPage = "redirect:getArtistList.do";
 		else if(page.equals("single"))
-			goPage = "redirect:getArtist.do?id=" + a_id;
+			goPage = "redirect:getArtist.do?a_id=" + a_id;
 		return goPage;
 	}
 	
