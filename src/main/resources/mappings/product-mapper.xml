@@ -87,5 +87,10 @@
 	<select id="categoryCnt" resultType="Integer">
 		select count(p_category) from product group by p_category order by p_category
 	</select>
-	
+	<select id="getImages" parameterType="String" resultType="pimage">
+		select * from p_image where p_code = #{p_code}
+	</select>
+	<select id="getFileName" parameterType="String" resultType="String">
+		select pi_filename from p_image where p_code=#{p_code} and pi_filetype='main'
+	</select>
 </mapper>

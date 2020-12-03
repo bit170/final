@@ -5,26 +5,34 @@ import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.OutputStream;
+import java.util.HashMap;
+import java.util.Map;
 
 import javax.imageio.ImageIO;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
+
+import com.spring.biz.product.ProductService;
 
 import net.coobird.thumbnailator.Thumbnails;
 
 @Controller
 public class FileDownloadController {
 	private static String CURR_IMAGE_REPO_PATH = "C:\\gallery\\file_repo";
+	@Autowired
+	private ProductService productService;
 	
-	@RequestMapping("/download")
-	protected void download(@RequestParam("filename") String filename,
-		                 	@RequestParam("p_code") String p_code,
+	@RequestMapping(value = "/download.do",method = RequestMethod.GET)
+	protected void download(HttpServletRequest request,
 			                 HttpServletResponse response) throws Exception {
+		System.out.println("download() 실행");
+		String p_code = request.getParameter("p_code");
+		String filename = request.getParameter("pfilename");
 		OutputStream out = response.getOutputStream();
 		String filePath=CURR_IMAGE_REPO_PATH+"\\"+p_code+"\\"+filename;
 		File image=new File(filePath);
@@ -52,7 +60,12 @@ public class FileDownloadController {
 		
 		System.out.println("thumbnails() 실행");
 		String p_code = request.getParameter("p_code"); 
-		String pi_filename = request.getParameter("pfilename");
+//		String pi_filetype = request.getParameter("pfiletype");
+//		Map<String, String> imgCode = new HashMap<String, String>();
+//		imgCode.put("p_code", p_code);
+//		imgCode.put("pi_filetype", pi_filetype);
+		String pi_filename = productService.getFileName(p_code);
+//		String pi_filename = request.getParameter("pfilename");
 		System.out.println("pi_filename : "+pi_filename+" p_code : "+p_code);
 		OutputStream out = response.getOutputStream();
 		String filePath=CURR_IMAGE_REPO_PATH+"\\"+p_code+"\\"+pi_filename;
