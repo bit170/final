@@ -104,4 +104,7 @@
 	<select id="imgFileName" resultType="String" parameterType="java.util.HashMap">
 		select pi_filename from p_image where p_code=#{p_code} and pi_filetype=#{pi_filetype}
 	</select>
+	<select id="getMyProduct" resultType="product" parameterType="String">
+		select * from product where a_id=#{id}
+	</select>
 </mapper>

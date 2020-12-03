@@ -402,14 +402,15 @@
 									<a href="insert-canvas.do">
 									<img src="resources/img/gallery/th05.jpg" alt="Image"></a>
 										<span class="caption">새 작품 추가하기</span>
-		<!-- >>>>>>> branch 'yhg' of https://github.com/bit170/final.git -->
 								</div>
-								<div class="grid-item gallery-item">
-									<a href="update-canvas.do">
-									<img src="resources/img/gallery/th01.jpg" alt="Image"></a>
-									<span class="caption">Bonsai on the table</span>
-								</div>
-								<div class="grid-item gallery-item">
+								<c:forEach items="${myProductList }" var="myProduct">
+									<div class="grid-item gallery-item">
+										<a href="update-canvas.do?p_code=${myProduct.p_code }">
+										<img src="<c:url value='/download.do?p_code=${myProduct.p_code }' />" alt="Image"></a>
+										<span class="caption">[${myProduct.p_name }] 상세 정보 보기</span>
+									</div>
+								</c:forEach>
+								<!-- <div class="grid-item gallery-item">
 									<a href="update-canvas.do"><img
 										src="resources/img/gallery/th04.jpg" alt="Image"></a><span
 										class="caption">Working desk</span>
@@ -418,7 +419,7 @@
 									<a href="update-canvas.do"><img
 										src="resources/img/gallery/th06.jpg" alt="Image"></a><span
 										class="caption">Table lamp</span>
-								</div>
+								</div> -->
 							</div>
 						</div>
 					</div>

@@ -109,4 +109,8 @@ public class ProductDAO {
 		return mybatis.selectOne("productDAO.imgFileName", pi_info);
 	}
 
+	public List<ProductVO> getMyProduct(String id) {
+		return mybatis.selectList("productDAO.getMyProduct", id);
+	}
+
 }
