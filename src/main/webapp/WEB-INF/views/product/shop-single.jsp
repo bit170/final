@@ -333,15 +333,14 @@
                   </div>
                   <div class="col-sm-8">
                     <div class="pt-4 hidden-sm-up"></div>
-                    <input class="btn btn-primary btn-block my-0" value="장바구니 담기" type="submit">
                   </div>
                 </div>
                 <ul class="list-unstyled text-sm mb-4">
                   <li><span class='text-dark text-medium'>상품코드:</span> ${product.p_code}</li>
                   <li><span class='text-dark text-medium'>Categories:</span> 
-                  	<a href='#' class='navi-link'>${product.p_category}</a>, 
-                  	<a href='#' class='navi-link'></a></li>
+                  	<a href='#' class='navi-link'>${product.p_category}</a>
                 </ul>
+                    <input class="btn btn-primary btn-block my-0" value="장바구니 담기" type="submit">
                 </div>
             	</form>
                 <div class="d-flex flex-wrap justify-content-between align-items-center">
