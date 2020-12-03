@@ -79,4 +79,9 @@
 		where p_code = #{p_code}
 	</update>
 	
+	<select id="getA_Id" parameterType="String" resultType="String">
+		SELECT A_ID FROM PRODUCT 
+		WHERE P_CODE = #{p_code}	
+	</select>
+	
 </mapper>

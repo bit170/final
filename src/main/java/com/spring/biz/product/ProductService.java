@@ -26,4 +26,6 @@ public interface ProductService {
 //	public List productImageFile(String p_code) throws Exception;
 	
 	public void updatePrice(String p_code);
+	
+	public String getA_Id(String p_code);
 }

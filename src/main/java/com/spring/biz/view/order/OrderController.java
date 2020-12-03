@@ -20,6 +20,7 @@ import com.spring.biz.member.MemberVO;
 import com.spring.biz.order.CartVO;
 import com.spring.biz.order.OrdService;
 import com.spring.biz.order.OrdVO;
+import com.spring.biz.order.S_OrdVO;
 import com.spring.biz.product.ProductService;
 import com.spring.biz.product.ProductVO;
 
@@ -185,14 +186,26 @@ public class OrderController {
 			System.out.println(">> ordVO : " + ovo);
 			session.setAttribute("order", ovo);
 
-			// 작품 가격 0 원으로 변경
+			// 결제완료작품 가격 0 원으로 변경
 			List<CartVO> cartList = (List<CartVO>) session.getAttribute("cartList");
 			for (CartVO cvo : cartList) {
 				productService.updatePrice(cvo.getP_code());
 			}
 
 //			S_Ord table에 insert
-
+			
+			S_OrdVO svo = new S_OrdVO();
+			
+			for(CartVO cvo : cartList) {
+				svo.setO_code(ovo.getO_code());
+				svo.setP_code(cvo.getP_code());
+				System.out.println("P_code : " + cvo.getP_code());
+				svo.setA_id(productService.getA_Id(cvo.getP_code()));
+				System.out.println("A_id : " + productService.getA_Id(cvo.getP_code()));
+				ordService.insertS_Ord(svo);
+				
+			}
+			
 		}
 		return "order/checkout-review";
 	}

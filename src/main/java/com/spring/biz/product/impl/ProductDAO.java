@@ -85,4 +85,8 @@ public class ProductDAO {
 	public void updatePrice(String p_code) {
 		mybatis.update("productDAO.updatePrice", p_code);
 	}
+	
+	public String getA_Id(String p_code) {
+		return mybatis.selectOne("productDAO.getA_Id", p_code);
+	}
 }

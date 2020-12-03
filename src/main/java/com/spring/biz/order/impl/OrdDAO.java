@@ -25,6 +25,7 @@ public class OrdDAO {
 	
 	public void insertS_Ord(S_OrdVO svo) {
 		mybatis.insert("ordDAO.insertS_Ord", svo);
+		System.out.println("insertS_Ord() 완료! : " + svo);
 	}
 	
 	public List<S_OrdVO> getS_OrdList(String o_code){

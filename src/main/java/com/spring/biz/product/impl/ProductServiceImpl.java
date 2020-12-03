@@ -87,6 +87,11 @@ public class ProductServiceImpl implements ProductService {
 	public void updatePrice(String p_code) {
 		productDAO.updatePrice(p_code);
 	}
+
+	@Override
+	public String getA_Id(String p_code) {
+		return productDAO.getA_Id(p_code);
+	}
 	
 }
 	
