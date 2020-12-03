@@ -5,7 +5,7 @@ import java.util.Map;
 
 public interface ProductService {
 
-	ProductVO getProduct(ProductVO vo);
+	ProductVO getProduct(String p_code);
 	List<ProductVO> getProductList(ProductVO vo);
 
 	List<ProductVO> getMainProduct();
@@ -28,4 +28,6 @@ public interface ProductService {
 	public void updatePrice(String p_code);
 	
 	public String getA_Id(String p_code);
+	
+	public String getPrice(String p_code);
 }

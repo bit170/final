@@ -185,15 +185,10 @@ public class OrderController {
 			ordService.insertOrd(ovo);
 			System.out.println(">> ordVO : " + ovo);
 			session.setAttribute("order", ovo);
-
-			// 결제완료작품 가격 0 원으로 변경
+			
 			List<CartVO> cartList = (List<CartVO>) session.getAttribute("cartList");
-			for (CartVO cvo : cartList) {
-				productService.updatePrice(cvo.getP_code());
-			}
 
 //			S_Ord table에 insert
-			
 			S_OrdVO svo = new S_OrdVO();
 			
 			for(CartVO cvo : cartList) {
@@ -201,11 +196,17 @@ public class OrderController {
 				svo.setP_code(cvo.getP_code());
 				System.out.println("P_code : " + cvo.getP_code());
 				svo.setA_id(productService.getA_Id(cvo.getP_code()));
+				svo.setP_price(productService.getPrice(cvo.getP_code()));
 				System.out.println("A_id : " + productService.getA_Id(cvo.getP_code()));
+				
 				ordService.insertS_Ord(svo);
 				
 			}
 			
+			// 결제완료작품 가격 0 원으로 변경
+			for (CartVO cvo : cartList) {
+				productService.updatePrice(cvo.getP_code());
+			}
 		}
 		return "order/checkout-review";
 	}

@@ -47,8 +47,8 @@ public class ProductServiceImpl implements ProductService {
 	
 
 	 @Override
-	public ProductVO getProduct(ProductVO vo) {
-		return productDAO.getProduct(vo);
+	public ProductVO getProduct(String p_code) {
+		return productDAO.getProduct(p_code);
 	}
 
 	@Override
@@ -91,6 +91,11 @@ public class ProductServiceImpl implements ProductService {
 	@Override
 	public String getA_Id(String p_code) {
 		return productDAO.getA_Id(p_code);
+	}
+
+	@Override
+	public String getPrice(String p_code) {
+		return productDAO.getPrice(p_code);
 	}
 	
 }

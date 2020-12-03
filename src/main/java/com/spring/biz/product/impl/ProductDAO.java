@@ -48,9 +48,9 @@ public class ProductDAO {
 
 //	글 조회(하나만)
 
-	public ProductVO getProduct(ProductVO vo) {
+	public ProductVO getProduct(String p_code) {
 		System.out.println("===> MyBatis로 getProduct() 실행");
-		return mybatis.selectOne("productDAO.getProduct", vo);
+		return mybatis.selectOne("productDAO.getProduct", p_code);
 	}
 		
 	//글 목록 조회
@@ -88,5 +88,9 @@ public class ProductDAO {
 	
 	public String getA_Id(String p_code) {
 		return mybatis.selectOne("productDAO.getA_Id", p_code);
+	}
+	
+	public String getPrice(String p_code) {
+		return mybatis.selectOne("productDAO.getPrice", p_code);
 	}
 }

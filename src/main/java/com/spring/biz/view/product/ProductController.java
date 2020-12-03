@@ -267,10 +267,10 @@ public class ProductController extends BaseController {
 	}
 	
 	@RequestMapping(value="/getProduct.do")
-	public String getProduct(ProductVO vo, Model model) {
-		ProductVO product = productService.getProduct(vo);
+	public String getProduct(@RequestParam("p_code")String p_code, Model model) {
+		ProductVO product = productService.getProduct(p_code);
 		model.addAttribute("product", product);
-		System.out.println("작품코드 : " + vo.getP_code() + " 작품명 : " + vo.getP_name());
+		System.out.println("작품코드 : " + p_code);
 		
 		return "product/shop-single";
 	}
