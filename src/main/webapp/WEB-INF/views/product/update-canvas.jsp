@@ -64,15 +64,6 @@ $(document).ready(function(){
 		$(this).siblings('.custom-file-label').html(filename); 
 	}); 
 })
-	// function fileName(a) {
-		//var filename = a.split('/').pop().split('\\').pop();
-		//alert(filename);
-		/* $('#LoadImg').attr('src', e.target.result); */
-		//$(this).siblings('.custom-file-label').val(filename); 
-		//$(this).html(filename);
-		//alert(this);
-		/* $("#file-input").attr('value',filename); */
-	//} 
 
 </script>
 </head>

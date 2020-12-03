@@ -10,6 +10,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import com.spring.biz.product.PImageFileVO;
 import com.spring.biz.product.ProductService;
 import com.spring.biz.product.ProductVO;
 
@@ -27,6 +28,7 @@ public class AccountController {
 		String id = request.getParameter("id");
 		List<ProductVO> myProductList = productService.getMyProduct(id);
 		model.addAttribute("myProductList", myProductList);
+		
 		return "account/account-myCanvas";
 	}
 	
@@ -40,6 +42,8 @@ public class AccountController {
 		String p_code = request.getParameter("p_code");
 		ProductVO product = productService.getProduct(p_code);
 		model.addAttribute("myProduct", product);
+		List<PImageFileVO> productImgs = productService.getImages(p_code);
+		model.addAttribute("productImgs", productImgs);
 		return "product/update-canvas";
 	}
 	
