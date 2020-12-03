@@ -59,7 +59,12 @@ public class ProductServiceImpl implements ProductService {
 
 	@Override
 	public List<ProductVO> getMainProduct() {
-		return productDAO.getMainProduct();
+		List<ProductVO> mList = productDAO.getMainProduct();
+		System.out.println(mList.size());
+		if(mList.size()==0) {
+			mList = productDAO.getMain();
+		}
+		return mList; 
 	}
 
 	
@@ -81,6 +86,31 @@ public class ProductServiceImpl implements ProductService {
 	@Override
 	public void addNewProductImage(List pimageFileList) throws Exception {
 		
+	}
+
+	@Override
+	public List<ProductVO> getCategory(String category) {
+		return productDAO.getCategory(category);
+	}
+
+	@Override
+	public List<Integer> categoryCnt() {
+		return productDAO.categoryCnt();
+	}
+
+	@Override
+	public List<PImageFileVO> getImages(String p_code) {
+		return productDAO.getImages(p_code);
+	}
+
+	@Override
+	public String getFileName(String p_code) {
+		return productDAO.getFileName(p_code);
+	}
+
+	@Override
+	public String getFileName(String p_code, String pi_filetype) {
+		return productDAO.getFileName(p_code,pi_filetype);
 	}
 	
 }

@@ -81,4 +81,27 @@
 		]]>
 	</select>
 
+	<select id="getCategoryList" resultType="product" parameterType="String">
+		select * from product where P_CATEGORY = #{category}
+	</select>
+	<select id="categoryCnt" resultType="Integer">
+		select count(p_category) from product group by p_category order by p_category
+	</select>
+	<select id="getImages" parameterType="String" resultType="pimage">
+		select * from p_image where p_code = #{p_code}
+	</select>
+	<select id="getFileName" parameterType="String" resultType="String">
+		select pi_filename from p_image where p_code=#{p_code} and pi_filetype='main_image'
+	</select>
+	<select id="getMain" resultType="product">
+		<![CDATA[
+		select * from product where p_code in(
+        		select p_code from
+	        		(select p_code, rownum num from product)
+	        		where num<7)	
+		]]> 
+	</select>
+	<select id="imgFileName" resultType="String" parameterType="java.util.HashMap">
+		select pi_filename from p_image where p_code=#{p_code} and pi_filetype=#{pi_filetype}
+	</select>
 </mapper>

@@ -5,3 +5,7 @@ select * from artist
         (select a_id, rownum num from 
         (select a_id, count(a_id) cnt from follow group by a_id order by cnt desc))
            where num<7);
+           
+--카테고리에 따른 작품수
+select count(p_category), p_category from product group by p_category order by p_category;           
+           

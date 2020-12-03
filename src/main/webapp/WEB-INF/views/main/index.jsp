@@ -33,11 +33,11 @@
 
     	$(document).ready(function () {
     		/* 회원가입 성공 후  model attribute에 바인딩한 객체를 확인, 한 번만 알리기 위해선 ajax사용이 답인가? */
-            var signedUp= '${signedUp.id}';
+            /* var signedUp= '${signedUp.id}';
             if(signedUp != ""){
             	alert("회원가입을 축하합니다. 이메일 인증 후 사용할 수 있습니다.");
             }
-            signedUp = "";
+            signedUp = ""; */
 
     		 $("#signup_id").blur(function () {
     			 var signup_id = $("#signup_id").val();
@@ -432,7 +432,9 @@
         <div class="col-md-3 col-sm-6 mb-30"><a class="category-card flex-wrap text-center pt-0" href="getArtist.do">
             <div class="category-card-thumb w-100"><img src="resources/img/product/2.png" alt="Category"></div>
             <div class="category-card-info w-100">
-              <h3 class="category-card-title">${mArtist.a_name}</h3>
+
+              <h3 class="category-card-title">${mArtist.nickname}</h3>
+
               <h4 class="category-card-subtitle">뭐가좋을까</h4>
             </div></a></div>
         <!-- <div class="col-md-3 col-sm-6 mb-30"><a class="category-card flex-wrap text-center pt-0" href="shop-boxed-ls.jsp">
@@ -471,7 +473,7 @@
 	            <div class="col-xl-3 col-lg-4 col-sm-6">
 	              <div class="product-card mb-30" >
 	                <div class="product-card-thumb"> <span class="product-badge text-danger">Sale</span>
-	                	<a class="product-card-link" href="getProduct.do"></a><img src="<c:url value='/thumbnails.do?p_code=${mProduct.p_code }&pfilename=main.jpg' />" alt="Product">
+	                	<a class="product-card-link" href="getProduct.do"></a><img src="<c:url value='/thumbnails.do?p_code=${mProduct.p_code }' />" alt="Product">
 	                  <div class="product-card-buttons">
 	                    <!-- 버튼 클릭시 위시리스트 디비작업 -->
 	                    <button class="btn btn-white btn-sm btn-wishlist" data-toggle="tooltip" title="Wishlist">
@@ -571,4 +573,3 @@
     <script src="resources/js/scripts.min.js"></script>
   </body>
 </html>
-

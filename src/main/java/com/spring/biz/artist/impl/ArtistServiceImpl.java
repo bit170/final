@@ -24,6 +24,11 @@ public class ArtistServiceImpl implements ArtistService{
 	}
 
 	@Override
+	public int alreadyArtist(String a_id) {
+		return artistDAO.alreadyArtist(a_id);
+	}
+	
+	@Override
 	public void insertArtist(HashMap idNickname) {
 		artistDAO.insertArtist(idNickname);
 	}
@@ -40,16 +45,16 @@ public class ArtistServiceImpl implements ArtistService{
 		artistDAO.insertAImageFile(aimageFileList);
 	}
 	
+	@Override
+	public String searchFilename(String a_id) {
+		return artistDAO.searchFilename(a_id);
+	}
+	
 //	@Override
 //	public void deleteArtist(ArtistVO vo) {
 //		artistDAO.deleteArtist(vo);
 //	}
 
-	@Override
-	public int alreadyArtist(String a_id) {
-		return artistDAO.alreadyArtist(a_id);
-	}
-	
 	@Override
 	public ArtistVO getArtist(String a_id) {
 		return artistDAO.getArtist(a_id);
@@ -64,11 +69,13 @@ public class ArtistServiceImpl implements ArtistService{
 	public List<ArtistVO> searchByName(String nickname){
 		return artistDAO.searchByName(nickname);
 	}
-
+	
 	@Override
-	public String searchFilename(String a_id) {
-		return artistDAO.searchFilename(a_id);
+	public List<Map<String, String>> getAllPrinting(String a_id) {
+		return artistDAO.getAllPrinting(a_id);
 	}
+
+	
 
 	@Override
 	public List<ArtistVO> getMainArtist() {
