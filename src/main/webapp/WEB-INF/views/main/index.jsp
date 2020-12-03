@@ -432,7 +432,7 @@
         <div class="col-md-3 col-sm-6 mb-30"><a class="category-card flex-wrap text-center pt-0" href="getArtist.do">
             <div class="category-card-thumb w-100"><img src="resources/img/product/2.png" alt="Category"></div>
             <div class="category-card-info w-100">
-              <h3 class="category-card-title">${mArtist.a_name}</h3>
+              <h3 class="category-card-title">${mArtist.a_id}</h3>
               <h4 class="category-card-subtitle">뭐가좋을까</h4>
             </div></a></div>
         <!-- <div class="col-md-3 col-sm-6 mb-30"><a class="category-card flex-wrap text-center pt-0" href="shop-boxed-ls.jsp">

@@ -93,4 +93,7 @@
 	<select id="getFileName" parameterType="String" resultType="String">
 		select pi_filename from p_image where p_code=#{p_code} and pi_filetype='main'
 	</select>
+	<select id="getMain" resultType="product">
+		select 
+	</select>
 </mapper>

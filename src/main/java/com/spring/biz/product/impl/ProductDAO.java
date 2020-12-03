@@ -97,4 +97,8 @@ public class ProductDAO {
 		return mybatis.selectOne("productDAO.getFileName", p_code);
 	}
 
+	public List<ProductVO> getMain() {
+		return mybatis.selectList("productDAO.getMain");
+	}
+
 }
