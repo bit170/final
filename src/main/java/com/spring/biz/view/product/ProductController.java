@@ -302,6 +302,9 @@ public class ProductController extends BaseController {
 		List<ProductVO> categoryList = productService.getCategory(category);
 		System.out.println(categoryList.get(0).getP_category());
 		model.addAttribute("productList", categoryList);
+		List<Integer> categoryCnt = productService.categoryCnt();
+		System.out.println(categoryCnt.get(0));
+		model.addAttribute("categoryCnt", categoryCnt);
 		return "product/shop-boxed-ls";
 	}
 	
