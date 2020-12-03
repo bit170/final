@@ -2,11 +2,12 @@
 	pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="utf-8">
-<title>내 작품 수정하기</title>
+<title>새 작품 추가하기</title>
 <!-- SEO Meta Tags-->
 <meta name="description"
 	content="Unishop - Universal E-Commerce Template">
@@ -32,8 +33,30 @@
 <link id="mainStyles" rel="stylesheet" media="screen"
 	href="<c:url value="resources/css/styles.min.css" />">
 <!-- Modernizr-->
-<script src="resources/js/modernizr.min.js" /></script>
+<script src="<c:url value="resources/js/modernizr.min.js" />"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+<script type="text/javascript">
+/* 추가된 파일명 띄우기 */
+$(document).ready(function(){ 
+	var fileTarget = $('.custom-file-input'); 
+	
+	fileTarget.on('change', function(){ // 값이 변경되면 
+		var filename = $(this).val().split('/').pop().split('\\').pop(); // 파일명만 추출
+		alert(filename);
+		$(this).siblings('.custom-file-label').html(filename); 
+	}); 
+})
+	// function fileName(a) {
+		//var filename = a.split('/').pop().split('\\').pop();
+		//alert(filename);
+		/* $('#LoadImg').attr('src', e.target.result); */
+		//$(this).siblings('.custom-file-label').val(filename); 
+		//$(this).html(filename);
+		//alert(this);
+		/* $("#file-input").attr('value',filename); */
+	//} 
 
+</script>
 </head>
 <!-- Body-->
 <body>
@@ -296,112 +319,111 @@
 	<!-- Page Title-->
 	<div class="page-title">
 		<div class="container">
-			<h1>캔버스 수정</h1>
+			<h1>캔버스 추가</h1>
 			<ul class="breadcrumbs">
-				<li><a href="getMyCanvasList.do">My Canvas</a></li>
+				<li><a href="getMyCanvas.do">MyCanvas</a></li>
 				<li class="separator">&nbsp;/&nbsp;</li>
-				<li>edit</li>
+				<li>new</li>
 			</ul>
 		</div>
 	</div>
 	<!-- Page Content-->
 	<div class="container padding-bottom-3x mb-2">
-		<div class="row">
-			<div class="col-xl-9 col-lg-8">
-				<h4>내 작품 수정하기</h4>
-				<hr class="padding-bottom-1x">
-				<div class="row">
-					<div class="col-sm-6">
-						<div class="form-group">
-							<label for="checkout-fn">* 작품명</label> <input
-								class="form-control" type="text" id="checkout-fn" placehoder="${product.p_name }">
-						</div>
-					</div>
-					<div class="col-sm-6">
-						<div class="form-group">
-							<label for="checkout-ln">* 작품 가격</label> <input
-								class="form-control" type="text" id="checkout-ln"
-								data-type="currency" placeholder="₩100,000">
-						</div>
-					</div>
-				</div>
-				<div class="row">
-					<div class="col-sm-6">
-						<div class="form-group">
-							<label for="checkout-fn">* 작품 사이즈</label> <input
-								class="form-control" type="text" id="checkout-fn">
-						</div>
-					</div>
-					<div class="col-sm-6">
-						<div class="form-group">
-							<label for="checkout-ln">* 사진 1</label>
-							<div class="custom-file">
-								<input class="custom-file-input" type="file" id="file-input">
-								<label class="custom-file-label" for="file-input">파일
-									추가...</label>
-							</div>
-						</div>
-					</div>
-				</div>
-				<div class="row">
-					<div class="col-sm-6">
-						<div class="form-group">
-							<label for="checkout-fn"> 사진 2</label>
-							<div class="custom-file">
-								<input class="custom-file-input" type="file" id="file-input">
-								<label class="custom-file-label" for="file-input">파일
-									추가...</label>
-							</div>
-						</div>
-					</div>
-					<div class="col-sm-6">
-						<div class="form-group">
-							<label for="checkout-ln"> 사진 3</label>
-							<div class="custom-file">
-								<input class="custom-file-input" type="file" id="file-input">
-								<label class="custom-file-label" for="file-input">파일
-									추가...</label>
-							</div>
-						</div>
-					</div>
-					<div class="col-sm-6">
-						<div class="form-group">
-							<label for="checkout-ln"> 카테고리 </label>
-							<!-- <label class="col-2 col-form-label text-muted" for="select-input">Select</label> -->
-							<select class="form-control" id="select-input">
-								<option>카테고리를 선택해주세요 !</option>
-								<option>수묵화</option>
-								<option>수채화</option>
-								<option>유화</option>
-								<option>크로키</option>
-								<option>펜화</option>
-								<option>기타</option>
-							</select>
-						</div>
-					</div>
-					<div class="col-sm-6">
-						<div class="form-group">
-							<label for="checkout-ln"> 작품 설명</label>
-							<textarea class="form-control text-muted" id="textarea-input"
-								rows="5">작품을 간략하게 설명해주세요 !</textarea>
-						</div>
-					</div>
-				</div>
+	<form action="addNewProduct.do" name="product" method="post"  enctype="multipart/form-data">
+		<!-- <div class="row"> -->
+			<!-- 작품 수정하기 ( 연희 ) -->
+        <div class="col-xl-9 col-lg-8" style="max-width : 100%">
+          <h4>내 작품 수정하기</h4>
+          <hr class="padding-bottom-1x">
+          <div class="row">
+            <div class="col-sm-6">
+              <div class="form-group">
+                <label for="checkout-fn1">* 작품명</label>
+                <input name="p_name" class="form-control" type="text" id="checkout-fn1" required>
+              </div>
+            </div>
+            <div class="col-sm-6">
+              <div class="form-group">
+                <label for="checkout-ln">* 작품 가격</label>
+                <input name="price" class="form-control" type="text" id="checkout-ln" data-type="currency" required>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-sm-6">
+              <div class="form-group">
+                <label for="checkout-fn2">* 작품 사이즈</label>
+                <input name="p_size" class="form-control" type="text" id="checkout-fn2" required>
+              </div>
+            </div>
+            <div class="col-sm-6">
+              <div class="form-group">
+                <label for="checkout-ln">* Main Image </label>
+                <div class="custom-file">
+                <input name = "main_image" class="custom-file-input" type="file" id="file-input1" required>
+                <label class="custom-file-label" for="file-input1"></label>
+              </div>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-sm-6">
+              <div class="form-group">
+                <label for="checkout-fn"> Detail Image 1</label>
+                <div class="custom-file">
+                  <input name="detail_image1" class="custom-file-input" type="file" id="file-input2">
+                  <label class="custom-file-label" for="file-input2"></label>
+                </div>
+              </div>
+            </div>
+            <div class="col-sm-6">
+              <div class="form-group">
+                <label for="checkout-ln"> Detail Image 2</label>
+                <div class="custom-file">
+                  <input name="detail_image2" class="custom-file-input" type="file" id="file-input3" >
+                  <label class="custom-file-label" for="file-input3"></label>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+             <div class="col-sm-6">
+                <div class="form-group">
+                  <label for="select-input">* 카테고리 </label>
+                  <!-- <label class="col-2 col-form-label text-muted" for="select-input">Select</label> -->
+                  <select name = "p_category" class="form-control" id="select-input" required>
+                    <option>카테고리를 선택해주세요 ! </option>
+                    <option value="수묵화">수묵화</option>
+                    <option value="수채화">수채화</option>
+                    <option value="유화">유화</option>
+                    <option value="크로키">크로키</option>
+                    <option value="펜화">펜화</option>
+                    <option value="기타">기타</option>
+                  </select>
+                </div>
+              </div>
+              <div class="col-sm-6">
+                <div class="form-group">
+                  <label for="textarea-input">* 작품 설명</label>
+                  <textarea name = "p_detail" class="form-control text-muted" id="textarea-input" rows="5" required>작품을 간략하게 설명해주세요 !</textarea>
+                </div>
+              </div>
+            </div>
 
-				<hr class="padding-bottom-1x">
+			<hr class="padding-bottom-1x">
 
-				<div class="d-flex justify-content-center">
-					<a class="btn btn-outline-secondary" href="getMyCanvasList.do">마이페이지로</a>
-					<div class="text-center">
-						<a class="btn btn-primary" href="updateMyCanvas.do">수정하기</a> 
-						<a class="btn btn-danger" href="deleteMyCanvas.do">삭제하기</a>
-					</div>
+			<div class="d-flex justify-content-center">
+				<a class="btn btn-outline-secondary" href="getMyCanvasList.do">마이페이지로</a>
+				<div class="text-right">
+					<input type="submit" value="수정하기" class="btn btn-primary" />
 				</div>
 			</div>
 		</div>
-		
-		<!-- Site Footer-->
-		<footer class="site-footer">
+		<!-- </div> -->
+	</form>
+
+			<!-- Site Footer-->
+			<footer class="site-footer">
       <div class="column text-center">
         <p class="text-sm mb-4">Need Support? Call<span class="text-primary">&nbsp;010 - 4355 - 2504</span></p>
         <p class="text-xxs text-muted mb-0 mt-3">© All rights reserved. Made with <i class='material-icons favorite text-danger'></i> by 곽연희, 송희, 오서현, 이동희</p>
@@ -423,13 +445,13 @@
         </div>
       </div> -->
     </footer>
-		<!-- Back To Top Button-->
-		<a class="scroll-to-top-btn" href="#"><i
-			class="material-icons trending_flat"></i></a>
-		<!-- Backdrop-->
-		<div class="site-backdrop"></div>
-		<!-- JavaScript (jQuery) libraries, plugins and custom scripts-->
-		<script src="<c:url value="resources/js/vendor.min.js" />"></script>
-		<script src="<c:url value="resources/js/scripts.min.js" />"></script>
+			<!-- Back To Top Button-->
+			<a class="scroll-to-top-btn" href="#"><i
+				class="material-icons trending_flat"></i></a>
+			<!-- Backdrop-->
+			<div class="site-backdrop"></div>
+			<!-- JavaScript (jQuery) libraries, plugins and custom scripts-->
+			<script src="<c:url value="resources/js/vendor.min.js" />"></script>
+			<script src="<c:url value="resources/js/scripts.min.js" />"></script>
 </body>
 </html>
