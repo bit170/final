@@ -74,4 +74,9 @@
 		select * from product where p_code = #{p_code}
 	</select>
 	
+	<update id="updatePrice" parameterType="String">
+		update product set price = 0
+		where p_code = #{p_code}
+	</update>
+	
 </mapper>

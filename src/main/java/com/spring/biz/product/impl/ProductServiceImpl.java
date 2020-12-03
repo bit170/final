@@ -82,6 +82,11 @@ public class ProductServiceImpl implements ProductService {
 	public void addNewProductImage(List pimageFileList) throws Exception {
 		
 	}
+
+	@Override
+	public void updatePrice(String p_code) {
+		productDAO.updatePrice(p_code);
+	}
 	
 }
 	

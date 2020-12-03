@@ -137,12 +137,12 @@ public class ProductController extends BaseController {
 		response.setContentType("text/html; charset=utf-8");
 		String pi_filename=null;
 		
-		Map proudctMap = new HashMap();
+		Map productMap = new HashMap();
 		Enumeration enu=multipartRequest.getParameterNames();
 		while(enu.hasMoreElements()){
 			String name=(String)enu.nextElement();
 			String value=multipartRequest.getParameter(name);
-			proudctMap.put(name,value);
+			productMap.put(name,value);
 		}
 		
 		HttpSession session = multipartRequest.getSession();
@@ -156,7 +156,7 @@ public class ProductController extends BaseController {
 			if(pimageFileList!= null && pimageFileList.size()!=0) {
 				for(PImageFileVO pimageFileVO : pimageFileList) {
 					
-					p_code = (String)proudctMap.get("p_code");
+					p_code = (String)productMap.get("p_code");
 					pimageFileVO.setP_code(p_code);
 					pimageFileVO.setId(id);
 				}

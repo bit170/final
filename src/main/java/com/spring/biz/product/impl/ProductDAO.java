@@ -81,4 +81,8 @@ public class ProductDAO {
 		return mybatis.selectList("productDAO.selectProductImageFileList", p_code);
 	}
 
+	// 판매완료 제품 가격 변경 메서드 (연희)
+	public void updatePrice(String p_code) {
+		mybatis.update("productDAO.updatePrice", p_code);
+	}
 }

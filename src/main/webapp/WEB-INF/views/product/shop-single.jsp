@@ -321,7 +321,7 @@
           <!-- Product Info-->
           <div class="col-md-6 mb-30">
             <div class="card border-default bg-white pt-2 box-shadow">
-            <!-- product 추가시 name 값 바꿔주기 -->
+
             	<form action="insertCart.do?p_code=${product.p_code}" method="get">
               <div class="card-body">
                 <h2 class="mb-3">${product.p_name}</h2>
@@ -336,7 +336,12 @@
                   </div>
                   <div class="col-sm-8">
                     <div class="pt-4 hidden-sm-up"></div>
+                  <c:if test="${product.price > 0}">
                     <input class="btn btn-primary btn-block my-0" value="장바구니 담기" type="submit">
+                    </c:if>
+                  <c:if test="${product.price eq 0}">
+                    <input class="btn btn-outline-primary btn-block my-0" value="SOLD OUT" type="text" onclick="#">
+                    </c:if>
                   </div>
                 </div>
                 <ul class="list-unstyled text-sm mb-4">
@@ -347,12 +352,21 @@
                 </ul>
                 </div>
             	</form>
-                <div class="d-flex flex-wrap justify-content-between align-items-center">
-                	<!-- 상품 업로드 시 href 루트 변경하기!! -->
+			
+				<c:if test="${product.price > 0}">
+               	 <div class="d-flex flex-wrap justify-content-between align-items-center">
                 	<a class="btn btn-outline-secondary btn-sm text-danger" 
                 		href="insertWishlist.do?p_code=${product.p_code}">
                 	<i class="material-icons favorite_border"></i>&nbsp;위시리스트에 담기</a>
-                </div>
+               	 </div>
+                </c:if>
+				<c:if test="${product.price eq 0}">
+               	 <div class="d-flex flex-wrap justify-content-between align-items-center">
+                	<a class="btn btn-outline-secondary btn-sm text-danger" 
+                		href="#">
+                	<i class="material-icons favorite_border"></i>&nbsp;판매완료</a>
+              	  </div>
+                </c:if>
               </div>
             </div>
             </c:if>

@@ -20,6 +20,7 @@ import com.spring.biz.member.MemberVO;
 import com.spring.biz.order.CartVO;
 import com.spring.biz.order.OrdService;
 import com.spring.biz.order.OrdVO;
+import com.spring.biz.product.ProductService;
 import com.spring.biz.product.ProductVO;
 
 @Controller
@@ -30,10 +31,12 @@ public class OrderController {
 	private AddressService addrService;
 	@Autowired
 	private OrdService ordService;
+	@Autowired
+	private ProductService productService;
 
 	@RequestMapping("/getOrder-tracking.do")
 	public String orderTracking() {
-		
+
 		return "order/order-tracking";
 	}
 
@@ -68,6 +71,12 @@ public class OrderController {
 		sess.setMaxInactiveInterval(60 * 60);
 		System.out.println("클릭한 상품 " + (ProductVO) sess.getAttribute("product"));
 
+//		작품 가격이 0 원일 경우 카트 비활성화
+//		ProductVO pvo = (ProductVO) sess.getAttribute("product");
+//		if( pvo.getPrice() == 0 ) {
+//			return "redirect:getProductList.do";
+
+//		}else {
 		if (sess.getAttribute("cartList") != null) {
 			List<CartVO> cartList = (List<CartVO>) sess.getAttribute("cartList");
 			System.out.println("세션 장바구니 정보 : " + (List<CartVO>) sess.getAttribute("cartList"));
@@ -84,14 +93,14 @@ public class OrderController {
 				for (CartVO cart : cartList) {
 					System.out.println(index++ + "번째 장바구니 작품정보 : " + cart);
 				}
-				
+
 				int total = 0;
 				for (CartVO cart : cartList) {
 					total = cart.getc_price() + total;
 				}
 				System.out.println("total : " + total);
 				sess.setAttribute("total", total);
-				
+
 				model.addAttribute("cartList", cartList);
 			} else if (pvo == null) {
 				System.out.println("해당 작품이 존재하지 않습니다.");
@@ -120,6 +129,7 @@ public class OrderController {
 			}
 		}
 		return "redirect:getProductList.do";
+//	}
 	}
 
 	// 장바구니 작품 하나만 지우기
@@ -153,67 +163,56 @@ public class OrderController {
 	@RequestMapping("/getPayment.do")
 	public String getPayment(HttpSession session, Model model) {
 
-			AddressVO avo = (AddressVO) session.getAttribute("address");
-			System.out.println("주소확인 : " + avo.getAddress());
-			System.out.println("우편번호 확인 : " + avo.getPost());
+		AddressVO avo = (AddressVO) session.getAttribute("address");
+		System.out.println("주소확인 : " + avo.getAddress());
+		System.out.println("우편번호 확인 : " + avo.getPost());
 
 		return "order/checkout-payment";
 	}
-	
-	
+
 	@RequestMapping("/review.do")
 	public String getReview(HttpSession session, Model model) {
-		
-		
+
 		if ((List<CartVO>) session.getAttribute("cartList") != null) {
 			System.out.println("cart값 true ");
-			
+
 			MemberVO mvo = (MemberVO) session.getAttribute("member");
 //			String total = (String) session.getAttribute("total");
 			OrdVO ovo = new OrdVO();
 			ovo.setId(mvo.getId());
 			ovo.setO_code(randomNum(6));
 			ovo.setTotal("300000");
-			
+
 			ordService.insertOrd(ovo);
 			System.out.println(">> ordVO : " + ovo);
-			
-//			S_Ord table insert 하기
-//			List<CartVO> cartList = (List<CartVO>) session.getAttribute("cartList");
-//			
-////			카트에서 p_code 받아오기
-//			String[] p_codes = new String[cartList.size()];
-//				for(CartVO cvo : cartList) {
-//					int i = 0;
-//					p_codes[i]= cvo.getP_code();
-//					i++;
-//				}
-//				
-//				OrdVO ovo = new OrdVO();
-////				ord 테이블에 추가
-//				for(String p_code : p_codes) {
-////					ovo.set
-//				}
-			
+
+			// 작품 가격 0 원으로 변경
+			List<CartVO> cartList = (List<CartVO>) session.getAttribute("cartList");
+			for (CartVO cvo : cartList) {
+				productService.updatePrice(cvo.getP_code());
+			}
+
+//			S_Ord table에 insert
+
 		}
 		return "order/checkout-review";
 	}
-	
+
 	@RequestMapping("/complete.do")
 	public String complete() {
 		return "order/checkout-complete";
 	}
-	
+
 	// o_code 랜덤키 생성을 위한 메서드 (연희) (파라미터에 원하는 자릿수 넣기)
 	public static String randomNum(int len) {
-		
+
 		Random rand = new Random();
 		String numStr = "";
-		
-		for(int i=0; i<len; i++) {
+
+		for (int i = 0; i < len; i++) {
 			String ran = Integer.toString(rand.nextInt(10));
 			numStr += ran;
-			
+
 		}
 		return numStr;
 	}

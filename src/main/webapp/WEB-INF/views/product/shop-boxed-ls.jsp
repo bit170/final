@@ -330,15 +330,31 @@
                 <a class="product-card-link" href="getProduct.do?p_code=${product.p_code}"></a>
                 <img src="resources/img/product/5.png" alt="Product">
                   <div class="product-card-buttons">
-                    <button class="btn btn-white btn-sm" data-toast data-toast-type="info" 
-                    		data-toast-position="topRight" data-toast-icon="material-icons check" 
-                    		data-toast-title="성공!" data-toast-message="성공적으로 위시리스트에 담겼습니다!" 
-                    		onclick="location.href=insertWishlist.do?p_code=${product.p_code}">
+                  <c:choose>
+					<c:when test="${product.price eq 0}">    
+					 <button class="btn btn-outline-primary btn-sm" data-toast data-toast-type="danger" 
+	                    		data-toast-position="topRight" data-toast-icon="material-icons check" 
+	                    		data-toast-title="sold out" data-toast-message="이미 판매된 제품입니다."
+                    		onclick="#">
                     		<i class="material-icons favorite_border"></i></button>
-                    <button class="btn btn-primary btn-sm" data-toast data-toast-type="success" 
-                    		data-toast-position="topRight" data-toast-icon="material-icons check" 
-                    		data-toast-title="성공!" data-toast-message="성공적으로 장바구니에 담겼습니다!" 
-                    		onclick="location.href='insertCart.do?p_code=${product.p_code}'">장바구니에 담기</button>                  
+                    <button class="btn btn-outline-primary btn-sm" data-toast data-toast-type="danger" 
+	                    		data-toast-position="topRight" data-toast-icon="material-icons check" 
+	                    		data-toast-title="sold out" data-toast-message="이미 판매된 제품입니다."
+                    		onclick="#">sold out</button>          
+					</c:when>
+					<c:otherwise>
+	                    <button class="btn btn-white btn-sm" data-toast data-toast-type="info" 
+	                    		data-toast-position="topRight" data-toast-icon="material-icons check" 
+	                    		data-toast-title="성공!" data-toast-message="성공적으로 위시리스트에 담겼습니다!" 
+	                    		onclick="location.href=insertWishlist.do?p_code=${product.p_code}">
+	                    		<i class="material-icons favorite_border"></i></button>
+	                    <button class="btn btn-primary btn-sm" data-toast data-toast-type="success" 
+	                    		data-toast-position="topRight" data-toast-icon="material-icons check" 
+	                    		data-toast-title="성공!" data-toast-message="성공적으로 장바구니에 담겼습니다!" 
+	                    		onclick="location.href='insertCart.do?p_code=${product.p_code}'">장바구니에 담기</button>
+                 	</c:otherwise>
+                </c:choose>
+                    		                 
                     		</div>
                 </div>
                 <div class="product-card-details">

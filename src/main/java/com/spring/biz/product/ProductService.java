@@ -24,4 +24,6 @@ public interface ProductService {
 	public void modifyPImage(List<PImageFileVO> pimageFileList) throws Exception;
 
 //	public List productImageFile(String p_code) throws Exception;
+	
+	public void updatePrice(String p_code);
 }
