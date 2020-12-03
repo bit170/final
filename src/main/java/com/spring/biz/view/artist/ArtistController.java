@@ -130,7 +130,9 @@ public class ArtistController extends BaseController {
 		System.out.println("Controller의 getArtist!!!");
 		System.out.println(a_id);
 		ArtistVO avo = artistService.getArtist(a_id);
+		List<Map<String, String>> allList = artistService.getAllPrinting(a_id);
 		model.addAttribute("artist", avo);
+		model.addAttribute("allList", allList);
 		System.out.println(avo);
 		
 		return "artist/artist-single";
