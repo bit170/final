@@ -2,6 +2,7 @@
     pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -289,32 +290,28 @@
     <div class="bg-secondary pb-4 padding-top-3x">
       <div class="container">
         <div class="row">
-          <c:if test="${empty product}">
+          <%-- <c:if test="${empty product}">
           <script> alert("선택한 상품이 존재하지 않습니다.")</script>
-          </c:if>
-          <c:if test="${!empty product}">
+          </c:if> --%>
+          <%-- <c:if test="${!empty product}"> --%>
           <!-- Product Gallery-->
           <div class="col-md-6 mb-30">
             <div class="product-gallery">
               <div class="product-carousel owl-carousel gallery-wrapper">
+              <c:forEach var="productImg" items="${productImgs }">
                 <div class="gallery-item" data-hash="one">
-                	<a href="img/shop/single/01.jpg" data-size="555x480">
-                	<img src="resources/img/product/5.png" alt="Product"></a></div>
-                <div class="gallery-item" data-hash="two">
-                	<a href="img/shop/single/02.jpg" data-size="555x480">
-                	<img src="resources/img/shop/single/02.jpg" alt="Product"></a></div>
-                <div class="gallery-item" data-hash="three">
-                	<a href="img/shop/single/03.jpg" data-size="555x480">
-                	<img src="resources/img/shop/single/03.jpg" alt="Product"></a></div>
-                <div class="gallery-item" data-hash="four">
-                	<a href="img/shop/single/04.jpg" data-size="555x480">
-                	<img src="resources/img/shop/single/04.jpg" alt="Product"></a></div>
+                	<a href="/download.do?p_code=${product.p_code }&pfilename=${productImg.pi_filename }" data-size="555x480"> 
+                	<img src="<c:url value='/download.do?p_code=${product.p_code }&pfilename=${productImg.pi_filename }' />" alt="Product"></a></div>
+              </c:forEach>  	
               </div>
               <ul class="product-thumbnails">
-                <li class="active"><a href="#one"><img src="resources/img/product/5.png" alt="Product"></a></li>
-                <li><a href="#two"><img src="resources/img/shop/single/th02.jpg" alt="Product"></a></li>
-                <li><a href="#three"><img src="resources/img/shop/single/th03.jpg" alt="Product"></a></li>
-                <li><a href="#four"><img src="resources/img/shop/single/th04.jpg" alt="Product"></a></li>
+                <li class="active"><a href="#one"><img src="<c:url value='/thumbnails.do?p_code=${product.p_code }&pfilename=main.jpg' />" alt="Product"></a></li>
+                <c:if test="${fn:length(productImgs) >1 }">
+                <li><a href="#two"><img src="<c:url value='/download.do?p_code=${product.p_code }&pfiletype=detail1.jpg' />" alt="Product"></a></li>
+                </c:if>
+                <c:if test="${fn:length(productImgs) >2 }">
+                <li><a href="#three"><img src="<c:url value='/download.do?p_code=${product.p_code }&pfiletype=detail2.jpg' />" alt="Product"></a></li>
+                </c:if>
               </ul>
             </div>
           </div>
@@ -336,15 +333,14 @@
                   </div>
                   <div class="col-sm-8">
                     <div class="pt-4 hidden-sm-up"></div>
-                    <input class="btn btn-primary btn-block my-0" value="장바구니 담기" type="submit">
                   </div>
                 </div>
                 <ul class="list-unstyled text-sm mb-4">
                   <li><span class='text-dark text-medium'>상품코드:</span> ${product.p_code}</li>
                   <li><span class='text-dark text-medium'>Categories:</span> 
-                  	<a href='#' class='navi-link'>${product.p_category}</a>, 
-                  	<a href='#' class='navi-link'></a></li>
+                  	<a href='#' class='navi-link'>${product.p_category}</a>
                 </ul>
+                    <input class="btn btn-primary btn-block my-0" value="장바구니 담기" type="submit">
                 </div>
             	</form>
                 <div class="d-flex flex-wrap justify-content-between align-items-center">
@@ -355,7 +351,7 @@
                 </div>
               </div>
             </div>
-            </c:if>
+           <%--  </c:if> --%>
           </div>
         </div>
       </div>

@@ -92,6 +92,16 @@ public class ProductServiceImpl implements ProductService {
 	public List<Integer> categoryCnt() {
 		return productDAO.categoryCnt();
 	}
+
+	@Override
+	public List<PImageFileVO> getImages(String p_code) {
+		return productDAO.getImages(p_code);
+	}
+
+	@Override
+	public String getFileName(String p_code) {
+		return productDAO.getFileName(p_code);
+	}
 	
 }
 	

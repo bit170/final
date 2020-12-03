@@ -340,7 +340,7 @@
               <div class="product-card mb-30">
                 <div class="product-card-thumb">
                 <a class="product-card-link" href="getProduct.do?p_code=${product.p_code}"></a>
-                <img src="<c:url value='/thumbnails.do?p_code=${product.p_code }&pfilename=main.jpg' />" alt="Product">
+                <img src="<c:url value='/thumbnails.do?p_code=${product.p_code }' />" alt="Product">
                   <div class="product-card-buttons">
                     <button class="btn btn-white btn-sm" data-toast data-toast-type="info" 
                     		data-toast-position="topRight" data-toast-icon="material-icons check" 
