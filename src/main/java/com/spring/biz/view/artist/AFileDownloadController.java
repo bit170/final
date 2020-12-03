@@ -53,7 +53,7 @@ public class AFileDownloadController {
 	protected void aThumbnails(HttpServletRequest request,
 			                 HttpServletResponse response) throws Exception {
 		
-		System.out.println("thumbnails() 실행");
+		System.out.println("aThumbnails() 실행");
 		String a_id = request.getParameter("a_id"); 
 		String filename = artistService.searchFilename(a_id);
 		System.out.println("a_id : "+a_id+" filename : "+filename);
