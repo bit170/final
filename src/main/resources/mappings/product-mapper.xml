@@ -91,6 +91,6 @@
 		select * from p_image where p_code = #{p_code}
 	</select>
 	<select id="getFileName" parameterType="String" resultType="String">
-		select pi_filename from p_image where p_code=#{p_code} and pi_filetype='main'
+		select pi_filename from p_image where p_code=#{p_code} and pi_filetype='main_image'
 	</select>
 </mapper>
