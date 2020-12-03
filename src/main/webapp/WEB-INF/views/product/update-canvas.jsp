@@ -307,7 +307,6 @@
 	<!-- Page Content-->
 	<div class="container padding-bottom-3x mb-2">
 		<div class="row">
-			<!-- 작품 수정하기 ( 연희 ) -->
 			<div class="col-xl-9 col-lg-8">
 				<h4>내 작품 수정하기</h4>
 				<hr class="padding-bottom-1x">
@@ -315,7 +314,7 @@
 					<div class="col-sm-6">
 						<div class="form-group">
 							<label for="checkout-fn">* 작품명</label> <input
-								class="form-control" type="text" id="checkout-fn">
+								class="form-control" type="text" id="checkout-fn" placehoder="${product.p_name }">
 						</div>
 					</div>
 					<div class="col-sm-6">
@@ -363,12 +362,6 @@
 								<label class="custom-file-label" for="file-input">파일
 									추가...</label>
 							</div>
-						</div>
-					</div>
-					<div class="col-sm-6">
-						<div class="form-group">
-							<label for="checkout-fn"> 태그 입력 ( 띄어쓰기, 콤마, 슬래시로 구분 )</label> <input
-								class="form-control" type="text" id="checkout-fn">
 						</div>
 					</div>
 					<div class="col-sm-6">

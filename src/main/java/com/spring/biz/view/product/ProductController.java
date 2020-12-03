@@ -186,15 +186,15 @@ public class ProductController extends BaseController {
 	}
 	
 	@RequestMapping(value="/modifyGoodsForm.do" ,method={RequestMethod.GET,RequestMethod.POST})
-	public ModelAndView modifyGoodsForm(@RequestParam("p_code") String p_code,
+	public String modifyGoodsForm(@RequestParam("p_code") String p_code,
 			                            HttpServletRequest request, HttpServletResponse response)  throws Exception {
-		String viewName=(String)request.getAttribute("viewName");
-		ModelAndView mav = new ModelAndView(viewName);
+		//String viewName=(String)request.getAttribute("viewName");
+		//ModelAndView mav = new ModelAndView(viewName);
 		
 		//Map goodsMap=ProductService.productDetail(p_code);
 		//mav.addObject("goodsMap",goodsMap);
 		
-		return mav;
+		return "update-canvas";
 	}
 	
 	@RequestMapping(value="/modifyProductInfo.do" ,method={RequestMethod.POST})
