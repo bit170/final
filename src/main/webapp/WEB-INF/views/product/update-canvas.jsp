@@ -337,11 +337,11 @@ $(document).ready(function(){
 	<!-- Page Title-->
 	<div class="page-title">
 		<div class="container">
-			<h1>캔버스 추가</h1>
+			<h1>캔버스 수정</h1>
 			<ul class="breadcrumbs">
 				<li><a href="getMyCanvas.do">MyCanvas</a></li>
 				<li class="separator">&nbsp;/&nbsp;</li>
-				<li>new</li>
+				<li>edit</li>
 			</ul>
 		</div>
 	</div>
@@ -357,13 +357,13 @@ $(document).ready(function(){
             <div class="col-sm-6">
               <div class="form-group">
                 <label for="checkout-fn1">* 작품명</label>
-                <input name="p_name" class="form-control" type="text" id="checkout-fn1" required>
+                <input name="p_name" class="form-control" type="text" id="checkout-fn1" placeholder="${myProduct.p_name }" required>
               </div>
             </div>
             <div class="col-sm-6">
               <div class="form-group">
                 <label for="checkout-ln">* 작품 가격</label>
-                <input name="price" class="form-control" type="text" id="checkout-ln" data-type="currency" required>
+                <input name="price" class="form-control" type="text" id="checkout-ln" data-type="currency" placeholder="${myProduct.price }" required>
               </div>
             </div>
           </div>
@@ -371,7 +371,7 @@ $(document).ready(function(){
             <div class="col-sm-6">
               <div class="form-group">
                 <label for="checkout-fn2">* 작품 사이즈</label>
-                <input name="p_size" class="form-control" type="text" id="checkout-fn2" required>
+                <input name="p_size" class="form-control" type="text" id="checkout-fn2" placeholder="${myProduct.p_size }" required>
               </div>
             </div>
             <div class="col-sm-6">
@@ -409,7 +409,7 @@ $(document).ready(function(){
                 <div class="form-group">
                   <label for="select-input">* 카테고리 </label>
                   <!-- <label class="col-2 col-form-label text-muted" for="select-input">Select</label> -->
-                  <select name = "p_category" class="form-control" id="select-input" required>
+                  <select name = "p_category" class="form-control" id="select-input"  required>
                     <option>카테고리를 선택해주세요 ! </option>
                     <option value="수묵화">수묵화</option>
                     <option value="수채화">수채화</option>
@@ -423,7 +423,7 @@ $(document).ready(function(){
               <div class="col-sm-6">
                 <div class="form-group">
                   <label for="textarea-input">* 작품 설명</label>
-                  <textarea name = "p_detail" class="form-control text-muted" id="textarea-input" rows="5" required>작품을 간략하게 설명해주세요 !</textarea>
+                  <textarea name = "p_detail" class="form-control text-muted" id="textarea-input" rows="5" placeholder="${myProduct.p_detail }" required></textarea>
                 </div>
               </div>
             </div>

@@ -35,6 +35,14 @@ public class AccountController {
 		return "account/account-orders";
 	}
 	
+	@RequestMapping(value = "/update-canvas.do", method = RequestMethod.GET)
+	public String updateCanvas(HttpServletRequest request, Model model) {
+		String p_code = request.getParameter("p_code");
+		ProductVO product = productService.getProduct(p_code);
+		model.addAttribute("myProduct", product);
+		return "product/update-canvas";
+	}
+	
 	@RequestMapping("/insert-canvas.do")
 	public String insertcanvas() {
 		return "product/insert-canvas";

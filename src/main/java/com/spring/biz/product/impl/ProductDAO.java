@@ -113,4 +113,8 @@ public class ProductDAO {
 		return mybatis.selectList("productDAO.getMyProduct", id);
 	}
 
+	public ProductVO getProduct(String p_code) {
+		return mybatis.selectOne("productDAO.getProductByPcode", p_code);
+	}
+
 }

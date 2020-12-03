@@ -117,6 +117,11 @@ public class ProductServiceImpl implements ProductService {
 	public List<ProductVO> getMyProduct(String id) {
 		return productDAO.getMyProduct(id);
 	}
+
+	@Override
+	public ProductVO getProduct(String p_code) {
+		return productDAO.getProduct(p_code);
+	}
 	
 }
 	

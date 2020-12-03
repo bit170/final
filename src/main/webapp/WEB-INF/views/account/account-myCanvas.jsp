@@ -393,7 +393,7 @@
 				<form class="row">
 					<div class="col-md-10">
 						<div class="form-group">
-							<h4> 작품 추가 & 수정하기 </h4>
+							<h4> 작품 추가 &nbsp; 수정하기 </h4>
 							<hr class="margin-bottom-1x">
 							<div class="isotope-grid cols-2 grid-no-gap">
 								<div class="gutter-sizer"></div>

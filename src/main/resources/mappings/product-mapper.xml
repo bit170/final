@@ -107,4 +107,7 @@
 	<select id="getMyProduct" resultType="product" parameterType="String">
 		select * from product where a_id=#{id}
 	</select>
+	<select id="getProductByPcode" resultType="product" parameterType="String">
+		select * from product where p_code=#{p_code}
+	</select>
 </mapper>
