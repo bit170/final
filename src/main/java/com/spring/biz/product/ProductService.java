@@ -6,10 +6,10 @@ import java.util.Map;
 public interface ProductService {
 
 	ProductVO getProduct(String p_code);
+	
 	List<ProductVO> getProductList(ProductVO vo);
 
 	List<ProductVO> getMainProduct();
-
 	
 	public String addNewProduct(Map newProductMap) throws Exception;
 

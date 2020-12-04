@@ -1,5 +1,8 @@
 package com.spring.biz.view.wishlist;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,6 +13,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.SessionAttributes;
 
 import com.spring.biz.member.MemberVO;
+import com.spring.biz.product.ProductService;
+import com.spring.biz.product.ProductVO;
 import com.spring.biz.wishlist.WishlistService;
 import com.spring.biz.wishlist.WishlistVO;
 
@@ -19,6 +24,8 @@ public class WishlistController {
 	
 	@Autowired
 	private WishlistService wishService;
+	@Autowired
+	private ProductService productService;
 
 	@RequestMapping("/insertWishlist.do")
 	public String insertWishlist(@RequestParam("p_code") String p_code, HttpSession session, Model model){
@@ -39,14 +46,21 @@ public class WishlistController {
 
 	@RequestMapping("/deleteWishlist.do")
 	public String deleteWishlist() {
+//		wishService.deleteWishlist(vo);
 		return "account/account-wishlist";
 	}
 	
 	@RequestMapping("/getWishlists.do")
-	public String getWishlists() {
-		
+	public String getWishlists(@RequestParam("id")String id, Model model) {
+		List<WishlistVO> wvos = (List<WishlistVO>)wishService.getWishlists(id);
+		System.out.println("wvos : " + wvos);
+		List<ProductVO> wishlists = new ArrayList<ProductVO>();
+		for(WishlistVO wvo : wvos) {
+			System.out.println("wishlist 품목 : " + wvo);
+		wishlists.add(productService.getProduct(wvo.getP_code()));		
+		}
+		model.addAttribute("wishlists", wishlists);
 		return "account/account-wishlist";
 	}
-	
 	
 }

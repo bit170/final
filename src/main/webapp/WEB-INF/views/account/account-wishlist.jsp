@@ -427,33 +427,43 @@
 							</tr>
 						</thead>
 						<tbody>
-						<c:if test="${!empty wishlist}">
+						<c:if test="${!empty wishlists}">
+								<c:forEach items="${wishlists}" var="wish">
 							<tr>
 								<td>
-								<%-- <c:forEach items="${wishlists}" var="product"> --%>
 									<div class="product-item">
 										<a class="product-thumb" href="getProduct.do"><img
 											src="resources/img/product/5.png" alt="Product"></a>
 										<div class="product-info">
 											<h4 class="product-title">
-												<a href="getProduct.do">${wishlist.p_code}</a>
+												<a href="getProduct.do">${wish.p_code}</a>
 											</h4>
-											<div class="text-lg text-medium text-muted">가격</div>
+											<c:choose>
+											<c:when test="${wish.price ne 0}">
+											<div class="text-lg text-medium text-muted">${wish.price}</div>
 											<div class="text-sm">
-											<!-- 가능여부 : 해당 p_name 이 product 테이블에 없을 경우 비활성화 -->
 												가능여부 :
 												<div class="d-inline text-success">구매 가능</div>
 											</div>
+											</c:when>
+											<c:otherwise>
+											<div class="text-lg text-medium text-muted">품절</div>
+											<div class="text-sm">
+												가능여부 :
+												<div class="d-inline text-danger">구매 불가</div>
+											</div>
+											</c:otherwise>
+											</c:choose>
 										</div>
 									</div>
-									<%-- </c:forEach> --%>
 								</td>
 								<td class="text-center"><a class="remove-from-cart"
-									href="deleteWishlist.do?id=${wishlist.id},p_code=${wishlist.p_code}" data-toggle="tooltip" title="위시리스트에서 제거"><i
+									href="deleteWishlist.do?id=${member.id},p_code=${wish.p_code}" data-toggle="tooltip" title="위시리스트에서 제거"><i
 										class="material-icons icon_close"></i></a></td>
-							</tr>
+								</tr>
+							</c:forEach>
 							</c:if>
-						<c:if test="${empty wishlist}">
+						<c:if test="${empty wishlists}">
 							<tr>
 								<td>
 									<div class="product-item">

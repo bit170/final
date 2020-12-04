@@ -1,5 +1,7 @@
 package com.spring.biz.wishlist.impl;
 
+import java.util.List;
+
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -20,13 +22,18 @@ public class WishlistDAO {
 		mybatis.insert("wishlistDAO.insertWishlist", vo);
 	}
 	
-	public void deleteWishlist(WishlistVO vo) {
+	public void deleteWishlist(String p_code) {
 		System.out.println("WishlistDAO.deleteWishlist()");
-		mybatis.delete("wishlistDAO.deleteWishlist", vo);
+		mybatis.delete("wishlistDAO.deleteWishlist", p_code);
 	}
 	
 	public void deleteAllWishlists(String id) {
 		System.out.println("WishlistDAO.deleteAllWishlists()");
 		mybatis.delete("wishlistDAO.deleteAllWishlists", id);
+	}
+	
+	public List<WishlistVO> getWishlists(String id) {
+		System.out.println("WishlistDAO.getWishlists()");
+		return mybatis.selectList("wishlistDAO.getWishlists", id);
 	}
 }

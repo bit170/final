@@ -9,12 +9,12 @@
 		VALUES (#{p_code}, #{id})
 	</insert>
 	
-	<delete id="deleteWishlist" parameterType="wishlist">
-		DELETE FROM WISHLIST WHERE ID = #{id} AND P_CODE = #{p_code}
+	<delete id="deleteWishlist" parameterType="String">
+		DELETE FROM WISHLIST WHERE P_CODE = #{p_code}
 	</delete>
 	
 	<delete id="deleteAllWishlists" parameterType="String">
-		DELETE FROM WISHLIST WHERE ID = #{id}
+		DELETE FROM WISHLIST WHERE ID = #{ID}
 	</delete>
 	
 	<select id="getWishlists" parameterType="String" resultType="wishlist">

@@ -48,6 +48,7 @@ public class ProductServiceImpl implements ProductService {
 
 	 @Override
 	public ProductVO getProduct(String p_code) {
+		 System.out.println("ProductServiceImpl getProduct() 실행");
 		return productDAO.getProduct(p_code);
 	}
 
