@@ -430,11 +430,11 @@
 		                        <td>
 		                           
 		                           <div class="product-item">
-		                              <a class="product-thumb" href="getArtist.do?id=${item.id }"><img
+		                              <a class="product-thumb" href="getArtist.do?a_id=${item.a_id }"><img
 		                                 src="resources/img/shop/cart/01.jpg" alt="Product"></a>
 		                              <div class="product-info">
 		                                 <h4 class="product-title">
-		                                    <a href="getArtist.do?id=${item.id }">${item.nickname }</a>
+		                                    <a href="getArtist.do?a_id=${item.a_id}">${item.nickname}</a>
 		                                 </h4>
 		                                 <div class="text-lg text-medium text-muted">${item.a_detail }</div>
 		                              </div>

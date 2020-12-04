@@ -22,5 +22,10 @@
 		WHERE ID = #{id}
 	</select>
 
+	<select id="getWish" parameterType="java.util.Map" resultType="int">
+		SELECT COUNT(*) FROM WISHLIST 
+		WHERE ID = #{id} 
+		AND P_CODE = #{p_code}
+	</select>
 </mapper>
 

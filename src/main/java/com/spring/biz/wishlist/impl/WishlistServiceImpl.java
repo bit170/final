@@ -35,4 +35,9 @@ public class WishlistServiceImpl implements WishlistService{
 		return wishlistDAO.getWishlists(id);
 	}
 
+	@Override
+	public int getWish(String id, String p_code) {
+		return wishlistDAO.getWish(id, p_code);
+	}
+
 }

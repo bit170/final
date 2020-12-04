@@ -276,8 +276,8 @@ public class ProductController extends BaseController {
 		ProductVO product = productService.getProduct(p_code);
 		model.addAttribute("product", product);
 
-    System.out.println("작품코드 : " + vo.getP_code() + " 작품명 : " + vo.getP_name());
-		List<PImageFileVO> productImgs = productService.getImages(vo.getP_code());
+    System.out.println("작품코드 : " + p_code);
+		List<PImageFileVO> productImgs = productService.getImages(p_code);
 		model.addAttribute("productImgs", productImgs);
 
     return "product/shop-single";

@@ -23,7 +23,7 @@
 	
 	<select id="getFollowList" parameterType="String" resultType="artist">
 		SELECT * FROM ARTIST 
-		WHERE ID IN (SELECT A_ID FROM FOLLOW WHERE ID = #{id})
+		WHERE A_ID IN (SELECT A_ID FROM FOLLOW WHERE ID = #{id})
 	</select>
 
 </mapper>

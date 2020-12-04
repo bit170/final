@@ -7,5 +7,6 @@ public interface WishlistService {
 	public void deleteWishlist(String p_code);
 	public void deleteAllWishlists(String id);
 	public List<WishlistVO> getWishlists(String id);
+	public int getWish(String id, String p_code);
 	
 }

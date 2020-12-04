@@ -1,6 +1,8 @@
 package com.spring.biz.wishlist.impl;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -36,4 +38,13 @@ public class WishlistDAO {
 		System.out.println("WishlistDAO.getWishlists()");
 		return mybatis.selectList("wishlistDAO.getWishlists", id);
 	}
+
+	public int getWish(String id, String p_code) {
+		Map<String, String> map = new HashMap<String, String>();
+		map.put("id", id);
+		map.put("p_code", p_code);
+		return mybatis.selectOne("wishlistDAO.getWish", map);
+	}
+	
+	
 }

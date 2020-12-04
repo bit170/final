@@ -89,12 +89,14 @@ public class OrderController {
 					System.out.println(index++ + "번째 장바구니 작품정보 : " + cart);
 				}
 
-				String total = "";
+				int total = 0;
 				for (CartVO cart : cartList) {
-					total = cart.getc_price() + total;
+					total +=Integer.parseInt(cart.getc_price());
 				}
+				String tt = Integer.toString(total);
+				
 				System.out.println("total : " + total);
-				sess.setAttribute("total", total);
+				sess.setAttribute("total", tt);
 
 				model.addAttribute("cartList", cartList);
 			} else if (pvo == null) {
@@ -176,7 +178,7 @@ public class OrderController {
 			System.out.println("total : " + session.getAttribute("total"));
 			
 			MemberVO mvo = (MemberVO) session.getAttribute("member");
-			String total = Integer.toString((Integer) session.getAttribute("total"));
+			String total = (String) session.getAttribute("total");
 			OrdVO ovo = new OrdVO();
 			ovo.setId(mvo.getId());
 			ovo.setO_code(randomNum(6));

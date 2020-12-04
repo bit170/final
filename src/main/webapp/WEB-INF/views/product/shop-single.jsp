@@ -396,7 +396,6 @@
 
                   	<a href='#' class='navi-link'>${product.p_category}</a>
                 </ul>
-                    <input class="btn btn-primary btn-block my-0" value="장바구니 담기" type="submit">
                 </div>
                 <div class="col-sm-8">
                     <div class="pt-4 hidden-sm-up"></div>

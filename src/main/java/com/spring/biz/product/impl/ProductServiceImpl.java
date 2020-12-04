@@ -101,6 +101,7 @@ public class ProductServiceImpl implements ProductService {
 	@Override
 	public String getPrice(String p_code) {
 		return productDAO.getPrice(p_code);
+	}
 
    @Override
    public List<ProductVO> getCategory(String category) {
