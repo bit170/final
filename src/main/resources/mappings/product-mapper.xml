@@ -127,4 +127,26 @@
 	<select id="searchByPname" parameterType="String" resultType="product">
 		SELECT * FROM PRODUCT WHERE P_NAME LIKE '%' || #{p_name} || '%'
 	</select>
+	
+	<select id="sortLatest" resultType="product">
+		SELECT * FROM PRODUCT ORDER BY P_DATE DESC
+	</select>
+	
+	<select id="sortCheap" resultType="product">
+		SELECT * FROM PRODUCT ORDER BY PRICE ASC
+	</select>
+	
+	<select id="sortExpensive" resultType="product">
+		SELECT * FROM PRODUCT ORDER BY PRICE DESC
+	</select>
+	
+	<select id="sortAlpha" resultType="product">
+		SELECT * FROM PRODUCT ORDER BY P_NAME
+	</select>
+	
+	<select id="priceRange" parameterType="java.util.HashMap" resultType="product">
+		<![CDATA[
+		SELECT * FROM PRODUCT WHERE #{minP} <= PRICE AND PRICE <=#{maxP}
+		]]>
+	</select>
 </mapper>
