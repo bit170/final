@@ -108,5 +108,9 @@ public class ProductDAO {
 		pi_info.put("pi_filetype", pi_filetype);
 		return mybatis.selectOne("productDAO.imgFileName", pi_info);
 	}
+	
+	public List<ProductVO> searchByPname(String p_name){
+		return mybatis.selectList("productDAO.searchByPname", p_name);
+	}
 
 }

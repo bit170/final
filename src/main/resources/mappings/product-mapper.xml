@@ -104,4 +104,8 @@
 	<select id="imgFileName" resultType="String" parameterType="java.util.HashMap">
 		select pi_filename from p_image where p_code=#{p_code} and pi_filetype=#{pi_filetype}
 	</select>
+	
+	<select id="searchByPname" parameterType="String" resultType="product">
+		SELECT * FROM PRODUCT WHERE P_NAME LIKE '%' || #{p_name} || '%'
+	</select>
 </mapper>

@@ -113,5 +113,10 @@ public class ProductServiceImpl implements ProductService {
 		return productDAO.getFileName(p_code,pi_filetype);
 	}
 	
+	@Override
+	public List<ProductVO> searchByPname(String p_name){
+		return productDAO.searchByPname(p_name);
+	}
+	
 }
 	
