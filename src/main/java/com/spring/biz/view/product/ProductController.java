@@ -325,4 +325,13 @@ public class ProductController extends BaseController {
 		return "product/shop-boxed-ls";
 	}
 
+	@RequestMapping(value="/searchByPname.do", method=RequestMethod.POST)
+	public String searchByPname(String p_name, Model model) {
+		System.out.println("Controller의 searchByPname~!");
+		
+		List<ProductVO> list = productService.searchByPname(p_name);
+		model.addAttribute("productList", list);
+		System.out.println(list.isEmpty());
+		return "product/shop-boxed-ls";
+	}
 }

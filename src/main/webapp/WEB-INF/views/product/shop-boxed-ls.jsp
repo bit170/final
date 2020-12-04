@@ -326,9 +326,9 @@
           <!-- Search-->
           <div class="d-flex flex-wrap-reverse flex-md-nowrap justify-content-center justify-content-sm-between align-items-center mb-30">
             <div class="pt-3 pb-1 pb-sm-3 text-sm text-center text-sm-left"><span class="text-muted mr-2">Showing</span>1- 12 items</div>
-            <form class="input-group shop-search-box" method="get"><span class="input-group-btn">
+            <form class="input-group shop-search-box" action="searchByPname.do" method="post"><span class="input-group-btn">
                 <button type="submit"><i class="material-icons search"></i></button></span>
-              <input class="form-control" type="search" placeholder="Search shop">
+              <input class="form-control" type="text" placeholder="작품명을 입력한 후, 엔터를 누르세요" id="p_name" name="p_name">
             </form>
           </div>
           <!-- Products Grid-->

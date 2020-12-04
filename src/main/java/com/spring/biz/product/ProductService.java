@@ -4,6 +4,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
+import com.spring.biz.artist.ArtistVO;
+
 public interface ProductService {
 
 	ProductVO getProduct(ProductVO vo);
@@ -29,5 +31,6 @@ public interface ProductService {
 	String getFileName(String p_code);
 	String getFileName(String p_code, String pi_filetype);
 
+	public List<ProductVO> searchByPname(String p_name);
 //	public List productImageFile(String p_code) throws Exception;
 }
