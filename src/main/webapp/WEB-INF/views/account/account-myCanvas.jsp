@@ -208,7 +208,7 @@
 	            <p class="text-muted text-sm mt-4">환영합니다</p>
 	            <button class="btn btn-primary" type="submit">Log Out</button> 
 
-	            <a class="btn btn-primary mx-0 scale-up delay-1" href="account.do">My page</a>
+	            <a class="btn btn-primary mx-0 scale-up delay-1" href="getWishlists.do?id=${member.id}">My page</a>
 
 	          </form>  
 	         </div>
@@ -352,7 +352,7 @@
 			<ul class="breadcrumbs">
 				<li><a href="main.do">홈</a></li>
 				<li class="separator">&nbsp;/&nbsp;</li>
-				<li><a href="account.do">나의 계정</a></li>
+				<li><a href="getWishlists.do?id=${member.id}">나의 계정</a></li>
 				<li class="separator">&nbsp;/&nbsp;</li>
 				<li>나의 프로필</li>
 			</ul>
