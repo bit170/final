@@ -353,8 +353,17 @@
                 <h2 class="mb-3">${artist.nickname }</h2>
                 <p class="text-sm text-muted">${artist.a_detail }</p>
                 <div class="d-flex flex-wrap justify-content-between align-items-center">
+                	<c:if test="${!empty member}">
                   <a href="Follow.do?a_id=${artist.a_id }&page=single" class="btn btn-outline-secondary btn-sm text-danger" >
                     <i class="material-icons favorite_border"></i>&nbsp;Follow</a>
+                    </c:if>
+                	<c:if test="${empty member}">
+                  <a class="btn btn-outline-secondary btn-sm text-danger" data-toast data-toast-type="danger" 
+	                    		data-toast-position="topRight" data-toast-icon="material-icons check" 
+	                    		data-toast-title="login needed" data-toast-message="로그인이 필요한 서비스입니다!"
+                    		onclick="#">
+                    <i class="material-icons favorite_border"></i>&nbsp;Follow</a>
+                    </c:if>
                   </div>
               </div>
             </div>

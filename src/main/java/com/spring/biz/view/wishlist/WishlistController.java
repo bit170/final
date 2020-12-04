@@ -29,7 +29,7 @@ public class WishlistController {
 
 	@RequestMapping("/insertWishlist.do")
 	public String insertWishlist(@RequestParam("p_code") String p_code, HttpSession session, Model model) {
-		System.out.println("*****insertWishlist 실행!! ******");
+		System.out.println("***** insertWishlist 실행!! ******");
 
 		MemberVO mvo = (MemberVO) session.getAttribute("member");
 
