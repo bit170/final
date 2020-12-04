@@ -409,7 +409,7 @@
 	                    <button class="btn btn-white btn-sm" data-toast data-toast-type="info" 
 	                    		data-toast-position="topRight" data-toast-icon="material-icons check" 
 	                    		data-toast-title="성공!" data-toast-message="성공적으로 위시리스트에 담겼습니다!" 
-	                    		onclick="location.href=insertWishlist.do?p_code=${product.p_code}">
+	                    		onclick="location.href='insertWishlist.do?p_code=${product.p_code}'">
 	                    		<i class="material-icons favorite_border"></i></button>
 	                    <button class="btn btn-primary btn-sm" data-toast data-toast-type="success" 
 	                    		data-toast-position="topRight" data-toast-icon="material-icons check" 
