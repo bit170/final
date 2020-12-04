@@ -399,8 +399,7 @@ $(document).ready(function(){
              <div class="col-sm-6">
                 <div class="form-group">
                   <label for="select-input">* 카테고리 </label>
-                  <!-- <label class="col-2 col-form-label text-muted" for="select-input">Select</label> -->
-                  <select name = "p_category" class="form-control" id="select-input"  required>
+                  <select name = "p_category" class="form-control" id="select-input" required>
                     <option>카테고리를 선택해주세요 ! </option>
                     <option value="수묵화">수묵화</option>
                     <option value="수채화">수채화</option>
