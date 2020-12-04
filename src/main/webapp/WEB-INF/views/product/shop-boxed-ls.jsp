@@ -526,7 +526,7 @@
                   <h4 class="product-card-price">
                   <c:choose>
 					<c:when test="${product.price eq 0}"> 
-                    	₩ <fmt:formatNumber pattern="###,###,###" value="sold out" />
+                    	<h6>Sold out</h6>
                     	</c:when>
                     <c:otherwise>
                     	₩ <fmt:formatNumber pattern="###,###,###" value="${product.price}" />

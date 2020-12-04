@@ -222,6 +222,41 @@ public class OrderController {
 	public String complete() {
 		return "order/checkout-complete";
 	}
+	
+	@RequestMapping("/getOrderList.do")
+//	@RequestParam 수정필요
+	public String getOrderList(@RequestParam("id")String id, Model model) {
+		System.out.println("id : " + id);
+		List<OrdVO> orderList = (List<OrdVO>) ordService.getOrdList(id);
+		String o_code = "";
+
+		for(OrdVO ovo : orderList) {
+			System.out.println("ovo : " + ovo);
+			o_code = ovo.getO_code(); // s_ord 검색을 위해 저장
+		}
+		
+		// o_code 로 S_OrderList 받아오기
+		System.out.println(o_code);
+		List<S_OrdVO> svoList = (List<S_OrdVO>) ordService.getS_OrdList(o_code);
+		List<ProductVO> sOderList = new ArrayList<>();
+		
+		for(S_OrdVO svo : svoList) {
+			System.out.println("svo : " + svo);
+			String p_code = svo.getP_code();
+			sOderList.add((ProductVO) productService.getProduct(p_code));
+			System.out.println("sOderList : " + (ProductVO) productService.getProduct(p_code));
+		}
+		
+		model.addAttribute("orderList", orderList);
+		model.addAttribute("sOrderList", sOderList);
+		model.addAttribute("sOrder", svoList);
+		return "account/account-orders";
+	}
+	
+	
+	
+	
+	
 
 	// o_code 랜덤키 생성을 위한 메서드 (연희) (파라미터에 원하는 자릿수 넣기)
 	public static String randomNum(int len) {

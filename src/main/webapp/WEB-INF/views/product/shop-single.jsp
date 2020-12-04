@@ -484,8 +484,8 @@
               <div class="card-body">
                 <h2 class="mb-3">${product.p_name}</h2>
                 <c:choose>
-                	<c:when test=${product.price eq 0}>
-               		 <h3 class="text-normal">₩ <fmt:formatNumber pattern="###,###,###" value="판매완료" /></h3>
+                	<c:when test="${product.price eq 0}">
+               		 <h3 class="text-normal"> Sold out</h3>
                 	</c:when>
                 	<c:otherwise>
                		 <h3 class="text-normal">₩ <fmt:formatNumber pattern="###,###,###" value="${product.price}" /></h3>
