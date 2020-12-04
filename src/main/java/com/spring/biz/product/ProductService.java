@@ -1,10 +1,8 @@
 package com.spring.biz.product;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
-import com.spring.biz.artist.ArtistVO;
 
 public interface ProductService {
 
