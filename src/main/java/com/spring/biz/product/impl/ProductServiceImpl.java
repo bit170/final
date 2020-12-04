@@ -133,5 +133,29 @@ public class ProductServiceImpl implements ProductService {
 		return productDAO.searchByPname(p_name);
 	}
 	
+	@Override
+	public List<ProductVO> sortLatest(){
+		return productDAO.sortLatest();
+	}
+	
+	@Override
+	public List<ProductVO> sortCheap(){
+		return productDAO.sortCheap();
+	}
+	
+	@Override
+	public List<ProductVO> sortExpensive(){
+		return productDAO.sortExpensive();
+	}
+	
+	@Override
+	public List<ProductVO> sortAlpha(){
+		return productDAO.sortAlpha();
+	}
+	
+	@Override
+	public List<ProductVO> priceRange(Map map){
+		return productDAO.priceRange(map);
+	}
 }
 	

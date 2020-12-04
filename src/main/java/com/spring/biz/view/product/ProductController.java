@@ -334,4 +334,67 @@ public class ProductController extends BaseController {
 		System.out.println(list.isEmpty());
 		return "product/shop-boxed-ls";
 	}
+	
+	@RequestMapping(value="/sortLatest.do", method=RequestMethod.GET)
+	public String sortLatest(Model model) {
+		System.out.println("!!!!!작품 최신순 정렬!!!!!");
+		List<ProductVO> list = productService.sortLatest();
+		model.addAttribute("productList", list);
+		System.out.println(list.isEmpty());
+		return "product/shop-boxed-ls";
+	}
+	
+	@RequestMapping(value="/sortCheap.do", method=RequestMethod.GET)
+	public String sortCheap(Model model) {
+		System.out.println("!!!!!작품 가격낮은순 정렬!!!!!");
+		List<ProductVO> list = productService.sortCheap();
+		model.addAttribute("productList", list);
+		System.out.println(list.isEmpty());
+		return "product/shop-boxed-ls";
+	}
+	
+	@RequestMapping(value="/sortExpensive.do", method=RequestMethod.GET)
+	public String sortExpensive(Model model) {
+		System.out.println("!!!!!작품 가격높은순 정렬!!!!!");
+		List<ProductVO> list = productService.sortExpensive();
+		model.addAttribute("productList", list);
+		System.out.println(list.isEmpty());
+		return "product/shop-boxed-ls";
+	}
+	
+	@RequestMapping(value="/sortAlpha.do", method=RequestMethod.GET)
+	public String sortAlpha(Model model) {
+		System.out.println("!!!!!작품 가나다순 정렬!!!!!");
+		List<ProductVO> list = productService.sortAlpha();
+		model.addAttribute("productList", list);
+		System.out.println(list.isEmpty());
+		return "product/shop-boxed-ls";
+	}
+	
+	@RequestMapping(value="/priceRange.do", method=RequestMethod.POST)
+	public String priceRange(String minp, String maxp, Model model) {
+		System.out.println("!!!!!작품 가격범위 설정!!!!!");
+		System.out.println(minp + " & " + maxp);
+		Map map = new HashMap();
+		map.put("minP", minp);
+		map.put("maxP", maxp);
+		List<ProductVO> list = productService.priceRange(map);
+		model.addAttribute("productList", list);
+		System.out.println(list.isEmpty());
+		return "product/shop-boxed-ls";
+	}
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+

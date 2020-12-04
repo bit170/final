@@ -30,6 +30,11 @@ public interface ProductService {
 	String getFileName(String p_code, String pi_filetype);
 
 	public List<ProductVO> searchByPname(String p_name);
+	public List<ProductVO> sortLatest();
+	public List<ProductVO> sortCheap();
+	public List<ProductVO> sortExpensive();
+	public List<ProductVO> sortAlpha();
+	public List<ProductVO> priceRange(Map map);
 //	public List productImageFile(String p_code) throws Exception;
 	
 	public void updatePrice(String p_code);
