@@ -392,14 +392,10 @@
                       <div class="product-info">
                         <h4 class="product-title">
                         	<a href="getProduct.do?p_code=${cart.p_code}">${cart.p_name}<small>x 1</small></a></h4>
-							<!-- product ? or cartList에 넣어야할까 ? 아니면 비워둘까 -->
-							<%-- <span><em>카테고리:</em> ${product.p_category}</span>
-                    		<span><em>작가:</em> ${product.a_id}</span> --%>
                       </div>
                     </div>
                   </td>
-                  <td class="text-center text-lg text-medium" id="c_price"></td>
-                  <td class="text-center"><a class="btn btn-outline-secondary btn-sm" href="cart.do">변경</a></td>
+                  <td class="text-center text-lg text-medium" id="c_price"><fmt:formatNumber pattern="###,###,###" value="${cart.c_price}"/></td>
                 </tr>
                 </c:forEach>
                 </c:if>
