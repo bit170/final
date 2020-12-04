@@ -433,7 +433,6 @@
 								<option>수채화</option>
 								<option>유화</option>
 								<option>크로키</option>
-								<option>펜화</option>
 								<option>기타</option>
 							</select>
 						</div>
