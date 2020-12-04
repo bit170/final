@@ -65,7 +65,25 @@
 	<select id="getProductList" parameterType="product" resultType="product">
 		SELECT * FROM PRODUCT
 	</select>
-
+	
+	<select id="getProducts" parameterType="String" resultType="product">
+		select * from product where p_code = #{p_code}
+	</select>
+	
+	<update id="updatePrice" parameterType="String">
+		update product set price = 0
+		where p_code = #{p_code}
+	</update>
+	
+	<select id="getA_Id" parameterType="String" resultType="String">
+		SELECT A_ID FROM PRODUCT 
+		WHERE P_CODE = #{p_code}	
+	</select>
+	
+	<select id="getPrice" parameterType="String" resultType="String">
+		SELECT PRICE FROM PRODUCT
+		WHERE P_CODE = #{p_code}
+	</select>
 
 	<select id="getProduct" resultType="product">
 		select * from product where p_code = #{p_code}

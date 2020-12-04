@@ -21,13 +21,11 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.spring.biz.artist.ArtistService;
-import com.spring.biz.artist.ArtistVO;
 import com.spring.biz.member.MemberVO;
 import com.spring.biz.product.PImageFileVO;
 import com.spring.biz.product.ProductService;
@@ -142,12 +140,12 @@ public class ProductController extends BaseController {
 		response.setContentType("text/html; charset=utf-8");
 		String pi_filename=null;
 		
-		Map proudctMap = new HashMap();
+		Map productMap = new HashMap();
 		Enumeration enu=multipartRequest.getParameterNames();
 		while(enu.hasMoreElements()){
 			String name=(String)enu.nextElement();
 			String value=multipartRequest.getParameter(name);
-			proudctMap.put(name,value);
+			productMap.put(name,value);
 		}
 		
 		HttpSession session = multipartRequest.getSession();
@@ -161,7 +159,7 @@ public class ProductController extends BaseController {
 			if(pimageFileList!= null && pimageFileList.size()!=0) {
 				for(PImageFileVO pimageFileVO : pimageFileList) {
 					
-					p_code = (String)proudctMap.get("p_code");
+					p_code = (String)productMap.get("p_code");
 					pimageFileVO.setP_code(p_code);
 					pimageFileVO.setA_id(a_id);
 				}
@@ -274,13 +272,15 @@ public class ProductController extends BaseController {
 	}
 	
 	@RequestMapping(value="/getProduct.do")
-	public String getProduct(ProductVO vo, Model model) {
-		ProductVO product = productService.getProduct(vo);
+	public String getProduct(@RequestParam("p_code")String p_code, Model model) {
+		ProductVO product = productService.getProduct(p_code);
 		model.addAttribute("product", product);
-		System.out.println("작품코드 : " + vo.getP_code() + " 작품명 : " + vo.getP_name());
-		List<PImageFileVO> productImgs = productService.getImages(vo.getP_code());
+
+    System.out.println("작품코드 : " + p_code);
+		List<PImageFileVO> productImgs = productService.getImages(p_code);
 		model.addAttribute("productImgs", productImgs);
-		return "product/shop-single";
+
+    return "product/shop-single";
 	}
 	
 	@RequestMapping(value = "getCategory.do", method = RequestMethod.GET)

@@ -8,11 +8,11 @@ import com.spring.biz.artist.ArtistVO;
 
 public interface ProductService {
 
-	ProductVO getProduct(ProductVO vo);
+	ProductVO getProduct(String p_code);
+	
 	List<ProductVO> getProductList(ProductVO vo);
 
 	List<ProductVO> getMainProduct();
-
 	
 	public String addNewProduct(Map newProductMap) throws Exception;
 
@@ -33,4 +33,10 @@ public interface ProductService {
 
 	public List<ProductVO> searchByPname(String p_name);
 //	public List productImageFile(String p_code) throws Exception;
+	
+	public void updatePrice(String p_code);
+	
+	public String getA_Id(String p_code);
+	
+	public String getPrice(String p_code);
 }

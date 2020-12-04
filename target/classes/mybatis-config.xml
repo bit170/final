@@ -17,6 +17,9 @@
 		<typeAlias alias="artist" type="com.spring.biz.artist.ArtistVO"/>
 		<typeAlias alias="aimage" type="com.spring.biz.artist.AImageFileVO" />
 		<typeAlias alias="follow" type="com.spring.biz.follow.FollowVO"/>
+		<typeAlias alias="ord" type="com.spring.biz.order.OrdVO"/>
+		<typeAlias alias="sOrd" type="com.spring.biz.order.S_OrdVO"/>
+		<typeAlias alias="wishlist" type="com.spring.biz.wishlist.WishlistVO"/>
 
 	</typeAliases>
 	

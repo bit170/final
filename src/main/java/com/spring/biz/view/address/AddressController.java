@@ -1,7 +1,5 @@
 package com.spring.biz.view.address;
 
-import java.util.List;
-
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,7 +13,6 @@ import org.springframework.web.bind.annotation.SessionAttributes;
 import com.spring.biz.address.AddressService;
 import com.spring.biz.address.AddressVO;
 import com.spring.biz.member.MemberVO;
-import com.spring.biz.order.CartVO;
 
 @Controller
 @SessionAttributes({"address","member"})
@@ -35,7 +32,7 @@ public class AddressController {
 		String a_name = vo.getA_name();
 		
 		System.out.println("address : " + vo);
-		
+		session.setAttribute("address", vo);
 		System.out.println("id : " + id + "의 주소지 :" + a_name +" 입력 성공!!");
 		return "redirect:getPayment.do";
 		
@@ -53,7 +50,7 @@ public class AddressController {
 		return "account/account-address";
 	}
 	
-	@RequestMapping(value = "/getAddress.do" , method = RequestMethod.POST)
+	@RequestMapping(value = "/getAddress.do")
 	public String getAddress(AddressVO vo, Model model, HttpSession session) {
 		MemberVO mvo = (MemberVO)session.getAttribute("member");
 		System.out.println("getAddress() 생성");
