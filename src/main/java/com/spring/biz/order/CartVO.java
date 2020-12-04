@@ -4,13 +4,13 @@ public class CartVO {
 	private String p_code;
 	private String p_name;
 	private String p_img;
-	private int c_price;
+	private String c_price;
 	
 	public CartVO() {
 		System.out.println("CartVO() 객체 생성");
 	}
 
-	public CartVO(String p_code, String p_name, String p_img, int c_price) {
+	public CartVO(String p_code, String p_name, String p_img, String c_price) {
 		this.p_code = p_code;
 		this.p_name = p_name;
 		this.p_img = p_img;
@@ -41,11 +41,11 @@ public class CartVO {
 		this.p_img = p_img;
 	}
 
-	public int getc_price() {
+	public String getc_price() {
 		return c_price;
 	}
 
-	public void setc_price(int c_price) {
+	public void setc_price(String c_price) {
 		this.c_price = c_price;
 	}
 

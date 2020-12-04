@@ -1,14 +1,13 @@
-
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 
 <!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="utf-8">
-    <title>아트플레이스</title>
+    <title>캔버스마켓</title>
     <!-- SEO Meta Tags-->
     <meta name="description" content="Unishop - Universal E-Commerce Template">
     <meta name="keywords" content="shop, e-commerce, modern, flat style, responsive, online store, business, mobile, blog, bootstrap 4, html5, css3, jquery, js, gallery, slider, touch, creative, clean">
@@ -168,14 +167,41 @@
                 <li><a href="getProductList.do?category=etc">기타</a></li>
             </ul>
           </li>
-          <li><a href="#"><span>Pages</span></a>
+          <c:if test="${!empty member}">
+          <li><a href="getWishlists.do?id=${member.id}"><span>MyPage</span></a>
             <ul class="sub-menu">
-            <!-- 홈페이지 소개글?? (연희) -->
-                <li><a href="about.do">우리 사이트는요</a></li>
-                <li><a href="contacts.do">문의</a></li>
-                <li><a href="faq.do">FAQ</a></li>
+                <li><a href="getFollowList.do?id=${member.id}">팔로우</a></li>
+                <li><a href="getOrderList.do?id=${member.id}">주문목록</a></li>
+                <li><a href="getMember.do?id=${member.id}">프로필 수정</a></li>
+                <li><a href="getAddress.do">주소록</a></li>
+                <li><a href="getMyCanvas.do">마이 캔버스</a></li>
             </ul>
           </li>
+          </c:if>
+          <c:if test="${empty member}">
+          <li><a href="#" data-toast data-toast-type="danger" 
+              data-toast-position="topRight" data-toast-icon="icon-circle-check" 
+              data-toast-title="login needed" data-toast-message="로그인이 필요한 서비스입니다.">
+              <span>MyPage</span></a>
+            <ul class="sub-menu">
+                <li><a href="#" data-toast data-toast-type="danger" 
+              data-toast-position="topRight" data-toast-icon="icon-circle-check" 
+              data-toast-title="login needed" data-toast-message="로그인이 필요한 서비스입니다.">팔로우</a></li>
+                <li><a href="#" data-toast data-toast-type="danger" 
+              data-toast-position="topRight" data-toast-icon="icon-circle-check" 
+              data-toast-title="login needed" data-toast-message="로그인이 필요한 서비스입니다.">주문목록</a></li>
+                <li><a href="#" data-toast data-toast-type="danger" 
+              data-toast-position="topRight" data-toast-icon="icon-circle-check" 
+              data-toast-title="login needed" data-toast-message="로그인이 필요한 서비스입니다.">프로필 수정</a></li>
+                <li><a href="#" data-toast data-toast-type="danger" 
+              data-toast-position="topRight" data-toast-icon="icon-circle-check" 
+              data-toast-title="login needed" data-toast-message="로그인이 필요한 서비스입니다.">주소록</a></li>
+                <li><a href="#" data-toast data-toast-type="danger" 
+              data-toast-position="topRight" data-toast-icon="icon-circle-check" 
+              data-toast-title="login needed" data-toast-message="로그인이 필요한 서비스입니다.">마이 캔버스</a></li>
+            </ul>
+          </li>
+          </c:if>
         </ul>
       </nav>
       <!-- Toolbar-->
@@ -214,13 +240,31 @@
                 <li><a href="getProductList.do?category=etc">기타</a></li>
                   </ul>
                 </li>
-                <li class="has-children"><span><a href="#">Pages</a><span class="sub-menu-toggle"></span></span>
+                <c:if test="${!empty member}">
+                <li class="has-children"><span><a href="getWishlist.do?id=${member.id}">MyPage</a><span class="sub-menu-toggle"></span></span>
                   <ul class="slideable-submenu">
-                <li><a href="about.do">우리 사이트는요</a></li>
-                <li><a href="contacts.do">문의</a></li>
-                <li><a href="faq.do">FAQ</a></li>
+                <li><a href="getFollowList.do?id=${member.id}">팔로우</a></li>
+                <li><a href="getOrderList.do?id=${member.id}">주문목록</a></li>
+                <li><a href="getMember.do?id=${member.id}">프로필 수정</a></li>
+                <li><a href="getAddress.do">주소록</a></li>
+                <li><a href="getMyCanvas.do">마이 캔버스</a></li>
                   </ul>
                 </li>
+                </c:if>
+                <c:if test="${empty member}">
+                <li class="has-children"><span><a class="btn btn-sm btn-success mb-0 mr-0" href="#" data-toast data-toast-type="danger" 
+              data-toast-position="topRight" data-toast-icon="icon-circle-check" 
+              data-toast-title="login needed" data-toast-message="로그인이 필요한 서비스입니다.">
+              MyPage</a><span class="sub-menu-toggle"></span></span>
+                  <ul class="slideable-submenu">
+                <li><a href="#">팔로우</a></li>
+                <li><a href="#">주문목록</a></li>
+                <li><a href="#">프로필 수정</a></li>
+                <li><a href="#">주소록</a></li>
+                <li><a href="#">마이 캔버스</a></li>
+                  </ul>
+                </li>
+                </c:if>
               </ul>
             </nav>
           </div>
@@ -273,7 +317,7 @@
 	            <!-- <a class="btn btn-primary mx-0 scale-up delay-1" href="shop-boxed-ls.jsp">Log Out</a> -->
 	            <!-- <button class="btn btn-primary btn-block" type="submit"><a href="account-wishlist.jsp">My page</button> -->
 
-	            <a class="btn btn-primary mx-0 scale-up delay-1" href="account.do">My page</a>
+	            <a class="btn btn-primary mx-0 scale-up delay-1" href="getWishlists.do?">My page</a>
 
 	          </form>
 	         </div>
@@ -309,28 +353,29 @@
               <div class="tab-pane fade" id="signup" role="tabpanel">
                 <form method="post" autocomplete="off" id="signup-form" action="signUp.do">
                 <!-- <form method="post" autocomplete="off" id="signup-form" > -->
-                  <div class="form-group">
-                    <input class="form-control" type="text" placeholder="Name" name="name" required>
-                  </div>
-                  <div class="form-group">
-                    <input class="form-control" type="email" placeholder="Email" name="email" required>
-                  </div>
-                  <div class="form-group">
-                    <input class="form-control" type="text" placeholder="Phone" name="phone" required>
-                  </div>
+                  
               	<div class="form-group">
-                    <input class="form-control" type="text" placeholder="Id" id="signup_id" name="id" required>
+                    <input class="form-control" type="text" placeholder="아이디" id="signup_id" name="id" required>
                     <div id="idCheck_result"></div>
                   </div>
                   <div class="form-group">
-                    <input class="form-control" type="password" placeholder="Password" id="pw1" required>
+                    <input class="form-control" type="password" placeholder="비밀번호" id="pw1" required>
                   </div>
                   <div class="form-group">
-                    <input class="form-control" type="password" placeholder="Confirm Password" id="pw2" name="pwd" required>
+                    <input class="form-control" type="password" placeholder="비밀번호 확인" id="pw2" name="pwd" required>
                     <div id="pwCheck_result"></div>
                   </div>
                   <div class="form-group">
-                    <input class="form-control" type="text" placeholder="NickName" name="nickname" required>
+                    <input class="form-control" type="text" placeholder="닉네임" name="nickname" required>
+                  </div>
+                  <div class="form-group">
+                    <input class="form-control" type="text" placeholder="이름" name="name" required>
+                  </div>
+                  <div class="form-group">
+                    <input class="form-control" type="email" placeholder="이메일" name="email" required>
+                  </div>
+                  <div class="form-group">
+                    <input class="form-control" type="text" placeholder="전화번호" name="phone" required>
                   </div>
                   <button class="btn btn-primary btn-block" type="submit">회원가입</button>
                 </form>
@@ -357,32 +402,54 @@
                   </tr>
                 </thead>
                 <tbody>
+                  <c:if test="${empty cartList}">
                   <tr>
                     <td>
-                    <c:if test="${empty cartList }">
-                   	 장바구니가 비었습니다.
-                    </c:if>
-                    <c:if test="${!empty cartList }">
-                      <div class="product-item"><a class="product-thumb" href="getProduct.do"><img src="resources/img/shop/cart/01.jpg" alt="Product"></a>
-                        <div class="product-info">
-                          <h4 class="product-title"><a href="getProduct.do">작품이름</a></h4><span><em>Price:</em> 가격</span>
-                        </div>
-                      </div>
-                    <!-- 삭제처리는 어떻게? 장바구니 품목을 디비에 저장하지 않으면 리스트형태로 세션이나 어딘가에 보관? 그럼 삭제버튼 클릭시 리스트에서 remove하면 될까? -->
-                    <td class="text-center"><a class="remove-from-cart" href="삭제처리"><i class="material-icons icon_close"></i></a></td>
-                    </c:if>
+                     장바구니가 비었습니다.
                     </td>
                   </tr>
+                    </c:if>
+                    <c:if test="${!empty cartList}">
+                    <c:forEach var="cart" items="${cartList}">
+                  <tr>
+                    <td>
+                      <div class="product-item">
+                      <a class="product-thumb" href="getProduct.do?p_code=${cart.p_code}">
+                          <img src="resources/img/product/5.png" alt="Product"></a>
+                        <div class="product-info">
+                          <h4 class="product-title">
+                            <a href="getProduct.do?p_code=${cart.p_code}">${cart.p_name}</a></h4>
+                            <span><em>가 격 : </em>₩ <fmt:formatNumber pattern="###,###,###" value="${cart.c_price}" /></span>
+                        </div>
+                      </div>
+                    </td>
+                    <td class="text-center"><a class="remove-from-cart" href="deleteCart.do?p_code=${cart.p_code}"><i class="material-icons icon_close"></i></a></td>
+                  </tr>
+                    </c:forEach>
+                    </c:if>  
                 </tbody>
               </table>
             </div>
             <!-- 장바구니 합계 -->
             <hr class="mb-3">
             <div class="d-flex flex-wrap justify-content-between align-items-center">
-              <div class="pr-2 py-1 text-sm">Subtotal: <span class='text-dark text-medium'>장바구니 합계 값</span></div>
               <c:if test="${!empty cartList }">
-              <a class="btn btn-sm btn-success mb-0 mr-0" href="checkout.do">Checkout</a>
+              <c:set var = "total" value= "0" />
+            <c:forEach var="cart" items="${cartList}">
+            <c:set var = "total" value="${total + cart.c_price}" />
+            </c:forEach>
+              <div class="pr-2 py-1 text-sm">합 계 : <span class='text-dark text-medium'>
+              ₩ <fmt:formatNumber pattern="###,###,###" value="${total}" />
+                  <%-- <c:out value='${total}' /> --%></span></div>
+             <c:if test="${!empty member}">
+                <a class="btn btn-sm btn-success mb-0 mr-0" href="checkout.do?id=${member.id}">주문하기</a>
               </c:if>
+             <c:if test="${empty member}">
+              <a class="btn btn-sm btn-success mb-0 mr-0" href="#" data-toast data-toast-type="danger" 
+            data-toast-position="topRight" data-toast-icon="icon-circle-check" 
+            data-toast-title="login needed" data-toast-message="로그인이 필요한 서비스입니다.">주문하기</a>
+             </c:if>
+            </c:if>
             </div>
           </div>
         </div>
@@ -573,3 +640,4 @@
     <script src="resources/js/scripts.min.js"></script>
   </body>
 </html>
+>>>>>>> refs/remotes/origin/yhg

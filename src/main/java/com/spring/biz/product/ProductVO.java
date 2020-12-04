@@ -5,7 +5,7 @@ import java.sql.Date;
 public class ProductVO {
 	private String p_code;
 	private String p_name;
-	private int price;
+	private String price;
 	private String p_size;
 	private Date p_date;
 	private String p_category;
@@ -17,7 +17,7 @@ public class ProductVO {
 
 	
 	
-	public ProductVO(String p_code, String p_name, int price, String p_size, Date p_date, String p_category,
+	public ProductVO(String p_code, String p_name, String price, String p_size, Date p_date, String p_category,
 			String p_detail, String a_id) {
 		super();
 		this.p_code = p_code;
@@ -56,11 +56,11 @@ public class ProductVO {
 		this.p_name = p_name;
 	}
 
-	public int getPrice() {
+	public String getPrice() {
 		return price;
 	}
 
-	public void setPrice(int price) {
+	public void setPrice(String price) {
 		this.price = price;
 	}
 

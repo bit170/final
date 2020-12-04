@@ -2,6 +2,7 @@
     pageEncoding="UTF-8" isELIgnored="false" %>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -32,6 +33,9 @@
 			href="<c:url value="resources/css/styles.min.css" />">
     <!-- Modernizr-->
     <script src="resources/js/modernizr.min.js"></script>
+    <script type="text/javascript" src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+	<script type="text/javascript" src="https://service.iamport.kr/js/iamport.payment-1.1.5.js"></script>
+	<!-- <script type="text/javascript" src="https://cdn.iamport.kr/js/iamport.payment-x.y.z.js"></script> -->
   </head>
   <!-- Body-->
   <body>
@@ -48,7 +52,7 @@
       <nav class="site-menu">
         <ul>
           <!-- 해당 페이지에 class="active" 추가해줘야함-->
-          <li class="active"><a href="main.do"><span>Home</span></a>
+          <li><a href="main.do"><span>Home</span></a>
           </li>
           <li><a href="getArtistList.do"><span>Artist</span></a></li>
           <li><a href="getProductList.do"><span>Shop</span></a>
@@ -60,14 +64,41 @@
                 <li><a href="getProductList.do?category=etc">기타</a></li>
             </ul>
           </li>
-          <li><a href="#"><span>Pages</span></a>
+          <c:if test="${!empty member}">
+          <li><a href="getWishlists.do?id=${member.id}"><span>MyPage</span></a>
             <ul class="sub-menu">
-            <!-- 홈페이지 소개글?? (연희) -->
-                <li><a href="about.do">우리 사이트는요</a></li>
-                <li><a href="contacts.do">문의</a></li>
-                <li><a href="faq.do">FAQ</a></li>
+                <li><a href="getFollowList.do?id=${member.id}">팔로우</a></li>
+                <li><a href="getOrderList.do?id=${member.id}">주문목록</a></li>
+                <li><a href="getMember.do?id=${member.id}">프로필 수정</a></li>
+                <li><a href="getAddress.do">주소록</a></li>
+                <li><a href="getMyCanvas.do">마이 캔버스</a></li>
             </ul>
           </li>
+          </c:if>
+          <c:if test="${empty member}">
+          <li><a href="#" data-toast data-toast-type="danger" 
+	        		data-toast-position="topRight" data-toast-icon="icon-circle-check" 
+	        		data-toast-title="login needed" data-toast-message="로그인이 필요한 서비스입니다.">
+        			<span>MyPage</span></a>
+            <ul class="sub-menu">
+                <li><a href="#" data-toast data-toast-type="danger" 
+	        		data-toast-position="topRight" data-toast-icon="icon-circle-check" 
+	        		data-toast-title="login needed" data-toast-message="로그인이 필요한 서비스입니다.">팔로우</a></li>
+                <li><a href="#" data-toast data-toast-type="danger" 
+	        		data-toast-position="topRight" data-toast-icon="icon-circle-check" 
+	        		data-toast-title="login needed" data-toast-message="로그인이 필요한 서비스입니다.">주문목록</a></li>
+                <li><a href="#" data-toast data-toast-type="danger" 
+	        		data-toast-position="topRight" data-toast-icon="icon-circle-check" 
+	        		data-toast-title="login needed" data-toast-message="로그인이 필요한 서비스입니다.">프로필 수정</a></li>
+                <li><a href="#" data-toast data-toast-type="danger" 
+	        		data-toast-position="topRight" data-toast-icon="icon-circle-check" 
+	        		data-toast-title="login needed" data-toast-message="로그인이 필요한 서비스입니다.">주소록</a></li>
+                <li><a href="#" data-toast data-toast-type="danger" 
+	        		data-toast-position="topRight" data-toast-icon="icon-circle-check" 
+	        		data-toast-title="login needed" data-toast-message="로그인이 필요한 서비스입니다.">마이 캔버스</a></li>
+            </ul>
+          </li>
+          </c:if>
         </ul>
       </nav>
       <!-- Toolbar-->
@@ -94,7 +125,7 @@
             <nav class="slideable-menu mt-4">
               <ul class="menu">
                 <!-- 페이지에 active 클래스 추가해줘야함 -->
-                <li class="has-children active"><span><a href="main.do"><span>Home</span></a></span>
+                <li class="has-children"><span><a href="main.do"><span>Home</span></a></span>
                 </li>
                 <li ><span><a href="getArtistList.do "><span>Artist</span></a></span></li>
                 <li class="has-children"><span><a href="getProductList.do"><span>Shop</span></a><span class="sub-menu-toggle"></span></span>
@@ -106,13 +137,31 @@
                 <li><a href="getProductList.do?category=etc">기타</a></li>
                   </ul>
                 </li>
-                <li class="has-children"><span><a href="#">Pages</a><span class="sub-menu-toggle"></span></span>
+                <c:if test="${!empty member}">
+                <li class="has-children"><span><a href="getWishlist.do?id=${member.id}">MyPage</a><span class="sub-menu-toggle"></span></span>
                   <ul class="slideable-submenu">
-                <li><a href="about.do">우리 사이트는요</a></li>
-                <li><a href="contacts.do">문의</a></li>
-                <li><a href="faq.do">FAQ</a></li>
+                <li><a href="getFollowList.do?id=${member.id}">팔로우</a></li>
+                <li><a href="getOrderList.do?id=${member.id}">주문목록</a></li>
+                <li><a href="getMember.do?id=${member.id}">프로필 수정</a></li>
+                <li><a href="getAddress.do">주소록</a></li>
+                <li><a href="getMyCanvas.do">마이 캔버스</a></li>
                   </ul>
                 </li>
+                </c:if>
+                <c:if test="${empty member}">
+                <li class="has-children"><span><a class="btn btn-sm btn-success mb-0 mr-0" href="#" data-toast data-toast-type="danger" 
+	        		data-toast-position="topRight" data-toast-icon="icon-circle-check" 
+	        		data-toast-title="login needed" data-toast-message="로그인이 필요한 서비스입니다.">
+        			MyPage</a><span class="sub-menu-toggle"></span></span>
+                  <ul class="slideable-submenu">
+                <li><a href="#">팔로우</a></li>
+                <li><a href="#">주문목록</a></li>
+                <li><a href="#">프로필 수정</a></li>
+                <li><a href="#">주소록</a></li>
+                <li><a href="#">마이 캔버스</a></li>
+                  </ul>
+                </li>
+                </c:if>
               </ul>
             </nav>
           </div>
@@ -160,7 +209,7 @@
 	            <p class="text-muted text-sm mt-4">환영합니다</p>
 	            <button class="btn btn-primary" type="submit">Log Out</button> 
 
-	            <a class="btn btn-primary mx-0 scale-up delay-1" href="account.do">My page</a>
+	            <a class="btn btn-primary mx-0 scale-up delay-1" href="getWishlists.do?id=${member.id}">My page</a>
 
 	          </form>  
 	         </div>
@@ -264,9 +313,8 @@
                           	<span><em>가 격 : </em>₩ <fmt:formatNumber pattern="###,###,###" value="${cart.c_price}" /></span>
                         </div>
                       </div>
-                    <!-- 삭제처리는 어떻게? 장바구니 품목을 디비에 저장하지 않으면 리스트형태로 세션이나 어딘가에 보관? 그럼 삭제버튼 클릭시 리스트에서 remove하면 될까? -->
                     </td>
-                    <td class="text-center"><a class="remove-from-cart" href="deleteCart.do"><i class="material-icons icon_close"></i></a></td>
+                    <td class="text-center"><a class="remove-from-cart" href="deleteCart.do?p_code=${cart.p_code}"><i class="material-icons icon_close"></i></a></td>
                   </tr>
                     </c:forEach>
                     </c:if>  
@@ -284,8 +332,15 @@
               <div class="pr-2 py-1 text-sm">합 계 : <span class='text-dark text-medium'>
               ₩ <fmt:formatNumber pattern="###,###,###" value="${total}" />
               		<%-- <c:out value='${total}' /> --%></span></div>
-              <a class="btn btn-sm btn-success mb-0 mr-0" href="checkout.do?id=${member.id}">주문하기</a>
+             <c:if test="${!empty member}">
+              	<a class="btn btn-sm btn-success mb-0 mr-0" href="checkout.do?id=${member.id}">주문하기</a>
               </c:if>
+             <c:if test="${empty member}">
+              <a class="btn btn-sm btn-success mb-0 mr-0" href="#" data-toast data-toast-type="danger" 
+        		data-toast-position="topRight" data-toast-icon="icon-circle-check" 
+        		data-toast-title="login needed" data-toast-message="로그인이 필요한 서비스입니다.">주문하기</a>
+             </c:if>
+            </c:if>
             </div>
           </div>
         </div>
@@ -296,7 +351,7 @@
       <div class="container">
         <h1>체크아웃 - 결제</h1>
         <ul class="breadcrumbs">
-          <li><a href="index.html">Home</a>
+          <li><a href="main.do">Home</a>
           </li>
           <li class="separator">&nbsp;/&nbsp;</li>
           <li>Checkout - Payment</li>
@@ -307,6 +362,7 @@
     <div class="container padding-bottom-3x mb-2">
       <div class="row">
         <!-- Checkout Adress-->
+<script type="text/javascript"> IMP.init('imp39212394'); </script>
         <div class="col-xl-9 col-lg-8">
           <div class="steps flex-sm-nowrap mb-5">
             <a class="step" href="checkout.do">
@@ -327,58 +383,77 @@
                   <p class="text-sm">사용가능한 카드사:&nbsp;<img class="d-inline-block align-middle" src="resources/img/cards.png" style="width: 187px;" alt="Cerdit Cards"></p>
                   <div class="card-wrapper"></div>
                   <form class="interactive-credit-card row">
-                    <div class="form-group col-sm-6">
-                      <input class="form-control" type="text" name="number" placeholder="Card Number" required>
+                 <!--  <form class="row"> -->
+                    <div class="form-group col-sm-3">
+                      <input class="form-control" type="text" name="name" id="name" placeholder="이름" value="${member.name}" required>
                     </div>
                     <div class="form-group col-sm-6">
-                      <input class="form-control" type="text" name="name" placeholder="Full Name" required>
+                      <input class="form-control" type="text" name="email" id="email" placeholder="이메일" value="${member.email}" required>
+                    </div>
+                    <div class="form-group col-sm-6">
+                      <input class="form-control" type="text" name="phone" id="phone" placeholder="전화번호" value="${member.phone}" required>
+                    </div>
+                    <div class="form-group col-sm-6">
+                      <input class="form-control" type="text" name="address" id="address" 
+                      		placeholder="주소" value="${address.address}" required>
                     </div>
                     <div class="form-group col-sm-3">
-                      <input class="form-control" type="text" name="expiry" placeholder="MM/YY" required>
+                      <input class="form-control" type="text" name="post" id="post" 
+                      		placeholder="우편번호" value="${address.post}" required>
                     </div>
-                    <div class="form-group col-sm-3">
-                      <input class="form-control" type="text" name="cvc" placeholder="CVC" required>
-                    </div>
-                    <div class="col-sm-6">
-                      <button class="btn btn-outline-primary btn-block margin-top-none" type="submit">결제하기</button>
+                    <div class="col-sm-3">
+                      <button class="btn btn-outline-primary btn-block margin-top-none" onclick="IMP.request_pay()">결제하기</button>
                     </div>
                   </form>
                 </div>
               </div>
             </div>
-            <div class="card">
-              <div class="card-header" role="tab">
-                <h6><a class="collapsed" href="#paypal" data-toggle="collapse"><!-- <i class="socicon-paypal"></i> -->
-                		카카오페이로 결제</a></h6>
-              </div>
-              <div class="collapse" id="paypal" data-parent="#accordion" role="tabpanel">
-                <div class="card-body">
-                  <p class="text-sm">카카오페이로 결제하기</p>
-                      <img src="resources/payment_icon_yellow_small.png" alt="kakaopay">
-                  <form class="row" method="post">
-                    <div class="col-sm-6">
-                      <div class="form-group">
-                        <input class="form-control" type="email" placeholder="카카오톡 아이디" required>
-                      </div>
-                    </div>
-                    <div class="col-sm-6">
-                      <div class="form-group">
-                        <input class="form-control" type="password" placeholder="" required>
-                      </div>
-                    </div>
-                    <div class="col-sm-6">
-                        <button class="btn btn-outline-primary margin-top-none" type="submit">결제하기</button>
-                    </div>
-                  </form>
-                </div>
-              </div>
-            </div>
-
           </div>
-          <div class="d-flex justify-content-between pt-4 mt-2"><a class="btn btn-outline-secondary m-0" href="checkout.do">뒤로가기</a>
+          
+          <script>
+
+          		var total = "${total}";
+          		var email = "${member.email}";
+          		var name = "${member.name}";
+          		var tel = "${member.phone}";
+          		var addr = "${address.address}";
+          		var post = "${address.post}";
+			
+          		
+			    IMP.request_pay({
+        	    pg : 'html5_inicis', // version 1.1.0부터 지원.
+        	    pay_method : 'card',
+        	    merchant_uid : 'merchant_' + new Date().getTime(),
+        	    name : '캔버스 마켓',
+        	    amount : total,
+        	    buyer_email : email,
+        	    buyer_name : name,
+        	    buyer_tel : phone,
+        	    buyer_addr : addr,
+        	    buyer_postcode : post,
+        	    m_redirect_url : 'http://192.168.0.222:8080/biz/review.do'
+        	}, function(rsp) {
+        	    if ( rsp.success ) {
+        	        var msg = '결제가 완료되었습니다.';
+        	       /*  msg += '고유ID : ' + rsp.imp_uid;
+        	        msg += '상점 거래ID : ' + rsp.merchant_uid;
+        	        msg += '결제 금액 : ' + rsp.paid_amount;
+        	        msg += '카드 승인번호 : ' + rsp.apply_num; */
+        	        msg += '계속하기 버튼을 클릭해 주문을 확인해주세요 ~!'
+        	    } else {
+        	        var msg = '결제에 실패하였습니다.';
+        	        msg += '에러내용 : ' + rsp.error_msg;
+        	    }
+        	    alert(msg);
+        	});
+          
+          </script>
+          
+          <div class="d-flex justify-content-between pt-4 mt-2"><a class="btn btn-outline-secondary m-0" href="checkout.do?id=${member.id}">뒤로가기</a>
           <a class="btn btn-primary m-0" href="review.do">계속하기</a></div>
         </div>
-        <!-- Sidebar          -->
+        <!-- Sidebar -->
+        <!-- 결제 페이지 내 사이드 바 -->
         <div class="col-xl-3 col-lg-4">
           <aside class="sidebar">
             <div class="padding-top-2x hidden-lg-up"></div>
@@ -388,7 +463,8 @@
               <table class="table text-sm mb-0">
                 <tr>
                   <td>주문 금액:</td>
-                  <td class="text-medium">₩ <fmt:formatNumber pattern="###,###,###" value="${product.price}" /></td>
+                  <td class="text-medium">₩ <fmt:formatNumber pattern="###,###,###" value="${total}" /></td>
+                  <input type="hidden" id="total" value="${total}">
                 </tr>
                <!--  <tr>
                   <td>Shipping:</td>
@@ -396,40 +472,10 @@
                 </tr> -->
                 <tr>
                   <td></td>
-                  <td class="text-lg text-medium">₩ <fmt:formatNumber pattern="###,###,###" value="${product.price}" /></td>
+                  <td class="text-lg text-medium">₩ <fmt:formatNumber pattern="###,###,###" value="${total}" /></td>
                 </tr>
               </table>
             </section>
-            <!-- Featured Products Widget-->
-            <section class="widget widget-featured-products border-0">
-              <h3 class="widget-title">최근 본 상품</h3>
-              <!-- Entry-->
-              <div class="entry">
-                <div class="entry-thumb"><a href="shop-single.html"><img src="resources/img/shop/widget/01.png" alt="Product"></a></div>
-                <div class="entry-content">
-                  <h4 class="entry-title"><a href="shop-single.html">Max Task Chair</a></h4><span class="entry-meta">$299.00</span>
-                </div>
-              </div>
-              <!-- Entry-->
-              <div class="entry">
-                <div class="entry-thumb"><a href="shop-single.html"><img src="resources/img/shop/widget/02.png" alt="Product"></a></div>
-                <div class="entry-content">
-                  <h4 class="entry-title"><a href="shop-single.html">Drawer File Cabinet</a></h4><span class="entry-meta">$265.00</span>
-                </div>
-              </div>
-              <!-- Entry-->
-              <div class="entry">
-                <div class="entry-thumb"><a href="shop-single.html"><img src="resources/img/shop/widget/03.png" alt="Product"></a></div>
-                <div class="entry-content">
-                  <h4 class="entry-title"><a href="shop-single.html">Campfire Paper Table</a></h4><span class="entry-meta">$570.00</span>
-                </div>
-              </div>
-            </section>
-            <!-- Promo Banner-->
-           <!--  <div class="fw-section mt-1 px-4 py-5 text-center" style="background-image: url(img/banners/alert-bg.jpg);">
-              <h3 class="text-white">Check our <br><span class='text-bold'>Latest Offers.</span><br> Save up to <span class='text-bold'>50%</span></h3>
-              <a class="btn btn-primary btn-sm" href="#">View Offers</a>
-            </div> -->
           </aside>
         </div>
       </div>

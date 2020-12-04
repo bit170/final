@@ -1,6 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -41,9 +43,9 @@
       <nav class="site-menu">
         <ul>
           <!-- 해당 페이지에 class="active" 추가해줘야함-->
-          <li class="active"><a href="main.do"><span>Home</span></a>
+          <li><a href="main.do"><span>Home</span></a>
           </li>
-          <li><a href="getArtistList.do"><span>Artist</span></a></li>
+          <li class="active"><a href="getArtistList.do"><span>Artist</span></a></li>
           <li><a href="getProductList.do"><span>Shop</span></a>
             <ul class="sub-menu">
                 <li><a href="getProductList.do?category=water">수채화</a></li>
@@ -53,14 +55,41 @@
                 <li><a href="getProductList.do?category=etc">기타</a></li>
             </ul>
           </li>
-          <li><a href="#"><span>Pages</span></a>
+          <c:if test="${!empty member}">
+          <li><a href="getWishlists.do?id=${member.id}"><span>MyPage</span></a>
             <ul class="sub-menu">
-            <!-- 홈페이지 소개글?? (연희) -->
-                <li><a href="about.do">우리 사이트는요</a></li>
-                <li><a href="contacts.do">문의</a></li>
-                <li><a href="faq.do">FAQ</a></li>
+                <li><a href="getFollowList.do?id=${member.id}">팔로우</a></li>
+                <li><a href="getOrderList.do?id=${member.id}">주문목록</a></li>
+                <li><a href="getMember.do?id=${member.id}">프로필 수정</a></li>
+                <li><a href="getAddress.do">주소록</a></li>
+                <li><a href="getMyCanvas.do">마이 캔버스</a></li>
             </ul>
           </li>
+          </c:if>
+          <c:if test="${empty member}">
+          <li><a href="#" data-toast data-toast-type="danger" 
+	        		data-toast-position="topRight" data-toast-icon="icon-circle-check" 
+	        		data-toast-title="login needed" data-toast-message="로그인이 필요한 서비스입니다.">
+        			<span>MyPage</span></a>
+            <ul class="sub-menu">
+                <li><a href="#" data-toast data-toast-type="danger" 
+	        		data-toast-position="topRight" data-toast-icon="icon-circle-check" 
+	        		data-toast-title="login needed" data-toast-message="로그인이 필요한 서비스입니다.">팔로우</a></li>
+                <li><a href="#" data-toast data-toast-type="danger" 
+	        		data-toast-position="topRight" data-toast-icon="icon-circle-check" 
+	        		data-toast-title="login needed" data-toast-message="로그인이 필요한 서비스입니다.">주문목록</a></li>
+                <li><a href="#" data-toast data-toast-type="danger" 
+	        		data-toast-position="topRight" data-toast-icon="icon-circle-check" 
+	        		data-toast-title="login needed" data-toast-message="로그인이 필요한 서비스입니다.">프로필 수정</a></li>
+                <li><a href="#" data-toast data-toast-type="danger" 
+	        		data-toast-position="topRight" data-toast-icon="icon-circle-check" 
+	        		data-toast-title="login needed" data-toast-message="로그인이 필요한 서비스입니다.">주소록</a></li>
+                <li><a href="#" data-toast data-toast-type="danger" 
+	        		data-toast-position="topRight" data-toast-icon="icon-circle-check" 
+	        		data-toast-title="login needed" data-toast-message="로그인이 필요한 서비스입니다.">마이 캔버스</a></li>
+            </ul>
+          </li>
+          </c:if>
         </ul>
       </nav>
       <!-- Toolbar-->
@@ -87,9 +116,11 @@
             <nav class="slideable-menu mt-4">
               <ul class="menu">
                 <!-- 페이지에 active 클래스 추가해줘야함 -->
-                <li class="has-children active"><span><a href="main.do"><span>Home</span></a></span>
+                <li class="has-children"><span><a href="main.do"><span>Home</span></a></span>
                 </li>
-                <li ><span><a href="getArtistList.do"><span>Artist</span></a></span></li>
+
+                <li class="active"><span><a href="getArtistList.do "><span>Artist</span></a></span></li>
+
                 <li class="has-children"><span><a href="getProductList.do"><span>Shop</span></a><span class="sub-menu-toggle"></span></span>
                   <ul class="slideable-submenu">
                 <li><a href="getProductList.do?category=water">수채화</a></li>
@@ -99,13 +130,31 @@
                 <li><a href="getProductList.do?category=etc">기타</a></li>
                   </ul>
                 </li>
-                <li class="has-children"><span><a href="#">Pages</a><span class="sub-menu-toggle"></span></span>
+                <c:if test="${!empty member}">
+                <li class="has-children"><span><a href="getWishlist.do?id=${member.id}">MyPage</a><span class="sub-menu-toggle"></span></span>
                   <ul class="slideable-submenu">
-                <li><a href="about.do">우리 사이트는요</a></li>
-                <li><a href="contacts.do">문의</a></li>
-                <li><a href="faq.do">FAQ</a></li>
+                <li><a href="getFollowList.do?id=${member.id}">팔로우</a></li>
+                <li><a href="getOrderList.do?id=${member.id}">주문목록</a></li>
+                <li><a href="getMember.do?id=${member.id}">프로필 수정</a></li>
+                <li><a href="getAddress.do">주소록</a></li>
+                <li><a href="getMyCanvas.do">마이 캔버스</a></li>
                   </ul>
                 </li>
+                </c:if>
+                <c:if test="${empty member}">
+                <li class="has-children"><span><a class="btn btn-sm btn-success mb-0 mr-0" href="#" data-toast data-toast-type="danger" 
+	        		data-toast-position="topRight" data-toast-icon="icon-circle-check" 
+	        		data-toast-title="login needed" data-toast-message="로그인이 필요한 서비스입니다.">
+        			MyPage</a><span class="sub-menu-toggle"></span></span>
+                  <ul class="slideable-submenu">
+                <li><a href="#">팔로우</a></li>
+                <li><a href="#">주문목록</a></li>
+                <li><a href="#">프로필 수정</a></li>
+                <li><a href="#">주소록</a></li>
+                <li><a href="#">마이 캔버스</a></li>
+                  </ul>
+                </li>
+                </c:if>
               </ul>
             </nav>
           </div>
@@ -257,9 +306,8 @@
                           	<span><em>가 격 : </em>₩ <fmt:formatNumber pattern="###,###,###" value="${cart.c_price}" /></span>
                         </div>
                       </div>
-                    <!-- 삭제처리는 어떻게? 장바구니 품목을 디비에 저장하지 않으면 리스트형태로 세션이나 어딘가에 보관? 그럼 삭제버튼 클릭시 리스트에서 remove하면 될까? -->
                     </td>
-                    <td class="text-center"><a class="remove-from-cart" href="deleteCart.do"><i class="material-icons icon_close"></i></a></td>
+                    <td class="text-center"><a class="remove-from-cart" href="deleteCart.do?p_code=${cart.p_code}"><i class="material-icons icon_close"></i></a></td>
                   </tr>
                     </c:forEach>
                     </c:if>  
@@ -277,8 +325,15 @@
               <div class="pr-2 py-1 text-sm">합 계 : <span class='text-dark text-medium'>
               ₩ <fmt:formatNumber pattern="###,###,###" value="${total}" />
               		<%-- <c:out value='${total}' /> --%></span></div>
-              <a class="btn btn-sm btn-success mb-0 mr-0" href="checkout.do?id=${member.id}">주문하기</a>
+             <c:if test="${!empty member}">
+              	<a class="btn btn-sm btn-success mb-0 mr-0" href="checkout.do?id=${member.id}">주문하기</a>
               </c:if>
+             <c:if test="${empty member}">
+              <a class="btn btn-sm btn-success mb-0 mr-0" href="#" data-toast data-toast-type="danger" 
+        		data-toast-position="topRight" data-toast-icon="icon-circle-check" 
+        		data-toast-title="login needed" data-toast-message="로그인이 필요한 서비스입니다.">주문하기</a>
+             </c:if>
+            </c:if>
             </div>
           </div>
         </div>
@@ -301,12 +356,12 @@
       <div class="d-flex flex-wrap flex-md-nowrap justify-content-center justify-content-md-between pb-3">
         <!-- Nav filters-->
         <ul class="nav-filters text-center text-md-left pb-3">
-          <li class="active"><a href="#">All</a></li>
+          <!-- <li class="active"><a href="#">All</a></li>
           <li><a href="#">ㄱ~ㄷ</a></li>
           <li><a href="#">ㄹ~ㅂ</a></li>
           <li><a href="#">ㅅ~ㅈ</a></li>
           <li><a href="#">ㅊ~ㅌ</a></li>
-          <li><a href="#">ㅍ~ㅎ</a></li>
+          <li><a href="#">ㅍ~ㅎ</a></li> -->
         </ul>
         <!-- Filter Toggles-->
         <div class="pb-3"><a class="filters-toggle-search" href="#search-box" data-toggle="filters"><i class="material-icons search"></i></a></div>
@@ -365,25 +420,25 @@
     <!-- Site Footer-->
     <footer class="site-footer">
       <div class="column text-center">
-        <p class="text-sm mb-4">Need Support? Call<span class="text-primary">&nbsp;001 (917) 555-4836</span></p><a class="social-button sb-skype" href="#" data-toggle="tooltip" data-placement="top" title="Skype"><i class="socicon-skype"></i></a><a class="social-button sb-facebook" href="#" data-toggle="tooltip" data-placement="top" title="Facebook"><i class="socicon-facebook"></i></a><a class="social-button sb-google-plus" href="#" data-toggle="tooltip" data-placement="top" title="Google +"><i class="socicon-googleplus"></i></a><a class="social-button sb-twitter" href="#" data-toggle="tooltip" data-placement="top" title="Twitter"><i class="socicon-twitter"></i></a><a class="social-button sb-instagram" href="#" data-toggle="tooltip" data-placement="top" title="Instagram"><i class="socicon-instagram"></i></a>
-        <p class="text-xxs text-muted mb-0 mt-3">© All rights reserved. Made with <i class='material-icons favorite text-danger'></i> by rokaux</p>
+        <p class="text-sm mb-4">Need Support? Call<span class="text-primary">&nbsp;010 - 4355 - 2504</span></p>
+        <p class="text-xxs text-muted mb-0 mt-3">© All rights reserved. Made with <i class='material-icons favorite text-danger'></i> by 곽연희, 송희, 오서현, 이동희</p>
       </div>
-      <div class="column">
+      <!-- <div class="column">
         <h3 class="widget-title text-center">Subscription<small>To receive latest offers and discounts from the shop.</small></h3>
         <form class="subscribe-form input-group" action="//rokaux.us12.list-manage.com/subscribe/post?u=c7103e2c981361a6639545bd5&amp;id=1194bb7544" method="post" target="_blank" novalidate><span class="input-group-btn">
             <button type="submit"><i class="material-icons send"></i></button></span>
-          <input class="form-control" type="email" name="EMAIL" placeholder="Your e-mail">
+          <input class="form-control" type="email" name="EMAIL" placeholder="Your e-mail"> -->
           <!-- real people should not fill this in and expect good things - do not remove this or risk form bot signups-->
           <div style="position: absolute; left: -5000px;" aria-hidden="true">
             <input type="text" name="b_c7103e2c981361a6639545bd5_1194bb7544" tabindex="-1" value>
           </div>
         </form>
       </div>
-      <div class="column">
+      <!-- <div class="column">
         <h3 class="widget-title text-center">Payment Methods<small>We support one of the following payment methods.</small></h3>
-        <div class="footer-cards"><img src="img/cards.png" alt="Payment Methods">
+        <div class="footer-cards"><img src="resources/img/cards.png" alt="Payment Methods">
         </div>
-      </div>
+      </div> -->
     </footer>
     <!-- Back To Top Button--><a class="scroll-to-top-btn" href="#"><i class="material-icons trending_flat"></i></a>
     <!-- Backdrop-->

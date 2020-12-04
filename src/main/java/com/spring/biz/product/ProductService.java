@@ -4,13 +4,15 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
+import com.spring.biz.artist.ArtistVO;
+
 public interface ProductService {
 
-	ProductVO getProduct(ProductVO vo);
+	ProductVO getProduct(String p_code);
+	
 	List<ProductVO> getProductList(ProductVO vo);
 
 	List<ProductVO> getMainProduct();
-
 	
 	public String addNewProduct(Map newProductMap) throws Exception;
 
@@ -29,7 +31,13 @@ public interface ProductService {
 	String getFileName(String p_code);
 	String getFileName(String p_code, String pi_filetype);
 	List<ProductVO> getMyProduct(String id);
-	ProductVO getProduct(String p_code);
 
+	public List<ProductVO> searchByPname(String p_name);
 //	public List productImageFile(String p_code) throws Exception;
+	
+	public void updatePrice(String p_code);
+	
+	public String getA_Id(String p_code);
+	
+	public String getPrice(String p_code);
 }

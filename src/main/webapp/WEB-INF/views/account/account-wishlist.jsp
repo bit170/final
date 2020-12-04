@@ -1,6 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8" isELIgnored="false"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -53,7 +55,7 @@
       <nav class="site-menu">
         <ul>
           <!-- 해당 페이지에 class="active" 추가해줘야함-->
-          <li class="active"><a href="main.do"><span>Home</span></a>
+          <li><a href="main.do"><span>Home</span></a>
           </li>
           <li><a href="getArtistList.do"><span>Artist</span></a></li>
           <li><a href="getProductList.do"><span>Shop</span></a>
@@ -65,14 +67,41 @@
                 <li><a href="getProductList.do?category=etc">기타</a></li>
             </ul>
           </li>
-          <li><a href="#"><span>Pages</span></a>
+          <c:if test="${!empty member}">
+          <li class="active"><a href="getWishlists.do?id=${member.id}"><span>MyPage</span></a>
             <ul class="sub-menu">
-            <!-- 홈페이지 소개글?? (연희) -->
-                <li><a href="about.do">우리 사이트는요</a></li>
-                <li><a href="contacts.do">문의</a></li>
-                <li><a href="faq.do">FAQ</a></li>
+                <li><a href="getFollowList.do?id=${member.id}">팔로우</a></li>
+                <li><a href="getOrderList.do?id=${member.id}">주문목록</a></li>
+                <li><a href="getMember.do?id=${member.id}">프로필 수정</a></li>
+                <li><a href="getAddress.do">주소록</a></li>
+                <li><a href="getMyCanvas.do">마이 캔버스</a></li>
             </ul>
           </li>
+          </c:if>
+          <c:if test="${empty member}">
+          <li class="active"><a href="#" data-toast data-toast-type="danger" 
+	        		data-toast-position="topRight" data-toast-icon="icon-circle-check" 
+	        		data-toast-title="login needed" data-toast-message="로그인이 필요한 서비스입니다.">
+        			<span>MyPage</span></a>
+            <ul class="sub-menu">
+                <li><a href="#" data-toast data-toast-type="danger" 
+	        		data-toast-position="topRight" data-toast-icon="icon-circle-check" 
+	        		data-toast-title="login needed" data-toast-message="로그인이 필요한 서비스입니다.">팔로우</a></li>
+                <li><a href="#" data-toast data-toast-type="danger" 
+	        		data-toast-position="topRight" data-toast-icon="icon-circle-check" 
+	        		data-toast-title="login needed" data-toast-message="로그인이 필요한 서비스입니다.">주문목록</a></li>
+                <li><a href="#" data-toast data-toast-type="danger" 
+	        		data-toast-position="topRight" data-toast-icon="icon-circle-check" 
+	        		data-toast-title="login needed" data-toast-message="로그인이 필요한 서비스입니다.">프로필 수정</a></li>
+                <li><a href="#" data-toast data-toast-type="danger" 
+	        		data-toast-position="topRight" data-toast-icon="icon-circle-check" 
+	        		data-toast-title="login needed" data-toast-message="로그인이 필요한 서비스입니다.">주소록</a></li>
+                <li><a href="#" data-toast data-toast-type="danger" 
+	        		data-toast-position="topRight" data-toast-icon="icon-circle-check" 
+	        		data-toast-title="login needed" data-toast-message="로그인이 필요한 서비스입니다.">마이 캔버스</a></li>
+            </ul>
+          </li>
+          </c:if>
         </ul>
       </nav>
       <!-- Toolbar-->
@@ -99,7 +128,7 @@
             <nav class="slideable-menu mt-4">
               <ul class="menu">
                 <!-- 페이지에 active 클래스 추가해줘야함 -->
-                <li class="has-children active"><span><a href="main.do"><span>Home</span></a></span>
+                <li class="has-children"><span><a href="main.do"><span>Home</span></a></span>
                 </li>
                 <li ><span><a href="getArtistList.do "><span>Artist</span></a></span></li>
                 <li class="has-children"><span><a href="getProductList.do"><span>Shop</span></a><span class="sub-menu-toggle"></span></span>
@@ -111,13 +140,31 @@
                 <li><a href="getProductList.do?category=etc">기타</a></li>
                   </ul>
                 </li>
-                <li class="has-children"><span><a href="#">Pages</a><span class="sub-menu-toggle"></span></span>
+                <c:if test="${!empty member}">
+                <li class="has-children active"><span><a href="getWishlist.do?id=${member.id}">MyPage</a><span class="sub-menu-toggle"></span></span>
                   <ul class="slideable-submenu">
-                <li><a href="about.do">우리 사이트는요</a></li>
-                <li><a href="contacts.do">문의</a></li>
-                <li><a href="faq.do">FAQ</a></li>
+                <li><a href="getFollowList.do?id=${member.id}">팔로우</a></li>
+                <li><a href="getOrderList.do?id=${member.id}">주문목록</a></li>
+                <li><a href="getMember.do?id=${member.id}">프로필 수정</a></li>
+                <li><a href="getAddress.do">주소록</a></li>
+                <li><a href="getMyCanvas.do">마이 캔버스</a></li>
                   </ul>
                 </li>
+                </c:if>
+                <c:if test="${empty member}">
+                <li class="has-children active"><span><a class="btn btn-sm btn-success mb-0 mr-0" href="#" data-toast data-toast-type="danger" 
+	        		data-toast-position="topRight" data-toast-icon="icon-circle-check" 
+	        		data-toast-title="login needed" data-toast-message="로그인이 필요한 서비스입니다.">
+        			MyPage</a><span class="sub-menu-toggle"></span></span>
+                  <ul class="slideable-submenu">
+                <li><a href="#">팔로우</a></li>
+                <li><a href="#">주문목록</a></li>
+                <li><a href="#">프로필 수정</a></li>
+                <li><a href="#">주소록</a></li>
+                <li><a href="#">마이 캔버스</a></li>
+                  </ul>
+                </li>
+                </c:if>
               </ul>
             </nav>
           </div>
@@ -165,7 +212,7 @@
 	            <p class="text-muted text-sm mt-4">환영합니다</p>
 	            <button class="btn btn-primary" type="submit">Log Out</button> 
 
-	            <a class="btn btn-primary mx-0 scale-up delay-1" href="account.do">My page</a>
+	            <a class="btn btn-primary mx-0 scale-up delay-1" href="getWishlists.do?id=${member.id}">My page</a>
 
 	          </form>  
 	         </div>
@@ -269,9 +316,8 @@
                           	<span><em>가 격 : </em>₩ <fmt:formatNumber pattern="###,###,###" value="${cart.c_price}" /></span>
                         </div>
                       </div>
-                    <!-- 삭제처리는 어떻게? 장바구니 품목을 디비에 저장하지 않으면 리스트형태로 세션이나 어딘가에 보관? 그럼 삭제버튼 클릭시 리스트에서 remove하면 될까? -->
                     </td>
-                    <td class="text-center"><a class="remove-from-cart" href="deleteCart.do"><i class="material-icons icon_close"></i></a></td>
+                    <td class="text-center"><a class="remove-from-cart" href="deleteCart.do?p_code=${cart.p_code}"><i class="material-icons icon_close"></i></a></td>
                   </tr>
                     </c:forEach>
                     </c:if>  
@@ -289,8 +335,15 @@
               <div class="pr-2 py-1 text-sm">합 계 : <span class='text-dark text-medium'>
               ₩ <fmt:formatNumber pattern="###,###,###" value="${total}" />
               		<%-- <c:out value='${total}' /> --%></span></div>
-              <a class="btn btn-sm btn-success mb-0 mr-0" href="checkout.do?id=${member.id}">주문하기</a>
+             <c:if test="${!empty member}">
+              	<a class="btn btn-sm btn-success mb-0 mr-0" href="checkout.do?id=${member.id}">주문하기</a>
               </c:if>
+             <c:if test="${empty member}">
+              <a class="btn btn-sm btn-success mb-0 mr-0" href="#" data-toast data-toast-type="danger" 
+        		data-toast-position="topRight" data-toast-icon="icon-circle-check" 
+        		data-toast-title="login needed" data-toast-message="로그인이 필요한 서비스입니다.">주문하기</a>
+             </c:if>
+            </c:if>
             </div>
           </div>
         </div>
@@ -327,28 +380,32 @@
 				<!-- 마이페이지 목록 수정 (연희) -->
 				<nav class="list-group">
 					<a class="list-group-item with-badge active" href="getWishlists.do?id=${member.id}">
-					<c:if test="${!empty wishlist}">
 						<i class="icon-heart"></i>위시리스트
+					<c:if test="${!empty wishlist}">
 						<span class="badge badge-default badge-pill">1</span>
 						</c:if>
 					<c:if test="${empty wishlist}">
-						<i class="icon-heart"></i>위시리스트
 						<span class="badge badge-default badge-pill"></span>
 						</c:if>
 						</a>
 					<a class="list-group-item" href="getFollowList.do?id=${member.id}">
-						<c:if test="${!empty follow}">
 						<i class="icon-heart"></i>팔로우
-						<span class="badge badge-default badge-pill">3</span>
+						<c:if test="${!empty follow}">
+						<span class="badge badge-default badge-pill">1</span>
 						</c:if>
 						<c:if test="${empty follow}">
-						<i class="icon-heart"></i>팔로우
 						<span class="badge badge-default badge-pill"></span>
 						</c:if>
 						</a> 
 					<a class="list-group-item" href="getOrderList.do?id=${member.id}">
 						<i class="icon-heart"></i>주문목록
-						<span class="badge badge-default badge-pill">3</span></a> 
+						<c:if test="${!empty order}">
+						<span class="badge badge-default badge-pill">1</span>
+						</c:if>
+						<c:if test="${empty order}">
+						<span class="badge badge-default badge-pill"></span>
+						</c:if>
+						</a> 
 					<a class="list-group-item" href="getMember.do?id=${member.id}">
 						<i class="icon-head"></i>프로필 수정</a> 
 					<a class="list-group-item" href="getAddress.do">
@@ -370,33 +427,43 @@
 							</tr>
 						</thead>
 						<tbody>
-						<c:if test="${!empty wishlist}">
+						<c:if test="${!empty wishlists}">
+								<c:forEach items="${wishlists}" var="wish">
 							<tr>
 								<td>
-								<c:forEach items="${wishlists}" var="product">
 									<div class="product-item">
 										<a class="product-thumb" href="getProduct.do"><img
-											src="resources/img/product/${product.p_img}" alt="Product"></a>
+											src="resources/img/product/5.png" alt="Product"></a>
 										<div class="product-info">
 											<h4 class="product-title">
-												<a href="getProduct.do">${product.p_name}</a>
+												<a href="getProduct.do">${wish.p_code}</a>
 											</h4>
-											<div class="text-lg text-medium text-muted">${product.price}</div>
+											<c:choose>
+											<c:when test="${wish.price ne 0}">
+											<div class="text-lg text-medium text-muted">${wish.price}</div>
 											<div class="text-sm">
-											<!-- 가능여부 : 해당 p_name 이 product 테이블에 없을 경우 비활성화 -->
 												가능여부 :
 												<div class="d-inline text-success">구매 가능</div>
 											</div>
+											</c:when>
+											<c:otherwise>
+											<div class="text-lg text-medium text-muted">품절</div>
+											<div class="text-sm">
+												가능여부 :
+												<div class="d-inline text-danger">구매 불가</div>
+											</div>
+											</c:otherwise>
+											</c:choose>
 										</div>
 									</div>
-									</c:forEach>
 								</td>
 								<td class="text-center"><a class="remove-from-cart"
-									href="#" data-toggle="tooltip" title="Remove item"><i
+									href="deleteWishlist.do?id=${member.id},p_code=${wish.p_code}" data-toggle="tooltip" title="위시리스트에서 제거"><i
 										class="material-icons icon_close"></i></a></td>
-							</tr>
+								</tr>
+							</c:forEach>
 							</c:if>
-						<c:if test="${empty wishlist}">
+						<c:if test="${empty wishlists}">
 							<tr>
 								<td>
 									<div class="product-item">

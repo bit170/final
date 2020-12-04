@@ -49,10 +49,14 @@ public class ProductDAO {
 
 //	글 조회(하나만)
 
-	public ProductVO getProduct(ProductVO vo) {
+	public ProductVO getProduct(String p_code) {
 		System.out.println("===> MyBatis로 getProduct() 실행");
-		return mybatis.selectOne("productDAO.getProduct", vo);
+		return mybatis.selectOne("productDAO.getProduct", p_code);
 	}
+//	public ProductVO getProduct(String p_code) {
+//		return mybatis.selectOne("productDAO.getProductByPcode", p_code);
+//	}
+
 		
 	//글 목록 조회
 	public List<ProductVO> getProductList(ProductVO vo) {
@@ -82,7 +86,20 @@ public class ProductDAO {
 		return mybatis.selectList("productDAO.selectProductImageFileList", p_code);
 	}
 
-	public List<ProductVO> getCategory(String category) {
+	// 판매완료 제품 가격 변경 메서드 (연희)
+	public void updatePrice(String p_code) {
+		mybatis.update("productDAO.updatePrice", p_code);
+	}
+	
+	public String getA_Id(String p_code) {
+		return mybatis.selectOne("productDAO.getA_Id", p_code);
+	}
+	
+	public String getPrice(String p_code) {
+		return mybatis.selectOne("productDAO.getPrice", p_code);
+	}
+
+  public List<ProductVO> getCategory(String category) {
 		return mybatis.selectList("productDAO.getCategoryList", category);
 	}
 
@@ -108,13 +125,14 @@ public class ProductDAO {
 		pi_info.put("pi_filetype", pi_filetype);
 		return mybatis.selectOne("productDAO.imgFileName", pi_info);
 	}
+	
+	public List<ProductVO> searchByPname(String p_name){
+		return mybatis.selectList("productDAO.searchByPname", p_name);
+	}
 
 	public List<ProductVO> getMyProduct(String id) {
 		return mybatis.selectList("productDAO.getMyProduct", id);
 	}
 
-	public ProductVO getProduct(String p_code) {
-		return mybatis.selectOne("productDAO.getProductByPcode", p_code);
-	}
-
+	
 }

@@ -1,9 +1,10 @@
 package com.spring.biz.wishlist.impl;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.spring.biz.wishlist.WishlistDAO;
 import com.spring.biz.wishlist.WishlistService;
 import com.spring.biz.wishlist.WishlistVO;
 
@@ -14,20 +15,29 @@ public class WishlistServiceImpl implements WishlistService{
 	
 
 	@Override
-	public void deleteWishlist(WishlistVO vo) {
-		wishlistDAO.deleteWishlist(vo);
+	public void deleteWishlist(String p_code) {
+		wishlistDAO.deleteWishlist(p_code);
 	}
 
 	@Override
 	public void insertWishlist(WishlistVO vo) {
-		// TODO Auto-generated method stub
+		wishlistDAO.insertWishlist(vo);
 		
 	}
 
 	@Override
-	public void updateWishlist(WishlistVO vo) {
-		// TODO Auto-generated method stub
-		
+	public void deleteAllWishlists(String id) {
+		wishlistDAO.deleteAllWishlists(id);
+	}
+
+	@Override
+	public List<WishlistVO> getWishlists(String id) {
+		return wishlistDAO.getWishlists(id);
+	}
+
+	@Override
+	public int getWish(String id, String p_code) {
+		return wishlistDAO.getWish(id, p_code);
 	}
 
 }
