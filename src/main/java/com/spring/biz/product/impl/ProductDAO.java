@@ -125,5 +125,25 @@ public class ProductDAO {
 	public List<ProductVO> searchByPname(String p_name){
 		return mybatis.selectList("productDAO.searchByPname", p_name);
 	}
+	
+	public List<ProductVO> sortLatest(){
+		return mybatis.selectList("productDAO.sortLatest");
+	}
+	
+	public List<ProductVO> sortCheap(){
+		return mybatis.selectList("productDAO.sortCheap");
+	}
+	
+	public List<ProductVO> sortExpensive(){
+		return mybatis.selectList("productDAO.sortExpensive");
+	}
+	
+	public List<ProductVO> sortAlpha(){
+		return mybatis.selectList("productDAO.sortAlpha");
+	}
+	
+	public List<ProductVO> priceRange(Map map){
+		return mybatis.selectList("productDAO.priceRange", map);
+	}
 
 }

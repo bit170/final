@@ -475,17 +475,19 @@
             <section class="widget widget-icon-list">
               <h3 class="widget-title">정렬</h3>
               <ul>
-                <li><a href="#"><i class="material-icons sort"></i>기본 정렬</a></li>
-                <li><a href="#"><i class="material-icons favorite_border"></i>인기순</a></li>
-                <li><a href="#"><i class="material-icons vertical_align_top"></i>최신순</a></li>
+                <li><a href="getProductList.do"><i class="material-icons sort"></i>기본 정렬</a></li>
+                <!-- <li><a href="#"><i class="material-icons favorite_border"></i>인기순</a></li> -->
+                <li><a href="sortLatest.do"><i class="material-icons vertical_align_top"></i>최신순</a></li>
+                <li><a href="sortCheap.do"><i class="material-icons vertical_align_top"></i>가격낮은순</a></li>
+                <li><a href="sortExpensive.do"><i class="material-icons vertical_align_top"></i>가격높은순</a></li>
                 <!-- <li><a href="#"><i class="material-icons star_border"></i>Average rating</a></li> -->
-                <li><a href="#"><i class="material-icons sort_by_alpha"></i>가나다순</a></li>
+                <li><a href="sortAlpha.do"><i class="material-icons sort_by_alpha"></i>가나다순</a></li>
               </ul>
             </section>
             <!-- Widget Price Range-->
             <section class="widget widget-categories">
               <h3 class="widget-title">가격 범위</h3>
-              <form class="price-range-slider" method="post" data-start-min="0" data-start-max="100" data-min="0" data-max="300" data-step="1">
+              <form action="priceRange.do" class="price-range-slider" method="POST" data-start-min="0" data-start-max="100" data-min="0" data-max="300" data-step="1">
                 <div class="ui-range-slider"></div>
                 <footer class="ui-range-slider-footer">
                   <div class="column">
@@ -494,10 +496,10 @@
                   <div class="column">
                     <div class="ui-range-values">
                       <div class="ui-range-value-min">₩<span></span>
-                        <input type="hidden">
+                        <input id="minp" type="hidden">
                       </div>&nbsp;-&nbsp;
                       <div class="ui-range-value-max">₩<span></span>
-                        <input type="hidden">
+                        <input id="maxp" type="hidden">
                       </div>(만원)
                     </div>
                   </div>
