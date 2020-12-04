@@ -25,13 +25,13 @@ public class WishlistDAO {
 	}
 	
 	public void deleteWishlist(String p_code) {
-		System.out.println("WishlistDAO.deleteWishlist()");
+		System.out.println("******** WishlistDAO.deleteWishlist() : " + p_code + "*********");
 		mybatis.delete("wishlistDAO.deleteWishlist", p_code);
 	}
 	
-	public void deleteAllWishlists(String id) {
-		System.out.println("WishlistDAO.deleteAllWishlists()");
-		mybatis.delete("wishlistDAO.deleteAllWishlists", id);
+	public void resetWishlists(String id) {
+		System.out.println("WishlistDAO.resetWishlists()");
+		mybatis.delete("wishlistDAO.resetWishlists", id);
 	}
 	
 	public List<WishlistVO> getWishlists(String id) {

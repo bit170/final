@@ -423,8 +423,15 @@
                 <div class="product-card-details">
                   <h3 class="product-card-title"><a href="getProduct.do?p_code=${product.p_code}">${product.p_name}</a></h3>
                   <h4 class="product-card-price">
-                    <del>₩ <fmt:formatNumber pattern="###,###,###" value="${product.price * 2}" /></del>
+                  <c:choose>
+					<c:when test="${product.price eq 0}"> 
+                    	₩ <fmt:formatNumber pattern="###,###,###" value="sold out" />
+                    	</c:when>
+                    <c:otherwise>
                     	₩ <fmt:formatNumber pattern="###,###,###" value="${product.price}" />
+                    </c:otherwise>
+                    
+                 </c:choose>
                   </h4>
                 </div>
               </div>

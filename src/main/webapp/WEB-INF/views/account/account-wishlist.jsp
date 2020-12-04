@@ -181,7 +181,9 @@
               <!-- 검색결과 주르륵 -->
               <div class="entry">
                 <div class="entry-thumb">
-                	<a href="getProduct.do"><img src="resources/img/shop/widget/01.png" alt="Product"></a></div>
+                	<a href="getProduct.do">
+						<img src="<c:url value='/aThumbnails.do?a_id=${item.a_id }' />" alt="Image" alt="Product">
+                	</a></div>
                 <div class="entry-content">
                   <h4 class="entry-title">
                   	<a href="getProduct.do">ㅇㅇ <span class='text-highlighted'>검색어와 일치하는 부분</span></a></h4><span class="entry-meta">가격</span>
@@ -193,7 +195,9 @@
               <h3 class="widget-title">Found in Artist</h3>
               <!-- Entry-->
               <div class="entry">
-                <div class="entry-thumb"><a href="작가상세"><img src="resources/img/blog/widget/01.jpg" alt="Post"></a></div>
+                <div class="entry-thumb"><a href="작가상세">
+                <img src="<c:url value='/aThumbnails.do?a_id=${item.a_id }' />" alt="Image" alt="Product">
+                </a></div>
                 <div class="entry-content">
                   <h4 class="entry-title"><a href="작가상세"><span class='text-highlighted'>검색어 일치부분</span> 블라블라</a></h4>
                   	<span class="entry-meta">아이디?</span>
@@ -309,7 +313,8 @@
                     <td>
                       <div class="product-item">
                       <a class="product-thumb" href="getProduct.do?p_code=${cart.p_code}">
-                      	  <img src="resources/img/product/5.png" alt="Product"></a>
+                      	  <img src="<c:url value='/aThumbnails.do?p_code=${cart.p_code}' />" alt="Image" alt="Product">
+                      	  </a>
                         <div class="product-info">
                           <h4 class="product-title">
                           	<a href="getProduct.do?p_code=${cart.p_code}">${cart.p_name}</a></h4>
@@ -423,7 +428,7 @@
 							<tr>
 								<th>내 위시 작품목록</th>
 								<th class="text-center">
-								<a class="btn btn-sm btn-outline-danger" href="deleteWishlist.do">위시리스트 비우기</a></th>
+								<a class="btn btn-sm btn-outline-danger" href="resetWishlists.do?id=${member.id}">위시리스트 비우기</a></th>
 							</tr>
 						</thead>
 						<tbody>
@@ -432,8 +437,9 @@
 							<tr>
 								<td>
 									<div class="product-item">
-										<a class="product-thumb" href="getProduct.do"><img
-											src="resources/img/product/5.png" alt="Product"></a>
+										<a class="product-thumb" href="getProduct.do">
+										<img src="<c:url value='/aThumbnails.do?p_code=${wish.p_code}' />" alt="Image" alt="Product">
+											</a>
 										<div class="product-info">
 											<h4 class="product-title">
 												<a href="getProduct.do">${wish.p_code}</a>
@@ -458,7 +464,7 @@
 									</div>
 								</td>
 								<td class="text-center"><a class="remove-from-cart"
-									href="deleteWishlist.do?id=${member.id},p_code=${wish.p_code}" data-toggle="tooltip" title="위시리스트에서 제거"><i
+									href="deleteWishlist.do?p_code=${wish.p_code}" data-toggle="tooltip" title="위시리스트에서 제거"><i
 										class="material-icons icon_close"></i></a></td>
 								</tr>
 							</c:forEach>
@@ -467,7 +473,7 @@
 							<tr>
 								<td>
 									<div class="product-item">
-									<h2 align="center">위시리스트가 없습니다.</h2>
+									<h4 align="center">위시리스트가 없습니다.</h4>
 									</div>
 								</td>
 							</tr>

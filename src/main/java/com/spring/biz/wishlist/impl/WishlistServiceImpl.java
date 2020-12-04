@@ -26,8 +26,8 @@ public class WishlistServiceImpl implements WishlistService{
 	}
 
 	@Override
-	public void deleteAllWishlists(String id) {
-		wishlistDAO.deleteAllWishlists(id);
+	public void resetWishlists(String id) {
+		wishlistDAO.resetWishlists(id);
 	}
 
 	@Override

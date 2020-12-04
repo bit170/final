@@ -371,7 +371,7 @@
               <td>
                 <div class="product-item">
                 	<a class="product-thumb" href="getProduct.do?name=${cart.p_name}">
-                		<img src="resources/img/product/1.png" alt="Product"></a>
+                		<img src="<c:url value='/aThumbnails.do?a_id=${item.a_id }' />" alt="Product"></a>
                   <div class="product-info">
                     <h4 class="product-title"><a href="getProduct.do">${cart.p_name}</a></h4>
                     	<%-- <span><em>카테고리:</em> ${product.p_category}</span>
