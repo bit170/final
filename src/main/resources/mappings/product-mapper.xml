@@ -66,7 +66,7 @@
 		SELECT * FROM PRODUCT
 	</select>
 	
-	<select id="getProducts" parameterType="String" resultType="product">
+	<select id="getProduct" parameterType="String" resultType="product">
 		select * from product where p_code = #{p_code}
 	</select>
 	
@@ -83,10 +83,6 @@
 	<select id="getPrice" parameterType="String" resultType="String">
 		SELECT PRICE FROM PRODUCT
 		WHERE P_CODE = #{p_code}
-	</select>
-
-	<select id="getProduct" resultType="product">
-		select * from product where p_code = #{p_code}
 	</select>
 
 	<select id="getMainProduct" resultType="product">
@@ -121,5 +117,36 @@
 	</select>
 	<select id="imgFileName" resultType="String" parameterType="java.util.HashMap">
 		select pi_filename from p_image where p_code=#{p_code} and pi_filetype=#{pi_filetype}
+	</select>
+
+	<select id="getMyProduct" resultType="product" parameterType="String">
+		select * from product where a_id=#{id}
+	</select>
+	
+	
+	<select id="searchByPname" parameterType="String" resultType="product">
+		SELECT * FROM PRODUCT WHERE P_NAME LIKE '%' || #{p_name} || '%'
+	</select>
+	
+	<select id="sortLatest" resultType="product">
+		SELECT * FROM PRODUCT ORDER BY P_DATE DESC
+	</select>
+	
+	<select id="sortCheap" resultType="product">
+		SELECT * FROM PRODUCT ORDER BY PRICE ASC
+	</select>
+	
+	<select id="sortExpensive" resultType="product">
+		SELECT * FROM PRODUCT ORDER BY PRICE DESC
+	</select>
+	
+	<select id="sortAlpha" resultType="product">
+		SELECT * FROM PRODUCT ORDER BY P_NAME
+	</select>
+	
+	<select id="priceRange" parameterType="java.util.HashMap" resultType="product">
+		<![CDATA[
+		SELECT * FROM PRODUCT WHERE #{minP} <= PRICE AND PRICE <=#{maxP}
+		]]>
 	</select>
 </mapper>

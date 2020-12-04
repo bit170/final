@@ -1,8 +1,8 @@
 package com.spring.biz.product;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
+
 
 public interface ProductService {
 
@@ -28,7 +28,14 @@ public interface ProductService {
 	List<PImageFileVO> getImages(String p_code);
 	String getFileName(String p_code);
 	String getFileName(String p_code, String pi_filetype);
+	List<ProductVO> getMyProduct(String id);
 
+	public List<ProductVO> searchByPname(String p_name);
+	public List<ProductVO> sortLatest();
+	public List<ProductVO> sortCheap();
+	public List<ProductVO> sortExpensive();
+	public List<ProductVO> sortAlpha();
+	public List<ProductVO> priceRange(Map map);
 //	public List productImageFile(String p_code) throws Exception;
 	
 	public void updatePrice(String p_code);

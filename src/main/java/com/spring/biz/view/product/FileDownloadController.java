@@ -33,6 +33,10 @@ public class FileDownloadController {
 		System.out.println("download() 실행");
 		String p_code = request.getParameter("p_code");
 		String filename = request.getParameter("pfilename");
+		if(filename==null) {
+			filename = productService.getFileName(p_code);
+			System.out.println("filename : "+filename);
+		}
 		OutputStream out = response.getOutputStream();
 		String filePath=CURR_IMAGE_REPO_PATH+"\\"+p_code+"\\"+filename;
 		File image=new File(filePath);
