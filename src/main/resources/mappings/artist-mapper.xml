@@ -3,25 +3,50 @@
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="artistDAO">
-	<resultMap type="artist" id="artistList"/>
- 	<insert id="insertArtist" parameterType="artist">
-		INSERT INTO ARTIST (A_ID, NICKNAME, A_DETAIL, A_IMG)
-		VALUES #{a_id}, #{nickname}, #{a_detail}, #{a_img}
-	</insert>
+
+<!-- resultMap 정의 -->
+<!-- 	<resultMap id="aimageResult" type="aimage">
+		<result property="a_id" column="a_id" />
+		<result property="ai_filename" column="ai_filename" />
+		<result property="ai_code" column="ai_code" />
+	</resultMap> -->
 	
- <update id="updateArtist" parameterType="artist">
-		UPDATE ARTIST
-		SET A_DETAIL = #{a_detail}, A_IMG = #{a_img}
-		WHERE A_ID = #{a_id}
-	</update>
-	
-	<delete id="deleteArtist" parameterType="artist">
-		DELETE FROM ARTIST WHERE A_ID = #{a_id}
-	</delete> 
-	
+	<resultMap id="allPrinting" type="map">
+		<result column="p_code" property="p_code" />
+		<result column="pi_filename" property="pi_filename" />
+	</resultMap>
+
+
 	<select id="alreadyArtist" parameterType="String" resultType="Integer">
 		SELECT COUNT(*) FROM ARTIST WHERE A_ID = #{a_id}
 	</select>
+	
+	<insert id="insertArtist" parameterType="hashmap">
+		INSERT INTO ARTIST (A_ID, NICKNAME)
+		VALUES (#{a_id}, #{nickname})
+	</insert>
+	
+	<update id="addArtistInfo" parameterType="java.util.Map">
+	<![CDATA[
+			UPDATE ARTIST 
+			SET A_DETAIL = #{a_detail}
+			WHERE A_ID = #{a_id}
+		]]>
+	</update>
+	
+	<insert id="insertAImageFile" parameterType="aimage">
+		<selectKey resultType="String" keyProperty="ai_code" order="BEFORE">
+			select seq_ai_code.nextval from dual
+		</selectKey>
+		<![CDATA[
+			INSERT INTO A_IMAGE (A_ID, AI_FILENAME, AI_CODE)
+			VALUES (#{a_id}, #{ai_filename}, #{ai_code})
+		]]>
+	</insert>
+	
+<!-- <delete id="deleteArtist" parameterType="artist">
+		DELETE FROM ARTIST WHERE ID = #{id}
+	</delete> -->	
 	
 	<select id="getArtist" parameterType="String" resultType="artist">
 		SELECT * FROM ARTIST WHERE A_ID = #{a_id}
@@ -34,29 +59,29 @@
 	<select id="searchByName" parameterType="String" resultType="artist">
 		SELECT * FROM ARTIST WHERE NICKNAME LIKE '%' || #{nickname} || '%'
 	</select>
-	<select id="searchable" parameterType="String" resultType="Integer">
-		SELECT COUNT(*) FROM ARTIST WHERE NICKNAME LIKE '%' || #{nickname} || '%'
+
+	<select id="searchAiCode" parameterType="String" resultType="String">
+		SELECT MAX(AI_CODE) FROM A_IMAGE WHERE A_ID = #{a_id}
+	</select>
+	
+	<select id="getFilename" parameterType="String" resultType="String">
+		SELECT AI_FILENAME FROM A_IMAGE WHERE AI_CODE = #{aiCode}
+	</select>
+	
+	<select id="getAllPrinting" parameterType="String" resultMap="allPrinting">
+		SELECT P_CODE, PI_FILENAME FROM P_IMAGE WHERE A_ID = #{a_id}
+	</select>
+	
+
+
+	<select id="getMainArtist" resultType="artist">
+	<![CDATA[
+		select * from artist where a_id in( 
+        		select a_id from
+	        		(select a_id, rownum num from 
+				        (select a_id, count(a_id) cnt from follow group by a_id order by cnt desc))
+			           	 where num<5)
+	]]>		           	 
 	</select>
 
 </mapper>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

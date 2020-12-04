@@ -118,7 +118,9 @@
                 <!-- 페이지에 active 클래스 추가해줘야함 -->
                 <li class="has-children"><span><a href="main.do"><span>Home</span></a></span>
                 </li>
+
                 <li class="active"><span><a href="getArtistList.do "><span>Artist</span></a></span></li>
+
                 <li class="has-children"><span><a href="getProductList.do"><span>Shop</span></a><span class="sub-menu-toggle"></span></span>
                   <ul class="slideable-submenu">
                 <li><a href="getProductList.do?category=water">수채화</a></li>
@@ -354,12 +356,12 @@
       <div class="d-flex flex-wrap flex-md-nowrap justify-content-center justify-content-md-between pb-3">
         <!-- Nav filters-->
         <ul class="nav-filters text-center text-md-left pb-3">
-          <li class="active"><a href="#">All</a></li>
+          <!-- <li class="active"><a href="#">All</a></li>
           <li><a href="#">ㄱ~ㄷ</a></li>
           <li><a href="#">ㄹ~ㅂ</a></li>
           <li><a href="#">ㅅ~ㅈ</a></li>
           <li><a href="#">ㅊ~ㅌ</a></li>
-          <li><a href="#">ㅍ~ㅎ</a></li>
+          <li><a href="#">ㅍ~ㅎ</a></li> -->
         </ul>
         <!-- Filter Toggles-->
         <div class="pb-3"><a class="filters-toggle-search" href="#search-box" data-toggle="filters"><i class="material-icons search"></i></a></div>
@@ -385,15 +387,15 @@
         <c:forEach var="item" items="${artistList}">    
         <div class="col-xl-3 col-lg-4 col-sm-6">
           <div class="product-card mb-30">
-            <div class="product-card-thumb"><a class="product-card-link" href="getArtist.do?id=${item.id }"></a><img src="resources/img/shop/ARTIST1.jpg" alt="Product">
+            <div class="product-card-thumb"><a class="product-card-link" href="getArtist.do?a_id=${item.a_id }"></a><img src="<c:url value='/aThumbnails.do?a_id=${item.a_id }' />" alt="Image" alt="Product">
               <div class="product-card-buttons">
                 <!-- <button class="btn btn-white btn-sm btn-wishlist" data-toggle="tooltip" title="Follow"><i class="material-icons favorite_border"></i></button>-->
-                <button onclick="location.href='Follow.do?a_id=${item.id }&page=all'" class="btn btn-primary margin-bottom-none" type="button" data-toast data-toast-position="topRight" data-toast-type="success"
+                <button onclick="location.href='Follow.do?a_id=${item.a_id }&page=all'" class="btn btn-primary margin-bottom-none" type="button" data-toast data-toast-position="topRight" data-toast-type="success"
                 data-toast-icon="icon-circle-check" data-toast-title="Follow!" data-toast-message="Follow!">♡ </button>
               </div>
             </div>
             <div class="product-card-details">
-              <h3 class="product-card-title"><a href="getArtist.do?id=${item.id }">${item.nickname }</a></h3>
+              <h3 class="product-card-title"><a href="getArtist.do?a_id=${item.a_id }">${item.nickname }</a></h3>
             </div>
           </div>
         </div>
@@ -418,25 +420,25 @@
     <!-- Site Footer-->
     <footer class="site-footer">
       <div class="column text-center">
-        <p class="text-sm mb-4">Need Support? Call<span class="text-primary">&nbsp;001 (917) 555-4836</span></p><a class="social-button sb-skype" href="#" data-toggle="tooltip" data-placement="top" title="Skype"><i class="socicon-skype"></i></a><a class="social-button sb-facebook" href="#" data-toggle="tooltip" data-placement="top" title="Facebook"><i class="socicon-facebook"></i></a><a class="social-button sb-google-plus" href="#" data-toggle="tooltip" data-placement="top" title="Google +"><i class="socicon-googleplus"></i></a><a class="social-button sb-twitter" href="#" data-toggle="tooltip" data-placement="top" title="Twitter"><i class="socicon-twitter"></i></a><a class="social-button sb-instagram" href="#" data-toggle="tooltip" data-placement="top" title="Instagram"><i class="socicon-instagram"></i></a>
-        <p class="text-xxs text-muted mb-0 mt-3">© All rights reserved. Made with <i class='material-icons favorite text-danger'></i> by rokaux</p>
+        <p class="text-sm mb-4">Need Support? Call<span class="text-primary">&nbsp;010 - 4355 - 2504</span></p>
+        <p class="text-xxs text-muted mb-0 mt-3">© All rights reserved. Made with <i class='material-icons favorite text-danger'></i> by 곽연희, 송희, 오서현, 이동희</p>
       </div>
-      <div class="column">
+      <!-- <div class="column">
         <h3 class="widget-title text-center">Subscription<small>To receive latest offers and discounts from the shop.</small></h3>
         <form class="subscribe-form input-group" action="//rokaux.us12.list-manage.com/subscribe/post?u=c7103e2c981361a6639545bd5&amp;id=1194bb7544" method="post" target="_blank" novalidate><span class="input-group-btn">
             <button type="submit"><i class="material-icons send"></i></button></span>
-          <input class="form-control" type="email" name="EMAIL" placeholder="Your e-mail">
+          <input class="form-control" type="email" name="EMAIL" placeholder="Your e-mail"> -->
           <!-- real people should not fill this in and expect good things - do not remove this or risk form bot signups-->
           <div style="position: absolute; left: -5000px;" aria-hidden="true">
             <input type="text" name="b_c7103e2c981361a6639545bd5_1194bb7544" tabindex="-1" value>
           </div>
         </form>
       </div>
-      <div class="column">
+      <!-- <div class="column">
         <h3 class="widget-title text-center">Payment Methods<small>We support one of the following payment methods.</small></h3>
-        <div class="footer-cards"><img src="img/cards.png" alt="Payment Methods">
+        <div class="footer-cards"><img src="resources/img/cards.png" alt="Payment Methods">
         </div>
-      </div>
+      </div> -->
     </footer>
     <!-- Back To Top Button--><a class="scroll-to-top-btn" href="#"><i class="material-icons trending_flat"></i></a>
     <!-- Backdrop-->

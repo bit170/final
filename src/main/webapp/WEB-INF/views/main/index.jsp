@@ -3,12 +3,11 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 
-
 <!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="utf-8">
-    <title>캔버스 마켓</title>
+    <title>캔버스마켓</title>
     <!-- SEO Meta Tags-->
     <meta name="description" content="Unishop - Universal E-Commerce Template">
     <meta name="keywords" content="shop, e-commerce, modern, flat style, responsive, online store, business, mobile, blog, bootstrap 4, html5, css3, jquery, js, gallery, slider, touch, creative, clean">
@@ -30,15 +29,15 @@
     <script src="resources/js/modernizr.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
     <script type="text/javascript">
-    	
+
     	$(document).ready(function () {
-    		/* 회원가입 성공 후  model attribute에 바인딩한 객체를 확인 */
-            var signedUp= '${signedUp}';
-            if(signedUp != null){
+    		/* 회원가입 성공 후  model attribute에 바인딩한 객체를 확인, 한 번만 알리기 위해선 ajax사용이 답인가? */
+            /* var signedUp= '${signedUp.id}';
+            if(signedUp != ""){
             	alert("회원가입을 축하합니다. 이메일 인증 후 사용할 수 있습니다.");
             }
-            
-            
+            signedUp = ""; */
+
     		 $("#signup_id").blur(function () {
     			 var signup_id = $("#signup_id").val();
  				console.log(signup_id);
@@ -48,13 +47,10 @@
  					$("#idCheck_result").html("");
  				}
     		 });
-    		 
-    		 if(sessionStorage.getItem("signedUp") != null){
-    			 alert("회원가입이 완료되었습니다. 이메일 인증 후 사용할 수 있습니다. ");
-    		 }
+
     	/* 아이디 중복체크 == 성공!!
-    		리턴값에 따른 후처리 필요	
-    	*/	 
+    		리턴값에 따른 후처리 필요
+    	*/
     		/* $('#signup-form').submit(
 	    		function () {
 	    			var formData = $('#signup-form').serialize();
@@ -83,7 +79,7 @@
 					alert("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
 				})
 			}
-    		
+
     		function idResult(data) {
     			if(data==0){
 					$("#idCheck_result").html("사용가능한 아이디입니다.").css("color","green");
@@ -91,7 +87,7 @@
     				$("#idCheck_result").html("이미 사용중인 아이디입니다.").css("color","red");
     			}
 			}
-    		
+
     		$("#pw1").blur(function () {
    			 	pwCheck();
    		 	});
@@ -110,8 +106,38 @@
    					$("#pwCheck_result").html("비밀번호가 일치하지 않습니다.").css("color","red");
    				}
 			}
+
 		});
-	    
+    		/* 검색기능(엔터 입력시 실행)  */
+    		function enter(keyword) {
+					search(keyword);
+			}
+     		function search(keyword){
+    			alert("search() 실행");
+    			$.ajax({
+ 					type : 'POST',
+ 					url : '${pageContext.request.contextPath}/search.do',
+ 					data : {"keyword" : keyword},
+ 					dataType : 'json'
+ 				}).done(function (data) {	//ajax는 실행결과와 상관없이 리턴값이 없으면 오류발생
+ 					if(data.productList){
+						alert(data.productList);
+ 						showResult(data.productList);
+ 					}
+					sessionStorage.setItem("searchProduct", JSON.stringify(data.productList));
+					/* alert(sessionStorage.getItem("searchProduct")); */
+					/* getResult(); */
+					if(data.artistList){
+						showResult(data.artistList);
+					}
+				}).fail(function (request,status,error) {
+					alert("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
+				})
+    		}
+    		function showResult(result) {
+
+			}
+
     </script>
   </head>
   <!-- Body-->
@@ -154,25 +180,25 @@
           </c:if>
           <c:if test="${empty member}">
           <li><a href="#" data-toast data-toast-type="danger" 
-	        		data-toast-position="topRight" data-toast-icon="icon-circle-check" 
-	        		data-toast-title="login needed" data-toast-message="로그인이 필요한 서비스입니다.">
-        			<span>MyPage</span></a>
+              data-toast-position="topRight" data-toast-icon="icon-circle-check" 
+              data-toast-title="login needed" data-toast-message="로그인이 필요한 서비스입니다.">
+              <span>MyPage</span></a>
             <ul class="sub-menu">
                 <li><a href="#" data-toast data-toast-type="danger" 
-	        		data-toast-position="topRight" data-toast-icon="icon-circle-check" 
-	        		data-toast-title="login needed" data-toast-message="로그인이 필요한 서비스입니다.">팔로우</a></li>
+              data-toast-position="topRight" data-toast-icon="icon-circle-check" 
+              data-toast-title="login needed" data-toast-message="로그인이 필요한 서비스입니다.">팔로우</a></li>
                 <li><a href="#" data-toast data-toast-type="danger" 
-	        		data-toast-position="topRight" data-toast-icon="icon-circle-check" 
-	        		data-toast-title="login needed" data-toast-message="로그인이 필요한 서비스입니다.">주문목록</a></li>
+              data-toast-position="topRight" data-toast-icon="icon-circle-check" 
+              data-toast-title="login needed" data-toast-message="로그인이 필요한 서비스입니다.">주문목록</a></li>
                 <li><a href="#" data-toast data-toast-type="danger" 
-	        		data-toast-position="topRight" data-toast-icon="icon-circle-check" 
-	        		data-toast-title="login needed" data-toast-message="로그인이 필요한 서비스입니다.">프로필 수정</a></li>
+              data-toast-position="topRight" data-toast-icon="icon-circle-check" 
+              data-toast-title="login needed" data-toast-message="로그인이 필요한 서비스입니다.">프로필 수정</a></li>
                 <li><a href="#" data-toast data-toast-type="danger" 
-	        		data-toast-position="topRight" data-toast-icon="icon-circle-check" 
-	        		data-toast-title="login needed" data-toast-message="로그인이 필요한 서비스입니다.">주소록</a></li>
+              data-toast-position="topRight" data-toast-icon="icon-circle-check" 
+              data-toast-title="login needed" data-toast-message="로그인이 필요한 서비스입니다.">주소록</a></li>
                 <li><a href="#" data-toast data-toast-type="danger" 
-	        		data-toast-position="topRight" data-toast-icon="icon-circle-check" 
-	        		data-toast-title="login needed" data-toast-message="로그인이 필요한 서비스입니다.">마이 캔버스</a></li>
+              data-toast-position="topRight" data-toast-icon="icon-circle-check" 
+              data-toast-title="login needed" data-toast-message="로그인이 필요한 서비스입니다.">마이 캔버스</a></li>
             </ul>
           </li>
           </c:if>
@@ -227,9 +253,9 @@
                 </c:if>
                 <c:if test="${empty member}">
                 <li class="has-children"><span><a class="btn btn-sm btn-success mb-0 mr-0" href="#" data-toast data-toast-type="danger" 
-	        		data-toast-position="topRight" data-toast-icon="icon-circle-check" 
-	        		data-toast-title="login needed" data-toast-message="로그인이 필요한 서비스입니다.">
-        			MyPage</a><span class="sub-menu-toggle"></span></span>
+              data-toast-position="topRight" data-toast-icon="icon-circle-check" 
+              data-toast-title="login needed" data-toast-message="로그인이 필요한 서비스입니다.">
+              MyPage</a><span class="sub-menu-toggle"></span></span>
                   <ul class="slideable-submenu">
                 <li><a href="#">팔로우</a></li>
                 <li><a href="#">주문목록</a></li>
@@ -244,36 +270,39 @@
           </div>
           <!-- Search Section-->
           <div class="toolbar-section" id="search">
-            <form class="search-form mb-2" method="get">
-              <input type="search" placeholder="태그/작가/작품을 검색"><i class="material-icons search"></i>
+            <form class="search-form mb-2" onsubmit="return false">
+              <input type="search" placeholder="태그/작가/작품을 검색" onkeyup="if( event.keyCode==13 ){enter(this.value);}"><i class="material-icons search"></i>
             </form>
             <!-- 검색 결과 -->
             <!-- Products-->
-            <div class="widget widget-featured-products">
-              <h3 class="widget-title">Found in Products</h3>
-              <!-- Entry-->
-              <!-- 검색결과 주르륵 -->
-              <div class="entry">
-                <div class="entry-thumb">
-                	<a href="getProduct.do"><img src="resources/img/shop/widget/01.png" alt="Product"></a></div>
-                <div class="entry-content">
-                  <h4 class="entry-title">
-                  	<a href="getProduct.do">ㅇㅇ <span class='text-highlighted'>검색어와 일치하는 부분</span></a></h4><span class="entry-meta">가격</span>
-                </div>
-              </div>
-            </div>
+            <%-- <c:if test="${not empty searchProduct }"> --%>
+	            <div class="widget widget-featured-products">
+	              <h3 class="widget-title">Found in Products</h3>
+	              <!-- Entry-->
+	              <!-- 검색결과 주르륵 -->
+	              <div class="entry">
+	                <div class="entry-thumb">
+	                	<a href="getProduct.do"><img src="resources/img/shop/widget/01.png" alt="Product"></a></div>
+	                <div class="entry-content">
+	                  <h4 class="entry-title">
+	                  	<a href="getProduct.do">ㅇㅇ <span class='text-highlighted'>검색어와 일치하는 부분</span></a></h4><span class="entry-meta">가격</span>
+	                </div>
+	              </div>
+	            </div>
+            <%-- </c:if> --%>
             <!-- 작가결과-->
-            <div class="widget widget-featured-products">
-              <h3 class="widget-title">Found in Artist</h3>
-              <!-- Entry-->
-              <div class="entry">
-                <div class="entry-thumb"><a href="작가상세"><img src="resources/img/blog/widget/01.jpg" alt="Post"></a></div>
-                <div class="entry-content">
-                  <h4 class="entry-title"><a href="작가상세"><span class='text-highlighted'>검색어 일치부분</span> 블라블라</a></h4>
-                  	<span class="entry-meta">아이디?</span>
-                </div>
-              </div>
-            </div>
+            <c:if test="${not empty searchArtist }">
+	            <div class="widget widget-featured-products">
+	              <h3 class="widget-title">Found in Artist</h3>
+	              <!-- Entry-->
+	              <div class="entry">
+	                <div class="entry-thumb"><a href="작가상세"><img src="resources/img/blog/widget/01.jpg" alt="Post"></a></div>
+	                <div class="entry-content">
+	                  <h4 class="entry-title"><a href="작가상세"><span class='text-highlighted'>검색어 일치부분</span> 블라블라</a></h4><span class="entry-meta">아이디?</span>
+	                </div>
+	              </div>
+	            </div>
+          	</c:if>
           </div>
           <!-- Account Section-->
           <!-- 사람아이콘 -->
@@ -284,15 +313,17 @@
 	         <form action="logout.do" method="post">
 	            <p class="text-muted text-sm mt-4"><h4>${member.id }<span>님</span><h4></p>
 	            <p class="text-muted text-sm mt-4">환영합니다</p>
-	            <button class="btn btn-primary" type="submit">Log Out</button> 
+	            <button class="btn btn-primary" type="submit">Log Out</button>
+	            <!-- <a class="btn btn-primary mx-0 scale-up delay-1" href="shop-boxed-ls.jsp">Log Out</a> -->
+	            <!-- <button class="btn btn-primary btn-block" type="submit"><a href="account-wishlist.jsp">My page</button> -->
 
 	            <a class="btn btn-primary mx-0 scale-up delay-1" href="account.do">My page</a>
 
-	          </form>  
+	          </form>
 	         </div>
           </c:if>
           <c:if test="${empty member}">
-          
+
           <div class="toolbar-section" id="account">
             <ul class="nav nav-tabs nav-justified" role="tablist">
               <li class="nav-item"><a class="nav-link active" href="#login" data-toggle="tab" role="tab">Log In</a></li>
@@ -320,30 +351,31 @@
                 </form>
               </div>
               <div class="tab-pane fade" id="signup" role="tabpanel">
-                <form method="post" autocomplete="off" id="signup-form" action="signUp.do"> 
+                <form method="post" autocomplete="off" id="signup-form" action="signUp.do">
                 <!-- <form method="post" autocomplete="off" id="signup-form" > -->
-                  <div class="form-group">
-                    <input class="form-control" type="text" placeholder="Name" name="name" required>
-                  </div>
-                  <div class="form-group">
-                    <input class="form-control" type="email" placeholder="Email" name="email" required>
-                  </div>
-                  <div class="form-group">
-                    <input class="form-control" type="text" placeholder="Phone" name="phone" required>
-                  </div>
+                  
               	<div class="form-group">
-                    <input class="form-control" type="text" placeholder="Id" id="signup_id" name="id" required>
+                    <input class="form-control" type="text" placeholder="아이디" id="signup_id" name="id" required>
                     <div id="idCheck_result"></div>
                   </div>
                   <div class="form-group">
-                    <input class="form-control" type="password" placeholder="Password" id="pw1" required>
+                    <input class="form-control" type="password" placeholder="비밀번호" id="pw1" required>
                   </div>
                   <div class="form-group">
-                    <input class="form-control" type="password" placeholder="Confirm Password" id="pw2" name="pwd" required>
+                    <input class="form-control" type="password" placeholder="비밀번호 확인" id="pw2" name="pwd" required>
                     <div id="pwCheck_result"></div>
                   </div>
                   <div class="form-group">
-                    <input class="form-control" type="text" placeholder="NickName" name="nickname" required>
+                    <input class="form-control" type="text" placeholder="닉네임" name="nickname" required>
+                  </div>
+                  <div class="form-group">
+                    <input class="form-control" type="text" placeholder="이름" name="name" required>
+                  </div>
+                  <div class="form-group">
+                    <input class="form-control" type="email" placeholder="이메일" name="email" required>
+                  </div>
+                  <div class="form-group">
+                    <input class="form-control" type="text" placeholder="전화번호" name="phone" required>
                   </div>
                   <button class="btn btn-primary btn-block" type="submit">회원가입</button>
                 </form>
@@ -359,10 +391,10 @@
                   <tr>
                     <th colspan="2">
                       <div class="d-flex justify-content-between align-items-center">Products
-                      <c:if test="${!empty cartList}">
-                      <a class="navi-link text-uppercase" href="getCart.do"><span class="text-xxs">장바구니 크게 보기</span><i class="material-icons keyboard_arrow_right"></i></a>
+                      <c:if test="${!empty cartList }">
+                      <a class="navi-link text-uppercase" href="getCart.do"><span class="text-xxs">Expand Cart</span><i class="material-icons keyboard_arrow_right"></i></a>
                       </c:if>
-                      <c:if test="${empty cartList}">
+                      <c:if test="${empty cartList }">
                       <a class="navi-link text-uppercase" href="getProductList.do"><span class="text-xxs">작품 보러가기</span><i class="material-icons keyboard_arrow_right"></i></a>
                       </c:if>
                       </div>
@@ -370,24 +402,24 @@
                   </tr>
                 </thead>
                 <tbody>
-                    <c:if test="${empty cartList}">
+                  <c:if test="${empty cartList}">
                   <tr>
                     <td>
-                   	 장바구니가 비었습니다.
+                     장바구니가 비었습니다.
                     </td>
                   </tr>
                     </c:if>
                     <c:if test="${!empty cartList}">
-		                <c:forEach var="cart" items="${cartList}">
+                    <c:forEach var="cart" items="${cartList}">
                   <tr>
                     <td>
                       <div class="product-item">
                       <a class="product-thumb" href="getProduct.do?p_code=${cart.p_code}">
-                      	  <img src="resources/img/product/5.png" alt="Product"></a>
+                          <img src="resources/img/product/5.png" alt="Product"></a>
                         <div class="product-info">
                           <h4 class="product-title">
-                          	<a href="getProduct.do?p_code=${cart.p_code}">${cart.p_name}</a></h4>
-                          	<span><em>가 격 : </em>₩ <fmt:formatNumber pattern="###,###,###" value="${cart.c_price}" /></span>
+                            <a href="getProduct.do?p_code=${cart.p_code}">${cart.p_name}</a></h4>
+                            <span><em>가 격 : </em>₩ <fmt:formatNumber pattern="###,###,###" value="${cart.c_price}" /></span>
                         </div>
                       </div>
                     </td>
@@ -403,19 +435,19 @@
             <div class="d-flex flex-wrap justify-content-between align-items-center">
               <c:if test="${!empty cartList }">
               <c:set var = "total" value= "0" />
-		        <c:forEach var="cart" items="${cartList}">
-		        <c:set var = "total" value="${total + cart.c_price}" />
-		      	</c:forEach>
+            <c:forEach var="cart" items="${cartList}">
+            <c:set var = "total" value="${total + cart.c_price}" />
+            </c:forEach>
               <div class="pr-2 py-1 text-sm">합 계 : <span class='text-dark text-medium'>
               ₩ <fmt:formatNumber pattern="###,###,###" value="${total}" />
-              		<%-- <c:out value='${total}' /> --%></span></div>
+                  <%-- <c:out value='${total}' /> --%></span></div>
              <c:if test="${!empty member}">
-              	<a class="btn btn-sm btn-success mb-0 mr-0" href="checkout.do?id=${member.id}">주문하기</a>
+                <a class="btn btn-sm btn-success mb-0 mr-0" href="checkout.do?id=${member.id}">주문하기</a>
               </c:if>
              <c:if test="${empty member}">
               <a class="btn btn-sm btn-success mb-0 mr-0" href="#" data-toast data-toast-type="danger" 
-        		data-toast-position="topRight" data-toast-icon="icon-circle-check" 
-        		data-toast-title="login needed" data-toast-message="로그인이 필요한 서비스입니다.">주문하기</a>
+            data-toast-position="topRight" data-toast-icon="icon-circle-check" 
+            data-toast-title="login needed" data-toast-message="로그인이 필요한 서비스입니다.">주문하기</a>
              </c:if>
             </c:if>
             </div>
@@ -449,7 +481,7 @@
             <div class="col-xl-4 col-md-6">
               <div class="padding-top-3x padding-bottom-3x px-3 px-lg-5 text-center text-md-left from-bottom">
                 <h2> 세상에 알려지지 않은 작가들~ </h2>
-                <p class="text-sm text-muted">이곳에선 모두가 아티스트가 될 수 있습니다! 모두가 내가 그린 기린그림을 팔 수 있는 곳 ! 여러분도 도전해보세욧</p>
+                <p class="text-sm text-muted">이곳에선 모두가 아티스트가 될 수 있습니다! 모두가 내가 그린 기린그림을 팔 수 있는 곳 !       여러분도 도전해보세욧</p>
                 <a class="btn btn-primary mx-0 scale-up delay-1" href="getArtistList.do">더 많은 작가들</a>
               </div>
             </div>
@@ -463,10 +495,13 @@
     <section class="container padding-top-3x padding-bottom-3x">
       <h3 class="text-center mb-30">인기 작가</h3>
       <div class="row">
+      <c:forEach items="${MainArtist}" var="mArtist">
         <div class="col-md-3 col-sm-6 mb-30"><a class="category-card flex-wrap text-center pt-0" href="getArtist.do">
             <div class="category-card-thumb w-100"><img src="resources/img/product/2.png" alt="Category"></div>
             <div class="category-card-info w-100">
-              <h3 class="category-card-title">${artist.a_name}</h3>
+
+              <h3 class="category-card-title">${mArtist.nickname}</h3>
+
               <h4 class="category-card-subtitle">뭐가좋을까</h4>
             </div></a></div>
         <!-- <div class="col-md-3 col-sm-6 mb-30"><a class="category-card flex-wrap text-center pt-0" href="shop-boxed-ls.jsp">
@@ -487,6 +522,7 @@
               <h3 class="category-card-title">작가4</h3>
               <h4 class="category-card-subtitle">Starting from $95.99</h4>
             </div></a></div> -->
+      </c:forEach>
       </div>
       <div class="text-center"><a class="btn btn-outline-secondary mb-0" href="getArtistList.do">모든 작가</a></div>
     </section>
@@ -500,31 +536,30 @@
         <div class="col-xl-9 col-md-8">
           <div class="row" id="MainProduct">
             <!-- Item-->
-            <c:forEach items="${MainProduct}" var="mProduct">
-            <div class="col-xl-3 col-lg-4 col-sm-6">
-              <div class="product-card mb-30" >
-                <div class="product-card-thumb"> <span class="product-badge text-danger">Sale</span>
-                	<a class="product-card-link" href="getProduct.do"></a><img src="resources/img/product/5.png" alt="Product">
-                  <div class="product-card-buttons">
-                    <!-- 버튼 클릭시 위시리스트 디비작업 -->
-                    <button class="btn btn-white btn-sm btn-wishlist" data-toggle="tooltip" title="Wishlist">
-                    	<i class="material-icons favorite_border"></i></button>
-                    <!-- 버튼 클릭시 해당 제품 데이터 어딘가에 저장 후 장바구니에 넣을것 -->
-                    <button class="btn btn-primary btn-sm" data-toast data-toast-type="success" 
-                    		data-toast-position="topRight" data-toast-icon="material-icons check" 
-                    		data-toast-title="Product" data-toast-message="장바구니 담기 성공!" 
-                    		onclick="location.href='insertCart.do?p_code=${mProduct.p_code}'">장바구니 담기</button>
-                  </div>
-                </div>
-                <div class="product-card-details">
-                  <h3 class="product-card-title"><a href="getProduct.do">${mProduct.p_name}</a></h3>
-                  <h4 class="product-card-price">
-                    <del>₩${mProduct.price}0</del>₩${mProduct.price}
-                  </h4>
-                </div>
-              </div>
-            </div>
-            </c:forEach>
+             <c:forEach items="${MainProduct}" var="mProduct">
+	            <div class="col-xl-3 col-lg-4 col-sm-6">
+	              <div class="product-card mb-30" >
+	                <div class="product-card-thumb"> <span class="product-badge text-danger">Sale</span>
+	                	<a class="product-card-link" href="getProduct.do"></a><img src="<c:url value='/thumbnails.do?p_code=${mProduct.p_code }' />" alt="Product">
+	                  <div class="product-card-buttons">
+	                    <!-- 버튼 클릭시 위시리스트 디비작업 -->
+	                    <button class="btn btn-white btn-sm btn-wishlist" data-toggle="tooltip" title="Wishlist">
+	                    	<i class="material-icons favorite_border"></i></button>
+	                    <!-- 버튼 클릭시 해당 제품 데이터 어딘가에 저장 후 장바구니에 넣을것 -->
+	                    <button class="btn btn-primary btn-sm" data-toast data-toast-type="success"
+	                    		data-toast-position="topRight" data-toast-icon="material-icons check"
+	                    		data-toast-title="Product" data-toast-message="장바구니 담기 성공!">장바구니 담기</button>
+	                  </div>
+	                </div>
+	                <div class="product-card-details">
+	                  <h3 class="product-card-title"><a href="getProduct.do">${mProduct.p_name}</a></h3>
+	                  <h4 class="product-card-price">
+	                    <del>₩${mProduct.price}0</del>₩${mProduct.price}
+	                  </h4>
+	                </div>
+	              </div>
+	            </div>
+             </c:forEach>
           </div>
         </div>
         <!-- <div class="col-xl-3 col-md-4" style="display:flex" >
@@ -605,4 +640,3 @@
     <script src="resources/js/scripts.min.js"></script>
   </body>
 </html>
-    
