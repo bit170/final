@@ -456,7 +456,7 @@ $(document).ready(function(){
               <div class="col-sm-6">
                 <div class="form-group">
                   <label for="textarea-input">* 작품 설명</label>
-                  <textarea name = "p_detail" class="form-control text-muted" id="textarea-input" rows="5" required>작품을 간략하게 설명해주세요 !</textarea>
+                  <textarea name = "p_detail" class="form-control text-muted" id="textarea-input" rows="5" required placeholder="작품을 간략하게 설명해주세요 !"></textarea>
                 </div>
               </div>
             </div>
