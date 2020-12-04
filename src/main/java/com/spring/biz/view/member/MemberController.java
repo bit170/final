@@ -58,7 +58,7 @@ public class MemberController {
 			return "redirect:main.do";
 		}else {
 			System.out.println("회원가입 실패");
-			return "main/index";
+			return "main.do";
 		}
 	}
 	

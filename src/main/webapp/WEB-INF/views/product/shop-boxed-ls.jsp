@@ -30,6 +30,18 @@
 	href="<c:url value="resources/css/styles.min.css" />">
     <!-- Modernizr-->
     <script src="<c:url value="resources/js/modernizr.min.js" />"></script>
+    <script type="text/javascript">
+		/* function getCategory(category) {
+			alert("getCategory() 실행 : "+category);
+			$.ajax({
+				type : 'POST',
+				url : '${pageContext.request.contextPath}/getCategory.do',
+				data : {'category' : category}
+			}).done(function (data) {
+				alert("ajax done : "+data);
+			})
+		} */
+    </script>
   </head>
   <!-- Body-->
   <body>
@@ -379,7 +391,7 @@
               <div class="product-card mb-30">
                 <div class="product-card-thumb">
                 <a class="product-card-link" href="getProduct.do?p_code=${product.p_code}"></a>
-                <img src="resources/img/product/5.png" alt="Product">
+                <img src="<c:url value='/thumbnails.do?p_code=${product.p_code }' />" alt="Product">
                   <div class="product-card-buttons">
                   <c:choose>
 					<c:when test="${product.price eq 0}">    
@@ -420,7 +432,7 @@
                 </c:forEach>
           </div>
                 </c:if>
-                <c:if test="${!empty productList}">
+                <c:if test="${empty productList}">
           <div class="row mb-2">
             <div class="col-lg-4 col-sm-6">
               <div class="product-card mb-30">
@@ -452,71 +464,11 @@
             <section class="widget widget-categories pt-0">
 			<h3 class="widget-title">작품 Categories</h3>
               <ul>
-                <li class="has-children expanded">수채화<a href="#"></a><span>(1138)</span>
-                  <!-- <ul>
-                    <li><a href="#">Executive Desks</a><span>(508)</span>
-                      <ul>
-                        <li><a href="#">Standing Desks</a></li>
-                        <li><a href="#">Benching Desks</a></li>
-                      </ul>
-                    </li>
-                    <li><a href="#">Single Desks</a><span>(423)</span>
-                      <ul>
-                        <li><a href="#">Standing Desks</a></li>
-                        <li><a href="#">Benching Desks</a></li>
-                      </ul>
-                    </li>
-                    <li><a href="#">File Cabinets</a><span>(97)</span></li>
-                    <li><a href="#">Office Chairs</a><span>(110)</span></li>
-                  </ul> -->
-                </li>
-                <li class="has-children"><a href="#">유화</a><span>(2356)</span>
-                  <!-- <ul>
-                    <li><a href="#">Indoor Lights</a><span>(1032)</span>
-                      <ul>
-                        <li><a href="#">Ceiling Lights</a></li>
-                        <li><a href="#">Kitchen Lighting</a></li>
-                        <li><a href="#">Wall Lights</a></li>
-                        <li><a href="#">Lamps</a></li>
-                      </ul>
-                    </li>
-                    <li><a href="#">Outdoor Lights</a><span>(937)</span>
-                      <ul>
-                        <li><a href="#">Light Stands</a></li>
-                        <li><a href="#">Wall Lights</a></li>
-                        <li><a href="#">Light Bulbs</a></li>
-                        <li><a href="#">Lamps</a></li>
-                      </ul>
-                    </li>
-                    <li><a href="#">Dimmers &amp; Controls</a><span>(386)</span></li>
-                  </ul> -->
-                </li>
-                <li class="has-children"><a href="#">수묵화</a><span>(420)</span>
-                  <!-- <ul>
-                    <li><a href="#">Bookcases</a><span>(180)</span></li>
-                    <li><a href="#">Box Seats &amp; Benches</a><span>(132)</span></li>
-                    <li><a href="#">Cupboards</a><span>(47)</span></li>
-                    <li><a href="#">Caskets</a><span>(61)</span></li>
-                  </ul> -->
-                </li>
-                <li class="has-children"><a href="#">크로키</a><span>(874)</span>
-                  <!-- <ul>
-                    <li><a href="#">Cable &amp; Power Management</a><span>(211)</span></li>
-                    <li><a href="#">Desk Add Ons</a><span>(195)</span></li>
-                    <li><a href="#">Desk Risers</a><span>(159)</span></li>
-                    <li><a href="#">Lamps</a><span>(203)</span></li>
-                    <li><a href="#">Monitor Arms</a><span>(106)</span></li>
-                  </ul> -->
-                </li>
-                <li class="has-children"><a href="#">기타</a><span>(10)</span>
-                  <!-- <ul>
-                    <li><a href="#">Cable &amp; Power Management</a><span>(211)</span></li>
-                    <li><a href="#">Desk Add Ons</a><span>(195)</span></li>
-                    <li><a href="#">Desk Risers</a><span>(159)</span></li>
-                    <li><a href="#">Lamps</a><span>(203)</span></li>
-                    <li><a href="#">Monitor Arms</a><span>(106)</span></li>
-                  </ul> -->
-                </li>
+                <li class="has-children"><a href="getCategory.do?category=water" >수채화</a><span id="water">	${categoryCnt[2] }</span></li>
+                <li class="has-children"><a href="getCategory.do?category=oil" >유화</a><span id="oil">	${categoryCnt[3] }</span></li>
+                <li class="has-children"><a href="getCategory.do?category=black" >수묵화</a><span id="black">	${categoryCnt[1] }</span></li>
+                <li class="has-children"><a href="getCategory.do?category=crocky" >크로키</a><span id="crocky">	${categoryCnt[4] }</span></li>
+                <li class="has-children"><a href="getCategory.do?category=etc" >기타</a><span id="etc">	${categoryCnt[0] }</span></li>
               </ul>
             </section>
             <!-- Widget Sorting-->

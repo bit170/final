@@ -342,7 +342,7 @@
       <div class="container">
         <div class="row">
           <!-- Product Gallery-->
-          <div class="col-sm-4 text-center mb-4"><img class="d-block w-150 mx-auto img-thumbnail rounded-circle mb-3" src="resources/img/shop/ARTIST4.jpg" alt="Team">
+          <div class="col-sm-4 text-center mb-4"><img class="d-block w-150 mx-auto img-thumbnail rounded-circle mb-3" src="<c:url value='/aDownload.do?a_id=${artist.a_id }' />" alt="Team">
 
           </div>
 
@@ -370,11 +370,12 @@
       <div class="isotope-grid cols-2">
         <div class="gutter-sizer"></div>
         <div class="grid-sizer"></div>
-        <div class="grid-item"><a href="getProduct.do?p_name="><img src="${pageContext.request.contextPath }/download?imageFileName=${imageFileName }" alt="Image"></a></div>
-        <div class="grid-item gallery-item"><a href="getProduct.do?p_name="><img src="resources/img/shop/ARTIST2.jpg" alt="Image"></a><span class="caption">Frida Kahlo</span></div>
-        <div class="grid-item gallery-item"><a href="getProduct.do?p_name="><img src="resources/img/shop/ARTIST3.jpg" alt="Image"></a><span class="caption">Rembrandt</span></div>
-        <div class="grid-item gallery-item"><a href="getProduct.do?p_name="><img src="resources/img/shop/ARTIST4.jpg" alt="Image"></a><span class="caption">Michelangelo</span></div>
-      </div>
+        <c:forEach var="item" items="${allList}">
+        <div class="grid-item">
+        <a href="getProduct.do?p_code=${item.p_code}"><img src="<c:url value='/download.do?p_code=${item.p_code }&pfilename=${item.pi_filename }' />" alt="Image"></a>
+		</div>
+        </c:forEach>
+      	</div>
     </div>
     <!-- Site Footer-->
     <footer class="site-footer">

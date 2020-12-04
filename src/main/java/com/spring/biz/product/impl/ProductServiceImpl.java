@@ -16,7 +16,11 @@ public class ProductServiceImpl implements ProductService {
 
 	@Autowired
 	private ProductDAO productDAO;
-
+  	
+	public ProductServiceImpl() {
+		System.out.println(">> ProductServiceImpl() 객체 생성");
+	}
+  
 	public String addNewProduct(Map newProductMap) throws Exception {
 		String p_code = productDAO.insertNewProduct(newProductMap);
 		ArrayList<PImageFileVO> pimageFileList = (ArrayList) newProductMap.get("pimageFileList");
@@ -60,12 +64,12 @@ public class ProductServiceImpl implements ProductService {
 
 	@Override
 	public List<ProductVO> getMainProduct() {
-		return productDAO.getMainProduct();
-	}
-
-	
-	public ProductServiceImpl() {
-		System.out.println(">> ProductServiceImpl() 객체 생성");
+		List<ProductVO> mList = productDAO.getMainProduct();
+		System.out.println(mList.size());
+		if(mList.size()==0) {
+			mList = productDAO.getMain();
+		}
+		return mList; 
 	}
 
 	@Override
@@ -97,6 +101,30 @@ public class ProductServiceImpl implements ProductService {
 	@Override
 	public String getPrice(String p_code) {
 		return productDAO.getPrice(p_code);
+
+   @Override
+   public List<ProductVO> getCategory(String category) {
+	  return productDAO.getCategory(category);
+	}
+
+	@Override
+	public List<Integer> categoryCnt() {
+		return productDAO.categoryCnt();
+	}
+
+	@Override
+	public List<PImageFileVO> getImages(String p_code) {
+		return productDAO.getImages(p_code);
+	}
+
+	@Override
+	public String getFileName(String p_code) {
+		return productDAO.getFileName(p_code);
+	}
+
+	@Override
+	public String getFileName(String p_code, String pi_filetype) {
+		return productDAO.getFileName(p_code,pi_filetype);
 	}
 	
 }

@@ -3,35 +3,35 @@
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
   <mapper namespace="productDAO">
-	
+
 	<insert id="insertNewProduct" parameterType="java.util.Map">
 		<selectKey resultType="String" keyProperty="p_code" order="BEFORE">
 			select seq_p_code.nextval from dual
 		</selectKey>
 		<![CDATA[
-			insert into product (p_code, p_name, price, p_size, p_category, p_detail)
-			values( #{p_code}, #{p_name}, #{price},  #{p_size}, #{p_category}, #{p_detail} )
+			insert into product (p_code, p_name, price, p_size, p_category, p_detail, a_id)
+			values( #{p_code}, #{p_name}, #{price},  #{p_size}, #{p_category}, #{p_detail}, #{a_id} )
 		]]>
 	</insert>
-	
+
 	<insert id="insertPImageFile" parameterType="pimage">
 		<selectKey resultType="String" keyProperty="pi_code" order="BEFORE">
 			select seq_pi_code.nextval from dual
 		</selectKey>
 		<![CDATA[
-			insert into p_image (p_code, pi_filename, pi_code, pi_filetype, id)
-			values( #{p_code}, #{pi_filename}, #{pi_code}, #{pi_filetype}, #{id} )
+			insert into p_image (p_code, pi_filename, pi_code, pi_filetype, a_id)
+			values( #{p_code}, #{pi_filename}, #{pi_code}, #{pi_filetype}, #{a_id} )
 		]]>
 	</insert>
-	
+
 	<select id="getSearchResult" parameterType="String" resultType="product">
 		select * from product where p_name like '%' || #{keyword} || '%'
 	</select>
-	
+
 	<select id="searchable" parameterType="String" resultType="Integer">
 		SELECT COUNT(*) FROM PRODUCT WHERE A_ID LIKE '%' || #{nickname} || '%'
 	</select>
-	
+
 	<update id="updateProductInfo" parameterType="java.util.HashMap" >
 		update product
 		<set>
@@ -54,14 +54,14 @@
 		where
 		p_code = #{p_code}
 	</update>
-	
+
 	<update id="updatePImage" parameterType="pimage">
 		update p_image
 		set pi_name = #{pi_name}
 		where
 		p_code = #{p_code} and pi_code = #{pi_code}
 	</update>
-	
+
 	<select id="getProductList" parameterType="product" resultType="product">
 		SELECT * FROM PRODUCT
 	</select>
@@ -70,7 +70,7 @@
 		select * from product
 	</select>
 	
-	<select id="getProduct" parameterType="String" resultType="product">
+	<select id="getProducts" parameterType="String" resultType="product">
 		select * from product where p_code = #{p_code}
 	</select>
 	
@@ -88,5 +88,42 @@
 		SELECT PRICE FROM PRODUCT
 		WHERE P_CODE = #{p_code}
 	</select>
-	
+
+	<select id="getProduct" resultType="product">
+		select * from product where p_code = #{p_code}
+	</select>
+
+	<select id="getMainProduct" resultType="product">
+		<![CDATA[
+		select * from product where p_code in(
+        		select p_code from
+	        		(select p_code, rownum num from
+				        (select p_code, count(p_code) cnt from wishlist group by p_code order by cnt desc))
+			           	 where num<7)
+		]]>
+	</select>
+
+	<select id="getCategoryList" resultType="product" parameterType="String">
+		select * from product where P_CATEGORY = #{category}
+	</select>
+	<select id="categoryCnt" resultType="Integer">
+		select count(p_category) from product group by p_category order by p_category
+	</select>
+	<select id="getImages" parameterType="String" resultType="pimage">
+		select * from p_image where p_code = #{p_code}
+	</select>
+	<select id="getFileName" parameterType="String" resultType="String">
+		select pi_filename from p_image where p_code=#{p_code} and pi_filetype='main_image'
+	</select>
+	<select id="getMain" resultType="product">
+		<![CDATA[
+		select * from product where p_code in(
+        		select p_code from
+	        		(select p_code, rownum num from product)
+	        		where num<7)	
+		]]> 
+	</select>
+	<select id="imgFileName" resultType="String" parameterType="java.util.HashMap">
+		select pi_filename from p_image where p_code=#{p_code} and pi_filetype=#{pi_filetype}
+	</select>
 </mapper>

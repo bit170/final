@@ -1,6 +1,7 @@
  package com.spring.biz.view.product;
 
 import java.io.File;
+import java.util.ArrayList;
 import java.util.Enumeration;
 import java.util.HashMap;
 import java.util.List;
@@ -65,15 +66,19 @@ public class ProductController extends BaseController {
 		
 		HttpSession session = multipartRequest.getSession();
 		MemberVO memberVO = (MemberVO) session.getAttribute("member");
-		String id = memberVO.getId();
-		System.out.println(id);
+		String a_id = memberVO.getId();
+		System.out.println(a_id);
+		
+		newProductMap.put("a_id", a_id);
+
+		
 		
 		List<PImageFileVO> pimageFileList = upload(multipartRequest);
 		//System.out.println(pimageFileList.size());	//확인용
 		
 		if(pimageFileList!= null && pimageFileList.size()!=0) {
 			for(PImageFileVO pimageFileVO : pimageFileList) {
-				pimageFileVO.setId(id);
+				pimageFileVO.setA_id(a_id);
 			}
 			newProductMap.put("pimageFileList", pimageFileList);
 		}
@@ -98,11 +103,11 @@ public class ProductController extends BaseController {
 			message +=("</script>");
 			
 			String nickname = memberVO.getNickname();
-			System.out.println(id);
-			int alreadyArtist = artistService.alreadyArtist(id);
+			System.out.println(a_id);
+			int alreadyArtist = artistService.alreadyArtist(a_id);
 			if(alreadyArtist == 0) {
 				HashMap<String,Object> idNickname = new HashMap<String,Object>();
-				idNickname.put("id", id);
+				idNickname.put("a_id", a_id);
 				idNickname.put("nickname", nickname);
 				artistService.insertArtist(idNickname);
 			}
@@ -145,7 +150,7 @@ public class ProductController extends BaseController {
 		
 		HttpSession session = multipartRequest.getSession();
 		MemberVO memberVO = (MemberVO) session.getAttribute("member");
-		String id = memberVO.getId();
+		String a_id = memberVO.getId();
 		
 		List<PImageFileVO> pimageFileList=null;
 		String p_code=null;
@@ -156,7 +161,7 @@ public class ProductController extends BaseController {
 					
 					p_code = (String)productMap.get("p_code");
 					pimageFileVO.setP_code(p_code);
-					pimageFileVO.setId(id);
+					pimageFileVO.setA_id(a_id);
 				}
 				
 			    productService.addNewPImage(pimageFileList);
@@ -229,7 +234,7 @@ public class ProductController extends BaseController {
 		
 		HttpSession session = multipartRequest.getSession();
 		MemberVO memberVO = (MemberVO) session.getAttribute("memberInfo");
-		String id = memberVO.getId();
+		String a_id = memberVO.getId();
 		
 		List<PImageFileVO> pimageFileList=null;
 		String p_code = null;
@@ -239,10 +244,10 @@ public class ProductController extends BaseController {
 			if(pimageFileList!= null && pimageFileList.size()!=0) {
 				for(PImageFileVO pimageFileVO : pimageFileList) {
 					p_code = (String)productMap.get("p_code");
-					pi_code = (String)productMap.get("image_id");
+					pi_code = (String)productMap.get("pi_code");
 					pimageFileVO.setP_code(p_code);
 					pimageFileVO.setPi_code(pi_code);
-					pimageFileVO.setId(id);
+					pimageFileVO.setA_id(a_id);
 				}
 				
 			    productService.modifyPImage(pimageFileList);
@@ -270,23 +275,42 @@ public class ProductController extends BaseController {
 	public String getProduct(@RequestParam("p_code")String p_code, Model model) {
 		ProductVO product = productService.getProduct(p_code);
 		model.addAttribute("product", product);
-		System.out.println("작품코드 : " + p_code);
-		
-		return "product/shop-single";
+
+    System.out.println("작품코드 : " + vo.getP_code() + " 작품명 : " + vo.getP_name());
+		List<PImageFileVO> productImgs = productService.getImages(vo.getP_code());
+		model.addAttribute("productImgs", productImgs);
+
+    return "product/shop-single";
 	}
+	
+	@RequestMapping(value = "getCategory.do", method = RequestMethod.GET)
+	public String getCategory(HttpServletRequest request, Model model){
+		System.out.println("getCategory() 실행");
+		String category = request.getParameter("category");
+		if(category.equals("water")) {
+			category = "수채화";
+		}else if(category.equals("oil")) {
+			category = "유화";
+		}else if(category.equals("black")) {
+			category = "수묵화";
+		}else if(category.equals("crocky")) {
+			category = "크로키";
+		}else if(category.equals("etc")) {
+			category = "기타";
+		}
+		System.out.println(category);
+		List<ProductVO> categoryList = productService.getCategory(category);
+		System.out.println(categoryList.get(0).getP_category());
+		model.addAttribute("productList", categoryList);
+		return "product/shop-boxed-ls";
+	}
+	
 	
 //	@RequestMapping(value = "/getMainProduct.do", method = RequestMethod.GET)
 //	public @ResponseBody List<ProductVO> getMainProduct() {
 //		return productService.getMainProduct();
 //	}
 	
-	@RequestMapping(value = "/getMainProduct.do", method = RequestMethod.GET)
-	public String getMainProduct(Model model) {
-		List<ProductVO> list = productService.getMainProduct();
-		model.addAttribute("MainProduct", list);
-		System.out.println(model.containsAttribute("MainProduct"));
-		return "/WEB-INF/views/main/index.jsp";
-	}
 	
 	@RequestMapping(value="/getProductList.do", method = RequestMethod.GET)
 	public String getBoardList(ProductVO vo, Model model) {
@@ -294,8 +318,10 @@ public class ProductController extends BaseController {
 		
 		List<ProductVO> list = productService.getProductList(vo);
 		model.addAttribute("productList", list);
-		System.out.println(list.isEmpty());
-		System.out.println(list);
+		List<Integer> categoryCnt = productService.categoryCnt();
+		System.out.println(categoryCnt.get(0));
+		model.addAttribute("categoryCnt", categoryCnt);
+		
 		return "product/shop-boxed-ls";
 	}
 

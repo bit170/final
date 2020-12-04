@@ -1,6 +1,7 @@
 package com.spring.biz.product.impl;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -93,4 +94,32 @@ public class ProductDAO {
 	public String getPrice(String p_code) {
 		return mybatis.selectOne("productDAO.getPrice", p_code);
 	}
+
+  public List<ProductVO> getCategory(String category) {
+		return mybatis.selectList("productDAO.getCategoryList", category);
+	}
+
+	public List<Integer> categoryCnt() {
+		return mybatis.selectList("productDAO.categoryCnt");
+	}
+
+	public List<PImageFileVO> getImages(String p_code) {
+		return mybatis.selectList("productDAO.getImages", p_code);
+	}
+
+	public String getFileName(String p_code) {
+		return mybatis.selectOne("productDAO.getFileName", p_code);
+	}
+
+	public List<ProductVO> getMain() {
+		return mybatis.selectList("productDAO.getMain");
+	}
+
+	public String getFileName(String p_code, String pi_filetype) {
+		Map<String, String> pi_info = new HashMap<String, String>();
+		pi_info.put("p_code", p_code);
+		pi_info.put("pi_filetype", pi_filetype);
+		return mybatis.selectOne("productDAO.imgFileName", pi_info);
+	}
+
 }

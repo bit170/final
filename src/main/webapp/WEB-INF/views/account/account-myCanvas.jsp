@@ -415,12 +415,14 @@
 			<div class="col-lg-8">
 				<h4> 작가 정보 수정 </h4>
 				<hr class="margin-bottom-1x">
+				<form action="addNewAInfo.do" method="post"  enctype="multipart/form-data">
 				<div class="row">
 				<div class="col-sm-6">
 				<div class="form-group">
+				
 							<label for="checkout-ln">작가 사진</label>
 							<div class="custom-file">
-								<input class="custom-file-input" type="file" id="file-input">
+								<input name="artist_image" class="custom-file-input" type="file" id="file-input">
 								<label class="custom-file-label" for="file-input">파일
 									추가...</label>
 							</div>
@@ -429,7 +431,7 @@
 				<div class="col-sm-6">
 						<div class="form-group">
 							<label for="checkout-ln"> 작가 소개글</label>
-							<textarea class="form-control text-muted" id="textarea-input"
+							<textarea name="a_detail" class="form-control text-muted" id="textarea-input"
 								rows="5">작가를 간략하게 설명해주세요 !</textarea>
 						</div>
 					</div>
@@ -437,33 +439,10 @@
 					<div class="d-flex justify-content-between">
 					<a class="btn btn-outline-secondary" href="account-myCanvas.do">마이페이지로</a>
 					<div class="text-center">
-						<a class="btn btn-primary" href="account-myCanvas.do">수정하기</a>
+						<input type="submit" value="수정하기" class="btn btn-primary" />
 					</div>
 				</div>
-					<hr class="margin-bottom-1x">
-					
-				<div class="padding-top-2x mt-2 hidden-lg-up"></div>
-				<form class="row">
-					<div class="col-md-10">
-						<div class="form-group">
-							<h4> 작품 추가 & 수정하기 </h4>
-							<hr class="margin-bottom-1x">
-							<div class="isotope-grid cols-2 grid-no-gap">
-								<div class="gutter-sizer"></div>
-								<div class="grid-sizer"></div>
-								<div class="grid-item gallery-item">
-									<a href="insert-canvas.do"><img
-										src="resources/img/gallery/th05.jpg" alt="Image"></a>
-										<span class="caption">새 작품 추가하기</span>
-									</div>
-								</div>
-							</div>
-					<div class="d-flex justify-content-center">
-					<a class="btn btn-outline-secondary" href="account-myCanvas.do">마이페이지로</a>
-					<div class="text-center">
-						<a class="btn btn-primary" href="account-myCanvas.do">수정하기</a>
-					</div>
-				</div>
+				</form>
 					<hr class="margin-bottom-1x">
 					
 				<div class="padding-top-2x mt-2 hidden-lg-up"></div>
