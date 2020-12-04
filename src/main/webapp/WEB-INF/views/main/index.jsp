@@ -241,7 +241,7 @@
                   </ul>
                 </li>
                 <c:if test="${!empty member}">
-                <li class="has-children"><span><a href="getWishlist.do?id=${member.id}">MyPage</a><span class="sub-menu-toggle"></span></span>
+                <li class="has-children"><span><a href="getWishlists.do?id=${member.id}">MyPage</a><span class="sub-menu-toggle"></span></span>
                   <ul class="slideable-submenu">
                 <li><a href="getFollowList.do?id=${member.id}">팔로우</a></li>
                 <li><a href="getOrderList.do?id=${member.id}">주문목록</a></li>
@@ -282,7 +282,9 @@
 	              <!-- 검색결과 주르륵 -->
 	              <div class="entry">
 	                <div class="entry-thumb">
-	                	<a href="getProduct.do"><img src="resources/img/shop/widget/01.png" alt="Product"></a></div>
+	                	<a href="getProduct.do">
+	                	<img src="<c:url value='/aThumbnails.do?a_id=${item.a_id }' />" alt="Image" alt="Product">
+	                	</a></div>
 	                <div class="entry-content">
 	                  <h4 class="entry-title">
 	                  	<a href="getProduct.do">ㅇㅇ <span class='text-highlighted'>검색어와 일치하는 부분</span></a></h4><span class="entry-meta">가격</span>
@@ -317,7 +319,7 @@
 	            <!-- <a class="btn btn-primary mx-0 scale-up delay-1" href="shop-boxed-ls.jsp">Log Out</a> -->
 	            <!-- <button class="btn btn-primary btn-block" type="submit"><a href="account-wishlist.jsp">My page</button> -->
 
-	            <a class="btn btn-primary mx-0 scale-up delay-1" href="getWishlists.do?">My page</a>
+	            <a class="btn btn-primary mx-0 scale-up delay-1" href="getWishlists.do?id=${member.id}">My page</a>
 
 	          </form>
 	         </div>
@@ -415,7 +417,7 @@
                     <td>
                       <div class="product-item">
                       <a class="product-thumb" href="getProduct.do?p_code=${cart.p_code}">
-                          <img src="resources/img/product/5.png" alt="Product"></a>
+                      <img src="<c:url value='/aThumbnails.do?a_id=${item.a_id }' />" alt="Product"></a>
                         <div class="product-info">
                           <h4 class="product-title">
                             <a href="getProduct.do?p_code=${cart.p_code}">${cart.p_name}</a></h4>

@@ -448,7 +448,6 @@ $(document).ready(function(){
                     <option value="수채화">수채화</option>
                     <option value="유화">유화</option>
                     <option value="크로키">크로키</option>
-                    <option value="펜화">펜화</option>
                     <option value="기타">기타</option>
                   </select>
                 </div>

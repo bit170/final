@@ -29,10 +29,9 @@ public class WishlistController {
 
 	@RequestMapping("/insertWishlist.do")
 	public String insertWishlist(@RequestParam("p_code") String p_code, HttpSession session, Model model) {
-		System.out.println("*****insertWishlist 실행!! ******");
+		System.out.println("***** insertWishlist 실행!! ******");
 
 		MemberVO mvo = (MemberVO) session.getAttribute("member");
-
 		int result = wishService.getWish(mvo.getId(), p_code);
 		if (result <= 0) {
 
@@ -48,10 +47,22 @@ public class WishlistController {
 	}
 
 	@RequestMapping("/deleteWishlist.do")
-	public String deleteWishlist() {
-//		wishService.deleteWishlist(vo);
+	public String deleteWishlist(@RequestParam("p_code")String p_code) {
+		wishService.deleteWishlist(p_code);
 		return "account/account-wishlist";
 	}
+	
+	@RequestMapping("/resetWishlists.do")
+	public String resetWishlists(@RequestParam("id")String id) {
+		wishService.resetWishlists(id);
+		return "account/account-wishlist";
+	}
+	
+	
+//	@RequestMapping("wishlist.do")
+//	public String Wishlist() {
+//		return "account/account-wishlist";
+//	}
 
 	@RequestMapping("/getWishlists.do")
 	public String getWishlists(@RequestParam(value="id", required=false) String id, Model model) {

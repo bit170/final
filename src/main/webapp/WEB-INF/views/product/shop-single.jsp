@@ -483,7 +483,14 @@
             	<form action="insertCart.do?p_code=${product.p_code}" method="get">
               <div class="card-body">
                 <h2 class="mb-3">${product.p_name}</h2>
-                <h3 class="text-normal">₩ <fmt:formatNumber pattern="###,###,###" value="${product.price}" /></h3>
+                <c:choose>
+                	<c:when test=${product.price eq 0}>
+               		 <h3 class="text-normal">₩ <fmt:formatNumber pattern="###,###,###" value="판매완료" /></h3>
+                	</c:when>
+                	<c:otherwise>
+               		 <h3 class="text-normal">₩ <fmt:formatNumber pattern="###,###,###" value="${product.price}" /></h3>
+                	</c:otherwise>
+               	</c:choose>
                 <p class="text-sm text-muted">
                 	<a class='navi-link' href="getArtist.do?a_id=${product.a_id}">${product.a_id}</a><br>
                 	 작품 설명 : ${product.p_detail}</p>

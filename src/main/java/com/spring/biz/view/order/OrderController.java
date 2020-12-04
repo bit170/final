@@ -97,7 +97,7 @@ public class OrderController {
 				
 				System.out.println("total : " + total);
 				sess.setAttribute("total", tt);
-
+				System.out.println("******* total : " + sess.getAttribute("total"));
 				model.addAttribute("cartList", cartList);
 			} else if (pvo == null) {
 				System.out.println("해당 작품이 존재하지 않습니다.");
@@ -210,9 +210,14 @@ public class OrderController {
 				productService.updatePrice(cvo.getP_code());
 			}
 		}
+		return "redirect:finalreview.do";
+	}
+	
+	@RequestMapping("/finalreview.do")
+	public String finalreview() {
 		return "order/checkout-review";
 	}
-
+	
 	@RequestMapping("/complete.do")
 	public String complete() {
 		return "order/checkout-complete";

@@ -3,26 +3,6 @@
 	isELIgnored="false"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
-<<<<<<< HEAD
-<c:set var="product" value="${proudctMap.product }" />
-<c:set var="pimageFileList" value="${productMap.pimageFileList }" />
-
-<c:choose>
-<c:when test='${not empty product.p_category }'>
-<script>
-window.onload = function(){
-							init();
-							}
-							
-function init(){
-	var frm_mod_product=document.frm_mod_product;
-	
-}
-</script>
-</c:when>
-</c:choose>
-=======
->>>>>>> refs/heads/master
 
 <!DOCTYPE html>
 <html lang="en">
