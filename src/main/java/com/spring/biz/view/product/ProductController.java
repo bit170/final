@@ -185,15 +185,15 @@ public class ProductController extends BaseController {
 	}
 	
 	@RequestMapping(value="/modifyGoodsForm.do" ,method={RequestMethod.GET,RequestMethod.POST})
-	public ModelAndView modifyGoodsForm(@RequestParam("p_code") String p_code,
+	public String modifyGoodsForm(@RequestParam("p_code") String p_code,
 			                            HttpServletRequest request, HttpServletResponse response)  throws Exception {
-		String viewName=(String)request.getAttribute("viewName");
-		ModelAndView mav = new ModelAndView(viewName);
+		//String viewName=(String)request.getAttribute("viewName");
+		//ModelAndView mav = new ModelAndView(viewName);
 		
 		//Map goodsMap=ProductService.productDetail(p_code);
 		//mav.addObject("goodsMap",goodsMap);
 		
-		return mav;
+		return "update-canvas";
 	}
 	
 	@RequestMapping(value="/modifyProductInfo.do" ,method={RequestMethod.POST})
@@ -302,6 +302,9 @@ public class ProductController extends BaseController {
 		List<ProductVO> categoryList = productService.getCategory(category);
 		System.out.println(categoryList.get(0).getP_category());
 		model.addAttribute("productList", categoryList);
+		List<Integer> categoryCnt = productService.categoryCnt();
+		System.out.println(categoryCnt.get(0));
+		model.addAttribute("categoryCnt", categoryCnt);
 		return "product/shop-boxed-ls";
 	}
 	
@@ -325,4 +328,76 @@ public class ProductController extends BaseController {
 		return "product/shop-boxed-ls";
 	}
 
+	@RequestMapping(value="/searchByPname.do", method=RequestMethod.POST)
+	public String searchByPname(String p_name, Model model) {
+		System.out.println("Controller의 searchByPname~!");
+		
+		List<ProductVO> list = productService.searchByPname(p_name);
+		model.addAttribute("productList", list);
+		System.out.println(list.isEmpty());
+		return "product/shop-boxed-ls";
+	}
+	
+	@RequestMapping(value="/sortLatest.do", method=RequestMethod.GET)
+	public String sortLatest(Model model) {
+		System.out.println("!!!!!작품 최신순 정렬!!!!!");
+		List<ProductVO> list = productService.sortLatest();
+		model.addAttribute("productList", list);
+		System.out.println(list.isEmpty());
+		return "product/shop-boxed-ls";
+	}
+	
+	@RequestMapping(value="/sortCheap.do", method=RequestMethod.GET)
+	public String sortCheap(Model model) {
+		System.out.println("!!!!!작품 가격낮은순 정렬!!!!!");
+		List<ProductVO> list = productService.sortCheap();
+		model.addAttribute("productList", list);
+		System.out.println(list.isEmpty());
+		return "product/shop-boxed-ls";
+	}
+	
+	@RequestMapping(value="/sortExpensive.do", method=RequestMethod.GET)
+	public String sortExpensive(Model model) {
+		System.out.println("!!!!!작품 가격높은순 정렬!!!!!");
+		List<ProductVO> list = productService.sortExpensive();
+		model.addAttribute("productList", list);
+		System.out.println(list.isEmpty());
+		return "product/shop-boxed-ls";
+	}
+	
+	@RequestMapping(value="/sortAlpha.do", method=RequestMethod.GET)
+	public String sortAlpha(Model model) {
+		System.out.println("!!!!!작품 가나다순 정렬!!!!!");
+		List<ProductVO> list = productService.sortAlpha();
+		model.addAttribute("productList", list);
+		System.out.println(list.isEmpty());
+		return "product/shop-boxed-ls";
+	}
+	
+	@RequestMapping(value="/priceRange.do", method=RequestMethod.POST)
+	public String priceRange(String minp, String maxp, Model model) {
+		System.out.println("!!!!!작품 가격범위 설정!!!!!");
+		System.out.println(minp + " & " + maxp);
+		Map map = new HashMap();
+		map.put("minP", minp);
+		map.put("maxP", maxp);
+		List<ProductVO> list = productService.priceRange(map);
+		model.addAttribute("productList", list);
+		System.out.println(list.isEmpty());
+		return "product/shop-boxed-ls";
+	}
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+

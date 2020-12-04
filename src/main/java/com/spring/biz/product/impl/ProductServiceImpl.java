@@ -55,7 +55,7 @@ public class ProductServiceImpl implements ProductService {
 		 System.out.println("ProductServiceImpl getProduct() 실행");
 		return productDAO.getProduct(p_code);
 	}
-
+		
 	@Override
 	public List<ProductVO> getProductList(ProductVO vo) {
 		return productDAO.getProductList(vo);
@@ -127,6 +127,41 @@ public class ProductServiceImpl implements ProductService {
 	public String getFileName(String p_code, String pi_filetype) {
 		return productDAO.getFileName(p_code,pi_filetype);
 	}
+
+	@Override
+	public List<ProductVO> getMyProduct(String id) {
+		return productDAO.getMyProduct(id);
+	}
+
 	
+	@Override
+	public List<ProductVO> searchByPname(String p_name){
+		return productDAO.searchByPname(p_name);
+	}
+	
+	@Override
+	public List<ProductVO> sortLatest(){
+		return productDAO.sortLatest();
+	}
+	
+	@Override
+	public List<ProductVO> sortCheap(){
+		return productDAO.sortCheap();
+	}
+	
+	@Override
+	public List<ProductVO> sortExpensive(){
+		return productDAO.sortExpensive();
+	}
+	
+	@Override
+	public List<ProductVO> sortAlpha(){
+		return productDAO.sortAlpha();
+	}
+	
+	@Override
+	public List<ProductVO> priceRange(Map map){
+		return productDAO.priceRange(map);
+	}
 }
 	

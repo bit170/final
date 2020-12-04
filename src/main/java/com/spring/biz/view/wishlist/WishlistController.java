@@ -65,7 +65,7 @@ public class WishlistController {
 //	}
 
 	@RequestMapping("/getWishlists.do")
-	public String getWishlists(@RequestParam("id") String id, Model model) {
+	public String getWishlists(@RequestParam(value="id", required=false) String id, Model model) {
 		List<WishlistVO> wvos = (List<WishlistVO>) wishService.getWishlists(id);
 		System.out.println("wvos : " + wvos);
 		List<ProductVO> wishlists = new ArrayList<ProductVO>();

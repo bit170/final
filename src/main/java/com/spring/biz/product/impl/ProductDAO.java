@@ -53,6 +53,10 @@ public class ProductDAO {
 		System.out.println("===> MyBatis로 getProduct() 실행");
 		return mybatis.selectOne("productDAO.getProduct", p_code);
 	}
+//	public ProductVO getProduct(String p_code) {
+//		return mybatis.selectOne("productDAO.getProductByPcode", p_code);
+//	}
+
 		
 	//글 목록 조회
 	public List<ProductVO> getProductList(ProductVO vo) {
@@ -121,5 +125,34 @@ public class ProductDAO {
 		pi_info.put("pi_filetype", pi_filetype);
 		return mybatis.selectOne("productDAO.imgFileName", pi_info);
 	}
+	
+	public List<ProductVO> searchByPname(String p_name){
+		return mybatis.selectList("productDAO.searchByPname", p_name);
+	}
+	
+	public List<ProductVO> sortLatest(){
+		return mybatis.selectList("productDAO.sortLatest");
+	}
+	
+	public List<ProductVO> sortCheap(){
+		return mybatis.selectList("productDAO.sortCheap");
+	}
+	
+	public List<ProductVO> sortExpensive(){
+		return mybatis.selectList("productDAO.sortExpensive");
+	}
+	
+	public List<ProductVO> sortAlpha(){
+		return mybatis.selectList("productDAO.sortAlpha");
+	}
+	
+	public List<ProductVO> priceRange(Map map){
+		return mybatis.selectList("productDAO.priceRange", map);
+	}
 
+	public List<ProductVO> getMyProduct(String id) {
+		return mybatis.selectList("productDAO.getMyProduct", id);
+	}
+
+	
 }

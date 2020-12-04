@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 
 <!DOCTYPE html>
@@ -30,17 +30,117 @@
 	href="<c:url value="resources/css/styles.min.css" />">
     <!-- Modernizr-->
     <script src="<c:url value="resources/js/modernizr.min.js" />"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
     <script type="text/javascript">
-		/* function getCategory(category) {
-			alert("getCategory() 실행 : "+category);
-			$.ajax({
-				type : 'POST',
-				url : '${pageContext.request.contextPath}/getCategory.do',
-				data : {'category' : category}
-			}).done(function (data) {
-				alert("ajax done : "+data);
-			})
-		} */
+
+    	$(document).ready(function () {
+    		/* 회원가입 성공 후  model attribute에 바인딩한 객체를 확인, 한 번만 알리기 위해선 ajax사용이 답인가? */
+            /* var signedUp= '${signedUp.id}';
+            if(signedUp != ""){
+            	alert("회원가입을 축하합니다. 이메일 인증 후 사용할 수 있습니다.");
+            }
+            signedUp = ""; */
+
+    		 $("#signup_id").blur(function () {
+    			 var signup_id = $("#signup_id").val();
+ 				console.log(signup_id);
+ 				if(signup_id != ""){
+    			 	checkId(signup_id);
+ 				}else{
+ 					$("#idCheck_result").html("");
+ 				}
+    		 });
+
+    	/* 아이디 중복체크 == 성공!!
+    		리턴값에 따른 후처리 필요
+    	*/
+    		/* $('#signup-form').submit(
+	    		function () {
+	    			var formData = $('#signup-form').serialize();
+	    			alert("signUp() 실행");
+					$.ajax({
+						type : 'POST',
+						url : '${pageContext.request.contextPath}/signup.do',
+						data : formData,
+						dataType : 'json'
+					}).done(function (data) {
+						console.log(data);
+					}).fail(function (request, status, error) {
+						alert("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
+					})
+				}
+    		); */
+    		 function checkId(signup_id) {
+ 				$.ajax({
+ 					type : 'POST',
+ 					url : '${pageContext.request.contextPath}/idCheck.do',
+ 					data : {"signup_id" : signup_id}
+ 				}).done(function (data) {
+					console.log(data);
+					idResult(data);
+				}).fail(function (request,status,error) {
+					alert("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
+				})
+			}
+
+    		function idResult(data) {
+    			if(data==0){
+					$("#idCheck_result").html("사용가능한 아이디입니다.").css("color","green");
+    			}else{
+    				$("#idCheck_result").html("이미 사용중인 아이디입니다.").css("color","red");
+    			}
+			}
+
+    		$("#pw1").blur(function () {
+   			 	pwCheck();
+   		 	});
+    		$("#pw2").blur(function () {
+				pwCheck();
+			});
+    		function pwCheck() {
+    			var pw1 = $("#pw1").val();
+      			 var pw2 = $("#pw2").val();
+   				console.log(pw1);
+   				if(pw2 == "" || pw1 ==""){
+   					$("#pwCheck_result").html("비밀번호를 입력해주세요").css("color","red");
+   				}else if(pw1 == pw2){
+   					$("#pwCheck_result").html("비밀번호가 일치합니다").css("color","green");
+   				}else{
+   					$("#pwCheck_result").html("비밀번호가 일치하지 않습니다.").css("color","red");
+   				}
+			}
+
+		});
+    		/* 검색기능(엔터 입력시 실행)  */
+    		function enter(keyword) {
+					search(keyword);
+			}
+     		function search(keyword){
+    			alert("search() 실행");
+    			$.ajax({
+ 					type : 'POST',
+ 					url : '${pageContext.request.contextPath}/search.do',
+ 					data : {"keyword" : keyword},
+ 					dataType : 'json'
+ 				}).done(function (data) {	//ajax는 실행결과와 상관없이 리턴값이 없으면 오류발생
+ 					if(data.productList){
+						alert(data.productList);
+ 						showResult(data.productList);
+ 					}
+					sessionStorage.setItem("searchProduct", JSON.stringify(data.productList));
+					/* alert(sessionStorage.getItem("searchProduct")); */
+					/* getResult(); */
+					if(data.artistList){
+						showResult(data.artistList);
+					}
+				}).fail(function (request,status,error) {
+					alert("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
+				})
+    		}
+    		function showResult(result) {
+
+			}
+
     </script>
   </head>
   <!-- Body-->
@@ -249,30 +349,31 @@
                 </form>
               </div>
               <div class="tab-pane fade" id="signup" role="tabpanel">
-                <form method="post" autocomplete="off" id="signup-form" action="signUp.do"> 
+                <form method="post" autocomplete="off" id="signup-form" action="signUp.do">
                 <!-- <form method="post" autocomplete="off" id="signup-form" > -->
-                  <div class="form-group">
-                    <input class="form-control" type="text" placeholder="Name" name="name" required>
-                  </div>
-                  <div class="form-group">
-                    <input class="form-control" type="email" placeholder="Email" name="email" required>
-                  </div>
-                  <div class="form-group">
-                    <input class="form-control" type="text" placeholder="Phone" name="phone" required>
-                  </div>
+                  
               	<div class="form-group">
-                    <input class="form-control" type="text" placeholder="Id" id="signup_id" name="id" required>
+                    <input class="form-control" type="text" placeholder="아이디" id="signup_id" name="id" required>
                     <div id="idCheck_result"></div>
                   </div>
                   <div class="form-group">
-                    <input class="form-control" type="password" placeholder="Password" id="pw1" required>
+                    <input class="form-control" type="password" placeholder="비밀번호" id="pw1" required>
                   </div>
                   <div class="form-group">
-                    <input class="form-control" type="password" placeholder="Confirm Password" id="pw2" name="pwd" required>
+                    <input class="form-control" type="password" placeholder="비밀번호 확인" id="pw2" name="pwd" required>
                     <div id="pwCheck_result"></div>
                   </div>
                   <div class="form-group">
-                    <input class="form-control" type="text" placeholder="NickName" name="nickname" required>
+                    <input class="form-control" type="text" placeholder="닉네임" name="nickname" required>
+                  </div>
+                  <div class="form-group">
+                    <input class="form-control" type="text" placeholder="이름" name="name" required>
+                  </div>
+                  <div class="form-group">
+                    <input class="form-control" type="email" placeholder="이메일" name="email" required>
+                  </div>
+                  <div class="form-group">
+                    <input class="form-control" type="text" placeholder="전화번호" name="phone" required>
                   </div>
                   <button class="btn btn-primary btn-block" type="submit">회원가입</button>
                 </form>
@@ -377,9 +478,9 @@
           <!-- Search-->
           <div class="d-flex flex-wrap-reverse flex-md-nowrap justify-content-center justify-content-sm-between align-items-center mb-30">
             <div class="pt-3 pb-1 pb-sm-3 text-sm text-center text-sm-left"><span class="text-muted mr-2">Showing</span>1- 12 items</div>
-            <form class="input-group shop-search-box" method="get"><span class="input-group-btn">
+            <form class="input-group shop-search-box" action="searchByPname.do" method="post"><span class="input-group-btn">
                 <button type="submit"><i class="material-icons search"></i></button></span>
-              <input class="form-control" type="search" placeholder="Search shop">
+              <input class="form-control" type="text" placeholder="작품명을 입력한 후, 엔터를 누르세요" id="p_name" name="p_name">
             </form>
           </div>
           <!-- Products Grid-->
@@ -482,17 +583,19 @@
             <section class="widget widget-icon-list">
               <h3 class="widget-title">정렬</h3>
               <ul>
-                <li><a href="#"><i class="material-icons sort"></i>기본 정렬</a></li>
-                <li><a href="#"><i class="material-icons favorite_border"></i>인기순</a></li>
-                <li><a href="#"><i class="material-icons vertical_align_top"></i>최신순</a></li>
+                <li><a href="getProductList.do"><i class="material-icons sort"></i>기본 정렬</a></li>
+                <!-- <li><a href="#"><i class="material-icons favorite_border"></i>인기순</a></li> -->
+                <li><a href="sortLatest.do"><i class="material-icons vertical_align_top"></i>최신순</a></li>
+                <li><a href="sortCheap.do"><i class="material-icons vertical_align_top"></i>가격낮은순</a></li>
+                <li><a href="sortExpensive.do"><i class="material-icons vertical_align_top"></i>가격높은순</a></li>
                 <!-- <li><a href="#"><i class="material-icons star_border"></i>Average rating</a></li> -->
-                <li><a href="#"><i class="material-icons sort_by_alpha"></i>가나다순</a></li>
+                <li><a href="sortAlpha.do"><i class="material-icons sort_by_alpha"></i>가나다순</a></li>
               </ul>
             </section>
             <!-- Widget Price Range-->
             <section class="widget widget-categories">
               <h3 class="widget-title">가격 범위</h3>
-              <form class="price-range-slider" method="post" data-start-min="0" data-start-max="100" data-min="0" data-max="300" data-step="1">
+              <form action="priceRange.do" class="price-range-slider" method="POST" data-start-min="0" data-start-max="100" data-min="0" data-max="300" data-step="1">
                 <div class="ui-range-slider"></div>
                 <footer class="ui-range-slider-footer">
                   <div class="column">
@@ -501,10 +604,10 @@
                   <div class="column">
                     <div class="ui-range-values">
                       <div class="ui-range-value-min">₩<span></span>
-                        <input type="hidden">
+                        <input id="minp" type="hidden">
                       </div>&nbsp;-&nbsp;
                       <div class="ui-range-value-max">₩<span></span>
-                        <input type="hidden">
+                        <input id="maxp" type="hidden">
                       </div>(만원)
                     </div>
                   </div>
