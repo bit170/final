@@ -28,6 +28,7 @@ public interface ProductService {
 	List<PImageFileVO> getImages(String p_code);
 	String getFileName(String p_code);
 	String getFileName(String p_code, String pi_filetype);
+	List<ProductVO> getMyProduct(String id);
 
 	public List<ProductVO> searchByPname(String p_name);
 	public List<ProductVO> sortLatest();

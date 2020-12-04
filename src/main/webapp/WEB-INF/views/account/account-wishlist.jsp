@@ -410,7 +410,7 @@
 						<i class="icon-head"></i>프로필 수정</a> 
 					<a class="list-group-item" href="getAddress.do">
 						<i class="icon-map"></i>주소록</a> 
-					<a class="list-group-item" href="getMyCanvas.do">
+					<a class="list-group-item" href="getMyCanvas.do?id=${member.id}">
 						<i class="icon-head"></i>마이 캔버스</a>
 				</nav>
 			</div>

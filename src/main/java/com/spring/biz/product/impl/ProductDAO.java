@@ -53,6 +53,10 @@ public class ProductDAO {
 		System.out.println("===> MyBatis로 getProduct() 실행");
 		return mybatis.selectOne("productDAO.getProduct", p_code);
 	}
+//	public ProductVO getProduct(String p_code) {
+//		return mybatis.selectOne("productDAO.getProductByPcode", p_code);
+//	}
+
 		
 	//글 목록 조회
 	public List<ProductVO> getProductList(ProductVO vo) {
@@ -146,4 +150,9 @@ public class ProductDAO {
 		return mybatis.selectList("productDAO.priceRange", map);
 	}
 
+	public List<ProductVO> getMyProduct(String id) {
+		return mybatis.selectList("productDAO.getMyProduct", id);
+	}
+
+	
 }

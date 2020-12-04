@@ -55,6 +55,7 @@ $(document).ready(function(){
 		//alert(this);
 		/* $("#file-input").attr('value',filename); */
 	//} 
+
 </script>
 </head>
 <!-- Body-->
@@ -379,23 +380,23 @@ $(document).ready(function(){
 	</div>
 	<!-- Page Content-->
 	<div class="container padding-bottom-3x mb-2">
-	<form action="addNewProduct.do" method="post"  enctype="multipart/form-data">
+	<form action="addNewProduct.do" name="product" method="post"  enctype="multipart/form-data">
 		<!-- <div class="row"> -->
 			<!-- 작품 수정하기 ( 연희 ) -->
         <div class="col-xl-9 col-lg-8" style="max-width : 100%">
-          <h4>내 작품 수정하기</h4>
+          <h4>내 작품 등록하기</h4>
           <hr class="padding-bottom-1x">
           <div class="row">
             <div class="col-sm-6">
               <div class="form-group">
                 <label for="checkout-fn1">* 작품명</label>
-                <input name="p_name" class="form-control" type="text" id="checkout-fn1">
+                <input name="p_name" class="form-control" type="text" id="checkout-fn1" required>
               </div>
             </div>
             <div class="col-sm-6">
               <div class="form-group">
                 <label for="checkout-ln">* 작품 가격</label>
-                <input name="price" class="form-control" type="text" id="checkout-ln" data-type="currency">
+                <input name="price" class="form-control" type="text" id="checkout-ln" data-type="currency" required>
               </div>
             </div>
           </div>
@@ -403,14 +404,14 @@ $(document).ready(function(){
             <div class="col-sm-6">
               <div class="form-group">
                 <label for="checkout-fn2">* 작품 사이즈</label>
-                <input name="p_size" class="form-control" type="text" id="checkout-fn2">
+                <input name="p_size" class="form-control" type="text" id="checkout-fn2" required>
               </div>
             </div>
             <div class="col-sm-6">
               <div class="form-group">
-                <label for="checkout-ln">* 사진 1</label>
+                <label for="checkout-ln">* Main Image </label>
                 <div class="custom-file">
-                <input name = "main_image" class="custom-file-input" type="file" id="file-input1">
+                <input name = "main_image" class="custom-file-input" type="file" id="file-input1" required>
                 <label class="custom-file-label" for="file-input1"></label>
               </div>
               </div>
@@ -419,7 +420,7 @@ $(document).ready(function(){
           <div class="row">
             <div class="col-sm-6">
               <div class="form-group">
-                <label for="checkout-fn"> 사진 2</label>
+                <label for="checkout-fn"> Detail Image 1</label>
                 <div class="custom-file">
                   <input name="detail_image1" class="custom-file-input" type="file" id="file-input2">
                   <label class="custom-file-label" for="file-input2"></label>
@@ -428,9 +429,9 @@ $(document).ready(function(){
             </div>
             <div class="col-sm-6">
               <div class="form-group">
-                <label for="checkout-ln"> 사진 3</label>
+                <label for="checkout-ln"> Detail Image 2</label>
                 <div class="custom-file">
-                  <input name="detail_image2" class="custom-file-input" type="file" id="file-input3">
+                  <input name="detail_image2" class="custom-file-input" type="file" id="file-input3" >
                   <label class="custom-file-label" for="file-input3"></label>
                 </div>
               </div>
@@ -439,9 +440,9 @@ $(document).ready(function(){
           <div class="row">
              <div class="col-sm-6">
                 <div class="form-group">
-                  <label for="select-input"> 카테고리 </label>
+                  <label for="select-input">* 카테고리 </label>
                   <!-- <label class="col-2 col-form-label text-muted" for="select-input">Select</label> -->
-                  <select name = "p_category" class="form-control" id="select-input">
+                  <select name = "p_category" class="form-control" id="select-input" required>
                     <option>카테고리를 선택해주세요 ! </option>
                     <option value="수묵화">수묵화</option>
                     <option value="수채화">수채화</option>
@@ -454,8 +455,8 @@ $(document).ready(function(){
               </div>
               <div class="col-sm-6">
                 <div class="form-group">
-                  <label for="textarea-input"> 작품 설명</label>
-                  <textarea name = "p_detail" class="form-control text-muted" id="textarea-input" rows="5">작품을 간략하게 설명해주세요 !</textarea>
+                  <label for="textarea-input">* 작품 설명</label>
+                  <textarea name = "p_detail" class="form-control text-muted" id="textarea-input" rows="5" required placeholder="작품을 간략하게 설명해주세요 !"></textarea>
                 </div>
               </div>
             </div>
