@@ -5,8 +5,8 @@
 <mapper namespace="ordDAO">
 
 	<insert id="insertOrd" parameterType="ord">
-		INSERT INTO ORD (O_CODE, ID, O_DATE, TOTAL)
-		VALUES (#{o_code}, #{id}, sysdate, #{total})
+		INSERT INTO ORD (O_CODE, O_DATE, ID, TOTAL)
+		VALUES (#{o_code}, sysdate, #{id}, #{total})
 	</insert>
 	
 	<select id="getOrdList" resultType="ord">

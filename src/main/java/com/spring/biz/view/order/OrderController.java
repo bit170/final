@@ -21,6 +21,8 @@ import com.spring.biz.address.AddressService;
 import com.spring.biz.address.AddressVO;
 import com.spring.biz.member.MemberVO;
 import com.spring.biz.order.CartVO;
+import com.spring.biz.order.DeliveryService;
+import com.spring.biz.order.DeliveryVO;
 import com.spring.biz.order.OrdService;
 import com.spring.biz.order.OrdVO;
 import com.spring.biz.order.S_OrdVO;
@@ -38,6 +40,8 @@ public class OrderController {
 	private OrdService ordService;
 	@Autowired
 	private ProductService productService;
+	@Autowired
+	private DeliveryService deliveryService;
 
 	@RequestMapping("/getOrder-tracking.do")
 	public String orderTracking() {
@@ -85,7 +89,8 @@ public class OrderController {
 			if (pvo != null) {
 				cvo.setP_code(pvo.getP_code());
 				cvo.setP_name(pvo.getP_name());
-				cvo.setc_price(pvo.getPrice());
+				cvo.setC_price(pvo.getPrice());
+				cvo.setA_id(pvo.getA_id());
 				cartList.add(cvo);
 
 				int index = 1;
@@ -95,7 +100,7 @@ public class OrderController {
 
 				int total = 0;
 				for (CartVO cart : cartList) {
-					total +=Integer.parseInt(cart.getc_price());
+					total +=Integer.parseInt(cart.getC_price());
 				}
 				String tt = Integer.toString(total);
 				
@@ -117,14 +122,21 @@ public class OrderController {
 			if (pvo != null) {
 				cvo.setP_code(pvo.getP_code());
 				cvo.setP_name(pvo.getP_name());
-				cvo.setc_price(pvo.getPrice());
+				cvo.setC_price(pvo.getPrice());
+				cvo.setA_id(pvo.getA_id());
 				cartList.add(cvo);
 
+				int total = 0;
 				int index = 1;
-				for (CartVO cart : cartList) {
+				for (CartVO cart : cartList) { 
 					System.out.println(index++ + "번째 장바구니 작품정보 : " + cart);
+					total +=Integer.parseInt(cart.getC_price());
+					System.out.println("total : " + total);
 				}
+				String tt = Integer.toString(total);
+				
 				model.addAttribute("cartList", cartList);
+				model.addAttribute("total", tt);
 			} else if (pvo == null) {
 				System.out.println("해당 작품이 존재하지 않습니다.");
 			}
@@ -169,6 +181,7 @@ public class OrderController {
 		AddressVO avo = (AddressVO) session.getAttribute("address");
 		System.out.println("주소확인 : " + avo.getAddress());
 		System.out.println("우편번호 확인 : " + avo.getPost());
+		System.out.println("total : " + session.getAttribute("total"));
 
 		return "order/checkout-payment";
 	}
@@ -179,6 +192,8 @@ public class OrderController {
 		if ((List<CartVO>) session.getAttribute("cartList") != null) {
 			System.out.println("cart값 true ");
 
+			List<CartVO> cartList = (List<CartVO>) session.getAttribute("cartList");
+			
 			System.out.println("total : " + session.getAttribute("total"));
 			
 			MemberVO mvo = (MemberVO) session.getAttribute("member");
@@ -188,24 +203,38 @@ public class OrderController {
 			ovo.setO_code(randomNum(6));
 			ovo.setTotal(total);
 
+
 			ordService.insertOrd(ovo);
 			System.out.println(">> ordVO : " + ovo);
 			session.setAttribute("order", ovo);
 			
-			List<CartVO> cartList = (List<CartVO>) session.getAttribute("cartList");
 
 //			S_Ord table에 insert
 			S_OrdVO svo = new S_OrdVO();
 			
+//				Delivery table 에 insert
+			DeliveryVO dvo = new DeliveryVO();
+			
+			AddressVO avo = (AddressVO) session.getAttribute("address");
+			System.out.println("주소확인 : " + avo.getAddress());
+			System.out.println("우편번호 확인 : " + avo.getPost());
+			
 			for(CartVO cvo : cartList) {
+				dvo.setId(mvo.getId());
 				svo.setO_code(ovo.getO_code());
 				svo.setP_code(cvo.getP_code());
+				dvo.setO_code(ovo.getO_code());
+				dvo.setP_code(cvo.getP_code());
+				dvo.setD_address(avo.getAddress());
+				dvo.setD_post(avo.getPost());
 				System.out.println("P_code : " + cvo.getP_code());
 				svo.setA_id(productService.getA_Id(cvo.getP_code()));
 				svo.setP_price(productService.getPrice(cvo.getP_code()));
 				System.out.println("A_id : " + productService.getA_Id(cvo.getP_code()));
+				System.out.println("dvo : " + dvo);
 				
 				ordService.insertS_Ord(svo);
+				deliveryService.insertDelivery(dvo);
 				
 			}
 			

@@ -20,6 +20,7 @@
 		<typeAlias alias="ord" type="com.spring.biz.order.OrdVO"/>
 		<typeAlias alias="sell" type="com.spring.biz.order.SellVO"/>
 		<typeAlias alias="sOrd" type="com.spring.biz.order.S_OrdVO"/>
+		<typeAlias alias="delivery" type="com.spring.biz.order.DeliveryVO"/>
 		<typeAlias alias="wishlist" type="com.spring.biz.wishlist.WishlistVO"/>
 
 	</typeAliases>

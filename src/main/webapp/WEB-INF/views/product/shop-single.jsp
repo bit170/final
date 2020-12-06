@@ -407,7 +407,7 @@
                     <td>
                       <div class="product-item">
                       <a class="product-thumb" href="getProduct.do?p_code=${cart.p_code}">
-                      	  <img src="resources/img/product/5.png" alt="Product"></a>
+                      	  <img src="<c:url value='/thumbnails.do?p_code=${cart.p_code}' />" alt="Product"></a>
                         <div class="product-info">
                           <h4 class="product-title">
                           	<a href="getProduct.do?p_code=${cart.p_code}">${cart.p_name}</a></h4>
@@ -520,7 +520,9 @@
                     <input class="btn btn-primary btn-block my-0" value="장바구니 담기" type="submit">
                     </c:if>
                   <c:if test="${product.price eq 0}">
-                    <input class="btn btn-outline-primary btn-block my-0" value="SOLD OUT" type="text" onclick="#">
+                    <input class="btn btn-outline-primary btn-block my-0" value="SOLD OUT" type="text" onclick="#"
+                    	 data-toast data-toast-type="danger" data-toast-position="topRight" data-toast-icon="material-icons check" 
+                    		data-toast-title="sold out" data-toast-message="이미 판매된 제품입니다." onclick="#">
                     </c:if>
                   </div>
             	</form>
@@ -547,8 +549,10 @@
                 </c:if>
 				<c:if test="${product.price eq 0}">
                	 <div class="d-flex flex-wrap justify-content-between align-items-center">
-                	<a class="btn btn-outline-secondary btn-sm text-danger" 
-                		href="#">
+                	<a class="btn btn-outline-secondary btn-sm text-danger" data-toast data-toast-type="danger" 
+	                    		data-toast-position="topRight" data-toast-icon="material-icons check" 
+	                    		data-toast-title="sold out" data-toast-message="이미 판매된 제품입니다."
+                    		onclick="#">
                 	<i class="material-icons favorite_border"></i>&nbsp;판매완료</a>
               	  </div>
                 </c:if>
@@ -650,7 +654,7 @@
     <!-- Site Footer-->
     <footer class="site-footer">
       <div class="column text-center">
-        <p class="text-sm mb-4">Need Support? Call<span class="text-primary">&nbsp;010 - 4335 - 2504</span></p>
+        <p class="text-sm mb-4">Need Support? Call<span class="text-primary">&nbsp;010 - 1111 - 2222</span></p>
         <p class="text-xxs text-muted mb-0 mt-3">© All rights reserved. Made with <i class='material-icons favorite text-danger'></i> by 곽연희, 송희, 오서현, 이동희</p>
       </div>
     </footer>

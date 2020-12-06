@@ -49,10 +49,10 @@ public class OrdVO {
 		this.total = total;
 	}
 
+
 	@Override
 	public String toString() {
-		return "OrdVO [o_code=" + o_code + ", id=" + id + ", o_date=" + o_date + ", total=" + total
-				+ "]";
+		return "OrdVO [o_code=" + o_code + ", id=" + id + ", o_date=" + o_date + ", total=" + total	+ "]";
 	}
 
 }

@@ -109,7 +109,7 @@ public class ProductServiceImpl implements ProductService {
 	}
 
 	@Override
-	public List<Integer> categoryCnt() {
+	public List<String> categoryCnt() {
 		return productDAO.categoryCnt();
 	}
 

@@ -3,17 +3,17 @@ package com.spring.biz.order;
 public class CartVO {
 	private String p_code;
 	private String p_name;
-	private String p_img;
+	private String a_id;
 	private String c_price;
 	
 	public CartVO() {
 		System.out.println("CartVO() 객체 생성");
 	}
 
-	public CartVO(String p_code, String p_name, String p_img, String c_price) {
+	public CartVO(String p_code, String p_name, String a_id, String c_price) {
 		this.p_code = p_code;
 		this.p_name = p_name;
-		this.p_img = p_img;
+		this.a_id = a_id;
 		this.c_price = c_price;
 	}
 
@@ -33,25 +33,26 @@ public class CartVO {
 		this.p_name = p_name;
 	}
 
-	public String getp_img() {
-		return p_img;
+	public String getA_id() {
+		return a_id;
 	}
 
-	public void setp_img(String p_img) {
-		this.p_img = p_img;
+	public void setA_id(String a_id) {
+		this.a_id = a_id;
 	}
 
-	public String getc_price() {
+	public String getC_price() {
 		return c_price;
 	}
 
-	public void setc_price(String c_price) {
+	public void setC_price(String c_price) {
 		this.c_price = c_price;
 	}
 
+
 	@Override
 	public String toString() {
-		return "CartVO [p_code=" + p_code + ", p_name=" + p_name + ", p_img=" + p_img +
+		return "CartVO [p_code=" + p_code + ", p_name=" + p_name + ", a_id=" + a_id +
 				", c_price=" + c_price + "]";
 	}
 

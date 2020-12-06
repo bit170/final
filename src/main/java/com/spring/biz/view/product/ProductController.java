@@ -46,8 +46,8 @@ public class ProductController extends BaseController {
 		System.out.println(">>>> ProductController() 객체 생성");
 	}
 
-	@RequestMapping(value="/addNewProduct.do" ,method={RequestMethod.POST})
-	public ResponseEntity addNewProduct(MultipartHttpServletRequest multipartRequest, HttpServletResponse response)  throws Exception {
+	@RequestMapping(value="/addNewProduct.do" ,method=RequestMethod.POST)
+	public String addNewProduct(MultipartHttpServletRequest multipartRequest, HttpServletResponse response, HttpServletRequest request)  throws Exception {
 		System.out.println("addNewProduct() 실행");
 		
 		multipartRequest.setCharacterEncoding("utf-8");
@@ -128,7 +128,8 @@ public class ProductController extends BaseController {
 			e.printStackTrace();
 		}
 		resEntity =new ResponseEntity(message, responseHeaders, HttpStatus.OK);
-		return resEntity;
+		return "redirect:/getMyCanvas.do?id="+a_id;
+//		return resEntity;
 	}
 	
 	
@@ -302,7 +303,7 @@ public class ProductController extends BaseController {
 		List<ProductVO> categoryList = productService.getCategory(category);
 		System.out.println(categoryList.get(0).getP_category());
 		model.addAttribute("productList", categoryList);
-		List<Integer> categoryCnt = productService.categoryCnt();
+		List<String> categoryCnt = productService.categoryCnt();
 		System.out.println(categoryCnt.get(0));
 		model.addAttribute("categoryCnt", categoryCnt);
 		return "product/shop-boxed-ls";
@@ -321,7 +322,7 @@ public class ProductController extends BaseController {
 		
 		List<ProductVO> list = productService.getProductList(vo);
 		model.addAttribute("productList", list);
-		List<Integer> categoryCnt = productService.categoryCnt();
+		List<String> categoryCnt = productService.categoryCnt();
 		System.out.println(categoryCnt.get(0));
 		model.addAttribute("categoryCnt", categoryCnt);
 		
