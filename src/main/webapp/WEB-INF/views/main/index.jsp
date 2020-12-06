@@ -555,7 +555,7 @@
 	            <div class="col-xl-3 col-lg-4 col-sm-6">
 	              <div class="product-card mb-30" >
 	                <div class="product-card-thumb"> <span class="product-badge text-danger">Sale</span>
-	                	<a class="product-card-link" href="getProduct.do"></a><img src="<c:url value='/thumbnails.do?p_code=${mProduct.p_code }' />" alt="Product">
+	                	<a class="product-card-link" href="getProduct.do?p_code=${mProduct.p_code }"></a><img src="<c:url value='/thumbnails.do?p_code=${mProduct.p_code }' />" alt="Product">
 	                  <div class="product-card-buttons">
 	                    <!-- 버튼 클릭시 위시리스트 디비작업 -->
 	                    <button class="btn btn-white btn-sm btn-wishlist" data-toggle="tooltip" title="Wishlist">
@@ -567,7 +567,7 @@
 	                  </div>
 	                </div>
 	                <div class="product-card-details">
-	                  <h3 class="product-card-title"><a href="getProduct.do">${mProduct.p_name}</a></h3>
+	                  <h3 class="product-card-title"><a href="getProduct.do?p_code=${mProduct.p_code }">${mProduct.p_name}</a></h3>
 	                  <h4 class="product-card-price">
 	                    <del>₩${mProduct.price}0</del>₩${mProduct.price}
 	                  </h4>
