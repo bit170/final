@@ -338,6 +338,7 @@ public class ProductController extends BaseController {
 		List<ProductVO> list = productService.searchByPname(p_name);
 		model.addAttribute("productList", list);
 		System.out.println(list.isEmpty());
+		
 		return "product/shop-boxed-ls";
 	}
 	
@@ -347,6 +348,9 @@ public class ProductController extends BaseController {
 		List<ProductVO> list = productService.sortLatest();
 		model.addAttribute("productList", list);
 		System.out.println(list.isEmpty());
+		List<String> categoryCnt = productService.categoryCnt();
+		System.out.println(categoryCnt.get(0));
+		model.addAttribute("categoryCnt", categoryCnt);
 		return "product/shop-boxed-ls";
 	}
 	
@@ -356,6 +360,9 @@ public class ProductController extends BaseController {
 		List<ProductVO> list = productService.sortCheap();
 		model.addAttribute("productList", list);
 		System.out.println(list.isEmpty());
+		List<String> categoryCnt = productService.categoryCnt();
+		System.out.println(categoryCnt.get(0));
+		model.addAttribute("categoryCnt", categoryCnt);
 		return "product/shop-boxed-ls";
 	}
 	
@@ -365,6 +372,9 @@ public class ProductController extends BaseController {
 		List<ProductVO> list = productService.sortExpensive();
 		model.addAttribute("productList", list);
 		System.out.println(list.isEmpty());
+		List<String> categoryCnt = productService.categoryCnt();
+		System.out.println(categoryCnt.get(0));
+		model.addAttribute("categoryCnt", categoryCnt);
 		return "product/shop-boxed-ls";
 	}
 	
@@ -374,6 +384,9 @@ public class ProductController extends BaseController {
 		List<ProductVO> list = productService.sortAlpha();
 		model.addAttribute("productList", list);
 		System.out.println(list.isEmpty());
+		List<String> categoryCnt = productService.categoryCnt();
+		System.out.println(categoryCnt.get(0));
+		model.addAttribute("categoryCnt", categoryCnt);
 		return "product/shop-boxed-ls";
 	}
 	
