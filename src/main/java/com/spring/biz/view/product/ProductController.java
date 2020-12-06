@@ -302,7 +302,7 @@ public class ProductController extends BaseController {
 		List<ProductVO> categoryList = productService.getCategory(category);
 		System.out.println(categoryList.get(0).getP_category());
 		model.addAttribute("productList", categoryList);
-		List<Integer> categoryCnt = productService.categoryCnt();
+		List<String> categoryCnt = productService.categoryCnt();
 		System.out.println(categoryCnt.get(0));
 		model.addAttribute("categoryCnt", categoryCnt);
 		return "product/shop-boxed-ls";
@@ -321,7 +321,7 @@ public class ProductController extends BaseController {
 		
 		List<ProductVO> list = productService.getProductList(vo);
 		model.addAttribute("productList", list);
-		List<Integer> categoryCnt = productService.categoryCnt();
+		List<String> categoryCnt = productService.categoryCnt();
 		System.out.println(categoryCnt.get(0));
 		model.addAttribute("categoryCnt", categoryCnt);
 		

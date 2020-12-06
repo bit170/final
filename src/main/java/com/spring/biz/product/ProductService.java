@@ -24,7 +24,7 @@ public interface ProductService {
 	
 	public void modifyPImage(List<PImageFileVO> pimageFileList) throws Exception;
 	List<ProductVO> getCategory(String category);
-	List<Integer> categoryCnt();
+	List<String> categoryCnt();
 	List<PImageFileVO> getImages(String p_code);
 	String getFileName(String p_code);
 	String getFileName(String p_code, String pi_filetype);
