@@ -185,8 +185,8 @@
                 <li><a href="getFollowList.do?id=${member.id}">팔로우</a></li>
                 <li><a href="getOrderList.do?id=${member.id}">주문목록</a></li>
                 <li><a href="getMember.do?id=${member.id}">프로필 수정</a></li>
-                <li><a href="getAddress.do">주소록</a></li>
-                <li><a href="getMyCanvas.do">마이 캔버스</a></li>
+                <li><a href="getAddress.do?id=${member.id}">주소록</a></li>
+                <li><a href="getMyCanvas.do?id=${member.id}">마이 캔버스</a></li>
             </ul>
           </li>
           </c:if>
@@ -245,11 +245,11 @@
                 <li ><span><a href="getArtistList.do "><span>Artist</span></a></span></li>
                 <li class="has-children"><span><a href="getProductList.do"><span>Shop</span></a><span class="sub-menu-toggle"></span></span>
                   <ul class="slideable-submenu">
-                <li><a href="getProductList.do?category=water">수채화</a></li>
-                <li><a href="getProductList.do?category=oil">유화</a></li>
-                <li><a href="getProductList.do?category=black">수묵화</a></li>
-                <li><a href="getProductList.do?category=crocky">크로키</a></li>
-                <li><a href="getProductList.do?category=etc">기타</a></li>
+                <li><a href="getCategory.do?category=water">수채화</a></li>
+                <li><a href="getCategory.do?category=oil">유화</a></li>
+                <li><a href="getCategory.do?category=black">수묵화</a></li>
+                <li><a href="getCategory.do?category=crocky">크로키</a></li>
+                <li><a href="getCategory.do?category=etc">기타</a></li>
                   </ul>
                 </li>
                 <c:if test="${!empty member}">
@@ -258,8 +258,8 @@
                 <li><a href="getFollowList.do?id=${member.id}">팔로우</a></li>
                 <li><a href="getOrderList.do?id=${member.id}">주문목록</a></li>
                 <li><a href="getMember.do?id=${member.id}">프로필 수정</a></li>
-                <li><a href="getAddress.do">주소록</a></li>
-                <li><a href="getMyCanvas.do">마이 캔버스</a></li>
+                <li><a href="getAddress.do?id=${member.id }">주소록</a></li>
+                <li><a href="getMyCanvas.do?id=${member.id }">마이 캔버스</a></li>
                   </ul>
                 </li>
                 </c:if>
@@ -269,11 +269,21 @@
               data-toast-title="login needed" data-toast-message="로그인이 필요한 서비스입니다.">
               MyPage</a><span class="sub-menu-toggle"></span></span>
                   <ul class="slideable-submenu">
-                <li><a href="#">팔로우</a></li>
-                <li><a href="#">주문목록</a></li>
-                <li><a href="#">프로필 수정</a></li>
-                <li><a href="#">주소록</a></li>
-                <li><a href="#">마이 캔버스</a></li>
+                <li><a href="#" data-toast data-toast-type="danger" 
+              data-toast-position="topRight" data-toast-icon="icon-circle-check" 
+              data-toast-title="login needed" data-toast-message="로그인이 필요한 서비스입니다.">팔로우</a></li>
+                <li><a href="#" data-toast data-toast-type="danger" 
+              data-toast-position="topRight" data-toast-icon="icon-circle-check" 
+              data-toast-title="login needed" data-toast-message="로그인이 필요한 서비스입니다.">주문목록</a></li>
+                <li><a href="#" data-toast data-toast-type="danger" 
+              data-toast-position="topRight" data-toast-icon="icon-circle-check" 
+              data-toast-title="login needed" data-toast-message="로그인이 필요한 서비스입니다.">프로필 수정</a></li>
+                <li><a href="#" data-toast data-toast-type="danger" 
+              data-toast-position="topRight" data-toast-icon="icon-circle-check" 
+              data-toast-title="login needed" data-toast-message="로그인이 필요한 서비스입니다.">주소록</a></li>
+                <li><a href="#" data-toast data-toast-type="danger" 
+              data-toast-position="topRight" data-toast-icon="icon-circle-check" 
+              data-toast-title="login needed" data-toast-message="로그인이 필요한 서비스입니다.">마이 캔버스</a></li>
                   </ul>
                 </li>
                 </c:if>
@@ -407,7 +417,7 @@
                     <th colspan="2">
                       <div class="d-flex justify-content-between align-items-center">Products
                       <c:if test="${!empty cartList }">
-                      <a class="navi-link text-uppercase" href="getCart.do"><span class="text-xxs">Expand Cart</span><i class="material-icons keyboard_arrow_right"></i></a>
+                      <a class="navi-link text-uppercase" href="getCart.do?id=${member.id }"><span class="text-xxs">Expand Cart</span><i class="material-icons keyboard_arrow_right"></i></a>
                       </c:if>
                       <c:if test="${empty cartList }">
                       <a class="navi-link text-uppercase" href="getProductList.do"><span class="text-xxs">작품 보러가기</span><i class="material-icons keyboard_arrow_right"></i></a>
@@ -420,7 +430,7 @@
                   <c:if test="${empty cartList}">
                   <tr>
                     <td>
-                     장바구니가 비었습니다.
+                     	장바구니가 비었습니다.
                     </td>
                   </tr>
                     </c:if>
@@ -430,7 +440,7 @@
                     <td>
                       <div class="product-item">
                       <a class="product-thumb" href="getProduct.do?p_code=${cart.p_code}">
-                      <img src="<c:url value='/aThumbnails.do?a_id=${item.a_id }' />" alt="Product"></a>
+                      <img src="<c:url value='/thumbnails.do?p_code=${cart.p_code }' />" alt="Product"></a>
                         <div class="product-info">
                           <h4 class="product-title">
                             <a href="getProduct.do?p_code=${cart.p_code}">${cart.p_name}</a></h4>
@@ -511,32 +521,14 @@
       <h3 class="text-center mb-30">인기 작가</h3>
       <div class="row">
       <c:forEach items="${MainArtist}" var="mArtist">
-        <div class="col-md-3 col-sm-6 mb-30"><a class="category-card flex-wrap text-center pt-0" href="getArtist.do">
-            <div class="category-card-thumb w-100"><img src="resources/img/product/2.png" alt="Category"></div>
+        <div class="col-md-3 col-sm-6 mb-30"><a class="category-card flex-wrap text-center pt-0" href="getArtist.do?a_id=${mArtist.a_id }">
+            <div class="category-card-thumb w-100"><img src="<c:url value='/aThumbnails.do?a_id=${mArtist.a_id }' />" alt="Category"></div>
             <div class="category-card-info w-100">
 
               <h3 class="category-card-title">${mArtist.nickname}</h3>
 
               <h4 class="category-card-subtitle">뭐가좋을까</h4>
             </div></a></div>
-        <!-- <div class="col-md-3 col-sm-6 mb-30"><a class="category-card flex-wrap text-center pt-0" href="shop-boxed-ls.jsp">
-            <div class="category-card-thumb w-100"><img src="resources/img/shop/categories/04.jpg" alt="Category"></div>
-            <div class="category-card-info w-100">
-              <h3 class="category-card-title">작가2</h3>
-              <h4 class="category-card-subtitle">Starting from $220.00</h4>
-            </div></a></div>
-        <div class="col-md-3 col-sm-6 mb-30"><a class="category-card flex-wrap text-center pt-0" href="shop-boxed-ls.jsp">
-            <div class="category-card-thumb w-100"><img src="resources/img/shop/categories/05.jpg" alt="Category"></div>
-            <div class="category-card-info w-100">
-              <h3 class="category-card-title">작가3</h3>
-              <h4 class="category-card-subtitle">Starting from $198.00</h4>
-            </div></a></div>
-        <div class="col-md-3 col-sm-6 mb-30"><a class="category-card flex-wrap text-center pt-0" href="shop-boxed-ls.jsp">
-            <div class="category-card-thumb w-100"><img src="resources/img/shop/categories/02.jpg" alt="Category"></div>
-            <div class="category-card-info w-100">
-              <h3 class="category-card-title">작가4</h3>
-              <h4 class="category-card-subtitle">Starting from $95.99</h4>
-            </div></a></div> -->
       </c:forEach>
       </div>
       <div class="text-center"><a class="btn btn-outline-secondary mb-0" href="getArtistList.do">모든 작가</a></div>
@@ -595,35 +587,6 @@
         </div>
       </div>
     </section>
-    <!-- Video Popup-->
-    <!-- <section class="fw-section padding-top-9x padding-bottom-9x" style="background-image: url(img/backgrounds/video_popup.jpg);">
-      <div class="container">
-        <div class="gallery-wrapper text-center">
-          <div class="gallery-item video-btn text-center"><a href="#" data-type="video" data-video="&lt;div class=&quot;wrapper&quot;&gt;&lt;div class=&quot;video-wrapper&quot;&gt;&lt;iframe class=&quot;pswp__video&quot; width=&quot;960&quot; height=&quot;640&quot; src=&quot;https://player.vimeo.com/video/67001156?color=dc9814&amp;title=0&amp;byline=0&amp;portrait=0&quot; frameborder=&quot;0&quot; allowfullscreen&gt;&lt;/iframe&gt;&lt;/div&gt;&lt;/div&gt;"></a><span class="caption text-center">Unishop - your reliable partner</span></div>
-        </div>
-      </div>
-    </section> -->
-    <!-- Features-->
-    <!-- <section class="container padding-top-3x padding-bottom-3x">
-      <div class="row pt-2">
-        <div class="col-md-3 col-sm-6 text-center mb-30"><span class="d-block display-4 text-gray-light mb-4"><i class="material-icons flight"></i></span>
-          <h4 class="h6 mb-2">Free World Wide Shipping</h4>
-          <p class="text-sm text-muted mb-0">Free shipping on all orders over $999</p>
-        </div>
-        <div class="col-md-3 col-sm-6 text-center mb-30"><span class="d-block display-4 text-gray-light mb-4"><i class="material-icons autorenew"></i></span>
-          <h4 class="h6 mb-2">Money Back Guarantee</h4>
-          <p class="text-sm text-muted mb-0">We return money within 30 days</p>
-        </div>
-        <div class="col-md-3 col-sm-6 text-center mb-30"><span class="d-block display-4 text-gray-light mb-4"><i class="material-icons headset_mic"></i></span>
-          <h4 class="h6 mb-2">24/7 Online Support</h4>
-          <p class="text-sm text-muted mb-0">Friendly 24/7 customer support</p>
-        </div>
-        <div class="col-md-3 col-sm-6 text-center mb-30"><span class="d-block display-4 text-gray-light mb-4"><i class="material-icons credit_card"></i></span>
-          <h4 class="h6 mb-2">Secure Online Payments</h4>
-          <p class="text-sm text-muted mb-0">We posess SSL / Secure Certificate</p>
-        </div>
-      </div>
-    </section> -->
 <!-- Site Footer-->
     <footer class="site-footer">
       <div class="column text-center">
@@ -655,4 +618,3 @@
     <script src="resources/js/scripts.min.js"></script>
   </body>
 </html>
->>>>>>> refs/remotes/origin/yhg
