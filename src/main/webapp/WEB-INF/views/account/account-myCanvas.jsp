@@ -68,6 +68,7 @@
             <ul class="sub-menu">
                 <li><a href="getFollowList.do?id=${member.id}">팔로우</a></li>
                 <li><a href="getOrderList.do?id=${member.id}">주문목록</a></li>
+                <li><a href="getSellList.do?id=${member.id}">판매목록</a></li>
                 <li><a href="getMember.do?id=${member.id}">프로필 수정</a></li>
                 <li><a href="getAddress.do">주소록</a></li>
                 <li><a href="getMyCanvas.do">마이 캔버스</a></li>
@@ -86,6 +87,9 @@
                 <li><a href="#" data-toast data-toast-type="danger" 
               data-toast-position="topRight" data-toast-icon="icon-circle-check" 
               data-toast-title="login needed" data-toast-message="로그인이 필요한 서비스입니다.">주문목록</a></li>
+              <li><a href="#" data-toast data-toast-type="danger" 
+              data-toast-position="topRight" data-toast-icon="icon-circle-check" 
+              data-toast-title="login needed" data-toast-message="로그인이 필요한 서비스입니다.">판매목록</a></li>
                 <li><a href="#" data-toast data-toast-type="danger" 
               data-toast-position="topRight" data-toast-icon="icon-circle-check" 
               data-toast-title="login needed" data-toast-message="로그인이 필요한 서비스입니다.">프로필 수정</a></li>
@@ -141,6 +145,7 @@
                   <ul class="slideable-submenu">
                 <li><a href="getFollowList.do?id=${member.id}">팔로우</a></li>
                 <li><a href="getOrderList.do?id=${member.id}">주문목록</a></li>
+                <li><a href="getSellList.do?id=${member.id}">판매목록</a></li>
                 <li><a href="getMember.do?id=${member.id}">프로필 수정</a></li>
                 <li><a href="getAddress.do">주소록</a></li>
                 <li><a href="getMyCanvas.do">마이 캔버스</a></li>
@@ -411,11 +416,19 @@
 						<span class="badge badge-default badge-pill"></span>
 						</c:if>
 						</a> 
+						<a class="list-group-item" href="getSellList.do?id=${member.id}">
+						<i class="icon-heart"></i>판매목록
+						<c:if test="${!empty sell}">
+						<span class="badge badge-default badge-pill">1</span>
+						</c:if>
+						<c:if test="${empty sell}">
+						<span class="badge badge-default badge-pill"></span>
+						</c:if>
 					<a class="list-group-item" href="getMember.do?id=${member.id}">
 						<i class="icon-head"></i>프로필 수정</a> 
 					<a class="list-group-item" href="getAddress.do">
 						<i class="icon-map"></i>주소록</a> 
-					<a class="list-group-item with-badge active" href="getMyCanvas.do">
+					<a class="list-group-item with-badge active" href="getMyCanvas.do?id=${member.id }">
 						<i class="icon-head"></i>마이 캔버스</a>
 				</nav>
 			</div>
@@ -463,7 +476,7 @@
 								<div class="gutter-sizer"></div>
 								<div class="grid-sizer"></div>
 								<div class="grid-item gallery-item">
-									<a href="insert-canvas.do">
+									<a href="insert-canvas.do?id=${member.id }">
 									<img src="resources/img/gallery/th05.jpg" alt="Image"></a>
 										<span class="caption">새 작품 추가하기</span>
 								</div>
@@ -495,7 +508,7 @@
 	<!-- Site Footer-->
 	<footer class="site-footer">
       <div class="column text-center">
-        <p class="text-sm mb-4">Need Support? Call<span class="text-primary">&nbsp;010 - 4355 - 2504</span></p>
+        <p class="text-sm mb-4">Need Support? Call<span class="text-primary">&nbsp;010 - 1111 - 2222</span></p>
         <p class="text-xxs text-muted mb-0 mt-3">© All rights reserved. Made with <i class='material-icons favorite text-danger'></i> by 곽연희, 송희, 오서현, 이동희</p>
       </div>
       <!-- <div class="column">

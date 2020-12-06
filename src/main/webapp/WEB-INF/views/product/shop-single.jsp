@@ -170,6 +170,7 @@
             <ul class="sub-menu">
                 <li><a href="getFollowList.do?id=${member.id}">팔로우</a></li>
                 <li><a href="getOrderList.do?id=${member.id}">주문목록</a></li>
+                <li><a href="getSellList.do?id=${member.id}">판매목록</a></li>
                 <li><a href="getMember.do?id=${member.id}">프로필 수정</a></li>
                 <li><a href="getAddress.do">주소록</a></li>
                 <li><a href="getMyCanvas.do">마이 캔버스</a></li>
@@ -178,25 +179,28 @@
           </c:if>
           <c:if test="${empty member}">
           <li><a href="#" data-toast data-toast-type="danger" 
-	        		data-toast-position="topRight" data-toast-icon="icon-circle-check" 
-	        		data-toast-title="login needed" data-toast-message="로그인이 필요한 서비스입니다.">
-        			<span>MyPage</span></a>
+              data-toast-position="topRight" data-toast-icon="icon-circle-check" 
+              data-toast-title="login needed" data-toast-message="로그인이 필요한 서비스입니다.">
+              <span>MyPage</span></a>
             <ul class="sub-menu">
                 <li><a href="#" data-toast data-toast-type="danger" 
-	        		data-toast-position="topRight" data-toast-icon="icon-circle-check" 
-	        		data-toast-title="login needed" data-toast-message="로그인이 필요한 서비스입니다.">팔로우</a></li>
+              data-toast-position="topRight" data-toast-icon="icon-circle-check" 
+              data-toast-title="login needed" data-toast-message="로그인이 필요한 서비스입니다.">팔로우</a></li>
                 <li><a href="#" data-toast data-toast-type="danger" 
-	        		data-toast-position="topRight" data-toast-icon="icon-circle-check" 
-	        		data-toast-title="login needed" data-toast-message="로그인이 필요한 서비스입니다.">주문목록</a></li>
+              data-toast-position="topRight" data-toast-icon="icon-circle-check" 
+              data-toast-title="login needed" data-toast-message="로그인이 필요한 서비스입니다.">주문목록</a></li>
+              <li><a href="#" data-toast data-toast-type="danger" 
+              data-toast-position="topRight" data-toast-icon="icon-circle-check" 
+              data-toast-title="login needed" data-toast-message="로그인이 필요한 서비스입니다.">판매목록</a></li>
                 <li><a href="#" data-toast data-toast-type="danger" 
-	        		data-toast-position="topRight" data-toast-icon="icon-circle-check" 
-	        		data-toast-title="login needed" data-toast-message="로그인이 필요한 서비스입니다.">프로필 수정</a></li>
+              data-toast-position="topRight" data-toast-icon="icon-circle-check" 
+              data-toast-title="login needed" data-toast-message="로그인이 필요한 서비스입니다.">프로필 수정</a></li>
                 <li><a href="#" data-toast data-toast-type="danger" 
-	        		data-toast-position="topRight" data-toast-icon="icon-circle-check" 
-	        		data-toast-title="login needed" data-toast-message="로그인이 필요한 서비스입니다.">주소록</a></li>
+              data-toast-position="topRight" data-toast-icon="icon-circle-check" 
+              data-toast-title="login needed" data-toast-message="로그인이 필요한 서비스입니다.">주소록</a></li>
                 <li><a href="#" data-toast data-toast-type="danger" 
-	        		data-toast-position="topRight" data-toast-icon="icon-circle-check" 
-	        		data-toast-title="login needed" data-toast-message="로그인이 필요한 서비스입니다.">마이 캔버스</a></li>
+              data-toast-position="topRight" data-toast-icon="icon-circle-check" 
+              data-toast-title="login needed" data-toast-message="로그인이 필요한 서비스입니다.">마이 캔버스</a></li>
             </ul>
           </li>
           </c:if>
@@ -407,7 +411,7 @@
                     <td>
                       <div class="product-item">
                       <a class="product-thumb" href="getProduct.do?p_code=${cart.p_code}">
-                      	  <img src="resources/img/product/5.png" alt="Product"></a>
+                      	  <img src="<c:url value='/thumbnails.do?p_code=${cart.p_code}' />" alt="Product"></a>
                         <div class="product-info">
                           <h4 class="product-title">
                           	<a href="getProduct.do?p_code=${cart.p_code}">${cart.p_name}</a></h4>
@@ -562,99 +566,10 @@
           </div>
         </div>
       </div>
-    <div class="container padding-bottom-3x pt-5 mb-1">
-      <!-- 추천 상품 Products Carousel-->
-      <h3 class="text-center padding-top-2x mt-2 padding-bottom-1x">이런 상품은 어떠세요 ? </h3>
-      <!-- Carousel-->
-      <div class="owl-carousel" data-owl-carousel="{ &quot;nav&quot;: false, &quot;dots&quot;: true, &quot;margin&quot;: 30, &quot;responsive&quot;: {&quot;0&quot;:{&quot;items&quot;:1},&quot;576&quot;:{&quot;items&quot;:2},&quot;768&quot;:{&quot;items&quot;:3},&quot;991&quot;:{&quot;items&quot;:4},&quot;1200&quot;:{&quot;items&quot;:4}} }">
-        <!-- Product-->
-        <div class="product-card">
-          <div class="product-card-thumb"> <span class="product-badge text-danger">Sale</span><a class="product-card-link" href="shop-single.jsp"></a><img src="resources/img/shop/th10.jpg" alt="Product">
-            <div class="product-card-buttons">
-              <button class="btn btn-white btn-sm btn-wishlist" data-toggle="tooltip" title="Wishlist"><i class="material-icons favorite_border"></i></button>
-              <button class="btn btn-primary btn-sm" data-toast data-toast-type="success" data-toast-position="topRight" data-toast-icon="material-icons check" data-toast-title="Product" data-toast-message="successfuly added to cart!">Add to Cart</button>
-            </div>
-          </div>
-          <div class="product-card-details">
-            <h3 class="product-card-title"><a href="shop-single.jsp">Pendant Lamp</a></h3>
-            <h4 class="product-card-price">
-              <del>$54.00</del>$27.00
-            </h4>
-          </div>
-        </div>
-        <!-- Product-->
-        <div class="product-card">
-          <div class="product-card-thumb">
-	          	<a class="product-card-link" href="getProduct.do"></a>
-	          	<img src="resources/img/shop/th11.jpg" alt="Product">
-            <div class="product-card-buttons">
-              <button class="btn btn-white btn-sm btn-wishlist" data-toggle="tooltip" title="Wishlist"><i class="material-icons favorite_border"></i></button>
-              <button class="btn btn-primary btn-sm" data-toast data-toast-type="success" data-toast-position="topRight" data-toast-icon="material-icons check" data-toast-title="Product" data-toast-message="successfuly added to cart!">Add to Cart</button>
-            </div>
-          </div>
-          <div class="product-card-details">
-            <h3 class="product-card-title"><a href="shop-single.jsp">Stylish Chair</a></h3>
-            <h4 class="product-card-price">$417.00</h4>
-          </div>
-        </div>
-        <!-- Product-->
-        <div class="product-card">
-          <div class="product-card-thumb"><span class="product-rating text-warning"><i class="material-icons star"></i><i class="material-icons star"></i><i class="material-icons star"></i><i class="material-icons star"></i><i class="material-icons star_border"></i></span><a class="product-card-link" href="shop-single.jsp"></a><img src="resources/img/shop/th07.jpg" alt="Product">
-            <div class="product-card-buttons">
-              <button class="btn btn-white btn-sm btn-wishlist" data-toggle="tooltip" title="Wishlist"><i class="material-icons favorite_border"></i></button>
-              <button class="btn btn-primary btn-sm" data-toast data-toast-type="success" data-toast-position="topRight" data-toast-icon="material-icons check" data-toast-title="Product" data-toast-message="successfuly added to cart!">Add to Cart</button>
-            </div>
-          </div>
-          <div class="product-card-details">
-            <h3 class="product-card-title"><a href="shop-single.jsp">Lounge Chair</a></h3>
-            <h4 class="product-card-price">$1099.00</h4>
-          </div>
-        </div>
-        <!-- Product-->
-        <div class="product-card">
-          <div class="product-card-thumb"><a class="product-card-link" href="shop-single.jsp"></a><img src="resources/img/shop/th16.jpg" alt="Product">
-            <div class="product-card-buttons">
-              <button class="btn btn-white btn-sm btn-wishlist" data-toggle="tooltip" title="Wishlist"><i class="material-icons favorite_border"></i></button>
-              <button class="btn btn-primary btn-sm" data-toast data-toast-type="success" data-toast-position="topRight" data-toast-icon="material-icons check" data-toast-title="Product" data-toast-message="successfuly added to cart!">Add to Cart</button>
-            </div>
-          </div>
-          <div class="product-card-details">
-            <h3 class="product-card-title"><a href="shop-single.jsp">Navy Box Bench</a></h3>
-            <h4 class="product-card-price">$75.00</h4>
-          </div>
-        </div>
-        <!-- Product-->
-        <div class="product-card">
-          <div class="product-card-thumb"><a class="product-card-link" href="shop-single.jsp"></a><img src="resources/img/shop/th09.jpg" alt="Product">
-            <div class="product-card-buttons">
-              <button class="btn btn-white btn-sm btn-wishlist" data-toggle="tooltip" title="Wishlist"><i class="material-icons favorite_border"></i></button>
-              <button class="btn btn-primary btn-sm" data-toast data-toast-type="success" data-toast-position="topRight" data-toast-icon="material-icons check" data-toast-title="Product" data-toast-message="successfuly added to cart!">Add to Cart</button>
-            </div>
-          </div>
-          <div class="product-card-details">
-            <h3 class="product-card-title"><a href="shop-single.jsp">Campfire Table</a></h3>
-            <h4 class="product-card-price">$1087.00</h4>
-          </div>
-        </div>
-        <!-- Product-->
-        <div class="product-card mb-30">
-          <div class="product-card-thumb"><a class="product-card-link" href="shop-single.jsp"></a><img src="resources/img/shop/th06.jpg" alt="Product">
-            <div class="product-card-buttons">
-              <button class="btn btn-white btn-sm btn-wishlist" data-toggle="tooltip" title="Wishlist"><i class="material-icons favorite_border"></i></button>
-              <button class="btn btn-primary btn-sm" data-toast data-toast-type="success" data-toast-position="topRight" data-toast-icon="material-icons check" data-toast-title="Product" data-toast-message="successfuly added to cart!">Add to Cart</button>
-            </div>
-          </div>
-          <div class="product-card-details">
-            <h3 class="product-card-title"><a href="shop-single.jsp">LED Lighting</a></h3>
-            <h4 class="product-card-price">$130.00</h4>
-          </div>
-        </div>
-      </div>
-    </div>
     <!-- Site Footer-->
     <footer class="site-footer">
       <div class="column text-center">
-        <p class="text-sm mb-4">Need Support? Call<span class="text-primary">&nbsp;010 - 4335 - 2504</span></p>
+        <p class="text-sm mb-4">Need Support? Call<span class="text-primary">&nbsp;010 - 1111 - 2222</span></p>
         <p class="text-xxs text-muted mb-0 mt-3">© All rights reserved. Made with <i class='material-icons favorite text-danger'></i> by 곽연희, 송희, 오서현, 이동희</p>
       </div>
     </footer>

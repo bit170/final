@@ -1,5 +1,6 @@
 package com.spring.biz.order.impl;
 
+import java.util.HashMap;
 import java.util.List;
 
 import org.mybatis.spring.SqlSessionTemplate;
@@ -8,6 +9,7 @@ import org.springframework.stereotype.Repository;
 
 import com.spring.biz.order.OrdVO;
 import com.spring.biz.order.S_OrdVO;
+import com.spring.biz.order.SellVO;
 
 @Repository
 public class OrdDAO {
@@ -35,4 +37,9 @@ public class OrdDAO {
 	public List<OrdVO> getOrdList(String id){
 		return mybatis.selectList("ordDAO.getOrdList", id);
 	}
+	
+	public List<SellVO> getSellList(String a_id){
+		return mybatis.selectList("ordDAO.getSellList", a_id);
+	}
+	
 }

@@ -172,6 +172,7 @@
             <ul class="sub-menu">
                 <li><a href="getFollowList.do?id=${member.id}">팔로우</a></li>
                 <li><a href="getOrderList.do?id=${member.id}">주문목록</a></li>
+                <li><a href="getSellList.do?id=${member.id}">판매목록</a></li>
                 <li><a href="getMember.do?id=${member.id}">프로필 수정</a></li>
                 <li><a href="getAddress.do">주소록</a></li>
                 <li><a href="getMyCanvas.do">마이 캔버스</a></li>
@@ -190,6 +191,9 @@
                 <li><a href="#" data-toast data-toast-type="danger" 
               data-toast-position="topRight" data-toast-icon="icon-circle-check" 
               data-toast-title="login needed" data-toast-message="로그인이 필요한 서비스입니다.">주문목록</a></li>
+              <li><a href="#" data-toast data-toast-type="danger" 
+              data-toast-position="topRight" data-toast-icon="icon-circle-check" 
+              data-toast-title="login needed" data-toast-message="로그인이 필요한 서비스입니다.">판매목록</a></li>
                 <li><a href="#" data-toast data-toast-type="danger" 
               data-toast-position="topRight" data-toast-icon="icon-circle-check" 
               data-toast-title="login needed" data-toast-message="로그인이 필요한 서비스입니다.">프로필 수정</a></li>
@@ -417,7 +421,7 @@
                     <td>
                       <div class="product-item">
                       <a class="product-thumb" href="getProduct.do?p_code=${cart.p_code}">
-                      <img src="<c:url value='/aThumbnails.do?a_id=${item.a_id }' />" alt="Product"></a>
+                      <img src="<c:url value='/thumbnails.do?p_code=${cart.p_code}' />" alt="Product"></a>
                         <div class="product-info">
                           <h4 class="product-title">
                             <a href="getProduct.do?p_code=${cart.p_code}">${cart.p_name}</a></h4>
@@ -499,7 +503,7 @@
       <div class="row">
       <c:forEach items="${MainArtist}" var="mArtist">
         <div class="col-md-3 col-sm-6 mb-30"><a class="category-card flex-wrap text-center pt-0" href="getArtist.do">
-            <div class="category-card-thumb w-100"><img src="resources/img/product/2.png" alt="Category" ></div>
+            <div class="category-card-thumb w-100"><img src="<c:url value='/aThumbnails.do?a_id=${mArtist.a_id }' />" alt="Product"></div>
             <div class="category-card-info w-100">
 
               <h3 class="category-card-title">${mArtist.nickname}</h3>
@@ -541,8 +545,8 @@
              <c:forEach items="${MainProduct}" var="mProduct">
 	            <div class="col-xl-3 col-lg-4 col-sm-6">
 	              <div class="product-card mb-30" >
-	                <div class="product-card-thumb"> <span class="product-badge text-danger">Sale</span>
-	                	<a class="product-card-link" href="getProduct.do"></a><img src="<c:url value='/thumbnails.do?p_code=${mProduct.p_code }' />" alt="Product">
+	                <div class="product-card-thumb">
+	                	<a class="product-card-link" href="getProduct.do?p_code=${mProduct.p_code}"></a><img src="<c:url value='/thumbnails.do?p_code=${mProduct.p_code }' />" alt="Product">
 	                  <div class="product-card-buttons">
 	                    <!-- 버튼 클릭시 위시리스트 디비작업 -->
 	                    <button class="btn btn-white btn-sm btn-wishlist" data-toggle="tooltip" title="Wishlist">
@@ -554,10 +558,8 @@
 	                  </div>
 	                </div>
 	                <div class="product-card-details">
-	                  <h3 class="product-card-title"><a href="getProduct.do">${mProduct.p_name}</a></h3>
-	                  <h4 class="product-card-price">
-	                    <del>₩${mProduct.price}0</del>₩${mProduct.price}
-	                  </h4>
+	                  <h3 class="product-card-title"><a href="getProduct.do?p_code=${mProduct.p_code}">${mProduct.p_name}</a></h3>
+	                  <h4 class="product-card-price">₩${mProduct.price}</h4>
 	                </div>
 	              </div>
 	            </div>
@@ -614,7 +616,7 @@
 <!-- Site Footer-->
     <footer class="site-footer">
       <div class="column text-center">
-        <p class="text-sm mb-4">Need Support? Call<span class="text-primary">&nbsp;010 - 4355 - 2504</span></p>
+        <p class="text-sm mb-4">Need Support? Call<span class="text-primary">&nbsp;010 - 1111 - 2222</span></p>
         <p class="text-xxs text-muted mb-0 mt-3">© All rights reserved. Made with <i class='material-icons favorite text-danger'></i> by 곽연희, 송희, 오서현, 이동희</p>
       </div>
       <!-- <div class="column">
@@ -642,4 +644,3 @@
     <script src="resources/js/scripts.min.js"></script>
   </body>
 </html>
->>>>>>> refs/remotes/origin/yhg

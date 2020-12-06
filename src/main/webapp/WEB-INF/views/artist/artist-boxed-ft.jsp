@@ -170,6 +170,7 @@
             <ul class="sub-menu">
                 <li><a href="getFollowList.do?id=${member.id}">팔로우</a></li>
                 <li><a href="getOrderList.do?id=${member.id}">주문목록</a></li>
+                <li><a href="getSellList.do?id=${member.id}">판매목록</a></li>
                 <li><a href="getMember.do?id=${member.id}">프로필 수정</a></li>
                 <li><a href="getAddress.do">주소록</a></li>
                 <li><a href="getMyCanvas.do">마이 캔버스</a></li>
@@ -188,6 +189,9 @@
                 <li><a href="#" data-toast data-toast-type="danger" 
               data-toast-position="topRight" data-toast-icon="icon-circle-check" 
               data-toast-title="login needed" data-toast-message="로그인이 필요한 서비스입니다.">주문목록</a></li>
+              <li><a href="#" data-toast data-toast-type="danger" 
+              data-toast-position="topRight" data-toast-icon="icon-circle-check" 
+              data-toast-title="login needed" data-toast-message="로그인이 필요한 서비스입니다.">판매목록</a></li>
                 <li><a href="#" data-toast data-toast-type="danger" 
               data-toast-position="topRight" data-toast-icon="icon-circle-check" 
               data-toast-title="login needed" data-toast-message="로그인이 필요한 서비스입니다.">프로필 수정</a></li>
@@ -243,6 +247,7 @@
                   <ul class="slideable-submenu">
                 <li><a href="getFollowList.do?id=${member.id}">팔로우</a></li>
                 <li><a href="getOrderList.do?id=${member.id}">주문목록</a></li>
+                <li><a href="getSellList.do?id=${member.id}">판매목록</a></li>
                 <li><a href="getMember.do?id=${member.id}">프로필 수정</a></li>
                 <li><a href="getAddress.do">주소록</a></li>
                 <li><a href="getMyCanvas.do">마이 캔버스</a></li>
@@ -416,7 +421,7 @@
                     <td>
                       <div class="product-item">
                       <a class="product-thumb" href="getProduct.do?p_code=${cart.p_code}">
-                      <img src="<c:url value='/aThumbnails.do?a_id=${item.a_id }' />" alt="Product"></a>
+                      <img src="<c:url value='/thumbnails.do?p_code=${cart.p_code}' />" alt="Product"></a>
                         <div class="product-info">
                           <h4 class="product-title">
                             <a href="getProduct.do?p_code=${cart.p_code}">${cart.p_name}</a></h4>
@@ -505,7 +510,8 @@
         <c:forEach var="item" items="${artistList}">    
         <div class="col-xl-3 col-lg-4 col-sm-6">
           <div class="product-card mb-30">
-            <div class="product-card-thumb"><a class="product-card-link" href="getArtist.do?a_id=${item.a_id }"></a><img src="<c:url value='/aThumbnails.do?a_id=${item.a_id }' />" alt="Image" alt="Product">
+            <div class="product-card-thumb"><a class="product-card-link" href="getArtist.do?a_id=${item.a_id }"></a><img src="<c:url value='/aThumbnails.do?a_id=${item.a_id }' />"
+             onerror="if (this.src != '<c:url value='/aThumbnails.do?a_id=${item.a_id }' />') this.src = '/resources/img/shop/ARTIST1.jpg';" alt="Image" alt="Product">
               <div class="product-card-buttons">
                 <!-- <button class="btn btn-white btn-sm btn-wishlist" data-toggle="tooltip" title="Follow"><i class="material-icons favorite_border"></i></button>-->
                 <button onclick="location.href='Follow.do?a_id=${item.a_id }&page=all'" class="btn btn-primary margin-bottom-none" type="button" data-toast data-toast-position="topRight" data-toast-type="success"
@@ -539,7 +545,7 @@
     <!-- Site Footer-->
     <footer class="site-footer">
       <div class="column text-center">
-        <p class="text-sm mb-4">Need Support? Call<span class="text-primary">&nbsp;010 - 4355 - 2504</span></p>
+        <p class="text-sm mb-4">Need Support? Call<span class="text-primary">&nbsp;010 - 1111 - 2222</span></p>
         <p class="text-xxs text-muted mb-0 mt-3">© All rights reserved. Made with <i class='material-icons favorite text-danger'></i> by 곽연희, 송희, 오서현, 이동희</p>
       </div>
       <!-- <div class="column">

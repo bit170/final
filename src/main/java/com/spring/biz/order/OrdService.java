@@ -7,4 +7,5 @@ public interface OrdService {
 	List<OrdVO> getOrdList(String id);
 	void insertS_Ord(S_OrdVO svo);
 	List<S_OrdVO> getS_OrdList(String o_code);
+	List<SellVO> getSellList(String a_id);
 }

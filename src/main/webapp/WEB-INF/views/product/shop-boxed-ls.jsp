@@ -175,6 +175,7 @@
             <ul class="sub-menu">
                 <li><a href="getFollowList.do?id=${member.id}">팔로우</a></li>
                 <li><a href="getOrderList.do?id=${member.id}">주문목록</a></li>
+                <li><a href="getSellList.do?id=${member.id}">판매목록</a></li>
                 <li><a href="getMember.do?id=${member.id}">프로필 수정</a></li>
                 <li><a href="getAddress.do">주소록</a></li>
                 <li><a href="getMyCanvas.do">마이 캔버스</a></li>
@@ -183,25 +184,28 @@
           </c:if>
           <c:if test="${empty member}">
           <li><a href="#" data-toast data-toast-type="danger" 
-	        		data-toast-position="topRight" data-toast-icon="icon-circle-check" 
-	        		data-toast-title="login needed" data-toast-message="로그인이 필요한 서비스입니다.">
-        			<span>MyPage</span></a>
+              data-toast-position="topRight" data-toast-icon="icon-circle-check" 
+              data-toast-title="login needed" data-toast-message="로그인이 필요한 서비스입니다.">
+              <span>MyPage</span></a>
             <ul class="sub-menu">
                 <li><a href="#" data-toast data-toast-type="danger" 
-	        		data-toast-position="topRight" data-toast-icon="icon-circle-check" 
-	        		data-toast-title="login needed" data-toast-message="로그인이 필요한 서비스입니다.">팔로우</a></li>
+              data-toast-position="topRight" data-toast-icon="icon-circle-check" 
+              data-toast-title="login needed" data-toast-message="로그인이 필요한 서비스입니다.">팔로우</a></li>
                 <li><a href="#" data-toast data-toast-type="danger" 
-	        		data-toast-position="topRight" data-toast-icon="icon-circle-check" 
-	        		data-toast-title="login needed" data-toast-message="로그인이 필요한 서비스입니다.">주문목록</a></li>
+              data-toast-position="topRight" data-toast-icon="icon-circle-check" 
+              data-toast-title="login needed" data-toast-message="로그인이 필요한 서비스입니다.">주문목록</a></li>
+              <li><a href="#" data-toast data-toast-type="danger" 
+              data-toast-position="topRight" data-toast-icon="icon-circle-check" 
+              data-toast-title="login needed" data-toast-message="로그인이 필요한 서비스입니다.">판매목록</a></li>
                 <li><a href="#" data-toast data-toast-type="danger" 
-	        		data-toast-position="topRight" data-toast-icon="icon-circle-check" 
-	        		data-toast-title="login needed" data-toast-message="로그인이 필요한 서비스입니다.">프로필 수정</a></li>
+              data-toast-position="topRight" data-toast-icon="icon-circle-check" 
+              data-toast-title="login needed" data-toast-message="로그인이 필요한 서비스입니다.">프로필 수정</a></li>
                 <li><a href="#" data-toast data-toast-type="danger" 
-	        		data-toast-position="topRight" data-toast-icon="icon-circle-check" 
-	        		data-toast-title="login needed" data-toast-message="로그인이 필요한 서비스입니다.">주소록</a></li>
+              data-toast-position="topRight" data-toast-icon="icon-circle-check" 
+              data-toast-title="login needed" data-toast-message="로그인이 필요한 서비스입니다.">주소록</a></li>
                 <li><a href="#" data-toast data-toast-type="danger" 
-	        		data-toast-position="topRight" data-toast-icon="icon-circle-check" 
-	        		data-toast-title="login needed" data-toast-message="로그인이 필요한 서비스입니다.">마이 캔버스</a></li>
+              data-toast-position="topRight" data-toast-icon="icon-circle-check" 
+              data-toast-title="login needed" data-toast-message="로그인이 필요한 서비스입니다.">마이 캔버스</a></li>
             </ul>
           </li>
           </c:if>
@@ -413,7 +417,7 @@
                     <td>
                       <div class="product-item">
                       <a class="product-thumb" href="getProduct.do?p_code=${cart.p_code}">
-                      	  <img src="resources/img/product/5.png" alt="Product"></a>
+                      	 <img src="<c:url value='/thumbnails.do?p_code=${cart.p_code}' />" alt="Product"></a>
                         <div class="product-info">
                           <h4 class="product-title">
                           	<a href="getProduct.do?p_code=${cart.p_code}">${cart.p_name}</a></h4>
@@ -477,7 +481,7 @@
           </div> -->
           <!-- Search-->
           <div class="d-flex flex-wrap-reverse flex-md-nowrap justify-content-center justify-content-sm-between align-items-center mb-30">
-            <div class="pt-3 pb-1 pb-sm-3 text-sm text-center text-sm-left"><span class="text-muted mr-2">Showing</span>1- 12 items</div>
+            <div class="pt-3 pb-1 pb-sm-3 text-sm text-center text-sm-left"></div>
             <form class="input-group shop-search-box" action="searchByPname.do" method="post"><span class="input-group-btn">
                 <button type="submit"><i class="material-icons search"></i></button></span>
               <input class="form-control" type="text" placeholder="작품명을 입력한 후, 엔터를 누르세요" id="p_name" name="p_name">
@@ -592,28 +596,7 @@
                 <li><a href="sortAlpha.do"><i class="material-icons sort_by_alpha"></i>가나다순</a></li>
               </ul>
             </section>
-            <!-- Widget Price Range-->
-            <section class="widget widget-categories">
-              <h3 class="widget-title">가격 범위</h3>
-              <form action="priceRange.do" class="price-range-slider" method="POST" data-start-min="0" data-start-max="100" data-min="0" data-max="300" data-step="1">
-                <div class="ui-range-slider"></div>
-                <footer class="ui-range-slider-footer">
-                  <div class="column">
-                    <button class="btn btn-outline-primary btn-sm" type="submit">분류</button>
-                  </div>
-                  <div class="column">
-                    <div class="ui-range-values">
-                      <div class="ui-range-value-min">₩<span></span>
-                        <input id="minp" type="hidden">
-                      </div>&nbsp;-&nbsp;
-                      <div class="ui-range-value-max">₩<span></span>
-                        <input id="maxp" type="hidden">
-                      </div>(만원)
-                    </div>
-                  </div>
-                </footer>
-              </form>
-            </section>
+          
             <!-- Widget Brand Filter-->
             <!-- <section class="widget">
               <h3 class="widget-title">Filter by Brand</h3>
@@ -659,7 +642,7 @@
     <!-- Site Footer-->
     <footer class="site-footer">
       <div class="column text-center">
-        <p class="text-sm mb-4">Need Support? Call<span class="text-primary">&nbsp;010 - 4355 - 2504</span></p>
+        <p class="text-sm mb-4">Need Support? Call<span class="text-primary">&nbsp;010 - 1111 - 2222</span></p>
         <p class="text-xxs text-muted mb-0 mt-3">© All rights reserved. Made with <i class='material-icons favorite text-danger'></i> by 곽연희, 송희, 오서현, 이동희</p>
       </div>
       <!-- <div class="column">

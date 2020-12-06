@@ -170,6 +170,7 @@
             <ul class="sub-menu">
                 <li><a href="getFollowList.do?id=${member.id}">팔로우</a></li>
                 <li><a href="getOrderList.do?id=${member.id}">주문목록</a></li>
+                <li><a href="getSellList.do?id=${member.id}">판매목록</a></li>
                 <li><a href="getMember.do?id=${member.id}">프로필 수정</a></li>
                 <li><a href="getAddress.do">주소록</a></li>
                 <li><a href="getMyCanvas.do">마이 캔버스</a></li>
@@ -188,6 +189,9 @@
                 <li><a href="#" data-toast data-toast-type="danger" 
               data-toast-position="topRight" data-toast-icon="icon-circle-check" 
               data-toast-title="login needed" data-toast-message="로그인이 필요한 서비스입니다.">주문목록</a></li>
+              <li><a href="#" data-toast data-toast-type="danger" 
+              data-toast-position="topRight" data-toast-icon="icon-circle-check" 
+              data-toast-title="login needed" data-toast-message="로그인이 필요한 서비스입니다.">판매목록</a></li>
                 <li><a href="#" data-toast data-toast-type="danger" 
               data-toast-position="topRight" data-toast-icon="icon-circle-check" 
               data-toast-title="login needed" data-toast-message="로그인이 필요한 서비스입니다.">프로필 수정</a></li>
@@ -243,6 +247,7 @@
                   <ul class="slideable-submenu">
                 <li><a href="getFollowList.do?id=${member.id}">팔로우</a></li>
                 <li><a href="getOrderList.do?id=${member.id}">주문목록</a></li>
+                <li><a href="getSellList.do?id=${member.id}">판매목록</a></li>
                 <li><a href="getMember.do?id=${member.id}">프로필 수정</a></li>
                 <li><a href="getAddress.do">주소록</a></li>
                 <li><a href="getMyCanvas.do">마이 캔버스</a></li>
@@ -415,7 +420,7 @@
                     <td>
                       <div class="product-item">
                       <a class="product-thumb" href="getProduct.do?p_code=${cart.p_code}">
-                      <img src="<c:url value='/aThumbnails.do?a_id=${item.a_id }' />" alt="Product"></a>
+                      <img src="<c:url value='/thumbnails.do?p_code=${cart.p_code}' />" alt="Product"></a>
                         <div class="product-info">
                           <h4 class="product-title">
                             <a href="getProduct.do?p_code=${cart.p_code}">${cart.p_name}</a></h4>
@@ -504,29 +509,37 @@
         </c:forEach>
       	</div>
     </div>
-    <!-- Site Footer-->
+ <!-- Site Footer-->
     <footer class="site-footer">
       <div class="column text-center">
-        <p class="text-sm mb-4">Need Support? Call<span class="text-primary">&nbsp;001 (917) 555-4836</span></p><a class="social-button sb-skype" href="#" data-toggle="tooltip" data-placement="top" title="Skype"><i class="socicon-skype"></i></a><a class="social-button sb-facebook" href="#" data-toggle="tooltip" data-placement="top" title="Facebook"><i class="socicon-facebook"></i></a><a class="social-button sb-google-plus" href="#" data-toggle="tooltip" data-placement="top" title="Google +"><i class="socicon-googleplus"></i></a><a class="social-button sb-twitter" href="#" data-toggle="tooltip" data-placement="top" title="Twitter"><i class="socicon-twitter"></i></a><a class="social-button sb-instagram" href="#" data-toggle="tooltip" data-placement="top" title="Instagram"><i class="socicon-instagram"></i></a>
-        <p class="text-xxs text-muted mb-0 mt-3">© All rights reserved. Made with <i class='material-icons favorite text-danger'></i> by rokaux</p>
+        <p class="text-sm mb-4">Need Support? Call<span class="text-primary">&nbsp;010 - 1111 - 2222</span></p>
+        <p class="text-xxs text-muted mb-0 mt-3">© All rights reserved. Made with <i class='material-icons favorite text-danger'></i> by 곽연희, 송희, 오서현, 이동희</p>
       </div>
-      <div class="column">
+      <!-- <div class="column">
         <h3 class="widget-title text-center">Subscription<small>To receive latest offers and discounts from the shop.</small></h3>
         <form class="subscribe-form input-group" action="//rokaux.us12.list-manage.com/subscribe/post?u=c7103e2c981361a6639545bd5&amp;id=1194bb7544" method="post" target="_blank" novalidate><span class="input-group-btn">
             <button type="submit"><i class="material-icons send"></i></button></span>
-          <input class="form-control" type="email" name="EMAIL" placeholder="Your e-mail">
+          <input class="form-control" type="email" name="EMAIL" placeholder="Your e-mail"> -->
           <!-- real people should not fill this in and expect good things - do not remove this or risk form bot signups-->
           <div style="position: absolute; left: -5000px;" aria-hidden="true">
             <input type="text" name="b_c7103e2c981361a6639545bd5_1194bb7544" tabindex="-1" value>
           </div>
         </form>
       </div>
-      <div class="column">
+      <!-- <div class="column">
         <h3 class="widget-title text-center">Payment Methods<small>We support one of the following payment methods.</small></h3>
-        <div class="footer-cards"><img src="img/cards.png" alt="Payment Methods">
+        <div class="footer-cards"><img src="resources/img/cards.png" alt="Payment Methods">
         </div>
-      </div>
+      </div> -->
     </footer>
+    <!-- Back To Top Button--><a class="scroll-to-top-btn" href="#"><i class="material-icons trending_flat"></i></a>
+    <!-- Backdrop-->
+    <div class="site-backdrop"></div>
+    <!-- JavaScript (jQuery) libraries, plugins and custom scripts-->
+    <script src="resources/js/vendor.min.js"></script>
+    <script src="resources/js/scripts.min.js"></script>
+  </body>
+</html>
     <!-- Photoswipe container-->
     <div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
       <div class="pswp__bg"></div>

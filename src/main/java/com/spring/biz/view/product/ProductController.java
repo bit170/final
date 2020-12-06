@@ -46,8 +46,8 @@ public class ProductController extends BaseController {
 		System.out.println(">>>> ProductController() 객체 생성");
 	}
 
-	@RequestMapping(value="/addNewProduct.do" ,method={RequestMethod.POST})
-	public ResponseEntity addNewProduct(MultipartHttpServletRequest multipartRequest, HttpServletResponse response)  throws Exception {
+	@RequestMapping(value="/addNewProduct.do" ,method=RequestMethod.POST)
+	public String addNewProduct(MultipartHttpServletRequest multipartRequest, HttpServletResponse response, HttpServletRequest request)  throws Exception {
 		System.out.println("addNewProduct() 실행");
 		
 		multipartRequest.setCharacterEncoding("utf-8");
@@ -128,7 +128,8 @@ public class ProductController extends BaseController {
 			e.printStackTrace();
 		}
 		resEntity =new ResponseEntity(message, responseHeaders, HttpStatus.OK);
-		return resEntity;
+		return "redirect:/getMyCanvas.do?id="+a_id;
+//		return resEntity;
 	}
 	
 	
@@ -300,8 +301,10 @@ public class ProductController extends BaseController {
 		}
 		System.out.println(category);
 		List<ProductVO> categoryList = productService.getCategory(category);
-		System.out.println(categoryList.get(0).getP_category());
-		model.addAttribute("productList", categoryList);
+		if(categoryList.size()!=0) {
+			model.addAttribute("productList", categoryList);
+		}
+//		System.out.println(categoryList.get(0).getP_category());
 		List<String> categoryCnt = productService.categoryCnt();
 		System.out.println(categoryCnt.get(0));
 		model.addAttribute("categoryCnt", categoryCnt);
@@ -335,6 +338,7 @@ public class ProductController extends BaseController {
 		List<ProductVO> list = productService.searchByPname(p_name);
 		model.addAttribute("productList", list);
 		System.out.println(list.isEmpty());
+		
 		return "product/shop-boxed-ls";
 	}
 	
@@ -344,6 +348,9 @@ public class ProductController extends BaseController {
 		List<ProductVO> list = productService.sortLatest();
 		model.addAttribute("productList", list);
 		System.out.println(list.isEmpty());
+		List<String> categoryCnt = productService.categoryCnt();
+		System.out.println(categoryCnt.get(0));
+		model.addAttribute("categoryCnt", categoryCnt);
 		return "product/shop-boxed-ls";
 	}
 	
@@ -353,6 +360,9 @@ public class ProductController extends BaseController {
 		List<ProductVO> list = productService.sortCheap();
 		model.addAttribute("productList", list);
 		System.out.println(list.isEmpty());
+		List<String> categoryCnt = productService.categoryCnt();
+		System.out.println(categoryCnt.get(0));
+		model.addAttribute("categoryCnt", categoryCnt);
 		return "product/shop-boxed-ls";
 	}
 	
@@ -362,6 +372,9 @@ public class ProductController extends BaseController {
 		List<ProductVO> list = productService.sortExpensive();
 		model.addAttribute("productList", list);
 		System.out.println(list.isEmpty());
+		List<String> categoryCnt = productService.categoryCnt();
+		System.out.println(categoryCnt.get(0));
+		model.addAttribute("categoryCnt", categoryCnt);
 		return "product/shop-boxed-ls";
 	}
 	
@@ -371,6 +384,9 @@ public class ProductController extends BaseController {
 		List<ProductVO> list = productService.sortAlpha();
 		model.addAttribute("productList", list);
 		System.out.println(list.isEmpty());
+		List<String> categoryCnt = productService.categoryCnt();
+		System.out.println(categoryCnt.get(0));
+		model.addAttribute("categoryCnt", categoryCnt);
 		return "product/shop-boxed-ls";
 	}
 	

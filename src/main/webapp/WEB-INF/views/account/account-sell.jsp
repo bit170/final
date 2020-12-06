@@ -1,44 +1,111 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8" isELIgnored="false" %>
+	pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <title>체크아웃 - 결제
-    </title>
-    <!-- SEO Meta Tags-->
-    <meta name="description" content="Unishop - Universal E-Commerce Template">
-    <meta name="keywords" content="shop, e-commerce, modern, flat style, responsive, online store, business, mobile, blog, bootstrap 4, html5, css3, jquery, js, gallery, slider, touch, creative, clean">
-    <meta name="author" content="Rokaux">
-    <!-- Mobile Specific Meta Tag-->
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <!-- Favicon and Apple Icons-->
-    <link rel="icon" type="image/x-icon" href="resources/favicon.ico">
-    <link rel="icon" type="image/png" href="resources/favicon.png">
-    <link rel="apple-touch-icon" href="touch-icon-iphone.png">
-    <link rel="apple-touch-icon" sizes="152x152" href="touch-icon-ipad.png">
-    <link rel="apple-touch-icon" sizes="180x180" href="touch-icon-iphone-retina.png">
-    <link rel="apple-touch-icon" sizes="167x167" href="touch-icon-ipad-retina.png">
-    <!-- Vendor Styles including: Bootstrap, Font Icons, Plugins, etc.-->
-    <link rel="stylesheet" media="screen" 
-			href="<c:url value="resources/css/vendor.min.css" />">
-    <!-- Interactive Credit Card-->
-    <link rel="stylesheet" media="screen" 
-			href="<c:url value="resources/css/card.min.css" />">
-    <!-- Main Template Styles-->
-    <link id="mainStyles" rel="stylesheet" media="screen" 
-			href="<c:url value="resources/css/styles.min.css" />">
-    <!-- Modernizr-->
-    <script src="resources/js/modernizr.min.js"></script>
-    <script type="text/javascript" src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
-	<script type="text/javascript" src="https://service.iamport.kr/js/iamport.payment-1.1.5.js"></script>
-	<!-- <script type="text/javascript" src="https://cdn.iamport.kr/js/iamport.payment-x.y.z.js"></script> -->
-  </head>
-  <!-- Body-->
-  <body>
+<head>
+<meta charset="utf-8">
+<title>마이페이지 - 주문목록</title>
+<!-- SEO Meta Tags-->
+<meta name="description"
+	content="Unishop - Universal E-Commerce Template">
+<meta name="keywords"
+	content="shop, e-commerce, modern, flat style, responsive, online store, business, mobile, blog, bootstrap 4, html5, css3, jquery, js, gallery, slider, touch, creative, clean">
+<meta name="author" content="Rokaux">
+<!-- Mobile Specific Meta Tag-->
+<meta name="viewport"
+	content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<!-- Favicon and Apple Icons-->
+<link rel="icon" type="image/x-icon" href="favicon.ico">
+<link rel="icon" type="image/png" href="favicon.png">
+<link rel="apple-touch-icon" href="touch-icon-iphone.png">
+<link rel="apple-touch-icon" sizes="152x152" href="touch-icon-ipad.png">
+<link rel="apple-touch-icon" sizes="180x180"
+	href="touch-icon-iphone-retina.png">
+<link rel="apple-touch-icon" sizes="167x167"
+	href="touch-icon-ipad-retina.png">
+<!-- Vendor Styles including: Bootstrap, Font Icons, Plugins, etc.-->
+<link rel="stylesheet" media="screen"
+	href="<c:url value="resources/css/vendor.min.css" />">
+<!-- Main Template Styles-->
+<link id="mainStyles" rel="stylesheet" media="screen"
+	href="<c:url value="resources/css/styles.min.css" />">
+<!-- Modernizr-->
+<script src="resources/js/modernizr.min.js" /></script>
+
+</head>
+<!-- Body-->
+<body>
+	<!-- Open Ticket Modal-->
+    <div class="modal fade" id="orderDetails" tabindex="-1">
+      <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h4 class="modal-title"> 주문 번호 - ${order.o_code} </h4>
+            <button class="close" type="button" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+          </div>
+          <div class="modal-body">
+            <div class="table-responsive shopping-cart mb-0">
+              <table class="table">
+                <thead>
+                
+                <!-- S_ord forEach문 넣기 -->
+                  <tr>
+                    <th>작품 이름</th>
+                    <th class="text-center">작품 가격</th>
+                  </tr>
+                </thead>
+                    	<c:if test="${!empty sOrderList}">
+                <tbody>
+                  <c:forEach var="product" items="${sOrderList}">
+                  <c:forEach var="sOder" items="${sOder}">
+                  <tr>
+                    <td>
+                      <div class="product-item"><a class="product-thumb" href="order-tracking.do?o_code=${order.o_code}">
+                      		<img src="resources/img/product/05.jpg" alt="Product"></a>
+                        <div class="product-info">
+                          <h4 class="product-title"><a href="order-tracking.do?p_code=${product.p_code}">${product.p_name}
+                          	<small>x 1</small></a></h4>
+                          		<span><em>카테고리 : </em> ${product.p_category}</span>
+                          		<span><em>아티스트 : </em> ${product.a_id}</span>
+                        </div>
+                      </div>
+                    </td>
+                    <td class="text-center text-lg text-medium">${sOrder.p_price}</td>
+                  </tr>
+                  </c:forEach>
+                    </c:forEach>
+                </tbody>
+                  </c:if>
+                    	<c:if test="${empty sOrderList}">
+                <tbody>
+                  <tr>
+                    <td>
+                      <div class="product-item"><a class="product-thumb" href="#">
+                        <div class="product-info">
+                          <h4 class="product-title">상세주문내역이 아직 없습니다.</h4>
+                        </div>
+                      </div>
+                    </td>
+                    <td class="text-center text-lg text-medium"></td>
+                  </tr>
+                </tbody>
+                  </c:if>
+              </table>
+            </div>
+            <hr class="mb-3">
+            <div class="d-flex flex-wrap justify-content-between align-items-center pb-2">
+			<c:if test="${!empty sOrderList}">
+              <div class="text-lg px-2 py-1">총 합: <span class='text-medium'>
+              	₩ <fmt:formatNumber pattern="###,###,###" value="${order.total}" /></span></div>
+              </c:if>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
     <!-- Navbar-->
     <!-- Remove "navbar-sticky" class to make navigation bar scrollable with the page.-->
     <header class="navbar navbar-sticky">
@@ -145,7 +212,7 @@
                 <li class="has-children"><span><a href="getWishlists.do?id=${member.id}">MyPage</a><span class="sub-menu-toggle"></span></span>
                   <ul class="slideable-submenu">
                 <li><a href="getFollowList.do?id=${member.id}">팔로우</a></li>
-                <li><a href="getOrderList.do?id=${member.id}">주문목록</a></li>
+                <li><a href="getSellList.do?id=${member.id}">주문목록</a></li>
                 <li><a href="getSellList.do?id=${member.id}">판매목록</a></li>
                 <li><a href="getMember.do?id=${member.id}">프로필 수정</a></li>
                 <li><a href="getAddress.do">주소록</a></li>
@@ -319,7 +386,7 @@
                     <td>
                       <div class="product-item">
                       <a class="product-thumb" href="getProduct.do?p_code=${cart.p_code}">
-                      <img src="<c:url value='/thumbnails.do?a_id=${cart.p_code}' />" alt="Product"></a>
+                      <img src="<c:url value='/aThumbnails.do?a_id=${item.a_id }' />" alt="Product"></a>
                         <div class="product-info">
                           <h4 class="product-title">
                             <a href="getProduct.do?p_code=${cart.p_code}">${cart.p_name}</a></h4>
@@ -359,143 +426,126 @@
         </div>
       </div>
     </header>
-    <!-- Page Title-->
-    <div class="page-title">
-      <div class="container">
-        <h1>체크아웃 - 결제</h1>
-        <ul class="breadcrumbs">
-          <li><a href="main.do">Home</a>
-          </li>
-          <li class="separator">&nbsp;/&nbsp;</li>
-          <li>Checkout - Payment</li>
-        </ul>
-      </div>
-    </div>
-    <!-- Page Content-->
-    <div class="container padding-bottom-3x mb-2">
-      <div class="row">
-        <!-- Checkout Adress-->
-<script type="text/javascript"> IMP.init('imp39212394'); </script>
-        <div class="col-xl-9 col-lg-8">
-          <div class="steps flex-sm-nowrap mb-5">
-            <a class="step" href="checkout.do">
-              <h4 class="step-title"><i class="material-icons check_circle"></i>1. 배송지 입력</h4></a>
-            <a class="step active" href="payment.do">
-              <h4 class="step-title"><i class="material-icons check_circle"></i>2. 결제</h4></a>
-            <a class="step" href="review.do">
-              <h4 class="step-title">3. 주문확인</h4></a></div>
-          <h4>결제 방식을 선택하세요</h4>
-          <hr class="padding-bottom-1x">
-          <div class="accordion" id="accordion" role="tablist">
-            <div class="card">
-              <div class="card-header" role="tab">
-                <h6><a href="#card" data-toggle="collapse"><i class="icon-columns"></i>신용카드로 결제</a></h6>
-              </div>
-              <div class="collapse show" id="card" data-parent="#accordion" role="tabpanel">
-                <div class="card-body">
-                  <p class="text-sm">사용가능한 카드사:&nbsp;<img class="d-inline-block align-middle" src="resources/img/cards.png" style="width: 187px;" alt="Cerdit Cards"></p>
-                  <div class="card-wrapper"></div>
-                  <form class="interactive-credit-card row">
-                 <!--  <form class="row"> -->
-                    <div class="form-group col-sm-3">
-                      <input class="form-control" type="text" name="name" id="name" placeholder="이름" value="${member.name}" required>
-                    </div>
-                    <div class="form-group col-sm-6">
-                      <input class="form-control" type="text" name="email" id="email" placeholder="이메일" value="${member.email}" required>
-                    </div>
-                    <div class="form-group col-sm-6">
-                      <input class="form-control" type="text" name="phone" id="phone" placeholder="전화번호" value="${member.phone}" required>
-                    </div>
-                    <div class="form-group col-sm-6">
-                      <input class="form-control" type="text" name="address" id="address" 
-                      		placeholder="주소" value="${address.address}" required>
-                    </div>
-                    <div class="form-group col-sm-3">
-                      <input class="form-control" type="text" name="post" id="post" 
-                      		placeholder="우편번호" value="${address.post}" required>
-                    </div>
-                    <div class="col-sm-3">
-                      <button class="btn btn-outline-primary btn-block margin-top-none" onclick="IMP.request_pay()">결제하기</button>
-                    </div>
-                  </form>
-                </div>
-              </div>
-            </div>
-          </div>
-          
-          <script>
-
-          		var total = "${total}";
-          		var email = "${member.email}";
-          		var name = "${member.name}";
-          		var tel = "${member.phone}";
-          		var addr = "${address.address}";
-          		var post = "${address.post}";
-			
-          		
-			    IMP.request_pay({
-        	    pg : 'html5_inicis', // version 1.1.0부터 지원.
-        	    pay_method : 'card',
-        	    merchant_uid : 'merchant_' + new Date().getTime(),
-        	    name : '캔버스 마켓',
-        	    amount : total,
-        	    buyer_email : email,
-        	    buyer_name : name,
-        	    buyer_tel : phone,
-        	    buyer_addr : addr,
-        	    buyer_postcode : post,
-        	    m_redirect_url : 'http://192.168.0.222:8080/biz/review.do'
-        	}, function(rsp) {
-        	    if ( rsp.success ) {
-        	        var msg = '결제가 완료되었습니다.';
-        	       /*  msg += '고유ID : ' + rsp.imp_uid;
-        	        msg += '상점 거래ID : ' + rsp.merchant_uid;
-        	        msg += '결제 금액 : ' + rsp.paid_amount;
-        	        msg += '카드 승인번호 : ' + rsp.apply_num; */
-        	        msg += '계속하기 버튼을 클릭해 주문을 확인해주세요 ~!'
-        	    } else {
-        	        var msg = '결제에 실패하였습니다.';
-        	        msg += '에러내용 : ' + rsp.error_msg;
-        	    }
-        	    alert(msg);
-        	});
-          
-          </script>
-          
-          <div class="d-flex justify-content-between pt-4 mt-2"><a class="btn btn-outline-secondary m-0" href="checkout.do?id=${member.id}">뒤로가기</a>
-          <a class="btn btn-primary m-0" href="review.do">계속하기</a></div>
-        </div>
-        <!-- Sidebar -->
-        <!-- 결제 페이지 내 사이드 바 -->
-        <div class="col-xl-3 col-lg-4">
-          <aside class="sidebar">
-            <div class="padding-top-2x hidden-lg-up"></div>
-            <!-- Order Summary Widget-->
-            <section class="widget widget-order-summary bg-secondary border-0 p-4">
-              <h3 class="widget-title">주문 내역</h3>
-              <table class="table text-sm mb-0">
-                <tr>
-                  <td>주문 금액:</td>
-                  <td class="text-medium">₩ <fmt:formatNumber pattern="###,###,###" value="${total}" /></td>
-                  <input type="hidden" id="total" value="${total}">
-                </tr>
-               <!--  <tr>
-                  <td>Shipping:</td>
-                  <td class="text-medium">$35.50</td>
-                </tr> -->
-                <tr>
-                  <td></td>
-                  <td class="text-lg text-medium">₩ <fmt:formatNumber pattern="###,###,###" value="${total}" /></td>
-                </tr>
-              </table>
-            </section>
-          </aside>
-        </div>
-      </div>
-    </div>
-   <footer class="site-footer">
+	<!-- Page Title-->
+	<div class="page-title">
+		<div class="container">
+			<h1>내 판매목록</h1>
+			<ul class="breadcrumbs">
+				<li><a href="main.do">홈</a></li>
+				<li class="separator">&nbsp;/&nbsp;</li>
+				<li><a href="getWishlists.do?id=${member.id}">나의 계정</a></li>
+				<li class="separator">&nbsp;/&nbsp;</li>
+				<li>My Sales</li>
+			</ul>
+		</div>
+	</div>
+	<!-- Page Content-->
+	<div class="container padding-bottom-3x mb-1">
+		<div class="row">
+			<div class="col-lg-4">
+				<aside class="user-info-wrapper">
+					<div class="user-cover"
+						style="background-image: url(resources/img/account/user-cover-img.jpg);">
+					</div>
+					<div class="user-info">
+						<div class="user-data">
+							<h5>${member.name}님의 계정</h5>
+							<span>${member.joindate}</span>
+						</div>
+					</div>
+				</aside>
+				<!-- 마이페이지 목록 수정 (연희) -->
+				<nav class="list-group">
+					<a class="list-group-item" href="getWishlists.do?id=${member.id}">
+						<i class="icon-heart"></i>위시리스트
+					<c:if test="${!empty wishlist}">
+						<span class="badge badge-default badge-pill">1</span>
+						</c:if>
+					<c:if test="${empty wishlist}">
+						<span class="badge badge-default badge-pill"></span>
+						</c:if>
+						</a>
+					<a class="list-group-item" href="getFollowList.do?id=${member.id}">
+						<i class="icon-heart"></i>팔로우
+						<c:if test="${!empty follow}">
+						<span class="badge badge-default badge-pill">3</span>
+						</c:if>
+						<c:if test="${empty follow}">
+						<span class="badge badge-default badge-pill"></span>
+						</c:if>
+						</a> 
+						<a class="list-group-item" href="getOrderList.do?id=${member.id}">
+						<i class="icon-heart"></i>주문목록
+						<c:if test="${!empty order}">
+						<span class="badge badge-default badge-pill">3</span>
+						</c:if>
+						<c:if test="${empty order}">
+						<span class="badge badge-default badge-pill"></span>
+						</c:if>
+						</a>
+						<a class="list-group-item with-badge active" href="getSellList.do?id=${member.id}">
+						<i class="icon-heart"></i>판매목록
+						<c:if test="${!empty sell}">
+						<span class="badge badge-default badge-pill">1</span>
+						</c:if>
+						<c:if test="${empty sell}">
+						<span class="badge badge-default badge-pill"></span>
+						</c:if>
+						</a> 
+					<a class="list-group-item" href="getMember.do?id=${member.id}">
+						<i class="icon-head"></i>프로필 수정</a> 
+					<a class="list-group-item" href="getAddress.do">
+						<i class="icon-map"></i>주소록</a> 
+					<a class="list-group-item" href="getMyCanvas.do">
+						<i class="icon-head"></i>마이 캔버스</a>
+				</nav>
+			</div>
+			<div class="col-lg-8">
+				<div class="padding-top-2x mt-2 hidden-lg-up"></div>
+				<div class="table-responsive text-sm">
+					<table class="table table-hover margin-bottom-none">
+						<thead>
+							<tr>
+								<th>주문 번호</th>
+								<th>주문 날짜</th>
+								<th>작품</th>
+								<th>주문자 아이디</th>
+								<th>주문자 주소</th>
+							</tr>
+						</thead>
+						<tbody>
+							<c:if test="${!empty sellList}">
+							<c:forEach items="${sellList}" var="sell">
+							<tr>
+								<td class="align-middle">
+								<a class="text-medium navi-link" href="#" data-toggle="modal" data-target="#orderDetails">
+									${sell.o_code}</a></td>
+								<td class="align-middle">${sell.o_date}</td>
+								<td class="align-middle"><a class="product-thumb" href="getProduct.do?p_code=${sell.p_code }">
+								<img src="<c:url value='/thumbnails.do?p_code=${sell.p_code}' />" alt="Image" alt="Product"></a></td>
+								<td class="align-middle">${sell.id }</td>
+								<td class="align-middle">${sell.d_address }(${sell.d_post })</td>
+							</tr>
+							</c:forEach>
+							</c:if>
+							<c:if test="${empty sellList}">
+							<tr>
+								<td class="align-middle">
+									<h4>판매하신 내역이 아직 없습니다.</h4>
+								</td>
+							</tr>
+							</c:if>
+						</tbody>
+					</table>
+				</div>
+				<hr class="mb-3">
+			</div>
+		</div>
+	</div>
+	<!-- Site Footer-->
+	<footer class="site-footer">
       <div class="column text-center">
-        <p class="text-sm mb-4">Need Support? Call<span class="text-primary">&nbsp;010 - 1111 - 2222</span></p>
+        <p class="text-sm mb-4">Need Support? Call<span class="text-primary">&nbsp;010 - 4355 - 2504</span></p>
         <p class="text-xxs text-muted mb-0 mt-3">© All rights reserved. Made with <i class='material-icons favorite text-danger'></i> by 곽연희, 송희, 오서현, 이동희</p>
       </div>
       <!-- <div class="column">
@@ -515,12 +565,13 @@
         </div>
       </div> -->
     </footer>
-    <!-- Back To Top Button--><a class="scroll-to-top-btn" href="#"><i class="material-icons trending_flat"></i></a>
-    <!-- Backdrop-->
-    <div class="site-backdrop"></div>
-    <!-- JavaScript (jQuery) libraries, plugins and custom scripts-->
-    <script src="resources/js/vendor.min.js"></script>
-    <script src="resources/js/card.min.js"></script>
-    <script src="resources/js/scripts.min.js"></script>
-  </body>
+	<!-- Back To Top Button-->
+	<a class="scroll-to-top-btn" href="#"><i
+		class="material-icons trending_flat"></i></a>
+	<!-- Backdrop-->
+	<div class="site-backdrop"></div>
+	<!-- JavaScript (jQuery) libraries, plugins and custom scripts-->
+	<script src="resources/js/vendor.min.js"></script>
+	<script src="resources/js/scripts.min.js"></script>
+</body>
 </html>
