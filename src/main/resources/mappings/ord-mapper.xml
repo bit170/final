@@ -22,8 +22,20 @@
 		SELECT * FROM S_ORD WHERE O_CODE = #{o_code}
 	</select>
 
+	<select id="getOcode" parameterType="String" resultType="String">
+		SELECT O_CODE FROM S_ORD WHERE A_ID = #{a_id}
+	</select>
+	
+	<select id="getSellList" parameterType="String" resultType="sell">
+		
+		<![CDATA[
+		SELECT O_CODE, ID, O_DATE, P_CODE, D_POST, D_ADDRESS 
+		FROM ORD
+		NATURAL JOIN DELIVERY
+		WHERE O_CODE IN (SELECT O_CODE FROM S_ORD WHERE A_ID = #{a_id})
+		]]>
+	</select>
 </mapper>
-
 
 
 
