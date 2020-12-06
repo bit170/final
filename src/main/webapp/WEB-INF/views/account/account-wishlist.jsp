@@ -150,6 +150,7 @@
                   <ul class="slideable-submenu">
                 <li><a href="getFollowList.do?id=${member.id}">팔로우</a></li>
                 <li><a href="getOrderList.do?id=${member.id}">주문목록</a></li>
+                <li><a href="getSellList.do?id=${member.id}">판매목록</a></li>
                 <li><a href="getMember.do?id=${member.id}">프로필 수정</a></li>
                 <li><a href="getAddress.do">주소록</a></li>
                 <li><a href="getMyCanvas.do">마이 캔버스</a></li>
@@ -419,7 +420,7 @@
 						<span class="badge badge-default badge-pill"></span>
 						</c:if>
 						</a> 
-						<a class="list-group-item" href="getSellList.do?a_id=${member.id}">
+						<a class="list-group-item" href="getSellList.do?id=${member.id}">
 						<i class="icon-heart"></i>판매목록
 						<c:if test="${!empty sell}">
 						<span class="badge badge-default badge-pill">1</span>
