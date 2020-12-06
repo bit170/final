@@ -520,7 +520,9 @@
                     <input class="btn btn-primary btn-block my-0" value="장바구니 담기" type="submit">
                     </c:if>
                   <c:if test="${product.price eq 0}">
-                    <input class="btn btn-outline-primary btn-block my-0" value="SOLD OUT" type="text" onclick="#">
+                    <input class="btn btn-outline-primary btn-block my-0" value="SOLD OUT" type="text" onclick="#"
+                    	 data-toast data-toast-type="danger" data-toast-position="topRight" data-toast-icon="material-icons check" 
+                    		data-toast-title="sold out" data-toast-message="이미 판매된 제품입니다." onclick="#">
                     </c:if>
                   </div>
             	</form>
@@ -547,8 +549,10 @@
                 </c:if>
 				<c:if test="${product.price eq 0}">
                	 <div class="d-flex flex-wrap justify-content-between align-items-center">
-                	<a class="btn btn-outline-secondary btn-sm text-danger" 
-                		href="#">
+                	<a class="btn btn-outline-secondary btn-sm text-danger" data-toast data-toast-type="danger" 
+	                    		data-toast-position="topRight" data-toast-icon="material-icons check" 
+	                    		data-toast-title="sold out" data-toast-message="이미 판매된 제품입니다."
+                    		onclick="#">
                 	<i class="material-icons favorite_border"></i>&nbsp;판매완료</a>
               	  </div>
                 </c:if>

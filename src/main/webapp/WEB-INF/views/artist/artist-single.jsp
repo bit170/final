@@ -153,9 +153,9 @@
       <nav class="site-menu">
         <ul>
           <!-- 해당 페이지에 class="active" 추가해줘야함-->
-          <li class="active"><a href="main.do"><span>Home</span></a>
+          <li><a href="main.do"><span>Home</span></a>
           </li>
-          <li><a href="getArtistList.do"><span>Artist</span></a></li>
+          <li class="active"><a href="getArtistList.do"><span>Artist</span></a></li>
           <li><a href="getProductList.do"><span>Shop</span></a>
             <ul class="sub-menu">
                 <li><a href="getProductList.do?category=water">수채화</a></li>

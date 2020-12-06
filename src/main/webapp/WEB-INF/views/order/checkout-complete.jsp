@@ -172,7 +172,7 @@
 	              <div class="entry">
 	                <div class="entry-thumb">
 	                	<a href="getProduct.do">
-	                	<img src="<c:url value='/aThumbnails.do?a_id=${item.a_id }' />" alt="Image" alt="Product">
+	                	<img src="<c:url value='/Thumbnails.do?a_id=${item.a_id }' />" alt="Image" alt="Product">
 	                	</a></div>
 	                <div class="entry-content">
 	                  <h4 class="entry-title">
@@ -306,7 +306,7 @@
                     <td>
                       <div class="product-item">
                       <a class="product-thumb" href="getProduct.do?p_code=${cart.p_code}">
-                      <img src="<c:url value='/aThumbnails.do?a_id=${item.a_id }' />" alt="Product"></a>
+                      <img src="<c:url value='/Thumbnails.do?p_code=${cart.p_code}' />" alt="Product"></a>
                         <div class="product-info">
                           <h4 class="product-title">
                             <a href="getProduct.do?p_code=${cart.p_code}">${cart.p_name}</a></h4>
