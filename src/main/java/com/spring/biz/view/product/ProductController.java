@@ -301,8 +301,10 @@ public class ProductController extends BaseController {
 		}
 		System.out.println(category);
 		List<ProductVO> categoryList = productService.getCategory(category);
-		System.out.println(categoryList.get(0).getP_category());
-		model.addAttribute("productList", categoryList);
+		if(categoryList.size()!=0) {
+			model.addAttribute("productList", categoryList);
+		}
+//		System.out.println(categoryList.get(0).getP_category());
 		List<String> categoryCnt = productService.categoryCnt();
 		System.out.println(categoryCnt.get(0));
 		model.addAttribute("categoryCnt", categoryCnt);
