@@ -37,7 +37,7 @@ public class AddressController {
 		System.out.println("id : " + id + "의 주소지 :" + a_name +" 입력 성공!!");
 		model.addAttribute("total", total);
 		System.out.println("total : " + total);
-		return "redirect:getPayment.do";
+		return "order/checkout-payment";
 		
 	}
 	
