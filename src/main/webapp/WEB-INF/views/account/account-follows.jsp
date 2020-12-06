@@ -439,7 +439,7 @@
 		                           
 		                           <div class="product-item">
 		                              <a class="product-thumb" href="getArtist.do?a_id=${item.a_id }"><img
-		                                 src="resources/img/shop/cart/01.jpg" alt="Product"></a>
+		                                 src="<c:url value='/aThumbnails.do?a_id=${item.a_id }' />" alt="Product"></a>
 		                              <div class="product-info">
 		                                 <h4 class="product-title">
 		                                    <a href="getArtist.do?a_id=${item.a_id}">${item.nickname}</a>

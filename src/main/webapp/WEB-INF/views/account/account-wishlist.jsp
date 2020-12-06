@@ -91,7 +91,7 @@
               data-toast-position="topRight" data-toast-icon="icon-circle-check" 
               data-toast-title="login needed" data-toast-message="로그인이 필요한 서비스입니다.">주문목록</a></li>
                 <li><a href="#" data-toast data-toast-type="danger" 
-              data-toast-position="topRight" data-toast-icon="icon-circle-check" 
+              data-toast-position="topRight" data-toast-icon="icon-circle-check"
               data-toast-title="login needed" data-toast-message="로그인이 필요한 서비스입니다.">프로필 수정</a></li>
                 <li><a href="#" data-toast data-toast-type="danger" 
               data-toast-position="topRight" data-toast-icon="icon-circle-check" 
