@@ -90,13 +90,21 @@
 
     		$("#pw1").blur(function () {
     			var pw1 = $("#pw1").val();
-    			if(pw1.length()<5){
+    			if(pw1.length<4){
     				$("#pwLength_result").html("비밀번호는 4자리 이상 입력해주세요").css("color","red");
+    			}else{
+    				$("#pwLength_result").html("");
     			}
-   			 	pwCheck();
+   			 	/* pwCheck(); */
    		 	});
     		$("#pw2").blur(function () {
-				pwCheck();
+    			var pw2 = $("#pw2").val();
+    			if(pw2.length<4){
+    				$("#pwCheck_result").html("비밀번호는 4자리 이상 입력해주세요").css("color","red");
+    			}else{
+    				$("#pwCheck_result").html("");
+					pwCheck();
+    			}
 			});
     		function pwCheck() {
     			var pw1 = $("#pw1").val();
