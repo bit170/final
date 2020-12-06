@@ -477,7 +477,7 @@
           </div> -->
           <!-- Search-->
           <div class="d-flex flex-wrap-reverse flex-md-nowrap justify-content-center justify-content-sm-between align-items-center mb-30">
-            <div class="pt-3 pb-1 pb-sm-3 text-sm text-center text-sm-left"><span class="text-muted mr-2">Showing</span>1- 12 items</div>
+            <div class="pt-3 pb-1 pb-sm-3 text-sm text-center text-sm-left"></div>
             <form class="input-group shop-search-box" action="searchByPname.do" method="post"><span class="input-group-btn">
                 <button type="submit"><i class="material-icons search"></i></button></span>
               <input class="form-control" type="text" placeholder="작품명을 입력한 후, 엔터를 누르세요" id="p_name" name="p_name">
@@ -592,28 +592,7 @@
                 <li><a href="sortAlpha.do"><i class="material-icons sort_by_alpha"></i>가나다순</a></li>
               </ul>
             </section>
-            <!-- Widget Price Range-->
-            <section class="widget widget-categories">
-              <h3 class="widget-title">가격 범위</h3>
-              <form action="priceRange.do" class="price-range-slider" method="POST" data-start-min="0" data-start-max="100" data-min="0" data-max="300" data-step="1">
-                <div class="ui-range-slider"></div>
-                <footer class="ui-range-slider-footer">
-                  <div class="column">
-                    <button class="btn btn-outline-primary btn-sm" type="submit">분류</button>
-                  </div>
-                  <div class="column">
-                    <div class="ui-range-values">
-                      <div class="ui-range-value-min">₩<span></span>
-                        <input id="minp" type="hidden">
-                      </div>&nbsp;-&nbsp;
-                      <div class="ui-range-value-max">₩<span></span>
-                        <input id="maxp" type="hidden">
-                      </div>(만원)
-                    </div>
-                  </div>
-                </footer>
-              </form>
-            </section>
+          
             <!-- Widget Brand Filter-->
             <!-- <section class="widget">
               <h3 class="widget-title">Filter by Brand</h3>

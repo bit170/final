@@ -388,7 +388,7 @@
                   <td>
                     <div class="product-item">
                     	<a class="product-thumb" href="getProduct.do?p_code=${cart.p_code}">
-                    	<img src="resouces/img/product/5.png" alt="Product"></a>
+                    	<img src="<c:url value='/thumbnails.do?p_code=${cart.p_code}' />" alt="Product"></a>
                       <div class="product-info">
                         <h4 class="product-title">
                         	<a href="getProduct.do?p_code=${cart.p_code}">${cart.p_name}<small>x 1</small></a></h4>

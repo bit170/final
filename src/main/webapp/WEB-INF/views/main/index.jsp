@@ -499,7 +499,7 @@
       <div class="row">
       <c:forEach items="${MainArtist}" var="mArtist">
         <div class="col-md-3 col-sm-6 mb-30"><a class="category-card flex-wrap text-center pt-0" href="getArtist.do">
-            <div class="category-card-thumb w-100"><img src="resources/img/product/2.png" alt="Category" ></div>
+            <div class="category-card-thumb w-100"><img src="<c:url value='/aThumbnails.do?a_id=${mArtist.a_id }' />" alt="Product"></div>
             <div class="category-card-info w-100">
 
               <h3 class="category-card-title">${mArtist.nickname}</h3>
@@ -541,8 +541,8 @@
              <c:forEach items="${MainProduct}" var="mProduct">
 	            <div class="col-xl-3 col-lg-4 col-sm-6">
 	              <div class="product-card mb-30" >
-	                <div class="product-card-thumb"> <span class="product-badge text-danger">Sale</span>
-	                	<a class="product-card-link" href="getProduct.do"></a><img src="<c:url value='/thumbnails.do?p_code=${mProduct.p_code }' />" alt="Product">
+	                <div class="product-card-thumb">
+	                	<a class="product-card-link" href="getProduct.do?p_code=${mProduct.p_code}"></a><img src="<c:url value='/thumbnails.do?p_code=${mProduct.p_code }' />" alt="Product">
 	                  <div class="product-card-buttons">
 	                    <!-- 버튼 클릭시 위시리스트 디비작업 -->
 	                    <button class="btn btn-white btn-sm btn-wishlist" data-toggle="tooltip" title="Wishlist">
@@ -554,10 +554,8 @@
 	                  </div>
 	                </div>
 	                <div class="product-card-details">
-	                  <h3 class="product-card-title"><a href="getProduct.do">${mProduct.p_name}</a></h3>
-	                  <h4 class="product-card-price">
-	                    <del>₩${mProduct.price}0</del>₩${mProduct.price}
-	                  </h4>
+	                  <h3 class="product-card-title"><a href="getProduct.do?p_code=${mProduct.p_code}">${mProduct.p_name}</a></h3>
+	                  <h4 class="product-card-price">₩${mProduct.price}</h4>
 	                </div>
 	              </div>
 	            </div>

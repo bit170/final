@@ -440,12 +440,12 @@
 							<tr>
 								<td>
 									<div class="product-item">
-										<a class="product-thumb" href="getProduct.do">
+										<a class="product-thumb" href="getProduct.do?p_code=${wish.p_code}">
 										<img src="<c:url value='/thumbnails.do?p_code=${wish.p_code}' />" alt="Image" alt="Product">
 											</a>
 										<div class="product-info">
 											<h4 class="product-title">
-												<a href="getProduct.do">${wish.p_name}</a>
+												<a href="getProduct.do?p_code=${wish.p_code}">${wish.p_name}</a>
 											</h4>
 											<c:choose>
 											<c:when test="${wish.price ne 0}">
