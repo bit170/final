@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 import com.spring.biz.order.OrdService;
 import com.spring.biz.order.OrdVO;
 import com.spring.biz.order.S_OrdVO;
+import com.spring.biz.order.SellVO;
 
 @Service("ordService")
 public class OrdServiceImpl implements OrdService{
@@ -38,5 +39,11 @@ public class OrdServiceImpl implements OrdService{
 	public List<OrdVO> getOrdList(String id) {
 		return ordDAO.getOrdList(id);
 	}
+	
+	@Override
+	public List<SellVO> getSellList(String a_id){
+		return ordDAO.getSellList(a_id);
+	}
+	
 	
 }

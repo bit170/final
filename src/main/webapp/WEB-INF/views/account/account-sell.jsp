@@ -1,145 +1,111 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
-<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+	pageEncoding="UTF-8"%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<title>전체 아티스트 보기</title>
+<meta charset="utf-8">
+<title>마이페이지 - 주문목록</title>
 <!-- SEO Meta Tags-->
-    <meta name="description" content="Unishop - Universal E-Commerce Template">
-    <meta name="keywords" content="shop, e-commerce, modern, flat style, responsive, online store, business, mobile, blog, bootstrap 4, html5, css3, jquery, js, gallery, slider, touch, creative, clean">
-    <meta name="author" content="Rokaux">
-    <!-- Mobile Specific Meta Tag-->
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <!-- Favicon and Apple Icons-->
-    <link rel="icon" type="image/x-icon" href="favicon.ico">
-    <link rel="icon" type="image/png" href="favicon.png">
-    <link rel="apple-touch-icon" href="touch-icon-iphone.png">
-    <link rel="apple-touch-icon" sizes="152x152" href="touch-icon-ipad.png">
-    <link rel="apple-touch-icon" sizes="180x180" href="touch-icon-iphone-retina.png">
-    <link rel="apple-touch-icon" sizes="167x167" href="touch-icon-ipad-retina.png">
-    <!-- Vendor Styles including: Bootstrap, Font Icons, Plugins, etc.-->
-    <link href="resources/css/vendor.min.css" rel="stylesheet" media="screen">
-    <!-- Main Template Styles-->
-    <link href="resources/css/styles.min.css" id="mainStyles" rel="stylesheet" media="screen">
-    <!-- Modernizr-->
-    <script src="resources/js/modernizr.min.js"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>	
-    <script type="text/javascript">
-    $(document).ready(function () {
-		/* 회원가입 성공 후  model attribute에 바인딩한 객체를 확인, 한 번만 알리기 위해선 ajax사용이 답인가? */
-        /* var signedUp= '${signedUp.id}';
-        if(signedUp != ""){
-        	alert("회원가입을 축하합니다. 이메일 인증 후 사용할 수 있습니다.");
-        }
-        signedUp = ""; */
+<meta name="description"
+	content="Unishop - Universal E-Commerce Template">
+<meta name="keywords"
+	content="shop, e-commerce, modern, flat style, responsive, online store, business, mobile, blog, bootstrap 4, html5, css3, jquery, js, gallery, slider, touch, creative, clean">
+<meta name="author" content="Rokaux">
+<!-- Mobile Specific Meta Tag-->
+<meta name="viewport"
+	content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<!-- Favicon and Apple Icons-->
+<link rel="icon" type="image/x-icon" href="favicon.ico">
+<link rel="icon" type="image/png" href="favicon.png">
+<link rel="apple-touch-icon" href="touch-icon-iphone.png">
+<link rel="apple-touch-icon" sizes="152x152" href="touch-icon-ipad.png">
+<link rel="apple-touch-icon" sizes="180x180"
+	href="touch-icon-iphone-retina.png">
+<link rel="apple-touch-icon" sizes="167x167"
+	href="touch-icon-ipad-retina.png">
+<!-- Vendor Styles including: Bootstrap, Font Icons, Plugins, etc.-->
+<link rel="stylesheet" media="screen"
+	href="<c:url value="resources/css/vendor.min.css" />">
+<!-- Main Template Styles-->
+<link id="mainStyles" rel="stylesheet" media="screen"
+	href="<c:url value="resources/css/styles.min.css" />">
+<!-- Modernizr-->
+<script src="resources/js/modernizr.min.js" /></script>
 
-		 $("#signup_id").blur(function () {
-			 var signup_id = $("#signup_id").val();
-				console.log(signup_id);
-				if(signup_id != ""){
-			 	checkId(signup_id);
-				}else{
-					$("#idCheck_result").html("");
-				}
-		 });
-
-	/* 아이디 중복체크 == 성공!!
-		리턴값에 따른 후처리 필요
-	*/
-		/* $('#signup-form').submit(
-    		function () {
-    			var formData = $('#signup-form').serialize();
-    			alert("signUp() 실행");
-				$.ajax({
-					type : 'POST',
-					url : '${pageContext.request.contextPath}/signup.do',
-					data : formData,
-					dataType : 'json'
-				}).done(function (data) {
-					console.log(data);
-				}).fail(function (request, status, error) {
-					alert("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
-				})
-			}
-		); */
-		 function checkId(signup_id) {
-				$.ajax({
-					type : 'POST',
-					url : '${pageContext.request.contextPath}/idCheck.do',
-					data : {"signup_id" : signup_id}
-				}).done(function (data) {
-				console.log(data);
-				idResult(data);
-			}).fail(function (request,status,error) {
-				alert("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
-			})
-		}
-
-		function idResult(data) {
-			if(data==0){
-				$("#idCheck_result").html("사용가능한 아이디입니다.").css("color","green");
-			}else{
-				$("#idCheck_result").html("이미 사용중인 아이디입니다.").css("color","red");
-			}
-		}
-
-		$("#pw1").blur(function () {
-			 	pwCheck();
-		 	});
-		$("#pw2").blur(function () {
-			pwCheck();
-		});
-		function pwCheck() {
-			var pw1 = $("#pw1").val();
-  			 var pw2 = $("#pw2").val();
-				console.log(pw1);
-				if(pw2 == "" || pw1 ==""){
-					$("#pwCheck_result").html("비밀번호를 입력해주세요").css("color","red");
-				}else if(pw1 == pw2){
-					$("#pwCheck_result").html("비밀번호가 일치합니다").css("color","green");
-				}else{
-					$("#pwCheck_result").html("비밀번호가 일치하지 않습니다.").css("color","red");
-				}
-		}
-
-	});
-		/* 검색기능(엔터 입력시 실행)  */
-		function enter(keyword) {
-				search(keyword);
-		}
- 		function search(keyword){
-			alert("search() 실행");
-			$.ajax({
-					type : 'POST',
-					url : '${pageContext.request.contextPath}/search.do',
-					data : {"keyword" : keyword},
-					dataType : 'json'
-				}).done(function (data) {	//ajax는 실행결과와 상관없이 리턴값이 없으면 오류발생
-					if(data.productList){
-					alert(data.productList);
-						showResult(data.productList);
-					}
-				sessionStorage.setItem("searchProduct", JSON.stringify(data.productList));
-				/* alert(sessionStorage.getItem("searchProduct")); */
-				/* getResult(); */
-				if(data.artistList){
-					showResult(data.artistList);
-				}
-			}).fail(function (request,status,error) {
-				alert("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
-			})
-		}
-		function showResult(result) {
-
-		}
-    </script>
 </head>
-
+<!-- Body-->
 <body>
+	<!-- Open Ticket Modal-->
+    <div class="modal fade" id="orderDetails" tabindex="-1">
+      <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h4 class="modal-title"> 주문 번호 - ${order.o_code} </h4>
+            <button class="close" type="button" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+          </div>
+          <div class="modal-body">
+            <div class="table-responsive shopping-cart mb-0">
+              <table class="table">
+                <thead>
+                
+                <!-- S_ord forEach문 넣기 -->
+                  <tr>
+                    <th>작품 이름</th>
+                    <th class="text-center">작품 가격</th>
+                  </tr>
+                </thead>
+                    	<c:if test="${!empty sOrderList}">
+                <tbody>
+                  <c:forEach var="product" items="${sOrderList}">
+                  <c:forEach var="sOder" items="${sOder}">
+                  <tr>
+                    <td>
+                      <div class="product-item"><a class="product-thumb" href="order-tracking.do?o_code=${order.o_code}">
+                      		<img src="resources/img/product/05.jpg" alt="Product"></a>
+                        <div class="product-info">
+                          <h4 class="product-title"><a href="order-tracking.do?p_code=${product.p_code}">${product.p_name}
+                          	<small>x 1</small></a></h4>
+                          		<span><em>카테고리 : </em> ${product.p_category}</span>
+                          		<span><em>아티스트 : </em> ${product.a_id}</span>
+                        </div>
+                      </div>
+                    </td>
+                    <td class="text-center text-lg text-medium">${sOrder.p_price}</td>
+                  </tr>
+                  </c:forEach>
+                    </c:forEach>
+                </tbody>
+                  </c:if>
+                    	<c:if test="${empty sOrderList}">
+                <tbody>
+                  <tr>
+                    <td>
+                      <div class="product-item"><a class="product-thumb" href="#">
+                        <div class="product-info">
+                          <h4 class="product-title">상세주문내역이 아직 없습니다.</h4>
+                        </div>
+                      </div>
+                    </td>
+                    <td class="text-center text-lg text-medium"></td>
+                  </tr>
+                </tbody>
+                  </c:if>
+              </table>
+            </div>
+            <hr class="mb-3">
+            <div class="d-flex flex-wrap justify-content-between align-items-center pb-2">
+			<c:if test="${!empty sOrderList}">
+              <div class="text-lg px-2 py-1">총 합: <span class='text-medium'>
+              	₩ <fmt:formatNumber pattern="###,###,###" value="${order.total}" /></span></div>
+              </c:if>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
     <!-- Navbar-->
     <!-- Remove "navbar-sticky" class to make navigation bar scrollable with the page.-->
     <header class="navbar navbar-sticky">
@@ -153,9 +119,9 @@
       <nav class="site-menu">
         <ul>
           <!-- 해당 페이지에 class="active" 추가해줘야함-->
-          <li><a href="main.do"><span>Home</span></a>
+          <li class="active"><a href="main.do"><span>Home</span></a>
           </li>
-          <li class="active"><a href="getArtistList.do"><span>Artist</span></a></li>
+          <li><a href="getArtistList.do"><span>Artist</span></a></li>
           <li><a href="getProductList.do"><span>Shop</span></a>
             <ul class="sub-menu">
                 <li><a href="getProductList.do?category=water">수채화</a></li>
@@ -242,7 +208,7 @@
                 <li class="has-children"><span><a href="getWishlists.do?id=${member.id}">MyPage</a><span class="sub-menu-toggle"></span></span>
                   <ul class="slideable-submenu">
                 <li><a href="getFollowList.do?id=${member.id}">팔로우</a></li>
-                <li><a href="getOrderList.do?id=${member.id}">주문목록</a></li>
+                <li><a href="getSellList.do?id=${member.id}">주문목록</a></li>
                 <li><a href="getMember.do?id=${member.id}">프로필 수정</a></li>
                 <li><a href="getAddress.do">주소록</a></li>
                 <li><a href="getMyCanvas.do">마이 캔버스</a></li>
@@ -289,6 +255,7 @@
 	                </div>
 	              </div>
 	            </div>
+            <%-- </c:if> --%>
             <!-- 작가결과-->
             <c:if test="${not empty searchArtist }">
 	            <div class="widget widget-featured-products">
@@ -349,9 +316,7 @@
                   <button class="btn btn-primary btn-block" type="submit">Log In</button>
                 </form>
               </div>
-
               <div class="tab-pane fade" id="signup" role="tabpanel">
-
                 <form method="post" autocomplete="off" id="signup-form" action="signUp.do">
                 <!-- <form method="post" autocomplete="off" id="signup-form" > -->
                   
@@ -406,7 +371,7 @@
                   <c:if test="${empty cartList}">
                   <tr>
                     <td>
-                     	장바구니가 비었습니다.
+                     장바구니가 비었습니다.
                     </td>
                   </tr>
                     </c:if>
@@ -416,7 +381,7 @@
                     <td>
                       <div class="product-item">
                       <a class="product-thumb" href="getProduct.do?p_code=${cart.p_code}">
-                      <img src="<c:url value='/thumbnails.do?p_code=${cart.p_code}' />" alt="Product"></a>
+                      <img src="<c:url value='/aThumbnails.do?a_id=${item.a_id }' />" alt="Product"></a>
                         <div class="product-info">
                           <h4 class="product-title">
                             <a href="getProduct.do?p_code=${cart.p_code}">${cart.p_name}</a></h4>
@@ -456,91 +421,126 @@
         </div>
       </div>
     </header>
-    <!-- Page Title-->
-    <div class="page-title">
-       <div class="container">
-        <h1>작가 페이지</h1>
-        <ul class="breadcrumbs">
-          <li><a href="main.do">Home</a>
-          </li>
-          <li class="separator">&nbsp;/&nbsp;</li>
-          <li>Whole Artist</li>
-        </ul>
-      </div>
-    </div>
-    <!-- Page Content-->
-    <!-- Filters-->
-    <div class="container">
-      <div class="d-flex flex-wrap flex-md-nowrap justify-content-center justify-content-md-between pb-3">
-        <!-- Nav filters-->
-        <ul class="nav-filters text-center text-md-left pb-3">
-          <!-- <li class="active"><a href="#">All</a></li>
-          <li><a href="#">ㄱ~ㄷ</a></li>
-          <li><a href="#">ㄹ~ㅂ</a></li>
-          <li><a href="#">ㅅ~ㅈ</a></li>
-          <li><a href="#">ㅊ~ㅌ</a></li>
-          <li><a href="#">ㅍ~ㅎ</a></li> -->
-        </ul>
-        <!-- Filter Toggles-->
-        <div class="pb-3"><a class="filters-toggle-search" href="#search-box" data-toggle="filters"><i class="material-icons search"></i></a></div>
-      </div>
-      <!-- Filter Panes-->
-      <div class="filters-wrap">
-        <!-- Widgets-->
-        <div class="filters-pane pb-3" id="filters">
-        </div>
-        <!-- Search Box-->
-        <form action="searchByName.do" method="post" class="filters-pane pb-3" id="search-box">
-          <div class="form-group">
-            <input class="form-control" type="text" placeholder="작가명을 입력한 후, 엔터를 누르세요" id="nickname" name="nickname">
-          </div>
-        </form>
-      </div>
-    </div>
-    <!-- Products Grid-->
-    <div class="container padding-bottom-3x mb-1">
-      <div class="row mb-2">
-        <!-- Item-->
-        <!-- 디비 주르륵 -->
-        <c:forEach var="item" items="${artistList}">    
-        <div class="col-xl-3 col-lg-4 col-sm-6">
-          <div class="product-card mb-30">
-            <div class="product-card-thumb"><a class="product-card-link" href="getArtist.do?a_id=${item.a_id }"></a><img src="<c:url value='/aThumbnails.do?a_id=${item.a_id }' />"
-             onerror="if (this.src != '<c:url value='/aThumbnails.do?a_id=${item.a_id }' />') this.src = '/resources/img/shop/ARTIST1.jpg';" alt="Image" alt="Product">
-              <div class="product-card-buttons">
-                <!-- <button class="btn btn-white btn-sm btn-wishlist" data-toggle="tooltip" title="Follow"><i class="material-icons favorite_border"></i></button>-->
-                <button onclick="location.href='Follow.do?a_id=${item.a_id }&page=all'" class="btn btn-primary margin-bottom-none" type="button" data-toast data-toast-position="topRight" data-toast-type="success"
-                data-toast-icon="icon-circle-check" data-toast-title="Follow!" data-toast-message="Follow!">♡ </button>
-              </div>
-            </div>
-            <div class="product-card-details">
-              <h3 class="product-card-title"><a href="getArtist.do?a_id=${item.a_id }">${item.nickname }</a></h3>
-            </div>
-          </div>
-        </div>
-    	</c:forEach>
-      <!-- Pagination-->
-      <nav class="pagination">
-        <div class="column">
-          <ul class="pages">
-            <!-- 데이터에 따라 생성되도록 -->
-            <li class="active"><a href="#">1</a></li>
-            <!-- <li><a href="#">2</a></li>
-            <li><a href="#">3</a></li>
-            <li><a href="#">4</a></li>
-            <li>...</li>
-            <li><a href="#">12</a></li> -->
-          </ul>
-        </div>
-        <!-- 다음 페이지 넘어가도록 -->
-        <div class="column text-right hidden-xs-down"><a class="btn btn-outline-secondary btn-sm" href="#">Next&nbsp;<i class="material-icons keyboard_arrow_right"></i></a></div>
-      </nav>
-    </div>
-    </div>
-    <!-- Site Footer-->
-    <footer class="site-footer">
+	<!-- Page Title-->
+	<div class="page-title">
+		<div class="container">
+			<h1>내 판매목록</h1>
+			<ul class="breadcrumbs">
+				<li><a href="main.do">홈</a></li>
+				<li class="separator">&nbsp;/&nbsp;</li>
+				<li><a href="getWishlists.do?id=${member.id}">나의 계정</a></li>
+				<li class="separator">&nbsp;/&nbsp;</li>
+				<li>My Sales</li>
+			</ul>
+		</div>
+	</div>
+	<!-- Page Content-->
+	<div class="container padding-bottom-3x mb-1">
+		<div class="row">
+			<div class="col-lg-4">
+				<aside class="user-info-wrapper">
+					<div class="user-cover"
+						style="background-image: url(resources/img/account/user-cover-img.jpg);">
+					</div>
+					<div class="user-info">
+						<div class="user-data">
+							<h5>${member.name}님의 계정</h5>
+							<span>${member.joindate}</span>
+						</div>
+					</div>
+				</aside>
+				<!-- 마이페이지 목록 수정 (연희) -->
+				<nav class="list-group">
+					<a class="list-group-item" href="getWishlists.do?id=${member.id}">
+						<i class="icon-heart"></i>위시리스트
+					<c:if test="${!empty wishlist}">
+						<span class="badge badge-default badge-pill">1</span>
+						</c:if>
+					<c:if test="${empty wishlist}">
+						<span class="badge badge-default badge-pill"></span>
+						</c:if>
+						</a>
+					<a class="list-group-item" href="getFollowList.do?id=${member.id}">
+						<i class="icon-heart"></i>팔로우
+						<c:if test="${!empty follow}">
+						<span class="badge badge-default badge-pill">3</span>
+						</c:if>
+						<c:if test="${empty follow}">
+						<span class="badge badge-default badge-pill"></span>
+						</c:if>
+						</a> 
+						<a class="list-group-item with-badge active" href="getOrderList.do?id=${member.id}">
+						<i class="icon-heart"></i>주문목록
+						<c:if test="${!empty order}">
+						<span class="badge badge-default badge-pill">3</span>
+						</c:if>
+						<c:if test="${empty order}">
+						<span class="badge badge-default badge-pill"></span>
+						</c:if>
+						</a>
+						<a class="list-group-item with-badge active" href="getSellList.do?a_id=${member.id}">
+						<i class="icon-heart"></i>판매목록
+						<c:if test="${!empty sell}">
+						<span class="badge badge-default badge-pill">3</span>
+						</c:if>
+						<c:if test="${empty sell}">
+						<span class="badge badge-default badge-pill"></span>
+						</c:if>
+						</a> 
+					<a class="list-group-item" href="getMember.do?id=${member.id}">
+						<i class="icon-head"></i>프로필 수정</a> 
+					<a class="list-group-item" href="getAddress.do">
+						<i class="icon-map"></i>주소록</a> 
+					<a class="list-group-item" href="getMyCanvas.do">
+						<i class="icon-head"></i>마이 캔버스</a>
+				</nav>
+			</div>
+			<div class="col-lg-8">
+				<div class="padding-top-2x mt-2 hidden-lg-up"></div>
+				<div class="table-responsive text-sm">
+					<table class="table table-hover margin-bottom-none">
+						<thead>
+							<tr>
+								<th>주문 번호</th>
+								<th>주문 날짜</th>
+								<th>작품</th>
+								<th>주문자 아이디</th>
+								<th>주문자 주소</th>
+							</tr>
+						</thead>
+						<tbody>
+							<c:if test="${!empty sellList}">
+							<c:forEach items="${sellList}" var="sell">
+							<tr>
+								<td class="align-middle">
+								<a class="text-medium navi-link" href="#" data-toggle="modal" data-target="#orderDetails">
+									${sell.o_code}</a></td>
+								<td class="align-middle">${sell.o_date}</td>
+								<td class="align-middle"><a class="product-thumb" href="getProduct.do?p_code=${sell.p_code }">
+								<img src="<c:url value='/thumbnails.do?p_code=${sell.p_code}' />" alt="Image" alt="Product"></a></td>
+								<td class="align-middle">${sell.id }</td>
+								<td class="align-middle">${sell.d_address }(${sell.d_post })</td>
+							</tr>
+							</c:forEach>
+							</c:if>
+							<c:if test="${empty sellList}">
+							<tr>
+								<td class="align-middle">
+									<h4>판매하신 내역이 아직 없습니다.</h4>
+								</td>
+							</tr>
+							</c:if>
+						</tbody>
+					</table>
+				</div>
+				<hr class="mb-3">
+			</div>
+		</div>
+	</div>
+	<!-- Site Footer-->
+	<footer class="site-footer">
       <div class="column text-center">
-        <p class="text-sm mb-4">Need Support? Call<span class="text-primary">&nbsp;010 - 1111 - 2222</span></p>
+        <p class="text-sm mb-4">Need Support? Call<span class="text-primary">&nbsp;010 - 4355 - 2504</span></p>
         <p class="text-xxs text-muted mb-0 mt-3">© All rights reserved. Made with <i class='material-icons favorite text-danger'></i> by 곽연희, 송희, 오서현, 이동희</p>
       </div>
       <!-- <div class="column">
@@ -553,18 +553,20 @@
             <input type="text" name="b_c7103e2c981361a6639545bd5_1194bb7544" tabindex="-1" value>
           </div>
         </form>
+      </div>
       <!-- <div class="column">
         <h3 class="widget-title text-center">Payment Methods<small>We support one of the following payment methods.</small></h3>
         <div class="footer-cards"><img src="resources/img/cards.png" alt="Payment Methods">
         </div>
       </div> -->
     </footer>
-    <!-- Back To Top Button--><a class="scroll-to-top-btn" href="#"><i class="material-icons trending_flat"></i></a>
-    <!-- Backdrop-->
-    <div class="site-backdrop"></div>
-    <!-- JavaScript (jQuery) libraries, plugins and custom scripts-->
-    <script src="<c:url value="resources/js/vendor.min.js" />"></script>
-	<script src="<c:url value="resources/js/scripts.min.js" />"></script>
-	
-  </body>
+	<!-- Back To Top Button-->
+	<a class="scroll-to-top-btn" href="#"><i
+		class="material-icons trending_flat"></i></a>
+	<!-- Backdrop-->
+	<div class="site-backdrop"></div>
+	<!-- JavaScript (jQuery) libraries, plugins and custom scripts-->
+	<script src="resources/js/vendor.min.js"></script>
+	<script src="resources/js/scripts.min.js"></script>
+</body>
 </html>

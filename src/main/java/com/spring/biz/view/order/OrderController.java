@@ -1,9 +1,12 @@
 package com.spring.biz.view.order;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.Random;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,6 +26,7 @@ import com.spring.biz.order.DeliveryVO;
 import com.spring.biz.order.OrdService;
 import com.spring.biz.order.OrdVO;
 import com.spring.biz.order.S_OrdVO;
+import com.spring.biz.order.SellVO;
 import com.spring.biz.product.ProductService;
 import com.spring.biz.product.ProductVO;
 
@@ -283,7 +287,16 @@ public class OrderController {
 	}
 	
 	
-	
+	@RequestMapping("getSellList.do")
+	public String getSellList(@RequestParam("id")String a_id, Model model) {
+		System.out.println("getSellList() 실행!!!");
+		System.out.println(a_id);
+		
+		List<SellVO> sellList = ordService.getSellList(a_id);
+		model.addAttribute("sellList", sellList);
+		
+		return "account/account-sell";
+	}
 	
 	
 
