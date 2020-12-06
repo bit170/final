@@ -89,6 +89,10 @@
 			}
 
     		$("#pw1").blur(function () {
+    			var pw1 = $("#pw1").val();
+    			if(pw1.length()<5){
+    				$("#pwLength_result").html("비밀번호는 4자리 이상 입력해주세요").css("color","red");
+    			}
    			 	pwCheck();
    		 	});
     		$("#pw2").blur(function () {
@@ -96,7 +100,7 @@
 			});
     		function pwCheck() {
     			var pw1 = $("#pw1").val();
-      			 var pw2 = $("#pw2").val();
+      			var pw2 = $("#pw2").val();
    				console.log(pw1);
    				if(pw2 == "" || pw1 ==""){
    					$("#pwCheck_result").html("비밀번호를 입력해주세요").css("color","red");
@@ -362,6 +366,7 @@
                   </div>
                   <div class="form-group">
                     <input class="form-control" type="password" placeholder="비밀번호" id="pw1" required>
+                    <div id="pwLength_result"></div>
                   </div>
                   <div class="form-group">
                     <input class="form-control" type="password" placeholder="비밀번호 확인" id="pw2" name="pwd" required>
