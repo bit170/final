@@ -289,7 +289,6 @@
 	                </div>
 	              </div>
 	            </div>
-            <%-- </c:if> --%>
             <!-- 작가결과-->
             <c:if test="${not empty searchArtist }">
 	            <div class="widget widget-featured-products">
@@ -407,7 +406,7 @@
                   <c:if test="${empty cartList}">
                   <tr>
                     <td>
-                     장바구니가 비었습니다.
+                     	장바구니가 비었습니다.
                     </td>
                   </tr>
                     </c:if>
@@ -468,6 +467,7 @@
           <li>Whole Artist</li>
         </ul>
       </div>
+    </div>
     <!-- Page Content-->
     <!-- Filters-->
     <div class="container">
@@ -535,6 +535,7 @@
         <div class="column text-right hidden-xs-down"><a class="btn btn-outline-secondary btn-sm" href="#">Next&nbsp;<i class="material-icons keyboard_arrow_right"></i></a></div>
       </nav>
     </div>
+    </div>
     <!-- Site Footer-->
     <footer class="site-footer">
       <div class="column text-center">
@@ -551,7 +552,6 @@
             <input type="text" name="b_c7103e2c981361a6639545bd5_1194bb7544" tabindex="-1" value>
           </div>
         </form>
-      </div>
       <!-- <div class="column">
         <h3 class="widget-title text-center">Payment Methods<small>We support one of the following payment methods.</small></h3>
         <div class="footer-cards"><img src="resources/img/cards.png" alt="Payment Methods">
@@ -562,7 +562,8 @@
     <!-- Backdrop-->
     <div class="site-backdrop"></div>
     <!-- JavaScript (jQuery) libraries, plugins and custom scripts-->
-    <script src="resources/js/vendor.min.js"></script>
-    <script src="resources/js/scripts.min.js"></script>
-</body>
+    <script src="<c:url value="resources/js/vendor.min.js" />"></script>
+	<script src="<c:url value="resources/js/scripts.min.js" />"></script>
+	
+  </body>
 </html>

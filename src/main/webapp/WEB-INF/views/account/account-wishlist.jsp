@@ -441,7 +441,7 @@
 								<td>
 									<div class="product-item">
 										<a class="product-thumb" href="getProduct.do">
-										<img src="<c:url value='/Thumbnails.do?p_code=${wish.p_code}' />" alt="Image" alt="Product">
+										<img src="<c:url value='/thumbnails.do?p_code=${wish.p_code}' />" alt="Image" alt="Product">
 											</a>
 										<div class="product-info">
 											<h4 class="product-title">

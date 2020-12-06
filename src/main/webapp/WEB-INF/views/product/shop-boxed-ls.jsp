@@ -572,11 +572,11 @@
             <section class="widget widget-categories pt-0">
 			<h3 class="widget-title">작품 Categories</h3>
               <ul>
-                <li class="has-children"><a href="getCategory.do?category=water" >수채화</a><span id="water">	${categoryCnt[2] }</span></li>
-                <li class="has-children"><a href="getCategory.do?category=oil" >유화</a><span id="oil">	${categoryCnt[3] }</span></li>
-                <li class="has-children"><a href="getCategory.do?category=black" >수묵화</a><span id="black">	${categoryCnt[1] }</span></li>
-                <li class="has-children"><a href="getCategory.do?category=crocky" >크로키</a><span id="crocky">	${categoryCnt[4] }</span></li>
-                <li class="has-children"><a href="getCategory.do?category=etc" >기타</a><span id="etc">	${categoryCnt[0] }</span></li>
+                <li class="has-children"><a href="getCategory.do?category=water" >수채화</a><span id="water">	${categoryCnt[0] }</span></li>
+                <li class="has-children"><a href="getCategory.do?category=oil" >유화</a><span id="oil">	${categoryCnt[1] }</span></li>
+                <li class="has-children"><a href="getCategory.do?category=black" >수묵화</a><span id="black">	${categoryCnt[2] }</span></li>
+                <li class="has-children"><a href="getCategory.do?category=crocky" >크로키</a><span id="crocky">	${categoryCnt[3] }</span></li>
+                <li class="has-children"><a href="getCategory.do?category=etc" >기타</a><span id="etc">	${categoryCnt[4] }</span></li>
               </ul>
             </section>
             <!-- Widget Sorting-->
