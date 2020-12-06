@@ -46,8 +46,8 @@ public class ProductController extends BaseController {
 		System.out.println(">>>> ProductController() 객체 생성");
 	}
 
-	@RequestMapping(value="/addNewProduct.do" ,method={RequestMethod.POST})
-	public ResponseEntity addNewProduct(MultipartHttpServletRequest multipartRequest, HttpServletResponse response)  throws Exception {
+	@RequestMapping(value="/addNewProduct.do" ,method=RequestMethod.POST)
+	public String addNewProduct(MultipartHttpServletRequest multipartRequest, HttpServletResponse response, HttpServletRequest request)  throws Exception {
 		System.out.println("addNewProduct() 실행");
 		
 		multipartRequest.setCharacterEncoding("utf-8");
@@ -128,7 +128,8 @@ public class ProductController extends BaseController {
 			e.printStackTrace();
 		}
 		resEntity =new ResponseEntity(message, responseHeaders, HttpStatus.OK);
-		return resEntity;
+		return "redirect:/getMyCanvas.do?id="+a_id;
+//		return resEntity;
 	}
 	
 	

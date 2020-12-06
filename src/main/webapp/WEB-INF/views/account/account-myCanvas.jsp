@@ -415,7 +415,7 @@
 						<i class="icon-head"></i>프로필 수정</a> 
 					<a class="list-group-item" href="getAddress.do">
 						<i class="icon-map"></i>주소록</a> 
-					<a class="list-group-item with-badge active" href="getMyCanvas.do">
+					<a class="list-group-item with-badge active" href="getMyCanvas.do?id=${member.id }">
 						<i class="icon-head"></i>마이 캔버스</a>
 				</nav>
 			</div>
@@ -463,7 +463,7 @@
 								<div class="gutter-sizer"></div>
 								<div class="grid-sizer"></div>
 								<div class="grid-item gallery-item">
-									<a href="insert-canvas.do">
+									<a href="insert-canvas.do?id=${member.id }">
 									<img src="resources/img/gallery/th05.jpg" alt="Image"></a>
 										<span class="caption">새 작품 추가하기</span>
 								</div>
