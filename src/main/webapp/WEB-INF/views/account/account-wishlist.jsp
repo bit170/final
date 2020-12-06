@@ -441,11 +441,11 @@
 								<td>
 									<div class="product-item">
 										<a class="product-thumb" href="getProduct.do">
-										<img src="<c:url value='/aThumbnails.do?p_code=${wish.p_code}' />" alt="Image" alt="Product">
+										<img src="<c:url value='/Thumbnails.do?p_code=${wish.p_code}' />" alt="Image" alt="Product">
 											</a>
 										<div class="product-info">
 											<h4 class="product-title">
-												<a href="getProduct.do">${wish.p_code}</a>
+												<a href="getProduct.do">${wish.p_name}</a>
 											</h4>
 											<c:choose>
 											<c:when test="${wish.price ne 0}">
@@ -476,7 +476,7 @@
 							<tr>
 								<td>
 									<div class="product-item">
-									<h4 align="center">위시리스트가 없습니다.</h4>
+									<h4 align="center">위시리스트가 비었습니다!</h4>
 									</div>
 								</td>
 							</tr>

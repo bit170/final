@@ -30,14 +30,6 @@ public class MemberController {
 	}
 	
 	
-	@RequestMapping(value = "/account.do", method = RequestMethod.GET)
-	public String account(Model model) {
-		System.out.println("account() 실행");
-
-		return "redirect:getWishlists.do";
-
-	}
-	
 	@RequestMapping(value = "/idCheck.do", method = RequestMethod.POST)
 	public @ResponseBody int idCheck(HttpServletRequest request) {
 		System.out.println("idCheck()");
@@ -61,7 +53,6 @@ public class MemberController {
 			return "main.do";
 		}
 	}
-	
 	
 	@RequestMapping(value="/login.do", method = RequestMethod.POST)
 	public String login(S_MemberVO svo, Model model,HttpSession session) {

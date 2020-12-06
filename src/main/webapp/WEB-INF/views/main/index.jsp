@@ -459,31 +459,31 @@
     </header>
     <!-- Page Content-->
     <!-- Hero Slider-->
-    <section class="hero-slider">
+    <section class="hero-slider" style="max-height:30%">
       <div class="owl-carousel large-controls dots-inside pb-4" data-owl-carousel="{ &quot;nav&quot;: true, &quot;dots&quot;: true, &quot;loop&quot;: true, &quot;autoplay&quot;: true, &quot;autoplayTimeout&quot;: 8000 }">
         <div class="container-fluid">
-          <div class="row align-items-center">
+          <div class="row align-items-center" style="max-height:300px">
             <div class="col-md-6">
-              <div class="pr-3 pt-5 pb-0 py-md-5"><img class="d-block" src="resources/img/product/3.png" alt="Product"></div>
+              <div class="pr-3 pt-5 pb-0 py-md-5"><img class="d-block" src="resources/img/main/main1.jpeg" width="500" height="650"></div>
             </div>
             <div class="col-xl-4 col-md-6">
               <div class="padding-top-3x padding-bottom-3x px-3 px-lg-5 text-center text-md-left from-bottom">
-                <h2>그림 사러 오세요~</h2>
-                <p class="text-sm text-muted">집 안이 허전하시다면 ? 이사 간 벽이 너무 썰렁하다면 ? 따뜻한 그림 한 점 가져가세요 </p>
+                <h2>그림 한 점 어떠세요</h2>
+                <p class="text-sm text-muted">이사 간 벽이 너무 썰렁하신가요 ?<br>활력있는 집 인테리어를 원하시나요?<br>캔버스 마켓에서 따뜻한 그림 한 점 가져가세요 </p>
                 	<a class="btn btn-primary mx-0 scale-up delay-1" href="getProductList.do">아트 컬렉션</a>
               </div>
             </div>
           </div>
         </div>
         <div class="container-fluid">
-          <div class="row align-items-center">
+          <div class="row align-items-center" style="max-height:30%">
             <div class="col-md-6">
-              <div class="pr-3 pt-5 pb-0 py-md-5"><img class="d-block" src="resources/img/product/1.png" alt="Product"></div>
+              <div class="pr-3 pt-5 pb-0 py-md-5"><img class="d-block" src="resources/img/main/main2.jpeg" width="500" height="650"></div>
             </div>
             <div class="col-xl-4 col-md-6">
               <div class="padding-top-3x padding-bottom-3x px-3 px-lg-5 text-center text-md-left from-bottom">
-                <h2> 세상에 알려지지 않은 작가들~ </h2>
-                <p class="text-sm text-muted">이곳에선 모두가 아티스트가 될 수 있습니다! 모두가 내가 그린 기린그림을 팔 수 있는 곳 !       여러분도 도전해보세욧</p>
+                <h2> 세상에 알려지지 않은 작가들  </h2>
+                <p class="text-sm text-muted">이곳에선 모두가 아티스트가 될 수 있습니다!<br>모두가 내가 그린 기린 그림을 팔 수 있는 곳 !<br>여러분도 도전해보시겠어요? </p>
                 <a class="btn btn-primary mx-0 scale-up delay-1" href="getArtistList.do">더 많은 작가들</a>
               </div>
             </div>
@@ -499,12 +499,12 @@
       <div class="row">
       <c:forEach items="${MainArtist}" var="mArtist">
         <div class="col-md-3 col-sm-6 mb-30"><a class="category-card flex-wrap text-center pt-0" href="getArtist.do">
-            <div class="category-card-thumb w-100"><img src="resources/img/product/2.png" alt="Category"></div>
+            <div class="category-card-thumb w-100"><img src="resources/img/product/2.png" alt="Category" ></div>
             <div class="category-card-info w-100">
 
               <h3 class="category-card-title">${mArtist.nickname}</h3>
 
-              <h4 class="category-card-subtitle">뭐가좋을까</h4>
+              <h4 class="category-card-subtitle"></h4>
             </div></a></div>
         <!-- <div class="col-md-3 col-sm-6 mb-30"><a class="category-card flex-wrap text-center pt-0" href="shop-boxed-ls.jsp">
             <div class="category-card-thumb w-100"><img src="resources/img/shop/categories/04.jpg" alt="Category"></div>
@@ -530,7 +530,7 @@
     </section>
     <!-- 작품 추천 -->
     <section class="container-fluid padding-top-3x pb-5">
-      <h3 class="text-center mb-30">인기 작품? 작품들</h3>
+      <h3 class="text-center mb-30">인기 작품</h3>
       <div class="row" >
         <!-- Special Offer-->
 
