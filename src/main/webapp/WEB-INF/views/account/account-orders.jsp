@@ -38,74 +38,6 @@
 </head>
 <!-- Body-->
 <body>
-	<!-- Open Ticket Modal-->
-    <div class="modal fade" id="orderDetails" tabindex="-1">
-      <div class="modal-dialog modal-lg">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h4 class="modal-title"> 주문 번호 - ${order.o_code} </h4>
-            <button class="close" type="button" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-          </div>
-          <div class="modal-body">
-            <div class="table-responsive shopping-cart mb-0">
-              <table class="table">
-                <thead>
-                
-                <!-- S_ord forEach문 넣기 -->
-                  <tr>
-                    <th>작품 이름</th>
-                    <th class="text-center">작품 가격</th>
-                  </tr>
-                </thead>
-                    	<c:if test="${!empty sOrderList}">
-                <tbody>
-                  <c:forEach var="product" items="${sOrderList}">
-                  <c:forEach var="sOder" items="${sOder}">
-                  <tr>
-                    <td>
-                      <div class="product-item"><a class="product-thumb" href="order-tracking.do?o_code=${order.o_code}">
-                      		<img src="resources/img/product/05.jpg" alt="Product"></a>
-                        <div class="product-info">
-                          <h4 class="product-title"><a href="order-tracking.do?p_code=${product.p_code}">${product.p_name}
-                          	<small>x 1</small></a></h4>
-                          		<span><em>카테고리 : </em> ${product.p_category}</span>
-                          		<span><em>아티스트 : </em> ${product.a_id}</span>
-                        </div>
-                      </div>
-                    </td>
-                    <td class="text-center text-lg text-medium">${sOrder.p_price}</td>
-                  </tr>
-                  </c:forEach>
-                    </c:forEach>
-                </tbody>
-                  </c:if>
-                    	<c:if test="${empty sOrderList}">
-                <tbody>
-                  <tr>
-                    <td>
-                      <div class="product-item"><a class="product-thumb" href="#">
-                        <div class="product-info">
-                          <h4 class="product-title">상세주문내역이 아직 없습니다.</h4>
-                        </div>
-                      </div>
-                    </td>
-                    <td class="text-center text-lg text-medium"></td>
-                  </tr>
-                </tbody>
-                  </c:if>
-              </table>
-            </div>
-            <hr class="mb-3">
-            <div class="d-flex flex-wrap justify-content-between align-items-center pb-2">
-			<c:if test="${!empty sOrderList}">
-              <div class="text-lg px-2 py-1">총 합: <span class='text-medium'>
-              	₩ <fmt:formatNumber pattern="###,###,###" value="${order.total}" /></span></div>
-              </c:if>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
     <!-- Navbar-->
     <!-- Remove "navbar-sticky" class to make navigation bar scrollable with the page.-->
     <header class="navbar navbar-sticky">
@@ -527,6 +459,77 @@
 			</div>
 		</div>
 	</div>
+	
+		<!-- Open Ticket Modal-->
+    <div class="modal fade" id="orderDetails" tabindex="-1">
+      <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h4 class="modal-title"> 주문 번호 - ${order.o_code} </h4>
+            <button class="close" type="button" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+          </div>
+          <div class="modal-body">
+            <div class="table-responsive shopping-cart mb-0">
+              <table class="table">
+                <thead>
+                
+                <!-- S_ord forEach문 넣기 -->
+                  <tr>
+                    <th>작품 이름</th>
+                    <th class="text-center">작품 가격</th>
+                  </tr>
+                </thead>
+                    	<c:if test="${!empty sOrderList}">
+                <tbody>
+                  <c:forEach var="product" items="${sOrderList}">
+                  <c:forEach var="sOder" items="${sOder}">
+                  <tr>
+                    <td>
+                      <div class="product-item"><a class="product-thumb" href="order-tracking.do?o_code=${order.o_code}">
+                      		<img src="<c:url value='/aThumbnails.do?p_code=${sOder.p_code}' />" alt="Product"></a>
+                        <div class="product-info">
+                          <h4 class="product-title"><a href="order-tracking.do?p_code=${product.p_code}">${product.p_name}
+                          	<small>x 1</small></a></h4>
+                          		<span><em>카테고리 : </em> ${product.p_category}</span>
+                          		<span><em>아티스트 : </em> ${product.a_id}</span>
+                        </div>
+                      </div>
+                    </td>
+                    <td class="text-center text-lg text-medium">${sOrder.p_price}</td>
+                  </tr>
+                  </c:forEach>
+                    </c:forEach>
+                </tbody>
+                  </c:if>
+                    	<c:if test="${empty sOrderList}">
+                <tbody>
+                  <tr>
+                    <td>
+                      <div class="product-item"><a class="product-thumb" href="#">
+                        <div class="product-info">
+                          <h4 class="product-title">상세주문내역이 아직 없습니다.</h4>
+                        </div>
+                      </div>
+                    </td>
+                    <td class="text-center text-lg text-medium"></td>
+                  </tr>
+                </tbody>
+                  </c:if>
+              </table>
+            </div>
+            <hr class="mb-3">
+            <div class="d-flex flex-wrap justify-content-between align-items-center pb-2">
+			<c:if test="${!empty sOrderList}">
+              <div class="text-lg px-2 py-1">총 합: <span class='text-medium'>
+              	₩ <fmt:formatNumber pattern="###,###,###" value="${order.total}" /></span></div>
+              </c:if>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Modal END -->
+	
 	<!-- Site Footer-->
 	<footer class="site-footer">
       <div class="column text-center">

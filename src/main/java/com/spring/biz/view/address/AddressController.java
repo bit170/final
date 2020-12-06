@@ -25,15 +25,18 @@ public class AddressController {
 	}
 	
 	@RequestMapping("/insertAddress.do")
-	public String insertAddress(AddressVO vo, HttpSession session) {
+	public String insertAddress(AddressVO vo, HttpSession session,Model model) {
 		System.out.println("insertAddress() 실행");
 		addrService.insertAddr(vo);
 		String id = vo.getId();
 		String a_name = vo.getA_name();
+		String total = (String)session.getAttribute("total");
 		
 		System.out.println("address : " + vo);
 		session.setAttribute("address", vo);
 		System.out.println("id : " + id + "의 주소지 :" + a_name +" 입력 성공!!");
+		model.addAttribute("total", total);
+		System.out.println("total : " + total);
 		return "redirect:getPayment.do";
 		
 	}

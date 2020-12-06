@@ -19,6 +19,7 @@
 		<typeAlias alias="follow" type="com.spring.biz.follow.FollowVO"/>
 		<typeAlias alias="ord" type="com.spring.biz.order.OrdVO"/>
 		<typeAlias alias="sOrd" type="com.spring.biz.order.S_OrdVO"/>
+		<typeAlias alias="delivery" type="com.spring.biz.order.DeliveryVO"/>
 		<typeAlias alias="wishlist" type="com.spring.biz.wishlist.WishlistVO"/>
 
 	</typeAliases>

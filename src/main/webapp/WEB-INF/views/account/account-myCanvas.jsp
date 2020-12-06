@@ -471,7 +471,7 @@
 									<div class="grid-item gallery-item">
 										<a href="update-canvas.do?p_code=${myProduct.p_code }">
 										<img src="<c:url value='/download.do?p_code=${myProduct.p_code }' />" alt="Image"></a>
-										<span class="caption">[${myProduct.p_name }] 상세 정보 보기</span>
+										<span class="caption">[${myProduct.p_name }] 작품 수정하기</span>
 									</div>
 								</c:forEach>
 								<!-- <div class="grid-item gallery-item">

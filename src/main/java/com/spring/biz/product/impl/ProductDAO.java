@@ -103,8 +103,19 @@ public class ProductDAO {
 		return mybatis.selectList("productDAO.getCategoryList", category);
 	}
 
-	public List<Integer> categoryCnt() {
-		return mybatis.selectList("productDAO.categoryCnt");
+	public List<String> categoryCnt() {
+		List<String> list = new ArrayList<String>();
+		int result = 0;
+		String[] category = new String[]{"수채화","유화","수묵화","크로키","기타"};
+		for(int i=0;i<category.length;i++) {
+			result = mybatis.selectOne("productDAO.categoryCnt", category[i]);
+			if(result==0) {
+				list.add("");
+			}else {
+				list.add(Integer.toString(result));
+			}
+		}
+		return list;
 	}
 
 	public List<PImageFileVO> getImages(String p_code) {
