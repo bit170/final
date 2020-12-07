@@ -506,10 +506,10 @@
 					<table class="table table-hover margin-bottom-none">
 						<thead>
 							<tr>
-								<th>주문 번호</th>
+								<th>주문<br>번호</th>
 								<th>주문 날짜</th>
 								<th>작품</th>
-								<th>주문자 아이디</th>
+								<th>주문자</th>
 								<th>주문자 주소</th>
 							</tr>
 						</thead>
@@ -545,7 +545,7 @@
 	<!-- Site Footer-->
 	<footer class="site-footer">
       <div class="column text-center">
-        <p class="text-sm mb-4">Need Support? Call<span class="text-primary">&nbsp;010 - 4355 - 2504</span></p>
+        <p class="text-sm mb-4">Need Support? Call<span class="text-primary">&nbsp;010 - 1111 - 2222</span></p>
         <p class="text-xxs text-muted mb-0 mt-3">© All rights reserved. Made with <i class='material-icons favorite text-danger'></i> by 곽연희, 송희, 오서현, 이동희</p>
       </div>
       <!-- <div class="column">

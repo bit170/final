@@ -502,7 +502,7 @@
       <h3 class="text-center mb-30">인기 작가</h3>
       <div class="row">
       <c:forEach items="${MainArtist}" var="mArtist">
-        <div class="col-md-3 col-sm-6 mb-30"><a class="category-card flex-wrap text-center pt-0" href="getArtist.do">
+        <div class="col-md-3 col-sm-6 mb-30"><a class="category-card flex-wrap text-center pt-0" href="getArtist.do?a_id=${mArtist.a_id }">
             <div class="category-card-thumb w-100"><img src="<c:url value='/aThumbnails.do?a_id=${mArtist.a_id }' />" alt="Product"></div>
             <div class="category-card-info w-100">
 
